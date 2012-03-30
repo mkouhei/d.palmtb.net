@@ -1,0 +1,65 @@
+﻿GRUB2でブートできない。
+############################
+
+
+家でジッとしているだけなのも何なので、空き領域にSidをインストールしたのだが、ブートローダをGRUB2にしたら、Windows xpが起動できなくなった。インストール時にはWindowsを自動検出したのだが、いざブート時には&#34;Unknown Device&#34;となり、ブートできない。で、ちょこちょこ遊んで見たところ、デフォルトのパーティションの指定が間違っているためだった。
+パーティションは下記のようにしているのだが、
+
+.. code-block:: none
+
+   /dev/hda1 HPFS/NTFS
+   /dev/hda2 Linux(/boot)
+   /dev/hda3 Linux(/)
+   /dev/hda4 Extended
+   /dev/hda5 Linux swap
+   /dev/hda6 Linux(/home)
+
+
+/boot/grub/grub.cfgのWindowsの指定が、
+
+.. code-block:: none
+
+   menuentry &#34;Microsoft Windows XP Professional&#34; {
+           set root=(hd0,0)
+           chainloader +1
+   }
+
+
+となっているのだが、これが間違いで、
+
+.. code-block:: none
+
+   set root=(hd0,1)
+
+
+としてやらなアカン。ただ、GRUB2からは設定ファイルのgrub.cfgを直にいじるわけではなく、テンプレートを変更してやるようなので、/etc/grub.d/30_otherosを編集してやった。
+
+.. code-block:: none
+
+   (修正前)
+   menuentry &#34;Microsoft Windows XP Professional&#34; {
+           set root=(hd0,0)
+           chainloader +1
+   }
+   (修正後)
+   menuentry &#34;Microsoft Windows XP Professional&#34; {
+           set root=(hd0,1)
+           chainloader +1
+   }
+
+
+この後、update-grubコマンドを実行してやればOK。
+
+.. code-block:: none
+
+   $ sudo update-grub
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

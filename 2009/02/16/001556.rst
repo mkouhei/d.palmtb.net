@@ -1,0 +1,212 @@
+﻿Debian on chumbyに挑戦。
+########################################
+
+
+Debian on chumbyを試してみるかと試行錯誤して、現在USBメモリにインストールしたLennyの領域をマウントできるようになったとこ。とりあえずchrootで擬似的にDebianを動かすことが目標。
+
+まずはUSBメモリにLennyをインストールする。
+******************************************************************************************************************
+
+
+x86やamd64(x86_64)以外のアーキテクチャをQEMUで起動させたことが無かったので、そこでまず試行錯誤した。
+http://d.hatena.ne.jp/mkouhei/20090214/1234542872
+
+ext2をつかえるようにする。
+**********************************************************************
+
+
+インストールした後、今度はchumbyで読めるかどうかを試したところchumbyってばext2を読めないのですな。仕方ないのでDebianをvfatフォーマットにコピーしようとしたところ、symlink作れずに失敗する。ダメ元でd-iでのインストールも試してみたが、/ファイルシステムにvfatを選択するとインストールプロセスが進まないのですな。仕方ないので、USBメモリにvfat領域とext2領域を作り、ext2領域にLennyを再インストールした。
+
+ext2を組み込んでchumbyのkernelをリビルドする。
+**********************************************************************************************************************
+
+
+Let&#39;s note R3やMacBook AirのSid環境に、Chumby用の開発ツールをtarで展開して突っ込む、のは嫌なので以前作成したLennyのイメージを最新状態にし、それをベースにchumby用の環境のスナップショットを作った。要らなくなれば捨てれば良いし。
+
+.. code-block:: none
+
+   (host)$ qemu-img create -b lenny.img -f qcow lenny-tmp.img
+   Formatting &#39;lenny-tmp.img&#39;, fmt=qcow, backing_file=lenny.img, size=4194304 kB
+
+
+これをKVM/QEMUでブートして、sshでログインする。
+
+.. code-block:: none
+
+   (host)$ kvm -hda lenny-tmp.img -boot c -m 384 -localtime -monitor stdio -redir tcp:2222::22
+   (host)$ ssh -p 2222 localhost
+
+
+chumby用のカーネル構築環境をダウンロードして展開する。手順はWikiにそってやれば良し。
+http://wiki.chumby.com/mediawiki/index.php/GNU_Toolchain
+http://wiki.chumby.com/mediawiki/index.php/GCC_Toolchain
+
+.. code-block:: none
+
+   (guest)$ wget -c http://files.chumby.com/resources/Gcc-3.3.2-glibc-2.3.2.tar.gz
+   (guest)$ wget -c http://files.chumby.com/toolchain/arm-linux-v4.1.2b.tar.gz
+   (guest)$ cd /
+   (guest)$ sudo tar zxf ~/arm-linux-v4.1.2b.tar.gz
+   (guest)$ sudo tar zxf ~/Gcc-3.3.2-glibc-2.3.2.tar.gz
+   (guest)$ sudo mkdir -p /opt/Embedix/usr/local/arm-linux
+   (guest)$ sudo ln -s /usr /opt/Embedix/usr/local/arm-linux/gcc-3.3.2-glibc-2.3.2
+   (guest)$ sudo vi /usr/bin/arm-linux-make
+   (arm-linux-make)
+   #!/bin/sh
+   echo make ARCH=arm CROSS=arm-linux- CC=arm-linux-gcc AR=arm-linux-ar NM=arm-linux-nm RANLIB=arm-linux-ranlib CXX=arm-linux-g++ AS=arm-linux-as LD=arm-linux-ld STRIP=arm-linux-strip BUILDCC=gcc BUILD_CC=gcc CC_FOR_BUILD=gcc $@
+   exec make ARCH=arm CROSS=arm-linux- CC=arm-linux-gcc AR=arm-linux-ar NM=arm-linux-nm RANLIB=arm-linux-ranlib CXX=arm-linux-g++ AS=arm-linux-as LD=arm-linux-ld STRIP=arm-linux-strip BUILDCC=gcc BUILD_CC=gcc CC_FOR_BUILD=gcc $@
+   (EOF)
+   (guest)$ sudo chmod +x /usr/bin/arm-linux-make
+
+
+chumby用のkernelをダウンロードして、再構築する。ジークスから販売開始直後に購入したchumbyだが、こいつのファームウェアは1.6なので、Wikiの1.6の手順を実施した。
+http://wiki.chumby.com/mediawiki/index.php/Hacking_Linux_for_chumby
+最低限、以下のdebパッケージは導入しておく必要あり。
+
+* make
+* gcc [#]_ 
+* libncurses5-dev
+* libncursesw5-dev 
+* zip
+
+ext2を有効にするには、make menuconfigを実行して組込みにしておく必要あり。 [#]_ 
+
+.. code-block:: none
+
+   (guest)$ cd
+   (guest)$ mkdir kernel
+   (guest)$ cd kernel
+   (guest)$ wget -c http://files.chumby.com/source/ironforge/build396/align.pl
+   (guest)$ wget -c http://files.chumby.com/source/ironforge/build733/linux-2.6.16-chumby-1.6.0.tar.gz
+   (guest)$ tar zxf linux-2.6.16-chumby-1.6.0.tar.gz
+   (guest)$ cd linux-2.6.16-chumby-1.6.0
+   (guest)$ ARCH=arm BOARD=mx21ads CROSS_COMPILE=arm-linux- make menuconfig
+   (guest)$ ARCH=arm BOARD=mx21ads CROSS_COMPILE=arm-linux- make
+   (guest)$ perl ../align.pl arch/arm/boot/zImage
+   (guest)$ zip k1.bin.zip arch/arm/boot/zImage
+
+
+kernel/linux-2.6.16-chumby-1.6.0/ディレクトリ直下に、k1.bin.zipが生成されるので、これをホストOS側に持ってくる。
+
+.. code-block:: none
+
+   (host)$ scp -P 2222 localhost:kernel/linux-2.6.16-chumby-1.6.0/k1.bin.zip .
+
+
+先ほど用意したUSBメモリのうち、vfat領域にk1.bin.zipをコピーしておく。
+
+.. code-block:: none
+
+   $ sudo mount -t vfat /dev/sda1 /media/usb
+   $ sudo mkdir /media/usb/update2
+   $ sudo cp -i k1.bin.zip /media/usb/update2/
+   $ sudo umount /media/usb
+
+
+chumbyをspecial option modeで起動し、kernelをアップデートする。
+
+* chumbyの電源をOFFにした状態でUSBメモリを挿す。
+* タッチスクリーンを押したまま、電源を入れる。途中で押したままにするとspecial option modeになるよ、と表示されるのでそのまま押しつづける。
+* special option modeのメニュー画面で&#34;install updates&#34;をクリックする。
+* &#34;Install from USB flash drive&#34;をクリックすると、kernelがアップデートされ、自動的に再起動される。
+
+再起動後にsshdを起動させ、ログインするとvfat領域だけでなく、ext2領域も自動的にマウントされることに気づく。vfat領域にdebugchumbyをおいて、mountさせてやらんとアカンかなぁと思ってたので意外。
+
+.. code-block:: none
+
+   # df -h
+   Filesystem                Size      Used Available Use% Mounted on
+   /dev/mtdblock5           33.0M     33.0M         0 100% /
+   none                     30.2M     16.0k     30.2M   0% /dev
+   none                     32.0M    552.0k     31.5M   2% /tmp
+   none                     32.0M     60.0k     31.9M   0% /var
+   none                     32.0M         0     32.0M   0% /mnt
+   /dev/mtdblock1            2.0M      1.6M    444.0k  78% /psp
+   /dev/sda1               475.5M      1.4M    474.1M   0% /mnt/usb
+   /dev/sda2                 1.3G    443.9M    825.9M  35% /mnt/usb2
+   # ls /mnt/usb2
+   bin         home        mnt         sbin        tmp
+   boot        lib         opt         selinux     usr
+   dev         lost+found  proc        srv         var
+   etc         media       root        sys
+   # cat /mnt/usb2/etc/debian_version
+   5.0
+
+
+
+chrootを試してみるが…。
+**************************************************************
+
+
+
+.. code-block:: none
+
+   # chroot /mnt/usb2/
+   Illegal instruction
+
+
+なんてこった。ダメじゃん…。さてどうするかなぁ…。chrootで逃げようとしたのが裏目に出たか…。とりあえず、chumbyのkernelリビルドは意外に簡単で、かつちゃんと動いてくれたのは一安心だけどね。
+
+
+.. rubric:: footnote
+
+.. [#] ：クロスコンパイル用のgccを入れているんだから要らないんじゃねぇかなぁ…。
+.. [#] ：モジュールでも良いけど。
+
+
+
+.. author:: mkouhei
+.. categories:: gadget, Debian, virt., computer, 
+.. tags::
+
+
+----
+
+Comment:
+
+	lennyはarmel(EABI)? chumbyはARM(OABI)だから注意。
+
+	written by  kinneko
+	02/17/2009 10:04:04
+	http://d.hatena.ne.jp/kinneko/
+
+----
+
+Comment:
+
+	そうなんですか。ありがとうございます。さっそく変えてやってみます。
+
+	written by  mkouhei
+	02/17/2009 21:40:18
+	http://d.hatena.ne.jp/mkouhei/
+
+----
+
+Comment:
+
+	ぬ、qemuだとarmelしかブートできないな…。
+
+	written by  mkouhei
+	02/17/2009 23:18:44
+	http://d.hatena.ne.jp/mkouhei/
+
+----
+
+Comment:
+
+	厶、http://www.debian.org/releases/stable/arm/ch02s01.html.ja#id2713668さてどうするか。
+
+	written by  mkouhei
+	02/18/2009 00:47:05
+	http://d.hatena.ne.jp/mkouhei/
+
+----
+
+Comment:
+
+	kernelはchumbyのものを使うのだろうから、userlandは対応ボードでなくても問題ないっしょ。
+
+	written by  kinneko
+	03/14/2009 11:24:52
+	http://d.hatena.ne.jp/kinneko/
+

@@ -1,0 +1,13 @@
+﻿ひとつだけなのか。
+##################
+
+
+check*padのモーニングリスト設定は一つのリストしか設定できないのか。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, 
+.. tags::
+
+

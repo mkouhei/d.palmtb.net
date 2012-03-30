@@ -1,0 +1,43 @@
+﻿結局キーマップはどうしたかというと…。
+######################################
+
+
+Berylで画面グリグリするには、１キーでのマッピングが必要になるのと、Berylの一つの動作に複数のショートカットを割り当てられてないので、リモコンでキューブデスクトップの回転をマッピングさせるのは止めた。
+その代わり、以下の４つを実現するために、キーマップを下記のように設定した。
+まず、実現させたこと。
+
+* OOo Impressのスライドショーの操作
+* IceweaselでのWebサーフィン [#]_ 
+* XfceのFile Managerからスクリプトを実行させる
+* シェルでコマンド入力
+
+リモコンのキーマップ
+
+.. code-block:: none
+
+   int keymap[8]={
+     0,                /* reserved */
+     97,               /* menu       : home   */
+     36,               /* play/pause : return */
+     65,               /* next       : space  */
+     23,               /* back       : tab    */
+     98,               /* plus       : up     */
+     104               /* minus      : down   */
+   };
+
+
+段々不精になっていくなぁ。w
+
+
+.. rubric:: footnote
+
+.. [#] ：これ、死語だろ
+.. [#] ：正確にはできた
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, MacBook, computer, 
+.. tags::
+
+

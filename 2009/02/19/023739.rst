@@ -1,0 +1,29 @@
+﻿Debian on chumbyに挑戦中。その４
+################################################
+
+
+あー、chrootする前に/procをバインドするの忘れてた…。orz
+
+.. code-block:: none
+
+   chumby:~# mount -o bind /proc /mnt/usb2/proc
+   chumby:~# chroot /mnt/usb2
+   chumby:/1 df
+   Filesystem           1K-blocks      Used Available Use% Mounted on
+   /dev/hda1              1373548    181321   1118946  14% /
+   tmpfs                  1373548    181321   1118946  14% /lib/init/rw
+   sysfs                  1373548    181321   1118946  14% /sys
+   udev                   1373548    181321   1118946  14% /dev
+   tmpfs                  1373548    181321   1118946  14% /dev/shm
+   devpts                 1373548    181321   1118946  14% /dev/pts
+
+
+mandbの更新の時に、/var/cache/man/以下にindex cacheを作るのを失敗した以外は正常だった。これで無事、Lennyへのアップグレードが完了できますた。これで今週末のOSCのネタが間に合ったよ。
+
+
+
+.. author:: mkouhei
+.. categories:: 
+.. tags::
+
+

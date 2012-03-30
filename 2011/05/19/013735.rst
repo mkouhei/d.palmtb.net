@@ -1,0 +1,116 @@
+﻿lxcを久々に使うことに。on さくらのVPS 512
+######################################################
+
+
+一昨日契約したさくらのVPSはメモリが512MBもあって、Core 2 Duoと普段の鯖環境から考えるとものすごい贅沢 [#]_ です。VM１台だけで使うのももったいないので、久々にlxcを使ってみることにしました。
+以前遊んでいたときはまだLennyリリースされて一年経っておらず、lxcのユーザランドも0.6.5頃までしか遊んで無いので、一緒に情報のアップデートも行おうと思います。Squeezeでのlxcは0.7.2 [#]_ で、SqueezeのLinuxカーネル [#]_ のconfigに対してlxc-checkconfigでチェックすると、以前遊んでいたときと同じように、必要なカーネルオプションが無効になったままです。なので、2.6.38.6でカーネルビルドすることにしました。
+ビルド後、lxc-checkconfigを実行した結果が以下。
+
+.. code-block:: none
+
+   $ lxc-checkconfig 
+   Kernel config /proc/config.gz not found, looking in other places...
+   Found kernel config file /boot/config-2.6.38.6
+   --- Namespaces ---
+   Namespaces: enabled
+   Utsname namespace: enabled
+   Ipc namespace: enabled
+   Pid namespace: enabled
+   User namespace: enabled
+   Network namespace: enabled
+   Multiple /dev/pts instances: enabled
+   
+   --- Control groups ---
+   Cgroup: enabled
+   Cgroup namespace: enabled
+   Cgroup device: enabled
+   Cgroup sched: enabled
+   Cgroup cpu account: enabled
+   Cgroup memory controller: enabled
+   Cgroup cpuset: enabled
+   
+   --- Misc ---
+   Veth pair device: enabled
+   Macvlan: enabled
+   Vlan: enabled
+   File capabilities: missing
+   
+   Note : Before booting a new kernel, you can check its configuration
+   usage : CONFIG=/path/to/config /usr/bin/lxc-checkconfig
+   
+
+
+File capabilitiesのみがmissingになってます。/usr/bin/lxc-checkconfigはシェルスクリプトなので、どのカーネルオプションなのかは中を見れば分かります。
+
+.. code-block:: none
+
+   (snip)
+   is_enabled() {
+       mandatory=$2
+   
+       is_set $1
+       RES=$?
+   
+       if [ $RES -eq 0 ]; then
+           $SETCOLOR_SUCCESS  echo -e enabled  $SETCOLOR_NORMAL
+       else
+           if [ ! -z $mandatory -a $mandatory = yes ]; then
+               $SETCOLOR_FAILURE  echo -e required  $SETCOLOR_NORMAL
+           else
+               $SETCOLOR_WARNING  echo -e missing  $SETCOLOR_NORMAL
+           fi
+       fi
+   }
+   (snip)
+       KVER=`uname -r`
+   (snip)
+   KVER_MINOR=$($GREP &#39;^# Linux kernel version:&#39; $CONFIG | \
+       sed -r &#39;s/.*2.6.([0-9]{2}).*/\1/&#39;)
+   [[ ${KVER_MINOR}  33 ]]  echo -n File capabilities:   is_enabled \
+       CONFIG_SECURITY_FILE_CAPABILITIES
+
+
+うーむ、これが原因ですね。カーネルのマイナーバージョンが33未満、つまり2.6.33未満の場合はこのオプションが有効になりますが、今回のカーネルは2.6.38.6だとSecurity Optionsにこのオプションは既に存在しません。lxcのリポジトリのmasterブランチのHEADを見ると、
+
+.. code-block:: none
+
+   KVER_MINOR=$($GREP &#39;^# Linux&#39; $CONFIG | \
+       sed -r &#39;s/.*2.6.([0-9]{2}).*/\1/&#39;)
+   echo -n File capabilities:  
+       [[ ${KVER_MINOR}  33 ]]  is_enabled CONFIG_SECURITY_FILE_CAPABILITIES ||
+       [[ ${KVER_MINOR}  32 ]]   $SETCOLOR_SUCCESS  echo -e enabled 
+       $SETCOLOR_NORMAL
+
+
+この問題も修正されています [#]_ 。これをみると、2.6.33以上であればそもそも問題ないようです。
+なので、/etc/fstabに下記の設定をして、/var/local/cgroupディレクトリを作成すればcgroupファイルシステムを正常にマウントできます。
+
+.. code-block:: none
+
+   cgroup  /var/local/cgroup  cgroup  defaults  0  0
+
+
+
+後日に続く。
+
+さくらのVPS 512でのカーネルビルドの所用時間
+**********************************************************************************************************************
+
+
+CONCURRENCY_LEVEL=2 MAKEFLAGS=&#34;CC=ccache\ gcc&#34;をつけて、defconfigでビルドしたら約15分くらいでした。かなり速いですね。
+
+
+.. rubric:: footnote
+
+.. [#] ：普段はOpenBlockS 266でメモリ64MBなので。
+.. [#] ：ちなみにWheezy/Sidは0.7.3
+.. [#] ：linux-image-2.6.37.1
+.. [#] ：なお、Sidのlxc 0.7.3ではまだこの変更は反映されていません。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, virt., Ops, 
+.. tags::
+
+

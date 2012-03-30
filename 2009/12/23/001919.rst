@@ -1,0 +1,15 @@
+﻿awesomeでgoogle-chromeは自由にウィンドウを動かせる謎。
+##########################################################################
+
+
+なぜ？
+百聞は一見に如かず。google-chromeだけなぜ？
+
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

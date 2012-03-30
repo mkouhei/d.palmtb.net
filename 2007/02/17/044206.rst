@@ -1,0 +1,32 @@
+﻿mm1パッチの新機能
+####################
+
+
+分からないオプションをどうしたか、ということでメモ。
+
+* Tickless System (Dynamic Ticks) (NO_HZ) [N/y/?] (NEW)
+
+って何だろう、と検索してみたらあった。ノートPCで有効にすれば、多少はの省電力になるかな。まぁノートPCの場合はむしろバックライトの方が消費電力は大きいだろうけど。
+
+2.6.20リリースの次に予定されているカーネル機能の大きな変更としてTorvalds氏が挙げるのは、通常行われる新規ドライバの追加、バグの修正、セキュリティ用のパッチを除くと、いわゆる“ティックレスカーネル”（tickless kernel）になるとのことだ。ここで言う“ティックレス”とは、タイマーによる割り込みがない場合にシステムが完全にアイドル化できる機能を意味する。こうした機能は、電力消費の削減と冷却効率の改善に寄与するはずで、組み込みシステムにとって特に重要な意味を持っている。
+http://opentechpress.jp/opensource/article.pl?sid=07/01/22/0129245
+
+* High Resolution Timer Support (HIGH_RES_TIMERS) [N/y/?] (NEW) ?
+
+こっちは組込み機器向け。
+
+* VMI Paravirt-ops support (VMI) [Y/n/?] (NEW) ?
+
+仮想化用のハイパーバイザーのインタフェース。具体的にどう使うのかよく分からない。
+
+* Adaptive file readahead (EXPERIMENTAL) (ADAPTIVE_READAHEAD) [Y/n/?] (NEW) ?
+
+ディスクの先読み機能の改善だとか。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, virt., computer, 
+.. tags::
+
+

@@ -1,0 +1,14 @@
+﻿kvm-18リリース。
+######################
+
+
+早いなぁ。お、Intel CPUでのゲストOSのリブートをサポートしたそうな。
+ここ１週間ほど、KVMは全く触らず終い。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, computer, virt., 
+.. tags::
+
+

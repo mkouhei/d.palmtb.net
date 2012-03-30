@@ -1,0 +1,13 @@
+﻿rescueモードで更新して復旧。
+##################################
+
+
+起動しなくなったLet&#39;s noteだったが、rescue モードで起動し、update-grub, grub-install /dev/hdaを実行したら、正常に起動できるようになった。原因は不明だけど。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

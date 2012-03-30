@@ -1,0 +1,13 @@
+﻿modsecurityねぇな。
+##############################
+
+
+Etchだと、というかSidでもmodsecurityのパッケージが無い。困っちゃうな。Hobbitと同じように自分用にパッケージにするかな。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, security, 
+.. tags::
+
+

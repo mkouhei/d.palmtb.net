@@ -1,0 +1,49 @@
+﻿Pre3にprewareをインストール。
+########################################
+
+
+palm preのときと違い、meta-doctorでROMを再作成＆焼き直しをしなくても、HP Pre3ではDeveloper modeにできる代わりに、App Catalogが使えない、という制約があります。完全に開発用の端末になってしまうので、ちょいと不便です。なので、prewareでipkgパッケージをインストールできるようにしましょう [#]_ 。NovacomとPalm SDKは最新状態になっているものとします [#]_ 。
+Pre3をUSBで接続し、&#34;Just Charge&#34;ボタンをタップします。
+
+novatermコマンドをGNU/Linux側で実行し、webOS InternalsのInstalling Preware from the Commandlineを実行します。(下記)
+
+.. code-block:: none
+
+   $ novaterm
+   root@Pre3:/# cd /tmp
+   root@Pre3:/tmp# wget -c http://gitorious.org/webos-internals/bootstrap/blobs/raw/master/preware-bootstrap.sh
+   Connecting to gitorious.org (87.238.52.168:80)
+   # sh preware-bootstrap.sh 
+   Starting installation...
+   Would you like to include any alpha Preware releases for this install/update? [Y/N]  y
+   Mounting the root file system read-write: OK
+   Installing org.webosinternal.preware v1.7.5: OK
+   Rescanning Luna: OK
+   
+   Running org.webosinternals.preware.postinst: OK
+   
+   Mounting the root file system read-only: OK
+   Setup Complete!
+   
+
+
+起動すると、下記のようにprewareがインストールされます。
+
+changelogを確認すると、feedが更新され、preware経由でパッケージをインストールできるようになります。
+
+
+
+
+
+.. rubric:: footnote
+
+.. [#] ：って、日本人でどんだけの人がPre3なんて持っているんだろうかw
+.. [#] ：もし、そうでない場合は、.. [#] インストール or アップデートしておきましょう。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Unix/Linux, gadget, 
+.. tags::
+
+

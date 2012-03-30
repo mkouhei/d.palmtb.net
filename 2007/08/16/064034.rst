@@ -1,0 +1,47 @@
+﻿fullcore吐かねぇと思ったら…。
+######################################
+
+
+fullcore falseになっとった。そりゃ吐かねぇよ。smittyで変更せな。
+
+.. code-block:: none
+
+   # lsattr -El sys0 -a fullcore
+   fullcore false ... True
+
+
+
+.. code-block:: none
+
+   # chdev -l sys0 -a fullcore=true
+
+
+どのみち、出力先のファイルシステムが小さいので、ファイルシステム拡張するか、出力先を変更しないとダメ。
+
+.. code-block:: none
+
+   # syscorepath -g
+   　←何もセットされてない。
+   # syscorepath -p /core
+
+
+ついでに、ulimitで見るとサイズ制限あるから.profileでunlimitedに変更せなアカン。
+
+.. code-block:: none
+
+   ulimit -c unlimited
+
+
+
+
+.. rubric:: footnote
+
+.. [#] ：といってもカーネルパラメータを変更するコマンドじゃないけど。
+
+
+
+.. author:: mkouhei
+.. categories:: 仕事, Unix/Linux, 
+.. tags::
+
+

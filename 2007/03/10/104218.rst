@@ -1,0 +1,14 @@
+﻿apciが正常だと…。
+######################
+
+
+cpufreq-infoで見た場合に、current policyもデフォルトに設定している&#34;peformance&#34;になるし、current CPU frequencyの値も、利用可能な最高周波数になるのか。ほほう。ACPIってバッテリーだけじゃなくて、パフォーマンスにも影響するのか。
+kernelの再構築も31分で終わったし。やっぱ違うなぁ…
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

@@ -1,0 +1,21 @@
+﻿同じIPからの同時接続数が非常に多かったので。
+##############################################
+
+
+昼に死んだ後、経過観察していたら、同じIPアドレスからの同時アクセスが異常に多いことがあったので、同一IPアドレスからの同時接続数を制限することにした。&#34;Apacheセキュリティ&#34;を見たら、limitipconnというモジュールがあるらしい。ということで、Debianパッケージがあるか確認してみたら、1.3用しかない。同じ悩みの人がいないかなぁ、と思ったら、kmutoさんが同じことされていた。pbuilderの環境は作ってないが、iBookでOBS専用の開発環境があるので、kmutoさんの手順に倣って実施。ちゃんと制限できた。
+
+.. code-block:: none
+
+   [Sat Mar 31 15:26:44 2007] [error] [client xxx.xxx.xxx.xxx.] Rejecting client at xxx.xxx.xxx.xxx
+
+
+これで少しはマシになるかなぁ…？
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, security, 
+.. tags::
+
+

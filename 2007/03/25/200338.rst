@@ -1,0 +1,23 @@
+﻿簡単だった。
+############
+
+
+この前買ったOBS266をEtch化した。途中で引っかかった部分はあったけど、簡単にEtch化できた。ただ、一点、なぜか/tmpファイルシステムのマウントの最後でFailedメッセージが出る。
+
+.. code-block:: none
+
+   EXT3 FS on hda8, internal journal
+   EST3-fs: mounted filesystem with ordered data mode.
+    failed!
+
+
+はて、なんでだろう？
+今回、６台目にして初めてハードディスクの換装を写真で取ったので、後日WikiでEtch化も含めて手順を公開予定。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

@@ -1,0 +1,58 @@
+﻿分散BTSについてのメモ。
+##########################
+
+
+
+ditz
+****
+
+
+
+.. code-block:: none
+
+   $ sudo apt-get install ditz
+
+
+
+DITrack
+**********
+
+
+
+.. code-block:: none
+
+   $ sudo apt-get install ditrack
+
+
+
+sd
+
+
+
+
+.. code-block:: none
+
+   $ curl fsck.com/sd | perl
+   $ export PATH=~/sd/bin:$PATH
+   $ sd
+
+
+
+Scmbug
+********
+
+
+
+the other
+**************
+
+
+http://lwn.net/Articles/281849/
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

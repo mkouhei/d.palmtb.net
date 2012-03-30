@@ -1,0 +1,15 @@
+﻿第1回 MongoDB JP &amp;amp; CouchDB JP合同勉強会参加。
+##############################################################################
+
+
+id:doryokujinさん主催でMongoDB JPを立ち上げ、id:yssk22さんがそれに便乗wして開催となったMongoDB JPとCouchDB JPの合同勉強会に参加して、CouchDB on AndroidのネタをLTで発表してきた。ネタとしては@ITで記事を書いてからだいぶ経つが、JavaScriptのみでスタンドアローンアプリを作ってみた、というお話、ではなく、専ら我が家の家計簿にまつわるごくごくプライベートなお話。（わら
+CouchDB on Androidでスタンドアローンアプリ。View more presentations from Kouhei Maeda.
+ソースコードは晒せない我が家の家計の事情を取っ払って、汎用的にした上で公開予定。
+
+
+
+.. author:: mkouhei
+.. categories:: CouchDB, meeting, 
+.. tags::
+
+

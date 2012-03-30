@@ -1,0 +1,28 @@
+﻿デスクトップ環境の変遷。
+########################
+
+
+
+* Windows 98
+* Windows 2000
+* Windows xp
+* Window Manager
+* GNOME
+* KDE
+* CDE(AIX, Solaris)
+* X Window only(AIX)
+* GNOME
+* Xfce
+* awesome
+* Xfce
+* awesomeに再チャレンジ。 ←今ココ。
+
+というわけで、Xfceからawesomeに再び切り替えようとしてまふ。今日初めて使い始めた、emacs のtwitter-modeがしっくりきたので、これだとawesomeは相性が良さげな感じ。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

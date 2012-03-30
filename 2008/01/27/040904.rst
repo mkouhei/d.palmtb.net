@@ -1,0 +1,24 @@
+﻿グズグズしている間に…。
+########################
+
+
+hobbitがDebianパッケージになってました…。orz
+
+.. code-block:: none
+
+   $ apt-cache search hobbit
+   hobbit - monitoring system for systems, networks and applications - server
+   hobbit-client - client for the Hobbit network monitor
+   hobbit-plugins - plugins for the Hobbit network monitor
+
+
+まあ、どのみちetchには入っていないので、自宅では自分用にパッケージしないとダメだけど。
+hobbit-pluginsのapt.cfgとlibs.cfgは気になるなぁ。自分でやるなら、hddtempと無線LANルータの監視スクリプトだけど。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

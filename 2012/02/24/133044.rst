@@ -1,0 +1,192 @@
+﻿Apacheのログをgzip圧縮からxz圧縮への変更を検討。
+############################################################
+
+
+結論、無い。
+画像圧縮はとても強力でしたが、Apacheのアクセスログの文字列圧縮は、圧縮率の高さに比べると圧縮に要する時間が長すぎました。伸張に要する時間はgzipと大差ないので、Webサーバ側のCPU負荷を無視して、N/W帯域、ディスク容量を節約するなら使えますが、サーバ間やDC間のN/W帯域節約にも、アクセスログ解析用のシステムのディスク容量節約にも大きな効果は得られないので選択肢としてありませんね。試しにあるサービスの一日分のログでやった例は以下の通りです。 [#]_ 
+
+非圧縮時のファイルサイズ
+********************************************************************
+
+
+
+.. code-block:: none
+
+   total 5900156
+   -rw-r--r-- 1 user user 319363125  Feb 24 15:36 16_access_log.20120223
+   -rw-r--r-- 1 user user 318459629  Feb 24 15:36 15_access_log.20120223
+   -rw-r--r-- 1 user user 317564749  Feb 24 15:36 14_access_log.20120223
+   -rw-r--r-- 1 user user 317429105  Feb 24 15:36 13_access_log.20120223
+   -rw-r--r-- 1 user user 317269069  Feb 24 15:36 12_access_log.20120223
+   -rw-r--r-- 1 user user 318413201  Feb 24 15:36 11_access_log.20120223
+   -rw-r--r-- 1 user user 320070237  Feb 24 15:36 10_access_log.20120223
+   -rw-r--r-- 1 user user 303356624  Feb 24 15:36 10_access_log.20120222
+   -rw-r--r-- 1 user user 319528574  Feb 24 15:36 9_access_log.20120223
+   -rw-r--r-- 1 user user 318281124  Feb 24 15:36 8_access_log.20120223
+   -rw-r--r-- 1 user user 316764620  Feb 24 15:36 7_access_log.20120223
+   -rw-r--r-- 1 user user 318641631  Feb 24 15:36 6_access_log.20120223
+   -rw-r--r-- 1 user user 319956606  Feb 24 15:36 5_access_log.20120223
+   -rw-r--r-- 1 user user 317251065  Feb 24 15:36 4_access_log.20120223
+   -rw-r--r-- 1 user user 318412792  Feb 24 15:36 3_access_log.20120223
+   -rw-r--r-- 1 user user 320224674  Feb 24 15:36 2_access_log.20120223
+   -rw-r--r-- 1 user user 319814095  Feb 24 15:36 1_access_log.20120223
+   -rw-r--r-- 1 user user 317625588  Feb 24 15:36 18_access_log.20120223
+   -rw-r--r-- 1 user user 317291138  Feb 24 15:36 17_access_log.20120223
+
+
+
+gzipでの圧縮後のファイルサイズ。
+****************************************************************************************
+
+
+圧縮後は約17%です。
+
+.. code-block:: none
+
+   total 1047660
+   -rw-r--r-- 1 user user 53619534  Feb 24 15:36 10_access_log.20120222.gz
+   -rw-r--r-- 1 user user 56839677  Feb 24 15:36 10_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56569549  Feb 24 15:36 11_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56362050  Feb 24 15:36 12_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56368136  Feb 24 15:36 13_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56375659  Feb 24 15:36 14_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56550279  Feb 24 15:36 15_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56716954  Feb 24 15:36 16_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56359257  Feb 24 15:36 17_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56443638  Feb 24 15:36 18_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56763898  Feb 24 15:36 1_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56894590  Feb 24 15:36 2_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56521784  Feb 24 15:36 3_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56326266  Feb 24 15:36 4_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56839632  Feb 24 15:36 5_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56573367  Feb 24 15:36 6_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56232865  Feb 24 15:36 7_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56505719  Feb 24 15:36 8_access_log.20120223.gz
+   -rw-r--r-- 1 user user 56745093  Feb 24 15:36 9_access_log.20120223.gz
+
+
+
+gzip圧縮の所要時間。
+****************************************************
+
+
+
+.. code-block:: none
+
+   $ time gzip *
+   
+   real    2m41.050s
+   user    2m36.786s
+   sys     0m4.231s
+
+
+
+gzip伸張の所要時間。
+****************************************************
+
+
+
+.. code-block:: none
+
+   gzip -d *
+   real    1m4.104s
+   user    0m44.670s
+   sys     0m8.709s
+
+
+一応、2回目の伸長に要した時間。
+
+.. code-block:: none
+
+   $ time gzip -d *
+   
+   real    0m44.436s
+   user    0m35.568s
+   sys     0m6.862s
+
+
+
+xz圧縮後のファイルサイズ。
+************************************************************************
+
+
+約11%です。
+
+.. code-block:: none
+
+   total 629888
+   -rw-r--r-- 1 user user 34091368  Feb 24 15:36 16_access_log.20120223.xz
+   -rw-r--r-- 1 user user 33995004  Feb 24 15:36 15_access_log.20120223.xz
+   -rw-r--r-- 1 user user 33902124  Feb 24 15:36 14_access_log.20120223.xz
+   -rw-r--r-- 1 user user 33917212  Feb 24 15:36 13_access_log.20120223.xz
+   -rw-r--r-- 1 user user 33890092  Feb 24 15:36 12_access_log.20120223.xz
+   -rw-r--r-- 1 user user 34008540  Feb 24 15:36 11_access_log.20120223.xz
+   -rw-r--r-- 1 user user 34166088  Feb 24 15:36 10_access_log.20120223.xz
+   -rw-r--r-- 1 user user 32111688  Feb 24 15:36 10_access_log.20120222.xz
+   -rw-r--r-- 1 user user 34086496  Feb 24 15:36 9_access_log.20120223.xz
+   -rw-r--r-- 1 user user 33984752  Feb 24 15:36 8_access_log.20120223.xz
+   -rw-r--r-- 1 user user 33835084  Feb 24 15:36 7_access_log.20120223.xz
+   -rw-r--r-- 1 user user 34021324  Feb 24 15:36 6_access_log.20120223.xz
+   -rw-r--r-- 1 user user 34179500  Feb 24 15:36 5_access_log.20120223.xz
+   -rw-r--r-- 1 user user 33884716  Feb 24 15:36 4_access_log.20120223.xz
+   -rw-r--r-- 1 user user 33978080  Feb 24 15:36 3_access_log.20120223.xz
+   -rw-r--r-- 1 user user 34184592  Feb 24 15:36 2_access_log.20120223.xz
+   -rw-r--r-- 1 user user 34110700  Feb 24 15:36 1_access_log.20120223.xz
+   -rw-r--r-- 1 user user 33949656  Feb 24 15:36 18_access_log.20120223.xz
+   -rw-r--r-- 1 user user 33904016  Feb 24 15:36 17_access_log.20120223.xz
+
+
+
+xz圧縮の所要時間。
+************************************************
+
+
+
+.. code-block:: none
+
+   $ time xz *
+   
+   real    53m25.665s
+   user    53m19.005s
+   sys     0m6.160s
+
+
+一応、２回実行してみましたが、変わらず。
+
+.. code-block:: none
+
+   $ time xz *
+   
+   real    53m26.128s
+   user    53m19.134s
+   sys     0m6.494s
+
+
+
+xz伸張の所要時間。
+================================================
+
+
+
+.. code-block:: none
+
+   $ time xz -d *
+   
+   real    1m6.302s
+   user    0m58.743s
+   sys     0m7.551s
+
+
+
+
+.. rubric:: footnote
+
+.. [#] ：なんか一日分違うログが混じっていますね…。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

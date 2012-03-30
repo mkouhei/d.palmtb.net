@@ -1,0 +1,84 @@
+﻿はじめてのpull request。
+####################################
+
+
+いつもはgit format-patchでパッチ生成して、git send-emailで投げるのですが、Githubで管理しているOSSなので、初めてpull requestを使ってみました、というだけのお話です。
+
+
+Mergeはや！
+************************
+
+
+対象は先日ブログにも書いたTonicDNSなのですが、PowerDNSの他の管理ツール(PowerDNS GUI)と共存させる上で２つ問題になるうちの一つ、&#34;MX, SRVレコード以外のレコード登録にpriorityが設定されるのはイケてない問題&#34;は単純に実装上のバグなので修正パッチを書いて、pull requestを出したら、1,2時間程度ですぐマージされてビックリしました。まぁバグというより実装する上で優先度低いから後回しにしたという感じもします。MySQLをDBとしてPowerDNS使っている場合、MXレコードとSRVレコード以外にpriorityが設定されていてもPowerDNSは無視してくれるので。
+
+
+NULL-safe operator便利ですね。
+********************************************************************
+
+
+今回、一つのprepared statementを修正するだけで対応できないものかと調べていたら、MySQLだとNULL-safe operatorなるものがあるのを知りました。これを使えば、NULLの場合の判定を
+
+.. code-block:: none
+
+   SELECT * from hoge where comment = NULL;
+
+
+とできるので、prepared statementで
+
+.. code-block:: none
+
+   SELECT  from hoge where comment = :comment;
+
+
+という感じの書き方ができるのは便利ですね。ただし、TonicDNSはSQLiteもサポートしています。SQLiteはこの記法は使えません。この方法を使って、SQLiteとの互換性もちゃんと残しておくには、MySQLとSQLiteで処理を分けないといけません。SQLiteでは、
+
+.. code-block:: none
+
+   SELECT * from hoge where comment is NULL;
+
+
+MySQLでは
+
+.. code-block:: none
+
+   SELECT * from hoge where comment = :comment
+
+
+というのを、接続先のDBを判定して用意する方がめんどいので、結局レコードのTypeでprepared statementを変更することにしました。
+
+
+TonicDNSの残タスク。
+************************************************
+
+
+
+* 使い方のドキュメントが無い* 
+
+* ユーザドキュメントを作る。これは先日のブログをベースにすれば良いですね
+
+
+* レコードの更新ができない* 
+
+* レコードの更新もできるようにする
+
+
+* MX, SRVレコード以外のレコード登録にpriorityが設定されるのはイケてない* どね
+* ユーザ作成ができない
+
+* これはどうやって許可された人がアカウント作成できるようにするかを考えないとですね。
+
+
+* レコード更新してもSOAレコードのserialが更新されない* 
+
+* 更新できるようにする
+
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Dev, 
+.. tags::
+
+

@@ -1,0 +1,16 @@
+﻿z/Linuxの連載記事
+########################
+
+
+IBMの人が、@ITでこんな連載を始めたみたい。
+あなたの知らないメインフレームLinuxの世界
+http://www.atmarkit.co.jp/flinux/rensai/mf01/mf01a.html
+サーバ統合の話が記事の最後に出てくるのだが、そのイメージ図が紛らわしいので一般の人に誤解を与えないかちょっと心配。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, virt., computer, 
+.. tags::
+
+

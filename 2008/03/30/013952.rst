@@ -1,0 +1,22 @@
+﻿fcgidがうまくいかん。
+##########################
+
+
+
+.. code-block:: none
+
+   [Mon Mar 31 01:34:50 2008] [notice] mod_fcgid: server /var/www/hoge/hiki.fcgi(9769) started
+   [Mon Mar 31 01:34:59 2008] [info] mod_fcgid: Read data error, fastcgi server has close connection
+   [Mon Mar 31 01:34:59 2008] [error] [client xxx.xxx.xxx.xxx] Premature end of script headers: hiki.fcgi, referer: http://yyy.yyy.yyy.yyy/hoge/hiki.fcgi?c=search
+   [Mon Mar 31 01:35:03 2008] [notice] mod_fcgid: process /var/www/hoge/hiki.fcgi(9769) exit(communication error), terminated by calling exit(), return code: 1
+
+
+何で、Read data errorを起こすのかを調べなあかんな。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

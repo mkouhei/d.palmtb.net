@@ -1,0 +1,24 @@
+﻿OpenBlockS266では厳しいな。
+########################################
+
+
+RailsをOBS266 128MBモデルで動かして、一日放っておいたが、Swap領域の使用率が高くなっているので、こりゃあかんな。
+
+.. code-block:: none
+
+    $ free
+                 total       used       free     shared    buffers     cached
+    Mem:        126964     124616       2348          0      42532      21136
+    -/+ buffers/cache:      60948      66016
+    Swap:       273064      30212     242852
+
+
+分散させるか、SQLiteか。まずはSQLiteを試してみるか。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, Ops, gadget, 
+.. tags::
+
+

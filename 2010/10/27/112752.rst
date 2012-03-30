@@ -1,0 +1,36 @@
+﻿そして実はSargeでもNTLM認証行けちゃった。
+##################################################
+
+
+Sargeでは環境変数http_proxyを設定してもrootでパッケージのアップデートができなかったのだが、もしやと思い、一台だけ残っているSargeのサーバに先ほどの/etc/apt/apt.confにプロキシ認証の設定をして、ディストリビューションをsargeからstableに変更してsudo
+apt-get updateを実行してみたところ、ものの見事にProxyのNTLM認証行けてしまった。なんだ、こっちに設定しなくてはならなかったのか、アハハー。
+とまぁそんな訳なのだが、SargeはおろかEtchのリポジトリももう既に廃止になっているので、SargeからLennyへいっきにアップグレードすることなんて怖すぎてできません…。
+orz サーバもリプレースというか、新規に構築しなおす予定なので、済んだら試してみるかなぁ。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+
+----
+
+Comment:
+
+	archive.debian.org 使えば？
+
+	written by  henrich
+	10/28/2010 00:43:59
+	
+
+----
+
+Comment:
+
+	おー、そんなのあったのか。アップグレードはせんけどアップデートだけしておこう。(Webmin, Usermin使ってるので）
+
+	written by  mkouhei
+	10/28/2010 01:16:00
+	http://d.hatena.ne.jp/mkouhei/
+

@@ -1,0 +1,23 @@
+﻿年賀状の季節です。
+##################
+
+
+ということで、この季節だけ稼働するCC-700。相変わらずVMware上のWindows xpで使っているのだが、USB接続のこのCC-700をWindows側に認識させるには、ホストOSのDebian側で、次のおまじないが必要。
+
+.. code-block:: none
+
+   $ lsmod | grep lp
+   usblp                  13088  0
+   usbcore               118980  5 usblp,ehci_hcd,uhci_hcd
+   $ sudo rmmod usblp
+
+
+これで、VMwareでWindowsを起動させれば、WindowsでUSB接続のこのCC-700を認識できるようになりますよ、と。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, virt., 
+.. tags::
+
+

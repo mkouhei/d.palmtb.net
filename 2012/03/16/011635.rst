@@ -1,0 +1,46 @@
+﻿upstartでのホスト名の変更。
+##################################
+
+
+Debianというか、Ubuntu 10.04 LTSでの話ですが、/etc/hostnameを変更後、
+
+.. code-block:: none
+
+   $ sudo stop hostname  sudo start hostname
+
+
+を実行し、ログインしなおすとホスト名が変更されます。/etc/init.d/hostname restartとかやってもwarningが表示されつつ、stop &amp; startコマンドが実行されている罠。upstartが、というのが正しいですね。
+
+.. code-block:: none
+
+   
+   $ sudo /etc/init.d/hostname restart
+   Rather than invoking init scripts through /etc/init.d, use the service(8)
+   utility, e.g. service hostname restart
+   
+   Since the script you are attempting to invoke has been converted to an
+   Upstart job, you may also use the restart(8) utility, e.g. restart hostname
+   hostname stop/waiting
+   $ sudo /etc/init.d/hostname stop
+   Rather than invoking init scripts through /etc/init.d, use the service(8)
+   utility, e.g. service hostname stop
+   
+   Since the script you are attempting to invoke has been converted to an
+   Upstart job, you may also use the stop(8) utility, e.g. stop hostname
+   $ sudo /etc/init.d/hostname start
+   Rather than invoking init scripts through /etc/init.d, use the service(8)
+   utility, e.g. service hostname start
+   
+   Since the script you are attempting to invoke has been converted to an
+   Upstart job, you may also use the start(8) utility, e.g. start hostname
+   hostname stop/waiting
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

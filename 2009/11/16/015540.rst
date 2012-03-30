@@ -1,0 +1,22 @@
+﻿git pushされてなかったのか。
+####################################
+
+
+東京エリアDebian勉強会のサイトの更新をしても、たまに後から上書きされて、更新前にfetch, mergeするとconflictされることがあるなぁ、と思ったら、手順に入っているmake publishでは、pushされたりされなかったりということが起きるためのようだ。変更した後、make, make preview して、git commit してからmake publishしてたのだが、なんか時々自分のcommitが反映されてないなぁとよく見てみたら、Makefileの中でgit pushされるのは、自分でcommitを行っていないときだけだったのね。
+
+.. code-block:: none
+
+   publish: $(RELEASEFILES)
+   	-git commit -a -m update with publish  git push
+   	-ssh alioth.debian.org ...
+
+
+不覚。
+
+
+
+.. author:: mkouhei
+.. categories:: エラー, 生活, 
+.. tags::
+
+

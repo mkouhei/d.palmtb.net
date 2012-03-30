@@ -1,0 +1,32 @@
+﻿fetchmailでメール取得して処理する。
+############################################
+
+
+POP3などでメールを受信してメール本文のデータを処理させる場合、POP3のセッションからメール受信までコード書いてやるのはめんどい。fetchmailでそこんとこはやってしまおうと思ってmanを調べてみたら、やっぱりできるようだ。
+例えば、以下のようにGmailでPOP3経由でメール受信した場合、.fetchmailrcで、mdaオプションの引数でメールをパイプで渡したいコマンドを指定すればよい。
+
+.. code-block:: none
+
+   poll pop.gmail.com with protocol pop3 port 995
+           user youraccound@yourdomain is yourlocalaccount here password yourpassword 
+   keep ssl fetchall mda ~/bin/cat.sh
+
+
+~/bin/cat.shはこんな中身。
+
+.. code-block:: none
+
+   #!/bin/sh 
+   
+   cat  hoge
+
+
+単純に&#34;&#34;としなかったのは、既にhogeファイルに記録されている内容が上書きされてしまうから、というのもあるが、本質はそっちではなく、複数のメールを受信する場合、最後のメールで消されてしまうからだ。メール自体の処理は、この~/bin/cat.shの代わりに処理用のコードを書くか、一時ファイルとして保存してから処理すればよろし。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, network, 
+.. tags::
+
+

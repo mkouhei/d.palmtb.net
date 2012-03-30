@@ -1,0 +1,14 @@
+﻿SLES11開発計画発表。
+##########################
+
+
+SLES10に収録されているパッケージは陳腐化しているので、仕事で絡んでいる身としては早く次のバージョンが出ないかなぁと思っていたが、やっとこさ開発計画が発表されたとか。遅！
+http://www.novell.com/news/press/novell-announces-development-plans-for-suse-linux-enterprise-11
+
+
+
+.. author:: mkouhei
+.. categories:: 仕事, Unix/Linux, 
+.. tags::
+
+

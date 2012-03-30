@@ -1,0 +1,22 @@
+﻿メールが配信されない…。
+########################
+
+
+玄箱がお亡くなりになったのに、アラートメールが来ないと思ってメールサーバを見てみたら、キューにどっさり溜まってた。smtp.gmail.com:587経由でPHSのメールに送信していたのに、
+
+.. code-block:: none
+
+   Mar  1 09:09:16 hogehoge postfix/qmgr[1266]: F3A1A96E28: to=hogehoge@example.org, relay=none, \
+   delay=4265, delays=4200/66/0/0, dsn=4.4.1, status=deferred (delivery temporarily suspended: \
+   connect to smtp.gmail.com[209.85.147.109]: Connection timed out)
+
+
+と出ているでねぇの。OSCから帰ってきてから調べるか。
+
+
+
+.. author:: mkouhei
+.. categories:: network, 
+.. tags::
+
+

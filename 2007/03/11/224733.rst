@@ -1,0 +1,13 @@
+﻿うし、決めた。
+##############
+
+
+OSC終わったら、もう一台OBS266購入しよう！ Webサーバがメモリ64MBのままだと、リソースの使用状況考えたら、夏前には128MBにしておかないとやばい。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, Unix/Linux, 
+.. tags::
+
+

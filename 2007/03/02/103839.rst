@@ -1,0 +1,18 @@
+﻿変な検索キーワード
+##################
+
+
+はてなダイアリーではGoogle Analyticsを使っているのだが [#]_ 、なんでこんなキーワードで引っかかったんだ？と思うのがある。かなり笑える。
+
+
+.. rubric:: footnote
+
+.. [#] ：Wikiは自宅鯖なので、AWstatsを使用
+
+
+
+.. author:: mkouhei
+.. categories:: 駄文, computer, 
+.. tags::
+
+

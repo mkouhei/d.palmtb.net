@@ -1,0 +1,86 @@
+﻿td2planetがこける。
+############################
+
+
+CouchDB JPのplanetが表示されていないことに気づいて調べてみた。
+
+.. code-block:: none
+
+   /usr/lib/ruby/1.8/uri/common.rb:436:in `split&#39;: bad URI(is not URI?): http://satoshi.blogs.com/life/2009/10/restful-mvc〓 〓〓#8218;￠〓#402;#188;〓#8218; 〓#402;†〓#8218;〓〓#402; 〓#402;￡〓 〓〓〓±.html (URI::InvalidURIError)
+          from /usr/lib/ruby/1.8/uri/common.rb:485:in `parse&#39; from /usr/lib/ruby/1.8/td2planet/formatter.rb:123:in `relative_path_to_absolute_uri&#39;
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:133:in `tag_attr_relative_path_to_absolute_uri&#39;
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:132:in `gsub!&#39;
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:132:in `tag_attr_relative_path_to_absolute_uri&#39;
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:143:in `to_section_body&#39;
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:142:in `gsub&#39;
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:142:in `to_section_body&#39;
+          from /usr/share/td2planet/templates/section.rhtml:3:in `section&#39;
+          from /usr/share/td2planet/templates/day.rhtml:18:in `day&#39;
+          from /usr/share/td2planet/templates/day.rhtml:17:in `each&#39;
+          from /usr/share/td2planet/templates/day.rhtml:17:in `day&#39;
+          from /usr/share/td2planet/templates/layout.rhtml:24:in `layout&#39;
+          from /usr/share/td2planet/templates/layout.rhtml:23:in `each&#39;
+          from /usr/share/td2planet/templates/layout.rhtml:23:in `layout&#39;
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:119:in `to_html&#39;
+          from /usr/lib/ruby/1.8/td2planet/writer.rb:29:in `output_html&#39;
+          from /usr/lib/ruby/1.8/pathname.rb:798:in `open&#39;
+          from /usr/lib/ruby/1.8/pathname.rb:798:in `open&#39;
+          from /usr/lib/ruby/1.8/td2planet/writer.rb:28:in `output_html&#39;
+          from /usr/lib/ruby/1.8/td2planet/runner.rb:56:in `run&#39;
+          from /usr/lib/ruby/1.8/td2planet/runner.rb:30:in `main&#39;
+          from /usr/lib/ruby/1.8/td2planet/runner.rb:28:in `each&#39;
+          from /usr/lib/ruby/1.8/td2planet/runner.rb:28:in `main&#39;
+          from /usr/bin/td2planet:10
+   (snip)
+
+
+と思ったら、パス名が日本語なのにURIでエンコードされてないからか。はてダのRSSの出力もそうなんだが、そもそもURI内で日本語名なんか使ってくれるなと思う。とはいえ、日本語ドメイン名とか使えるようになるとますますこういう問題は今後増えてくると思われるので、エンコードしておくことにした。
+といっても、/usr/lib/ruby/1.8/td2planet/formatter.rbを一行修正するだけの簡単なお仕事。
+
+.. code-block:: none
+
+   diff --git a/td2planet-0.1.0/lib/td2planet/formatter.rb b/td2planet-0.1.0/lib/td
+   2planet/formatter.rb
+   index 221d584..ff2b2db 100644
+   --- a/td2planet-0.1.0/lib/td2planet/formatter.rb
+   +++ b/td2planet-0.1.0/lib/td2planet/formatter.rb
+   @@ -120,7 +120,7 @@ module TD2Planet
+        end
+    
+        def relative_path_to_absolute_uri(attr_value, base_uri)
+   -      uri = URI.parse(attr_value)
+   +      uri = URI.parse(URI.escape(attr_value))
+          if uri.scheme.nil?
+            URI.parse(base_uri) + uri
+          else
+
+
+確認してみたらSidでもそのままみたいなのでBTSしておいた。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, CouchDB, Ops, 
+.. tags::
+
+
+----
+
+Comment:
+
+	そもそもURI内で日本語名なんか使ってくれるなと思うFirefox だと、URI内に日本語が含まれていても、アドレスをクリップボードにコピーしたときに自動的にエンコードしてくれますね。で、最近はSafari使っていたので気にしていなかったですorzしかし、私が歩くと至る所でバグを踏んでいくなぁ。。。
+
+	written by  yssk22
+	10/29/2009 20:03:45
+	http://d.hatena.ne.jp/yssk22/
+
+----
+
+Comment:
+
+	Firefoxだとそうですね。google-chromeはエンコードしてくれないです。SafariはOS Xをこの半年以上立ち上げたことがないので知らんです。
+
+	written by  mkouhei
+	10/29/2009 21:14:51
+	http://d.hatena.ne.jp/mkouhei/
+

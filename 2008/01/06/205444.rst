@@ -1,0 +1,19 @@
+﻿２台目移行完了。
+################
+
+
+この前は外向けのメールサーバをEtchに移行したが、今回は内部用のメールサーバをEtchに移行した。courier-imapからdovecotのimapに変更してみた。spamassassinはバージョンアップされていたので、backupを取って [#]_ 、新環境でrestoreした [#]_ のだが、どうもメールを受信してからのspamcでの処理がやたら遅すぎるので、とりあえずrestoreするのを止めて最初から学習させることにしてみた。処理が遅いのはどうもspamassassinの処理がちゃんと出来ていないからのようでもあるみたいなので、解決する必要があるなぁ。
+
+
+.. rubric:: footnote
+
+.. [#] ：sa-learn --backup .. [#]  spamd.backup
+.. [#] ：sa-learn --restore spamd.backup
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Ops, gadget, 
+.. tags::
+
+

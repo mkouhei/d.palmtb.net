@@ -1,0 +1,73 @@
+﻿Squeeze/SidでGAE SDK for Pythonがエラーになる。
+############################################################################
+
+
+久々にSidでGAE SDKを使ってみたら、ローカルログインの画面で
+
+.. code-block:: none
+
+   -- -- --
+   Traceback (most recent call last):
+     File /home/user/gae/google_appengine-1.3.8/google/appengine/tools/dev_appserver.py, line 3211, in _HandleRequest
+       self._Dispatch(dispatcher, self.rfile, outfile, env_dict)
+     File /home/user/gae/google_appengine-1.3.8/google/appengine/tools/dev_appserver.py, line 3154, in _Dispatch
+       base_env_dict=env_dict)
+     File /home/user/gae/google_appengine-1.3.8/google/appengine/tools/dev_appserver.py, line 527, in Dispatch
+       base_env_dict=base_env_dict)
+     File /home/user/gae/google_appengine-1.3.8/google/appengine/tools/dev_appserver.py, line 2452, in Dispatch
+       CGIDispatcher.Dispatch(self, *args, **kwargs)
+     File /home/user/gae/google_appengine-1.3.8/google/appengine/tools/dev_appserver.py, line 2404, in Dispatch
+       self._module_dict)
+     File /home/user/gae/google_appengine-1.3.8/google/appengine/tools/dev_appserver.py, line 2441, in curried_exec_cgi
+       return ExecuteCGI(*args, **kwargs)
+     File /home/user/gae/google_appengine-1.3.8/google/appengine/tools/dev_appserver.py, line 2312, in ExecuteCGI
+       logging.debug(&#39;Executing CGI with env:\n%s&#39;, pprint.pformat(env))
+     File /usr/lib/python2.6/pprint.py, line 60, in pformat
+       return PrettyPrinter(indent=indent, width=width, depth=depth).pformat(object)
+     File /usr/lib/python2.6/pprint.py, line 119, in pformat
+       self._format(object, sio, 0, 0, {}, 0)
+     File /usr/lib/python2.6/pprint.py, line 137, in _format
+       rep = self._repr(object, context, level - 1)
+     File /usr/lib/python2.6/pprint.py, line 230, in _repr
+       self._depth, level)
+     File /usr/lib/python2.6/pprint.py, line 242, in format
+       return _safe_repr(object, context, maxlevels, level)
+     File /usr/lib/python2.6/pprint.py, line 284, in _safe_repr
+       for k, v in _sorted(object.items()):
+     File /usr/lib/python2.6/pprint.py, line 75, in _sorted
+       with warnings.catch_warnings():
+     File /usr/lib/python2.6/warnings.py, line 333, in __init__
+       self._module = sys.modules[&#39;warnings&#39;] if module is None else module
+   KeyError: &#39;warnings&#39;
+
+
+なんてエラーが出たので、これまた久々にドキュメントを読んでみたら、サポートされているpythonのバージョンは2.5なのね。Sidだと2.5も2.6もインストールされるが、2.6がデフォルトになる。
+/home/user/gae/google_appengine-1.3.8/google/appengine/tools/dev_appserver.pyのshebangを下記のように書き換えてやれば解決できる。
+
+.. code-block:: none
+
+   1c1
+   &lt; #!/usr/bin/env python
+   ---
+   &gt; #!/usr/bin/env python2.5
+   
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, python, Dev, 
+.. tags::
+
+
+----
+
+Comment:
+
+	なんか本当に助かりました、googleのチュートリアルの序盤でいきなりこのエラーで動けなくて３時間は棒にふりました。
+
+	written by  kuro33
+	10/24/2010 18:20:14
+	
+

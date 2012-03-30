@@ -1,0 +1,13 @@
+﻿liloからgrub2にしておいた。
+####################################
+
+
+落ちはつけておいた。rEFItを使っているのに、grub-pcじゃなくてgrub-efiを当初インストールしてしまい、あれうまくいかねぇなぁ、と大ボケもかましてみた。
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, Debian, 
+.. tags::
+
+

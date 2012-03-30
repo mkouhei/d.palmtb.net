@@ -1,0 +1,13 @@
+﻿TonicDNSをスレーブで動かす場合。
+########################################
+
+
+どのAPIに対してアクセスしても&#34;Invalid request-URI&#34;になる罠。スレーブでデータ更新は基本的にはしないのですが、PowerDNSのゾーン転送を使う場合にはそれが必要です。ゾーンの追加する時にスレーブ側のDBのdomainsテーブルにmasterサーバのIPアドレスを指定し、typeをSLAVEにして登録します。ところが/authenticate経由でtokenの登録も、/zone経由で新規ゾーンの登録も更新も出来ません。POSTメソッドでドメインのtypeを更新するためのメソッドupdate_domain()とは何なのか？developブランチでテストしていたので、masterブランチの挙動を確認してみてから、パッチを書こうと思います。
+
+
+
+.. author:: mkouhei
+.. categories:: Dev, 
+.. tags::
+
+

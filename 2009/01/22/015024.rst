@@ -1,0 +1,26 @@
+﻿scpで帯域を絞る
+##################
+
+
+MacBook Airで無線を使っている際、あまりに帯域を使いすぎるとWPA2のコネクションが切れてしまい、ndiswrapper自体をリロードしなおしてやらないとダメ、という困ったチャンな状況によくなる。でかいファイルを転送したりするとなるのですな。
+Let&#39;s noteの方に、多量のPDFを転送したら、途中まではサクサクっと転送できていたのだが、案の定ブッツリ切れてしまった。それでは困るのでmanで調べてみたらちゃんとscpには帯域を絞るオプションがついていましたよ。
+
+.. code-block:: none
+
+   $ scp -l 500 -r * letsnote:docs/ 
+   Enter passphrase for key &#39;/home/hoge/.ssh/id_rsa&#39;: 
+   a.pdf                        100%  628KB  69.7KB/s   00:09    
+   b.pdf                        100%   60KB  59.6KB/s   00:01    
+   c.pdf                        100%  966KB  60.4KB/s   00:16 
+   (snip)
+
+
+こんな感じで&#34;-l&#34;オプションで数字を指定すればよい。数字はKbit/s。転送には時間がかかるけど、コネクションを張り直す方が結局手間だしね。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, network, 
+.. tags::
+
+

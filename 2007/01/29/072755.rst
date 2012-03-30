@@ -1,0 +1,30 @@
+﻿greylistで弾かれた…。
+##############################
+
+
+親父が会社からメール送ってきたので、返信したら親父の会社からgreylistで弾かれた…。
+
+.. code-block:: none
+
+   Greylisted for 300 seconds (see http://isg.ee.ethz.ch/tools/postgrey/help)
+
+
+だぁ～。仕方ない、対策するか…。
+
+とっくに届いていた。
+********************************************************
+
+自宅のメールアドレスに送ったら、とっくに届いていたとかいう返信が来た。bounceメールを見たんじゃなくて、logwatchで見つけただけだったのか。待ち時間の初期値は1000秒 [#]_ なので、300秒経って再送なら問題無いということか。
+
+
+.. rubric:: footnote
+
+.. [#] ：Postfixのデフォルト値。minimal_backoff_time = 1000sで指定
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, security, 
+.. tags::
+
+

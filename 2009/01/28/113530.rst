@@ -1,0 +1,29 @@
+﻿ファイルの分割
+##############
+
+
+ddでやろうとして面倒だったから、ググってみたらちゃんとそういうコマンドがあった。
+
+.. code-block:: none
+
+   $ split -b 5m hoge hoge1.
+   $ ls hoge1*
+   hoge1.aa hoge1.ab hoge1.ac hoge1.ad
+
+
+連結はcat。
+
+.. code-block:: none
+
+   $ cat hoge1.*  hoge
+
+
+あまり使わないけど、サイズ制限でメールで転送できない時なんかは便利だな。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

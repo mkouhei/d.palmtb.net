@@ -1,0 +1,19 @@
+﻿夜にブツブツ切れる理由。
+########################
+
+
+メールに埋もれてた。毎日22時に初期化されてたのか。
+
+.. code-block:: none
+
+   [Initialized], Tue Nov 18 22:05:57 2008
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: network, 
+.. tags::
+
+

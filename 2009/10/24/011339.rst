@@ -1,0 +1,71 @@
+﻿USB ZIPドライブ
+######################
+
+
+250MBのZIPメディアからデータを移したいという方がいるそうでお貸しすることになったのだが、Linuxで認識されるのかなぁと思い、貸す前に挿してみたら普通にSCSIディスクとして認識され、オートマウントされた。
+
+.. code-block:: none
+
+   [16828.061397] usb 3-1: new full speed USB device using ohci_hcd and address 4
+   [16828.324876] usb 3-1: New USB device found, idVendor=059b, idProduct=0030
+   [16828.324881] usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=5
+   [16828.324884] usb 3-1: Product: USB Zip 250
+   [16828.324886] usb 3-1: Manufacturer: Iomega
+   [16828.324888] usb 3-1: SerialNumber: 059B003011000A1B
+   [16828.324964] PM: Adding info for usb:3-1
+   [16828.325002] usb 3-1: configuration #1 chosen from 1 choice
+   [16828.337110] PM: Adding info for usb:3-1:1.0
+   [16828.343159] PM: Adding info for No Bus:ep_01
+   [16828.343170] PM: Adding info for No Bus:ep_82
+   [16828.343179] PM: Adding info for No Bus:ep_83
+   [16828.343200] PM: Adding info for No Bus:usbdev3.4
+   [16828.343229] PM: Adding info for No Bus:ep_00
+   [16828.451027] Initializing USB Mass Storage driver...
+   [16828.451176] scsi6 : SCSI emulation for USB Mass Storage devices
+   [16828.451196] PM: Adding info for scsi:host6
+   [16828.451261] PM: Adding info for No Bus:host6
+   [16828.451331] usbcore: registered new interface driver usb-storage
+   [16828.451334] USB Mass Storage support registered.
+   [16828.491698] usb-storage: device found at 4
+   [16828.491701] usb-storage: waiting for device to settle before scanning
+   [16833.490856] usb-storage: device scan complete
+   [16833.504885] scsi 6:0:0:0: Direct-Access     IOMEGA   ZIP 250          30.G PQ: 0 ANSI: 0 CCS
+   [16833.505206] PM: Adding info for scsi:target6:0:0
+   [16833.505244] PM: Adding info for scsi:6:0:0:0
+   [16833.505284] PM: Adding info for No Bus:6:0:0:0
+   [16833.505307] PM: Adding info for No Bus:6:0:0:0
+   [16833.505358] PM: Adding info for No Bus:sg2
+   [16833.505371] sd 6:0:0:0: Attached scsi generic sg2 type 0
+   [16833.505392] PM: Adding info for No Bus:6:0:0:0
+   [16833.588860] PM: Adding info for No Bus:sdb
+   [16833.588929] PM: Adding info for No Bus:8:16
+   [16833.628850] sd 6:0:0:0: [sdb] Attached SCSI removable disk
+   [16849.848868] sd 6:0:0:0: [sdb] Spinning up disk.....ready
+   [16855.048861] sd 6:0:0:0: [sdb] 489532 512-byte logical blocks: (250 MB/239 MiB)
+   [16855.087767] sd 6:0:0:0: [sdb] Assuming drive cache: write through
+   [16855.181656] sd 6:0:0:0: [sdb] Assuming drive cache: write through
+   [16855.181665]  sdb: sdb4
+   [16855.213696] PM: Adding info for No Bus:sdb4
+   [16858.004946] FAT: utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+   $ df -h
+   Filesystem          サイズ  使用  残り 使用% マウント位置
+   /dev/sda4              19G  5.0G   13G  29% /
+   tmpfs                 1.8G     0  1.8G   0% /lib/init/rw
+   udev                   10M  316K  9.7M   4% /dev
+   tmpfs                 1.8G  400K  1.8G   1% /dev/shm
+   /dev/sda3             111M   74M   32M  70% /boot
+   /dev/sda6              91G   22G   64G  26% /home
+   /dev/sdb4             239M  147M   92M  62% /media/APPLICATION
+
+
+まぁでもディスクの中のデータは使うことないだろう。まだWindowsユーザだった頃の遺産。アプリのインストーラをバックアップで取っていたメディアだったが、もはやディスクの肥やし、もとい肥やしにもならないな。
+
+もし、他にもZIPメディアからデータを救出したいんだがドライブがねぇ、という方がいるなら連絡をくださいな。お貸しますぜ。ただし、対応メディアは250MBまでだけどね。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

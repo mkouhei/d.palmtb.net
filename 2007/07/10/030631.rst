@@ -1,0 +1,61 @@
+﻿kernel2.6.22にしたら…。
+####################################
+
+
+kvmがロードされん…。
+
+.. code-block:: none
+
+   kvm: Unknown symbol set_64bit
+   kvm: Unknown symbol set_64bit
+   kvm_intel: Unknown symbol set_cr3
+   kvm_intel: Unknown symbol kvm_put_guest_fpu
+   kvm_intel: Unknown symbol gfn_to_page
+   kvm_intel: Unknown symbol segment_base
+   kvm_intel: Unknown symbol kvm_get_msr_common
+   kvm_intel: Unknown symbol kvm_mmu_free_some_pages
+   kvm_intel: Unknown symbol kvm_emulate_halt
+   kvm_intel: Unknown symbol load_msrs
+   kvm_intel: Unknown symbol kvm_load_guest_fpu
+   kvm_intel: Unknown symbol kvm_write_guest
+   kvm_intel: Unknown symbol kvm_exit_arch
+   kvm_intel: Unknown symbol emulate_instruction
+   kvm_intel: Unknown symbol fx_init
+   kvm_intel: Unknown symbol set_cr4
+   kvm_intel: Unknown symbol lmsw
+   kvm_intel: Unknown symbol kvm_hypercall
+   kvm_intel: Unknown symbol kvm_init_arch
+   kvm_intel: Unknown symbol set_cr0
+   kvm_intel: Unknown symbol set_cr8
+   kvm_intel: Unknown symbol kvm_setup_pio
+   kvm_intel: Unknown symbol kvm_read_guest
+   kvm_intel: Unknown symbol kvm_emulate_cpuid
+   kvm_intel: Unknown symbol kvm_set_msr_common
+   kvm_intel: Unknown symbol save_msrs
+   kvm_intel: Unknown symbol kvm_mmu_load
+   kvm_intel: Unknown symbol kvm_resched
+
+
+なんだ、この&#34;set_64bit&#34;って？64bitモードじゃないと動かないとかそういう落ちじゃ…なさそうだ。 ついでに、madwifiのモジュールも作成されん。それはDebian勉強会で聞いた気もする。
+make menuconfigで、64bitで検索したら、こんなん出た。ちょー臭い。
+
+.. code-block:: none
+
+      Symbol: RESOURCES_64BIT [=n]                                               
+      Prompt: 64 bit Memory and IO resources (EXPERIMENTAL)                      
+        Defined at mm/Kconfig:155                                                
+        Depends on: !64BIT &amp;&amp; EXPERIMENTAL                                       
+        Location:                                                                
+          - Processor type and features                                         
+        Selected by: X86_PAE &amp;&amp; HIGHMEM64G
+
+
+とりあえず、Yesにして再ビルド。どうなることやら。………………ダメだった。orz　うーん、なんだろうなぁ。今日仕事から帰ってきたら調べてみるか…。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, computer, virt., 
+.. tags::
+
+

@@ -1,0 +1,43 @@
+﻿couchapp 0.7.1が動かん。
+######################################
+
+
+Githubにあるmaster [#]_ から持ってきているcouchappが、Sidだと動かないことに気づいた。
+
+.. code-block:: none
+
+   $ couchapp
+   Traceback (most recent call last):
+     File /usr/bin/couchapp, line 5, in module
+       from pkg_resources import load_entry_point
+     File /usr/lib/python2.6/dist-packages/pkg_resources.py, line 2675,
+   in module
+       parse_requirements(__requires__), Environment()
+     File /usr/lib/python2.6/dist-packages/pkg_resources.py, line 552, in resolve
+       raise DistributionNotFound(req)
+   pkg_resources.DistributionNotFound: restkit=2.2.0
+   $ dpkg -l python-restkit
+   (snip)
+   ii  python-restkit 2.1.5-1        Restkit is an HTTP resource kit for Python
+
+
+0.7.1からrestkitのバージョンは2.2.0以上でないとアカンらしい。仕方ないので、0.7.0にときに作っておいたdebパッケージをインストールして、0.7.0にダウングレードしておいた。
+
+10/28対応。
+************************
+
+
+10/28のアップデートで、python-restkitが2.2.2になったので、問題解決したなり。うーむ、debian/control見直し必要ですな。
+
+
+.. rubric:: footnote
+
+.. [#] ：git:// github.com/couchapp/couchapp. git
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, CouchDB, 
+.. tags::
+
+

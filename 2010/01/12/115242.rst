@@ -1,0 +1,13 @@
+﻿lxcバージョンアップのメリット。
+##################################
+
+
+lxc-infoを実行するのに、root権限が必要無くなった！今まではsudoでわざわざやってたもんな。とりあえずそんだけ。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, virt., computer, 
+.. tags::
+
+

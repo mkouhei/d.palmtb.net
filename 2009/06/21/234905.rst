@@ -1,0 +1,27 @@
+﻿さて、これはどうしたものか。
+############################
+
+
+あるLaTeXの資料を make しようとするとこんな感じで止まってしまい、^Zでジョブを停止させた後、kill -9で強制終了させないといけないもんだから困ってしまう。何が悪いんだろうか。他の人はこの現象が起きていないと思われるので、多分何かパッケージが足りないのではないかなぁとは思うのだが、想像がつかないというのが困ってしまうところ。
+
+.. code-block:: none
+
+   This is pTeXk, Version 3.141592-p3.1.10 (euc) (Web2C 7.5.4) (format=platex 2009.
+   6.10)  21 JUN 2009 23:42
+    %-line parsing enabled.
+   **hoge
+   (./hoge.tex
+   pLaTeX2e 2006/11/10+0 (based on LaTeX2e 2005/12/01 patch level 0)
+   )
+   *
+   (Please type a command or say `\end&#39;)
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: TeX, 
+.. tags::
+
+

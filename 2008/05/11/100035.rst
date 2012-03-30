@@ -1,0 +1,287 @@
+﻿InstallShieldで作成されたEXEを展開する。
+########################################################
+
+
+NDISWrapperでWindowsの無線LANドライバを使う場合、ZIPやLHA形式だけで圧縮されているだけであれば、展開するのは非常に楽なのだが、EXEはどうやって展開すれば良いのかなぁ、と思って調べていたらNDISwrapperの開発元にあったのでメモ。
+NETGEAR WN511Tのドライバの抽出を例に。
+
+ZIPの展開
+********************
+
+
+
+.. code-block:: none
+
+   $ unzip -l WN511TV31.zip 
+   Archive:  WN511TV31.zip
+     Length     Date   Time    Name
+    --------    ----   ----    ----
+     4591913  09-29-06 14:03   WN511TV31/setup.exe
+         813  11-14-06 14:55   WN511TV31/WN511TJP_ReleaseNotev31.txt
+    --------                   -------
+     4592726                   2 files
+   
+   $ unzip WN511TV31.zip 
+   Archive:  WN511TV31.zip
+     inflating: WN511TV31/setup.exe     
+     inflating: WN511TV31/WN511TJP_ReleaseNotev31.txt
+
+
+
+EXEの展開（その１：CABの展開）
+********************************************************************************
+
+
+
+.. code-block:: none
+
+   $ cd WN511TV31
+   
+   $ file setup.exe 
+   setup.exe: MS-DOS executable PE  for MS Windows (GUI) Intel 80386 32-bit
+   
+   $ cabextract -l setup.exe 
+   Viewing cabinet: setup.exe
+    File size | Date       Time     | Name
+   -----------+---------------------+-------------
+       774144 | 19.03.2006 11:03:10 | Disk1/_isuser.dll
+       346602 | 25.07.2002 01:07:36 | Disk1/ikernel.ex_
+        20177 | 29.09.2006 13:03:04 | Disk1/data1.hdr
+       997173 | 29.09.2006 13:03:02 | Disk1/data1.cab
+      2775570 | 29.09.2006 13:03:04 | Disk1/data2.cab
+        56320 | 05.09.2001 04:23:24 | Disk1/Setup.exe
+          179 | 29.09.2006 13:02:56 | Disk1/Setup.ini
+       144951 | 29.09.2006 13:02:56 | Disk1/Setup.inx
+          437 | 29.09.2006 13:03:04 | Disk1/layout.bin
+   
+   All done, no errors.
+   
+   $ cabextract  setup.exe 
+   Extracting cabinet: setup.exe
+     extracting Disk1/_isuser.dll
+     extracting Disk1/ikernel.ex_
+     extracting Disk1/data1.hdr
+     extracting Disk1/data1.cab
+     extracting Disk1/data2.cab
+     extracting Disk1/Setup.exe
+     extracting Disk1/Setup.ini
+     extracting Disk1/Setup.inx
+     extracting Disk1/layout.bin
+   
+   All done, no errors.
+
+
+
+EXEの展開（その２：InstallShield CABの展開）
+************************************************************************************************************
+
+
+InstallShieldで作成されたEXEの場合、data2.cabの中にロードさせるドライバがあるとのこと。
+
+.. code-block:: none
+
+   $ cd Disk1/
+   
+   $ file data2.cab 
+   data2.cab: InstallShield CAB
+   
+   $ unshield l data2.cab 
+   Cabinet: data2.cab
+       94310  RemoveInstall/ISL.exe
+       36864  RemoveInstall/COI.EXE
+       36864  RemoveInstall/RMV.exe
+       36864  RemoveInstall/dbgprint.dll
+       36864  RemoveInstall/DRC.EXE
+       40960  RemoveInstall/RM_DEV_CODE.dll
+      258048  SupportEnglish Files/_IsRes.dll
+       28529  EngineEngine Files/corecomp.ini
+         413  SupportJapanese String Tables/value.shl
+      331776  SupportNon-SelfRegistering/isrt.dll
+        1168  SupportNon-SelfRegistering/default.pal
+       31930  APP/GTNDIS3.VXD
+       15872  APP/GTNDIS5.sys
+       94208  APP/GTW32N50.dll
+       45056  APP/PCARmDrv.exe
+        3262  APP/desktop_32x32.ico
+         824  APP/desktop_green_16x16.bmp
+        6966  APP/uninstall.ico
+      118784  APP/Marvell.dll
+       36864  APP/ProcNICs.dll
+       45056  APP/Security.dll
+      131072  APP/TcpWindowSize.exe
+       82944  APP/NETWEP.dll
+       50012  APP/ML_JP_BigFont_WN511T.ini
+       26202  APP/ML_GR_WN511T.ini
+       26181  APP/ML_GR_BigFont_WN511T.ini
+       49992  APP/ML_JP_WN511T.ini
+       24900  APP/ML_US_BigFont_WN511T.ini
+       25000  APP/ML_US_WN511T.ini
+        5591  APP/pos.ini
+      421888  APP/SmartWizard.dll
+      659456  APP/WN511T.exe
+     1093632  APP/Mrv8000x.exe
+      507904  APP/oasisrc0c.dll
+       53248  APP/AutoLinkLib.dll
+      189952  APP/Dev64.exe
+       65536  APP/DevCon.dll
+       80384  APP/DevCon64.dll
+      147456  APP/Mrv8000x.dll
+       73216  APP/MrvGINA_.dll
+      507904  APP/oasisrc07.dll
+      507904  APP/oasisrc0a.dll
+       90112  APP/aes.dll
+      507904  APP/oasisrc10.dll
+     1327195  APP/odSupp_M.dll
+        2566  APP/etsitxpwr.ini
+        2502  APP/fcctxpwr.ini
+        1714  APP/jptxpwr.ini
+         475  APP/Wlan.ini
+         413  SupportGerman String Tables/value.shl
+      241664  SupportJapanese Files/_IsRes.dll
+      225280  EngineScriptEngine/iscript.dll
+       31930  GTNDIS/GTNDIS3.VXD
+       15872  GTNDIS/GTNDIS5.sys
+       94208  GTNDIS/GTW32N50.dll
+      270336  SupportGerman Files/_IsRes.dll
+      434944  Win2KXP Target/netmw143.sys
+      435456  Win2KXP Target/netmw145.sys
+       33237  Win2KXP Target/NetMW14x.inf
+      995328  SupportEnglish Intel 32 Files/_isuser.dll
+        8631  Help/WN511T_Networks_US.rtf
+        5328  Help/WN511T_About_JP.rtf
+        9084  Help/WN511T_About_US.rtf
+        5598  Help/WN511T_Networks_GR.rtf
+        3463  Help/WN511T_Networks_JP.rtf
+        5896  Help/WN511T_About_GR.rtf
+       40979  Help/WN511T_Settings_GR.rtf
+       16285  Help/WN511T_Settings_JP.rtf
+       13043  Help/WN511T_Settings_US.rtf
+        4662  Help/WN511T_Statistics_GR.rtf
+        3003  Help/WN511T_Statistics_JP.rtf
+        8006  Help/WN511T_Statistics_US.rtf
+        2631  SupportGerman OS Independent Files/license.TXT
+      552960  SupportJapanese Intel 32 Files/_Isuser.dll
+         413  SupportEnglish String Tables/value.shl
+        1635  SupportLanguage Independent OS Independent Files/LICENSE.txt
+      581632  SupportGerman Intel 32 Files/_Isuser.dll
+       77824  EngineSelfRegistering/ctor.dll
+       32768  EngineSelfRegistering/objectps.dll
+      176128  EngineSelfRegistering/iuser.dll
+           0  EngineKernel Placeholder/iKernel.exe
+    --------  -------
+             81 files
+   
+   $ unshield x data2.cab 
+   Cabinet: data2.cab
+     extracting: ./RemoveInstall/ISL.exe
+     extracting: ./RemoveInstall/COI.EXE
+     extracting: ./RemoveInstall/RMV.exe
+     extracting: ./RemoveInstall/dbgprint.dll
+     extracting: ./RemoveInstall/DRC.EXE
+     extracting: ./RemoveInstall/RM_DEV_CODE.dll
+     extracting: ./_Support_English_Files/_IsRes.dll
+     extracting: ./_Engine_Engine_Files/corecomp.ini
+     extracting: ./_Support_Japanese_String_Tables/value.shl
+     extracting: ./_Support_Non-SelfRegistering/isrt.dll
+     extracting: ./_Support_Non-SelfRegistering/default.pal
+     extracting: ./APP/GTNDIS3.VXD
+     extracting: ./APP/GTNDIS5.sys
+     extracting: ./APP/GTW32N50.dll
+     extracting: ./APP/PCARmDrv.exe
+     extracting: ./APP/desktop_32x32.ico
+     extracting: ./APP/desktop_green_16x16.bmp
+     extracting: ./APP/uninstall.ico
+     extracting: ./APP/Marvell.dll
+     extracting: ./APP/ProcNICs.dll
+     extracting: ./APP/Security.dll
+     extracting: ./APP/TcpWindowSize.exe
+     extracting: ./APP/NETWEP.dll
+     extracting: ./APP/ML_JP_BigFont_WN511T.ini
+     extracting: ./APP/ML_GR_WN511T.ini
+     extracting: ./APP/ML_GR_BigFont_WN511T.ini
+     extracting: ./APP/ML_JP_WN511T.ini
+     extracting: ./APP/ML_US_BigFont_WN511T.ini
+     extracting: ./APP/ML_US_WN511T.ini
+     extracting: ./APP/pos.ini
+     extracting: ./APP/SmartWizard.dll
+     extracting: ./APP/WN511T.exe
+     extracting: ./APP/Mrv8000x.exe
+     extracting: ./APP/oasisrc0c.dll
+     extracting: ./APP/AutoLinkLib.dll
+     extracting: ./APP/Dev64.exe
+     extracting: ./APP/DevCon.dll
+     extracting: ./APP/DevCon64.dll
+     extracting: ./APP/Mrv8000x.dll
+     extracting: ./APP/MrvGINA_.dll
+     extracting: ./APP/oasisrc07.dll
+     extracting: ./APP/oasisrc0a.dll
+     extracting: ./APP/aes.dll
+     extracting: ./APP/oasisrc10.dll
+     extracting: ./APP/odSupp_M.dll
+     extracting: ./APP/etsitxpwr.ini
+     extracting: ./APP/fcctxpwr.ini
+     extracting: ./APP/jptxpwr.ini
+     extracting: ./APP/Wlan.ini
+     extracting: ./_Support_German_String_Tables/value.shl
+     extracting: ./_Support_Japanese_Files/_IsRes.dll
+     extracting: ./_Engine_ScriptEngine/iscript.dll
+     extracting: ./GTNDIS/GTNDIS3.VXD
+     extracting: ./GTNDIS/GTNDIS5.sys
+     extracting: ./GTNDIS/GTW32N50.dll
+     extracting: ./_Support_German_Files/_IsRes.dll
+     extracting: ./Win2KXP_Target/netmw143.sys
+     extracting: ./Win2KXP_Target/netmw145.sys
+     extracting: ./Win2KXP_Target/NetMW14x.inf
+     extracting: ./_Support_English_Intel_32_Files/_isuser.dll
+     extracting: ./Help/WN511T_Networks_US.rtf
+     extracting: ./Help/WN511T_About_JP.rtf
+     extracting: ./Help/WN511T_About_US.rtf
+     extracting: ./Help/WN511T_Networks_GR.rtf
+     extracting: ./Help/WN511T_Networks_JP.rtf
+     extracting: ./Help/WN511T_About_GR.rtf
+     extracting: ./Help/WN511T_Settings_GR.rtf
+     extracting: ./Help/WN511T_Settings_JP.rtf
+     extracting: ./Help/WN511T_Settings_US.rtf
+     extracting: ./Help/WN511T_Statistics_GR.rtf
+     extracting: ./Help/WN511T_Statistics_JP.rtf
+     extracting: ./Help/WN511T_Statistics_US.rtf
+     extracting: ./_Support_German_OS_Independent_Files/license.TXT
+     extracting: ./_Support_Japanese_Intel_32_Files/_Isuser.dll
+     extracting: ./_Support_English_String_Tables/value.shl
+     extracting: ./_Support_Language_Independent_OS_Independent_Files/LICENSE.txt
+     extracting: ./_Support_German_Intel_32_Files/_Isuser.dll
+     extracting: ./_Engine_SelfRegistering/ctor.dll
+     extracting: ./_Engine_SelfRegistering/objectps.dll
+     extracting: ./_Engine_SelfRegistering/iuser.dll
+     extracting: ./_Engine_Kernel_Placeholder/iKernel.exe
+    --------  -------
+             81 files
+   
+   $ ls
+   NetMW14x.inf  netmw143.sys  netmw145.sys
+
+
+
+NDISwrapperでロードさせる。
+******************************************************************
+
+
+
+.. code-block:: none
+
+   $ sudo ndiswrapper -i NetMW14x.inf 
+   installing netmw14x ...
+   
+   $ sudo ndiswrapper -l
+   netmw14x : driver installed
+   	device (11AB:2A02) present
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, network, 
+.. tags::
+
+

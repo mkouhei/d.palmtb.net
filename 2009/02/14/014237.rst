@@ -1,0 +1,20 @@
+﻿Lennyにした際の忘れ物。
+############################
+
+
+毎週金曜の定期リブートで、DNSサーバで、inydns/dnscacheが起動しなかった。そもそも、/etc/inittabの下記のパスにsvscanbootが無い！
+
+.. code-block:: none
+
+   SV:123456:respawn:/command/svscanboot
+
+
+で、daemontoolsパッケージのREADMEを読んでみたら、daemontools-runパッケージが必要とのこと。これをインストールすることで/etc/inittabのパスも/usr/bin/sbscanbootに書き換わり、/serviceディレクトリから、/etc/serviceディレクトリにシンボリックリンクも変更され、ちゃんと起動できるようになりましたよ、と。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

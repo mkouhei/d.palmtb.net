@@ -1,0 +1,90 @@
+﻿libvirtdが起動しない。
+##############################
+
+
+virshでlxcにコネクトしてみようと思ったら、失敗した。
+
+.. code-block:: none
+
+   $ sudo virsh --connect lxc:///
+   error: unable to connect to &#39;/var/run/libvirt/libvirt-sock&#39;: 接続を拒否されました
+   error: failed to connect to the hypervisor
+
+
+そもそもlibvirtdが起動してない。起動させようとしたら失敗。
+
+.. code-block:: none
+
+   $ sudo  /etc/init.d/libvirt-bin start
+   Starting libvirt management daemon: libvirtd.
+   $ sudo  /etc/init.d/libvirt-bin status
+   Checking status of libvirt management daemon: libvirtd not running failed!
+   $ sudo /usr/sbin/libvirtd
+   16:12:19.076: error : halDeviceMonitorStartup:731 : libhal_ctx_init failed
+   
+   16:12:19.163: error : main:3089 : Driver state initialization failed
+
+
+halに依存しているのか？ググってみたら既にBTSに登録されていたよ。早速0.7.2-4にアップグレードしたら、halがインストールされて、ちゃんと起動した。
+
+.. code-block:: none
+
+   $ sudo apt-get upgrade
+   パッケージリストを読み込んでいます... 完了
+   依存関係ツリーを作成しています
+   状態情報を読み取っています... 完了
+   以下のパッケージは保留されます:
+     bind9-host console-setup dnsutils esound-clients esound-common libbind9-50
+     libisc50 libisccc50 libisccfg50 liblwres50 libvirt-bin libvirt-dev libvirt0
+     openbios-ppc qemu udev
+   アップグレード: 0 個、新規インストール: 0 個、削除: 0 個、保留: 16 個。
+   $ sudo apt-get install libvirt-bin
+   パッケージリストを読み込んでいます... 完了
+   依存関係ツリーを作成しています
+   状態情報を読み取っています... 完了
+   以下のパッケージが自動でインストールされましたが、もう必要とされていません:
+     openssl-blacklist
+   これらを削除するには &#39;apt-get autoremove&#39; を利用してください。
+   以下の特別パッケージがインストールされます:
+     consolekit hal hal-info libcap-ng0 libck-connector0 libdbus-glib-1-2 libeggdbus-1-0 libhal-storage1 libpam-ck-connector libpolkit-gobject-1-0 libvirt-dev libvirt0
+     pm-utils powermgmt-base radeontool vbetool
+   提案パッケージ:
+     gnome-device-manager policykit-1 cpufrequtils uswsusp
+   以下のパッケージが新たにインストールされます:
+     consolekit hal hal-info libcap-ng0 libck-connector0 libdbus-glib-1-2 libeggdbus-1-0 libhal-storage1 libpam-ck-connector libpolkit-gobject-1-0 pm-utils
+     powermgmt-base radeontool vbetool
+   以下のパッケージはアップグレードされます:
+     libvirt-bin libvirt-dev libvirt0
+   アップグレード: 3 個、新規インストール: 14 個、削除: 0 個、保留: 13 個。
+   3,095kB のアーカイブを取得する必要があります。
+   この操作後に追加で 5,001kB のディスク容量が消費されます。
+   続行しますか [Y/n]?
+   (snip)
+   Stopping libvirt management daemon: libvirtd not running.
+   Starting libvirt management daemon: libvirtd.
+   (snip)
+   $ sudo /etc/init.d/libvirt-bin status
+   Checking status of libvirt management daemon: libvirtd running.
+
+
+無事コネクトできた。めでたしめでたし。
+
+.. code-block:: none
+
+   $ sudo virsh --connect lxc:///
+   Welcome to virsh, the virtualization interactive terminal.
+   
+   Type:  &#39;help&#39; for help with commands
+          &#39;quit&#39; to quit
+   
+   virsh #
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, virt., Ops, 
+.. tags::
+
+

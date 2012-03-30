@@ -1,0 +1,30 @@
+﻿Debian on chumbyに挑戦。その２
+##############################################
+
+
+chumbyのバイナリと、Lenny for armelのバイナリの違いを確認してみることにした。chumbyにはfileコマンドが無いので、scpで作業用のPCに両方のバイナリを持ってくる。bashでやってみた。
+
+.. code-block:: none
+
+   $ scp root@chumby:/bin/bash .
+   bash                                          100% 3164     3.1KB/s   00:00    
+   $ scp root@chumby:/mnt/usb2/bin/bash bash2
+   bash                                          100%  684KB 341.9KB/s   00:02    
+   $ ls -lrt
+   合計 692
+   -rwx------ 1 hoge  hoge    3164 2009-02-16 00:25 bash
+   -rwx------ 1 hoge  hoge  700184 2009-02-16 00:27 bash2
+   $ file bash*
+   bash:  ELF 32-bit LSB executable, ARM, version 1, dynamically linked (uses shared libs), for GNU/Linux 2.6.0, stripped
+   bash2: ELF 32-bit LSB executable, ARM, version 1 (SYSV), dynamically linked (uses shared libs), for GNU/Linux 2.6.14, stripped
+
+
+kernelの違いよりも、&#34;(SYSV)&#34;の方が関係ありそうな気がするけどなぁ。調べてみるか。
+
+
+
+.. author:: mkouhei
+.. categories:: 
+.. tags::
+
+

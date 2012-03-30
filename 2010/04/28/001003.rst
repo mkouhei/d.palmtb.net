@@ -1,0 +1,53 @@
+﻿apt-getでも
+##################
+
+
+
+.. code-block:: none
+
+   $ sudo apt-get update
+   (snip)
+   Get:21 http://cdn.debian.or.jp sid/contrib [37.3kB]                            
+   Err http://cdn.debian.or.jp sid/main                                           
+     Waited for /bin/bzip2 but it wasn&#39;t there
+   Err http://cdn.debian.or.jp sid/non-free                                       
+     Waited for /bin/bzip2 but it wasn&#39;t there
+   Err http://cdn.debian.or.jp sid/contrib                                        
+     Waited for /bin/bzip2 but it wasn&#39;t there
+   (snip)
+   Fetched 10.8MB in 12s (871kB/s)                                                
+   W: Failed to fetch http://dl.google.com/linux/deb/dists/stable/main/binary-amd64
+   /Packages.bz2  Waited for /bin/bzip2 but it wasn&#39;t there
+   
+   W: Failed to fetch http://cdn.debian.or.jp/debian/dists/sid/main/binary-amd64/Pa
+   ckages.bz2  Waited for /bin/bzip2 but it wasn&#39;t there
+   (snip)
+   E: Some index files failed to download, they have been ignored, or old ones used
+    instead.
+
+
+bzip2はあるんだけど。
+
+.. code-block:: none
+
+   $ dmesg  hoge
+   $ bzip2 hoge  echo $?
+   0
+   $ file hoge.bz2 
+   hoge.bz2: bzip2 compressed data, block size = 900k
+   $ bunzip2 hoge.bz2  echo $?
+   0
+   $ dmesg hoge
+   [    0.000000] Initializing cgroup subsys cpuset
+   [    0.000000] Initializing cgroup subsys cpu
+   (snip)
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

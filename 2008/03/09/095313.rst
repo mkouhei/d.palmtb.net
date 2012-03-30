@@ -1,0 +1,27 @@
+﻿viでページ送り。
+##################
+
+
+Page Down, Page Upのキーで行っていたので、MacBook Airの様にキーが割り当てられていないと、超めんどいので調べてみた。
+
+* Ctrl + f
+
+* ページダウン
+
+
+* Ctrl + b
+
+* ページアップ
+
+
+
+別に普段はページ送りなんて使わんのだけど、tripwireでアップデートする時に使えないと不便なんで。
+それにしても、MacBook AirでPage Up, Page Down, Home, Endキーを使いたいなぁ。Fnキー + 十字キーで割り当てられないかな。xevでfnキーを押しても何の反応もない＝キーコードが分からん。さてどうしたもんか。pommedパッケージとやらを調べてみるか。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, MacBook, 
+.. tags::
+
+

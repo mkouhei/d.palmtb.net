@@ -1,0 +1,84 @@
+﻿Debianパッケージシステムがおかしいようだ。
+################################################
+
+
+aptitudeで試してみると、
+
+.. code-block:: none
+
+   $ sudo aptitude update
+   (snip)
+   W: debtags データベースの更新 (/usr/bin/debtags update --local) に失敗しました (debtags がインストールされていないのではないでしょうか?): waitpid() が失敗しました: 子プロセスがありません
+
+
+となるので、debtagsのアップデートを行ってみると、
+
+.. code-block:: none
+
+   $ sudo debtags update --local
+   Can&#39;t ignore signal CHLD, forcing to default.
+   fetcher command /usr/share/debtags/fetch --local failed. Context:
+       acquiring new data
+
+
+debtagsは前回のDebian勉強会で初めてインストールしてみたので、無くても困らない。削除してみた。
+
+.. code-block:: none
+
+   $ sudo apt-get remove debtags 
+   パッケージリストを読み込んでいます... 完了
+   依存関係ツリーを作成しています                
+   状態情報を読み取っています... 完了
+   以下のパッケージが自動でインストールされましたが、もう必要とされていません:
+   (snip)これらを削除するには &#39;apt-get autoremove&#39; を利用してください。
+   以下のパッケージは「削除」されます:
+     debtags
+   アップグレード: 0 個、新規インストール: 0 個、削除: 1 個、保留: 93 個。
+   この操作後に 1,098kB のディスク容量が解放されます。
+   続行しますか [Y/n]? 
+   E: Couldn&#39;t wait for subprocess - waitpid (10: 子プロセスがありません)
+
+
+ぬ？
+
+.. code-block:: none
+
+   $ sudo dpkg -r --dry-run debtags
+   (データベースを読み込んでいます ... 現在 236935 個のファイルとディレクトリがインストールされています。)
+   debtags の削除または完全削除 ...
+   $ sudo dpkg -r debtags
+   (データベースを読み込んでいます ... 現在 236935 個のファイルとディレクトリがインストールされています。)
+   debtags を削除しています ...
+   dpkg: 復旧不可能な致命的なエラーです。中止します:
+    wait for subprocess installed post-removal script failed: 子プロセスがありません
+
+
+さて、困ったね。どこが原因なんだろう。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+
+----
+
+Comment:
+
+	ファイルシステムがおかしいんじゃ？
+
+	written by  Henrich
+	04/28/2010 22:16:12
+	
+
+----
+
+Comment:
+
+	fsckかけてみましたけどファイルシステムは問題ないですね。
+
+	written by  mkouhei
+	04/30/2010 06:41:23
+	http://d.hatena.ne.jp/mkouhei/
+

@@ -1,0 +1,175 @@
+﻿tarのWオプション。
+######################
+
+
+お客様先での打ち合わせで出てきた話題。知らんかった。今までtオプションでリスト表示してたからなぁ。日々是勉強也。ポイントは、元のファイルとの突合せでの整合性をとるので、&#34;tar オプション アーカイブ 元ファイル群&#34;としてやること。
+
+.. code-block:: none
+
+   $ ls
+   awstats-log.tar.gz  awstats052005.txt  awstats092006.txt
+   awstats012005.txt   awstats052006.txt  awstats092007.txt
+   awstats012006.txt   awstats052007.txt  awstats092008.txt
+   awstats012007.txt   awstats052008.txt  awstats102004.txt
+   awstats012008.txt   awstats062004.txt  awstats102005.txt
+   awstats012009.txt   awstats062005.txt  awstats102006.txt
+   awstats022005.txt   awstats062006.txt  awstats102007.txt
+   awstats022006.txt   awstats062007.txt  awstats102008.txt
+   awstats022007.txt   awstats062008.txt  awstats112004.txt
+   awstats022008.txt   awstats072004.txt  awstats112005.txt
+   awstats022009.txt   awstats072005.txt  awstats112006.txt
+   awstats032005.txt   awstats072006.txt  awstats112007.txt
+   awstats032006.txt   awstats072007.txt  awstats112008.txt
+   awstats032007.txt   awstats072008.txt  awstats122004.txt
+   awstats032008.txt   awstats082004.txt  awstats122005.txt
+   awstats042004.txt   awstats082005.txt  awstats122006.txt
+   awstats042005.txt   awstats082006.txt  awstats122007.txt
+   awstats042006.txt   awstats082007.txt  awstats122008.txt
+   awstats042007.txt   awstats082008.txt  dnscachelastupdate.txt
+   awstats042008.txt   awstats092004.txt
+   awstats052004.txt   awstats092005.txt
+
+
+アーカイブへの追記と同じでgzipやbzip2で圧縮していると使えないので面倒だ。
+
+.. code-block:: none
+
+   $ tar zcvpWlf awstats-log.tar.gz ./*.txt
+   tar: Cannot verify compressed archives
+   Try `tar --help&#39; or `tar --usage&#39; for more information.
+
+
+gzipやbzip2のcオプションで標準出力に書き出して、実行してやれば良い。
+
+.. code-block:: none
+
+   $ gzip -cd awstats-log.tar.gz | tar cvpWlf  ./*.txt;echo $?
+   ./awstats012006.txt
+   ./awstats012007.txt
+   ./awstats012008.txt
+   ./awstats012009.txt
+   ./awstats022005.txt
+   ./awstats022006.txt
+   ./awstats022007.txt
+   ./awstats022008.txt
+   ./awstats022009.txt
+   ./awstats032005.txt
+   ./awstats032006.txt
+   ./awstats032007.txt
+   ./awstats032008.txt
+   ./awstats042004.txt
+   ./awstats042005.txt
+   ./awstats042006.txt
+   ./awstats042007.txt
+   ./awstats042008.txt
+   ./awstats052004.txt
+   ./awstats052005.txt
+   ./awstats052006.txt
+   ./awstats052007.txt
+   ./awstats052008.txt
+   ./awstats062004.txt
+   ./awstats062005.txt
+   ./awstats062006.txt
+   ./awstats062007.txt
+   ./awstats062008.txt
+   ./awstats072004.txt
+   ./awstats072005.txt
+   ./awstats072006.txt
+   ./awstats072007.txt
+   ./awstats072008.txt
+   ./awstats082004.txt
+   ./awstats082005.txt
+   ./awstats082006.txt
+   ./awstats082007.txt
+   ./awstats082008.txt
+   ./awstats092004.txt
+   ./awstats092005.txt
+   ./awstats092006.txt
+   ./awstats092007.txt
+   ./awstats092008.txt
+   ./awstats102004.txt
+   ./awstats102005.txt
+   ./awstats102006.txt
+   ./awstats102007.txt
+   ./awstats102008.txt
+   ./awstats112004.txt
+   ./awstats112005.txt
+   ./awstats112006.txt
+   ./awstats112007.txt
+   ./awstats112008.txt
+   ./awstats122004.txt
+   ./awstats122005.txt
+   ./awstats122006.txt
+   ./awstats122007.txt
+   ./awstats122008.txt
+   ./dnscachelastupdate.txt
+   Verify ./awstats012006.txt
+   Verify ./awstats012007.txt
+   Verify ./awstats012008.txt
+   Verify ./awstats012009.txt
+   Verify ./awstats022005.txt
+   Verify ./awstats022006.txt
+   Verify ./awstats022007.txt
+   Verify ./awstats022008.txt
+   Verify ./awstats022009.txt
+   Verify ./awstats032005.txt
+   Verify ./awstats032006.txt
+   Verify ./awstats032007.txt
+   Verify ./awstats032008.txt
+   Verify ./awstats042004.txt
+   Verify ./awstats042005.txt
+   Verify ./awstats042006.txt
+   Verify ./awstats042007.txt
+   Verify ./awstats042008.txt
+   Verify ./awstats052004.txt
+   Verify ./awstats052005.txt
+   Verify ./awstats052006.txt
+   Verify ./awstats052007.txt
+   Verify ./awstats052008.txt
+   Verify ./awstats062004.txt
+   Verify ./awstats062005.txt
+   Verify ./awstats062006.txt
+   Verify ./awstats062007.txt
+   Verify ./awstats062008.txt
+   Verify ./awstats072004.txt
+   Verify ./awstats072005.txt
+   Verify ./awstats072006.txt
+   Verify ./awstats072007.txt
+   Verify ./awstats072008.txt
+   Verify ./awstats082004.txt
+   Verify ./awstats082005.txt
+   Verify ./awstats082006.txt
+   Verify ./awstats082007.txt
+   Verify ./awstats082008.txt
+   Verify ./awstats092004.txt
+   Verify ./awstats092005.txt
+   Verify ./awstats092006.txt
+   Verify ./awstats092007.txt
+   Verify ./awstats092008.txt
+   Verify ./awstats102004.txt
+   Verify ./awstats102005.txt
+   Verify ./awstats102006.txt
+   Verify ./awstats102007.txt
+   Verify ./awstats102008.txt
+   Verify ./awstats112004.txt
+   Verify ./awstats112005.txt
+   Verify ./awstats112006.txt
+   Verify ./awstats112007.txt
+   Verify ./awstats112008.txt
+   Verify ./awstats122004.txt
+   Verify ./awstats122005.txt
+   Verify ./awstats122006.txt
+   Verify ./awstats122007.txt
+   Verify ./awstats122008.txt
+   Verify ./dnscachelastupdate.txt
+   0
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

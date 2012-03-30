@@ -1,0 +1,29 @@
+﻿goshって何だ？
+##################
+
+
+あるものをmakeしたら、
+
+.. code-block:: none
+
+   /bin/sh: /usr/bin/gosh: そのようなファイルやディレクトリはありません
+
+
+とか言われたので、調べてみたらgaucheだった。
+
+.. code-block:: none
+
+   $ apt-file search gosh
+   gauche: /usr/bin/gosh
+   (snip)
+
+
+む、入れてみるか。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, 
+.. tags::
+
+

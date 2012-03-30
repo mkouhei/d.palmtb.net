@@ -1,0 +1,28 @@
+﻿make-kpkgが変更されてる。
+##################################
+
+
+む、10/10に変更されてるな。
+
+.. code-block:: none
+
+   #                              -*- Mode: Perl -*-
+   # make-kpkg ---
+   # Author           : root ( root@melkor.pilgrim.umass.edu )
+   # Created On       : Mon Jun 17 01:10:11 1996
+   # Created On Node  : melkor.pilgrim.umass.edu
+   # Last Modified By : Manoj Srivastava
+   # Last Modified On : Fri Oct 10 02:19:17 2008
+   # Last Machine Used: anzu.internal.golden-gryphon.com
+   (snip)
+
+
+ここからおかしくなったのかな？
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Unix/Linux, 
+.. tags::
+
+

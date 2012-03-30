@@ -1,0 +1,32 @@
+﻿lsがおかしい。
+################
+
+
+ls -lを実行すると、ファイルがあるのに変なメッセージ。
+
+.. code-block:: none
+
+    $ ls -l
+    ls: zImage.initrd.treeboot-product: 利用可能なデータがありません
+    合計 9232
+    -rw-r--r-- 1 hoge hoge 9434268 2008-04-01 22:46 zImage.initrd.treeboot-product
+
+
+ls -Zを実行すると、こんな感じ。
+
+.. code-block:: none
+
+   $ ls -Z
+   ls: zImage.initrd.treeboot-product: 利用可能なデータがありません
+   セグメンテーション違反です
+
+
+このバグか。SELinux関連のバグだから、-Zオプションでもメッセージが出るのか。セグメンテーション違反は困るんだけどね。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

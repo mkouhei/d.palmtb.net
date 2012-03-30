@@ -1,0 +1,42 @@
+﻿Windowsが起動しない。
+############################
+
+
+kvmのパッケージが12-1から14-1になった後、確か初めてWindowsを起動させたと思うのだが、こんなの↓出して、ブルースクリーンで死ぬ。
+
+.. code-block:: none
+
+   (qemu) unhandled vm exit:  0x80000021
+   rax 0000000000000000 rbx 0000000000000000 rcx 0000000000000000 rdx 0000000000000600
+   rsi 0000000000000000 rdi 0000000000000000 rsp 0000000000000000 rbp 0000000000000000
+   r8  b7fa94f8b7fa8ff4 r9  bfc8667000000001 r10 b7fa96a4b7f9e2f9 r11 00000001b7bb5030
+   r12 0000000000000001 r13 000000210804a176 r14 0813c1a800000000 r15 09ba8e08b7cd468b
+   rip 000000000000fff0 rflags 00023002
+   cs f000 (ffff0000/00000000 p 65535 dpl 1 db 3 s 0 type 1 l 3 g 0 avl 0)
+   ds 0000 (00000000/00000000 p 65535 dpl 1 db 3 s 0 type 1 l 3 g 0 avl 0)
+   es 0000 (00000000/00000000 p 65535 dpl 1 db 3 s 0 type 1 l 3 g 0 avl 0)
+   ss 0000 (00000000/00000000 p 65535 dpl 1 db 3 s 0 type 1 l 3 g 0 avl 0)
+   fs 0000 (00000000/00000000 p 65535 dpl 1 db 3 s 0 type 1 l 3 g 0 avl 0)
+   gs 0000 (00000000/00000000 p 65535 dpl 1 db 3 s 0 type 1 l 3 g 0 avl 0)
+   tr 0000 (20850000/00000000 p 8328 dpl 1 db 0 s 0 type 0 l 11 g 0 avl 0)
+   ldt 0000 (00000000/00000000 p 65535 dpl 1 db 0 s 0 type 0 l 0 g 0 avl 0)
+   gdt 0/ffff
+   idt 0/ffff
+   cr0 60000010 cr2 0 cr3 0 cr4 0 cr8 0 efer 0
+   /home/user/bin/startwin.sh: line 4: 10380 アボートしました
+
+
+ちなみに、-no-kvmを付けて実行すると、起動モード選択の画面が表示されてそこで、延々ループする。
+
+
+.. rubric:: footnote
+
+.. [#] ：確定申告で使っている方はVMwareの方だし
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, computer, virt., 
+.. tags::
+
+

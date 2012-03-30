@@ -1,0 +1,56 @@
+﻿SSLを有効にする。
+####################
+
+
+Apacheと対して違わないので、困らなかった。10-ssl.confを設定してやればよし。
+
+.. code-block:: none
+
+   $ rcsdiff -r1.1 -r1.2 -u ./10-ssl.conf 
+   ===================================================================
+   RCS file: ./RCS/10-ssl.conf,v
+   retrieving revision 1.1
+   retrieving revision 1.2
+   diff -u -r1.1 -r1.2
+    --- ./10-ssl.conf	2008/04/20 07:12:03	1.1
+    +++ ./10-ssl.conf	2008/04/20 07:42:32	1.2
+    @@ -6,5 +6,10 @@
+     #### SSL engine
+     $SERVERsocket] == 0.0.0.0:443 {
+                       ssl.engine                  = enable
+    -                  ssl.pemfile                 = /etc/lighttpd/server.pem
+    +                  ssl.pemfile                 = /etc/lighttpd/server.pem
+    +#		  ssl.ca-file = /etc/lighttpd/server.crt
+    +		  server.name = hoge.com
+    +		  server.document-root = /var/www/ssl
+    +		  server.errorlog = /var/log/lighttpd/ssl-error.log
+    +		  accesslog.filename = /var/log/lighttpd/ssl-access.log
+   }
+
+
+起動時にpassphraseを聞かれないようにするには、Apacheと同じなので、PEMファイルも秘密鍵とCRTを結合すりゃよいので、秘密鍵、CRT申請後に、下記にようなスクリプトを実行すればよし。
+
+.. code-block:: none
+
+   #!/bin/bash
+   USER=www
+   GROUP=www
+   KEY=server.key
+   NEWKEY=server.key.new
+   CRT=server.crt
+   PEM=server.pem
+   
+   openssl rsa -in $KEY -out $NEWKEY
+   cat $NEWKEY $CRT  $PEM
+   chmod 600 $PEM $NEWKEY
+   chown ${USER}:${GROUP} $PEM
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

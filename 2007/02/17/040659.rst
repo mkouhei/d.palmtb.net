@@ -1,0 +1,33 @@
+﻿KVMでホストOSのsuspendとresumeがサポートされたみたい。
+########################################################################
+
+
+2.6.20のgit13のログを見てたらサポートされたらしい。kvm-develのMLでもsuspend絡みでメールがありますた。毎日いろいろ良くなったり＆新しい機能が追加されたりと、MLを追っかけてるだけでも楽しい。でも、毎日見るのはちょっとしんどい。
+
+
+.. code-block:: none
+
+   commit 59ae6c6b87711ceb2d1ea5f9e08bb13aee947a29
+   Author: Avi Kivity avi@qumranet.com
+   Date:   Mon Feb 12 00:54:48 2007 -0800
+   
+       [PATCH] KVM: Host suspend/resume support
+       
+       Add the necessary callbacks to suspend and resume a host running kvm.  This is
+       just a repeat of the cpu hotplug/unplug work.
+       
+       Signed-off-by: Avi Kivity avi@qumranet.com
+       Cc: Ingo Molnar mingo@elte.hu
+       Signed-off-by: Andrew Morton akpm@linux-foundation.org
+       Signed-off-by: Linus Torvalds torvalds@linux-foundation.org
+
+
+http://www.kernel.org/pub/linux/kernel/v2.6/snapshots/patch-2.6.20-git13.log
+
+
+
+.. author:: mkouhei
+.. categories:: computer, virt., 
+.. tags::
+
+

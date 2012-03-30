@@ -1,0 +1,31 @@
+﻿Iceweaselでアドオンをインストールできない問題。
+########################################################
+
+
+以前から気がついていた不具合だが、[ツール]→[アドオン]→[アドオンを入手]から、アドオンをインストールしようとすると、
+
+Iceweasel はファイルをインストールできませんでした。
+URL = https://addons.mozilla.jp/firefox/install/11285
+原因: ファイルのハッシュが正しくありません (ダウンロードに失敗した可能性があります)
+
+* 261
+
+
+と表示される。原因は不明だが、とりあえず回避方法は発見。
+
+.. code-block:: none
+
+   $ unset LANG iceweasel
+
+
+として、英語モードでiceweaselを起動してやると、アドオンのURL自体がまず違う。そのままインストールしてやると、成功する。何でかなぁ…。lennyでも再現する。reportbugでメール本文作ったから、帰宅後にBTSしておくかおいた。
+koedoyoshidaさんがスクリーンショット撮ってくれた。
+http://koedo.hanno.jp/~koedoyoshida/twitterfoxerr/twitterfoxerr1.png
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

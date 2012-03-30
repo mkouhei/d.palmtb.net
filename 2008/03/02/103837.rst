@@ -1,0 +1,29 @@
+﻿キーボードにマウスボタンを割り当て。
+####################################
+
+
+Airにしてからマウスを使うのをやめた。特に普段はマウスの右クリックと真ん中クリックは無くても困らないのだが、OOo Calcで右クリックが出来ないと、シート単位の操作が出来ないので困る [#]_ 。なので、黒MacBookの時にもやった、キーボードへの割り当てを行った。
+スペースキーの右側にある、commandキーとoptionキーをそれぞれ、右クリック、真ん中クリックに割り当てた。ついでに、使わないEjectキーにDeleteを割り当てた。
+xevで、まずキーコードを調べる。英語キーなので、Debian Wikiに載っているのはそのまま使えないので。xevで調べると、右commandキーは116, 右optionキーは113、Ejectキーは204。.bashrcに以下を記述。
+
+.. code-block:: none
+
+   xmodmap -e &#34;keycode 116 = Pointer_Button3&#34;
+   xmodmap -e &#34;keycode 113 = Pointer_Button2&#34;
+   xmodmap -e &#34;keycode 204 = Delete&#34;
+   xkbset m
+
+
+
+
+.. rubric:: footnote
+
+.. [#] ：家計簿つけてるから。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, MacBook, 
+.. tags::
+
+

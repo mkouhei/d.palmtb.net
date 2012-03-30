@@ -1,0 +1,34 @@
+﻿本日の状況。
+############
+
+
+MacBook AirのDebian化の現在までの状況としては、
+
+* Xは特に設定しなくても、解像度が1280x800になっていた。
+* b43-fwcutterでも、やっぱり無線LANダメ [#]_ 。
+* cpufreqも特に設定しなくてもon-demandでクロック数を自動調整できる。
+* hibernate-ramを実行させようとしたら、下記の様に表示されて実行できなかった。
+
+
+.. code-block:: none
+
+   s2ram: unknown machin, see s2ram(8) and the USsuspendRamForce option
+   hibernate-ram: Aborting.
+
+
+ハードウェア周りが出来るところと出来てないところと分かれるが、ボチボチやってくか。Xfce4でDebianを起動させた状態で写真を撮ってみた。
+
+しかし、周り散らかりすぎだな…。
+
+
+.. rubric:: footnote
+
+.. [#] ：b43-fwcutterもbcm43xx-fwcutterもupstreamは同じだしなぁ
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, Debian, 
+.. tags::
+
+

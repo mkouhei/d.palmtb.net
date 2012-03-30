@@ -1,0 +1,52 @@
+﻿grubでブートできない時。
+############################
+
+
+パーティションテーブルが分かっているときなら、割と楽。まずgrub memuでcを押し、コマンドラインモードにし、/bootファイルシステムをロードする。
+
+.. code-block:: none
+
+   &gt; root (hd0,2)
+
+
+Kernel イメージを指定する。tab補完が効くので楽。
+
+.. code-block:: none
+
+   &gt; linux /vmlinuz-2.6.30-2-amd64 root=/dev/sda3
+
+
+同様に、initrdを指定する。
+
+.. code-block:: none
+
+   &gt; initrd /initrd.img-2.6.30-2-amd64
+
+
+あとはbootでブートするだけ。
+パーティションテーブルが分からなくても、lsコマンドでデバイスのリストが出てくるので、rootコマンドで指定してやればファイルシステムの中もアクセスできる。
+
+.. code-block:: none
+
+   &gt; ls
+   ...
+   &gt; root (hd0,3)
+   &gt; cat /etc/fstab
+
+
+とかすれば、マウントポイントの確認もできるぞ、と。
+
+どうやらgrubのバグらしい。
+**********************************************************************
+
+
+今朝のアップデートで、grub-commonとgrub-pcがuアップデートされたのだが、その後起動しなくなったので上記の対応をした。なんせLiveCDもLiveUSBも無く、それも作れないような環境での出来事だったので。とはいえ、慣れればgrubのコマンドラインの方が簡単にできますな。
+で、バグ自体はというと、/boot/grub/grub.confの linux, initrdで指定するパスがおかしくなっている。/bootは/ファイルシステムとは別のファイルシステムにしているので、grubでは、/vmlinuz, /initrdと指定しないといけないのに、/bootが頭についていた。コードを追ったらシェルスクリプトだけでなく、Cのコードも見ないといけない感じなので、とりあえず保留。/boot/grub/grub.confを直接変更しておいた。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Unix/Linux, 
+.. tags::
+
+

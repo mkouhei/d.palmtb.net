@@ -1,0 +1,17 @@
+﻿eu.kernel.orgが出来たようだ。
+##########################################
+
+
+
+* http://www.eu.kernel.org/pub/
+* ftp://ftp.eu.kernel.org/pub/
+* rsync://rsync.eu.kernel.org/pub/
+
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

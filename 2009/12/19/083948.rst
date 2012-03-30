@@ -1,0 +1,85 @@
+﻿lxcのホストOSでルーティングさせる。
+########################################
+
+
+今月のDebian勉強会の資料ではbrctl使ってL2で外部ネットワークからコンテナにアクセスさせるようにしていたが、コンテナのIPアドレスを別セグメントにして、ホストOSでルーティングするように変更した。
+
+.. code-block:: none
+
+   commit d437bc77197df49a92a033ec085d3fcff226f4b1
+   Author: root root@hostos.(none)
+   Date:   Thu Dec 17 06:25:07 2009 +0900
+   
+       daily autocommit
+   
+   diff --git a/hosts b/hosts
+   index 47128a5..16b9fff 100644
+   --- a/hosts
+   +++ b/hosts
+   @@ -1,11 +1,11 @@
+    127.0.0.1      localhost
+    127.0.1.1      hostos
+   -192.168.11.15        container1
+   -192.168.11.16        container2
+   -192.168.11.17        container3
+   -192.168.11.18        container4
+   -192.168.11.19        container5
+   -192.168.11.20        container6
+   +192.168.89.15        container1
+   +192.168.89.16        container2
+   +192.168.89.17        container3
+   +192.168.89.18        container4
+   +192.168.89.19        container5
+   +192.168.89.20        container6
+    
+    # The following lines are desirable for IPv6 capable hosts
+    ::1     localhost ip6-localhost ip6-loopback
+   diff --git a/init.d/iptables b/init.d/iptables
+   index 59f88e1..08207ec 100755
+   --- a/init.d/iptables
+   +++ b/init.d/iptables
+   @@ -133,7 +133,7 @@ $IPTABLES -A FORWARD -p icmp -m state --state ESTABLISHED -j ACCEPT
+    $IPTABLES -A FORWARD -p udp --dport 53 -m state --state NEW -j ACCEPT
+    $IPTABLES -A FORWARD -p tcp --dport 80 -m state --state NEW -j ACCEPT
+    $IPTABLES -A FORWARD -p tcp --dport 5984 -m state --state NEW -j ACCEPT
+   -$IPTABLES -A FORWARD -p tcp -s 192.168.11.20 --dport 22 -m state --state NEW -j ACCEPT
+   +$IPTABLES -A FORWARD -p tcp -s 192.168.89.20 --dport 22 -m state --state NEW -j ACCEPT
+    $IPTABLES -A FORWARD -p icmp --icmp-type echo-request -j ACCEPT
+    
+    #$IPTABLES -A FORWARD -i eth1 -o eth0 -p tcp ! --syn -m state --state NEW -j DROP
+   @@ -150,10 +150,10 @@ $IPTABLES -A FORWARD -p icmp --icmp-type echo-request -j ACCEPT
+    #-------------------------------------------------------------
+    # PREROUTING Chain (dnat)
+    #-------------------------------------------------------------
+   -$IPTABLES -t nat -A PREROUTING -d 192.168.11.14 -p tcp --dport 80   -i br0 -j DNAT --to 192.168.11.15
+   -$IPTABLES -t nat -A PREROUTING -d 192.168.11.14 -p tcp --dport 5984 -i br0 -j DNAT --to 192.168.11.16
+   -$IPTABLES -t nat -A PREROUTING -d 192.168.25.10  -p tcp --dport 80   -i eth1 -j DNAT --to 192.168.11.15
+   -$IPTABLES -t nat -A PREROUTING -d 192.168.25.10  -p tcp --dport 5984 -i eth1 -j DNAT --to 192.168.11.16
+   +$IPTABLES -t nat -A PREROUTING -d 192.168.11.14 -p tcp --dport 80   -i br0 -j DNAT --to 192.168.89.15
+   +$IPTABLES -t nat -A PREROUTING -d 192.168.11.14 -p tcp --dport 5984 -i br0 -j DNAT --to 192.168.89.16
+   +$IPTABLES -t nat -A PREROUTING -d 192.168.25.10  -p tcp --dport 80   -i eth1 -j DNAT --to 192.168.89.15
+   +$IPTABLES -t nat -A PREROUTING -d 192.168.25.10  -p tcp --dport 5984 -i eth1 -j DNAT --to 192.168.89.16
+    
+    ;;
+    
+   diff --git a/network/if-up.d/brctl.sh b/network/if-up.d/brctl.sh
+   index b4d73ae..9d9be72 100755
+   --- a/network/if-up.d/brctl.sh
+   +++ b/network/if-up.d/brctl.sh
+   @@ -6,3 +6,4 @@ ifconfig br0 192.168.11.14 promisc up
+    brctl addif br0 eth0
+    ifconfig eth0 0.0.0.0 up
+    route add -net default gw 192.168.11.1 br0
+   +ifconfig br0:1 192.168.89.14 netmask 255.255.255.0
+
+
+コンテナの方のIPアドレスを変更するのを忘れんように。
+まぁ、なんだ、コソーリと勝手にコンテナにもconnectedなセグメントのIPアドレスを勝手に割り振って使っていたら、他のところで端末増やしてIPアドレスの競合が発生してバレた、からなんだが。ほとんど使っていないテスト用の環境だからまあ断らないでエエかと、勝手にやるのはアカンよ、というお話。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, network, Ops, virt., 
+.. tags::
+
+

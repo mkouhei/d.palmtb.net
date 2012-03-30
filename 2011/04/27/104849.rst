@@ -1,0 +1,38 @@
+﻿”通信端点が接続されていません”？
+##################################
+
+
+なんぞコレ？時間ないのでとりあえずメモだけ。
+
+.. code-block:: none
+
+   $ sudo update-grub2
+   Generating grub.cfg ...
+   Found linux image: /boot/vmlinuz-2.6.38
+   Found initrd image: /boot/initrd.img-2.6.38
+   Found linux image: /boot/vmlinuz-2.6.37.1
+   Found initrd image: /boot/initrd.img-2.6.37.1
+   Found linux image: /boot/vmlinuz-2.6.37
+   Found initrd image: /boot/initrd.img-2.6.37
+     No volume groups found
+   ls: reading directory /var/lib/os-prober/mount: Software caused connection abort
+   ls: cannot access /var/lib/os-prober/mount: Transport endpoint is not connected
+   ls: cannot access /var/lib/os-prober/mount: Transport endpoint is not connected
+   ls: cannot access /var/lib/os-prober/mount: Transport endpoint is not connected
+   ls: cannot access /var/lib/os-prober/mount: Transport endpoint is not connected
+   ls: cannot access /var/lib/os-prober/mount: Transport endpoint is not connected
+   ls: cannot access /var/lib/os-prober/mount: Transport endpoint is not connected
+   done
+   $ dpkg -l | grep grub
+   ii  grub-common                              1.99~rc1-13                  GRand Unified Bootloader, version 2 (common files)
+   ii  grub-pc                                  1.99~rc1-13                  GRand Unified Bootloader, version 2 (PC/BIOS version)
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

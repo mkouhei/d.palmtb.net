@@ -1,0 +1,14 @@
+﻿Xen 3.1リリース。
+########################
+
+
+とうとう出ましたね。
+http://www.xensource.com/download/index_oss.html
+
+
+
+.. author:: mkouhei
+.. categories:: computer, virt., 
+.. tags::
+
+

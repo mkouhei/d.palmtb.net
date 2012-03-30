@@ -1,0 +1,20 @@
+﻿kqemu使ってみた。
+######################
+
+
+Linux版、ではなくて、Windows版。職場で使っている作業用PCにqemuとkqemuを入れて、Etchをインストールしてみた。kvmと基本的には同じなので、非常に簡単。Windows版の場合の注意事項としては、-monitor stdioは付けない [#]_ 、-redirオプションでポート転送させるときに、Windows Firewallの存在に気を付ける、といったところ。qemuをコマンドラインで実行させると、鬱陶しいDOS窓が残るので、SSHでのログインも兼ねて、Cygwin [#]_ からqemuイメージをブートさせてやれば良いだろうと思う。明日確認してみる。
+ちなみに、以前Debian勉強会で教えてもらった、NTLM認証に最新のAPTが対応してる、という情報は、合っていた。Etchのインストーラーだと、NTLM認証と連携しているProxyサーバも無事越えることが出来た。めでたしめでたし。
+
+
+.. rubric:: footnote
+
+.. [#] ：stdioなんてデバイスは無い、と怒られた
+.. [#] ：当然、Cygtermで、PuttyやPoderosaからCygwinは使わないと、意味なし。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, Debian, virt., 
+.. tags::
+
+

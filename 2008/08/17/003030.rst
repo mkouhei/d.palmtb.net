@@ -1,0 +1,13 @@
+﻿ファンクションキーでLCDの照度変更できた。
+############################################
+
+
+なぜか、Ctrl+F1 or Ctrl+F2でMacBook Airの照度を変更できた。なぜ、fn+F1 or fn+F2ではないんだろうな。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, MacBook, 
+.. tags::
+
+

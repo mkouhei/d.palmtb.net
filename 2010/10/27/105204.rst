@@ -1,0 +1,20 @@
+﻿認証が必要なProxyサーバ背後からAPTリポジトリを使う方法。
+################################################################
+
+
+一般ユーザに環境変数http_proxyを設定して、sudoでapt-getを実行、というやり方ではうまく行かないので、いままでrootの.bashrcなどにhttp_proxyを設定して、パッケージのアップデートの時だけしかたなくrootにsuしていたのだが、そういう環境のマシンでKVMゲストとしてDebianをインストールし、VM上でだとsudoでapt-getできることに、ふと気がついた。APTで、/etc/apt/apt.confに下記の設定されていた。
+
+.. code-block:: none
+
+   Acquire::http::Proxy http://USER:PASSWORD@PROXY_HOST:PROXY_PORT/;
+
+
+ホスト側には/etc/apt/apt.confはないので、SqueezeからDebianインストール時に作成されるようになったのだろう。知らんかった。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

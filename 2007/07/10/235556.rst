@@ -1,0 +1,32 @@
+﻿原因判明。
+##########
+
+
+kenrel 2.6.22でも今までと同様に、
+
+.. code-block:: none
+
+   make-kpkg --rootcmd fakeroot clean
+   make-kpkg --rootcmd fakeroot --config oldconfig --initrd --revision=$REVISION kernel-image kernel_headers modules_image
+
+
+
+.. code-block:: none
+
+   $ sudo apt-get remove --purge kvm-modules-2.6.22
+
+
+とすることで問題解消。無事、再びQEMU/KVMが起動するようになった。良かった良かった。
+
+
+.. rubric:: footnote
+
+.. [#] ：Gentooの.. [#] から気がついた。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, computer, Unix/Linux, virt., 
+.. tags::
+
+

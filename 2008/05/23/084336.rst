@@ -1,0 +1,24 @@
+﻿今年初の温度警告
+################
+
+
+
+.. code-block:: none
+
+   Subject: Hobbit [629595] ホスト名:hddtemp warning (YELLOW)
+   
+   yellow Fri May 23 06:33:28 JST 2008
+   temperature : 38
+   
+   (snip)
+
+
+割りと負荷の高いジョブが走る時間とは言え、今年初めてのアラートであるのは事実。今日は暑くなりそうだ。つか、駅に行くまでで既に汗ダラダラなんだが。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, 
+.. tags::
+
+

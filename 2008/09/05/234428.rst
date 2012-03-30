@@ -1,0 +1,14 @@
+﻿KVM開発元買収ですと！？
+##########################
+
+
+Red Hatによって買収されたとな！
+http://www.redhat.com/about/news/prarchive/2008/qumranet.html
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

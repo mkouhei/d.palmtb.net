@@ -1,0 +1,333 @@
+﻿Mustache &amp;amp; CouchDB入門。
+##################################################
+
+
+CouchDBのデザインドキュメントにMustacheのテンプレートエンジンを適用する方法についてのお話。これは英語のブログではそこそこ情報があるのだが、日本語ではid:yssk22さんのブログに部分的に情報があるだけなのでまとめてみた。
+
+前フリ
+**************
+
+
+CouchDBのデザインドキュメントでHTMLの画面を作る場合、もっともプリミティブな方法としては、JavaScriptで
+
+.. code-block:: none
+
+   function(head, req) {
+      provides(html,function() {
+         send(!doctype html);
+   (snip)
+         send(/body);
+         return /html;
+      });
+   }
+
+
+とか、
+
+.. code-block:: none
+
+   function(doc, req) {
+      provides(html, function() {
+      return !doctype html +
+   (snip)
+      /body +
+      /html;
+      });
+   }
+
+
+とするが、これは非常にコードが見づらい。CouchDBへのアプリのデプロイにCouchAppを使っていれば、これにmustacheのJavaScript用のテンプレートがバンドルされているので、これを使おう。
+
+前提環境
+********************
+
+
+今回の環境は以下のとおり。
+
+* CouchDB 0.11 [#]_ 
+* CouchApp 0.7.2 [#]_ 
+
+mutacheは前述のとおり、CouchAppに含まれているものを使う。
+
+.. code-block:: none
+
+   $ couchapp generate hoge
+
+
+とすると、hoge/vendor/couchapp/lib/mustache.jsとして作られる。テンプレートは、hogeディレクトリの直下にtemplatesディレクトリを作り、そこにヒゲテンプレートを作るので、まず、ディレクトリを作っておこう。
+
+.. code-block:: none
+
+   $ mkdir hoge/templates
+
+
+
+シンプルなテンプレートでHTMLを生成する。
+****************************************************************************************************************
+
+
+まずはmustacheだけに慣れるために、ドキュメントを必要としないHTMLを生成してみよう。CouchDBのDB名をsampledbとして、&#34;http://127.0.0.1:5984/sampledb/_design/hoge/_show/moge&#34;でアクセスするとテンプレートで生成されたHTMLが返されるようにしてみる。用意するファイルは次の２つ。
+
+* hoge/shows/moge.js
+* hoge/templates/moge.html
+
+内容はそれぞれ以下の通り。
+
+moge.js
+==========
+
+
+
+.. code-block:: none
+
+   function(head, req) {
+       start({
+           headers : {
+               Content-type: text/html
+           }
+       });
+       
+       var mustache = require(vendor/couchapp/lib/mustache);
+       var data = {
+           title: タイトル,
+           hello: こんにちは,
+           world: 世界
+       }
+       
+       return mustache.to_html(this.templates.moge, data);
+   }
+
+
+
+moge.html
+==============
+
+
+
+.. code-block:: none
+
+   !doctype html
+   html
+     head
+       meta charset=UTF-8 /
+       title\{\{title\}\}/title
+     /head
+     body
+       h1\{\{title\}\}/h1
+       p\{\{hello\}\}、\{\{world\}\}/p
+     /body
+   /html
+
+
+テンプレートのhoge/templates/mgoe.htmlが、moge.jsのto_html()の第一引数でthis.template.mogeにマッピングされ、第二引数にテンプレートに渡す変数をJSONで渡しているのが肝。デモはこちら。
+
+ループ処理を加えたテンプレートでHTMLを生成する。
+****************************************************************************************************************************************
+
+
+先ほどのto_html()に渡すJSONを次のfuga.jsのように変更し、\{\{#list\}\} \{\{/list\}\}の間でループ処理させることができる。
+
+* hoge/shows/fuga.js
+* hoge/templates/fuga.html
+
+内容はそれぞれ以下の通り。
+
+fuga.js
+==========
+
+
+
+.. code-block:: none
+
+   function(head, req) {
+   
+       start({
+           headers : {
+               Content-type: text/html
+           }
+       });
+   
+       var mustache = require(vendor/couchapp/lib/mustache);
+       var data = {
+   	title: タイトル2,
+   	datalist: [
+   	    {
+   		hello: やあ,
+   		world: ヒゲさん。
+   	    },
+   	    {
+   		hello: こんにちは,
+   		world: ボーズ。
+   	    }
+   	]
+       };
+       
+       return mustache.to_html(this.templates.fuga, data);
+   
+   }
+
+
+デモはこちら。
+
+fuga.html
+==============
+
+
+
+.. code-block:: none
+
+   !doctype html
+   html
+     head
+       meta charset=UTF-8 /
+       title\{\{title\}\}/title
+     /head
+     body
+       h1\{\{title\}\}/h1
+       \{\{#datalist\}\}
+       p\{\{hello\}\}、\{\{world\}\}/p
+       \{\{/datalist\}\}
+     /body
+   /html
+
+
+
+ドキュメントをテンプレートで表示する。
+**************************************************************************************************************
+
+
+今まではテンプレートで埋め込むデータをJavaScriptに直接埋め込んでいたが、これをドキュメントから取得するようにしてみよう。次のファイルだけを用意し、テンプレートは最初のmoge.htmlを利用する。
+
+hoge/shows/foo.js
+==============================
+
+
+
+.. code-block:: none
+
+   function(doc, req) {
+   
+       start({
+           headers : {
+               Content-type: text/html
+           }
+       });
+   
+       var mustache = require(vendor/couchapp/lib/mustache);
+       var data = {
+   	title: doc.title,
+   	hello: doc.hello,
+   	world: doc.world
+       };
+       
+       return mustache.to_html(this.templates.moge, data);
+   
+   }
+
+
+ドキュメント自体は次のようなのもの用意する。
+
+.. code-block:: none
+
+   {_id:4efbb2aec6ca7318c341885aa700368b,_rev:1-13a1fc74866dfc068bb06d7095169034,title:u30bfu30a4u30c8u30ebuff13,hello:u3084u3042,world:u3053u307eu3061u3083u3093}
+
+
+先ほどと違い、1行目のfunction()の第一引数がheadではなくdocになっているが、docにすることで、URLとしてはデモのURIのようにdoc._idを渡すことができる。
+ドキュメントの各フィールドの値は、上記を見て分かる通り、&#34;doc.fieldname&#34;で取得できる。
+
+ドキュメントのリストをテンプレートで表示する。
+**************************************************************************************************************************************
+
+
+リストで表示するには、viewとlistを作る必要がある。テンプレートはfuga.htmlを使ってみる。
+
+* hoge/views/greetings/map.js
+* hoge/lists/bar.js
+
+
+map.js
+========
+
+
+
+.. code-block:: none
+
+   function(doc) {
+       emit(doc._id, doc);
+   }
+
+
+これは単純にdoc._idをキーに、ドキュメントを返す。こんなドキュメントを用意した。
+
+.. code-block:: none
+
+   {total_rows:2,offset:0,rows:[
+   {id:4efbb2aec6ca7318c341885aa700368b,key:4efbb2aec6ca7318c341885aa700368b,value:{_id:4efbb2aec6ca7318c341885aa700368b,_rev:1-13a1fc74866dfc068bb06d7095169034,title:u30bfu30a4u30c8u30ebuff13,hello:u3084u3042,world:u3053u307eu3061u3083u3093\}\},
+   {id:4efbb2aec6ca7318c341885aa7005ba7,key:4efbb2aec6ca7318c341885aa7005ba7,value:{_id:4efbb2aec6ca7318c341885aa7005ba7,_rev:1-712121ac547e77bb58ab256928e07f53,hello:u304au3063u3059,world:u304au3089xxx\}\}
+   ]}
+
+
+
+bar.js
+========
+
+
+
+.. code-block:: none
+
+   function(head, req) {
+   
+       start({
+           headers : {
+               Content-type: text/html
+           }
+       });
+   
+       var mustache = require(vendor/couchapp/lib/mustache);
+       var datalist = [];
+   
+       while(row = getRow()) {
+   	datalist.push({
+   	    hello: row.value.hello,
+   	    world: row.value.world
+   	});
+       }
+   
+       var data = {
+   	title: タイトル4,
+   	datalist: datalist
+       };
+   
+       return mustache.to_html(this.templates.fuga, data);
+   
+   }
+
+
+getRow()でviewで返される&#34;rows&#34;を取得できるので、これをwhileで処理し、push()で各ドキュメントの値をJSONに格納するのがミソ。デモはこんな感じに。
+
+\{\{#hoge\}\}\{\{/hoge\}\}による処理
+******************************************************************************
+
+
+これはループを回すだけではなく、if文の代わりにも使える。hogeの値がtrueの時のみ、この中が処理されるので表示させたくないときはfalseに設定した変数を使えば、例えば同じ日付のうち最初の1回のみ表示させ、2回目以降は表示しない、ということもできる。こんな感じ。
+
+
+まとめ
+**************
+
+
+ということで、とりあえずヒゲテンプレートのmustacheを使うとかなり便利。このサンプルコードはこちら。
+
+
+.. rubric:: footnote
+
+.. [#] ：Debian GNU/Linux Squeeze/Sid
+.. [#] ：githubのmasterブランチの0.7.2のtagをチェックアウトしてdebパッケージをビルド。
+
+
+
+.. author:: mkouhei
+.. categories:: CouchDB, Debian, Dev, 
+.. tags::
+
+

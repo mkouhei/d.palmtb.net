@@ -1,0 +1,13 @@
+﻿今回はちゃんとできた。
+######################
+
+
+/usr/widgets/controlpanel.swfをUSBメモリ直下にちゃんと置いたら、今回はちゃんとchumbyをオフラインモードで起動できた。なんてマヌケなんだワシは。
+
+
+
+.. author:: mkouhei
+.. categories:: gadget, 
+.. tags::
+
+

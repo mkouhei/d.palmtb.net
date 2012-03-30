@@ -1,0 +1,72 @@
+﻿特定ホストとの通信用スクリプト。
+################################
+
+
+自宅では普段、有線LANを使っている。自宅外とのFTPで通信したいとき、利用しているブロードバンドルータに静的ポリシーでhigh portでざっくりOKにしないといけないのが非常に嫌なのである。通信したいのは作業用の環境だけなのに、他のノードにまでアクセスできるようになるのは気持ち悪い。
+まぁそこは抜け道として、ブロードバンドルータの外側にFONを設置しているので、FTPだけでなくhigh port使っていて、ブロードバンドルーターで細かいポリシーを扱えないのはFON経由でやるようにしている。いちいち設定するのは面倒なので、シェルスクリプト書いてやった。
+
+.. code-block:: none
+
+   #!/bin/sh
+   
+   PID=~/tmp/wpa.pid
+   CONF=~/tmp/wpa.conf
+   IP=xxx.xxx.xxx.xxx
+   MASK=255.255.255.0
+   GW=xxx.xxx.xxx.yyy
+   FTP=zzz.zzz.zzz.zzz
+   
+   case $1 in
+   
+   start)
+   test -f $PID  exit 2
+   
+   cat EOF  $CONF
+   ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+   ap_scan=2
+   update_config=1
+   
+   network={
+           ssid=essid
+           scan_ssid=1
+           psk=yourwlanrouterpresharedkey
+           key_mgmt=WPA-PSK
+           priority=1
+   }
+   EOF
+   
+   lsmod | grep -q wl || modprobe wl
+   sleep 1
+   
+   wpa_supplicant -i eth1 -c $CONF -B -P $PID
+   
+   ifconfig eth1 $IP netmask $MASK
+   route add $FTP gw $GW dev eth1
+   
+   ;;
+   
+   stop)
+   test -f $PID || exit 3
+   ifconfig eth1 0.0.0.0 down
+   kill `cat $PID`
+   modprobe -r wl
+   rm $CONF
+   ;;
+   
+   *)
+   echo Usage; $0 {start|stop}
+   exit 1
+   ;;
+   esac
+   
+   exit 0
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, network, 
+.. tags::
+
+

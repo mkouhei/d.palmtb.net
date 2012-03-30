@@ -1,0 +1,13 @@
+﻿おー、ちゃんと出来たんだ。
+##########################
+
+
+今日発売の日経Linuxの巻頭のkernel 2.6.21リリースの記事に、KVMでのLive Migrationのレポートが載っていた。開発のMLでrelease15から使えるようになった、という記憶があったが。ProLiant ML115とMacBook間で出来るかな？アーキテクチャ違うからやっぱ無理かな。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, virt., computer, 
+.. tags::
+
+

@@ -1,0 +1,13 @@
+﻿注文しちゃったよ。
+##################
+
+
+来たらさっそく、Debian化だな。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, MacBook, 
+.. tags::
+
+

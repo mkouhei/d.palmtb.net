@@ -1,0 +1,13 @@
+﻿OpenBlockS266 Debian Etch化
+####################################################
+
+
+手順というほどで無いのだが、これ見れば出来るだろうというメモを残した。基本的にはSarge化と同じ。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Ops, gadget, 
+.. tags::
+
+

@@ -1,0 +1,13 @@
+﻿マルチタッチパッドはやらないでいいみたい。
+##########################################
+
+
+MacBook Airでマルチタッチパッドを使うには、Ubuntuのbcm5974のドライバが必要だが、iwamatsuさんが既にDebianパッケージかしたそうな。UpstreamのソースコードやMakefileを書き換えてもいいということをiwamatsuさん、noritadaさんに教えていただいた。なるほど。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, MacBook, 
+.. tags::
+
+

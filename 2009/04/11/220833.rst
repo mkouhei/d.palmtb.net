@@ -1,0 +1,47 @@
+﻿/etc/modprobe.d/arch/以下は変更しちゃアカンようだ。
+########################################################################
+
+
+先日のHack Cafeで実行した下記コマンドの結果による不具合。
+
+.. code-block:: none
+
+   $ cd /etc/modprobe.d/
+   $ for i in `find -type f ! -name *.conf`; do sudo mv $i{,.conf} ; done
+
+
+これを実行していたせいで、initramfsの作成がうまく行かないようだ。
+
+.. code-block:: none
+
+   $ sudo apt-get update
+   (snip)
+   E: dpkg was interrupted, you must manually run &#39;dpkg --configure -a&#39; to correct the problem.
+   $ sudo dpkg --configure -a
+   menu のトリガを処理しています ...
+   initramfs-tools (0.93.2) を設定しています ...
+   update-initramfs: deferring update (trigger activated)
+   initramfs-tools のトリガを処理しています ...
+   update-initramfs: Generating /boot/initrd.img-2.6.29
+   cpio: ./etc/modprobe.d/arch-aliases: Cannot stat: そのようなファイルやディレクトリはありません
+   update-initramfs: failed for /boot/initrd.img-2.6.29
+   dpkg: サブプロセス post-installation script はエラー終了ステータス 1 を返しました
+
+
+仕方ないので、symlink張っておいた。
+
+.. code-block:: none
+
+   $ cd /etc/modprobe.d/arch
+   $ sudo ln -s i386.conf i386
+
+
+これで解決したけど、arch/以下は将来的に.confにしないで良いのかな？
+
+
+
+.. author:: mkouhei
+.. categories:: 
+.. tags::
+
+

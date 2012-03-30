@@ -1,0 +1,13 @@
+﻿2.6.35でもまだダメだった。
+################################
+
+
+ビルドする前から分かっていたのだが、一応試してみた。やっぱりまだnosmp or maxcpus=1を指定しないとブートしてくれないな、MacBook 5,2。また、2.6.35だと、2.6.33以降用のpatchではbrodcom-staデバイスドライバのビルドができんようだ。
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, Debian, Unix/Linux, 
+.. tags::
+
+

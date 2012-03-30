@@ -1,0 +1,14 @@
+﻿今週末は勉強会ですぜ。
+######################
+
+
+と宣伝を手伝ってみる。これ見てまだ参加登録していない人は、さっさと事前課題出して参加登録すること！
+http://tokyodebian.alioth.debian.org/2008-09.html
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, meeting, 
+.. tags::
+
+

@@ -1,0 +1,14 @@
+﻿Topic 3の途中まで読んだが…。
+####################################
+
+
+7分冊あるうちの３分冊目の途中まで、HIPAAをざっと読んでみた。ムズー。&#34;covererd entity&#34;, &#34;Establish policies&#34;, &#34;implement procedures&#34;が矢鱈出てくる…。Security Standards MatrixのImplementation Specificationsが、R(Rquired)とA(Addressable)の二つステータスがあるが、Requiredに対してAddressableってなんだ？　アクセスできること？　うーん、なんか違う気がする…。
+どのトピックも最終的にはCMSのWebサイトをチェックしろ、だしなぁ。
+
+
+
+.. author:: mkouhei
+.. categories:: security, 
+.. tags::
+
+

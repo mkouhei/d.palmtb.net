@@ -1,0 +1,87 @@
+﻿MacPortsを使ってみた。
+##############################
+
+
+ちょっと諸事情により、MacPortsを使ってみることにした。インストール自体は、MacPorts Projectのサイトから、Leopardのdmgディスクイメージをダウンロードして、インストールすれば終わりなので楽だ。面倒なのは、ports treeを更新するところ。rsyncでしかできない、というのが面倒。仕方ないので、内部／外部ファイアウォールの設定を変更し、アウトバウンドへのrsyncを許可してやった。うまくいくときは、-dオプションをつけないで更新してやった方がよいね。
+
+.. code-block:: none
+
+   $ sudo port -d selfupdate
+   Password:
+   DEBUG: Synchronizing ports tree(s)
+   Synchronizing local ports tree from rsync://rsync.macports.org/release/ports/
+   DEBUG: /usr/bin/rsync -rtzv --delete-after rsync://rsync.macports.org/release/ports/ /opt/local/var/macports/sources/rsync.macports.org/release/ports
+   receiving file list ... done
+   ./
+   PortIndex
+   PortIndex.quick
+   _resources/
+   _resources/port1.0/
+   _resources/port1.0/variant_descriptions.conf
+   (snip)
+   tests/test/xcodeversion/
+   tests/test/xcodeversion/Portfile
+   tests/test/xcodeversion/master
+   
+   sent 6700 bytes  received 2298061 bytes  200414.00 bytes/sec
+   total size is 4061730  speedup is 1.76
+   
+   MacPorts base version 1.710 installed
+   DEBUG: Rebuilding and reinstalling MacPorts if needed
+   Downloaded MacPorts base version 1.710
+   
+   The MacPorts installation is not outdated so it was not updated
+   DEBUG: Setting MacPorts sources ownership to root
+
+
+MacPortsでerlangを検索してみた。
+
+.. code-block:: none
+
+   $ port search erlang
+   ejabberd @2.0.2 (net)
+       ejabberd is an XMPP application server.
+   
+   erlang @R13B (lang, erlang)
+       The Erlang Programming Language
+   
+   erlsom @1.2.1 (erlang, textproc)
+       An Erlang libary for XML parsing.
+   
+   esdl @0.96.0626 (graphics, devel, erlang)
+       Erlang OpenGL/SDL API and Utilities
+   
+   mochiweb @r87 (erlang, devel)
+       MochiWeb is an Erlang library for building lightweight HTTP servers.
+   
+   ocaml-bitstring @2.0.0 (devel, ocaml)
+       bitstrings and bitstring matching for OCaml
+   
+   wings @0.99.04a (graphics, erlang)
+       Erlang 3D Modeler
+   
+   yaws @1.76 (www)
+       Webserver for dynamic content written in Erlang
+   
+   Found 8 ports.
+
+
+port install hogeでパッケージをインストールしようとしたら、依存関係のあるパッケージがインストールされていなくて失敗した。APTみたいに自動的に依存関係解決してインストールしてくれないのか？
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, 
+.. tags::
+
+
+----
+
+Comment:
+
+	原因はXcode Toolsを入れていないせいだった。
+
+	written by  mkouhei
+	05/11/2009 07:38:26
+	http://d.hatena.ne.jp/mkouhei/
+

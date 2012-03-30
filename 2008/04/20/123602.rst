@@ -1,0 +1,243 @@
+﻿Apache Benchかけてみた。
+####################################
+
+
+lighttpdにしたことでどれくらい速くなったのか、試してみようと、Apache Benchをかけてみた。
+Apacheのほうは、制限かけているので、mod_securityにApacheBenchを許可して、mod_limitipconnで制限をかけているので、同じくらいのドキュメントサイズになるように調整して実行してみた。多少、ドキュメントサイズがApacheの方が良いけど、それでもかなり良い感じ。
+
+リクエスト数、同時接続数とも1でやってみた結果
+**********************************************************************************************************************************
+
+
+
+* lighttpd * &amp;*  FastCGI * &amp;*  Hiki
+
+
+.. code-block:: none
+
+   Document Length:        43399 bytes
+   
+   Concurrency Level:      1
+   Time taken for tests:   3.915910 seconds
+   Complete requests:      1
+   Failed requests:        0
+   Write errors:           0
+   Total transferred:      43755 bytes
+   HTML transferred:       43399 bytes
+   Requests per second:    0.26 [#/sec] (mean)
+   Time per request:       3915.910 [ms] (mean)
+   Time per request:       3915.910 [ms] (mean, across all concurrent requests)
+   Transfer rate:          10.73 [Kbytes/sec] received
+   
+   Connection Times (ms)
+                 min  mean[+/-sd] median   max
+   Connect:        1    1   0.0      1       1
+   Processing:  3914 3914   0.0   3914    3914
+   Waiting:     3587 3587   0.0   3587    3587
+   Total:       3915 3915   0.0   3915    3915
+
+
+
+* Apache2 * &amp;*  mod_php * &amp;*  PukiWiki
+
+
+.. code-block:: none
+
+   Document Length:        44109 bytes
+   
+   Concurrency Level:      1
+   Time taken for tests:   7.39146 seconds
+   Complete requests:      1
+   Failed requests:        0
+   Write errors:           0
+   Total transferred:      44285 bytes
+   HTML transferred:       44109 bytes
+   Requests per second:    0.14 [#/sec] (mean)
+   Time per request:       7039.146 [ms] (mean)
+   Time per request:       7039.146 [ms] (mean, across all concurrent requests)
+   Transfer rate:          6.11 [Kbytes/sec] received
+   
+   Connection Times (ms)
+                 min  mean[+/-sd] median   max
+   Connect:        3    3   0.0      3       3
+   Processing:  7036 7036   0.0   7036    7036
+   Waiting:     6919 6919   0.0   6919    6919
+   Total:       7039 7039   0.0   7039    7039
+
+
+約２分の１のレスポンスと考えたら、かなり良いですな。
+
+リクエスト数1、同時接続数2
+************************************************************************
+
+
+
+* lighttpd
+
+
+.. code-block:: none
+
+   Document Length:        43399 bytes
+   
+   Concurrency Level:      1
+   Time taken for tests:   7.659764 seconds
+   Complete requests:      2
+   Failed requests:        0
+   Write errors:           0
+   Total transferred:      87510 bytes
+   HTML transferred:       86798 bytes
+   Requests per second:    0.26 [#/sec] (mean)
+   Time per request:       3829.882 [ms] (mean)
+   Time per request:       3829.882 [ms] (mean, across all concurrent requests)
+   Transfer rate:          11.10 [Kbytes/sec] received
+   
+   Connection Times (ms)
+                 min  mean[+/-sd] median   max
+   Connect:        1    1   0.0      1       1
+   Processing:  3754 3828 104.7   3902    3902
+   Waiting:     3428 3502 104.7   3576    3576
+   Total:       3755 3829 104.7   3903    3903
+   
+   Percentage of the requests served within a certain time (ms)
+     50%   3903
+     66%   3903
+     75%   3903
+     80%   3903
+     90%   3903
+     95%   3903
+     98%   3903
+     99%   3903
+    100%   3903 (longest request)
+
+
+
+* Apache
+
+
+.. code-block:: none
+
+   Document Length:        44109 bytes
+   
+   Concurrency Level:      1
+   Time taken for tests:   18.422969 seconds
+   Complete requests:      2
+   Failed requests:        0
+   Write errors:           0
+   Total transferred:      88570 bytes
+   HTML transferred:       88218 bytes
+   Requests per second:    0.11 [#/sec] (mean)
+   Time per request:       9211.485 [ms] (mean)
+   Time per request:       9211.485 [ms] (mean, across all concurrent requests)
+   Transfer rate:          4.67 [Kbytes/sec] received
+   
+   Connection Times (ms)
+                 min  mean[+/-sd] median   max
+   Connect:        1    1   1.0      2       2
+   Processing:  6731 9209 3505.1  11688   11688
+   Waiting:     6615 9058 3455.6  11502   11502
+   Total:       6732 9211 3505.8  11690   11690
+   
+   Percentage of the requests served within a certain time (ms)
+     50%  11690
+     66%  11690
+     75%  11690
+     80%  11690
+     90%  11690
+     95%  11690
+     98%  11690
+     99%  11690
+    100%  11690 (longest request)
+
+
+
+リクエスト数2、同時接続数2
+************************************************************************
+
+
+
+* lighttpd
+
+
+.. code-block:: none
+
+   Document Length:        43399 bytes
+   
+   Concurrency Level:      2
+   Time taken for tests:   7.424875 seconds
+   Complete requests:      2
+   Failed requests:        0
+   Write errors:           0
+   Total transferred:      87510 bytes
+   HTML transferred:       86798 bytes
+   Requests per second:    0.27 [#/sec] (mean)
+   Time per request:       7424.875 [ms] (mean)
+   Time per request:       3712.437 [ms] (mean, across all concurrent requests)
+   Transfer rate:          11.45 [Kbytes/sec] received
+   
+   Connection Times (ms)
+                 min  mean[+/-sd] median   max
+   Connect:        1    1   1.0      2       2
+   Processing:  7351 7386  50.2   7422    7422
+   Waiting:     7024 7059  49.5   7094    7094
+   Total:       7352 7388  50.9   7424    7424
+   
+   Percentage of the requests served within a certain time (ms)
+     50%   7424
+     66%   7424
+     75%   7424
+     80%   7424
+     90%   7424
+     95%   7424
+     98%   7424
+     99%   7424
+    100%   7424 (longest request)
+
+
+
+* Apache
+
+
+.. code-block:: none
+
+   Document Length:        44109 bytes
+   
+   Concurrency Level:      2
+   Time taken for tests:   15.394036 seconds
+   Complete requests:      2
+   Failed requests:        0
+   Write errors:           0
+   Total transferred:      88570 bytes
+   HTML transferred:       88218 bytes
+   Requests per second:    0.13 [#/sec] (mean)
+   Time per request:       15394.036 [ms] (mean)
+   Time per request:       7697.018 [ms] (mean, across all concurrent requests)
+   Transfer rate:          5.59 [Kbytes/sec] received
+   
+   Connection Times (ms)
+                 min  mean[+/-sd] median   max
+   Connect:        1    1   1.0      2       2
+   Processing: 15263 15327  90.5  15391   15391
+   Waiting:    15084 15179 134.4  15274   15274
+   Total:      15264 15328  91.2  15393   15393
+   
+   Percentage of the requests served within a certain time (ms)
+     50%  15393
+     66%  15393
+     75%  15393
+     80%  15393
+     90%  15393
+     95%  15393
+     98%  15393
+     99%  15393
+    100%  15393 (longest request)
+
+
+あとは、Apacheで使っているWAFとか帯域制御とかは、別に実装する必要があるなぁ。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Ops, gadget, 
+.. tags::
+
+

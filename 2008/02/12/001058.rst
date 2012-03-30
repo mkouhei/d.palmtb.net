@@ -1,0 +1,14 @@
+﻿泣きっ面に蜂。
+##############
+
+
+rEFItで何故かEFI Shellがメニューに現れず、sを押しても当然EFI Shellが使えない。gptsyncが出来ないので、Linuxをブート出来ん…。
+そんでまた、OS Xのディスク領域を20GBにしておいたら、本日リリースされたOS X 10.5.2には容量不足でアップデート出来んと。Air だと最低25GBは確保しておく必要があるのか…。いっそのこと、全部Debianにしてみようかな…。
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, Debian, 
+.. tags::
+
+

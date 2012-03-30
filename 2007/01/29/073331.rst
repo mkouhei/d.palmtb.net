@@ -1,0 +1,52 @@
+﻿kernel 2.6.20で…。
+################################
+
+
+KVMを使おうと思い、kernel 2.6.20-rc6でカーネルの再構築をしたところ、何故か知らんが、netfilterの機能の一部の機能が使えなくなった。-m stateを指定していると、そんなオプションを知らねぇとか言う。
+lsmodをしてみたら、ip_conntrackがロードされてない！
+カーネルオプションにも無い！そもそも、make oldconfigとして利用した.configファイルにも無い。なんてこった。再構築しなおそう。
+というわけで、寝ている間にビルドしなおして正常に使えるようになった。よしよし。どうやら、原因はNetfilter用のモジュール名が変更されたためらしい。
+kernel 2.6.20でのNetfilter関連のモジュール。
+
+.. code-block:: none
+
+   ipt_REJECT              5504  1
+   nf_conntrack_ipv4      17804  29
+   ipt_LOG                 7296  8
+   iptable_filter          4096  1
+   ip_tables              13284  1 iptable_filter
+   x_tables               15620  5 ipt_REJECT,xt_state,xt_tcpudp,ipt_LOG,ip_tables
+   nf_conntrack           57992  3 nf_conntrack_ipv4,xt_state,nf_conntrack_ftp
+   nf_conntrack_ftp       10880  0
+
+
+こっちはkernel 2.6.18の。
+
+.. code-block:: none
+
+   ipt_REJECT              4928  1
+   ipt_LOG                 5568  8
+   iptable_filter          2880  1
+   ip_tables              11656  1 iptable_filter
+   x_tables               12548  5 ipt_REJECT,xt_state,xt_tcpudp,ipt_LOG,ip_tables
+   ip_conntrack_ftp        7088  0
+   ip_conntrack           46708  2 xt_state,ip_conntrack_ftp
+   nfnetlink               6360  1 ip_conntrack
+
+
+
+* nf_conntrack_ipv4
+* nf_conntrack
+* nf_conntrack_ftp
+
+とかのprefixがip_からnf_に変わっている。だからkernel 2.6.18の.configでmake oldしてもダメだったのか…。あ、nfnetlinkが抜けてる！実体が何かよく分からんので検索してみたら、どうやらNetlink層で処理を行うのか。って名前の通りだ…。orz
+http://lwn.net/Articles/144507/
+帰ってきたらもう一度再構築するか…。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

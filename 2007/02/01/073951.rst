@@ -1,0 +1,13 @@
+﻿/dev/kvmへのアクセス権
+##############################
+
+
+udevで管理しているので、/dev/kvm自体のオーナ、グループを変更するよりKVMを使うユーザのサブグループにkvmを指定した方が良いだろう。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, virt., 
+.. tags::
+
+

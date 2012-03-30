@@ -1,0 +1,14 @@
+﻿記憶違い。
+##########
+
+
+後輩にOpenSSHの設定を聞かれて、説明したのと実際の動きと違うことから、UsePAMとPubkeyAuthentication、PasswordAuthentication、ChallengeResponseAuthenticationの関係を間違えて覚えていたことが分かった。全部Noと設定すると予想Guyな動きをしたりと途中から教えるよりも今までやったことの無い設定の検証で遊んでいた。w  OpenSSHはバージョンに依って動きが変わるがUsePAMは典型的なパターンだったのね。
+自分の間違えも発見できるし、やはり人に教えるのは勉強になるなぁ。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, エラー, 
+.. tags::
+
+

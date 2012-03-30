@@ -1,0 +1,24 @@
+﻿リバースプロキシするとIndexesの対象にならない。
+######################################################
+
+
+ApacheでIndexesで表示させているディレクトリが沢山あってですね、一部のファイルは別のサーバで生成していて、さらに過去のファイルが結構あったので、横着して集約せずにリバースプロキシで表示させようと思ったのです。
+つまり、/var/www/の下をOptions Indexesで表示させていて、hogeとかmogeなどがそこにあるわけです。そこにfugaとかいうディレクトリがある時、普通ならfugaも表示されますね。
+ここで、
+
+.. code-block:: none
+
+   ProxyPass /fuga http://otherhost/fuga
+   ProxyPassReverse /fuga http://foo.example.com/fuga
+
+
+と設定してやると、hogeとかmogeは（関係無いので）ちゃんと表示されますが、fugaは表示されない！知らんかった…。
+とりあえず、そんだけ。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

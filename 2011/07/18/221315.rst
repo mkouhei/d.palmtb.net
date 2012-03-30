@@ -1,0 +1,187 @@
+﻿lighttpdでWebDAV + LDAPを利用する。
+########################################################
+
+
+結論を言うとユーザの権限をフラットにしておく場合には使えます。が、ユーザの権限をグループ毎に分ける場合には、LDAPのグループ、というかグループでの認証には未対応なのでApacheを使うと良いでしょう。
+
+lighttpdの設定。
+************************************
+
+
+WebDAV + LDAPを使う方法だけとりあえず記録しておきました。
+
+/etc/lighttpd/lighttpd.conf
+==================================================
+
+
+
+.. code-block:: none
+
+   diff --git a/lighttpd/lighttpd.conf b/lighttpd/lighttpd.conf
+   index 32eb9d5..d605901 100644
+   --- a/lighttpd/lighttpd.conf
+   +++ b/lighttpd/lighttpd.conf
+   @@ -31,3 +31,16 @@ compress.filetype           = ( application/x-javascript, 
+   text/css, text/ht
+    
+    include_shell /usr/share/lighttpd/create-mime.assign.pl
+    include_shell /usr/share/lighttpd/include-conf-enabled.pl
+   +
+   +$HTTP[host] == hoge.example.org {
+   +       server.document-root = /var/www/
+   +       alias.url = ( /dav = /var/www/dav )
+   +       $HTTP[url] =~ ^/dav($|/) {
+   +               webdav.activate = enable
+   +               webdav.is-readonly = disable
+   +               webdav.sqlite-db-name = /var/run/lighttpd/lighttpd.webdav_lock.
+   db
+   +               auth.require = (  = ( method = basic,
+   +                                        realm = hoge,
+   +                                        require = valid-user ) )
+   +       }
+   +}
+
+
+
+* webdav.activateをenableでWebDAVを有効に
+* webdav.is-readonlyをdisableで書き込み可に
+* webdav.sqlite-db-nameにWebDAV用のロックファイルを指定
+* auth.requireでLDAPのBASIC認証の認証方式を指定
+
+
+/etc/lighttpd/conf-available/05-auth.conf
+==============================================================================
+
+
+
+.. code-block:: none
+
+   diff --git a/lighttpd/conf-available/05-auth.conf b/lighttpd/conf-available/05-auth.conf
+   index 5d896e3..4323034 100644
+   --- a/lighttpd/conf-available/05-auth.conf
+   +++ b/lighttpd/conf-available/05-auth.conf
+   @@ -2,13 +2,13 @@
+    
+    server.modules                += ( mod_auth )
+    
+   -# auth.backend                 = plain
+   +auth.backend                 = ldap
+    # auth.backend.plain.userfile  = lighttpd.user
+    # auth.backend.plain.groupfile = lighttpd.group
+    
+   -# auth.backend.ldap.hostname   = localhost
+   -# auth.backend.ldap.base-dn    = dc=my-domain,dc=com
+   -# auth.backend.ldap.filter     = (uid=$)
+   +auth.backend.ldap.hostname   = ldapserver
+   +auth.backend.ldap.base-dn    = o=hoge,dc=example,dc=org
+   +auth.backend.ldap.filter     = (uid=$)
+    
+    # auth.require                 = ( /server-status = 
+    #                                ( 
+
+
+
+* auth.backendで認証方法をLDAPに指定
+* auth.backend.ldap.hostnameにLDAPサーバのホスト名またはIPアドレスを指定
+* auth.backend.ldap.base-dnにLDAPのbase DNを指定
+* auth.backend.ldap.filterにLDAPのユーザ認証用に(uid=$)をフィルター指定
+
+
+モジュールの有効化
+==================================================
+
+
+DebianのlighttpdはApacheと同様、利用できる設定(conf-available/)と有効になっている設定(conf-enable/)があるので、WebDAVとLDAPの認証を有効にするためには、/usr/sbin/lighty-enable-modコマンドを使用します。
+
+.. code-block:: none
+
+   $ sudo lighty-enable-mod auth
+   Available modules: auth accesslog cgi evasive evhost expire fastcgi flv-streaming no-www \
+   proxy rrdtool simple-vhost ssi ssl status userdir usertrack webdav fastcgi-php debian-doc 
+   Already enabled modules:
+   Enabling auth: ok
+   Run /etc/init.d/lighttpd force-reload to enable changes
+   $ sudo lighty-enable-mod webdav
+   Available modules: auth accesslog cgi evasive evhost expire fastcgi flv-streaming no-www \
+   proxy rrdtool simple-vhost ssi ssl status userdir usertrack webdav fastcgi-php debian-doc 
+   Already enabled modules: auth
+   Enabling webdav: ok
+   Run /etc/init.d/lighttpd force-reload to enable changes
+
+
+
+lighttpdでグループでの認証が未対応な理由。
+******************************************************************************************************************
+
+
+lighttpd.confのauth.requireのパラメータのrequireにgroupとしても、下記のログがでます。
+
+.. code-block:: none
+
+   2011-07-14 16:11:11: (http_auth.c.402) group ... (not implemented) 
+   2011-07-14 16:11:11: (http_auth.c.416) nothing matched 
+   2011-07-14 16:11:11: (http_auth.c.888) rules didnt match 
+
+
+え、&#34;note implemented&#34;って…。
+Sidのlighttpd 1.4.29のソースコード(src/http_auth.c)を見ると、
+
+.. code-block:: none
+
+                   /* the part before the = is user|group|host */
+   
+                   k = r;
+                   k_len = eq - r;
+                   v = eq + 1;
+                   v_len = r_len - k_len - 1;
+   
+                   if (k_len == 4) {
+                           if (0 == strncmp(k, user, k_len)) {
+                                   if (username 
+                                       username_len == v_len 
+                                       0 == strncmp(username, v, v_len)) {
+                                           return 0;
+                                   }
+                           } else if (0 == strncmp(k, host, k_len)) {
+                                   log_error_write(srv, __FILE__, __LINE__, s, host ... (not implemented));
+                           } else {
+                                   log_error_write(srv, __FILE__, __LINE__, s, unknown key);
+                                   return -1;
+                           }
+                   } else if (k_len == 5) {
+                           if (0 == strncmp(k, group, k_len)) {
+                                   log_error_write(srv, __FILE__, __LINE__, s, group ... (not implemented));
+                           } else {
+                                   log_error_write(srv, __FILE__, __LINE__, ss, unknown key, k);
+                                   return -1;
+                           }
+
+
+と、ユーザ認証しか対応していないのでした。ググってみると、過去にも同じような話がありました。
+
+LDAP-Group support for HTTP-Authentication
+Support for using ldap DN in auth-require, example:
+
+.. code-block:: none
+
+   auth.require = ( 
+       / = (
+           method = basic,
+           realm = test lighty auth,
+           require = group=cn=coolguys,ou=groups,dc=foo,dc=org|user=admin|group=cn=group2,ou=groups,dc=foo,dc=org 
+       )
+   )
+
+
+Patch also available at http://danielbond.org/patches/lighttpd-http_auth.c-ldap_group.diff
+http://redmine.lighttpd.net/issues/1817
+これに対応するパッチも添付されているのですが、最初に投稿されてから2年以上も経っているのに未だマージされていません。
+というわけで、lightyにこだわる理由も特にないので、結局今回はApacheで行うことにしました。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, Debian, 
+.. tags::
+
+

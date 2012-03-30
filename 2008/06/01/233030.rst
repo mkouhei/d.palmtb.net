@@ -1,0 +1,211 @@
+﻿armadillo-JにDHCPサーバを移行。
+##############################################
+
+
+やる暇無くて、ずっとPendingしていた、玄箱で稼働させていたISC DHCPサーバからArmadillo-JにDHCPサーバを移行する計画を昨日今日で重い腰上げてやっとこさ完了。Debian Sidのudhcpのソースパッケージを持ってきて、ソースツリーをArmadillo-J用のツリーに突っ込んでクロスコンパイルしてarmadillo-Jに突っ込んだ。
+
+環境構築
+********************
+
+
+アットマークテクノのサイトにある通り。Armadillo-Jのダウンロードサイトから下記を取得。
+
+* Atmark-dist
+* Linuxカーネル
+* クロスツールチェーン
+
+
+ソースコード展開
+********************************************
+
+
+Kernelソースのリンクのやり方を間違えていたので最初、ちゃんとビルドできずにハマった。シンボリックリンクの名前が、&#34;linux-2.4.22.x&#34;という形式でないとちゃんとビルドできなかったので、そのまんま、その形でリンクを張った。
+
+.. code-block:: none
+
+   $ tar zxf atmark-dist-20060801.tar.gz
+   $ tar zxf linux-2.4.22-uc0-aj5.tar.gz
+   $ cd atmark-dist-20060801
+   $ ln -s ../linux-2.4.22-uc0-aj5 linux-2.4.22.x
+
+
+
+クロスツールチェーンの導入
+**************************************************************************
+
+
+
+.. code-block:: none
+
+   $ cd ../
+   $ sudo sh ./arm-elf-tools-20030314-fix20060808.sh
+
+
+
+ビルド
+**************
+
+現在、Armadillo-Jは、ブート後も簡単に変更分を反映できるように普通のBaseイメージにせずに、JFFS2ファイルシステムにしているのだが、プロダクトの選択時 [#]_ に、Armadillo-J.JFFS2を選択すると、ビルドに失敗する。なので、プロダクト選択時には&#34;Armadillo-J.Base&#34;を選択した。Baseで作成されたイメージを固める前のファイルをJFFS2を使っているArmadillo-Jに持っていってもちゃんと動く。make configの選択肢はユーザマニュアルに沿ってやれば良し。
+取り合えず、ちゃんとビルド出きることを確認する。
+
+.. code-block:: none
+
+   $ cd atmark-dist-20060801
+   $ make config
+   $ make dep all
+
+
+
+udhcpのソースパッケージ取得
+************************************************************************
+
+
+確認を取れたら、Sidのudhcpのソースパッケージを取得する。今回、udhcpdを選択したのは下記理由。
+
+* Atmark-distには、NETtel DHCP Server [#]_ とISC DHCP Server [#]_ が含まれているのだが、前者は、MACアドレスを指定してIPアドレスを固定させる方法がない。
+
+後者はソースツリーに含まれてはいるもののデフォルトではビルドができない。そもそもデカすぎる。ということで、Debianから組込システム向けのDHCPサーバであるudhcpを取得してビルドしたわけである。
+
+.. code-block:: none
+
+   $ cd ..
+   $ apt-get source udhcp
+   $ cp -i udhcp-0.9.8cvs20050303/ atmark-dist-20060801/user/udhcp
+
+
+
+ビルド用設定ファイルの修正
+**************************************************************************
+
+
+atmark-dist-yyyymmdd/user/ディレクトリ以下に、ソースコードを突っ込んだだけではビルドできない。なので、以下のファイルを修正する。ncursesのメニュー形式でコンパイルするので、選択出きるようにするわけである。
+
+* atmark-dist-20060801/config/config.in
+
+
+.. code-block:: none
+
+    $ diff -u config.in.org config.in
+    --- config.in.org	2006-08-16 19:11:04.000000000 +0900
+    +++ config.in	2008-06-01 19:29:43.000000000 +0900
+    @@ -291,6 +291,7 @@
+     bool &#39;brcfg&#39;			CONFIG_USER_BRCFG_BRCFG
+     bool &#39;bridge utils&#39;		CONFIG_USER_BRCTL_BRCTL
+     bool &#39;dhcpcd&#39;			CONFIG_USER_DHCPCD_DHCPCD
+    +bool &#39;udhcp&#39;			CONFIG_USER_DHCPD_UDHCP
+     if [ &#34;$CONFIG_USER_DHCPCD_DHCPCD&#34; = &#34;y&#34; ]; then
+     	bool &#39;  dhcpcd link-local support&#39;	CONFIG_USER_DHCPCD_LLIP
+     fi
+
+
+
+* atmark-dist-20060801/user/Makefile
+
+
+.. code-block:: none
+
+    $ diff -u Makefile.org Makefile
+    --- Makefile.org	2006-06-10 19:52:27.000000000 +0900
+    +++ Makefile	2008-06-01 19:30:05.000000000 +0900
+    @@ -72,6 +72,7 @@
+     dir_$(CONFIG_USER_DHCPCD_DHCPCD)            += dhcpcd
+     dir_$(CONFIG_USER_DHCPCD_NEW_DHCPCD)        += dhcpcd-new
+     dir_$(CONFIG_USER_DHCPD_DHCPD)              += dhcpd
+    +dir_$(CONFIG_USER_DHCPD_UDHCP)              += udhcp
+     dir_$(CONFIG_USER_DIALD_DIALD)              += diald
+     dir_$(CONFIG_USER_DISCARD_DISCARD)          += discard
+     dir_$(CONFIG_USER_DISCARD_ECHO)             += discard
+
+
+
+実行ファイルをアップロード
+**************************************************************************
+
+
+udhcpは実はちゃんと最後までビルドできないのだが、実行ファイル自体はatmark-dist-20060801/user/udhcp/以下にちゃんとできる。なので、ファイルをArmadillo-JへFTPでアップロードする。
+
+udhcpdの設定
+**************************
+
+
+udhcpdは/binディレクトリ以下に配置し、アクセス権を変更する。
+
+.. code-block:: none
+
+   # mv -i /home/guest/pub/udhcpd /bin/
+   # chown root:root /bin/udhcpd
+   # chmod 755 /bin/udhcpd
+
+
+
+.. code-block:: none
+
+   start 		192.168.0.20	#default: 192.168.0.20
+   end		192.168.0.254	#default: 192.168.0.254
+   interface	eth0		#default: eth0
+   max_leases	254		#default: 254
+   remaining	yes		#default: yes
+   auto_time	7200		#default: 7200 (2 hours)
+   decline_time	3600		#default: 3600 (1 hour)
+   conflict_time	3600		#default: 3600 (1 hour)
+   offer_time	60		#default: 60 (1 minute)
+   min_lease	60		#defult: 60
+   lease_file	/var/lib/misc/udhcpd.leases	#defualt: /var/lib/misc/udhcpd.leases
+   pidfile	/var/run/udhcpd.pid	#default: /var/run/udhcpd.pid
+   opt	dns	192.168.0.2 192.168.0.3
+   option	subnet	255.255.255.0
+   opt	router	192.168.0.254
+   option	domain	hoge.org
+   option	lease	864000		# 10 days of seconds
+   static_lease xx:xx:xx:xx:xx:xx 192.168.0.100
+   static_lease xx:xx:xx:xx:xx:xx 192.168.0.101
+   static_lease xx:xx:xx:xx:xx:xx 192.168.0.102
+   static_lease xx:xx:xx:xx:xx:xx 192.168.0.103
+   static_lease xx:xx:xx:xx:xx:xx 192.168.0.104
+   static_lease xx:xx:xx:xx:xx:xx 192.168.0.105
+
+
+
+起動してみる
+********************************
+
+
+今回、ライブラリはuClibsを指定してコンパイルしていたのだが、バックグラウンドジョブは対応していないらしく、フォアグラウンドで実行させねばならん。なので、一番最後に実行される起動スクリプトとして下記を用意した。
+
+.. code-block:: none
+
+   # cd /etc/rc.d/rc.start/
+   # ls
+   rc.40.network   rc.70.inetd     rc.80.thttpd    rc.89.sntp      rc.99.ledctrl
+   # cp -ip rc.80.thttpd rc.99.udhcpd
+   # vi rc.99.udhcpd
+   #!/bin/sh
+   
+   PATH=/bin:/sbin:/usr/bin:/usr/sbin
+   
+   echo -n &#34;Starting udhcpd: &#34;
+   mkdir -p /var/lib/misc/
+   exec udhcpd  /etc/udhcpd.conf 
+   if [ $? = 0 ]; then echo &#34;done&#34;; else echo &#34;failed&#34;; fi
+   
+   # mv -i rc.99.ledctrl rc.98.ledctrl
+
+
+これでhalt後に起動かければDHCPサーバとして動く。停止させる時は、&#34;kill -9&#34;で無理やり停止させないといけないのがイケてなくてアカンなぁ。この辺は改善余地アリだなぁ。
+
+
+.. rubric:: footnote
+
+.. [#] ：AtmarkTechno-Productsの選択時
+.. [#] ：atmark-dist-20060801/user/dhcpd/
+.. [#] ：atmark-dist-20060801/user/dhcp-isc/
+.. [#] ：make menuconfig, make dep allを実行する
+.. [#] ：コメントは省略
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, Ops, gadget, 
+.. tags::
+
+

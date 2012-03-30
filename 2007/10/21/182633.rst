@@ -1,0 +1,45 @@
+﻿net-toolsをアップデートしようとするとエラーになるので…。
+##################################################################
+
+
+
+.. code-block:: none
+
+   $ LANG=C sudo apt-get upgrade
+   Reading package lists... Done
+   Building dependency tree
+   Reading state information... Done
+   The following packages have been kept back:
+     libvcdinfo0 totem-xine ttf-dejavu
+   The following packages will be upgraded:
+     net-tools
+   1 upgraded, 0 newly installed, 0 to remove and 3 not upgraded.
+   47 not fully installed or removed.
+   Need to get 0B/258kB of archives.
+   After unpacking 41.0kB of additional disk space will be used.
+   Do you want to continue [Y/n]?
+   Reading package fields... Done
+   Reading package status... Done
+   Retrieving bug reports... Done
+   Parsing Found/Fixed information... Done
+   Reading changelogs... Done
+   (Reading database ... 146581 files and directories currently installed.)
+   Preparing to replace net-tools 1.60-17 (using .../net-tools_1.60-17.1_i386.deb) ...
+   Unpacking replacement net-tools ...
+   dpkg: error processing /var/cache/apt/archives/net-tools_1.60-17.1_i386.deb (--unpack):
+    trying to overwrite `/usr/share/locale/ja/LC_MESSAGES/net-tools.mo&#39;, which is also in package ja-trans
+   dpkg-deb: subprocess paste killed by signal (Broken pipe)
+   Errors were encountered while processing:
+    /var/cache/apt/archives/net-tools_1.60-17.1_i386.deb
+   E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+
+ja-transってどこかで見たなぁと思ったら、これでした。で、ja-transを削除したら、無事アップデート完了。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

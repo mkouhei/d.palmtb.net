@@ -1,0 +1,53 @@
+﻿Debianでqueryperfを使う。
+########################################
+
+
+DNSサーバの負荷検証を行う場合、queryperfを使うと思いますが、Debianではと、apt-cacheでもapt-fileでも見つかりません。
+
+.. code-block:: none
+
+   $ apt-cache search queryperf
+   $ apt-file search queryperf
+   $
+
+
+さて、どうすれば良いでしょうか。
+
+答えは、bind9のソースパッケージを取得することです。
+
+.. code-block:: none
+
+   $ apt-get source bind9
+
+
+ソースパッケージを取得後、カレントディレクトリにbind9のソースツリーが展開されるので、bind9-9.8.1.dfsg/contrib/queryperf/ディレクトリに移動し、コンパイルします。
+
+.. code-block:: none
+
+   $ cd bind9-9.8.1.dfsg/contrib/queryperf/
+   $ sh configure
+   (snip)
+   $ make
+   gcc  -DHAVE_CONFIG_H -c queryperf.c
+   gcc  -DHAVE_CONFIG_H  queryperf.o  -lnsl -lresolv  -lm -o queryperf
+
+
+以上でqueryperfが生成されましたね。これで自分で管理しているDNSサーバに負荷検証を好きなだけかけられますね。
+
+
+
+.. author:: mkouhei
+.. categories:: network, Debian, 
+.. tags::
+
+
+----
+
+Comment:
+
+	BTS に wishlist 出すところが書いてません。
+
+	written by  iwamatsu
+	01/17/2012 09:25:47
+	
+

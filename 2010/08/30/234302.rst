@@ -1,0 +1,43 @@
+﻿palm-novacomd稼働時に出るエラー。
+##############################################
+
+
+
+.. code-block:: none
+
+   [16781.642971] usb usb4: __pm_runtime_resume()!
+   [16781.642972] usb usb4: __pm_runtime_resume() returns 1!
+   [16781.642987] usb usb2: __pm_runtime_resume()!
+   [16781.642990] usb usb2: __pm_runtime_resume() returns 1!
+   [16781.643004] usb usb2: __pm_runtime_resume()!
+   [16781.643006] usb usb2: __pm_runtime_resume() returns 1!
+   [16781.643023] usb 1-1: __pm_runtime_resume()!
+   [16781.643025] usb 1-1: __pm_runtime_resume() returns 1!
+   [16781.643039] usb 1-4: __pm_runtime_resume()!
+   [16781.643041] usb 1-4: __pm_runtime_resume() returns 1!
+   [16781.643054] usb usb1: __pm_runtime_resume()!
+   [16781.643056] usb usb1: __pm_runtime_resume() returns 1!
+
+
+palm-novacomdを止める [#]_ とこのエラーも止まる。
+
+.. code-block:: none
+
+   [23945.824072] usb usb2: __pm_runtime_suspend() from workqueue!
+   [23945.824093] usb usb2: __pm_runtime_suspend() returns 0!
+
+
+とりあえずメモ。
+
+
+.. rubric:: footnote
+
+.. [#] ：sudo stop palm-novacomd
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, Debian, gadget, 
+.. tags::
+
+

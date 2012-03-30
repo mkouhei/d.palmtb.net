@@ -1,0 +1,49 @@
+﻿pythonでBTSの情報をゴニョゴニョする。
+##############################################
+
+
+Debian/Ubuntu JP Advent Calendar 2011がどうやら三日坊主にすらならない状態だったので、日付変わってしまいましたが急遽参加してみることにしました。Python関連のパッケージのメンテナンスをし始めたこともあるので、3日目のネタとしては、PythonでDebian&#39;s Bug Tracking System(BTS)を扱う方法について紹介します。
+通常、Debian&#39;s BTSの情報を扱う場合、Webサイトで行うか、RESTfulインタフェースを利用して検索、閲覧を行うか、メールで情報を収集するかバグ情報を報告するか、メールインタフェースのラッパーとしてreportbugコマンドを使うのが一般的だと思います。先日のemacsでのBTS用の文面を生成するのもメールインタフェースを介してのバグ報告です。
+今回のPythonのDebian BTSインタフェースは、Debian&#39;s BTSのSOAPインタフェースを介してBTS情報をクエリすることができます。
+
+インストール
+********************************
+
+
+利用するには、python-debianbtsパッケージをまずインストールしましょう。
+
+.. code-block:: none
+
+   $ sudo apt-get install python-debianbts
+
+
+
+使用方法
+********************
+
+
+使用するには、debianbtsパッケージをインポートします。
+
+.. code-block:: none
+
+   &gt;&gt;&gt; import debianbts
+
+
+試しに、先日報告された、python-funcparserlibのバグ情報をリスト形式で取得してみましょう。
+
+.. code-block:: none
+
+   &gt;&gt;&gt; debianbts.get_bug_log(646645)
+   [{&#39;body&#39;: uSource: funcparserlib\nVersion: 0.3.5-1\nSeverity: serious\nTags: wheezy sid\nUser: debian-qa@lists.debian.org\nUsertags: qa-ftbfs-20111022 qa-ftbfs\n (snip) Delivered-To: submit@bugs.debian.org&#39;}]
+
+
+
+という感じでバグ情報を取得できます。加工するのも簡単ですね。是非いろいろやってみてください。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, python, 
+.. tags::
+
+

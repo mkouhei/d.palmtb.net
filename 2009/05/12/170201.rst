@@ -1,0 +1,15 @@
+﻿OpenBlockS 600
+############################
+
+
+http://openblocks.plathome.co.jp/products/600/
+PowerPC 600MHz, メモリ1GBで消費電力8W、動作温度条件も55℃まで動作保証か。CPUやメモリの性能アップに比べ、消費電力が2倍で済んで、10W以内にちゃんと収めたのは素晴らしいな。
+個人でOpenBlockS266 6台に、OpenMicroServer 2台を使っているワシとしては、これは是非ともほしいなぁ。1台検証用に提供してくれないかなぁ、と呟いてみる。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, Ops, computer, 
+.. tags::
+
+

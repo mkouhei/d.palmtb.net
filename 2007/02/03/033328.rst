@@ -1,0 +1,18 @@
+﻿/var/log/system.log
+######################################
+
+
+Mac OS Xで電源が突然落ちないか試すため、使いにくくて仕方ないが、OS Xでしばらく過ごす [#]_ 。ブラウザだけ使っているのも何なので、内部の確認。/var/log/messageではなくて、/var/log/system.logか。でもあまりログはかかれていないなぁ。dmesgコマンドもあるけど、特権が必要なので、sudoで実行する必要あり。やっぱり微妙につかいにくいなぁ。
+
+
+.. rubric:: footnote
+
+.. [#] ：Let.. [#] s noteもあるのだが、MacBookの画面になれたら、外に持ち歩く時は別として、自宅ではMacBookの方が良い。
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, 
+.. tags::
+
+

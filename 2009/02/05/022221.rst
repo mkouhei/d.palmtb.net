@@ -1,0 +1,167 @@
+﻿virt-manager入れてみた。
+####################################
+
+
+２年前の春のOSCでの仮想化友の会＆東京エリアDebian勉強会 合同勉強会での発表前に、virt-managerを導入しようとして敗北して、OSCが終わった後はコマンドラインで普通に使えるから必要ねぇなぁ、とそのまま放置プレイしていたのだが、Debian Wikiを見たらいつの間にかvirt-managerを使えるようになっていたので、インストールしてみた。
+
+.. code-block:: none
+
+   $ sudo apt-get install virt-manager
+   パッケージリストを読み込んでいます... 完了
+   依存関係ツリーを作成しています                
+   状態情報を読み取っています... 完了
+   以下のパッケージが自動でインストールされましたが、もう必要とされていません:
+     dvidvi libcairo-perl libgtk2-perl unzoo libmudflap0-dev voikko-fi
+     libsmbiosxml1 libsmbios1 libclamav4 dvi2tty libavahi-core5 libxcrypt1
+     arj libmudflap0 libgnome2-canvas-perl libglib-perl libconfuse0
+     libdaemon0 libc-ares2 app-install-data perl-tk svgalibg1 cowdancer
+     libcupsys2 perl-doc libetpan13 libcucul0
+   これらを削除するには &#39;apt-get autoremove&#39; を利用してください。
+   以下の特別パッケージがインストールされます:
+     dmsetup dnsmasq dnsmasq-base libgtk-vnc-1.0-0 libpolkit-dbus2
+     libpolkit2 libvirt-bin libvirt0 libxenstore3.0 lvm2 netcat-openbsd
+     python-dbus python-glade2 python-gnome2 python-gtk-vnc python-libvirt
+     python-pyorbit python-urlgrabber python-vte virt-viewer virtinst
+   提案パッケージ:
+     resolvconf policykit python-dbus-doc python-dbus-dbg python-gtk2-doc
+   以下のパッケージが新たにインストールされます:
+     dmsetup dnsmasq dnsmasq-base libgtk-vnc-1.0-0 libpolkit-dbus2
+     libpolkit2 libvirt-bin libvirt0 libxenstore3.0 lvm2 netcat-openbsd
+     python-dbus python-glade2 python-gnome2 python-gtk-vnc python-libvirt
+     python-pyorbit python-urlgrabber python-vte virt-manager virt-viewer
+     virtinst
+   アップグレード: 0 個、新規インストール: 22 個、削除: 0 個、保留: 0 個。
+   4241kB のアーカイブを取得する必要があります。
+   この操作後に追加で 13.3MB のディスク容量が消費されます。
+   続行しますか [Y/n]? 
+   取得:1 http://cdn.debian.or.jp sid/main dmsetup 2:1.02.27-4 [39.7kB]
+   取得:2 http://cdn.debian.or.jp sid/main dnsmasq-base 2.46-1 [264kB]
+   取得:3 http://cdn.debian.or.jp sid/main dnsmasq 2.46-1 [12.4kB]
+   取得:4 http://cdn.debian.or.jp sid/main libgtk-vnc-1.0-0 0.3.8-2 [77.8kB]
+   取得:5 http://cdn.debian.or.jp sid/main libpolkit2 0.9-2 [110kB]
+   取得:6 http://cdn.debian.or.jp sid/main libpolkit-dbus2 0.9-2 [88.8kB]
+   取得:7 http://cdn.debian.or.jp sid/main libxenstore3.0 3.2.1-2 [19.4kB]
+   取得:8 http://cdn.debian.or.jp sid/main libvirt0 0.4.6-10 [351kB]
+   取得:9 http://cdn.debian.or.jp sid/main libvirt-bin 0.4.6-10 [223kB]
+   取得:10 http://cdn.debian.or.jp sid/main lvm2 2.02.39-6 [366kB]
+   取得:11 http://cdn.debian.or.jp sid/main netcat-openbsd 1.89-3 [36.5kB]
+   取得:12 http://cdn.debian.or.jp sid/main python-dbus 0.83.0-1 [236kB]
+   取得:13 http://cdn.debian.or.jp sid/main python-glade2 2.12.1-6 [45.7kB]
+   取得:14 http://cdn.debian.or.jp sid/main python-pyorbit 2.14.3-2 [106kB]
+   取得:15 http://cdn.debian.or.jp sid/main python-gnome2 2.22.0-1 [485kB]
+   取得:16 http://cdn.debian.or.jp sid/main python-gtk-vnc 0.3.8-2 [30.0kB]
+   取得:17 http://cdn.debian.or.jp sid/main python-libvirt 0.4.6-10 [148kB]
+   取得:18 http://cdn.debian.or.jp sid/main python-urlgrabber 3.1.0-4 [56.6kB]
+   取得:19 http://cdn.debian.or.jp sid/main python-vte 1:0.16.14-4 [163kB]
+   取得:20 http://cdn.debian.or.jp sid/main virtinst 0.400.0-7 [187kB]
+   取得:21 http://cdn.debian.or.jp sid/main virt-manager 0.6.0-6 [1176kB]
+   取得:22 http://cdn.debian.or.jp sid/main virt-viewer 0.0.3-2 [19.6kB]
+   4241kB を 2s で取得しました (1852kB/s)
+   未選択パッケージ dmsetup を選択しています。
+   (データベースを読み込んでいます ... 現在 148197 個のファイルとディレクトリがインストールされています。)
+   (.../dmsetup_2%3a1.02.27-4_amd64.deb から) dmsetup を展開しています...
+   未選択パッケージ dnsmasq-base を選択しています。
+   (.../dnsmasq-base_2.46-1_amd64.deb から) dnsmasq-base を展開しています...
+   未選択パッケージ dnsmasq を選択しています。
+   (.../dnsmasq_2.46-1_all.deb から) dnsmasq を展開しています...
+   未選択パッケージ libgtk-vnc-1.0-0 を選択しています。
+   (.../libgtk-vnc-1.0-0_0.3.8-2_amd64.deb から) libgtk-vnc-1.0-0 を展開しています...
+   未選択パッケージ libpolkit2 を選択しています。
+   (.../libpolkit2_0.9-2_amd64.deb から) libpolkit2 を展開しています...
+   未選択パッケージ libpolkit-dbus2 を選択しています。
+   (.../libpolkit-dbus2_0.9-2_amd64.deb から) libpolkit-dbus2 を展開しています...
+   未選択パッケージ libxenstore3.0 を選択しています。
+   (.../libxenstore3.0_3.2.1-2_amd64.deb から) libxenstore3.0 を展開しています...
+   未選択パッケージ libvirt0 を選択しています。
+   (.../libvirt0_0.4.6-10_amd64.deb から) libvirt0 を展開しています...
+   未選択パッケージ libvirt-bin を選択しています。
+   (.../libvirt-bin_0.4.6-10_amd64.deb から) libvirt-bin を展開しています...
+   未選択パッケージ lvm2 を選択しています。
+   (.../lvm2_2.02.39-6_amd64.deb から) lvm2 を展開しています...
+   未選択パッケージ netcat-openbsd を選択しています。
+   (.../netcat-openbsd_1.89-3_amd64.deb から) netcat-openbsd を展開しています...
+   未選択パッケージ python-dbus を選択しています。
+   (.../python-dbus_0.83.0-1_amd64.deb から) python-dbus を展開しています...
+   未選択パッケージ python-glade2 を選択しています。
+   (.../python-glade2_2.12.1-6_amd64.deb から) python-glade2 を展開しています...
+   未選択パッケージ python-pyorbit を選択しています。
+   (.../python-pyorbit_2.14.3-2_amd64.deb から) python-pyorbit を展開しています...
+   未選択パッケージ python-gnome2 を選択しています。
+   (.../python-gnome2_2.22.0-1_amd64.deb から) python-gnome2 を展開しています...
+   未選択パッケージ python-gtk-vnc を選択しています。
+   (.../python-gtk-vnc_0.3.8-2_amd64.deb から) python-gtk-vnc を展開しています...
+   未選択パッケージ python-libvirt を選択しています。
+   (.../python-libvirt_0.4.6-10_amd64.deb から) python-libvirt を展開しています...
+   未選択パッケージ python-urlgrabber を選択しています。
+   (.../python-urlgrabber_3.1.0-4_all.deb から) python-urlgrabber を展開しています...
+   未選択パッケージ python-vte を選択しています。
+   (.../python-vte_1%3a0.16.14-4_amd64.deb から) python-vte を展開しています...
+   未選択パッケージ virtinst を選択しています。
+   (.../virtinst_0.400.0-7_all.deb から) virtinst を展開しています...
+   未選択パッケージ virt-manager を選択しています。
+   (.../virt-manager_0.6.0-6_amd64.deb から) virt-manager を展開しています...
+   未選択パッケージ virt-viewer を選択しています。
+   (.../virt-viewer_0.0.3-2_amd64.deb から) virt-viewer を展開しています...
+   man-db のトリガを処理しています ...
+   dmsetup (2:1.02.27-4) を設定しています ...
+   dnsmasq-base (2.46-1) を設定しています ...
+   dnsmasq (2.46-1) を設定しています ...
+   Starting DNS forwarder and DHCP server: dnsmasq.
+   libgtk-vnc-1.0-0 (0.3.8-2) を設定しています ...
+   libpolkit2 (0.9-2) を設定しています ...
+   libpolkit-dbus2 (0.9-2) を設定しています ...
+   libxenstore3.0 (3.2.1-2) を設定しています ...
+   libvirt0 (0.4.6-10) を設定しています ...
+   libvirt-bin (0.4.6-10) を設定しています ...
+   Adding group `libvirt&#39; (GID 118) ...
+   終了。
+   Starting libvirt management daemon: libvirtd.
+   lvm2 (2.02.39-6) を設定しています ...
+   Setting up LVM Volume Groups  Reading all physical volumes.  This may take a while...
+   .
+   netcat-openbsd (1.89-3) を設定しています ...
+   python-dbus (0.83.0-1) を設定しています ...
+   Remove stale byte-compiled files...
+   python-glade2 (2.12.1-6) を設定しています ...
+   python-pyorbit (2.14.3-2) を設定しています ...
+   python-gnome2 (2.22.0-1) を設定しています ...
+   python-gtk-vnc (0.3.8-2) を設定しています ...
+   python-libvirt (0.4.6-10) を設定しています ...
+   python-urlgrabber (3.1.0-4) を設定しています ...
+   python-vte (1:0.16.14-4) を設定しています ...
+   virtinst (0.400.0-7) を設定しています ...
+   virt-manager (0.6.0-6) を設定しています ...
+   virt-viewer (0.0.3-2) を設定しています ...
+   python-support のトリガを処理しています ...
+
+
+導入されるパッケージ多すぎ。
+取り合えず、使い方は今度確認するか。コマンドラインだけで十分だと思うんだけどな…。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, virt., computer, 
+.. tags::
+
+
+----
+
+Comment:
+
+	cuiでしか使ってないです。というかvirt-installのためだけに入れてると言っても過言ではありませんｗ
+
+	written by  akuwano
+	02/08/2009 21:20:23
+	http://d.hatena.ne.jp/akuwano/
+
+----
+
+Comment:
+
+	実はまだこの後何もやってまへん。（わらおお、そうですか。今度試してみます。
+
+	written by  mkouhei
+	02/08/2009 21:34:58
+	http://d.hatena.ne.jp/mkouhei/
+

@@ -1,0 +1,15 @@
+﻿compizはダメだったけど…。
+################################
+
+
+BerylでだったらXfceで画面グルグルできるようになった。
+Wikiにまとめておいた。
+Xfce4でBerylを使う
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, MacBook, 
+.. tags::
+
+

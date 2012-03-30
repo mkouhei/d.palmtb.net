@@ -1,0 +1,21 @@
+﻿LaTeX + graphvizのPostScriptで日本語表示できた。
+##########################################################################
+
+
+LaTeXがISO-2022-JPで、graphvizがUTF-8で日本語表示させるのにPNG形式にするのが嫌で、なんとかPostScriptでちゃんと日本語表示できんかのぉと探してみたら、ばっちりのがあった。-Tpsオプションだけだと、
+
+.. code-block:: none
+
+   $ dot -Tps  hoge.dot  hoge.eps
+   Warning: UTF-8 input uses non-Latin1 characters which cannot be handled in PostScript output
+
+
+と表示されて、そのままmakeしてもうまくいかなかったのでとても助かった。リンク先ではフォントを指定しているみたいだが、ワシの環境では特にフォントを指定しなくても、VLゴシックが埋め込まれているので、dotのコード自体には特にフォントは指定せず、-Tps:cairoオプションだけで済んだ。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, TeX, 
+.. tags::
+
+

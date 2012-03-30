@@ -1,0 +1,40 @@
+﻿MacBook Pro 2011 EarlyをDebian化した。
+##################################################################
+
+
+testing(wheezy)のd-iを使ってインストールしようとしたところ、ベースシステムが見つからんということでインストールできず。
+仕方ないので、Squeezeをインストールしようとしたところ、今度はネットワークデバイスを認識出来ないときた。EthernetカードはBrodocom NexXtreme BCM57765なのだが、これはkernel 2.6.34からでないとサポートされていないようだ。それでもベースシステムのインストールはできるので、とりあえず、Squeezeを最小構成でインストールした。インストール後再起動すると、MacBook 5,2の時のようなCPU coreを1個に見せないと起動できない、ということはなく、ちゃんとcore i7の8個分ちゃんと認識できて、メモリも8GBとなっていることを確認できた。
+なので、今度はtestingのd-iを使い、レスキューモードで立ち上げて、/etc/apt/sources.listにsqueezeのAPTラインを追記して、パッケージのアップデートをして、fakerootとkernel-packages、libncurses5-dev、devscripts、ccacheをインストール。wgetでLinux Kernel 2.6.37.2のtarballをダウンロードしたのち再起動し、次のコマンドで8並列でカーネルビルド。
+
+.. code-block:: none
+
+   $ CONCURRENCY_LEVEL=8 MAKFLAGS=CC=ccache\ gcc make-kpkg --rootcmd fakeroot --config menuconfig \
+    --initrd --revision=$(date +%Y%m%d.%H%M) kernel-image kernel_headers modules_image
+
+
+約20分。Core 2 Duoの1コアの時は２時間近くかかっていたのを考えるとめっちゃ速い！
+NICも無事認識できたので、Wheezy/Sidにアップグレード。マルチコアの恩恵はカーネルビルドで十分受けたが、パッケージのアップグレードではSSDの恩恵を。パッケージのダウンロードおよび展開がめっちゃ速い！Squeeze→Wheezy→Sidへのアップグレードもものの5分ほどで終わった。素晴らしい。
+
+testingのd-iのバグだろう。
+****************************************************************
+
+
+testingをインストールしようとして出来なかったので、当初パーティションテーブルを作り直して、Mac OS Xを消してDebianだけをインストールしようとしたのが原因かと思っていた。が違っていた。おそらくd-iのバグだろう。d-iのバグもBTSで受けてつけているんだろうか…。
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, Debian, 
+.. tags::
+
+
+----
+
+Comment:
+
+	今度のMBPはクアッドコアですか。知らなかったです。
+
+	written by  ytakaya
+	03/07/2011 00:44:51
+	http://d.hatena.ne.jp/ytakaya/
+

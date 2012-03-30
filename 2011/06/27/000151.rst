@@ -1,0 +1,96 @@
+﻿CouchDB 1.1.0でSSLを使う
+########################################
+
+
+CouchDB 1.1.0がリリースされてから3週ほど経ちますが、すでにネイティブ対応されたCouchDBのSSLの機能は利用されたでしょうか。簡単に利用できるので、CACertでサーバ証明書を発行する手順も含めて紹介します。単に備忘録にしていたWikiを稼働させていたWebサーバが、データ移行せずに震災後停止してしまったので、検索しようとしたらなくて困ったからメモっておくか、というのが本音です。 [#]_ 
+CouchDB 1.1.0は既にインストールしていることが前提です。Sidではすでに1.1.0になっています。
+
+証明書の作成
+********************************
+
+
+まずはCSRを作成します。
+
+.. code-block:: none
+
+   $ openssl genrsa -des3 -rand /var/log/messages -out server.key 2048
+   $ openssl req -new -config /etc/ssl/openssl.cnf -key server.key -out server.csr
+
+
+できたCSRを使い、CACertでサーバ証明書を作成します。
+サーバ証明書→新規作成→フォームにCSRの文字列を貼り付け、送信→証明書(Cert)が表示されるので、これを/etc/couchdb/server.crtとして保存します。
+次に、秘密鍵をPEM形式に変換します。
+
+.. code-block:: none
+
+   $ openssl rsa -in server.key -outform PEM -out server.key.pem
+
+
+生成したPEM形式の秘密鍵を/etc/couchdb/server.key.pemとして保存します。
+
+local.iniの編集
+********************************
+
+
+次にCouchDBの設定です。/etc/couchdb/local.iniを以下のように編集します。
+
+.. code-block:: none
+
+   (snip)
+   [daemons]
+   (snip)
+   httpsd = {couch_httpd, start_link, [https]} ;セミコロンのコメントを外す
+   
+   [ssl]
+   cert_file = /etc/couchdb/server.crt     ;セミコロンのコメントを外し、server.crtのフルパスを記述する
+   key_file = /etc/couchdb/server.key.pem     ; セミコロンのコメントを外し、server.key.pemのフルパスを記述する
+
+
+CouchDBを再起動すると、HTTPSをtcp/6984でLISTENするようになります。
+
+証明書、秘密鍵の置き場所には注意。
+==================================================================================================
+
+
+server.crtやserver.key.pemはCouchDBのプロセスを実行するcouchdbユーザでアクセスできるディレクトリに置く必要があります。/etc/ssl/privateディレクトリのようにrootしかアクセスできないディレクトリに置くと、起動はできるのですが、アクセスしたタイミングで、下記のようなErlangのエラーログを吐いてしまいます。
+
+.. code-block:: none
+
+   [Thu, 23 Jun 2011 02:24:23 GMT] [error] [0.330.0] {error_report,0.61.0,
+                                     {0.330.0,std_error,
+                                      [83,83,76,58,32,1093,58,32,error,58,
+                                       [123,
+                                        [error,44,
+                                         [123,
+                                          [badmatch,44,
+                                           [123,[error,44,eacces],125]],
+                                          125]],
+                                        125],
+                                       32,/etc/ssl/private/server.crt,n,32,
+                                       32,
+                                       [91,
+                                        [[123,
+                                          [ssl_certificate,44,
+                                           file_to_certificats,44,1],
+   (snip)
+
+
+
+参考文献
+********************
+
+
+http://wiki.apache.org/couchdb/How_to_enable_SSL
+
+
+.. rubric:: footnote
+
+.. [#] ：別に起動させりゃええんだけど。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, CouchDB, 
+.. tags::
+
+

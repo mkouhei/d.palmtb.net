@@ -1,0 +1,55 @@
+﻿PHSのデータ移行に敗北。
+##########################
+
+
+WX321Jが届いたので、AH-K3001Vのアドレス帳を移行させようと、付属していた携帯マスターNX LEをKVM上のWindowsにインストールすることにした。上川さんの日記 [#]_ を参考に実施してみた。移行後は削除したいので、COWのイメージを差分として作成。
+
+.. code-block:: none
+
+   qemu-img create -b win.img -f qcow win-tmp.img
+
+
+で、ここにCD-ROMから携帯マスターをインストール。が、途中何度が固まったり、ブルースクリーンで落ちたり。裏でMicrosoft Updateが走っていたので、これが負荷の原因だろうと、無効にしたところ、正常にインストールできた。
+次に、AH-K3001Vのアドレス帳を移行させようと、kvmの-usbオプションでブートさせたのだが、info usbで何も表示されない。info usbhostだと認識できていた。
+
+.. code-block:: none
+
+   (qemu) info usbhost
+   ～中略～
+     Device 2.6, speed 12 Mb/s
+       Vendor Specific: USB device 0482:0203, Modem driver for Kyocera PS
+
+
+ダメ元で、usb_addを実行してみた。
+
+.. code-block:: none
+
+   (qemu) usb_add host:0482:0203
+   /proc/bus/usb/002/006: Permission denied
+   Could not add USB device &#39;host:0482:0203&#39;
+
+
+ダメ。/proc/bus/usb/002/006に書込み権を付与した。
+
+.. code-block:: none
+
+   (qemu) usb_add host:0482:0203
+   usb_host: only one interface supported
+   Could not add USB device &#39;host:0482:0203&#39;
+
+
+ダメ。kvmの起動オプションで、-usbdevice 0482:0203を指定しても同じ結果。当然、VMのWindowsからはUSBデバイスは全く見えず…。orz
+悔しいけど、素直にWillcomのショップでデータ移行してもらおう。無料だし。もちろん、携帯マスターなんぞを入れた差分ディスクは削除した。w
+
+
+.. rubric:: footnote
+
+.. [#] ：.. [#] とか、.. [#] とか。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, Unix/Linux, virt., 
+.. tags::
+
+

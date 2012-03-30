@@ -1,0 +1,13 @@
+﻿PASMOって便利だな。
+########################
+
+
+と思ったのは、利用履歴をインターネットで見られることを知ったから。推奨環境となっているが、Debian GNU/Linux Sid＆iceweaselでも問題なく利用できる。
+
+
+
+.. author:: mkouhei
+.. categories:: 生活, 
+.. tags::
+
+

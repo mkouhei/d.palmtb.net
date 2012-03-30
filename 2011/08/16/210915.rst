@@ -1,0 +1,29 @@
+﻿smbclientでファイル一括取得。
+######################################
+
+
+滅多に使わないので忘れるので備忘として。
+
+.. code-block:: none
+
+   $ smbclient -U user //smbserver/Resouece
+   Enter user&#39;s password:
+   Domain=[HOGE_GROUP] OS=[Unix] Server=[Samba 3.0.14a-Debian]
+   smb: \ prompt
+   smb: \ recurse
+   smb: \ mget *
+   getting file \moge.txt of size 39936 as moge.txt (513.2 KiloBytes/sec) (average 513.2 KiloBytes/sec)
+   getting file \hoge.txt of size 43029 as hoge.txt (248.6 KiloBytes/sec) (average 330.7 KiloBytes/sec)
+   (snip)
+   smb: \
+
+
+Windowsな人たちと一緒に作業している環境だと、scpだと日本語の文字化けでアカン場合でもsmbclientでは大丈夫だったりもするので、必要悪って感じですねぇ…。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

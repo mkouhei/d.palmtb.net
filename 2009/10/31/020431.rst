@@ -1,0 +1,379 @@
+﻿lxcを導入してみた。
+######################
+
+
+前回の続きである。
+
+まず訂正。
+**************************
+
+
+lxcはLinux Kernelを拡張しないようだと書いたのだが、実は2.6.29まではパッチを当てる必要があったようだ。ただlxc特有の機能ではないので、grepしてもlxcなんて出てきやしないし、現状はメインラインにマージされているみたいなので勘違いだった。
+
+ブリッジの設定。
+********************************************
+
+
+lxcを使うには、ブリッジの設定が必要なので、前回は書かなかったが、iprouteパッケージも入れておかないとアカン。/etc/network/interfacesに最初からブリッジの設定をしてしまう方法もあるんじゃなかろうか。が、調べるのが面倒なのでシェルスクリプトでブリッジ設定をするようにしてみた。
+
+.. code-block:: none
+
+   $ cat /etc/network/interfaces 
+   # This file describes the network interfaces available on your system
+   # and how to activate them. For more information, see interfaces(5).
+   
+   # The loopback network interface
+   auto lo
+   iface lo inet loopback
+   
+   # The primary network interface
+   auto eth0
+   allow-hotplug eth0
+   iface eth0 inet static
+   	address 192.168.xxx.xxx
+   	netmask 255.255.255.0
+   	broadcast 192.168.xxx.255
+   	pre-up  /etc/init.d/iptables start
+   	post-up /etc/network/if-up.d/brctl.sh
+   
+   auto eth1
+   allow-hotplug eth1
+   iface eth1 inet static
+   	address 192.168.zzz.zzz
+   	netmask 255.255.255.0
+   	broadcast 192.168.zzz.255
+
+
+肝心のブリッジの設定を行うスクリプトはこんな感じ。
+
+.. code-block:: none
+
+   #!/bin/sh
+   
+   brctl addbr br0
+   brctl setfd br0 0
+   ifconfig br0 192.168.xxx.xxx promisc up
+   brctl addif br0 eth0
+   ifconfig eth0 0.0.0.0 up
+   route add -net default gw 192.168.xxx.1 br0
+
+
+そうすると、こんな感じになるわけですな。
+
+.. code-block:: none
+
+   $ sudo brctl show
+   bridge name	bridge id		STP enabled	interfaces
+   br0		8000.00wwwwyyyyxxno		eth0
+   							veth0_14820
+   							veth0_15932
+   							veth0_17164
+
+
+これは、コンテナを起動させた状態での結果なので、上記の手順直後ではveth0_?????となっているインタフェースがない。veth0_?????はコンテナのI/F。この状態では現在3つのコンテナを稼働させていることが分かる。
+
+コンテナ作成準備。
+**************************************************
+
+
+コンテナ作成をするまえに、cgroupファイルシステムをマウントする必要がある。/etc/fstabに以下の一行を追加する。
+
+.. code-block:: none
+
+   cgroup  /var/local/cgroup  cgroup  defaults  0  0
+
+
+これで、/var/local/cgroupをマウントしておくこと。このcgroupを使うと、まとめてリソースを管理できるという特徴から、lxc-cgroupコマンドであるコンテナのリソースを一括表示できたりする。例えばこんな感じ。
+
+.. code-block:: none
+
+   $ sudo lxc-cgroup -n web devices.list
+   c 1:3 rwm
+   c 1:5 rwm
+   c 5:1 rwm
+   c 5:0 rwm
+   c 4:0 rwm
+   c 4:1 rwm
+   c 1:9 rwm
+   c 1:8 rwm
+   c 136:* rwm
+   c 5:2 rwm
+   c 254:0 rwm
+
+
+パッケージとしてはlxcを導入すれば良いだけなのだが、コンテナとして使うためにはコンテナ用のイメージが必要だ。dWに書いているように予めdebootstrapでアーカイブを作るという方法も良いかも知れないが、実はこれ、自分の環境では一部の設定ファイルが見つからず、エラーになってうまくいかなかった。
+
+.. code-block:: none
+
+   $ sudo bash lxc-debian create
+   (snip)
+   Specify the location for an extra fstab file [(none)]
+   Cache repository is busy.
+   /home/kohei/lxc-debian: line 242: break: only meaningful in a `for&#39;, `while&#39;, or `until&#39; loop
+   Choose your architecture
+   1) amd64
+   2) i386
+   #? 1
+   Architecture amd64 selected
+   Checking cache download ...Found.
+   Copying rootfs ...Done.
+   /home/kohei/lxc-debian: line 91: ./rootfs.web//etc/ssh/sshd_config: そのようなファイルやディレクトリはありません
+
+
+原因は、事前に作っておいたdebootstrapのtarballを展開したものをキャッシュとして、lxc-debianスクリプト [#]_ を実行したため。tallballを使うならlxc-debianスクリプトではなくコンテナの構成ファイルを自分で記述すべきなのかもしれない。逆にlxc-debianスクリプトを使うなら予め作っておいたアーカイブを使わないほうが良さそうだ。
+ちなみに、アーカイブの作り方＆展開の仕方は、下記のとおり。
+
+.. code-block:: none
+
+   $ sudo debootstrap --make-tarball sid.packages.tgz sid http://cdn.debian.or.jp/debian/
+   $ sudo mkdir /var/cache/lxc/debian;cd /var/cache/lxc/debian
+   $ sudo debootstrap --unpack-tarball ~/sid.packages.tgz sid rootfs-amd64
+   I: Retrieving Release
+   I: Validating Packages
+   I: Retrieving Packages
+   I: Validating Packages
+   I: Resolving dependencies of required packages...
+   I: Resolving dependencies of base packages...
+   I: Found additional required dependencies: dash insserv libdb4.7
+   (snip)
+   I: Configuring tasksel...
+   I: Base system installed successfully.
+
+
+lxc-debianスクリプトを使わないのなら、展開先のディレクトリ名をrootfs-amd64に指定しなくても良いかもしれない。何せ、rootfs-amd64としているのは、lxc-debianスクリプトが対応しているi386またはamd64で作られるキャッシュのディレクトリ名だからだ。
+
+.. code-block:: none
+
+   $ zgrep -n -C 1 ARCH /usr/share/doc/lxc/examples/lxc-debian.gz 
+   245-	    echo Choose your architecture
+   246:	    select ARCH in amd64 i386; do
+   247:		echo Architecture $ARCH selected
+   248-		break;
+   --
+   252-	    echo -n Checking cache download ...
+   253:	    if [ ! -e $CACHE/rootfs-$ARCH ]; then
+   254-		
+   --
+   256-		
+   257:		mkdir -p $CACHE/partial-$ARCH
+   258-		
+   --
+   260-		echo Downloading debian minimal ...
+   261:		debootstrap --verbose --variant=minbase --arch=$ARCH \
+   262-		    --include ifupdown,locales,libui-dialog-perl,dialog,apache2,netbase,net-tools,iproute,openssh-server \
+   263:		    lenny $CACHE/partial-$ARCH http://ftp.debian.org/debian
+   264-		
+   --
+   269-		fi
+   270:		mv $CACHE/partial-$ARCH $CACHE/rootfs-$ARCH
+   271-		echo Download complete.
+   --
+   277-	    echo -n Copying rootfs ...
+   278:	    cp -a $CACHE/rootfs-$ARCH $ROOTFS  echo Done. || exit
+   279-	) 200 /var/lock/subsys/lxc
+
+
+じゃあ、このlxc-debianスクリプトをそのまま使えば良いか、というと必ずしもそうではない。このスクリプトではインストールされるディストリビューションはlennyで、デフォルトでapache2がインストールされるようになっている。今回はホストOSもコンテナのゲストOSも両方ともSidにしたかったのと、Apacheを使うつもりはないのでこれは非常に不便だ。なので、スクリプトを実行する前に以下のように変更しておいた。
+
+.. code-block:: none
+
+   $ zdiff -u /usr/share/doc/lxc/examples/lxc-debian.gz lxc-debian 
+   --- -	2009-10-31 00:23:10.497679968 +0900
+   +++ lxc-debian	2009-10-30 17:58:20.000000000 +0900
+   @@ -8,8 +8,8 @@
+    MNTFILE=
+    TMPMNTFILE=
+    UTSNAME=
+   -IPV4=172.20.0.21
+   -GATEWAY=172.20.0.1
+   +IPV4=192.168.xxx.xxx
+   +GATEWAY=192.168.xxx.yyy
+    MTU=1500
+    
+    # These paths are within the container so do not need to obey configure prefixes
+   @@ -99,14 +99,14 @@
+    SyslogFacility AUTH
+    LogLevel INFO
+    LoginGraceTime 120
+   -PermitRootLogin yes
+   +PermitRootLogin no
+    StrictModes yes
+    RSAAuthentication yes
+    PubkeyAuthentication yes
+    IgnoreRhosts yes
+    RhostsRSAAuthentication no
+    HostbasedAuthentication no
+   -PermitEmptyPasswords yes
+   +PermitEmptyPasswords no
+    ChallengeResponseAuthentication no
+    EOF
+    }
+   @@ -259,8 +259,8 @@
+    	        # download a mini debian into a cache
+    		echo Downloading debian minimal ...
+    		debootstrap --verbose --variant=minbase --arch=$ARCH \
+   -		    --include ifupdown,locales,libui-dialog-perl,dialog,apache2,netbase,net-tools,iproute,openssh-server \
+   -		    lenny $CACHE/partial-$ARCH http://ftp.debian.org/debian
+   +		    --include ifupdown,locales,libui-dialog-perl,dialog,sudo,vim-tiny,dnsutils,netbase,net-tools,iproute,openssh-server \
+   +		    sid $CACHE/partial-$ARCH http://cdn.debian.or.jp/debian
+    		
+    		RESULT=$?
+    		if [ $RESULT != 0 ]; then
+
+
+lxc-debianスクリプトはdebootstrapの--includeオプションで指定したパッケージを自動的にインストールし、スクリプトの冒頭部分でシステムの初期設定を行う。ところがapache2はインストールされるのに、viやsudo, digが無かったりと結構不便だったりする。なので、実際にはスクリプトを変更してから実行した方が良いかもしれない。また、インストールするディストリビューションはlennyにdebootstrapで指定されている。Sidにしたければこれを実行する前に変更する必要があるというわけだ。但し、予めアーカイブを上記のrootfsとしてキャッシュを作成していると、ディストリビューションやパッケージはすでに展開済みのファイルが利用されてしまう。設定ファイルは変更すればそちらが反映されるのだが。
+
+コンテナ作成。
+**************************************
+
+
+さて、準備が整ったのでコンテナを作成してみる。コンテナの作成にはlxc-debianスクリプトを使うことにした。
+
+.. code-block:: none
+
+   $ sudo bash /home/kohei/lxc-debian create
+   What is the name for the container ? [debian] web
+   What hostname do you wish for this container ? [web]
+   What IP address do you wish for this container ? [192.168.xxx.xxx]
+   What is the gateway IP address ? [192.168.xxx.xxy]
+   What is the MTU size ? [1500]
+   Specify the location of the rootfs [./rootfs.web]
+   Specify the location for an extra fstab file [(none)]
+   (snip)
+   Choose your architecture
+   1) amd64
+   2) i386
+   #? 1
+   Architecture amd64 selected
+   Checking cache download ...Found.
+   Copying rootfs ...Done.
+   (snip)
+   update-rc.d: using dependency based boot sequencing
+   Done.
+   
+   You can run your container with the &#39;lxc-start -n web&#39;
+
+
+という感じでコンテナができる。コンテナの実体は/var/cache/lxc/debian/ディレクトリ以下にrootfs.hogeの形式の名前のディレクトリが作られ、ここにdebootstrapでのコピーが含まれる。最初にlxc-debian createを実行すると、/var/cache/lxc/debian/rootfs-amd64以下にキャッシュが作られ、次回以降はここからコピーが作成されるので、最初に示したようにわざわざdebootstrap --make-tarballはしないで良いのかもしれない。コンテナのメタ情報は、/var/lib/lxc/ディレクトリのコンテナ名のディレクトリ以下にある。ツリー表示するとこのようになっている。
+
+.. code-block:: none
+
+   $ tree /var/lib/lxc/web/
+   /var/lib/lxc/web/
+   |-- cgroup
+   |-- config
+   |-- fstab
+   |-- init
+   |-- network
+   |   `-- veth0
+   |       |-- ifindex
+   |       |-- link
+   |       |-- mtu
+   |       |-- name
+   |       `-- up
+   |-- nsgroup - /var/local/cgroup/web
+   |-- pts
+   |-- rootfs
+   |   `-- rootfs - /var/cache/lxc/debian/rootfs.web
+   |-- state
+   |-- tty
+   `-- utsname
+   
+   5 directories, 13 files
+
+
+ちなみにこのメタ情報があるため、いらなくなったコンテナの実体をディレクトリごと削除してもダメ。コンテナがいらなくなったら、
+
+.. code-block:: none
+
+   $ sudo lxc-destroy -n web
+
+
+としないといけない。ハマったよ。
+
+コンテナの起動。
+********************************************
+
+
+ここまでできたら、あとは起動するだけ。まずはフォアグラウンドで実行してみよう。
+
+.. code-block:: none
+
+   $ sudo lxc-start -n web
+   INIT: version 2.86 booting
+   mknod: `//dev/ppp&#39;: Operation not permitted
+   Starting the hotplug events dispatcher: udevd.
+   Synthesizing the initial hotplug events...done.
+   Waiting for /dev to be fully populated...
+   done (timeout).
+   Activating swap...done.
+   mount: you must specify the filesystem type
+   Cannot check root file system because it is not mounted read-only. ... failed!
+   Cleaning up ifupdown....
+   Loading kernel modules...done.
+   Checking file systems...fsck from util-linux-ng 2.16.1
+   done.
+   Setting up networking....
+   Mounting local filesystems...done.
+   Activating swapfile swap...done.
+   Cleaning up temporary files....
+   Configuring network interfaces...done.
+   Setting kernel variables (/etc/sysctl.conf)...done.
+   Cleaning up temporary files....
+   INIT: Entering runlevel: 3
+   Starting enhanced syslogd: rsyslogd.
+   Starting periodic command scheduler: cron.
+   
+   Debian GNU/Linux squeeze/sid web console
+   
+   web login:
+
+
+これで良いのか？実は良くない。このままだとログインできるユーザがない。しかも、hostsにコンテナのホスト名が定義されてないので、自ホストの名前解決でタイムアウトを待たないといけない。非常に不便だ。なので、ホストから以下のファイルをコピーすることになるのだが、そのままホストOS側から上書きしてしまうとファイルが壊れる可能性もありうるだろう。なので、コンテナをフリーズ(一時停止)させて、その間に必要なファイルを上書きすることにした。
+
+.. code-block:: none
+
+   $ sudo lxc-freeze -n web
+   $ sudo /etc/{passwd,shadow,group,sudoers,hosts} /var/cache/lxc/debian/rootfs.web/etc/
+   $ sudo lxc-unfreeze -n web
+
+
+フリーズさせてコピーしたら、フリーズを解除してやればそのまま普通に使えるようになる。ただし、このままでは他のコンテナを作る時にもまたこの手順が必要になるので、コンテナのコピー元になっている、/var/cache/lxc/debian/rootfs-amd64/etc以下のファイルを上書きしてやれば良いだろう。でも、これって本来はこんなことしなくても大丈夫なようになっているもんじゃないの。バグじゃねぇか？
+ちなみに、バックグラウンドで実行する場合は、-dオプションをつければよい。lxc-startを実行した親プロセスのシェルをexitしてもちゃんとデーモンとして残っているので心配ない。
+
+コンテナを追加する。
+********************************************************
+
+
+これは非常に簡単。再度、lxc-debian createを実行すればよい。二回目以降は上記のキャッシュ/var/cache/lxc/debian/rootfs-amd64があるので、debootstrapの実行が省略されるからだ。二回目以降はすぐに終わる。3つ作ってみたコンテナのディスク使用量はそれぞれ以下のようになっている。
+
+.. code-block:: none
+
+   $ sudo du -sh ./rootfs*
+   234M	./rootfs-amd64
+   668M	./rootfs.couchdb
+   332M	./rootfs.git
+   296M	./rootfs.web
+
+
+ディスク容量を見ても分かるとおり、単純機能として動かすためのコンテナの割には冗長なシステムになっていると言える。一方lxc-sshdスクリプト [#]_ を実行する場合だと、非常にシンプルなコンテナができあがる。全コンテナがlxc-sshdのように必要最低限のアプリ環境のみに固執することはないと思うが、用途に応じて使い分ける必要はあるだろうな。
+
+と言うわけで…。
+********************************************
+
+
+せっかくなので、次回はlxc-sshdでの場合も調べてみることにしよう。
+
+
+.. rubric:: footnote
+
+.. [#] ：実体はlxcパッケージの/usr/share/doc/lxc/examples/lxc-debian.gz
+.. [#] ：/usr/share/doc/lxc/examples/lxc-sshd.gz
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Unix/Linux, virt., Ops, 
+.. tags::
+
+

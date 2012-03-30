@@ -1,0 +1,34 @@
+﻿引数に大文字はダメなのか。
+##########################
+
+
+Rubyで無線LANルータの監視用スクリプトを書いていて気がついたこと。メソッドを定義するのに、引数の先頭を大文字にするとエラーがでる。例えばこんな↓メソッドを定義する。
+
+.. code-block:: none
+
+   def hoge(A, Bb, cC)
+     puts A + Bb + Cc
+   end
+
+
+実行するとこんなエラーが出る。
+
+.. code-block:: none
+
+   $ ruby test.rb
+   test.rb:7: formal argument cannot be a constant
+   def hoge(A, Bb, cC)
+             ^
+   test.rb:7: formal argument cannot be a constant
+   def hoge(A, Bb, cC)
+
+
+あー、ローカル変数だからなのか。ワシのアフォー。
+
+
+
+.. author:: mkouhei
+.. categories:: Ops, ruby, 
+.. tags::
+
+

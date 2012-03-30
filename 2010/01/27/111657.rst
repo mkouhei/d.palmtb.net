@@ -1,0 +1,56 @@
+﻿lxc-ls続き。
+##################
+
+
+lxcのリポジトリを見てみたら、Debianのバグではなく、Upstreamの方のバグだった。いや、正確にいうと仕様変更だった。
+
+With previous changes that allow to start a container
+without the need to create it; the lxc-ls was only reporting
+the created containers.
+With this patch, the lxc-ls is now reporting created and active
+containers.
+
+.. code-block:: none
+
+   diff --git a/src/lxc/lxc-ls.in b/src/lxc/lxc-ls.in
+   index 6a77ebe..7d2dad0 100644 (file)
+   --- a/src/lxc/lxc-ls.in
+   +++ b/src/lxc/lxc-ls.in
+   @@ -6,4 +6,26 @@ if [ ! -r $lxcpath ]; then
+        exit 0
+    fi 
+   +function get_cgroup()
+   +{
+   +       local mount_string
+   +       mount_string=$(mount -t cgroup |grep -E -e &#39;^lxc &#39;)
+   +       if test -z $mount_string; then
+   +               mount_string=$(mount |grep -m1 &#39;type cgroup&#39;)
+   +       fi
+   +       if test -n $mount_string; then
+   +               mount_point=$(echo $mount_string |cut -d&#39; &#39; -f3)
+   +       fi
+   +}
+   + 
+   ls $* $lxcpath
+   +
+   +active=$(netstat -xa | grep $lxcpath | \
+   +       sed -e &#39;s#.*&#39;$lxcpath/&#39;\(.*\)/command#\1#&#39;);
+   +
+   +if test -n $active; then
+   +       get_cgroup
+   +       if test -n $mount_point; then
+   +               cd $mount_point; ls $* -d $active
+   +       fi
+   +fi
+
+
+http://lxc.git.sourceforge.net/git/gitweb.cgi?p=lxc/lxc;a=commitdiff;h=65cb447f9b8d1ac8dcf9df24a4f877180444f003
+でもこの表示形式だと、なんで2回表示されるのか分からんぜ。changelog.Debian.gzにもないし。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Dev, 
+.. tags::
+
+

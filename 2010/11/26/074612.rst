@@ -1,0 +1,54 @@
+﻿GAEでQRコードを使う。
+##########################
+
+
+GAEでQRコードを使いたいなぁと思い、Debianにpython-qrencodeパッケージがあるので、早速試してみた。
+
+.. code-block:: none
+
+   import qrencode
+   from google.appengine.ext import db
+   
+   class HogeDB(db.Model):
+       qrcode = BlobProperty()
+   
+   (snip)
+   
+       hoge = HogeDB()
+       hoge.qrcode = qrencode.encode_scaled(hoge,100)[2]
+
+
+な感じで生成したQRコードのイメージをGAEのデータストアに格納したれ、と思ったらできなかった。
+
+理由は、そもそもqrencodeが使えなかった。python-qrencodeが、Cで書かれたライブラリlibqrencode3のバインディングだったため。GAEってpure Pythonしかダメなのか。 [#]_ 
+
+インタープリタは純粋な Python 環境であるため、C コードが記述された Python モジュールを読み込めません。
+http://code.google.com/intl/ja/appengine/docs/python/overview.html
+
+で、他の手段無いかなぁと、こんなtweetを発見。
+
+#appengine でQRコード作るためにpure Pythonのライブラリ探しかけたが、Google Chart API大先生がいらっしゃったのを思い出した。
+https://twitter.com/#!/najeira/status/505204424318976
+
+というわけで、Google Chart APIを使って、無事、こんなやり方でできましたよと。 [#]_ 
+
+.. code-block:: none
+
+   img src=http://chart.apis.google.com/chart?cht=qrchs=200x200chl=\{\{hoge\}\} /
+
+
+データストアに格納するのやめて、直接img要素で表示させることにした。こっちの方が簡単ですな。
+
+
+.. rubric:: footnote
+
+.. [#] ：なので、python-qrencodeのコードやqr_encode.soとか、libqrencode3パッケージのlibqrencode.so.3とか持っていってももちろん使えない。
+.. [#] ：Debian全く関係ない…。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, python, Dev, 
+.. tags::
+
+

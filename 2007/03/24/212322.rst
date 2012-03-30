@@ -1,0 +1,13 @@
+﻿まさか翌日に…。
+################
+
+
+講座終わった翌日にやる羽目になるとは…。で、結局今回もApacheのMaxClientsだった。この土日で増強しようと思って128MBモデルを買った矢先に死ぬとは…。移行するまえに、先にApacheのチューニングするか。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, security, 
+.. tags::
+
+

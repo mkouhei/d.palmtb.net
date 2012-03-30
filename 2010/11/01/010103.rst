@@ -1,0 +1,40 @@
+﻿LaTeXでを表示する方法。
+############################
+
+
+いつも\verb//を使って、
+
+.. code-block:: none
+
+   verb//
+
+
+としていたのだが、もっと簡単に記述する方法があったのね。
+
+.. code-block:: none
+
+   ()
+
+
+これは楽だ。
+
+追記
+********
+
+
+dancerjに
+
+.. code-block:: none
+
+   $$
+
+
+だろjk、と教えてもらった。thx。
+
+
+
+.. author:: mkouhei
+.. categories:: TeX, 
+.. tags::
+
+

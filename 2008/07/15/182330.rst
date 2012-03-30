@@ -1,0 +1,13 @@
+﻿BBモバイルポイントでの使用確認。
+##################################
+
+
+wpa_guiでWEPの設定すれば問題なく使えた。ブラウザでのBBモバイルポイントの認証が必要だと気づくのと、WIRELESS GATEでの認証用のIDがWIRELESS GATEのIDとイコールでないことに気づくのに時間掛かったけど。割と快適。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, network, 
+.. tags::
+
+

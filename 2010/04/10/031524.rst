@@ -1,0 +1,63 @@
+﻿lxc 0.6.5になるとlxc-debian.gzの仕様が変わりすぎている罠。
+################################################################################
+
+
+先月末にtweetして後でまとめておこうかと思っていたのだが、すっかり忘れていた。自分のtweetを検索するのってマンドイので、メモっておく。
+
+lxc 0.6.5になって、またlxc-debianスクリプトが大幅に変わっているな。
+http://twitter.com/mkouhei/status/11066798172
+lxc-debian.gzスクリプトは0.6.4までは対話形式でネットワークまわりなどの設定をしてコンテナ用のrootfs作成時に反映されるようになっていたのが、0.6.5になると対話形式でなくなり、かつネットワークまわりの設定は自分で手動でせざるを得なくなった。
+
+デフォルトでインストールされるパッケージからapacehが削除されたのはよいことだ。
+http://twitter.com/mkouhei/status/11066870169
+デフォルトで選択されているパッケージが最低限になったのは良いこと。
+
+デフォルトのパラメータ設定をスクリプトに記述しなくしたのか。
+http://twitter.com/mkouhei/status/11067011078
+さっきのネットワークまわりの設定の話。
+
+lxc-debianのパラメータが思いっきり変わっとるがな。
+http://twitter.com/mkouhei/status/11067319771
+./lxc-debian {create|destroy}とかだったのが、-p|--path, -n|--name, -c|--cleanとかになっている罠。サブコマンドだったのに、オプションにしてしまっとるがな。しかも互換性なし。w
+
+lxc-debianで作れるコンテナがpath/rootfs だけになっている罠。
+http://twitter.com/mkouhei/status/11067906471
+これはかなりひどい。0.6.4までは、rootfs.name/だったので、互換性なし。でも、0.6.5自体は、rootfs.nameの方じゃないとlxc-lsなどでちゃんと見てくれなかったりするので、lxc-debian.gzの仕様変更は0.6.5においてはこのスクリプトだけが先行しているように見える。でも仮にも0.6.5としてリリース用のタグ打っているんだから、整合性合わせておかないと0.6.5から使い始めた場合はlxc-debian.gzが使い物にならない罠。revertしておくべきだったんじゃねぇのと思う。
+
+複数コンテナ作る場合はどうするんだ。
+http://twitter.com/mkouhei/status/11067923008
+上と同じなので、ユーザランドのlxcツールと整合性が合っているのなら、下位互換性を無視すれば問題なかったんだけどね。
+
+今までみたいにrootfs.containername/の方が便利だぞ。
+http://twitter.com/mkouhei/status/11068011731
+同上。
+
+む、0.6.5のlxc-debianスクリプトでコンテナ作ると、-f で設定ファイル指定しないとアカンのか。
+http://twitter.com/mkouhei/status/11068788822
+これのせいで、lxc-lsでコンテナイメージの有無を確認して自動的に一括起動のようなことが簡単に出来なくなってしまった。いやスクリプト書き直せばいいだけなんだが。
+
+lxc-debianスクリプトがlxc自体のコマンドと挙動があってねえ。
+http://twitter.com/mkouhei/status/11068953734
+既出。
+
+コンテナ側のネットワークの設定もされないな。
+http://twitter.com/mkouhei/status/11069120526
+これも既出。
+
+これは…一度に変えすぎて整合性取れてねえな…。
+http://twitter.com/mkouhei/status/11069303624
+これもそうね。
+
+
+lxc-debian.gzはこれでガツッと削られたのか。言いたいことは輪からんでもないがなあ。http://bit.ly/ciFjaT
+http://twitter.com/mkouhei/status/11075310113
+せめて整合性は取ってほしいよね。
+そのうち新しいリリースが出て、今まで使っていたコンテナイメージが使用できなくなる、とならなければ良いなぁと。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Unix/Linux, virt., computer, 
+.. tags::
+
+

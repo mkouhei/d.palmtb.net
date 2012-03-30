@@ -1,0 +1,23 @@
+﻿rpm_resumeの大量ログ。
+################################
+
+
+
+.. code-block:: none
+
+   [ 4827.091826] scsi host1: rpm_resume flags 0x4
+   [ 4827.091830] scsi host1: rpm_resume returns 1
+   [ 4827.094909] scsi host1: rpm_resume flags 0x4
+   [ 4827.094913] scsi host1: rpm_resume returns 1
+   (snip)
+
+
+というログが大量に出て、ファイルシステムの使用率が100%になった事があったので、このログを抑制しようとググってみたら、CONFIG_PM_VERBOSEかCONFIG_PM_DEBUGが有効になっていると出るらしいとのことで、無効にしてカーネルビルドしなおした。このオプション自体は、kernel 2.6.30の時から有効にしていたのだが、当時は大量にログは出力されていなかった。いつからなんだろうなぁ。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, Debian, 
+.. tags::
+
+

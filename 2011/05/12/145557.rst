@@ -1,0 +1,95 @@
+﻿姉さん事件です！
+################
+
+
+Sidでアップデートしたら大変な事に…。
+
+.. code-block:: none
+
+   $ sudo apt-get upgrade  -s
+   パッケージリストを読み込んでいます... 完了
+   依存関係ツリーを作成しています
+   状態情報を読み取っています... 完了
+   以下のパッケージは保留されます:
+     cpp dict g++ gcc gfortran gobjc libgcj-bc libgtk-vnc-1.0-0 libxcb-image0
+     python-gtk-vnc
+   以下のパッケージはアップグレードされます:
+     libc-bin libc-dev-bin libc6 libc6-dev libc6-i386 locales
+   アップグレード: 6 個、新規インストール: 0 個、削除: 0 個、保留: 10 個。
+   Inst libc6-i386 [2.13-2] (2.13-3 Debian:unstable [amd64]) []
+   Inst libc6-dev [2.13-2] (2.13-3 Debian:unstable [amd64]) []
+   Inst libc-dev-bin [2.13-2] (2.13-3 Debian:unstable [amd64]) []
+   Inst libc-bin [2.13-2] (2.13-3 Debian:unstable [amd64]) [libc6:amd64 ]
+   Conf libc-bin (2.13-3 Debian:unstable [amd64]) [libc6:amd64 ]
+   Inst libc6 [2.13-2] (2.13-3 Debian:unstable [amd64])
+   Conf libc6 (2.13-3 Debian:unstable [amd64])
+   Inst locales [2.13-2] (2.13-3 Debian:unstable [all])
+   Conf libc6-i386 (2.13-3 Debian:unstable [amd64])
+   Conf libc-dev-bin (2.13-3 Debian:unstable [amd64])
+   Conf libc6-dev (2.13-3 Debian:unstable [amd64])
+   Conf locales (2.13-3 Debian:unstable [all])
+   $ sudo apt-get upgrade
+   パッケージリストを読み込んでいます... 完了
+   依存関係ツリーを作成しています
+   状態情報を読み取っています... 完了
+   以下のパッケージは保留されます:
+     cpp dict g++ gcc gfortran gobjc libgcj-bc libgtk-vnc-1.0-0 libxcb-image0
+     python-gtk-vnc
+   以下のパッケージはアップグレードされます:
+     libc-bin libc-dev-bin libc6 libc6-dev libc6-i386 locales
+   アップグレード: 6 個、新規インストール: 0 個、削除: 0 個、保留: 10 個。
+   16.9 MB のアーカイブを取得する必要があります。
+   この操作後に追加で 16.4 kB のディスク容量が消費されます。
+   続行しますか [Y/n]?
+   取得:1 http://cdn.debian.or.jp/debian/ sid/main libc6-i386 amd64 2.13-3 [3,830 kB]
+   取得:2 http://cdn.debian.or.jp/debian/ sid/main libc6-dev amd64 2.13-3 [2,630 kB]
+   取得:3 http://cdn.debian.or.jp/debian/ sid/main libc-dev-bin amd64 2.13-3 [210 kB]
+   取得:4 http://cdn.debian.or.jp/debian/ sid/main libc-bin amd64 2.13-3 [1,079 kB]
+   取得:5 http://cdn.debian.or.jp/debian/ sid/main libc6 amd64 2.13-3 [4,312 kB]
+   取得:6 http://cdn.debian.or.jp/debian/ sid/main locales all 2.13-3 [4,801 kB]
+   16.9 MB を 19秒 で取得しました (851 kB/s)
+   changelog を読んでいます... 完了
+   apt-listchanges: root にメール: apt-listchanges: devel のニュース
+   パッケージを事前設定しています ...
+   (データベースを読み込んでいます ... 現在 219884 個のファイルとディレクトリがインストールされています。)
+   libc6-i386 2.13-2 を (.../libc6-i386_2.13-3_amd64.deb で) 置換するための準備をしています ...
+   libc6-i386 を展開し、置換しています...
+   libc6-dev 2.13-2 を (.../libc6-dev_2.13-3_amd64.deb で) 置換するための準備をしています ...
+   libc6-dev を展開し、置換しています...
+   libc-dev-bin 2.13-2 を (.../libc-dev-bin_2.13-3_amd64.deb で) 置換するための準備をしています ...
+   libc-dev-bin を展開し、置換しています...
+   libc-bin 2.13-2 を (.../libc-bin_2.13-3_amd64.deb で) 置換するための準備をしています ...
+   libc-bin を展開し、置換しています...
+   man-db のトリガを処理しています ...
+   libc-bin (2.13-3) を設定しています ...
+   (データベースを読み込んでいます ... 現在 219884 個のファイルとディレクトリがインストールされています。)
+   libc6 2.13-2 を (.../libc6_2.13-3_amd64.deb で) 置換するための準備をしています ...
+   libc6 を展開し、置換しています...
+   dpkg (サブプロセス): rm command for cleanup を実行できません (rm): そのようなフdpkg:
+   クリーンアップ中にエラーが発生しました:
+    サブプロセス rm cleanup はエラー終了ステータス 2 を返しました
+   Could not exec dpkg!
+   E: Problem executing scripts DPkg::Post-Invoke &#39;if [ -x
+   /usr/bin/etckeeper ]; then etckeeper post-install; fi&#39;
+   E: Sub-process returned an error code
+   E: Sub-process /usr/bin/dpkg returned an error code (100)
+   $
+   $ sudo apt-get upgrade
+   -bash: /usr/bin/sudo: そのようなファイルやディレクトリはありません
+
+
+子プロセスがexecしようとするとコケていますが、既に起動しているプロセスは大丈夫だったり。これも起動中のchromiumでGmailで投稿しているし。でも新しくタブを開くのはダメ [#]_ 。さて、どうやって戻そう。とりあえずインストールCDをなんとか入手して、CDROMブートしたら/var/cache/apt/archivesから上記の6つのパッケージを2.13-2に戻してみようかな…。
+ちなみにワシには姉はいません、念のため。
+
+
+.. rubric:: footnote
+
+.. [#] ：子プロセスを作るからか
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

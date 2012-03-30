@@ -1,0 +1,75 @@
+﻿Scala入門。
+################
+
+
+最近、Scalaにも手をだし始めたので、TCP/IPソケットプログラミング Java編を見ながら、10年ぶりに近いJavaの勉強を兼ねてしまおうと、この本の一番最初に載っているローカルホストおよび引数で渡したFQDN、IPアドレスから結果返すコードをScalaで書いてみた。
+
+.. code-block:: none
+
+   import java.net._
+   
+   object InetAddressExample {
+   
+     def main(args: Array[String]) {
+       try {
+         val address = InetAddress.getLocalHost()
+         val hostname = address.getHostName()
+         val hostaddress = address.getHostAddress()
+         println(address + hostname + hostaddress)
+       } catch {
+         case e: UnknownHostException =
+           println(Unable to determine this host&#39;s address)
+       }
+   
+       for (arg - args) {
+         try {
+           val addressList = InetAddress.getAllByName(arg)
+           println(args)
+           println(addressList(0).getHostName())
+           addressList.foreach(
+             i = println(i.getHostAddress()))
+         } catch {
+           case e: UnknownHostException =
+             println(Unable to find address for + arg)
+       }
+     }
+   }
+
+
+実行するとこんな感じ。
+
+.. code-block:: none
+
+   $ scala InetAddressExample www.google.com
+   hoge/127.0.1.1hoge127.0.1.1
+   [Ljava.lang.String;@75786e64
+   www.google.com
+   66.249.89.103
+   66.249.89.147
+   66.249.89.99
+   66.249.89.104
+
+
+Scala自体の勉強は、Scalaスケーラブルプログラミングが中心なのだが、プログラミングErlangを読んでからコップ本を読むと、割とすんなり頭に入ってくる。戦闘機本を読み始めた時はなかなか理解できなくて読み終わるまでにやたら時間かかったけど。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: computer, 
+.. tags::
+
+

@@ -1,0 +1,170 @@
+﻿ApacheでWebDAV + LDAPをグループ毎の権限別で利用する。
+########################################################################
+
+
+昨日の続きの備忘録としてメモ。lightyに比べるとApacheでWebDAV + LDAPを使うのは設定が結構めんどいのですが、まぁその分ちゃんとグループ毎に権限を分けられるのでよし。
+
+モジュールの有効化
+**************************************************
+
+
+authnz_ldap, dav, dav_fs, dav_lock, encoding, ldap, sslをa2enmodコマンドを使って有効にします。
+
+.. code-block:: none
+
+   $ sudo a2enmod authz_ldap
+
+
+以下同様なので省略。
+
+LDAP + WebDAVの設定
+****************************************
+
+
+/etc/apache2/mods-enabled/ldap.confに設定します。
+
+.. code-block:: none
+
+   diff --git a/apache2/mods-available/ldap.conf b/apache2/mods-available/ldap.conf
+   index 6d3b6d1..221ec90 100644
+   --- a/apache2/mods-available/ldap.conf
+   +++ b/apache2/mods-available/ldap.conf
+   @@ -1,8 +1,147 @@
+   +
+   +
+   +EncodingEngine on
+   +SetServerEncoding UTF-8
+   +NormalizeUsername on
+   +DefaultClientEncoding JA-AUTO-SJIS-MS SJIS
+   +#DefaultClientEncoding UTF-8 CP932 EUCJP-MS
+   +AddClientEncoding cadaver/ UTF-8
+   +AddClientEncoding Microsoft .* DAV 1.1 ASCII CP932 UTF-8
+   +AddClientEncoding Microsoft .* DAV UTF-8 CP932
+   +AddClientEncoding (Microsoft .* DAV $) UTF-8 CP932
+   +AddClientEncoding (Microsoft .* DAV 1.1) CP932 UTF-8
+   +AddClientEncoding Microsoft-WebDAV* UTF-8 CP932
+   +AddClientEncoding RMA/* CP932
+   +AddClientEncoding xdwin9x/ CP932
+   +AddClientEncoding cadaver/ UTF-8 EUCJP-MS
+   +AddClientEncoding Mozilla/ EUCJP-MS
+   +
+   +Alias /group1 /var/www/group1/
+   +Location /group1
+   +       Options Indexes MultiViews FollowSymLinks
+   +        DAV On
+   +       SSLRequireSSL
+   +        Order allow,deny
+   +        Allow from All
+   +       AuthName hoge
+   +        AuthType Basic
+   +       AuthBasicProvider ldap
+   +       AuthzLDAPAuthoritative on
+   +        AuthLDAPURL ldap://ldapserver/ou=People,o=hoge,dc=example,dc=org?uid
+   
+   +       AuthLDAPGroupAttribute memberUid
+   +       AuthLDAPGroupAttributeIsDN off
+   +        require ldap-group cn=group1,ou=Group,o=hoge,dc=example,dc=org
+   +       Require ldap-attribute gidNumber=20002
+   +       Satisfy all
+   +/Location
+   +
+   +Alias /group2 /var/www/group2/
+   +Location /group2
+   +       Options Indexes MultiViews FollowSymLinks
+   +        DAV On
+   +       SSLRequireSSL
+   +        Order allow,deny
+   +        Allow from All
+   +       AuthName hoge
+   +        AuthType Basic
+   +       AuthBasicProvider ldap
+   +       AuthzLDAPAuthoritative on
+   +        AuthLDAPURL ldap://ldapserver/ou=People,o=hoge,dc=example,dc=org?uid
+   +       AuthLDAPGroupAttribute memberUid
+   +       AuthLDAPGroupAttributeIsDN off
+   +        require ldap-group cn=executive,ou=Group,o=hoge,dc=example,dc=org
+   +       Require ldap-attribute gidNumber=20003
+   +       Satisfy all
+   +/Location
+   (snip)
+    Location /ldap-status
+   -    SetHandler ldap-status
+   -    Order deny,allow
+   -    Deny from all
+   
+   -    Allow from 127.0.0.1 ::1
+   -#    Allow from 192.0.2.0/24
+   -    Satisfy all
+   +       SSLRequireSSL
+   +       SetHandler ldap-status
+   +        Order allow,deny
+   +        Allow from All
+   +       AuthName hoge
+   +               AuthType Basic
+   +       AuthBasicProvider ldap
+   +       AuthzLDAPAuthoritative on
+   +               AuthLDAPURL ldap://ldapserver/ou=People,o=hoge,dc=example,dc=org?uid
+   +       AuthLDAPGroupAttribute memberUid
+   +       AuthLDAPGroupAttributeIsDN off
+   +               require ldap-group cn=sysadmin,ou=Group,o=hoge,dc=example,dc=org
+   +       Require ldap-attribute gidNumber=20001
+   +       Satisfy all
+    /Location
+
+
+日本語ファイル名の対応
+
+* 日本語ファイル名を有効にするため、EncodingEngine, SetServerEncoding, DefaultClientEncoding, AddClientEncodingの設定を行います
+
+* 日本語のディレクトリは作成、変更、削除はできるのに、日本語のファイル名のファイルは作成できません [#]_ 。なんか設定間違っているのかな？
+* 実際のところ日本語のファイル名でファイルを作られるとコマンドラインで作業するのは非常にめんどいのでむしろ無効にしてしまおうかと思ってます
+
+
+* Windows XPで認証時にアカウントにFQDNが付加されてしまう問題を回避するためにNormalizeUsernameを有効に、ということでつけても、実際のところはうまくいかないので、WebDAVのアクセス用のURLの末尾に&#34;?&#34;を追記してもらうというワークアラウンド…。
+
+WebDAVの設定。
+
+* DAV on
+
+こんだけ。
+LDAPまわり。
+
+* AuthBasicProvider ldapで認証プロバイダをLDAPに
+* AuthzLDAPAuthoritative onでLDAPでの認証に失敗した場合に他の認証手段を使わせないように
+* AuthLDAPURL ldap://vmldap-back/ou=People,o=hoge,dc=example,dc=org?uid で認証用のLDAPのURLを指定
+* AuthLDAPGroupAttribute memberUidを指定して、LDAPのグループの属性memberUidをuidとマッチングさせる
+* AuthLDAPGroupAttributeIsDN offでクライアントのDNを使用
+* require ldap-group cn=group1,ou=Group,o=hoge,dc=example,dc=org でgroup1グループのメンバーにアクセスを許可
+* Require ldap-attribute gidNumber=20002 でgroup1のgidNumberを指定
+
+その他。
+
+* SSLRequireSSLでSSLでのアクセスを強制
+* Satisfy allはデフォルトallなので不要ですが、アクセス制限(Order, Allow)のところを、例えばOrder deny,allowとDeny from Allにしている場合、LDAPの認証された場合のみアクセスを許可する、ということをやろうとすると、Satisfy anyにする必要があります。が、その場合、SSLRequestSSLを設定していても、httpでのアクセスも許可されてしまうので要注意 [#]_ 
+
+SSLの鍵と証明書の指定は、/etc/apache2/sites-available/default-sslのSSLCertificateFile, SSLCertificateKeyFileで設定してください。
+
+&#34;Require ldap-attribute gidNumber=xxxxx&#34;の設定が必要なことに気づかなくて結構手間取った…。orz
+
+参考文献
+********************
+
+
+
+* http://httpd.apache.org/docs/2.2/mod/mod_authnz_ldap.html
+* http://sourceforge.jp/magazine/07/11/09/022255/4
+
+
+
+.. rubric:: footnote
+
+.. [#] ：Squeeze, Apache 2.2.16, mod-encoding 20040616-5。
+.. [#] ：Satisfy anyの仕様を考えたらそりゃそうなんだけど。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, Debian, 
+.. tags::
+
+

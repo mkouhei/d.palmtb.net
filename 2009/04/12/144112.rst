@@ -1,0 +1,79 @@
+﻿Debian on MacBook Airで開通。
+##################################################
+
+
+Broadcom Linux STA driverに再挑戦。yamamotoさんに教えてもらったリンク先をたどり、2.6.29用のパッチを当てたらうまく行った。備忘用にメモ。
+
+.. code-block:: none
+
+   $ wget -c http://www.broadcom.com/docs/linux_sta/hybrid-portsrc-x86_64-v5_10_79_10.tar.gz
+   $ wget -c http://www.leprosys.net/files/broadcom-sta-5.10.79.10-linux-2.6.29.patch 
+   $ tar zxvf hybrid-portsrc-x86_64-v5_10_79_10.tar.gz
+   $ patch -p1 -d src/wl/sys  broadcom-sta-5.10.79.10-linux-2.6.29.patch
+   $ make -C /lib/modules/`uname -r`/build M=`pwd` clean
+   $ make -C /lib/modules/`uname -r`/build M=`pwd`
+   $ modprobe -r ndiswrapper
+   $ sudo cp -i wl.ko /lib/modules/`uname -r`/kernel/net/wireless/
+   $ sudo depmod -a
+   $ sudo modprobe lib80211_crypt_ccmp
+   $ sudo modprobe wl
+   $ lsmod | grep wl
+   wl                   1482308  0 
+   lib80211                7284  2 lib80211_crypt_ccmp,wl
+
+
+wlだと、デバイスがwlan0じゃなく、eth1になったので/etc/network/interfaceなどを修正してOK。IEEE802.11nで通信できるようになった。
+
+.. code-block:: none
+
+   (/etc/wpa_supplicant/wpa_supplicant.conf)
+   ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+   ap_scan=2
+   update_config=1
+   
+   network={
+   	ssid=ssid
+   	psk=64bit_presharedkey
+   	proto=WPA2
+   	key_mgmt=WPA-PSK
+   	pairwise=CCMP
+   }
+   
+   (/etc/network/interface)
+   auto lo
+   iface lo inet loopback
+   
+   auto eth1
+   iface eth1 inet dhcp
+   	wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+
+
+yamamotoさん、情報ありがとうございました。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, MacBook, network, 
+.. tags::
+
+
+----
+
+Comment:
+
+	これ、deb にできませんかね。non-freeになるけど、需要はありそうです。
+
+	written by  iwamatsu
+	04/12/2009 22:05:02
+	
+
+----
+
+Comment:
+
+	じゃあ、今度のHack Cafeでやりマフ。
+
+	written by  mkouhei
+	04/12/2009 22:19:37
+	http://d.hatena.ne.jp/mkouhei/
+

@@ -1,0 +1,45 @@
+﻿awesomeで壁紙をランダムに変える。
+########################################
+
+
+
+.. code-block:: none
+
+   $ awsetbg -c -r ~/wallpaper/
+
+
+めっちゃ楽ですな。.profileにでも書いておくか。
+Xfceの時はそんなことはできなかったので、こんなスクリプトを作って、Xfceのセッションログイン時に実行し、壁紙に~/wallpaper/imagefileが指定されるようにしていた。
+
+.. code-block:: none
+
+   #!/usr/bin/ruby
+   
+   require fileutils
+   findpath = **/*.jpg\0**/*.png\0/usr/share/xfce4/backdrops/*.png
+   path = ENV[HOME] + /wallpaper
+   
+   def randomfile(path, findpath)
+     Dir.chdir(path)
+     filelist = Dir.glob(findpath) 
+     filename = filelist[rand(filelist.length)]
+     return filename
+   end
+   
+   def linkimage(filename)
+     FileUtils.ln_s(filename, imagefile, {:force = true})
+   end
+   
+   linkimage(randomfile(path, findpath))
+   
+   exit
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

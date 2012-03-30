@@ -1,0 +1,24 @@
+﻿GRUB2のバグ？
+##################
+
+
+資料作成用に持っていていたLet&#39;s note R3を、e-mobile経由でapt-get {update,upgrade}後にshutdown、帰りの電車の中で起動させたら、GRUB2でおかしな状況に。
+
+.. code-block:: none
+
+     Booting a command list
+   
+   error: unknown command `initrd`
+   
+   Press any key to continue...
+
+
+initrdどころか、linuxすらGRUBのコマンドが無い、となる。GRUBのバグだろうか…？　明日、レスキューモードで立ち上げて復旧を試みるか。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

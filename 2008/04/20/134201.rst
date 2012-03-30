@@ -1,0 +1,96 @@
+﻿仕事する前に、suExecだけやっておいた。
+############################################
+
+
+HikiのdataディレクトリはDocumentRoot以下から別のアクセス不能な場所に移動し、@data_pathを修正。
+suexec対応するために、dataディレクトリ以下はすべて、suexecさせるユーザに所有者、グループも変更させた。
+
+.. code-block:: none
+
+   $ sudo chown -R hoge:fuga data
+
+
+次に、Apacheのsuexecモジュールを使ってsuExecさせるために、/var/www/hoge以下に下記のようなスクリプトを置く。
+
+.. code-block:: none
+
+   (hoge.sh)
+   ======
+   #!/bin/sh
+   user=hoge
+   group=fuga
+   
+   exec /usr/lib/apache2/suexec $user $group index.fcgi
+
+
+で、10-fastcgi.confを下記のように修正。
+
+.. code-block:: none
+
+   $ rcsdiff -r1.3 -r1.4 -u ./10-fastcgi.conf 
+   ===================================================================
+   RCS file: ./RCS/10-fastcgi.conf,v
+   retrieving revision 1.3
+   retrieving revision 1.4
+   diff -u -r1.3 -r1.4
+    --- ./10-fastcgi.conf	2008/04/20 02:14:44	1.3
+    +++ ./10-fastcgi.conf	2008/04/20 04:27:52	1.4
+    @@ -34,7 +34,8 @@
+     fastcgi.server = (
+     	.fcgi = (
+     		(
+    -			bin-path = /var/www/hoge/index.fcgi,
+    +			#bin-path = /var/www/hoge/index.fcgi,
+    +			bin-path = /var/www/hoge/hoge.sh,
+     			socket = /tmp/hoge.socket,
+     			min-procs = 1,
+     			max-procs = 2,
+
+
+あと、Apacheだと、hikiのディレクトリ直下に、.htaccessがあるのだが、これは当然lighttpdでは使えないので、同じような設定をせなアカンことに気がついた。
+suexecのラッパースクリプトも直接アクセスさせないようにするには、.htaccessなら下記の様にするが、
+
+.. code-block:: none
+
+   Options +ExecCGI
+   
+   AddHandler cgi-script .cgi
+   DirectoryIndex hiki.cgi
+   
+   Files hikiconf.rb
+   	deny from all
+   /Files
+   Files hoge.sh
+   	deny from all
+   /Files
+
+
+lighttpdなら下記のようにする。
+
+.. code-block:: none
+
+   $ rcsdiff -r1.2 -r1.3 -u ./lighttpd.conf | sed &#39;s/^/ /g&#39;
+   ===================================================================
+   RCS file: ./RCS/lighttpd.conf,v
+   retrieving revision 1.2
+   retrieving revision 1.3
+   diff -u -r1.2 -r1.3
+    --- ./lighttpd.conf	2008/04/20 01:35:43	1.2
+    +++ ./lighttpd.conf	2008/04/20 04:37:08	1.3
+    @@ -50,7 +50,7 @@
+     # ~    is for backupfiles from vi, emacs, joe, ...
+     # .inc is often used for code includes which should in general not be part
+     #      of the document-root
+    -url.access-deny            = ( ~, .inc )
+    +url.access-deny            = ( ~, .inc, .rb, .sh )
+
+
+lighttpdの設定ファイルの記法にも大分なれてきた。理解してしまえば、Apacheよりも分かりやすいなぁ。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

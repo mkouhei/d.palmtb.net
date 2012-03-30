@@ -1,0 +1,82 @@
+﻿GmailではPOPで一度受信すると見えなくなる？
+##################################################
+
+
+と思ったのだが、どうやらGmailの設定を間違えていた。
+
+* メール転送と POP/IMAP
+
+* POP ダウンロード
+
+* 1. ステータス: 今後受信するメールで POP を有効にする
+* 2. POP でメールにアクセスする場合: メールのコピーを受信トレイに残す
+
+
+
+
+
+にしていると一度受信したあとではこうなる。
+
+.. code-block:: none
+
+   $ openssl s_client -connect pop.gmail.com:995 -quiet
+   depth=1 /C=US/O=Google Inc/CN=Google Internet Authority
+   verify error:num=20:unable to get local issuer certificate
+   verify return:0
+   +OK Gpop ready for requests from xxx.xxx.xxx.xxx 10pf21269557pxi.78
+   user user@hogehoge.org
+   +OK send PASS
+   pass *********
+   +OK Welcome.
+   list
+   +OK 0 messages (0 bytes)
+   .
+   quit
+   +OK Farewell.
+   read:errno=0
+
+
+ステータスを&#34;すべてのメールで POP を有効にする (ダウンロード済みのメールを含む)&#34;としていなければならなかった様だ。
+
+.. code-block:: none
+
+   $ openssl s_client -connect pop.gmail.com:995 -quiet
+   depth=1 /C=US/O=Google Inc/CN=Google Internet Authority
+   verify error:num=20:unable to get local issuer certificate
+   verify return:0
+   +OK Gpop ready for requests from xxx.xxx.xxx.xxx 15pf23798719pzk.41
+   user user@hogehoge.org
+   +OK send PASS
+   pass *********
+   +OK Welcome.
+   list
+   +OK 9 messages (17950 bytes)
+   1 2529
+   2 1872
+   3 1922
+   4 1925
+   5 1925
+   6 1958
+   7 1943
+   8 1956
+   9 1920
+   .
+   quit
+   +OK Farewell.
+   read:errno=0
+
+
+
+追記
+********
+
+
+アーカイブすると上記の設定でも見えなくなる、と。
+
+
+
+.. author:: mkouhei
+.. categories:: network, 
+.. tags::
+
+

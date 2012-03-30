@@ -1,0 +1,18 @@
+﻿CouchDB用のAndroidネイティブアプリCouchNotes。
+######################################################################
+
+
+CouchDBをDBとしてPhoneGapで作ったAndroidネイティブアプリのCouchNotesというメモアプリがCouchOneからリリースされていた。リリース翌日にはCouchOneではなくMembaseと合併してCouchbaseになったけど。Couchbase mobileは最初はiOSをターゲットとしてやっていくそうな。Android版はβ版が2週前にリリースされたけど、とりあえずはペンディングになるのかな。
+さて、ネイティブアプリと言いつつもPhoneGapでやっているので実質的にはWebアプリ。jQuery Mobile1.0α3 + jQuery 1.5で作ったWebアプリをブラウザで動かす方が速い感じ。Phone GapよりもやっぱりTitaniumの方が良いのもなぁ。
+
+
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: CouchDB, gadget, 
+.. tags::
+
+

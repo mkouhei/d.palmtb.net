@@ -1,0 +1,99 @@
+﻿upstartでプロセスを自動再起動させる。
+############################################
+
+
+おぷすたでインスタンスを作成した際に、自動でDNSにAレコードを登録するデーモンが(チーム内で作って)あるのですが、これが落ちていたためインスタンス起動時にレコードが登録されない、ということがありました。プロセスが死んだとしても勝手に再起動させればよいので、inittabかdaemontoolsかmonitあたりでやろうかなぁと考えていたら、
+ああ、もうdaemontoolsいらないね。落ちた時の自動起動だけならupstartで実現できる。Debianは6以降、RHELも6以降は標準でインストールされてる。Amazon Linuxも標準装備。ただしGentooでは使えません。 12 hours ago  via webReplyRetweetFavoritepowered by @socialdittoとのmatsuuさんのtweetでupstartでもできることを思い出し [#]_ 、Ubuntu上で稼働していたので、そうすることにしました。
+
+設定ファイルの作成。
+********************************************************
+
+
+/etc/init/novadns.conf
+
+.. code-block:: none
+
+   # novadns
+   description     novadns
+   
+   start on filesystem
+   stop on runlevel S
+   
+   respawn
+   respawn limit 10 5
+   umask 022
+   oom never
+   
+   pre-start script
+       test -x /usr/sbin/novadns || { stop; exit 0; }
+       test -e /etc/novadns/setting.ini || { stop; exit 0; }
+       test -e /etc/novadns/logging.conf || { stop; exit 0; }
+       test -c /dev/null || { stop; exit 0; }
+   end script
+   exec /usr/sbin/novadns
+
+
+とこんな感じでファイルを作成します。
+
+ジョブの制御。
+**************************************
+
+
+ファイルを作成すると早速確認できます。
+
+.. code-block:: none
+
+   $ sudo initctl status novadns
+   novadns stop/waiting
+   $ ps -ef | grep novadns
+   20667    23885 23382  0 11:22 pts/1    00:00:00 grep --color=auto novadns
+
+
+プロセス起動してみます。
+
+.. code-block:: none
+
+   $ sudo initctl start novadns
+   novadns start/running, process 23909
+   $ sudo initctl status novadns
+   novadns start/running, process 23909
+   $ ps -ef | grep novadns
+   root     23909     1  0 11:23 ?        00:00:00 python /usr/sbin/novadns
+   20667    23912 23382  0 11:23 pts/1    00:00:00 grep --color=auto novadns
+
+
+プロセス停止してみます。
+
+.. code-block:: none
+
+   $ sudo initctl stop novadns
+   novadns stop/waiting
+   $ sudo initctl status novadns
+   novadns stop/waiting
+
+
+プロセス殺しても自動で再起動するか確認してみます。
+
+.. code-block:: none
+
+   $ sudo initctl start novadns
+   novadns start/running, process 23924
+   $ sudo kill 23924
+   $ sudo initctl status novadns
+   novadns start/running, process 23927
+
+
+ということでOK。
+
+
+.. rubric:: footnote
+
+.. [#] ：.. [#] に.. [#] Debian勉強会でUpstartネタやっていたのに忘れてました…。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, Debian, 
+.. tags::
+
+

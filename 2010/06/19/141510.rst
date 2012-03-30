@@ -1,0 +1,41 @@
+﻿wodemコマンドの仕様は変わっていなかった件。
+################################################
+
+
+今までは
+
+.. code-block:: none
+
+   $ cdrecord -dev=1,0,0 -blank=fast
+
+
+で初期化したCD-RWを
+
+.. code-block:: none
+
+   $ wodim -v dev=&#39;/dev/scd0&#39; speed=10 $ISOIMAGE
+
+
+で焼いていたのに、いつの間にやら気がついたら
+
+.. code-block:: none
+
+   $ wodim -overburn -v dev=&#39;/dev/scd0&#39; speed=10 $ISOIMAGE
+
+
+と-overburnオプションをつけないと書き込みできなくなっていた。
+
+
+訂正
+********
+
+
+仕様が変わったんじゃなくて、650MBのCD-Rに700MBのISOイメージを焼こうとしていたからだった。恥ずかしい。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Unix/Linux, 
+.. tags::
+
+

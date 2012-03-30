@@ -1,0 +1,77 @@
+﻿git stash便利ですな。
+##############################
+
+
+最新のコミットの後に作業して、ワーキングツリーに変更がある状態だと、git pushできないので、オフラインで作業していて、自宅に帰ってpushだけしようとすると、
+
+.. code-block:: none
+
+   $ git push origin master
+   # On branch master
+   # Your branch is ahead of &#39;origin/master&#39; by 1 commit.
+   #
+   # Changed but not updated:
+   #   (use git add file... to update what will be committed)
+   #   (use git checkout -- file... to discard changes in working directory)
+   #
+   #	modified:   hoge
+   #
+   no changes added to commit (use git add and/or git commit -a)
+   E: There is diff in this directory, commit them first.
+
+
+とプッシュ出来ないので、コミットできるところまで作業進める、という非効率なことをやっていたが、コミットできるところまで作業進まずに、また通勤電車の中でコミットするという状況が多い。そうすると次にオンラインになるまで作業を止めておくというのはますます非効率。
+んで、iwamatsuさんに以前git stashが便利だということを聞いていたので試してみることにした。
+
+.. code-block:: none
+
+   $ git stash
+   Saved working directory and index state WIP on master: 6bd6da7 Latest commit.
+   HEAD is now at 6bd6da7 Latest commit.
+   (To restore them type git stash apply)
+   $ git status
+   # On branch master
+   # Your branch is ahead of &#39;origin/master&#39; by 1 commit.
+   #
+   nothing to commit (working directory clean)
+
+
+とワーキングツリーにあった変更途中の内容が退避される [#]_ 。んで再度プッシュ。戻すのはgit stash pop。
+
+.. code-block:: none
+
+   $ git stash pop
+   # On branch master
+   # Changed but not updated:
+   #   (use git add file... to update what will be committed)
+   #   (use git checkout -- file... to discard changes in working directory)
+   #
+   #	modified:   hoge
+   #
+   no changes added to commit (use git add and/or git commit -a)
+   Dropped refs/stash@{0} (3990af523043df9f39a236cdb6ec8eb3024c4654)
+   $ git status
+   # On branch master
+   # Changed but not updated:
+   #   (use git add file... to update what will be committed)
+   #   (use git checkout -- file... to discard changes in working directory)
+   #
+   #	modified:   hoge
+   #
+   no changes added to commit (use git add and/or git commit -a)
+
+
+と元の状態に戻せた。便利ですな。本来の使い方とは違うのかもしれんが。
+
+
+.. rubric:: footnote
+
+.. [#] ：コミットログメッセージは適当。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

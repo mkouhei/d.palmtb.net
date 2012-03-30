@@ -1,0 +1,27 @@
+﻿/etc/sudoersにsudoグループが登録されるようになった。
+####################################################################
+
+
+Lennyまでは特定グループにsudoを許可するには、
+
+* グループへの登録
+* グループを/etc/sudoersに登録
+
+が必要だったのだが、Squeezeからはデフォルトでsudoグループが/etc/sudoersに登録されるようになった。sudoグループ自体は以前からあったようだが。
+
+.. code-block:: none
+
+   # Allow members of group sudo to execute any command
+   # (Note that later entries override this, so you might need to move
+   # it further down)
+   %sudo ALL=(ALL) ALL
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Unix/Linux, 
+.. tags::
+
+

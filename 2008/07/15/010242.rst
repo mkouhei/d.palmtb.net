@@ -1,0 +1,14 @@
+﻿またやらかした。
+################
+
+
+今朝Kernel 2.6.25.11が出ていたので、再構築してから出勤するかと、何も考えずにいつものようにやったのだが、再起動かけたら起動しなくなった。/dev/hdaが/dev/sdaになるのを忘れてた。
+liloでの起動時にroot=/dev/sda4を渡して、起動中にメンテナンスモードになった際に/boot, /homeをマウントし、/etc/fstabと/etc/lilo.confを修正し、起動完了後にlilo -vで反映。学習せんな、ワシ。
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, Unix/Linux, エラー, 
+.. tags::
+
+

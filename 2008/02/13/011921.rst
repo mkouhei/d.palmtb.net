@@ -1,0 +1,68 @@
+﻿gptsyncまでは何とかいけた。
+##################################
+
+
+rEFItをちゃんとインストール後、cキー押しでDVD起動でDebianをディスクパーティショニング、パッケージのインストール、liloのインストールまで実行。liloは/bootファイルシステムに割り当てている/dev/hda3を指定してインストールさせる [#]_ が、当然そのままMBRの書き変えには失敗させ、ブートローダのインストール完了させずに終了させ、再起動させる。
+rEFItが起動後、EFI Shellを実行し、gptsyncを実行させる。実行後に再度起動させるとこんな感じ。
+
+.. code-block:: none
+
+   &gt; gptsync
+   Starting gptsync.efi
+   
+   Current GPT partition table:
+   #       Start LBA      End LBA  Type
+   1              40       409639  EFI System (FAT)
+   2          409640     53061583  Mac OS X HFS+
+   3        53061584     53295959  EFI System (FAT)
+   4        53295960     76733460  Basic Data
+   5       152160829    156301454  Linux Swap
+   6        76733461    152160828  Basic Data
+   
+   Current MBR partition table:
+   # A     Start LBA      End LBA  Type
+   1               1       409639  EE  EFI Protective
+   2          409640     53061583  AF  Mac OS X HFS+
+   3 *      53061584     53295959  83  Linux
+   4        53295960     76733460  83  Linux
+   
+   Status: Tables are synchronized, no need to sync.
+
+
+今度はまたDVDブートさせて、rescueモードで起動させて、/ファイルシステムを指定してshellを起動させて、/bootをマウント後にliloをMBRにインストールする。
+
+.. code-block:: none
+
+   # umount /boot
+   # umount /home
+   # mount /dev/hda3 /boot
+   # lilo -v
+
+
+/bootと/homeをumountさせるのは、単純に変に残っているマウント情報を消すためだけ。
+ほんで、再起動させ、rEFItに現れたLinux領域を起動させてみた。
+
+.. code-block:: none
+
+   rEFIt - Booting Legacy OS
+   
+   Starting legacy loader
+   Error: Not Found while loading legacy loader
+   
+   Please make sure that you have the latest firmware update installed.
+
+
+うーん、rEFItでDebianインストーラをDVD起動掛けようとしたら、同じ画面が出てきたので何となく無理なんじゃないかなぁとは予想はしていたのだが…。悔しいなぁ…。
+
+
+.. rubric:: footnote
+
+.. [#] ：liloパッケージを導入するのと、/etc/lilo.confを生成させるのが目的なので
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, MacBook, 
+.. tags::
+
+

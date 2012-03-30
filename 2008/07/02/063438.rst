@@ -1,0 +1,69 @@
+﻿dir_index適用してみた。
+################################
+
+
+今月のSoftwareDesign [#]_ の第２特集「今日からはじめるファイルシステム」でdir_indexオプションを知ったので、さっそくIMAPサーバ用に使っているファイルシステムに適用してみた。
+
+実施手順
+********************
+
+ざっと以下のような感じ。 [#]_ 
+
+.. code-block:: none
+
+   $ sudo dumpe2fs -h /dev/hda6
+   (snip)
+   Filesystem revision #:    1 (dynamic)
+   Filesystem features:      has_journal filetype needs_recovery sparse_super
+   (snip)
+   $ sudo mount -r -o remount /dev/sda6
+   $ sudo tune2fs -O +dir_index /dev/hda6
+   $ sudo dumpe2fs -h /dev/hda6
+   (snip)
+   Filesystem revision #:    1 (dynamic)
+   Filesystem features:      has_journal dir_index filetype needs_recovery sparse_super
+   (snip)
+   $ sudo e2fsck -D /dev/hda6
+   e2fsck 1.40-WIP (14-Nov-2006)
+   /dev/hda6 is mounted.  
+   
+   WARNING!!!  Running e2fsck on a mounted filesystem may cause
+   SEVERE filesystem damage.
+   
+   Do you really want to continue (y/n)? yes
+   
+   Adding dirhash hint to filesystem.
+   
+   /dev/hda6 has gone 180 days without being checked, check forced.
+   Pass 1: Checking inodes, blocks, and sizes
+   Pass 2: Checking directory structure
+   Pass 3: Checking directory connectivity
+   Pass 3A: Optimizing directories
+   Pass 4: Checking reference counts
+   Pass 5: Checking group summary information
+   
+   /dev/hda6: ***** FILE SYSTEM WAS MODIFIED *****
+   /dev/hda6: 52652/6701056 files (1.5% non-contiguous), 1591010/53600840 blocks
+
+
+
+効果のほどは？
+**************************************
+
+
+正確には実測していないのだが、キャッシュの残っていない2,000通ほどあるディレクトリをフルスキャンしてメッセージヘッダを取得した場合の体感速度は半分位短くなった感じがしますな。良かった良かった。
+
+
+.. rubric:: footnote
+
+.. [#] ：2008年7月号
+.. [#] ：該当のファイルシステムに書き込みを行うサービスは全停止させておく。
+.. [#] ：実施中に睡眠取ったので実際にどのくらいかかったのかは知らんけど。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, Ops, gadget, 
+.. tags::
+
+

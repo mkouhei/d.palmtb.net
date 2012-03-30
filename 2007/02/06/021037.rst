@@ -1,0 +1,18 @@
+﻿私はここよ。
+############
+
+
+sonodamさんのブログを見て、KVMではどうか調べてみた。予想通り、というか結果は知っていたのだが。z/VM上だとどうなんだろう？ [#]_ 
+
+
+.. rubric:: footnote
+
+.. [#] ：春になったら確認してみるか…。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, virt., 
+.. tags::
+
+

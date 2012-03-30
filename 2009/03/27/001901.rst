@@ -1,0 +1,17 @@
+﻿Not create new ID but trackback.
+################################################################
+
+
+tyamadaさんのブログに、
+
+自分はSystem/370などメインフレーム技術の事情がわからないので、どうしてもPC技術などから想像するしかない部分があるのが残念です。
+http://blog.livedoor.jp/tyamada22/archives/783433.html
+とあったのですが、IBMのRedbookを読めば良いと思うよ、とコメントしようとしてlivedoor idとやらが必要だったので面倒だからトラックバック
+
+
+
+.. author:: mkouhei
+.. categories:: virt., computer, 
+.. tags::
+
+

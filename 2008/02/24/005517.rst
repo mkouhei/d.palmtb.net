@@ -1,0 +1,13 @@
+﻿MacBook Airに対応した。
+##################################
+
+
+rEFIt 0.11で、MacBook Airが対応となった。
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, Unix/Linux, 
+.. tags::
+
+

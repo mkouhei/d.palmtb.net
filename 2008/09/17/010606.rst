@@ -1,0 +1,15 @@
+﻿読めば良い。
+############
+
+
+勉強したいしたい、と口だけで勉強しない、勤務先の人たちはこれでも読んで自習すれば良いと思うよ。
+http://www.lpi.or.jp/linuxtext/
+http://www.atmarkit.co.jp/news/200809/16/lpic.html
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 仕事, 
+.. tags::
+
+

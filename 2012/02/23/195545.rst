@@ -1,0 +1,79 @@
+﻿p7zip-full, pbzip2も比べてみた。
+##################################################
+
+
+p7zip-full(7zコマンド)のオプションは、&#34;-t7z -m0=lzma -mx=9&#34;を指定し、pbzip2は-9オプションを使用しました。
+
+p7zip-full 圧縮後のサイズ比19.0%
+****************************************************************************
+
+
+
+.. code-block:: none
+
+   # p7zip compress ##
+   
+   7-Zip [64] 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18
+   p7zip Version 9.20 (locale=ja_JP.UTF-8,Utf16=on,HugeFiles=on,4 CPUs)
+   
+   Scanning
+   
+   Updating archive hoge.pdf.7z
+   
+   Compressing  hoge.pdf
+   
+   Everything is Ok
+   
+   real    0m1.169s
+   user    0m1.688s
+   sys     0m0.272s
+   -rw-r--r-- 1 user user 2328107  2月 23 19:46 hoge.pdf.7z
+   ## p7zip uncompress ##
+   
+   7-Zip [64] 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18
+   p7zip Version 9.20 (locale=ja_JP.UTF-8,Utf16=on,HugeFiles=on,4 CPUs)
+   
+   Processing archive: hoge.pdf.7z
+   
+   Extracting  hoge.pdf
+   
+   Everything is Ok
+   
+   Size:       12226478
+   Compressed: 2328107
+   
+   real    0m0.201s
+   user    0m0.216s
+   sys     0m0.028s
+
+
+
+pbzip2 圧縮後のサイズ比35.6%
+********************************************************************
+
+
+
+.. code-block:: none
+
+   ## pbzip2 compress ##
+   
+   real    0m2.844s
+   user    0m11.009s
+   sys     0m0.044s
+   -rwxr-x--- 1 user user 4355974  2月 23 11:02 hoge.pdf.bz2
+   ## pbzip2 uncompress ##
+   
+   real    0m0.306s
+   user    0m1.040s
+   sys     0m0.036s
+
+
+p7zip-fullはxzと、pbzip2はbzip2と大体圧縮率が同じくらいで、処理時間はいずれも比較対象よりも速い、という結果になりました。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

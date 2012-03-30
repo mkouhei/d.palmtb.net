@@ -1,0 +1,129 @@
+﻿ExcelファイルからLDIFを生成する。
+##########################################
+
+
+Excelで管理しているユーザリストを用いて、LDIFに変換するのに、なんか良いコマンドラインのツールないかなぁと思ったら、@ITの記事で紹介されていたExcelからHTMLやCSVなどに変換可能なxlhtmlというツールが使えそうなので、これを使ってタブ区切りでawkでLDIFに変換するスクリプトを作ったので、それらのポイントをメモっておきました。
+まず、xlhtmlはDebianならSqueezeでも含まれているので、参考にした記事とは違い、余計な外部リポジトリを使わなくてもapt-getコマンド一発で導入できます。
+
+.. code-block:: none
+
+   $ sudo apt-get install xlhtml
+
+
+とりあえず、LDIFに変換するためにタブ区切りのテキストファイルにします。 [#]_ 
+
+.. code-block:: none
+
+   $ xlhtml -asc -xp:0 memberlist.xls  memberlist.txt
+
+
+今回のデータは1行が1ユーザの情報になっており、対象としたいユーザは特定のカラム(Y列(25列目))がフラグとして1になっています。また、氏名(B列(2列目))は、全角スペースを区切り文字として&#34;姓　名&#34;となっているので、ユーザ定義関数を作り、文字列の変換を行いました [#]_ 。また、ここでは、初期パスワードを変数seedに適当な文字列とuseridを連結したものにして、system()でslappasswdで生成しています。その一行前のuserPassword:はprintfで意図的に改行させないようにしています。
+
+.. code-block:: none
+
+   # filtering with FLAG($25) is 1
+   # $1 : userid
+   # $2 : FullName
+   # $5 : department name
+   # $17: email
+   # $34: admin
+   # $35: author
+   # $36: moderator
+   
+   # convert member LDIF
+   awk -F &#39;\t&#39; &#39;$25 == 1 {
+           seed = initialpasswrd
+           print dn: uid= $1 ,ou=People,o=hoge,dc=example,dc=org
+           print uid:  $1
+           print objectClass: inetOrgPerson
+           print objectClass: posixAccount
+           print objectClass: top
+           printf userPassword: 
+           system(/usr/sbin/slappasswd -h &#39;{SHA}&#39; -s  seed $1)
+           print loginShell: /bin/false
+           print uidNumber:  $1
+           print gidNumber: 10005
+           print homeDirectory: /noexistence
+           print o:  $5
+           name($2)
+           print cn:  $1
+           print mail:  $17
+           print 
+   }
+   
+   # separate LastName, FirstName from fullname
+   function name(fullname){
+           # Convert Zenkaku_space to hankaku_space.
+           sub(　, ,fullname)
+           # extract  print last name.
+           print sn:  substr(fullname,1,index(fullname, ))
+           # extract first name
+           sub(/^.* /,,fullname)
+           # print first name
+           print gn:  fullname
+           return
+   }
+   &#39; temp.txt  user.ldif
+   ldapadd -f user.ldif -D cn=admin,dc=example,dc=org -W
+
+
+生成したuser.ldifをldapaddコマンドで追加します。
+複数グループの設定は、あらかじめ作っておいたグループに、memberUidにA列(1列目)の値を指定します。
+
+.. code-block:: none
+
+   # add other group
+   awk -F &#39;\t&#39; &#39;
+   # admin
+   $34 == 1 {
+           print dn: cn=admin,ou=Group,o=hoge,dc=example,dc=org
+           print changetype: modify
+           print add: memberUid
+           print memberUid:  $1
+           print 
+   }
+   $35 == 1 {
+   (snip)
+   }
+   &#39; temp.txt  group-mod.ldif
+   ldapmodify -f group-mod.ldif  -D cn=admin,dc=example,dc=org -W
+
+
+生成したgroup-mod.ldifをldapmodifyコマンドで反映します。
+objectClassでposixAccountを使用する主目的であるadminグループのユーザにはシェルログインを許可するために、ユーザ情報を変更します。
+
+.. code-block:: none
+
+   awk -F &#39;\t&#39; &#39;
+   $34 == 1 {
+           print dn: uid=U $1 ,ou=People,o=hoge,dc=example,dc=org
+           print changetype: modify
+           print replace: homeDirectory
+           print homeDirectory: /home/ $1
+           print 
+   
+           print dn: uid=U $1 ,ou=People,o=hoge,dc=example,dc=org
+           print changetype: modify
+           print replace: loginShell
+           print loginShell: /bin/bash
+           print 
+   }&#39; temp.txt  admin.ldif
+   ldapmodify -f admin.ldif  -D cn=admin,dc=example,dc=org -W
+
+
+てな感じです。今回のユーザアカウントのLDIFではsnやgn、mailを使っていますが、これはWordPressのユーザ管理もSimple LDAP Authentication プラグインを使ってLDAPで行うためです。シェルスクリプトは、githubに置いておこうかと思ったのですが、そもそもExcelでユーザ情報を管理しているのがいかがなもんかと思うので、まぁ必要ないですよね [#]_ 。
+
+
+.. rubric:: footnote
+
+.. [#] ：CSVにしないのは、変換元のデータに、,(カンマ)含まれているからです。
+.. [#] ：function name()のこと。
+.. [#] ：今回は、他の組織がExcelで管理している一次情報から、自分たちに必要な情報に加工して使用するという運用になっているので、元のデータが結局Excelから変更されないと、二次情報のデータをいくらExcelから変更しても意味ないので、Excelから変換するやりかたにしました。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, Debian, 
+.. tags::
+
+

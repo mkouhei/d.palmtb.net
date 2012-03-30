@@ -1,0 +1,68 @@
+﻿起動時のcall trace。
+##############################
+
+
+メモ。
+
+.. code-block:: none
+
+   [    2.140912] Call Trace:
+   [    2.140914]  IRQ  [ffffffff81089a79] ? __report_bad_irq.clone.2+0x30/0x7c
+   [    2.140927]  [ffffffff81089bcc] ? note_interrupt+0x107/0x177
+   [    2.140933]  [ffffffff8130ef56] ? _raw_spin_lock_irqsave+0x1e/0x29
+   [    2.140937]  [ffffffff8108a14e] ? handle_level_irq+0xbc/0x108
+   [    2.140942]  [ffffffff81005307] ? handle_irq+0x17/0x1d
+   [    2.140946]  [ffffffff81005030] ? do_IRQ+0x45/0xad
+   [    2.140950]  [ffffffff8130f453] ? ret_from_intr+0x0/0x15
+   [    2.140955]  [ffffffff81042e2c] ? __do_softirq+0x55/0x177
+   [    2.140959]  [ffffffff8100591d] ? timer_interrupt+0x19/0x23
+   [    2.140963]  [ffffffff810887df] ? handle_IRQ_event+0x4e/0x10b
+   [    2.140967]  [ffffffff810037dc] ? call_softirq+0x1c/0x28
+   [    2.140970]  [ffffffff8100534c] ? do_softirq+0x3f/0x7f
+   [    2.140974]  [ffffffff81042fda] ? irq_exit+0x36/0x7f
+   [    2.140977]  [ffffffff8100507f] ? do_IRQ+0x94/0xad
+   [    2.140982]  [ffffffff81231b0a] ? dmam_coherent_release+0x0/0x73
+   [    2.140986]  [ffffffff8130f453] ? ret_from_intr+0x0/0x15
+   [    2.140988]  EOI  [ffffffff8122cf0f] ? devres_alloc+0x2f/0x47
+   [    2.140996]  [ffffffff8122ceff] ? devres_alloc+0x1f/0x47
+   [    2.141000]  [ffffffff81231d92] ? dmam_alloc_coherent+0x2b/0xf9
+   [    2.141006]  [ffffffffa00e3e35] ? ahci_port_start+0xf5/0x166 [libahci]
+   [    2.141010]  [ffffffff8130ef56] ? _raw_spin_lock_irqsave+0x1e/0x29
+   [    2.141020]  [ffffffffa00b3415] ? __ata_port_freeze+0x35/0x3b [libata]
+   [    2.141027]  [ffffffffa00a9d87] ? ata_host_start+0xc6/0x151 [libata]
+   [    2.141031]  [ffffffffa00e4d01] ? ahci_interrupt+0x0/0x5b9 [libahci]
+   [    2.141040]  [ffffffffa00af3fd] ? ata_host_activate+0x1f/0xd7 [libata]
+   [    2.141046]  [ffffffffa00eebd3] ? ahci_init_one+0x7c7/0x7e0 [ahci]
+   [    2.141051]  [ffffffff8101f5ee] ? default_spin_lock_flags+0x5/0xb
+   [    2.141055]  [ffffffff812316c4] ? __pm_runtime_set_status+0x12e/0x155
+   [    2.141059]  [ffffffff8101f5ee] ? default_spin_lock_flags+0x5/0xb
+   [    2.141063]  [ffffffff8130ef56] ? _raw_spin_lock_irqsave+0x1e/0x29
+   [    2.141068]  [ffffffff8119e260] ? local_pci_probe+0x49/0x95
+   [    2.141072]  [ffffffff8130ef35] ? _raw_spin_lock+0x5/0x8
+   [    2.141076]  [ffffffff8119e837] ? pci_device_probe+0xc4/0xf3
+   [    2.141080]  [ffffffff8122ae07] ? driver_sysfs_add+0x66/0x8d
+   [    2.141085]  [ffffffff8122b084] ? driver_probe_device+0xa8/0x138
+   [    2.141088]  [ffffffff8122b163] ? __driver_attach+0x4f/0x6f
+   [    2.141092]  [ffffffff8122b114] ? __driver_attach+0x0/0x6f
+   [    2.141095]  [ffffffff8122a388] ? bus_for_each_dev+0x47/0x72
+   [    2.141099]  [ffffffff8122aa14] ? bus_add_driver+0xae/0x1fe
+   [    2.141105]  [ffffffffa00f5000] ? ahci_init+0x0/0x22 [ahci]
+   [    2.141108]  [ffffffff8122b398] ? driver_register+0x8d/0xf5
+   [    2.141114]  [ffffffffa00f5000] ? ahci_init+0x0/0x22 [ahci]
+   [    2.141117]  [ffffffff8119ea92] ? __pci_register_driver+0x50/0xbb
+   [    2.141123]  [ffffffffa00f5000] ? ahci_init+0x0/0x22 [ahci]
+   [    2.141126]  [ffffffff810002e6] ? do_one_initcall+0x78/0x136
+   [    2.141132]  [ffffffff8106c8aa] ? sys_init_module+0x9c/0x1d7
+   [    2.141136]  [ffffffff810028d2] ? system_call_fastpath+0x16/0x1b
+   [    2.141139] handlers:
+   [    2.141189] [ffffffff8123b199] (usb_hcd_irq+0x0/0x6c)
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, MacBook, 
+.. tags::
+
+

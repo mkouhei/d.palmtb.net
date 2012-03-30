@@ -1,0 +1,13 @@
+﻿最近よく考えていること。
+########################
+
+
+git pullするのとrsyncでPUSHするのとどっちがええかなぁ。
+
+
+
+.. author:: mkouhei
+.. categories:: Ops, 
+.. tags::
+
+

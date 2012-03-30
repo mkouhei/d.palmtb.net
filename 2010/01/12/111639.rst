@@ -1,0 +1,99 @@
+﻿続・lxcが起動しない。
+########################
+
+
+Upstreamのバージョンが0.6.3から0.6.4になったということで、先ほどlxc-debianで作成したコンテナが起動しなかったが、そもそもスクリプトの内容が変わっているのではないかと思い、確認してみたらやっぱり。
+
+.. code-block:: none
+
+   --- lxc-debian  2009-10-30 17:58:20.000000000 +0900
+   +++ lxc-debian-new      2010-01-12 10:15:14.000000000 +0900
+   @@ -136,7 +136,6 @@
+    lxc.network.link = br0
+    lxc.network.name = eth0
+    lxc.network.mtu = $MTU
+   -lxc.mount = $TMPMNTFILE
+    lxc.rootfs = $ROOTFS
+    lxc.cgroup.devices.deny = a
+    # /dev/null and zero
+   @@ -155,14 +154,17 @@
+    # rtc
+    lxc.cgroup.devices.allow = c 254:0 rwm
+    EOF
+   +
+   +       if [ ! -z $TMPMNTFILE ]; then
+   +               cat $TMPMNTFILE  $CONFFILE
+   +       fi
+    }
+   
+    write_lxc_mounts() {
+   
+   -    TMPMNTFILE=$(mktemp lxc.XXXXXXXXXX)
+   -
+        if [ ! -z $MNTFILE ]; then
+   -       cp $MNTFILE $TMPMNTFILE
+   +       TMPMNTFILE=$(mktemp lxc.$NAME.XXXXXXXXXX)
+   +       sed -e &#39;s/^\(.*\)/lxc.mount.entry=/&#39; $MNTFILE $TMPMNTFILE
+        fi
+    }
+   
+
+
+新しいスクリプトでコンテナを作成しなおしてみたらあっさり起動した。旧バージョンで作成したコンテナと、新バージョンで作成したコンテナの違いは、/var/lib/lxc/ディレクトリ以下の構成が明らかに違う。新しい方は、configファイルしかない。
+
+.. code-block:: none
+
+   $ ls -l /var/lib/lxc/{hoge,foo}
+   /var/lib/lxc/foo:
+   合計 4
+   -rw-r--r-- 1 root root 683 2010-01-12 10:18 config
+   
+   /var/lib/lxc/hoge:
+   合計 40
+   -rw-r--r-- 1 root root  283 2009-12-04 18:12 cgroup
+   -rw------- 1 root root  712 2009-12-04 18:12 config
+   -rw------- 1 root root   74 2009-12-04 18:12 fstab
+   -rw------- 1 root root    5 2010-01-04 09:23 init
+   drwxr-xr-x 3 root root 4096 2009-12-04 18:12 network
+   lrwxrwxrwx 1 root root   22 2010-01-04 09:23 nsgroup - /var/local/cgroup/hoge
+   -rwxr-xr-x 1 root root    6 2009-12-04 18:12 pts
+   drwxr-xr-x 2 root root 4096 2009-12-04 18:12 rootfs
+   -rw------- 1 root root    7 2010-01-12 09:13 state
+   -rwxr-xr-x 1 root root    3 2009-12-04 18:12 tty
+   -rwxr-xr-x 1 root root    6 2009-12-04 18:12 utsname
+
+
+configファイルの内容の違いは以下。lxc.mountパラメータが無くなっている。
+
+.. code-block:: none
+
+   $ sudo diff -u /var/lib/lxc/{hoge,foo}/config
+   --- /var/lib/lxc/hoge/config    2009-12-04 18:12:13.000000000 +0900
+   +++ /var/lib/lxc/foo/config     2010-01-12 10:18:34.000000000 +0900
+   @@ -1,4 +1,4 @@
+   -lxc.utsname = hoge
+   +lxc.utsname = foo
+    lxc.tty = 4
+    lxc.pts = 1024
+    lxc.network.type = veth
+   @@ -6,8 +6,7 @@
+    lxc.network.link = br0
+    lxc.network.name = eth0
+    lxc.network.mtu = 1500
+   -lxc.mount = lxc.QFWBT5fvhU
+   -lxc.rootfs = ./rootfs.hoge
+   +lxc.rootfs = ./rootfs.foo
+    lxc.cgroup.devices.deny = a
+    # /dev/null and zero
+    lxc.cgroup.devices.allow = c 1:3 rwm
+
+
+他のファイル、というか情報はどこへ行ったのか？
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, computer, virt., 
+.. tags::
+
+

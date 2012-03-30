@@ -1,0 +1,78 @@
+﻿dvipdfmxでエラーとなりPDFを生成できない問題。
+########################################################
+
+
+Squeeze/Sidでの’** ERROR ** Could not find encoding file ”H”.’の問題、ここを参考に/etc/texmf/texmf.d/85Misc.cnfを以下のように修正。
+
+.. code-block:: none
+
+   diff --git a/texmf/texmf.d/85Misc.cnf b/texmf/texmf.d/85Misc.cnf
+   index dee63d0..9c6b3b6 100644
+   --- a/texmf/texmf.d/85Misc.cnf
+   +++ b/texmf/texmf.d/85Misc.cnf
+   @@ -5,7 +5,7 @@ INDEXSTYLE = .;$TEXMF/makeindex//
+    ENCFONTS = .;$TEXMF/fonts/enc//
+    
+    % CMap files.
+   -CMAPFONTS = .;$TEXMF/fonts/cmap//
+   +CMAPFONTS = .;/var/lib/defoma/gs.d/dirs/CMap//;$TEXMF/fonts/cmap//
+    
+    % Subfont definition files.
+    SFDFONTS = .;$TEXMF/fonts/sfd//
+
+
+/etc/texmx/texmf.cnfに反映。
+
+.. code-block:: none
+
+   $ sudo update-texmf
+
+
+git diffで確認。
+
+.. code-block:: none
+
+   diff --git a/texmf/texmf.cnf b/texmf/texmf.cnf
+   index da79dd4..73a5cbb 100644
+   --- a/texmf/texmf.cnf
+   +++ b/texmf/texmf.cnf
+   @@ -402,7 +402,7 @@ INDEXSTYLE = .;$TEXMF/makeindex//
+    ENCFONTS = .;$TEXMF/fonts/enc//
+    
+    % CMap files.
+   -CMAPFONTS = .;$TEXMF/fonts/cmap//
+   +CMAPFONTS = .;/var/lib/defoma/gs.d/dirs/CMap//;$TEXMF/fonts/cmap//
+    
+    % Subfont definition files.
+    SFDFONTS = .;$TEXMF/fonts/sfd//
+   diff --git a/texmf/texmf.d/85Misc.cnf b/texmf/texmf.d/85Misc.cnf
+   index dee63d0..9c6b3b6 100644
+   --- a/texmf/texmf.d/85Misc.cnf
+   +++ b/texmf/texmf.d/85Misc.cnf
+   @@ -5,7 +5,7 @@ INDEXSTYLE = .;$TEXMF/makeindex//
+    ENCFONTS = .;$TEXMF/fonts/enc//
+    
+    % CMap files.
+   -CMAPFONTS = .;$TEXMF/fonts/cmap//
+   +CMAPFONTS = .;/var/lib/defoma/gs.d/dirs/CMap//;$TEXMF/fonts/cmap//
+    
+    % Subfont definition files.
+    SFDFONTS = .;$TEXMF/fonts/sfd//
+
+
+ワークアラウンドとしてとりあえずこれでPDF生成を生成できるようになった。が、コンソールからevinceでPDFを実行すると、
+
+.. code-block:: none
+
+   Error: Illegal entry in bfrange block in ToUnicode CMap
+
+
+というエラーが延々と出続けているし、そもそも仕組みを理解していないので、正にワークアラウンドにしか過ぎないのが痛い。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, TeX, 
+.. tags::
+
+

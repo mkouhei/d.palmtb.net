@@ -1,0 +1,13 @@
+﻿期待通りWN511Tもイケた。
+##############################
+
+
+MacBook Airの方で、ap_scan=2を入れたらイケたので、Let&#39;s note R3で使っているNETGEAR WN511Tの方の設定も、同じのを追加してみたところ、ちゃんと通信できるようになった。IEEE802.11nはBit Rate 144.5Mb/sで、実測値も100Mの有線LANよりも速く、apt-get update/upgradeがめっちゃ速かったので感動した！
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, network, 
+.. tags::
+
+

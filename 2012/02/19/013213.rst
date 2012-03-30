@@ -1,0 +1,121 @@
+﻿LaTeXでディレクトリツリーを表示する。
+##########################################
+
+
+treeコマンドを普通に使うと、
+
+.. code-block:: none
+
+   my-first-blueprint/
+   |-- files
+   |   `-- tmp
+   |-- manifests
+   `-- templates
+       `-- etc
+           |-- apt
+           |-- cloud
+           |-- cron.d
+           |-- ldap
+           |-- openldap
+           |   `-- cacerts
+           |-- pam.d
+           |-- perl
+           |   `-- XML
+           |       `-- SAX
+           |-- security
+           |-- ssh
+           |-- update-notifier
+           `-- xml
+   
+   19 directories
+
+
+と表示されますが、バッククオートがLaTeXではフォントによっては違った見え方になります。なので、
+
+.. code-block:: none
+
+   $ tree -d my-first-blueprint | sed &#39;s/`/+/g&#39;
+   my-first-blueprint/
+   |-- files
+   |   +-- tmp
+   |-- manifests
+   +-- templates
+       +-- etc
+           |-- apt
+           |-- cloud
+           |-- cron.d
+           |-- ldap
+           |-- openldap
+           |   +-- cacerts
+           |-- pam.d
+           |-- perl
+           |   +-- XML
+           |       +-- SAX
+           |-- security
+           |-- ssh
+           |-- update-notifier
+           +-- xml
+   
+   19 directories
+
+
+としてやれば、lstlisting環境などで意図どおりの表示になるのですが、treeコマンド自体のオプションで指定できないんでしょうかね。
+ちなみに、LANG=en_US.UTF-8になっている、Ubuntu 10.04では、treeコマンドのパス表示に使われる記号が全角の罫線になっています。
+
+.. code-block:: none
+
+   my-first-blueprint/
+   ├── files
+   │　　└── tmp
+   ├── manifests
+   └── templates
+   　　　└── etc
+   　　        ├── apt
+   　　        ├── cloud
+   　　        ├── cron.d
+   　　        ├── ldap
+   　　        ├── openldap
+      　　     │　　　└── cacerts
+   　　        ├── pam.d
+      　　     ├── perl
+      　　     │　　　└── XML
+     　　      │　　　　　　　└── SAX
+      　　     ├── security
+    　　       ├── ssh
+     　　      ├── update-notifier
+     　　      └── xml
+   
+   19 directories
+
+
+罫線記号は全角なのでlstlistingなどの環境の中ではもれなくズレます。LANG=Cに指定すればバッククオートの形式になります。Sidではならないんですけど、何ででしょう。バージョンの違い？ [#]_ 
+
+余談。
+**************
+
+
+最初、LANG=Cすりゃええやん、と気づかず、下記のようなワンライナー書いてました。ダサ。
+
+.. code-block:: none
+
+   $ tree -d my-first-blueprint/ | sed &#39;{
+   s/└─/+-/g
+   s/├─/+-/g
+   s/─/--/g
+   s/│/| /g
+   }&#39;
+
+
+
+
+.. rubric:: footnote
+
+.. [#] ：Lucidでは1.5.3, Sidでは1.6.0です。
+
+
+
+.. author:: mkouhei
+.. categories:: TeX, Unix/Linux, 
+.. tags::
+
+

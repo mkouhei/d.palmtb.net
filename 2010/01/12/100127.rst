@@ -1,0 +1,68 @@
+﻿lxcが起動しない。
+####################
+
+
+昨日のlxc 0.6.4-1へのアップデートのあと、別件でホスト毎リブートしたら、コンテナが起動しなくなってしまった。
+
+.. code-block:: none
+
+   $ sudo lxc-start -n mycontainer
+   lxc-start: No such file or directory - failed to use &#39;lxc.XXXXXXXXXX&#39;
+   lxc-start: failed to setup the mounts for &#39;mycontainer&#39;
+   lxc-start: failed to setup the container
+
+
+調べてみたら、cgroupファイルシステムへのsymlinkが作成されてない。
+
+.. code-block:: none
+
+   $ ls -l /var/lib/lxc/mycontainer/nsgroup
+   lrwxrwxrwx 1 root root 21 2010-01-04 09:23 /var/lib/lxc/mycontainer/nsgroup - /var/local/cgroup/mycontainer
+   $ ls -l /var/local/cgroup/mycontainer
+   $ ls -l /var/local/cgroup/web
+   ls: cannot access /var/local/cgroup/web: そのようなファイルやディレクトリはありません
+
+
+既存のコンテナだけの問題なのかを確認するために、新しくコンテナを作成してみた。が、やっぱり駄目だった。
+
+.. code-block:: none
+
+   $ sudo ./lxc-debian create
+   (snip)
+   You can run your container with the &#39;lxc-start -n fuga&#39;
+   $ sudo lxc-start -n fuga
+   lxc-start: No such file or directory - failed to use &#39;lxc.XXXXXXXXXX&#39;
+   lxc-start: failed to setup the mounts for &#39;fuga&#39;
+   lxc-start: failed to setup the container
+
+
+Debianの変更履歴を確認してみると、
+
+
+.. code-block:: none
+
+   (0.6.4-1) unstable; urgency=low
+   
+      Stphane Graber ]
+      Upgrade standards-version to 3.8.3
+      Drop the copy of etc/ from rules as etc is no longer in the tarball
+   
+      Guido Trotter ]
+      New Upstream Version
+      Update libcap2-dev dependency to libcap-dev
+      Install upstream-built man pages via debian/lxc.manpages
+      Drop unneeded docbook-utils build dependency
+   
+    -- Guido Trotter ultrotter@debian.org  Sun, 10 Jan 2010 10:40:21 +0100
+
+
+http://packages.debian.org/changelogs/pool/main/l/lxc/lxc_0.6.4-1/changelog
+&#34;New Upstream Version&#34; とあるのが怪しいな…。見てみるか。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, virt., Ops, 
+.. tags::
+
+

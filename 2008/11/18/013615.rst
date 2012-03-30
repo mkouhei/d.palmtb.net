@@ -1,0 +1,80 @@
+﻿emobile接続
+##################
+
+
+NECのD02NEの動作確認をした。Windows xpでやったのだが、それだけだとつまらんので、Debianでもやってみた。
+まずpppパッケージが無いので導入後、つぎのファイルを作成。
+
+/etc/ppp/peers/emobile
+****************************************
+
+
+
+.. code-block:: none
+
+   user &#34;em@em&#34;
+   connect &#34;/usr/sbin/chat -v -f /etc/chatscripts/pap -T *99***1#&#34;
+   /dev/ttyACM0
+   115200
+   
+   noipdefault
+   usepeerdns
+   defaultroute
+   persist
+   noauth
+
+
+
+接続するユーザをdipグループに設定。
+**************************************************************************************************
+
+
+ログインしなおすことを忘れずに。
+
+.. code-block:: none
+
+   $ sudo adduser hoge dip
+
+
+
+接続
+********
+
+
+
+.. code-block:: none
+
+   $ pon emobile
+   
+   $ netstat -ie
+   (snip)
+   ppp0      Link encap:Point-to-Pointプロトコル  
+             inetアドレス:xxx.xxx.xxx.xxx P-t-P:yyy.yyy.yyy.yyy  マスク:255.255.255.255
+             UP POINTOPOINT RUNNING NOARP MULTICAST  MTU:1500  メトリック:1
+             RXパケット:7 エラー:0 損失:0 オーバラン:0 フレーム:0
+             TXパケット:8 エラー:0 損失:0 オーバラン:0 キャリア:0
+         衝突(Collisions):0 TXキュー長:3 
+             RXバイト:118 (118.0 B)  TXバイト:157 (157.0 B)
+
+
+
+切断
+********
+
+
+
+.. code-block:: none
+
+   $ poff emobile
+
+
+これで確認とれた。しかし、PPPとは言え、やっぱりちゃんとNetfilterの設定しないと気持ち悪いなぁ。
+ちなみにここを参考にした。というかまんまやな。
+
+
+
+.. author:: mkouhei
+.. categories:: network, 
+.. tags::
+
+

@@ -1,0 +1,53 @@
+﻿lxcを試してみる。
+####################
+
+
+KVMは取り合えず連載も終えて一段落したので、Hypervisorではない何か別のアプローチを試してみようと思い、コンテナタイプの仮想化技術を試してみることにした。コンテナは仮想化じゃねぇよ、という考え方もあるかもしれないが、n個のリソースを物理的な数と同じn個で使うのではなく、n-1個以下とかn+1個以上で使う場合は、ある意味何でも仮想化なのじゃないかと思うんだが、まぁそんな定義はどうでもいいや。で、自分が知っているHypervisor以外 [#]_ でコンテナ型だとOpenVZとかLinux-VServerとかあるわけだが、その辺は有名どころなので、何か別のないかなぁとapt-cacheしてみたら引っかかったわけですな、lxcが。検索してみたら、dWに記事があるけど、今のところさほど有名なわけではなさそうなので [#]_ 、まぁ遊んでみるのにはちょうど良いだろうと。
+LXCはKVMのようにLinux Kernelを拡張するのではなく、あくまでKernelの機能を使って実現しているだけのようで、次のKernelオプションを有効にして、パッケージをインストールすればよし。Debianのkernelを使っている場合はもともと有効なのかな？ワシはMacBookではKernelリビルドしてるので確認してみないと何とも言えんが。Intel VTやAMD-Vも必要なさげ。
+
+.. code-block:: none
+
+                    General
+                      Control Group support
+                       - namespace cgroup subsystem
+                       - cpuset support
+                       - Group CPU scheduler
+                       - control group freeze subsystem
+                       - Basis for grouping tasks (Control Groups)
+                       - Simple CPU accounting
+                       - Resource counters
+                       - Memory resource controllers for Control Groups
+                       - Namespace support
+                         - UTS namespace
+                         - IPC namespace
+                         - User namespace
+                         - Pid namespace
+                    Network support
+                     - Networking options
+                        - Network namespace support
+
+
+会社で自由の効くPCに、今進めている企画でサーバ環境が欲しいなぁと思ったので入れてみたのだが、定時後残ってまでやるのは嫌なので、KVMの連載終わってまたお蔵入になっていたProLiant ML115にもSidを入れ直して試してみることにした。
+インストールは非常に簡単。
+
+.. code-block:: none
+
+   $ sudo apt-get install lxc
+
+
+これだけ。他の依存関係とかで環境が壊れることもなさそうなので、MacBookでも試してみることにするか。ちょうどKernelもリビルドしないとあかんのでカーネルオプションも確認してみることにしよう。
+ム、これ、KVMで動かしているVM上でも使えるんではないかという気がするな…。試してみるか。
+
+
+.. rubric:: footnote
+
+.. [#] ：そういやlguestも試してみたことないなぁ。
+.. [#] ：いくつかのブログでちらほら試されている方はいるみたいですが。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Unix/Linux, Ops, virt., 
+.. tags::
+
+

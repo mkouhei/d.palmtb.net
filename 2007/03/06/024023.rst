@@ -1,0 +1,16 @@
+﻿意味あるのか？
+##############
+
+
+
+ApacheとIISの比率落ち着く、Webサイト総数はここ2年で高い伸び率を保持
+http://journal.mycom.co.jp/news/2007/03/05/365.html
+前々から思っていたのだが、Server Signatureで判別するだけのこの情報にいったい何の意味があるのやら。こんなの簡単に偽装できるのにねぇ。ちなみうちのサーバは、OSはLinuxだけど、WebサーバはIIS 2.0とか偽ってる。当のNetcraftでもちゃんとそうなってるw。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, 
+.. tags::
+
+

@@ -1,0 +1,19 @@
+﻿仕事な人とかは
+##############
+
+
+こういうセミナー行くと良い。
+
+* 仮想化フォーラム2007
+* SUSE Linux導入のメリットと国内初Xen仮想化先進事例紹介セミナー
+* 「Xen」仮想マシン環境構築 ハンズオントレーニング～ 実習環境お持ち帰りOK ～
+* Transitive Technical Day 2007
+
+
+
+
+.. author:: mkouhei
+.. categories:: virt., meeting, 
+.. tags::
+
+

@@ -1,0 +1,109 @@
+﻿Debian on chumbyに挑戦中。その５
+################################################
+
+
+Chumby起動時に、USBメモリに入れたchroot環境のLennyからsshdを起動させるようにしますた。sshでログインするとこんな感じ。興味がある方は、今週土曜のOSCの東京エリアDebian勉強会のブースへどうぞ。
+
+.. code-block:: none
+
+   $ ssh -p 2222 chumby
+   Debian GNU/Linux 5.0
+   Enter passphrase for key &#39;/home/hoge/.ssh/id_rsa&#39;: 
+   Linux debian 2.6.18 #26 PREEMPT Mon Jul 9 15:20:07 JST 2007 armv6l
+   
+   The programs included with the Debian GNU/Linux system are free software;
+   the exact distribution terms for each program are described in the
+   individual files in /usr/share/doc/*/copyright.
+   
+   Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+   permitted by applicable law.
+   Last login: Thu Feb 19 04:17:41 2009 from xxx.xxx.xxx.xxx
+   Linux debian 2.6.18 #26 PREEMPT Mon Jul 9 15:20:07 JST 2007 armv6l
+   
+   The programs included with the Debian GNU/Linux system are free software;
+   the exact distribution terms for each program are described in the
+   individual files in /usr/share/doc/*/copyright.
+   
+   Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+   permitted by applicable law.
+   (chroot)hoge@chumby:~$ cat /etc/debian_version 
+   5.0
+   (chroot)hoge@chumby:~$ cat /proc/cpuinfo 
+   Processor	: ARM926EJ-Sid(wb) rev 4 (v5l)
+   BogoMIPS	: 174.89
+   Features	: swp half thumb fastmult edsp java 
+   CPU implementer	: 0x41
+   CPU architecture: 5TEJ
+   CPU variant	: 0x0
+   CPU part	: 0x926
+   CPU revision	: 4
+   Cache type	: write-back
+   Cache clean	: cp15 c7 ops
+   Cache lockdown	: format C
+   Cache format	: Harvard
+   I size		: 16384
+   I assoc		: 4
+   I line length	: 32
+   I sets		: 128
+   D size		: 16384
+   D assoc		: 4
+   D line length	: 32
+   D sets		: 128
+   
+   Hardware	: Freescale MX21ADS
+   Revision	: 0000
+   Serial		: 0000000000000000
+   (chroot)hoge@chumby:~$ ps -ef
+   UID        PID  PPID  C STIME TTY          TIME CMD
+   root         1     0  0 04:14 ?        00:00:02 init      
+   root         2     1  0 04:14 ?        00:00:00 [ksoftirqd/0]
+   root         3     1  0 04:14 ?        00:00:00 [watchdog/0]
+   root         4     1  0 04:14 ?        00:00:00 [events/0]
+   root         5     1  0 04:14 ?        00:00:00 [khelper]
+   root         6     1  0 04:14 ?        00:00:00 [kthread]
+   root        14     6  0 04:14 ?        00:00:00 [kblockd/0]
+   root        17     6  0 04:14 ?        00:00:00 [khubd]
+   root        59     6  0 04:14 ?        00:00:00 [pdflush]
+   root        60     6  0 04:14 ?        00:00:00 [pdflush]
+   root        62     6  0 04:14 ?        00:00:00 [aio/0]
+   root        61     1  0 04:14 ?        00:00:00 [kswapd0]
+   root       679     1  0 04:14 ?        00:00:02 [mtdblockd]
+   root       680     1  0 04:14 ?        00:00:00 [ftld]
+   root       681     1  0 04:14 ?        00:00:00 [nftld]
+   root       718     6  0 04:14 ?        00:00:00 [scsi_eh_0]
+   root       719     6  0 04:14 ?        00:00:00 [usb-storage]
+   root       982     1  0 04:14 ?        00:00:00 [jffs2_gcd_mtd1]
+   root       990     1  0 04:14 ?        00:00:00 /sbin/syslogd -C200
+   root       997     1  0 04:14 ?        00:00:00 /sbin/udevd --daemon
+   root      1039     1  0 04:15 ?        00:00:00 mountmon --daemon
+   root      1373     1  0 04:15 ?        00:00:00 headphone_mgr
+   root      1436     1  0 04:15 ?        00:00:00 btplayd
+   root      1523     1  0 04:15 ?        00:00:00 [rt73]
+   root      1524     1  0 04:15 ?        00:00:00 [rt73]
+   root      1838     1  0 04:15 ?        00:00:00 udhcpc -t 5 -n -p /var/run/udh
+   root      1916     1  0 04:15 ?        00:00:00 /usr/sbin/httpd -h /www
+   root      1933     1  0 04:15 ?        00:00:00 mDNSResponder
+   root      1955     1  0 04:15 ?        00:00:00 mDNSPublish hoge _http._tcp
+   root      1970     1  0 04:15 ?        00:00:00 chumbhowld
+   root      1982     1  0 04:15 ?        00:00:00 /usr/sbin/crond -c /etc/cron/c
+   root      1997     1  0 04:15 ?        00:00:00 /usr/sbin/sshd
+   root      2002     1  0 04:15 ?        00:00:00 /bin/chumbalarmd
+   root      2003     1  0 04:15 ?        00:00:00 /bin/sh /usr/chumby/scripts/st
+   root      2005     1  0 04:15 ttyS0    00:00:00 init      
+   root      2095  2003 28 04:15 ?        00:02:05 /usr/bin/chumbyflashplayer.x -
+   root      2096  2095  0 04:15 ?        00:00:00 sh -c chumbpipe  /tmp/.fpcmdse
+   root      2097  2096  0 04:15 ?        00:00:00 chumbpipe /tmp/.fpcmdsend /tmp
+   root      2366  1997  4 04:22 ?        00:00:01 sshd: hoge [priv]
+   hoge      2370  2366  0 04:22 ?        00:00:00 sshd: hoge@pts/0
+   hoge      2371  2370 13 04:22 pts/0    00:00:03 -bash
+   hoge      2416  2371  0 04:23 pts/0    00:00:00 ps -ef
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: gadget, Debian, computer, 
+.. tags::
+
+

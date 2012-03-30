@@ -1,0 +1,21 @@
+﻿ACPIのも同じ悩みの人がいた
+##############################
+
+
+先日のmmパッチ当てたらACPIがおかしくなった件 [#]_ は、2.6.21-rc2を当ててみたらまた起きた。検索してみたら、同じ悩みの人がいた。
+
+[Bug 7648] ACPI events stop working
+http://www.mail-archive.com/acpi-bugzilla@lists.sourceforge.net/msg05989.html
+
+
+.. rubric:: footnote
+
+.. [#] ：
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

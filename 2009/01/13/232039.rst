@@ -1,0 +1,33 @@
+﻿さてどうすんだっけ？
+####################
+
+
+
+.. code-block:: none
+
+   monthly-report$ git pull
+   remote: Counting objects: 235, done.
+   remote: Compressing objects: 100% (208/208), done.
+   remote: Total 213 (delta 134), reused 0 (delta 0)
+   Receiving objects: 100% (213/213), 178.32 KiB | 70 KiB/s, done.
+   Resolving deltas: 100% (134/134), completed with 20 local objects.
+   From git://git.debian.org/git/tokyodebian/monthly-report
+      0c6768d..f60046d  master     - origin/master
+   From git://git.debian.org/git/tokyodebian/monthly-report
+     new tag]         printed_200812 - printed_200812
+   Auto-merged debianmeetingresume200812.tex
+   CONFLICT (content): Merge conflict in debianmeetingresume200812.tex
+   Automatic merge failed; fix conflicts and then commit the result.
+   monthly-report$ git pull
+   You are in the middle of a conflicted merge.
+
+
+前回はどうしたっけ？編集して修正した気がするけど忘れてる…。リハビリが必要だ…。
+
+
+
+.. author:: mkouhei
+.. categories:: Git, computer, 
+.. tags::
+
+

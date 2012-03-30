@@ -1,0 +1,48 @@
+﻿chromiumでPACファイルを利用する。
+############################################
+
+
+MacBookで、b-mobileWiFiルータ &amp; b-mobileSIM U300経由でインターネット接続する際に利用した方が若干でも帯域を節約できるのが、日本通信が提供しているWebアクセラレータ。一方、ローカルでGAE SDKのサーバを動かしたり、RJ-45経由でクローズドなN/Wに接続している場合、Proxyを設定してしまうと、例外設定しないとアクセスできない。
+だからと言って一々ブラウザの設定を開くのは面倒。しかもchromiumの場合は、コマンドラインオプションで指定しないと行けないので、尚更。ということで、PACファイルを使っている。
+Debianではchromium-browserコマンドを使うので、b-mobileWiFiルータを利用するときは、次のようなラッパースクリプトで起動する。
+
+.. code-block:: none
+
+   #!/bin/bash
+   
+   PAC=${HOME}/proxy.pac
+   chromium-browser --proxy-pac-url=file://${PAC}
+
+
+PACファイルは、localhost(127.0.0.1)や、イントラネット内で利用しているFQDNに一致した場合は直接アクセスさせ、それ以外(つまりデフォルト)では日本通信のプロキシサーバ経由でアクセスさせる。
+
+.. code-block:: none
+
+   function FindProxyForURL (url, host)
+   {
+       var proxy = PROXY mao.bmobile.ne.jp:32080;
+   
+       if (shExpMatch(host, 127.0.0.1)||
+           shExpMatch(host, hoge.my-intra.net)||
+           shExpMatch(host, fuga.my-intra.net)
+           )
+           return DIRECT;
+       else
+           return proxy;
+   }
+
+
+この設定とは別なのだが、以前、別件でPACファイルの設定を検証した際にブラウザ間で微妙に挙動が異なっていたので、このスクリプトの場合も、iceweaselやOpera、Safari、あるいはIEを使う場合は確認が必要かもしれない。 [#]_ 
+
+
+.. rubric:: footnote
+
+.. [#] ：chromium以外のブラウザはあまり使っていないので未検証。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Unix/Linux, 
+.. tags::
+
+

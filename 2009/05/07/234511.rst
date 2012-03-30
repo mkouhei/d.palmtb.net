@@ -1,0 +1,13 @@
+﻿USBee
+##########
+
+
+以前購入した、USB接続のバーコードリーダ。Debianではどうしてもデータの読み取りができなかったのだが、Windowsだとちゃんとできた。とりあえず、家の蔵書を片っ端から本棚.orgに登録していくか。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, 
+.. tags::
+
+

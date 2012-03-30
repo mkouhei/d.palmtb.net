@@ -1,0 +1,19 @@
+﻿レシピ検索
+##########
+
+
+庶務さんにお薦めのレシピサイトを教えて頂いた。よさげ。ヨメにも教えてあげよう。 [#]_ 
+http://www3.mizkan.co.jp/sapari/menu/cook/search/index.asp
+
+
+.. rubric:: footnote
+
+.. [#] ：ブログで書いておけば自分で見てくれるので。
+
+
+
+.. author:: mkouhei
+.. categories:: 生活, 
+.. tags::
+
+

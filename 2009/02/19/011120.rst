@@ -1,0 +1,162 @@
+﻿Debian on chumbyに挑戦。その３
+##############################################
+
+
+先日、Lennyのarmel版をQemuを使ってUSBメモリに入れ、chumbyで動かしてみる、という試みを行ったが、&#34;Illegal instruction&#34;となり行き詰まってしまっていたところ、id:kinnekoさんに、
+
+lennyはarmel(EABI)? chumbyはARM(OABI)だから注意。
+
+とアドバイスを頂いたので、armアーキテクチャでのイメージを使うことにしてみた。のだが、Lennyで公開されているインストールイメージは、Qemuでは軒並みインストールできなかった。何故かなぁと思って、Lennyのインストールガイドをちゃんと読んだら書いていた。
+
+Versatile プラットフォームは QEMU でエミュレートされており、そのためハードウェアがなくても ARM での Debian のテストや実行を行う良い方法です。 
+http://www.debian.org/releases/stable/arm/ch02s01.html.ja#id2713668
+Versatileサブアーキテクチャはarmelだった。残念。
+とはいえ、諦めるわけにもいかんので、どうしたもんかなぁと思っていたのだが、前回のOSCで使ったARM9の組込機器の存在を忘れていた。Armadillo-9ですな。しかも、Armadillo-9自体が販売開始されたのは3年以上前。確実にEABIじゃないはず。ということで、Armadillo-9はDebian用のハードディスクイメージが公開されているので、そのイメージを使ってみることにした。結果から言うと、あっさりできた。前回同様、/mnt/usb2にマウントしたDebianイメージ(etch)にchrootできた。良かったよかった。
+手順は非常に簡単。
+
+* リンク先* のtarボールとmd5ハッシュをすべてダウンロード。
+* md5ハッシュのチェック。
+
+
+.. code-block:: none
+
+   $ md5sum -c *.md5
+
+
+
+* ext2フォーマットのUSBメモリ領域に、上記5つのtarボールを展開する。
+
+
+.. code-block:: none
+
+   $ sudo mount /dev/sda2 /mnt
+   $ cd /mnt
+   $ tar zxf ~/debian-etch-a9-1.tgz
+   $ tar zxf ~/debian-etch-a9-2.tgz
+   $ tar zxf ~/debian-etch-a9-3.tgz
+   $ tar zxf ~/debian-etch-a9-4.tgz
+   $ tar zxf ~/debian-etch-a9-5.tgz
+
+
+
+* Chumbyの電源を落としてから、USBメモリを挿し、電源を入れる。
+* sshdを起動し、ssh経由でログインし、/mnt/usr2にchrootする。
+
+
+.. code-block:: none
+
+   $ ssh root@chumby
+                                                       ,.....,                     
+                                             .rchERQQQQQQQQQQQQQQp:                
+                                   .fQQQQQQQQQQQQQQQQQQQQQRQQQQQQQQQR              
+                                hQQQQQQQRRRRMMZDEEbb00009999000bEZRQQQ             
+                              QQQQRDb09ppppPPPPXXXXXXXXXXXXXXXXPPPpbZQ:            
+                             QQMbpPXSSSPpppPXXSSSXXXXXXXP99PPXXSSSXP0QQ            
+                            QQ0XSSSShbQQMMQQZPXXXXXXXXPQQRRQQ9PXXXXXpZQ            
+                           :Q9XSSXXhRF      EQpXXXXXXPR     .Q0PXXXXP0Q            
+                           tQPXXXXSZr   ,    tQPXXXXSR        QpXXXXX9Q            
+                           JQPXXXXXQ  7QQQQ,  Q9XXXSPQ   QQ   Q9XXXXX0Q            
+                           :QpXXXSPQ   QQQQ   Q9XXXSpQ:      7QPXXXXXbQ            
+                            Q0XXXS9QR        QRPXXXX0MQZ   ,QQpXXXXXXDZ            
+                            RMPXSX9DQQ:    LQQPXXXXXpERQQQQQQ0PXXXXXXQr            
+                            .QpXSXP0ZRQQQQQQZpXXXXXXPp0DMRZ0pXXXXXXSXQ             
+                             QpXXXXP9EMRRRD9PXXXXXXXXXPPPPXXSXXXXXXSPQ             
+                             QpXXXSXPPpppPXSSXXXXXXXXSSSSSSSXXXXXXXSER             
+                            .QPXXXXXSSSSSSSSXXXXXXXXXXXXXXXXXXXXXXXXZR             
+                            RDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXSX0Q.            
+                r9QQQQQQQQQQZpXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX0RQQY          
+           .EQQQQQQQQQRRRRZ0PXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXPPPP9ERQQQD        
+        .QQQQQQQRQQRQQQRM9PXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXhQQQZ990EMQQQ0      
+      9QQQQQQQQMPtYLrirrrpPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXSD:  .9QQE99bMRQQ:    
+     hb.                 ZpXXXXXXbQMPXXXXXXXXXXXXXXXXSpEPXXXXX9Q     .QQR00EMQQZ   
+                       DQ9XXSXPRQP  ZPXXXXSPQEPXXXXXS9b2RPXXSX9Qf       FQQEbDRQQ  
+                     iQQ9PXXPQQ:   1ZXXXXhZQ iMXXXXSXQ  pQpXXX0MQ         :QQQRRQh 
+                    2QR9XXXQQ,    QQPXXXhRF  rQPXXXSQ    QDPXXPbQZ           7RQQQ 
+                   .QEPXhbQ:     QQpXXXhQ7   QEXXXS9b     QpXXX9MQ                 
+                   QRPSXQD      QQpXXXhQ7    Q9XXXSQ,     2QPXXPbQr                
+                   Q0XpQi      1QpXXSSQL    jQPXXSXQ       QQPXX9QM                
+                   QpMQ        QbXSSPQi     QMXSXS0Q        RQpPpRQ                
+                   QQU        tQpSSEQ       QbXSSSQU         YQD9RM                
+                   Q          QRPpQ0        QbXSSSQ            QQQr                
+                              QMQQ          QMPShQF             :Q                 
+                              QQ.           :QpPQb                                 
+                                             QQQr                                  
+                                              i                                    
+   
+   
+   BusyBox v1.6.1 (2008-07-24 11:14:52 PDT) Built-in shell (ash)
+   Enter &#39;help&#39; for a list of built-in commands.
+   
+   chumby:~# df
+   Filesystem                Size      Used Available Use% Mounted on
+   /dev/mtdblock5           33.0M     33.0M         0 100% /
+   none                     30.2M     16.0k     30.2M   0% /dev
+   none                     32.0M    552.0k     31.5M   2% /tmp
+   none                     32.0M     60.0k     31.9M   0% /var
+   none                     32.0M         0     32.0M   0% /mnt
+   /dev/mtdblock1            2.0M      1.6M    440.0k  79% /psp
+   /dev/sda1               475.5M      1.4M    474.1M   0% /mnt/usb
+   /dev/sda2                 1.3G    118.6M      1.1G   9% /mnt/usb2
+   chumby:~# chroot /mnt/usb2
+   chumby:/1 ls
+   bin   dev  home    lib         media  opt   root  srv  tmp  var
+   boot  etc  initrd  lost+found  mnt    proc  sbin  sys  usr
+   chumby:/2 cat /etc/devian_version
+   4.0
+
+
+うむ、素晴らしい。
+
+ついでにchroot環境のetchをlennyにアップグレードを試みた。
+********************************************************************************************************************************************************
+
+
+Etchで最新状態にした後、apt lineをlennyに変更し、apt-get updateまでは良かったのだが、upgrade途中でコケる。
+
+.. code-block:: none
+
+   (Reading database ... 7335 files and directories currently installed.)
+   Preparing to replace coreutils 5.97-5.3 (using .../coreutils_6.10-6_arm.deb) ...
+   Unpacking replacement coreutils ...
+   rm: cannot remove `/var/lib/dpkg/tmp.ci/control&#39;: Function not implemented
+   dpkg: error while cleaning up:
+    subprocess rm cleanup returned error exit status 1
+   Setting up coreutils (6.10-6) ...
+   
+   rm: cannot remove `/var/lib/dpkg/tmp.ci/control&#39;: Function not implemented
+   dpkg: error processing /var/cache/apt/archives/diff_2.8.1-12_arm.deb (--unpack):
+    subprocess rm cleanup returned error exit status 1
+   Errors were encountered while processing:
+    /var/cache/apt/archives/diff_2.8.1-12_arm.deb
+   E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+
+うむ、さて困ったなぁ。でもだいぶ進歩したな。
+
+
+
+.. author:: mkouhei
+.. categories:: gadget, Debian, computer, 
+.. tags::
+
+
+----
+
+Comment:
+
+	Etchだと去年、debootstrapしたUSB環境にchrootはできています。lennyはまだ試してません。
+
+	written by  kinneko
+	02/19/2009 07:46:16
+	http://d.hatena.ne.jp/kinneko/
+
+----
+
+Comment:
+
+	OSC終わったら、debootstrapでも試してみます。
+
+	written by  mkouhei
+	02/19/2009 20:38:43
+	http://d.hatena.ne.jp/mkouhei/
+

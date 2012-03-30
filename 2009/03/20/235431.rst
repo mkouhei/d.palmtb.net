@@ -1,0 +1,24 @@
+﻿Debian Hack Cafe #7
+######################################
+
+
+一昨日実施。今回は新宿のかどやホテル１階のカフェ　ラ　ヴォワ。FreeSpotと電源が使える。2時間ごとに注文しないといけないので、時間を区切るのにはちょうど良い。
+git svn dcommitをやろうとして、manに書いてあった文章にビビったり。
+
+.. code-block:: none
+
+                      Using this option for any other purpose (dont ask)
+                      is very strongly discouraged.
+
+
+Debconf9のレジストで分からないところを教えてもらったり。先日JavaのパッケージをITPしたので、Java Policyを翻訳中だったり。
+Hack Cafeを開催した場所を、Google Mapで記録していくことにした。
+大きな地図で見る
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

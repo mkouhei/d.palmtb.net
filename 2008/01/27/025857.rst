@@ -1,0 +1,14 @@
+﻿z/VM Virtualization Performance
+##############################################################
+
+
+テスト環境のネットワーク構成は如何なものかと思うが。z/LinuxにはSUSEで、ClientのLinuxにはSUSEではなくRed Hatですな。まぁ、IBMの戦略通りの構成なのだが。Guestのホスト名が大文字なのが、メインフレームらしいですな。
+今後計画しているベンチマークテストに使ってみるかね。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, virt., 
+.. tags::
+
+

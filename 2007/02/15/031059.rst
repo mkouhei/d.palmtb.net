@@ -1,0 +1,31 @@
+﻿これか？
+########
+
+
+今日、SidのPostfixをアップデートしたところ、こんな現象にはまった。
+
+.. code-block:: none
+
+   postfix (2.3.7-2) を設定しています ...
+   dpkg: postfix の処理中にエラーが発生しました (--configure):
+    サブプロセス post-installation script はエラー終了ステータス 20 を返しました
+   以下のパッケージの処理中にエラーが発生しました:
+    postfix
+   E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+
+もう一台のSidでも同様。最初の一台で、Postfixを完全に削除してからインストールしなおしてみたり、 /var/cache/apt/archives/にあった、古いPostfixをインストールしてみたり、Bastilleが悪さしているのかと、Bastilleの設定を-rで適用前に戻してみたりしてみたものの、一切ダメ。で、BTSをチェックしてみたところ、こんな情報が出てきた。でも、これだと、2.3.7-2で修正されている、っていっているんだけどな。
+
+Debian Bug report logs - #410871
+postfix: Postfix 2.3.7-1 install broken on unstable
+
+http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=410871
+とりあえずFixされるまで放置。幸い、デスクトップ用途のPCなので、Postfixではなくssmtpで代用することにした。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

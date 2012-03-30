@@ -1,0 +1,54 @@
+﻿続々・lxcが起動しない。
+##########################
+
+
+新バージョンで作成したコンテナの設定ファイルがどこにあるのか見当がつかないので、findでやみくもに探すのも時間がかかるので、既存のコンテナのconfigのlxc.mountを削除して起動させてみたが、ダメだった。
+で、とりあえず、既存のコンテナを起動させることを優先して、destroy, createを行った。destroy時にrootfsを削除しないこと、create時に既存の設定どおりにIPアドレスなどを指定し、rootfsを既存のrootfsのフルパスを指定することがポイント。
+
+.. code-block:: none
+
+   $ sudo bash lxc-debian-new destroy
+   What is the name for the container ? [debian] hoge
+   Shall I remove the rootfs [y/n] ? n
+   $ sudo bash lxc-debian-new create
+   What is the name for the container ? [debian] hoge
+   What hostname do you wish for this container ? [hoge]
+   What IP address do you wish for this container ? [172.20.0.21] 192.168.xxx.xxx
+   What is the gateway IP address ? [172.20.0.1] 192.168.xxx.yyy
+   What is the MTU size ? [1500]
+   Specify the location of the rootfs [./rootfs.hoge] /var/cache/lxc/debian/rootfs.hoge
+   Specify the location for an extra fstab file [(none)]
+   Generating locales (this might take a while)...
+     ja_JP.EUC-JP... done
+     ja_JP.UTF-8... done
+   Generation complete.
+   update-rc.d: using dependency based boot sequencing
+   update-rc.d: using dependency based boot sequencing
+   update-rc.d: using dependency based boot sequencing
+   Done.
+   
+   You can run your container with the &#39;lxc-start -n hoge&#39;
+   
+   $ lxc-start -n hoge -d
+   $
+
+
+これで無事起動できるようになった。
+新しいコンテナは、/tmp下に一時ディレクトリを作るのだが、中身は特にない。lxc-stopかけてsegfaultを起こすと、このディレクトリが残ってしまうんだが。
+
+.. code-block:: none
+
+   $ ls -l /tmp/
+   合計 16
+   drwx------ 2 root  root  4096 2010-01-12 11:24 lxc-rFVrEH3
+   drwx------ 2 root  root  4096 2010-01-12 10:39 lxc-rKmMOYg
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, virt., computer, 
+.. tags::
+
+

@@ -1,0 +1,41 @@
+﻿SargeからEtchにアップデート途中にトラブったのでメモ。
+##############################################################
+
+
+
+.. code-block:: none
+
+   $ lspci
+   (snip)
+   0000:01:09.0 Ethernet controller: Marvell Technology Group Ltd. Yukon Gigabit Ethernet 10/100/1000Base-T Adapter (rev 13)
+
+
+このNICに対応するLinux 2.6.8でのカーネルモジュールは、sk98linと。
+
+.. code-block:: none
+
+   $ sudo modprobe -av sk98lin
+   sk98lin: Network Device Driver v6.23
+   (C)Copyright 1999-2004 Marvell(R).
+   ACPI: PCI interrupt 0000:01:09.0[A] - GSI 20 (level, low) - IRQ 225
+   eth2: Yukon Gigabit Ethernet 10/100/1000Base-T Adapter
+         PrefPort:A  RlmtMode:Check Link State
+   eth2: network connection up using port A
+       speed:           100
+       autonegotiation: yes
+       duplex mode:     full
+       flowctrl:        symmetric
+       irq moderation:  disabled
+       scatter-gather:  enabled
+   eth2: no IPv6 routers present
+
+
+オンボードのNICが最初はeth0だったのに、eth1 - eth2とインクリメントされているのは、また別の問題だ。w
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, Debian, 
+.. tags::
+
+

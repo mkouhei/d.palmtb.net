@@ -1,0 +1,22 @@
+﻿Oracle用にビルドしたSysbenchがsegmentation faultでコケる。
+##########################################################################################
+
+
+先日ビルドしたsysbenchを使って、oltpでベンチマークテストしようとしたところ、prepareサブコマンドでのテーブルの作成はできたのに、runサブコマンドを実行するとsegmentation faultで落ちてしまう。
+coreを吐かせてバックトレースを表示させてみると、sysbench/driver/oracle/drv_oracle.cの
+
+.. code-block:: none
+
+   rc = OCIStmtExecute(ora_con-svchp, ora_stmt-ptr, ora_con-errhp, iters, 0,
+                           NULL, NULL, OCI_DEFAULT);
+
+
+のOCIStmtExecute()が実行される。サーバに対して文を実行するので、この次にlibclntsh.soが呼ばれ、ここから数ステップ後にttcdrv()が実行されるところでSignal 11でコケてしまう。うーむ。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

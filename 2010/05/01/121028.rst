@@ -1,0 +1,20 @@
+﻿perlが原因？
+################
+
+
+
+.. code-block:: none
+
+   $ perl -W -e 
+   Can&#39;t ignore signal CHLD, forcing to default.
+
+
+とまぁ、apt-get, dpkg, git gc, git pull実行したときと同じエラーが出る。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

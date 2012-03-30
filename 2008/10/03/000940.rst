@@ -1,0 +1,14 @@
+﻿Erlang勉強し始めた。
+##########################
+
+
+おもむろにErlangの勉強を始めた。とりあえず↓で勉強中。
+http://erlangworld.web.fc2.com/
+
+
+
+.. author:: mkouhei
+.. categories:: computer, 
+.. tags::
+
+

@@ -1,0 +1,25 @@
+﻿fwlogwatchの設定が抜けてた。
+######################################
+
+
+移行用の一台が、fwlogwatchが起動していないことに気づいた。/etc/default/fwlogwatchのパラメータを変更していなかったよ。
+
+.. code-block:: none
+
+   START_DAEMON=true
+   PARAMS=-A -B
+   MODE=iptables
+   EMAIL=hoge@hoge.net
+   CRON_EMAIL=hoge@hoge.net
+   CRON_PARAMS=-p -d -O ta -t -e -l 1d
+
+
+これでよし。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, security, 
+.. tags::
+
+

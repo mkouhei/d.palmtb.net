@@ -1,0 +1,28 @@
+﻿Linux Kernel 2.6.38ビルド時のエラー。
+########################################################
+
+
+kernel 2.6.38をビルドしようとすると、.arch/x86/kernel/entry_64.oのアセンブル時に
+
+.. code-block:: none
+
+   arch/x86/kernel/entry_64.S: Assembler messages:
+   arch/x86/kernel/entry_64.S:1544: Error: .size expression does not
+   evaluate to a constant
+
+
+というエラーが発生してビルドできない。どうやらXen絡みのパラメータが原因でこけるみたい [#]_ 。
+Xen絡みのパラメータを全て向こうにしたらビルドできた。
+
+
+.. rubric:: footnote
+
+.. [#] ：普段はKVMを使っている環境
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

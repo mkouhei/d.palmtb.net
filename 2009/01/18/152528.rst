@@ -1,0 +1,15 @@
+﻿DOT言語で遊んでみた。
+########################
+
+
+ここを参考にしてみた。
+http://homepage3.nifty.com/kaku-chan/graphviz/index.html
+オモシロ。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, 
+.. tags::
+
+

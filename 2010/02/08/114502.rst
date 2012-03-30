@@ -1,0 +1,88 @@
+﻿lxc 0.6.4でlxc-debian createしてもコンテナを起動できない罠。
+######################################################################################
+
+
+Debian 勉強会用のネタ用にLennyの環境がほしくてlxcのコンテナで新しく用意することにしたのだが、lxcを使い始めた0.6.3ではハマらず、現在の0.6.4でハマる罠に遭遇。
+lxcでコンテナを作るときは、lxcパッケージに含まれているlxc-debianスクリプト(/usr/share/doc/lxc/examples/lxc-debian.gz)を使用するのだが、コンテナとしてマウントするためのdebootstrapで作るrootfsは、どこにあっても良いのでホームディレクトリ直下で、
+
+.. code-block:: none
+
+   $ sudo bash lxc-debian create
+   What is the name for the container ? [debian] test
+   What hostname do you wish for this container ? [test]
+   What IP address do you wish for this container ? [172.20.0.21]
+   What is the gateway IP address ? [172.20.0.1]
+   What is the MTU size ? [1500]
+   Specify the location of the rootfs [./rootfs.test]
+
+
+として実行し、質問形式で表示される設定項目を、コンテナ名、IPアドレス以外はデフォルトのままにしておくと、ホームディレクトリの直下に~/rootfs.test/として作られる。
+lxcを使い始めた時、ホームディレクトリにせず、別のディレクトリにしていた。
+
+.. code-block:: none
+
+   $ sudo mkdir /var/cache/lxc/debian
+   $ cd /var/cache/lxc/debian
+   $ sudo bash ~/lxc-debian create
+
+
+とすると、/var/cache/lxc/debianの下にrootfsが作られたのだが、ホームディレクトリでlxc-startコマンドを実行しても0.6.3の時は何の問題も無くコンテナをブートできたわけだ。
+が、0.6.4になってから、この方法で行うと、rootfsが作成される場所は、/opt/lxcディレクトリ以下であるのは変わらないのだが、ホームディレクトリでlxc-startコマンドを実行すると、
+
+.. code-block:: none
+
+   $ sudo lxc-start -n test
+   lxc-start: No such file or directory - failed to mount &#39;./rootfs.test&#39;-&#39;/tmp/lxc-r7X8fyc&#39;
+   lxc-start: failed to set rootfs for &#39;test&#39;
+   lxc-start: failed to setup the container
+
+
+となり、ホームディレクトリ(カレントディレクトリ)にrootfs.testが無いので起動できない。
+これは0.6.4から、各コンテナの設定方法の仕様が変わったためで、testコンテナの設定ファイルは、/var/lib/lxc/test/configにある。
+
+.. code-block:: none
+
+   $ cat /var/lib/lxc/test/config
+   lxc.utsname = test
+   lxc.tty = 4
+   lxc.pts = 1024
+   lxc.network.type = veth
+   lxc.network.flags = up
+   lxc.network.link = br0
+   lxc.network.name = eth0
+   lxc.network.mtu = 1500
+   lxc.rootfs = ./rootfs.test
+   lxc.cgroup.devices.deny = a
+   # /dev/null and zero
+   lxc.cgroup.devices.allow = c 1:3 rwm
+   lxc.cgroup.devices.allow = c 1:5 rwm
+   # consoles
+   lxc.cgroup.devices.allow = c 5:1 rwm
+   lxc.cgroup.devices.allow = c 5:0 rwm
+   lxc.cgroup.devices.allow = c 4:0 rwm
+   lxc.cgroup.devices.allow = c 4:1 rwm
+   # /dev/{,u}random
+   lxc.cgroup.devices.allow = c 1:9 rwm
+   lxc.cgroup.devices.allow = c 1:8 rwm
+   lxc.cgroup.devices.allow = c 136:* rwm
+   lxc.cgroup.devices.allow = c 5:2 rwm
+   # rtc
+   lxc.cgroup.devices.allow = c 254:0 rwm
+
+
+lxc.rootfsの値が、&#34;./rootfs.test&#34;になっている。ただ、0.6.4にアップグレードした際も、元々のやつが起動できなかったことと、0.6.3の時もlxc-debian create時のrootfsのデフォルト値は相対パスだったのことを考えると、値は変わっていない気がする [#]_ 。0.6.3の時はなぜ問題なかったのか？/var/lib/lxc/test/rootfs/rootfsが、/var/cache/lxc/debian/rootfs.testへのsymlinkになっていたからじゃないかなと。
+回避方法は単純で、/var/lib/lxc/test/configのlxc.rootfsの値を相対パスから絶対パスに変えてやればよい。
+結論としては、&#34;lxc-debian create&#34;するときは、相対パスのままにしないで、絶対パスでrootfsを指定しましょう、ということ。そんだけ。
+
+
+.. rubric:: footnote
+
+.. [#] ：0.6.3の環境が無いのとデグレートしてまで確認しようとは思わないので。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Unix/Linux, virt., Ops, 
+.. tags::
+
+

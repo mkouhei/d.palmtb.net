@@ -1,0 +1,40 @@
+﻿Lennyにしたことで解決したこと。
+####################################
+
+
+Etchの時は、Hiki + ruby + lighttpd + fastcgiでプロセス間のセッション引き継ぎがうまくできず落ちていたのが、問題がなくなった。具体的に言うと、Hikiの本体のhiki.cgiと添付ファイルを扱うattach.cgi、それとそれぞれのfastcgiのラッパーのhiki.fcgiとattach.fcgiを用意していたのだが、hiki.fcgiからattach.fcgiへのセッション渡しがうまくできず、添付ファイルをアップする際に、fcgiがabortして落ちてしまっていたのが、Lennyにしたことでちゃんとアップデートできるようになった。
+良かった良かった、と思ったら、テキストファイルならうまくいくのに、PDFだとタメだ。ただ、以前とちがうのはプロセスは落ちてない。attachディレクトリに手動でコピーすると添付ファイルとして扱えるからアップロードの処理がうまく行ってないようだ…。
+
+.. code-block:: none
+
+   Is a directory - /fuga/hiki/data/text/ (Errno::EISDIR)
+   /hoge/hiki/hiki/db/flatfile.rb:62:in `read&#39;
+   /hoge/hiki/hiki/db/flatfile.rb:62:in `load&#39;
+   /hoge/hiki/hiki/command.rb:175:in `cmd_view&#39;
+   /hoge/hiki/hiki/command.rb:108:in `send&#39;
+   /hoge/hiki/hiki/command.rb:108:in `dispatch&#39;
+   /usr/lib/ruby/1.8/timeout.rb:62:in `timeout&#39;
+   /hoge/hiki/hiki/command.rb:81:in `dispatch&#39;
+   /hoge/hiki/hiki.cgi:32
+   /hoge/hiki/hiki/storage.rb:14:in `open_db&#39;
+   /hoge/hiki/hiki.cgi:30
+   index.fcgi:7:in `load&#39;
+   index.fcgi:7
+   index.fcgi:6:in `start&#39;
+   index.fcgi:6
+   /usr/lib/ruby/1.8/fcgiwrap.rb:65:in `each&#39;
+   /usr/lib/ruby/1.8/fcgi.rb:612:in `each_cgi&#39;
+   /usr/lib/ruby/1.8/fcgi.rb:609:in `each&#39;
+   /usr/lib/ruby/1.8/fcgi.rb:609:in `each_cgi&#39;
+   /usr/lib/ruby/1.8/fcgiwrap.rb:60:in `each&#39;
+   index.fcgi:5
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

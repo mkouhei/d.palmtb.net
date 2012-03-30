@@ -1,0 +1,120 @@
+﻿DebianとWindowsの異種環境間でSphinxのドキュメントをGitで管理する。
+########################################################################################
+
+
+結論、めんどいです。
+もちろん、Windowsが、ですがね。
+
+6月末までのプロジェクトでのドキュメントはSphinxで作ってGitで管理しようぜ、ということになったのです。なったというよりしたってのが正しいのですが。ワシはDebian Sidを、他の二人はWindowsを使っているのですが、いやぁWindowsって改めて面倒だなと思いました [#]_ 。
+まぁ、このエントリは早い話がWindows環境を単にdisっているだけです。（わら
+
+Gitでめんどい
+********************************
+
+
+WindowsでGitを使うのに、一人はmsysgit、もう一人はTortoiseGitを使っています。リモートリポジトリにはgitosisを使っています。ここでめんどいことが二つありました。
+
+SSHの公開鍵のフォーマットが異なる
+============================================================================================
+
+
+二人共、SSHの公開鍵はPuTTYで鍵生成を行ったので、公開鍵はDebianでOpenSSHのフォーマットに変換した後、gitosisに登録しました。ここまでは良いですね。
+さて、何が問題かと言うと、msysgitのコマンドラインツールではOpenSSHの形式のprivate keyでないと読み込めません。なので、msysgitのコマンドでコンバートしようとしたところ、改行コードが違うだかUTF-8じゃないだったかで失敗しました。結局こっちはmsysgitに同梱されているssh-keygenで再作成してもらいました。一方、TortoiseGitのGUIの方はPuTTY形式のprivate keyでないと読み込めません [#]_ 。なので問題なかったのですが、これとは別の問題がありました。
+
+日本語パスが通らない
+========================================================
+
+
+別の問題というのは、TortoiseGitで使用するprivate keyの配置場所のフルパスに日本語が使われている場合です。この時private keyを読み込み、パスフレーズを入力しようとするとファイルが見つからない、という問題が発生するのです。また、private keyの置き場を変えて、git cloneが正常に完了した場合でも、リポジトリ自体のフルパスに日本語が含まれていると、その後の操作で同じようにコケる、という問題が発生します。日本語をファイル名に使う文化はまったくもって滅ぼしたいですね。 [#]_ 
+
+sphinxcontrib-blockdiagでめんどい
+************************************************************************
+
+
+二人のうち、一人はコマンドラインを使わないので、バッチファイルの実行だけでビルドできるようにしました。
+
+.. code-block:: none
+
+   make.bat html
+
+
+と記述したバッチファイルを用意し、これをダブルクリックすることで手元でビルドできるようにしていたのです。が、途中からblockdiagも使い始めたのでした。ここでもまた二つメンドイことがありました。
+
+日本語フォントのパスを複数指定する
+**************************************************************************************************
+
+
+sphinxcontrib-blockdiagで日本語を使うには、conf.pyの中でblockdiag_fontpathにフォントのパスを指定しないといけません。しかし、DebianとWindowsとでは当然パスが異なります。ですので、Debian環境をベースにして、Windows用のconf.pyを用意してやりました。make.bat htmlを実行する際は、次のようなバッチファイル(make-html.bat)を用意します。
+
+.. code-block:: none
+
+   copy /Y conf.py.win conf.py
+   make.bat html
+   git checkout conf.py
+
+
+make-html.batを実行すると、git checkout conf.pyで元に戻るようにしたのですが、実際にgit statusで見るとconf.pyは変更されたままでした。make.batをの中をみたところ、htmlを作成後、goto文でendラベルに飛んで、そのまま終了していたため、git checkoutが実行される前にバッチが終了していたのでした。なので、make-html.batではなく、make.batの最後にgit checkoutを実行するようにしたところ、ちゃんと実行されるようになりましたよ、と。
+
+.. code-block:: none
+
+   diff --git a/make-html.bat b/make-html.bat
+   index 32253f6..e046708 100644
+   --- a/make-html.bat
+   +++ b/make-html.bat
+   @@ -1,3 +1,4 @@
+   +@echo
+   +
+    copy /Y conf.py.win conf.py
+    make.bat html
+   -copy /Y conf.py.org conf.py
+   \ No newline at end of file
+   diff --git a/make.bat b/make.bat
+   index 75fff34..0b129b4 100644
+   --- a/make.bat
+   +++ b/make.bat
+   @@ -168,3 +168,4 @@ results in %BUILDDIR%/doctest/output.txt.
+    )
+    
+    :end
+   +git checkout conf.py
+
+
+なお、この環境に合わせてconf.pyを置き換えるやり方は、@tk0miyaさんが複数パスを指定できるようされるそうです。とてもありがたいですね。
+ Takeshi Komiyatk0miya 
+
+バイナリエディタで編集って…
+================================================================================
+
+
+他のもう一つの問題はバイナリエディタで_imagingft.pydを編集しないといけないという問題が。上記のリンク先の手順どおりにやったらちゃんとビルドできるようになりましたよ、と。
+
+結論
+********
+
+
+いやぁ、Windowsって本当にめんどいデスねwww。大事なことなので何回も（ry
+
+
+.. rubric:: footnote
+
+.. [#] ：自分では使いたくないですね。
+.. [#] ：コマンドラインだとやはりOpenSSH形式である必要がありますが。
+.. [#] ：ちなみにmsysgitでも日本語パスはダメです。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Unix/Linux, computer, 
+.. tags::
+
+
+----
+
+Comment:
+
+	gitは所詮、毛唐のツールでござる。
+
+	written by  kanryu
+	05/22/2011 22:59:47
+	
+

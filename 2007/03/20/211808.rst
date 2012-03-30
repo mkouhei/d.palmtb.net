@@ -1,0 +1,13 @@
+﻿そんなものでアクセスするとは。
+##############################
+
+
+awstatsでログ解析を自宅鯖ではしているのだが、今日初めて、「Sony PlayStation Portable」なんて文字列が。へぇ、実際にPSPでインターネットを使っている人なんているんだなぁ。
+
+
+
+.. author:: mkouhei
+.. categories:: gadget, 
+.. tags::
+
+

@@ -1,0 +1,40 @@
+﻿MySQLメモ。
+################
+
+
+Debianで、MySQLを使う場合、管理者ユーザがdebian-sys-maintなので、先にDB、ユーザを作るにはdebian-sys-maintで作っておく必要があると。パスワードは、/etc/mysql/debian.cnfにある。テキストファイルに平文で入っているのはいかがなものかと思うんだけどな。
+
+.. code-block:: none
+
+   $ mysql -u debian-sys-maint -p
+
+
+ユーザ作成はcreate userかと思ったら、grant文で作るのな。
+
+.. code-block:: none
+
+   mysql grant all privileges on hogedb.* to &#39;hogeuser&#39;@&#39;localhost&#39; identified by &#39;hogeuserpassword&#39;;
+
+
+DB作成はcreate database文と。上記にあわせると、こんな感じ。
+
+.. code-block:: none
+
+   mysql create database hogedb;
+
+
+間違えて権限をつけたユーザとDBを削除しても同じ名前で再度作ると、またアクセスできてしまうので、ちゃんとrevoke文で権限を剥奪してやらんとアカンのはちょい面倒。
+
+.. code-block:: none
+
+   mysql revoke all on hogedb.* from hogeuser;
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

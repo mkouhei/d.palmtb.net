@@ -1,0 +1,61 @@
+﻿音が出なかった理由。
+####################
+
+
+MacBook Airがx86版の時はちゃんと音が出ていたのに、64bitにしたら出なくなった理由が判明。
+もともとは、
+
+.. code-block:: none
+
+   snd_hda_intel         303356  6 
+   snd_pcm_oss            37792  0 
+   snd_mixer_oss          15616  1 snd_pcm_oss
+   snd_pcm                68612  3 snd_hda_intel,snd_pcm_oss
+   snd_timer              22024  2 snd_pcm
+   snd_page_alloc         10760  2 snd_hda_intel,snd_pcm
+   snd_hwdep               9604  1 snd_hda_intel
+   snd                    49720  16 snd_hda_intel,snd_pcm_oss,snd_mixer_oss,snd_pcm,snd_timer,snd_hwdep
+   soundcore               8136  1 snd
+
+
+だったのに、amd64版に変えたら、
+
+.. code-block:: none
+
+   
+   $ lsmod | grep snd
+   snd_hda_intel         408396  6 
+   snd_pcm_oss            45472  0 
+   snd_mixer_oss          21248  1 snd_pcm_oss
+   snd_pcm                87304  3 snd_hda_intel,snd_pcm_oss
+   snd_timer              29328  2 snd_pcm
+   snd                    66680  15 snd_hda_intel,snd_pcm_oss,snd_mixer_oss,snd_pcm,snd_timer
+   soundcore              12944  1 snd
+   snd_page_alloc         15248  2 snd_hda_intel,snd_pcm
+
+
+となっており、snd_hwdepモジュールがロードされていなかった。で、これをロードしたらちゃんと音が出るようになりましたよ、っと。
+
+.. code-block:: none
+
+   $ lsmod | grep snd
+   snd_hwdep              14728  0 
+   snd_hda_intel         408396  6 
+   snd_pcm_oss            45472  0 
+   snd_mixer_oss          21248  1 snd_pcm_oss
+   snd_pcm                87304  3 snd_hda_intel,snd_pcm_oss
+   snd_timer              29328  2 snd_pcm
+   snd                    66680  16 snd_hwdep,snd_hda_intel,snd_pcm_oss,snd_mixer_oss,snd_pcm,snd_timer
+   soundcore              12944  1 snd
+   snd_page_alloc         15248  2 snd_hda_intel,snd_pcm
+
+
+一度ロードさせたら、Kernelを再起動かけてもちゃんと音が出るようになった。何でだ？どこでそんな状態を保持しているんだろうなぁ？
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, Debian, 
+.. tags::
+
+

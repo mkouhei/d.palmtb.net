@@ -1,0 +1,14 @@
+﻿MyMiniCity
+####################
+
+
+akuwanoさんのmixiの日記で知った。登録とかも特に不要なので作ってみた。
+http://mkouhei.myminicity.com/
+
+
+
+.. author:: mkouhei
+.. categories:: computer, 
+.. tags::
+
+

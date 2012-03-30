@@ -1,0 +1,182 @@
+﻿年賀状の宛名＆挨拶状印刷用のPDF生成ツールを作りました。
+##########################################################
+
+
+新年あけたらしいですね、おめでとうございます。新年の挨拶、抱負 [#]_ はまた別途ブログを書こうと思います。新年最初のブログは、今更ながら年賀状の宛名と挨拶状の印刷用のPDFを生成するツールを作った、というお話です。
+
+何故作ることにしたのか。
+********************************************************************
+
+
+昨年の年賀状までは、OOoのCalcで送り先のアドレス帳を管理し、Writerに差し込み印刷をしていました。今回もほとんど年賀状作成をする時間がなかったので、仕事納めの後から手をつけ始めたこともあり、OOo、というかLibreOfficeで同じように印刷するつもりでした。昨年同様、こまめの写真をGimpで加工し挨拶状の面をGimpで加工しようとしたところ、縦書きの文字列の再編集のやり方が分からない、という問題に遭遇しました。そしてもう一つ、もっと致命的な問題に遭遇しました。それは、LibreOfficeで差し込み印刷しようとしたところ、Calcのデータをデータストアとして指定できないことでした。
+Gimpで挨拶状の面を作成するのは普段使わない分あまり慣れてないので結構大変なのですが、Writerでの宛名差し込み印刷はそれ以上に大変というかマンドイので、GUIを使うのはこまめの写真をGimpで加工するところだけでええわ、ということで、LaTeXで両面とも作成し、PDFを生成し、それを縁なし印刷することにしました。
+
+
+挨拶状の面の生成。
+**************************************************
+
+
+これは、以前名刺をLaTeXで作成するようにしたこともあったので、Gimpで加工したこまめの写真をLaTeXで組版するだけの簡単なお仕事でした。
+
+.. code-block:: none
+
+   \documentclass[12pt]{jarticle}
+   
+   \usepackage[dvipdfmx]{graphicx}
+   \usepackage{verbatim}
+   \pagestyle{empty}
+   
+   \setlength{\textwidth}{100truemm}
+   \setlength{\hoffset}{0in}
+   \setlength{\voffset}{0truemm}
+   \setlength{\headheight}{0truemm}
+   \setlength{\headsep}{0truemm}
+   \setlength{\oddsidemargin}{0truemm}
+   \setlength{\textheight}{148truemm}
+   \setlength{\topmargin}{0truemm}
+   \advance\oddsidemargin -1in
+   \advance\topmargin -1in
+   \setlength{\footskip}{0truemm}
+   
+   \begin{document}
+   \setlength{\unitlength}{1truemm}
+   
+   \begin{picture}(148,100)(0,0)
+     \put(5,75){\fontsize{60pt}{0pt}{\mcfamily {謹賀新年\}\}}
+     \put(10,60){\fontsize{12pt}{0pt}{\mcfamily 昨年中はお世話になり大変ありがとうございました。\}\}
+     \put(6,55){\fontsize{12pt}{0pt}{\mcfamily 本年もどうぞよろしくお願いいたします。\}\}
+     \put(6,50){\fontsize{12pt}{0pt}{\mcfamily 皆様のご健康とご多幸をお祈り申し上げます。\}\}
+     \put(65,42){\fontsize{12pt}{0pt}{\ttfamily 平成二十四年 元日\}\}
+     \put(10,21){\fontsize{12pt}{0pt}{\ttfamily かわいい　にゃんこ\}\}
+     \put(10,16){\fontsize{10pt}{0pt}{\ttfamily 〒000-0000\}\}
+     \put(7,12){\fontsize{10pt}{0pt}{\ttfamily　都道府県市町村大字1丁目1番地\}\}
+     \put(11,9){\fontsize{8pt}{0pt}{\ttfamily tel:\}\}
+     \put(22,9){\fontsize{8pt}{0pt}{\ttfamily 00-0000-0000\}\}
+     \put(7.5,6){\fontsize{8pt}{0pt}{\ttfamily　email:\}\}
+     \put(22,6){\fontsize{8pt}{0pt}{\ttfamily kitten@example.org\}\}
+     \put(105,5){\includegraphics[width=35mm]{cat.jpg\}\}
+     %% cat.jpg from http://animalphotos.info/a/2007/12/15/black-and-white-photo-of-a-forlorn-looking-kitten/
+   \end{picture}
+   \end{document}
+
+
+&#34;謹賀新年&#34;の文字列を赤字にしようと、colorパッケージを使おうとするとこまちゃんの画像が表示されない、という問題に遭遇したため、そこだけ諦めて妥協したのは、ここだけの秘密です。
+
+宛名の差し込み印刷をpystacheで実装。
+************************************************************************************************
+
+
+アドレス帳の管理は、来年以降はヨメさんでもできるようにするために、とりあえずCSVで保存することにしました。CSCから宛名差し込み印刷するには、何らかのデータの埋め込みを行うテンプレートエンジンを使うのが楽なので、CouchDBのアプリを作るときによく使うヒゲテンプレートのmustacheが、データを埋め込む文書を生成するのに向いています。なので、今回はそのPythonの実装であるpystacheをDebianパッケージにして、それでLaTeXを生成することにしました。pystacheはついでにITPして、mentorsにアップロードしておきました。
+pystacheでは、CSVを読み込んだデータをLaTeX形式で標準出力するようにしました。それをEUC-JPに変換し、PDFにする、という形式です。
+
+.. code-block:: none
+
+   #!/usr/bin/env python
+   # -*- coding: utf-8 -*-
+   
+   import pystache
+   
+   texfile_name = &#39;atena.tex&#39;
+   address_list = &#39;address.csv&#39;
+   
+   class Address(pystache.View):
+   
+       template_path = &#39;.&#39;
+       template_name = &#39;address&#39;
+       template_encoding = &#39;utf-8&#39;
+   
+       def datas(self):
+           i=0
+           datas = []
+           for line in open(address_list, &#39;r&#39;):
+               # 0:flag, 1:name1, 2:name2, 3:address,
+               # 4:no1, 5:no2, 6:no3, 7:no4, 8:no5, 9:no6, 10:no7
+               list = line[:-1].split(&#39;,&#39;)
+               if list[0] == 1:
+                   
+                   datas.append({
+                       name1:unicode(list[1], &#39;utf-8&#39;),
+                       name2:unicode(list[2], &#39;utf-8&#39;),
+                       address:unicode(list[3], &#39;utf-8&#39;),
+                       no1:unicode(list[4], &#39;utf-8&#39;),
+                       no2:unicode(list[5], &#39;utf-8&#39;),
+                       no3:unicode(list[6], &#39;utf-8&#39;),
+                       no4:unicode(list[7], &#39;utf-8&#39;),
+                       no5:unicode(list[8], &#39;utf-8&#39;),
+                       no6:unicode(list[9], &#39;utf-8&#39;),
+                       no7:unicode(list[10], &#39;utf-8&#39;)
+                       })
+           return datas
+   
+   
+   str = Address().render()
+   print(str.encode(&#39;utf-8&#39;))
+
+
+テンプレートは下記のようなものを用意しました。
+
+.. code-block:: none
+
+   \documentclass[12pt]{jarticle}
+   \usepackage[dvipdfmx]{graphicx}
+   \usepackage{verbatim}
+   \usepackage{plext}
+   \pagestyle{empty}
+   \setlength{\textwidth}{100truemm}
+   \setlength{\hoffset}{0in}
+   \setlength{\voffset}{0truemm}
+   \setlength{\headheight}{0truemm}
+   \setlength{\headsep}{0truemm}
+   \setlength{\oddsidemargin}{0truemm}
+   \setlength{\textheight}{148truemm}
+   \setlength{\topmargin}{0truemm}
+   \advance\oddsidemargin -1in
+   \advance\topmargin -1in
+   \setlength{\footskip}{0truemm}
+   \begin{document}
+   \setlength{\unitlength}{1truemm}
+   
+   \{\{#datas\}\}
+   
+   \begin{picture}(100,148)(0,0)
+       \put(41,127){\fontsize{24pt}{0pt}{\mcfamily { \{\{no1\}\} } } }
+       \put(47.5,127){\fontsize{24pt}{0pt}{\mcfamily { \{\{no2\}\} } } }
+       \put(54,127){\fontsize{24pt}{0pt}{\mcfamily { \{\{no3\}\} } } }
+       \put(62,127){\fontsize{24pt}{0pt}{\mcfamily { \{\{no4\}\} } } }
+       \put(68.5,127){\fontsize{24pt}{0pt}{\mcfamily { \{\{no5\}\} } } }
+       \put(75,127){\fontsize{24pt}{0pt}{\mcfamily { \{\{no6\}\} } } }
+       \put(81.5,127){\fontsize{24pt}{0pt}{\mcfamily { \{\{no7\}\} } } }
+       \put(70,25){\vbox{\hsize=9.5cm\tate\fontsize{18pt}{0pt}{\mcfamily { \{\{address\}\} } } } }
+       \put(45,25){\vbox{\tate\fontsize{36pt}{0pt}{\mcfamily \{\{name1\}\} 様} } }
+       \{\{#name2\}\}
+       \put(30,-11){\vbox{\tate\fontsize{36pt}{0pt}{\mcfamily \{\{name2\}\} 様} } }
+       \{\{/name2\}\}                                            
+   \end{picture}
+   
+   \{\{/datas\}\}
+   
+   \end{document}
+
+
+送り先が一人の時はname2を使いませんが、ご夫婦宛に送ったりする場合は、name2に名前だけ挿入する、という感じですね。
+
+これで来年からめっちゃ楽になるで…。
+********************************************************************************************************
+
+
+これで来年からはGUIの操作は写真の加工だけになるので楽になりますね。来年の話をしたら鬼が笑うとか言いますが、今年の年賀状の作成を始めたのが結局30日からだったので投函できるのが明日起きてから(つまり元日投函)だと言うのは内緒です…。
+なお、ソースコードは、下記で公開しています。
+https://github.com/mkouhei/GenNenga
+
+
+.. rubric:: footnote
+
+.. [#] ：というか今回も昨年の振り返りやらなかったな…。
+
+
+
+.. author:: mkouhei
+.. categories:: TeX, python, Debian, computer, 
+.. tags::
+
+

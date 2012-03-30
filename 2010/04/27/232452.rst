@@ -1,0 +1,22 @@
+﻿毎日gcしてたら。
+##################
+
+
+なんぞこれ？
+
+.. code-block:: none
+
+   $ git gc
+   error: waitpid for pack-refs failed: No child processes
+   error: failed to run pack-refs
+
+
+OOoのファイルを管理しているgitリポジトリでの出来事。サーバにOpenBlockS 266 SDRAM 64MBの環境をgitサーバに使っている環境で、git cloneした際にOBSがハングアップするのを防ぐため、pushする前にgcかけているのだが、今日初めてこんなのが出た。何度やっても同じ。うーむ。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

@@ -1,0 +1,22 @@
+﻿日本語変換がおかしい。
+######################
+
+
+日本語入力を使っていなかった環境でemacs, anthy-elを導入したのに、変換が変だったのでめっちゃ使いづらいなぁと思ったらanthy-elのREADME.Debianにちゃんと書いてた。
+
+.. code-block:: none
+
+   in your ~/.emacs or ~/.xemacs/init.el
+   
+   (set-input-method japanese-anthy)
+
+
+ちゃんと変換できるようになった。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Unix/Linux, 
+.. tags::
+
+

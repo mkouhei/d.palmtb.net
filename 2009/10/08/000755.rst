@@ -1,0 +1,20 @@
+﻿ミキサーの設定がリストアされない。
+##################################
+
+
+Sid on MacBook 5,2でミキサーの設定がリストアされない。ストアはされているようなんだが。仕方ないので現在のワークアラウンドは、起動してログイン後、
+
+.. code-block:: none
+
+   $ sudo alsactl restore
+
+
+で元に戻すというやり方。面倒だ。困ったね。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, MacBook, 
+.. tags::
+
+

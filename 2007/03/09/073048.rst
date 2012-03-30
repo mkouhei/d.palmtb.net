@@ -1,0 +1,145 @@
+﻿ACPIの動作まとめてみた。
+############################
+
+
+acpidは1.0.4-5で、各kernelを切り替えてみた。
+
+2.6.20正常
+2.6.20.10％の表示。d:id:mkouhei:20070221#1171993311と同じ。
+2.6.21-rc1正常
+2.6.21-rc250%%の表示。
+2.6.21-rc30%の表示。d:id:mkouhei:20070221#1171993311と同じ。
+
+カーネルオプションのdiff結果。
+
+2.6.20 vs. 2.6.20.1 vs. 2.6.21-rc1
+****************************************************************
+
+
+
+.. code-block:: none
+
+    ====
+   1:241c
+     # CONFIG_ACPI_SLEEP_PROC_SLEEP is not set
+   2:265,266c
+     # CONFIG_ACPI_SLEEP_PROC_SLEEP is not set
+     CONFIG_ACPI_PROCFS=y
+   3:241c
+     CONFIG_ACPI_SLEEP_PROC_SLEEP=y
+
+
+
+2.6.20 vs. 2.6.21-rc1 vs. 2.6.21-rc2
+********************************************************************
+
+
+
+.. code-block:: none
+
+   ====3
+   1:228c
+   2:228c
+     CONFIG_PM_LEGACY=y
+   3:236c
+     # CONFIG_PM_LEGACY is not set
+   ====3
+   1:230c
+   2:230c
+     # CONFIG_PM_SYSFS_DEPRECATED is not set
+   3:238c
+     CONFIG_PM_SYSFS_DEPRECATED=y
+    ====
+   1:241c
+     # CONFIG_ACPI_SLEEP_PROC_SLEEP is not set
+   2:241c
+     CONFIG_ACPI_SLEEP_PROC_SLEEP=y
+   3:249,250c
+     # CONFIG_ACPI_SLEEP_PROC_SLEEP is not set
+     # CONFIG_ACPI_PROCFS is not set
+
+
+
+2.6.20 vs. 2.6.21-rc1 vs. 2.6.21-rc3
+********************************************************************
+
+
+
+.. code-block:: none
+
+   ====3
+   1:228c
+   2:228c
+     CONFIG_PM_LEGACY=y
+   3:239c
+     # CONFIG_PM_LEGACY is not set
+    ====
+   1:241c
+     # CONFIG_ACPI_SLEEP_PROC_SLEEP is not set
+   2:241c
+     CONFIG_ACPI_SLEEP_PROC_SLEEP=y
+   3:252,253c
+     # CONFIG_ACPI_SLEEP_PROC_SLEEP is not set
+     CONFIG_ACPI_PROCFS=y
+
+
+
+2.6.21-rc[1-3]
+************************
+
+
+
+.. code-block:: none
+
+   ====1
+   1:228c
+     CONFIG_PM_LEGACY=y
+   2:236c
+   3:239c
+     # CONFIG_PM_LEGACY is not set
+   ====2
+   1:230c
+   3:241c
+     # CONFIG_PM_SYSFS_DEPRECATED is not set
+   2:238c
+     CONFIG_PM_SYSFS_DEPRECATED=y
+    ====
+   1:241c
+     CONFIG_ACPI_SLEEP_PROC_SLEEP=y
+   2:249,250c
+     # CONFIG_ACPI_SLEEP_PROC_SLEEP is not set
+     # CONFIG_ACPI_PROCFS is not set
+   3:252,253c
+     # CONFIG_ACPI_SLEEP_PROC_SLEEP is not set
+     CONFIG_ACPI_PROCFS=y
+
+
+比較してみると、少なくともCONFIG_PM_LEGACYを有効にしていない場合は怪しいなぁ。
+最初に発覚した、2.6.20-mm2とも比較してみた。
+
+2.6.20 vs. 2.6.21-rc1 vs. 2.6.20-mm2
+********************************************************************
+
+
+
+.. code-block:: none
+
+    ====
+   1:241c
+     # CONFIG_ACPI_SLEEP_PROC_SLEEP is not set
+   2:241c
+     CONFIG_ACPI_SLEEP_PROC_SLEEP=y
+   3:265,266c
+     # CONFIG_ACPI_SLEEP_PROC_SLEEP is not set
+     CONFIG_ACPI_PROCFS=y
+
+
+あれ？　ちがう。ということは、CONFIG_ACPI_SLEEP_PROC_SLEEP=yにしておくか、あるいは無効にしてかつCONFIG_ACPI_PROCFSも無効にすれば、問題解決するのかな？今晩rc3を再構築して試してみるか。
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, Unix/Linux, 
+.. tags::
+
+

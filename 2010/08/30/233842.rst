@@ -1,0 +1,45 @@
+﻿Couchappのdebパッケージ化。
+######################################
+
+
+とりあえず、手っ取り早くcouchappのdebパッケージが欲しかったので。
+
+.. code-block:: none
+
+   $ git clone git://github.com/couchapp/couchapp.git
+   $ cd couchapp
+   $ git tag 
+   (snip)
+   0.7
+   0.7.0
+   $ cd ..
+   $ ln -s couchapp couchapp-0.7.0
+   $ cd couchapp-0.7.0
+   $ debuild -us -uc
+   This package has a Debian revision number but there does not seem to be
+   an appropriate original tar file or .orig directory in the parent directory;
+   (expected one of couchapp_0.7.0.orig.tar.gz, couchapp_0.7.0.orig.tar.bz2,
+   couchapp_0.7.0.orig.tar.lzma,  couchapp_0.7.0.orig.tar.xz or couchapp.orig)
+   continue anyway? (y/n) y
+   (snip)
+   Now running lintian...
+   W: couchapp source: debian-watch-file-in-native-package
+   W: couchapp source: out-of-date-standards-version 3.9.0.0 (current is 3.9.1)
+   W: couchapp source: native-package-with-dash-version
+   W: couchapp: new-package-should-close-itp-bug
+   W: couchapp: binary-without-manpage usr/bin/couchapp
+   Finished running lintian.
+   $ cd ..
+   $ sudo apt-get install python-restkit
+   $ sudo dpkg -i couchapp_0.7.0-1_all.deb
+
+
+ダメ人間。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, CouchDB, 
+.. tags::
+
+

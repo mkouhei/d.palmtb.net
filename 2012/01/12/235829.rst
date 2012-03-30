@@ -1,0 +1,14 @@
+﻿python-ordereddictサヨウナラ。
+################################################
+
+
+blockdiagシリーズをDebianパッケージにする上でPython2.6系で依存関係のあるpython-ordereddictが先日アップロードされたばかりなのですが、python2.6自体がもうオワコン(次のstableのWheezyではpython2.7がデフォルトになる様子)なので、rejectされることになったので、RM申請をしましたよ、と。短命でしたね…。
+なので、blockdiagシリーズのDebianパッケージもpython2.7だけをサポート対象にする予定です。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, python, 
+.. tags::
+
+

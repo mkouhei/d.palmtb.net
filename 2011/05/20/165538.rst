@@ -1,0 +1,42 @@
+﻿コマンドラインのWebDAVクライアントcadaver。
+########################################################
+
+
+SVNからファイルを取得するとき、どうしてますか。普通はgit svn cloneすれば良いんじゃねJK。という話ですが [#]_ 、ちょっとファイルがほしいだけならWebブラウザでよいですね。でも複数ファイルをちょっと取ってきたい場合は、ブラウザでちまちま(リンククリック→保存)*の繰り返しなんてやってられません。そんなときに、cadaverですよ。
+大したことはありません。たまに使うときに、よくコマンド名と書式を忘れるので単なる備忘録です。
+DebianならcadaverパッケージをインストールすればOKです。
+
+.. code-block:: none
+
+   $ sudo apt-get install cadaver
+
+
+ftpクライアントとかsmbclientみたいな使い勝手ですね。
+
+.. code-block:: none
+
+   $ cadaver http://xxx.xxx.xxx.xxx/svn/repos/trunk/
+   Authentication required for Subversion on server `xxx.xxx.xxx.xxx&#39;:
+   Username: mkouhei
+   Password:
+   dav:/svn/repos/trunk/ ls
+   Listing collection `/svn/repos/trunk/&#39;:
+    succeeded.
+          日本語もOK.txt          467456   5月 11 18:17
+          hoge.txt               1846784   5月 11 13:11
+
+
+cadavarは日本語のパスをURIに指定しても、パーセントエンコードしていれば大丈夫です。ファイル名に日本語を使っているファイルでもちゃんとやりとりできます。コマンドラインで入力するのはめんどいですけどね。
+
+
+.. rubric:: footnote
+
+.. [#] ：svn coって何ですかw
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, network, Debian, 
+.. tags::
+
+

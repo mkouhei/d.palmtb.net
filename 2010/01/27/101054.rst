@@ -1,0 +1,58 @@
+﻿同じコンテナが2回表示される。
+##############################
+
+
+
+.. code-block:: none
+
+   $ lxc-ls
+   guest0  guest1  guest2  guest3  guest4
+   guest0  guest1  guest2  guest3  guest4
+
+
+なんじゃ？と思ったら、lxc-lsコマンドの中でおかしな一行が。
+
+.. code-block:: none
+
+   #!/bin/bash
+   
+   lxcpath=/var/lib/lxc
+   
+   if [ ! -r $lxcpath ]; then
+       exit 0
+   fi
+   
+   function get_cgroup()
+   {
+           local mount_string
+           mount_string=$(mount -t cgroup |grep -E -e &#39;^lxc &#39;)
+           if test -z $mount_string; then
+                   mount_string=$(mount |grep -m1 &#39;type cgroup&#39;)
+           fi
+           if test -n $mount_string; then
+                   mount_point=$(echo $mount_string |cut -d&#39; &#39; -f3)
+           fi
+   }
+   
+   ls $* $lxcpath
+   
+   active=$(netstat -xa | grep $lxcpath | \
+           sed -e &#39;s#.*&#39;$lxcpath/&#39;\(.*\)/command#\1#&#39;);
+   
+   if test -n $active; then
+           get_cgroup
+           if test -n $mount_point; then
+                   cd $mount_point; ls $* -d $active
+           fi
+   fi
+
+
+&#34;ls $* $lxcpath&#34;とかやってるし。デバッグ用につけたのを消し忘れたのかな。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Dev, 
+.. tags::
+
+

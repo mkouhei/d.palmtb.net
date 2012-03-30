@@ -1,0 +1,19 @@
+﻿Bit rateを指定してみた。
+################################
+
+
+
+.. code-block:: none
+
+   $ sudo iwconfig eth1 rate 11M
+
+
+54Mとか48Mとかも指定できるのだが、一番安定してかつ早かったのは11Mだった。11MってことはIEEE802.11bかい？
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, network, Debian, 
+.. tags::
+
+

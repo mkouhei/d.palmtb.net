@@ -1,0 +1,56 @@
+﻿ちゃんと終了させるための修正。
+##############################
+
+
+suExecさせるためにさっき作ったラッパーだと、ruby index.fcgiをexecさせているため、lighttpdを終了させてもプロセスが残ってしまうことに気づいた。んで、lighttpd終了時にちゃんとプロセスを落とすスクリプト追加した。
+
+.. code-block:: none
+
+   (/usr/local/sbin/fcgidstop.sh)
+   =======
+   #!/bin/bash
+   
+   USER=hoge
+   if ps -ef | grep ^$USER -q; then
+   	ps -ef | grep ^$USER| awk &#39;{print $2}&#39; | xargs kill 
+   fi
+
+
+んで、これを/etc/init.d/lighttpdに読み込ませるようにする。
+
+.. code-block:: none
+
+   $ rcsdiff -r1.1 -r1.2 -u ./lighttpd
+   ===================================================================
+   RCS file: ./RCS/lighttpd,v
+   retrieving revision 1.1
+   retrieving revision 1.2
+   diff -u -r1.1 -r1.2
+    --- ./lighttpd	2008/04/20 05:49:44	1.1
+    +++ ./lighttpd	2008/04/20 06:12:37	1.2
+    @@ -43,11 +43,15 @@
+     	else
+     	    log_end_msg 1
+     	fi
+    +	# stop fcgid
+    +	/usr/local/sbin/fcgidstop.sh
+     	;;
+       reload)
+     	log_daemon_msg Reloading $DESC configuration $NAME
+     	if start-stop-daemon --stop --signal 2 --oknodo --retry 30\
+     	--quiet --pidfile $PIDFILE --exec $DAEMON; then
+    +	# stop fcgid
+    +	/usr/local/sbin/fcgidstop.sh
+     	    if start-stop-daemon --start --quiet  \
+     		--pidfile $PIDFILE --exec $DAEMON -- $DAEMON_OPTS ; then
+     		log_end_msg 0
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

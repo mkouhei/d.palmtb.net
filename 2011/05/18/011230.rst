@@ -1,0 +1,13 @@
+﻿さくらのVPS契約してみた。
+############################
+
+
+思うところあって、さくらのVPS 512を契約してみた。カスタムインストールでDebian GNU/Linux Lenny(amd64)をインストールした後、Squeezeにアップデートしておいた。Chromium BrowserだとTightVNC Java Viewerが起動しなくて、IceweaselでならOKだった。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

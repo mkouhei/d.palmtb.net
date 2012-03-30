@@ -1,0 +1,16 @@
+﻿2.6.20-mm2にすると専用カーネルでなくて良いみたい。
+############################################################
+
+
+2.6.20-mm2でXenのDomain-Uがサポートされた模様。なので、2.6.20-mm2にしてしまえば、XenでParavirtualizationを使う際にいちいちXenのパッチを当てないでよい、ということですな。本当に動くのかな？本当に動くなら、パフォーマンスが下がるFull virtualizationよりもParavirtualizationの方がよいねぇ。
+
+ - Added Xen domain-U support
+http://www.kernel.org/pub/linux/kernel/people/akpm/patches/2.6/2.6.20/2.6.20-mm2/announce.txt
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, virt., computer, 
+.. tags::
+
+

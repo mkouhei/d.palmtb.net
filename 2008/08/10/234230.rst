@@ -1,0 +1,86 @@
+﻿デジカメのデータを読み込む。
+############################
+
+
+Canon IXY DIGITAL 820 ISのデータをDebianで読み込んでみた。使ったのはgtkam。まずgtkamを導入。
+
+.. code-block:: none
+
+   $ sudo apt-get install gtkam gphoto2 
+   パッケージリストを読み込んでいます... 完了
+   依存関係ツリーを作成しています                
+   状態情報を読み取っています... 完了
+   以下のパッケージが自動でインストールされましたが、もう必要とされていません:
+     voikko-fi libdaemon0 libc-ares2 app-install-data libcurl3-gnutls libcupsys2
+     libetpan13
+   これらを削除するには &#39;apt-get autoremove&#39; を利用してください。
+   以下の特別パッケージがインストールされます:
+     libcdk5 libexif-gtk5 libgphoto2-2 libgphoto2-port0 libltdl3
+   提案パッケージ:
+     gthumb
+   以下のパッケージが新たにインストールされます:
+     gphoto2 gtkam libcdk5 libexif-gtk5 libgphoto2-2 libgphoto2-port0 libltdl3
+   アップグレード: 0 個、新規インストール: 7 個、削除: 0 個、保留: 10 個。
+   2404kB のアーカイブを取得する必要があります。
+   この操作後に追加で 7889kB のディスク容量が消費されます。
+   続行しますか [Y/n]? 
+   取得:1 http://cdn.debian.or.jp sid/main libcdk5 5.0.20060507-1 [133kB]
+   取得:2 http://cdn.debian.or.jp sid/main libexif-gtk5 0.3.5-3 [37.8kB]
+   取得:3 http://cdn.debian.or.jp sid/main libltdl3 1.5.26-4 [179kB]
+   取得:4 http://cdn.debian.or.jp sid/main libgphoto2-port0 2.4.1-2 [139kB]
+   取得:5 http://cdn.debian.or.jp sid/main libgphoto2-2 2.4.1-2 [1407kB]
+   取得:6 http://cdn.debian.or.jp sid/main gphoto2 2.4.0-1 [203kB]
+   取得:7 http://cdn.debian.or.jp sid/main gtkam 0.1.12-2.4 [306kB]
+   2404kB を 3s で取得しました (722kB/s)
+   未選択パッケージ libcdk5 を選択しています。
+   (データベースを読み込んでいます ... 現在 137184 個のファイルとディレクトリがインストールされています。)
+   (.../libcdk5_5.0.20060507-1_amd64.deb から) libcdk5 を展開しています...
+   未選択パッケージ libexif-gtk5 を選択しています。
+   (.../libexif-gtk5_0.3.5-3_amd64.deb から) libexif-gtk5 を展開しています...
+   未選択パッケージ libltdl3 を選択しています。
+   (.../libltdl3_1.5.26-4_amd64.deb から) libltdl3 を展開しています...
+   未選択パッケージ libgphoto2-port0 を選択しています。
+   (.../libgphoto2-port0_2.4.1-2_amd64.deb から) libgphoto2-port0 を展開しています...
+   未選択パッケージ libgphoto2-2 を選択しています。
+   (.../libgphoto2-2_2.4.1-2_amd64.deb から) libgphoto2-2 を展開しています...
+   未選択パッケージ gphoto2 を選択しています。
+   (.../gphoto2_2.4.0-1_amd64.deb から) gphoto2 を展開しています...
+   未選択パッケージ gtkam を選択しています。
+   (.../gtkam_0.1.12-2.4_amd64.deb から) gtkam を展開しています...
+   Processing triggers for man-db ...
+   Processing triggers for menu ...
+   libcdk5 (5.0.20060507-1) を設定しています ...
+   libexif-gtk5 (0.3.5-3) を設定しています ...
+   libltdl3 (1.5.26-4) を設定しています ...
+   libgphoto2-port0 (2.4.1-2) を設定しています ...
+   libgphoto2-2 (2.4.1-2) を設定しています ...
+   gphoto2 (2.4.0-1) を設定しています ...
+   gtkam (0.1.12-2.4) を設定しています ...
+   Processing triggers for menu ...
+
+
+USBケーブルで接続して、電源を入れ、認識されているか確認する。
+
+.. code-block:: none
+
+   $ dmesg
+   (snip)
+   [ 5716.210654] usb 7-1: USB disconnect, address 14
+   [ 5731.494890] usb 7-1: new high speed USB device using ehci_hcd and address 15
+   [ 5731.630342] usb 7-1: configuration #1 chosen from 1 choice
+   [ 5731.661353] usb 7-1: New USB device found, idVendor=04a9, idProduct=3173
+   [ 5731.661366] usb 7-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+   [ 5731.661376] usb 7-1: Product: Canon Digital Camera
+   [ 5731.661381] usb 7-1: Manufacturer: Canon Inc.
+   [ 5731.661385] usb 7-1: SerialNumber: 1CDB5311F6FE48CDBCDBAFBE3FFECACF
+
+
+gtkamを起動し、&#34;カメラの追加&#34;で検出してみたところ、型式はUSB PTP Class Camera、ポートはUniversal Serial Bus (usb:)として認識できた。あとは普通に保存して終わり。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, gadget, 
+.. tags::
+
+

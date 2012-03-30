@@ -1,0 +1,14 @@
+﻿2.6.21.2がリリースされたけど…。
+########################################
+
+
+カーネルビルドしようとして、&#34;make-kpkg --rootcmd fakeroot --config menuconfig --initrd --revision=$REVISION kernel-image kernel_headers modules_image&#34;を実行して、カーネルオプション選択している途中で寝落ちしてた…。orz
+当然作成出来ていないので、今日帰ってきてからリトライ。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

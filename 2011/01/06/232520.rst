@@ -1,0 +1,20 @@
+﻿LaTeXでハイパーリンク。
+############################
+
+
+HTMLのa要素と同じようなハイパーリンクを張るためにはhyperrefパッケージで、
+
+.. code-block:: none
+
+   \href{url}{text}
+
+
+とすれば良い。知らなくて、\url{}とか使っていたので、すんげぇウザかった。w　これですっきり。
+
+
+
+.. author:: mkouhei
+.. categories:: TeX, 
+.. tags::
+
+

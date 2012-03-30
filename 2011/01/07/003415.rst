@@ -1,0 +1,43 @@
+﻿Nexus SでCouchDB on Androidのインストーラが落ちる件。
+##############################################################################
+
+
+Nexus Sの初めてのユーザだから詳細教えてね、とJ Chris Andersonさんからメールが来たので、スクリーンキャプチャを取って送ることにした。んで、その前にStack Trace見てみたら、
+
+.. code-block:: none
+
+   Caused by: java.lang.NullPointerEception at org.couchdb.android.CouchInstaller.checkInstalled(CouchInstaller.java:93)
+
+
+とNullPointerExceptionが発生していた。CouchDBのインストーラのコードはgithubで公開されているので見てみたら、CouchInstaller.javaの93行目のpackageSet()がAndroid SDKのバージョンが7か8以外の場合はnullを返しているおるよ。Nexus SはSDK VERSIONが9なので…。これだとAndroid 2.1と2.2以外は全部落ちるじゃないか…。
+
+.. code-block:: none
+
+        92         public static boolean checkInstalled() {
+        93                 for (String pkg : packageSet()) {
+   (snip)
+       101         public static ListString packageSet() {
+       102                 ArrayListString packages = new ArrayListString();
+   (snip)
+       109                 if (android.os.Build.VERSION.SDK_INT == 7)
+       110                         packages.add(couch-icu-driver-eclair);
+       111                 else if (android.os.Build.VERSION.SDK_INT == 8)
+       112                         packages.add(couch-icu-driver-froyo);
+       113                 else {
+       114                         // TODO: Probably should throw some exception here.
+       115                         Log.e(TAG, Unsupported OS/arch combo);
+       116                         return null;
+       117                 }
+       118                 return packages;
+       119         }
+
+
+スクリーンキャプチャと一緒に返信しておいた。早くAndroid 2.3も対応してくださ～い。
+
+
+
+.. author:: mkouhei
+.. categories:: CouchDB, gadget, 
+.. tags::
+
+

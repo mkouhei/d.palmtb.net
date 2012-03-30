@@ -1,0 +1,59 @@
+﻿sylpheedが使えない。
+############################
+
+
+うむ、困った。
+
+.. code-block:: none
+
+   $ sylpheed --debug
+   ssl_init(): /home/hoge/.sylpheed-2.0/certs doesn&#39;t exist, or not a directory.
+   ssl_init(): certs dir /etc/ssl/certs found.
+   looking for /home/hoge/.sylpheed-2.0/ca-certificates.crt
+   looking for /home/hoge/.sylpheed-2.0/ca-bundle.crt
+   looking for /home/hoge/.sylpheed-2.0/ca-root.crt
+   looking for /home/hoge/.sylpheed-2.0/certs.crt
+   looking for /etc/ssl/certs/ca-certificates.crt
+   ssl_init(): certs file /etc/ssl/certs/ca-certificates.crt found.
+   SSLv23 は利用可能です
+   TLSv1 は利用可能です
+   current dir: /home/hoge/.sylpheed-2.0
+   current dir: /home/hoge
+   Reading configuration...
+   Found [Common]
+   Finished reading configuration.
+   Reading filter configuration...
+   Reading /home/hoge/.sylpheed-2.0/filter.xml
+   Reading actions configurations...
+   表示ヘッダの設定を読み込み中...
+   GpgME Protocol: OpenPGP
+         Version: 1.4.9
+   GpgME Protocol: CMS
+         Version: (unknown)
+   メインウィンドウを作成中...
+   フォルダビューを作成中...
+   サマリビューを作成中...
+   メッセージビューを作成中...
+   ヘッダビューを作成中...
+   テキストビューを作成中...
+   MIME ビューを作成中...
+   テキストビューを作成中...
+   イメージビューを作成中...
+   Creating log window...
+   Setting main window widgets...
+   done.
+   prefs_summary_column_get_config(): getting normal folder setting
+   summary_set_column_order: pos 0 : type 0, vislble 1
+   summary_set_column_order: pos 1 : type 1, vislble 1
+   summary_set_column_order: pos 2 : type 2, vislble 1
+   セグメンテーション違反です
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

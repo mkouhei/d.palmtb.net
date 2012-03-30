@@ -1,0 +1,31 @@
+﻿Hack Cafe #10
+##########################
+
+
+本日は19時まで社内で会議があったので、1時間半遅れでの参加。ミスド新宿靖国通りでの開催。メンバーは今回は最多人数で5人。iwamatsuさん、tyamadaさんに加え、初参加のyamamotoさんに、yoshidaさん。2階に上がってみんな壁に向かって黙々とHackしていたので最初分からんかった。
+今まで無線LANが使えないときにローカルに落としていなくて作業できないことが多かったので、今回は事前にちゃんと用意しておいた。java-commonパッケージに含まれるDebian Java Policyの翻訳を黙々とやった。これは4月のネタの予定。あとは、最近起動時にWarningが出てウザい、/etc/modprobe.d/以下の変更を行った。
+
+.. code-block:: none
+
+   $ cd /etc/modprobe.d/
+   $ for i in `find -type f ! -name *.conf`; do sudo mv $i{,.conf} ; done
+
+
+これでこういうウザいメッセージは表示されなくなった。
+
+.. code-block:: none
+
+   WARNING: All config files need .conf: /etc/modprobe.d/kqemu, it will be ignored in a future release.
+   WARNING: All config files need .conf: /etc/modprobe.d/bcm5974, it will be ignored in a future release.
+   WARNING: All config files need .conf: /etc/modprobe.d/ndiswrapper, it will be ignored in a future release.
+
+
+帰り間際に壁のコンセントに電源タップを挿して使っているのを店員のおねえちゃんに注意された。が、最初に聞いて許可を得てから使っていたのに、店員が代わる度に毎回言われたそうな。引き継ぎが出来てませんな。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

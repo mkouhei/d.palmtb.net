@@ -1,0 +1,202 @@
+﻿こまちゃん監視サーバ構築。
+##########################
+
+
+東日本で大地震があった日、僕の誕生日でヨメと有休を取って、ヨメへのサービス兼ねてディズニーシーに行っていた。お昼食べて、マーメイドラグーンシアターを見始めた直後、揺れ始めた。当初、こんな仕掛けあったっけ？と思ったのだが、揺れが大きすぎるので地震だと気づいた時にはミュージカルは中止になり、落ち着いたキャストの皆さんからその場で身を低くするよう指示があった。ちょっとパニックになりかけていたヨメをなだめて落ち着かせて身を守って揺れが収まってから、キャストの誘導に従って屋外に避難。屋外に避難してからは、移動せずにその場で待機するように指示され、結局その日は帰宅出来なかった。その後は、安全確認が終わったレストランに避難できるまでは寒かったものの、キャストの皆さんの素晴らしい行動と笑顔で特に不安もなく、レストランに避難してからはスタッフだけでなく回りの観光客が互いに気遣いしあっていたこともあり、余震に不安になりつつも被災状況下にありながらかなり恵まれていたのだと思う。
+その辺は、この辺のtweet参照。
+
+* https://twitter.com/mkouhei/status/46751117895409664
+* https://twitter.com/mkouhei/status/46749853040123904
+* https://twitter.com/mkouhei/status/46748306700902400
+* https://twitter.com/mkouhei/status/46251960143331328
+* https://twitter.com/mkouhei/status/46228167920320512
+* https://twitter.com/mkouhei/status/46182451793502208
+* https://twitter.com/mkouhei/status/46105897759555585
+* https://twitter.com/mkouhei/status/46105843804016640
+* https://twitter.com/mkouhei/status/46105801558990851
+* https://twitter.com/mkouhei/status/46096092730892289
+
+で、帰宅するまでヨメとずっと心配していたのは、こまちゃんの様子。あれだけ揺れたのだから、うちでも何か落ちて怪我していないだろうか、あるいは食べ物落ちて口にしてはいけないものを食べてはいけないだろうか、と気が気ではなかった。こんな不安なのは二度とゴメンだ。なので、明日から出勤に備えて、こまちゃんが一番よく活動しているリビング＆ダイニングのあたりを監視するようにしてみた。
+
+ハードウェア
+********************************
+
+
+監視用に使ったハードウェアのは次の二つ。
+
+* OpenBlockS600
+* ロジクールのWebCam
+* コンパクトフラッシュ
+
+
+OSとパッケージ
+************************************
+
+
+OpenBlockS600にはあらかじめCFにDebian GNU/Linux Squeezeをインストールしておいた。
+インストールしたdebパッケージは、次の3つ。
+
+
+* motion
+* googlecl
+* python-gdata
+
+
+python-gdataはgoogleclをインストールすれば依存関係で自動的にインストールされる。
+
+.. code-block:: none
+
+   $ sudo apt-get install motion googlecl
+
+
+
+motionの設定
+**************************
+
+
+motionは動いているものを検知すると写真をとることができるソフトウェア。ペットの監視や自宅監視を行うには最適だろう。
+/etc/default/motion, /etc/motion/motion.confを次のように変更する。前者はデーモンとして動かすため、後者はmotion自体の設定変更。
+
+.. code-block:: none
+
+   diff --git a/default/motion b/default/motion
+   index 08ecd83..837a004 100644
+   --- a/default/motion
+   +++ b/default/motion
+   @@ -1,3 +1,3 @@
+    # set to yes to enable the motion daemon
+   -start_motion_daemon=no
+   +start_motion_daemon=yes
+   diff --git a/motion/motion.conf b/motion/motion.conf
+   index ffb4d21..569870b 100644
+   --- a/motion/motion.conf
+   +++ b/motion/motion.conf
+   @@ -8,7 +8,7 @@
+    ############################################################
+    
+    # Start in daemon (background) mode and release terminal (default: off)
+   -daemon off
+   +daemon on
+    
+    # File to store the process ID, also called pid file. (default: not defined)
+    process_id_file /var/run/motion/motion.pid 
+   @@ -18,7 +18,7 @@ process_id_file /var/run/motion/motion.pid
+    ############################################################
+    
+    # Start in Setup-Mode, daemon disabled. (default: off)
+   -setup_mode off
+   +setup_mode on
+    
+    ###########################################################
+    # Capture device options
+   
+   @@ -292,7 +292,7 @@ ffmpeg_deinterlace off
+    ############################################################
+    
+    # Make automated snapshot every N seconds (default: 0 = disabled)
+   -snapshot_interval 0
+   +snapshot_interval 1800
+    
+    
+    ############################################################
+   @@ -321,7 +321,7 @@ text_right %Y-%m-%dn%T-%q
+    # Draw a user defined text on the images using same options as C function strft
+   ime(3)
+    # Default: Not defined = no text
+    # Text is placed in lower left corner
+   -; text_left CAMERA %t
+   +text_left CAMERA %t
+    
+    # Draw the number of changed pixed on the images (default: off)
+    # Will normally be set to off except when you setup and adjust the motion setti
+   ngs
+   @@ -356,7 +356,7 @@ text_double off
+    
+   
+    # Target base directory for pictures and films
+    # Recommended to use absolute path. (Default: current working directory)
+   -target_dir /tmp/motion
+   +target_dir /var/local/motion
+    
+    # File path for snapshots (jpeg or ppm) relative to target_dir
+    # Default: %v-%Y%m%d%H%M%S-snapshot
+
+
+設定したら、/etc/init.d/motion startコマンドで起動させる。ディスプレイの前で動いてちゃんと写真が取れていればOKだ。
+
+goocleclでpicasaにアップロードする。
+******************************************************************************************
+
+
+取得した画像ファイルを自宅鯖のWeb鯖で公開する、というのでも良いのだが、地震などの時は自宅鯖あるいは自宅ネットワークが止まってしまう可能性は大だ。であれば、どこからでも確実につながるであろう、そしてヨメにも簡単に使えるところに写真をアップした方が良いだろう、ということでpicasaを使うことにした。先ほど設定した、/var/local/motionディレクトリ以下のファイルを全てアップロードしたい。ただ、一度アップロードしたファイルで、同じファイル名でも上書きされるのではなく、重複して登録されてしまう。これはめんどい。ということで、正常にアップロードしたファイルは重複アップロードを防ぐために削除するようにした。 [#]_ 
+
+.. code-block:: none
+
+   #!/bin/sh
+   
+   LOG=~/log/picasa-upload.log
+   
+   cd /var/local/motion
+   google -u user picasa post --title=&#39;hoge&#39; [0-9]*-??????????????-??.jpg [0-9]*-??????????????-snapshot.jpg  $LOG 21
+   
+   for i in $(awk &#39;/Loading file/ {print $3}&#39; $LOG)
+   do
+           test -f $i  rm -f $i
+   done
+
+
+このままでは削除出来ないので、rootのcrontabでwrite権限を設定した。
+
+.. code-block:: none
+
+   1-59/15 * * * * chmod g+w /var/local/motion/*.jpg
+
+
+それで先ほどのスクリプトをcronで回す。
+
+.. code-block:: none
+
+   3-59/15 * * * * ~/postpicture.sh
+
+
+
+停電に備える。
+**************************************
+
+
+このままでは2回の停電の時にCF上のファイルシステムが壊れるかもしれない。なので、こんなのも設定しておいた。
+
+.. code-block:: none
+
+   13 9 * * * /etc/init.d/motion stop
+   15 9 * * * shutdown -h now
+   13 18 * * * /etc/init.d/motion stop
+   15 18 * * * shutdown -h now
+
+
+motionをshutdownではなく、事前に停止させているのは、shutdownコマンドではmotionデーモンがうまく死んでくれないので、先に落としてからshutdownをかけている、というわけである。とりあえず、これで一安心かな。
+
+設置場所
+********************
+
+
+こんな感じで設置してみた。
+
+
+カーテンレールで吊るしているのがミソ。
+こんな感じでこまちゃんを撮影できている。
+
+こまちゃんが動くとコマ送りで撮れているので、なかなか楽しい。
+
+
+.. rubric:: footnote
+
+.. [#] ：ファイル名の先頭が二桁までしか対応していなかったので修正。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, computer, gadget, 
+.. tags::
+
+

@@ -1,0 +1,158 @@
+﻿mercurial-importorig実行時の”E
+####################################################
+
+
+Mercurialで管理されているソースコードを、mercuriarl-buildpackageパッケージを使ってビルドする際に出たエラー。
+
+.. code-block:: none
+
+   $ mercurial-importorig -v ../../funcparserlib_0.3.5+hg~100.orig.tar.gz 
+   I: Unpacking ../../funcparserlib_0.3.5+hg~100.orig.tar.gz
+   E: std@sys_remove_dir
+   I: Reverting branch funcparserlib to state before import.
+
+
+2行目に&#34;E: std@sys_remove_dir&#34;というエラーが出ていますが、mercurial-importorigコマンド自体をverboseモードで実行して上記のメッセージしか表示されず、debugモードなどもありません。なんだろうと思ってディレクトリの中を見てみると、明らかにおかしなディレクトリ&#34;,,importorig-1330795335&#34;がありました。これを削除できないエラーなのでしょう。
+
+.. code-block:: none
+
+   $ ls
+    ,,importorig-1330795335  CHANGES  LICENSE  MANIFEST.in  Makefile  README  doc  examples  requires.txt  setup.py  src  tests
+
+
+しかし、これは根本原因ではありません。とりあえず、ここは一旦&#34;,,importorig-1330795335&#34;ディレクトリを削除して、debuildを実行してみました。するとsymlinkが残っていてエラーになりました。
+
+.. code-block:: none
+
+   $ debuild -us -uc
+   (snip)
+   dpkg-source: error: cannot represent change to funcparserlib/doc/index.md:
+   dpkg-source: error:   new version is plain file
+   dpkg-source: error:   old version is symlink to ../README
+   dpkg-source: error: cannot represent change to funcparserlib/doc/Changes.md:
+   dpkg-source: error:   new version is plain file
+   dpkg-source: error:   old version is symlink to ../CHANGES
+   dpkg-source: warning: ignoring deletion of file CHANGES
+   dpkg-source: warning: ignoring deletion of file README
+   dpkg-source: error: unrepresentable changes to source
+   dpkg-buildpackage: error: dpkg-source -b funcparserlib gave error exit status 2
+   debuild: fatal error at line 1350:
+   (snip)
+
+
+Mercurialのリポジトリからアーカイブを生成する際に、symlinkが含まれないようにすることで、このdebuildのエラーは解消できます。もしかして、mercurial-importorigコマンド実行時のエラーもこれが原因ではと思い、アーカイブの生成から再実行してみました。ビンゴ。
+hg archiveを実行する時に、-Xオプションでsymlinkを除外するのようにして、mercurial-importorigを実行します。
+
+.. code-block:: none
+
+   $ hg archive --prefix funcparserlib/ -r 100 -t tgz -X doc/Changes.md -X doc/index.md ../funcparserlib_0.3.5+hg~100.orig.tar.gz
+
+
+その後、インポートを実行したら正常に完了しました。-vオプションなしだと正常にインポートできたら何も表示されないのでオプションをつけた時の結果は下記です。
+
+.. code-block:: none
+
+   $ mercurial-importorig -v ../../funcparserlib_0.3.5+hg~100.orig.tar.gz
+   I: Unpacking ../../funcparserlib_0.3.5+hg~100.orig.tar.gz
+   I: .hg_archival.txt を追加登録中
+   I: CHANGES を追加登録中
+   I: LICENSE を追加登録中
+   I: MANIFEST.in を追加登録中
+   I: Makefile を追加登録中
+   I: README を追加登録中
+   I: doc/Brackets.md を追加登録中
+   I: doc/FAQ.md を追加登録中
+   I: doc/Illustrated.md を追加登録中
+   I: doc/Makefile を追加登録中
+   I: doc/Tutorial.md を追加登録中
+   I: examples/dot/Makefile を追加登録中
+   I: examples/dot/dot.py を追加登録中
+   I: examples/dot/test-comments を追加登録中
+   I: examples/dot/test-comments.out を追加登録中
+   I: examples/dot/test-connected-subgraph を追加登録中
+   I: examples/dot/test-connected-subgraph.dot を追加登録中
+   I: examples/dot/test-connected-subgraph.out を追加登録中
+   I: examples/dot/test-default-attrs を追加登録中
+   I: examples/dot/test-default-attrs.dot を追加登録中
+   I: examples/dot/test-default-attrs.out を追加登録中
+   I: examples/dot/test-empty-graph を追加登録中
+   I: examples/dot/test-empty-graph.out を追加登録中
+   I: examples/dot/test-few-attrs を追加登録中
+   I: examples/dot/test-few-attrs.dot を追加登録中
+   I: examples/dot/test-few-attrs.out を追加登録中
+   I: examples/dot/test-few-nodes を追加登録中
+   I: examples/dot/test-few-nodes.dot を追加登録中
+   I: examples/dot/test-few-nodes.out を追加登録中
+   I: examples/dot/test-illegal-comma を追加登録中
+   I: examples/dot/test-illegal-comma.err を追加登録中
+   I: examples/dot/test-null を追加登録中
+   I: examples/dot/test-null.err を追加登録中
+   I: examples/dot/test-simple-cycle を追加登録中
+   I: examples/dot/test-simple-cycle.dot を追加登録中
+   I: examples/dot/test-simple-cycle.out を追加登録中
+   I: examples/dot/test-single-unicode-char を追加登録中
+   I: examples/dot/test-single-unicode-char.err を追加登録中
+   I: examples/dot/test-unicode-names を追加登録中
+   I: examples/dot/test-unicode-names.dot を追加登録中
+   I: examples/dot/test-unicode-names.out を追加登録中
+   I: examples/json/Makefile を追加登録中
+   I: examples/json/json.py を追加登録中
+   I: examples/json/test-1-array を追加登録中
+   I: examples/json/test-1-array.out を追加登録中
+   I: examples/json/test-1-object を追加登録中
+   I: examples/json/test-1-object.out を追加登録中
+   I: examples/json/test-bool-and-null を追加登録中
+   I: examples/json/test-bool-and-null.out を追加登録中
+   I: examples/json/test-empty-array を追加登録中
+   I: examples/json/test-empty-array.out を追加登録中
+   I: examples/json/test-1-object を追加登録中
+   I: examples/json/test-1-object.out を追加登録中
+   I: examples/json/test-bool-and-null を追加登録中
+   I: examples/json/test-bool-and-null.out を追加登録中
+   I: examples/json/test-empty-array を追加登録中
+   I: examples/json/test-empty-array.out を追加登録中
+   I: examples/json/test-empty-object を追加登録中
+   I: examples/json/test-empty-object.out を追加登録中
+   I: examples/json/test-many-array を追加登録中
+   I: examples/json/test-many-array.out を追加登録中
+   I: examples/json/test-many-object を追加登録中
+   I: examples/json/test-many-object.out を追加登録中
+   I: examples/json/test-null を追加登録中
+   I: examples/json/test-null.err を追加登録中
+   I: examples/json/test-numbers を追加登録中
+   I: examples/json/test-numbers.out を追加登録中
+   I: examples/json/test-strings を追加登録中
+   I: examples/json/test-strings.json を追加登録中
+   I: examples/json/test-strings.out を追加登録中
+   I: examples/json/test-toplevel-string を追加登録中
+   I: examples/json/test-toplevel-string.err を追加登録中
+   I: examples/run-tests を追加登録中
+   I: requires.txt を追加登録中
+   I: setup.py を追加登録中
+   I: src/funcparserlib/__init__.py を追加登録中
+   I: src/funcparserlib/lexer.py を追加登録中
+   I: src/funcparserlib/parser.py を追加登録中
+   I: src/funcparserlib/util.py を追加登録中
+   I: tests/test_parsing.py を追加登録中
+   I: Unpacking ../../funcparserlib_0.3.5+hg~100.orig.tar.gz
+   I: ファイル状態: 更新数 74、 マージ数 0、 削除数 0、 衝突未解消数 0
+   I: (マージ結果の commit を忘れずに)
+
+
+先ほどの変なディレクトリも残らず、
+
+.. code-block:: none
+
+   $ ls
+   CHANGES  LICENSE  MANIFEST.in  Makefile  README  doc  examples  requires.txt  setup.py  src
+
+
+debuild時のエラーももちろん解消されました。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

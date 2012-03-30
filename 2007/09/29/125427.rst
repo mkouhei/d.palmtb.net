@@ -1,0 +1,90 @@
+﻿pcc-acpiが使えなくなったと思ったら。
+############################################
+
+
+Let&#39;s noteのファンクションキーを使えるようにするための、pcc-acpiだが、先日、kernel 2.6.22.6にした時、makeは普通にできるのに、kernel moduleロードで失敗する、という問題にぶち当たっていた。一昨日、kernel 2.6.22.9にしたので、再度やってみたら、今度はmakeでwarningが出まくった。
+
+.. code-block:: none
+
+   ~/pcc-acpi-0.8.4$ make
+   make -C /lib/modules/2.6.22.9/build SUBDIRS=/home/hoge/pcc-acpi-0.8.4 modules
+   make[1]: ディレクトリ `/home/hoge/kernel/linux-2.6.22&#39; に入ります
+     CC [M]  /home/hoge/pcc-acpi-0.8.4/pcc_acpi.o
+   /home/hoge/pcc-acpi-0.8.4/pcc_acpi.c:163: warning: initialization from incompatible pointer type
+   /home/hoge/pcc-acpi-0.8.4/pcc_acpi.c: In function ‘acpi_pcc_retrieve_biosdata’:
+   /home/hoge/pcc-acpi-0.8.4/pcc_acpi.c:261: warning: implicit declaration of function ‘acpi_os_free’
+     Building modules, stage 2.
+     MODPOST 1 modules
+   WARNING: /home/hoge/pcc-acpi-0.8.4/pcc_acpi.o(.text+0x73c): Section mismatch: reference to .init.text: (between &#39;acpi_pcc_hotkey_add&#39; and &#39;acpi_pcc_dc_brightness_open_fs&#39;)
+   WARNING: /home/hoge/pcc-acpi-0.8.4/pcc_acpi.o(.text+0x751): Section mismatch: reference to .init.text: (between &#39;acpi_pcc_hotkey_add&#39; and &#39;acpi_pcc_dc_brightness_open_fs&#39;)
+   WARNING: /home/hoge/pcc-acpi-0.8.4/pcc_acpi.o(.text+0x4ae): Section mismatch: reference to .exit.text: (between &#39;acpi_pcc_hotkey_remove&#39; and &#39;acpi_pcc_hotkey_notify&#39;)
+   WARNING: /home/hoge/pcc-acpi-0.8.4/pcc_acpi.o(.text+0x4bf): Section mismatch: reference to .exit.text: (between &#39;acpi_pcc_hotkey_remove&#39; and &#39;acpi_pcc_hotkey_notify&#39;)
+   WARNING: &#34;acpi_os_free&#34; [/home/hoge/pcc-acpi-0.8.4/pcc_acpi.ko] undefined!
+     CC      /home/hoge/pcc-acpi-0.8.4/pcc_acpi.mod.o
+     LD [M]  /home/hoge/pcc-acpi-0.8.4/pcc_acpi.ko
+   make[1]: ディレクトリ `/home/hoge/kernel/linux-2.6.22&#39; から出ます
+
+
+pcc_acpi.cの163行目と261行目ですか。
+
+.. code-block:: none
+
+      163                                  .resume =       acpi_pcc_hotkey_resume,
+      261          acpi_os_free(buffer.pointer);
+
+
+まぁ、間違いなくkernelを上げたことによるのが原因だろうと思って、久々にpcc-acpiの開発元のページを見てみた。最新版は0.8.4じゃなくて、0.9が出てました…。で、やってみたら、あー、無事できました。
+0.8.4と0.9のpcc-acpi.cをdiffってみたらやっぱり。
+
+.. code-block:: none
+
+    $ diff -c pcc-acpi-0.8.4/pcc_acpi.c pcc-acpi-0.9/pcc_acpi.c
+    *** pcc-acpi-0.8.4/pcc_acpi.c   2006-05-30 00:17:10.000000000 +0900
+    --- pcc-acpi-0.9/pcc_acpi.c     2006-11-21 16:38:41.000000000 +0900
+    ***************
+    ～中略～
+    *** 142,165 ****
+         ENV_STATEs: Normal temp=0x01, High temp=0x81, N/A=0x00
+      */
+      enum SINF_BITS { SINF_NUM_BATTERIES = 0,
+    !                  SINF_LCD_TYPE, SINF_AC_MAX_BRIGHT,
+    !                SINF_AC_MIN_BRIGHT, SINF_AC_CUR_BRIGHT, SINF_DC_MAX_BRIGHT,
+    !                SINF_DC_MIN_BRIGHT, SINF_DC_CUR_BRIGHT, SINF_MUTE,
+    !                SINF_RESERVED,      SINF_ENV_STATE,
+                    SINF_STICKY_KEY = 0x80,
+      };
+   
+    ! static int __devinit acpi_pcc_hotkey_add (struct acpi_device *device);
+    ! static int __devexit acpi_pcc_hotkey_remove (struct acpi_device *device, int type);
+      static int acpi_pcc_hotkey_resume(struct acpi_device *device, int state);
+    
+      static struct acpi_driver acpi_pcc_driver = {
+            .name =         ACPI_PCC_DRIVER_NAME,
+            .class =        ACPI_PCC_CLASS,
+            .ids =          HKEY_HID,
+            .ops =          {
+                                    .add =          acpi_pcc_hotkey_add,
+    !                               .remove =       __devexit_p(acpi_pcc_hotkey_remove),
+                                    .resume =       acpi_pcc_hotkey_resume,
+                            },
+      };
+    ～中略～
+    *** 258,264 ****
+            sinf[hkey-package.count] = -1;
+    
+      end:
+    !       acpi_os_free(buffer.pointer);
+            return_VALUE(status == AE_OK);
+      }
+    ～以下略～
+
+
+Mainlineにマージしてほしいなぁ…。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

@@ -1,0 +1,121 @@
+﻿git stashでハマる。
+############################
+
+
+原稿を書いている途中で、打ち合わせの議事録を取るのに別のファイルで議事録を作成したときのこと。議事録だけを取り合えずcommitしようと思ったら、
+
+.. code-block:: none
+
+   $ git add meeting-memo-20091119.txt
+   $ git commit -sm Add meeting memo 20091119.
+
+
+とした。pushするのに他者の新規commitを確認する。
+
+.. code-block:: none
+
+   $ git fetch
+
+
+変更があれば、ワーキングコピーにcommitしないままの変更があるのは具合が悪いので、一時的に避けて、rebaseし、pushする。
+
+.. code-block:: none
+
+   $ git stash
+   $ git rebase origin
+   $ git push origin master
+
+
+で、退避させた変更を元に戻したときに、先ほどrebaseした他者のcommitとのconflictが発生したわけだ。本当かなぁ？
+
+.. code-block:: none
+
+   $ git stash pop
+
+
+で、conflictが発生した部分を、手動で変更したところまでは良かったのだけど、この後が良くなかった。このまま作業していて、また別の会議の議事録を作成した。
+
+.. code-block:: none
+
+   $ git add meeting-memo-20091124.txt
+   $ git commit -sm add meeting memo 20091124.
+
+
+先ほどと同じようにすると、
+
+.. code-block:: none
+
+   $ git fetch
+   $ git stash
+   $ git rebase origin
+   cannot rebase: you have unstaged changes
+   M	genkou.txt
+
+
+となり、rebaseできない。なんでだと思い、gitk --allすると、git stashで退避したのが何世代か前のcommitから枝分かれしているので、git stashの状態をみてみると、
+
+.. code-block:: none
+
+   $ git stash list
+   stash@{0}: WIP on master: 4ea807c Add 20091119 meeting memo.
+
+
+となって、先ほどpopで行ったのにクリアされていないわけだ。先ほどのconflictが原因だろうか？なので、
+
+.. code-block:: none
+
+   $ git stash clear
+   $ git stash list
+
+
+でクリアされたことを確認したら、最新の議事録をcommitし、ワーキングコピーに残っている変更を再度退避して、rebase。
+
+.. code-block:: none
+
+   $ git add meeting-memo-20091124.txt
+   $ git commit -sm add meeting memo 20091124.
+   $ git stash
+   Saved working directory and index state WIP on master: e429864 add 20091124 meeting memo.
+   HEAD is now at e429864 add 20091124 meeting memo.
+   $ git rebase origin
+   First, rewinding head to replay your work on top of it...
+   Applying: add 20091124 meeting memo.
+
+
+あとは、pushして、popして終わり。
+
+.. code-block:: none
+
+   $ git push origin master
+   $ git stash pop
+
+
+git stash popしてconflictが発生したらstashのキューから削除されないのは、本当にそういう動きをするのか再度確認してみよ。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+
+----
+
+Comment:
+
+	これは意図した通りの挙動。conflict解決がうまくできなくてワークツリーの状態をぐちゃぐちゃにしてしまったあとで、reset --hardしてpopしなおせば初めから落ち着いてやりなおせる、というのが目的。きれいに当たったらもう必要ないから捨てる、というのがpopですが、これはもともとナマケモノ向きのオプションで、applyしてそれで結果が良ければdropする、という癖をつけた方が気持ちがいい、というユーザも多いかと思います。
+
+	written by  jch2355
+	11/25/2009 10:28:36
+	http://d.hatena.ne.jp/jch2355/
+
+----
+
+Comment:
+
+	 jch2355 さん直々にコメント下さりありがとうございます。popの使い方に対する認識が違っていました。pop は fetch, merge に対する pull のような位置付けなのですね。今後気をつけて習慣づけるようにします。
+
+	written by  mkouhei
+	11/25/2009 14:00:48
+	http://d.hatena.ne.jp/mkouhei/
+

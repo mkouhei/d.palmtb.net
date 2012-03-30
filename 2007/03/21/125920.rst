@@ -1,0 +1,13 @@
+﻿なぜデフォルトHTTPなんだ?
+##############################
+
+
+GMail、なんでデフォルトでHTTPSにしないんだ? HTTPSでしかアクセスしないので非常に困る。
+
+
+
+.. author:: mkouhei
+.. categories:: security, 
+.. tags::
+
+

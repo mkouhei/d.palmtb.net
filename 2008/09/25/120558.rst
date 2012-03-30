@@ -1,0 +1,127 @@
+﻿applesmc
+################
+
+
+これがそのバグか。
+
+.. code-block:: none
+
+   [ 1569.914760] applesmc: Apple MacBook detected:
+   [ 1569.914760] applesmc:  - Model with accelerometer
+   [ 1569.914760] applesmc:  - Model without light sensors and backlight
+   [ 1569.914760] applesmc:  - Model with 10 temperature sensors
+   [ 1569.922757] applesmc: wait status failed: c != 18
+   [ 1569.979523] applesmc: wait status failed: c != 18
+   [ 1570.034651] applesmc: wait status failed: c != 18
+   [ 1570.090981] applesmc: wait status failed: c != 18
+   [ 1570.147757] applesmc: wait status failed: c != 18
+   [ 1570.203690] applesmc: wait status failed: c != 18
+   [ 1570.260539] applesmc: wait status failed: c != 18
+   [ 1570.316659] applesmc: wait status failed: c != 18
+   [ 1570.372893] applesmc: wait status failed: c != 18
+   [ 1570.430108] applesmc: wait status failed: c != 18
+   [ 1570.486086] applesmc: wait status failed: c != 18
+   [ 1570.542940] applesmc: wait status failed: c != 18
+   [ 1570.598188] applesmc: wait status failed: c != 18
+   [ 1570.654267] applesmc: wait status failed: c != 18
+   [ 1570.712460] applesmc: wait status failed: c != 18
+   [ 1570.770372] applesmc: wait status failed: c != 18
+   [ 1570.827823] applesmc: wait status failed: c != 18
+   [ 1570.884323] applesmc: wait status failed: c != 18
+   [ 1570.941044] applesmc: wait status failed: c != 18
+   [ 1570.995900] applesmc: wait status failed: c != 18
+   [ 1571.052238] applesmc: wait status failed: c != 18
+   [ 1571.109987] applesmc: wait status failed: c != 18
+   [ 1571.166649] applesmc: wait status failed: c != 18
+   [ 1571.222142] applesmc: wait status failed: c != 18
+   [ 1571.279968] applesmc: wait status failed: c != 18
+   [ 1571.335519] applesmc: wait status failed: c != 18
+   [ 1571.390626] applesmc: wait status failed: c != 18
+   [ 1571.447137] applesmc: wait status failed: c != 18
+   [ 1571.505693] applesmc: wait status failed: c != 18
+   [ 1571.563092] applesmc: wait status failed: c != 18
+   [ 1571.618443] applesmc: wait status failed: c != 18
+   [ 1571.674575] applesmc: wait status failed: c != 18
+   [ 1571.730265] applesmc: wait status failed: c != 18
+   [ 1571.787204] applesmc: wait status failed: c != 18
+   [ 1571.841946] applesmc: wait status failed: c != 18
+   [ 1571.898327] applesmc: wait status failed: c != 18
+   [ 1571.954171] applesmc: wait status failed: c != 18
+   [ 1572.012342] applesmc: wait status failed: c != 18
+   [ 1572.073722] applesmc: wait status failed: c != 18
+   [ 1572.131078] applesmc: wait status failed: c != 18
+   [ 1572.187293] applesmc: wait status failed: c != 18
+   [ 1572.246214] applesmc: wait status failed: c != 18
+   [ 1572.304048] applesmc: wait status failed: c != 18
+   [ 1572.362375] applesmc: wait status failed: c != 18
+   [ 1572.417902] applesmc: wait status failed: c != 18
+   [ 1572.473927] applesmc: wait status failed: c != 18
+   [ 1572.531414] applesmc: wait status failed: c != 18
+   [ 1572.587013] applesmc: wait status failed: c != 18
+   [ 1572.644554] applesmc: wait status failed: c != 18
+   [ 1572.699196] applesmc: wait status failed: c != 18
+   [ 1572.755421] applesmc: wait status failed: c != 18
+   [ 1572.812000] applesmc: wait status failed: c != 18
+   [ 1572.868736] applesmc: wait status failed: c != 18
+   [ 1572.925717] applesmc: wait status failed: c != 18
+   [ 1572.980845] applesmc: wait status failed: c != 18
+   [ 1573.036852] applesmc: wait status failed: c != 18
+   [ 1573.092047] applesmc: wait status failed: c != 18
+   [ 1573.151848] applesmc: wait status failed: c != 18
+   [ 1573.207546] applesmc: wait status failed: c != 18
+   [ 1573.263407] applesmc: wait status failed: c != 18
+   [ 1573.319844] applesmc: wait status failed: c != 18
+   [ 1573.376851] applesmc: wait status failed: c != 18
+   [ 1573.432257] applesmc: wait status failed: c != 18
+   [ 1573.487691] applesmc: wait status failed: c != 18
+   [ 1573.545754] applesmc: wait status failed: c != 18
+   [ 1573.608313] applesmc: wait status failed: c != 18
+   [ 1573.665022] applesmc: wait status failed: c != 18
+   [ 1573.720512] applesmc: wait status failed: c != 18
+   [ 1573.779094] applesmc: wait status failed: c != 18
+   [ 1573.835102] applesmc: wait status failed: c != 18
+   [ 1573.891219] applesmc: wait status failed: c != 18
+   [ 1573.949339] applesmc: wait status failed: c != 18
+   [ 1574.009612] applesmc: wait status failed: c != 18
+   [ 1574.066071] applesmc: wait status failed: c != 18
+   [ 1574.120676] applesmc: wait status failed: c != 18
+   [ 1574.178743] applesmc: wait status failed: c != 18
+   [ 1574.234832] applesmc: wait status failed: c != 18
+   [ 1574.293982] applesmc: wait status failed: c != 18
+   [ 1574.352640] applesmc: wait status failed: c != 18
+   [ 1574.409326] applesmc: wait status failed: c != 18
+   [ 1574.466624] applesmc: wait status failed: c != 18
+   [ 1574.521629] applesmc: wait status failed: c != 18
+   [ 1574.580834] applesmc: wait status failed: c != 18
+   [ 1574.637749] applesmc: wait status failed: c != 18
+   [ 1574.694547] applesmc: wait status failed: c != 18
+   [ 1574.751812] applesmc: wait status failed: c != 18
+   [ 1574.811209] applesmc: wait status failed: c != 18
+   [ 1574.869765] applesmc: wait status failed: c != 18
+   [ 1574.924684] applesmc: wait status failed: c != 18
+   [ 1574.981764] applesmc: wait status failed: c != 18
+   [ 1575.038499] applesmc: wait status failed: c != 18
+   [ 1575.096911] applesmc: wait status failed: c != 18
+   [ 1575.157329] applesmc: wait status failed: c != 18
+   [ 1575.216377] applesmc: wait status failed: c != 18
+   [ 1575.272431] applesmc: wait status failed: c != 18
+   [ 1575.328281] applesmc: wait status failed: c != 18
+   [ 1575.386636] applesmc: wait status failed: c != 18
+   [ 1575.441925] applesmc: wait status failed: c != 18
+   [ 1575.500745] applesmc: wait status failed: c != 18
+   [ 1575.559604] applesmc: wait status failed: c != 18
+   [ 1575.612092] applesmc: failed to init the device
+   [ 1575.613599] applesmc: 1 fans found.
+   [ 1575.617763] applesmc: wait status failed: c != 18
+   [ 1575.618091] input: applesmc as /class/input/input12
+   [ 1575.637243] applesmc: driver successfully loaded.
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, Debian, 
+.. tags::
+
+

@@ -1,0 +1,13 @@
+﻿今週使ってるツール
+##################
+
+
+今週受講している実践講座で使っているツールがDebianにあるのかと調べてみたら、sleuthkitとautopsyはあった。Helixの代わりにDebianでそれできないのかなぁとちょっと気になった。DFSGに沿わないのだったらHelixをKVMで動かすというのでも良いか。
+
+
+
+.. author:: mkouhei
+.. categories:: security, Debian, 
+.. tags::
+
+

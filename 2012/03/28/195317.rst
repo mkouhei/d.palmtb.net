@@ -1,0 +1,38 @@
+﻿pystacheで使ってはいけない文字列。
+##########################################
+
+
+pystacheは、ヒゲテンプレートエンジンMustacheのPython版なのですが、あるファイルをpystacheを使うとコケる、という問題に遭遇しました。
+
+.. code-block:: none
+
+   $ python mt2rest.py data/mkouhei.txt
+   Traceback (most recent call last):
+     File mt2rest.py, line 201, in module
+       print(o.render().encode(&#39;utf-8&#39;))
+     File /usr/lib/python2.7/dist-packages/pystache/view.py, line 110, in render
+       return Template(template, self).render(encoding=encoding)
+     File /usr/lib/python2.7/dist-packages/pystache/template.py, line 42, in render
+       template = self.render_sections(template, context)
+     File /usr/lib/python2.7/dist-packages/pystache/template.py, line 78, in render_sections
+       insides.append(self.render(inner, item))
+     File /usr/lib/python2.7/dist-packages/pystache/template.py, line 42, in render
+       template = self.render_sections(template, context)
+     File /usr/lib/python2.7/dist-packages/pystache/template.py, line 78, in render_sections
+       insides.append(self.render(inner, item))
+     File /usr/lib/python2.7/dist-packages/pystache/template.py, line 43, in render
+       result = self.render_tags(template, context)
+     File /usr/lib/python2.7/dist-packages/pystache/template.py, line 96, in render_tags
+       func = modifiers[tag_type]
+   KeyError: u&#39;#&#39;
+
+
+入力元のファイルは、はてなダイアリーのエクスポートデータだったのですが、コケていたのはこの記事。原因は&#34;\{\{&#34;と&#34;\}\}&#34;でした。納得。そりゃエスケープしないとアカンすな。
+
+
+
+.. author:: mkouhei
+.. categories:: Dev, python, 
+.. tags::
+
+

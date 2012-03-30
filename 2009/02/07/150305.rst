@@ -1,0 +1,13 @@
+﻿Lennyにアップグレードしてみた。#2
+########################################
+
+
+dist-upgradeも基本的に問題無し。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Ops, 
+.. tags::
+
+

@@ -1,0 +1,33 @@
+﻿migrationコマンドが気になる…。
+########################################
+
+
+QEMUのコマンドに、migrationコマンドがある。ヘルプを表示させるとこんな感じ。
+
+.. code-block:: none
+
+   migration subcommand|help -- start/stop/manage migrations
+   (qemu) migration help
+   migration listen [local_host:port [remote_host:port -- listen to a port
+   migration connect [local_host:port [remote_host:port -- connect to a port
+   migration getfd fd (socket) -- get established connection
+   migration start online|offline -- start the migration proccess
+   migration cancel  -- cancel an ongoing migration procces
+   migration status  -- get migration status/progress
+   migration set params -- set migration parameters
+   migration show  -- show migration parameters
+   migration help [subcommand] -- show help message
+
+
+QEMUでもXenのLive Migrationと同等のことができるかな。kvmもrelease12にこんなのあるから、試してみたいなぁ。もう一台機器がないとダメか…。
+
+add dirty page tracking in some corner cases for live migration
+
+
+
+
+.. author:: mkouhei
+.. categories:: computer, virt., 
+.. tags::
+
+

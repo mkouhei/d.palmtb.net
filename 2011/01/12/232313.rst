@@ -1,0 +1,19 @@
+﻿git cloneでタイムアウトした時にkernel panicを起こしたようだ。
+##################################################################################
+
+
+
+.. code-block:: none
+
+   init: PANIC: segmentation violation! sleeping for 30 seconds.
+
+
+OpenBlockS 266でGitのリモートリポジトリを運用しているのだが、OOoを管理しているリポジトリは以前からgit cloneするとタイムアウト起こして結局終わらずに諦める、という状況になっている。git pushはgit gcした後なら大丈夫なんだけど。んで、先日またgit cloneしたらタイムアウトしたので諦めたら、その際に、上記のログを大量に出力して止まってた。あー、自宅鯖とはいえ、まったく気がつかんのはいかがなもんかなぁ。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, Git, Ops, 
+.. tags::
+
+

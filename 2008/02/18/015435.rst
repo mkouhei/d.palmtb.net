@@ -1,0 +1,21 @@
+﻿bcm43xxではまだ無線LANが使えない様だ。
+################################################
+
+
+
+.. code-block:: none
+
+   $ lspci -nn
+   (snip)
+   02:00.0 Network controller [0280]: Broadcom Corporation BCM4328 802.11a/b/g/n [14e4:4328] (rev 05)
+
+
+4318まではfirmwareをbcm43xx-fwcutterで抽出できるのだが、4328はまだ対応していない様だ。うーん、困った。BCM4328ならndiswrapperで行けそうな情報もあるので、そっちもやってみるか。
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, Debian, network, 
+.. tags::
+
+

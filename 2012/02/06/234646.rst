@@ -1,0 +1,21 @@
+﻿お礼言われました。
+##################
+
+
+金曜のパッチに続き、昨日のドキュメントのpull requestに対してもお礼言われました。
+
+Thanks for your contribution mkouhei! We were actually already planning to write some usable documentation for developers. We will review your work and get back to you.
+https://github.com/Cysource/TonicDNS/pull/8#issuecomment-3825532仕事で使うのにドキュメントが必要でしたのでどうせならpull requestしておこうかなというくらいの軽い気持ちでしたが、すぐに反応がもらえるのはうれしいですね！ [#]_ 
+
+
+.. rubric:: footnote
+
+.. [#] ：開発止まっている別のは反応がまったくないので…。^^;
+
+
+
+.. author:: mkouhei
+.. categories:: Dev, 
+.. tags::
+
+

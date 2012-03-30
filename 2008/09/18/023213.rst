@@ -1,0 +1,13 @@
+﻿監視サーバEtch化完了。
+##########################
+
+
+監視サーバもEtch化したよ、と。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, Ops, 
+.. tags::
+
+

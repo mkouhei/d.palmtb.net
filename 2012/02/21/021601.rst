@@ -1,0 +1,69 @@
+﻿dashではpushd, popdが使えない。
+##############################################
+
+
+Debianでは/bin/shは、dash、つまりDebian Almquist shellへのシンボリックリンクになっています。これはPOSIX準拠のシェルです。ここまでは知っていたのですが、組み込みコマンドのpushdやpopdが使えない(無い)ことに気づきました。！！！ということは、pushdやpopdはPOSIX準拠のコマンドではなかったということ？
+早い話、shebangが/bin/bashになっている下記のコードが使えますが、
+
+.. code-block:: none
+
+   #!/bin/bash 
+   pushd /tmp/hoge /dev/null
+   printf %-20s :  common data
+   git pull
+   for d in $(find /tmp/hoge/data/* -type d -prune)
+   do
+     pushd $d /dev/null
+     printf %-20s :  $(basename $d)
+     git pull
+     popd /dev/null
+   done
+   popd /dev/null
+
+
+/bin/shになっている場合ではエラーになります。
+
+.. code-block:: none
+
+   #!/bin/sh 
+   pushd /tmp/hoge /dev/null
+   printf %-20s :  common data
+   git pull
+   for d in $(find /tmp/hoge/data/* -type d -prune)
+   do
+     pushd $d /dev/null
+     printf %-20s :  $(basename $d)
+     git pull
+     popd /dev/null
+   done
+   popd /dev/null
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, Debian, 
+.. tags::
+
+
+----
+
+Comment:
+
+	このようなケースでは、シェルスクリプトでは“()”で囲った中でcdすることが多いかと思います。(  cd /tmp/hoge  printf %-20s :  common data  git pull  for d in $(find /tmp/hoge/data/* -type d -prune)  do    (      cd $d      printf %-20s :  $(basename $d)      git pull    )  done)
+
+	written by  emasaka
+	02/22/2012 08:23:34
+	
+
+----
+
+Comment:
+
+	おー、()使えば、pushdpopdやcd -とかいらないんですね。知りませんでした。ありがとうございます。dashでも問題なく行けました。
+
+	written by  mkouhei
+	02/22/2012 14:20:31
+	http://d.hatena.ne.jp/mkouhei/
+

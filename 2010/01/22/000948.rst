@@ -1,0 +1,33 @@
+﻿graphvizで描く。
+########################
+
+
+昨日の図のソースは以下。
+
+.. code-block:: none
+
+   digraph structure {
+   node[shape=record,style=rounded];
+   Internet - nginx;
+   nginx - Apache [label=reverse proxy];
+   nginx - CouchDB
+   Apache [label = {Apache|mod-rpaf|{git-web|trac-git}|git}];
+   }
+
+
+これをPNG形式で画像にすると。
+
+.. code-block:: none
+
+   $ dot -T png  lxc.dot  lxc.png
+
+
+PNG形式よりも、EPSでLaTeXに埋め込む方が綺麗なんだけどね。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

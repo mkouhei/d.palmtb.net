@@ -1,0 +1,62 @@
+﻿suspendもhibernateも使えるみたい。
+##################################################
+
+
+先ほどの変更でサスペンドも一応ちゃんと機能したのだが、こんなメッセージが出ていたのが気になる。他でも普段出てたっけ？そういやLet&#39;s noteだとsuspendよりもhibernateを使ってたんだっけか。
+
+.. code-block:: none
+
+   [ 5636.161927] PM: resume devices took 5.968 seconds
+   [ 5636.161929] ------------[ cut here ]------------
+   [ 5636.161935] WARNING: at kernel/power/suspend_test.c:52 suspend_devices_and_enter+0x197/0x1c8()
+   [ 5636.161937] Hardware name: MacBook5,2
+   [ 5636.161938] Component: resume devices
+   [ 5636.161940] Modules linked in: usb_storage nvidia(P) binfmt_misc uvcvideo videodev v4l1_compat 
+   v4l2_compat_ioctl32 sco bridge stp llc bnep rfcomm l2cap bluetooth rfkill kvm_intel kvm 
+   nf_conntrack_ipv4 nf_defrag_ipv4 xt_state xt_tcpudp ipt_LOG iptable_filter ip_tables x_tables 
+   nf_conntrack_ftp nf_conntrack ipv6 cpufreq_stats cpufreq_conservative cpufreq_powersave 
+   cpufreq_userspace acpi_cpufreq loop snd_hda_codec_realtek snd_hda_intel snd_hda_codec snd_pcm_oss 
+   snd_mixer_oss snd_pcm snd_seq_dummy snd_seq_oss snd_seq_midi snd_rawmidi snd_seq_midi_event snd_seq 
+   snd_timer snd_seq_device snd isight_firmware joydev appletouch soundcore i2c_nforce2 snd_page_alloc 
+   shpchp pci_hotplug evdev pcspkr button ac processor battery ext3 jbd mbcache dm_mod sg sd_mod sr_mod 
+   cdrom ata_generic ahci libata scsi_mod ohci_hcd ohci1394 ieee1394 ssb ide_pci_generic ide_core 
+   forcedeth ehci_hcd thermal fan thermal_sys [last unloaded: scsi_wait_scan]
+   [ 5636.161996] Pid: 5599, comm: s2ram Tainted: P           2.6.31.3 #1
+   [ 5636.161997] Call Trace:
+   [ 5636.162002]  [ffffffff8106c35e] ? suspend_devices_and_enter+0x197/0x1c8
+   [ 5636.162005]  [ffffffff8106c35e] ? suspend_devices_and_enter+0x197/0x1c8
+   [ 5636.162009]  [ffffffff81042b22] ? warn_slowpath_common+0x77/0xa3
+   [ 5636.162012]  [ffffffff81042baa] ? warn_slowpath_fmt+0x51/0x59
+   [ 5636.162017]  [ffffffff8120e166] ? pm_dev_dbg+0xa1/0xc6
+   [ 5636.162021]  [ffffffff812ecf42] ? mutex_lock+0xd/0x31
+   [ 5636.162024]  [ffffffff8120ea8b] ? dpm_resume_end+0x42f/0x43e
+   [ 5636.162027]  [ffffffff8106c555] ? suspend_test_finish+0x46/0x75
+   [ 5636.162030]  [ffffffff8106c35e] ? suspend_devices_and_enter+0x197/0x1c8
+   [ 5636.162033]  [ffffffff8106c488] ? enter_state+0xf9/0x13a
+   [ 5636.162036]  [ffffffff8106bbe8] ? state_store+0xb4/0xd5
+   [ 5636.162041]  [ffffffff81126927] ? sysfs_write_file+0xd0/0x107
+   [ 5636.162045]  [ffffffff8102573e] ? default_spin_lock_flags+0x5/0xb
+   [ 5636.162049]  [ffffffff810d72e0] ? vfs_write+0xad/0x169
+   [ 5636.162052]  [ffffffff810d7458] ? sys_write+0x45/0x6e
+   [ 5636.162056]  [ffffffff8100ba82] ? system_call_fastpath+0x16/0x1b
+   [ 5636.162058] ---[ end trace 2a3b09550686ca82 ]---
+   [ 5636.162346] PM: Finishing wakeup.
+   [ 5636.162347] Restarting tasks ... done.
+   [ 5637.026887] CPU0 attaching NULL sched-domain.
+   [ 5637.026980] CPU0 attaching NULL sched-domain.
+
+
+
+hibernateも大丈夫そうだ。
+**************************************************************
+
+
+acpi=offにしていた場合は、ハイバネートするところまでは良かったが、リジューム時にacpi=offが効かないようで、acpi=offをつけないときと同じでブラックアウトしてしまっていた。が、こっちもちゃんと機能するようになった。良かった。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, MacBook, 
+.. tags::
+
+

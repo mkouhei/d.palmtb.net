@@ -1,0 +1,31 @@
+﻿webOS2.0 Early Access Programに参加する。
+######################################################################
+
+
+webOS2.0 Developer Betaを利用するためにはEarly Access Programへの参加が必要なのだが、意外と簡単だったのと、日本語でどうやって参加すればよいのかの情報がほとんどないので記録しておく。
+上記のリンク先に&#34;Get in the Early Access Program&#34;というリンクがある。これはsubjectが&#34;Early Access Program&#34;で宛先がpdc@palm.comのメールリンクとなっている。ここにEarly Access Programに参加したい旨のメールを送るだけ。ちなみにワシが送った文面は、挨拶入れてたった３行。
+
+Hi,
+I want to get Early Access Program.
+regards,
+
+すると、1営業日程度でEarly Access Programへの参加方法についてのメールが送られてくる。webOS communityへのアカウント登録がまだならここでして、送られてきたメールを引用して返信する形で、SDK License Agreementへの同意の旨を記載し、webOS communityで作成したDeveloperアカウント名を追記して返信する。
+さらに1営業日程度してwebOS community Forumのprivateエリアへのアクセス権が付与されると、その旨とアクセス先のURLがメールで送られてくる。これでダウンロード出きるようになるのが、palm-sdk 2.0とこれようのpalm-novacomd 1.0.64, そしてenyoフレームワーク。Eclipseを使っている場合は、そのプラグインもダウンロードできる。
+64bit環境ではpalm-sdkは1.4.5とpalm-novacomd 1.0.56がインストール済みの場合でも、以下のようにすればアップデートできる。
+
+.. code-block:: none
+
+   $ sudo dpkg -i --force-architecture palm-sdk_2.0.1-svn375359-pho496_i386.deb
+   $ sudo dpkg -i palm-novacom_1.0.64_amd64.deb
+
+
+これでpalm-emulatorコマンドを実行すればOK、と思いきやSidを使っている場合はそうは行かない。
+2/23現在、SidのVirtualBoxは4.0.2なのだが、palm-emulutorはVirtualBoxの3.0～3.2でないとサポートされていない。なので、VirtualBoxのサイトのOlder buildから、3.2のsqueeze用の64bitのdebパッケージをダウンロードしてきて、先にDebianの公式のVirtualBoxパッケージ(virtualbox-ose, virtualbox-ose-qt, virtualbox-ose-dkms)をアンインストールした上でダウンロードしたパッケージをインストールすると、palm-emulatorコマンドでエミュレータを起動できるようになる。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, gadget, 
+.. tags::
+
+

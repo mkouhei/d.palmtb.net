@@ -1,0 +1,65 @@
+﻿PowerDNS GUIの困った話（その１）。
+##############################################
+
+
+PowerDNSのフロントエンドとしてPowerDNS GUI(pdns-gui)を使おうとしているのですが、ちょっと困った問題があったのでメモしておきます。
+
+ドメインのテンプレートが作成出来ない話。
+********************************************************************************************************************
+
+テンプレートを作る際に、SOAレコードのcontentの値がinvalidとなり、登録できないという問題があります。pdns-guiのインストール時に自動的に設定されるdomainテンプレートのSOAレコードのcontentの値は、&#34;ns5.dnsmadeeasy.com hostmaster.%DOMAIN% %SERIAL%&#34;という文字列で [#]_ 、テンプレートからdomainを作成する際にはフォームで入力したdomainの値がこの%DOMAIN%に代入されて作成されます。pdns-guiで運用する際は、dns.madeeasy.comというドメインではなく任意のドメインを指定したいので、テンプレートとして作成する際には、例えば&#34;ns.%DOMAIN% hostmaster.%DOMAIN% %SERIAL%&#34;という文字列も使いたいですよね。ですが、実際にはテンプレート作成を行うapps/frontend/modules/template/actions/actions.class.phpの中で、
+
+.. code-block:: none
+
+   282       switch ($data[&#39;type&#39;])
+   283       {
+   284         case &#39;SOA&#39;:
+   285           if (!preg_match(&#39;/^[a-z0-9\.\-_]+\s[a-z0-9\.\-_]+\s%SERIAL%/&#39;,$data[&#39;content&#39;]))
+   286           {
+   287             $this-getRequest()-setError(&#39;record&#39;,Row $i: invalid SOA content.);
+   288             return false;
+   289           }
+   290           break;
+
+
+となっており、&#34;%DOMAIN%&#34;という文字列は許可されておらず、&#34;ns0.ca.local hostmaster.ca.local %SERIAL%&#34; のように、文字列%DOMAIN%を使わずドメインを個別に設定する必要があります。これじゃあテンプレートの意味がありません。これじゃ使い物になりませんので、以下のような、2行パッチ書いてissueに登録しておきました。
+
+.. code-block:: none
+
+   diff --git a/apps/frontend/modules/template/actions/actions.class.php b/apps/frontend/modules/template/actions/actions.class.php
+   index 9c6b6c0..2f67b9a 100644
+   --- a/apps/frontend/modules/template/actions/actions.class.php
+   +++ b/apps/frontend/modules/template/actions/actions.class.php
+   @@ -282,7 +282,8 @@ class templateActions extends MyActions
+          switch ($data[&#39;type&#39;])
+          {
+            case &#39;SOA&#39;:
+   -          if (!preg_match(&#39;/^[a-z0-9\.\-_]+\s[a-z0-9\.\-_]+\s%SERIAL%/&#39;,$data[&#39;content&#39;]))
+   +          if (!preg_match(&#39;/^[a-z0-9\.\-_]+\s[a-z0-9\.\-_]+\s%SERIAL%/&#39;,$data[&#39;content&#39;]) 
+   +             !preg_match(&#39;/^[a-z0-9\.\-_]+\.%DOMAIN%\s[a-z0-9\-_]+\.%DOMAIN%\s%SERIAL%/&#39;,$data[&#39;content&#39;]))
+              {
+                $this-getRequest()-setError(&#39;record&#39;,Row $i: invalid SOA content.);
+                return false;
+   -- 
+   1.7.6.3
+
+
+
+NSレコードも同じだった。
+******************************************************************
+
+
+ので、追加パッチを登録しておいた。
+
+
+.. rubric:: footnote
+
+.. [#] ：これはdata/fixtures/sample-data.ymlファイルで指定されており、template_recordテーブルに自動的にinsertされます。
+
+
+
+.. author:: mkouhei
+.. categories:: Dev, 
+.. tags::
+
+

@@ -1,0 +1,14 @@
+﻿chumbyの日本語化ベータテスト
+##################################
+
+
+http://www.chumby.jp/news/japanease2.html
+試してみるか。
+
+
+
+.. author:: mkouhei
+.. categories:: gadget, 
+.. tags::
+
+

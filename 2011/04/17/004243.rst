@@ -1,0 +1,69 @@
+﻿第75回 東京エリアDebian勉強会開催＆参加。
+##################################################
+
+
+今回はIIJさんの会議室をお借りしての開催でした。ちょうど4/13にDebian JP Project会長に選任されたので就任挨拶と、あと同じくらいのタイミングでDebianパッケージメンテナンスの方も再チャレンジすることにしたので、多分Debianパッケージメンテナンスをはじめる人が悩みそうな疑問をまとめて、今回の参加者の皆さんに教えてもらう、という形式で質問をしました [#]_ 。
+資料は以下。
+ Debian JP会長就任の挨拶   View more presentations from Kouhei Maeda  
+
+ 僕の疑問に答えてください。   View more presentations from Kouhei Maeda  
+なお、後者の疑問の方に対する結論は以下のとおり。
+
+* WNPPに入ってないソフトウェアはBTSにITPせずにmentors.debian.netにアップロードしても良いのか？
+
+* BTSにITPしてからmentors.debian.netにアップロードしる。changelogにBTSの番号あるだろJK
+
+
+* MITライセンスやPython Software Foundation Lincenseなど、mainには入っているけど/usr/share/common-licenses/以下にライセンスの全文ファイルが無いものはdebian/copyrightに書けばよいのか？ファイルを置いてパスを書けば良いのか？
+
+* 全文をdebian/copyrightに書け。* dep* 利用しる。つかまず* ドキュ*  * メント* 嫁JK
+
+
+* ドキュメントが無い場合は自分で書くのか？アップストリームに書いてもらうのか？
+
+* 自分でドキュメント書いて、* dpatch* quiltでソースパッチとして、フィードバックしる。それがDebianの価値にもなる
+
+
+* 機能的に分離できるのは複数パッケージに分けるべき？
+
+* 分けとけ。依存関係を少なくした方が、ユーザにとっては余計なパッケージをインストールしないで済む
+
+
+
+というわけで、僕の疑問に答えてくださった皆さん、ありがとうございました。頑張ってパッケージメンテナンスに再挑戦します。
+
+backports.debian.orgの話やinitramfs、月刊PPC64ポーティングの話など [#]_ 盛り上がって、大変有意義な内容でした。
+
+
+.. rubric:: footnote
+
+.. [#] ：まぁ、自分が実際に疑問に思ったことなんですが
+.. [#] ：他ももう一つあったのですが諸事情により伏せておきます。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, meeting, 
+.. tags::
+
+
+----
+
+Comment:
+
+	mkouhei@debian.org になっている件。
+
+	written by  iwamatsu
+	04/20/2011 09:11:24
+	
+
+----
+
+Comment:
+
+	ギャー、これはひどい。速攻直しました。でもSlideshareの方はキャッシュが残ってるのか、直らない…。orz
+
+	written by  mkouhei
+	04/20/2011 10:01:51
+	http://d.hatena.ne.jp/mkouhei/
+

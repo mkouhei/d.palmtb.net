@@ -1,0 +1,73 @@
+﻿DebianでObjective-C。
+######################################
+
+
+なんとなく気になったのでここを参考に、Wheezy/Sidで、Objective-CのHello Worldを書いて実行してみた。
+
+.. code-block:: none
+
+   $ sudo apt-get install gobjc
+
+
+
+ソースコード
+********************************
+
+
+
+.. code-block:: none
+
+   #import Foundation/Foundation.h
+   
+   int main() {
+     NSLog(@Hello World);
+     return 0;
+   }
+
+
+
+Makefile
+************
+
+
+
+.. code-block:: none
+
+   CFLAGS=$(shell gnustep-config --objc-flags) -lgnustep-base -lobjc
+   
+   hello: hello.m
+   	gcc $(CFLAGS) $^ -o $@
+   
+   clean:
+   	@rm -rf hello
+
+
+
+コンパイル＆実行
+********************************************
+
+
+
+.. code-block:: none
+
+   $ make
+   gcc -MMD -MP -DGNUSTEP -DGNUSTEP_BASE_LIBRARY=1 -DGNU_GUI_LIBRARY=1
+   -DGNU_RUNTIME=1 -DGNUSTEP_BASE_LIBRARY=1 -D_REENTRANT -fPIC -Wall
+   -DGSWARN -DGSDIAGNOSE -Wno-import -g -O2 -fno-strict-aliasing
+   -fexceptions -fobjc-exceptions -D_NATIVE_OBJC_EXCEPTIONS -fgnu-runtime
+   -fconstant-string-class=NSConstantString -I.
+   -I/home/kohei/GNUstep/Library/Headers -I/usr/local/include/GNUstep
+   -I/usr/include/GNUstep -lgnustep-base -lobjc hello.m -o hello
+   $ ./hello
+   2011-03-25 14:34:18.508 hello[10960] Hello World
+
+
+以上、終了。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, computer, 
+.. tags::
+
+

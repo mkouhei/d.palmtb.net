@@ -1,0 +1,63 @@
+﻿CouchDB for Androidキタコレ。
+################################################
+
+
+金曜日にAndroid用のCouchDB(Developer Alpha)がリリースされているのに気づき、通勤中にインストールしたので、Twitterでつぶやいていたのをちょいとまとめておいた。
+
+特徴
+********
+
+
+
+* CoudhDB for Androidは、2.1以降のみをサポート。 [#]_ 
+* Dalvik VM用にJava版のCouchDBを再開発した、のではなくて、ARM用のErlangを用意して、そこでErlangでコーディングされているCouchDBをAndroid上で動かしている。全部ソースコード見たわけでは無いけれど、CouchDB自体はあまり手を加えていないんじゃないかなと。
+
+
+インストール
+********************************
+
+
+
+* apkはAndroid Marketからインストールできる。
+* Android Marketからインストールするパッケージは、* あくまでErlang環境とCouchDBをSDメモリにインストールするためのランチャー* 。これは90KB程度なのですぐインストールできる。
+* ランチャーを起動するとbinary updateがまず実行される。binary updateには、要3G or WiFi環境。そしてインストールすると約18MB弱必要なので空きメモリは十分に確保しておくこと。 [#]_ 
+* binary update直後は、ダウンロードファイル約1600, パッケージサイズ17.36MB。
+* binary update途中にネットワーク切れるとアップデートやり直し。ただし、ダウンロード済みのファイルはキャッシュされているので、全部最初からダウンロードするわけではないけど。
+* binary updateで実際に* インストールするパッケージはAmazon S3に置かれてる* 。
+* Binary Updateでダウンロードするファイルは、* http://couchdb-android.s3.amazonaws.com/*  の* HTML* XMLのソースを表示して、* Key* タグの値をこのURIに付ければ、直ダウンロードできる。
+
+
+CouchDBの起動
+****************************
+
+
+
+* ダウンロードとパッケージの展開が終わると、Start CouchDB, Stop CouchDB のボタンだけが表示されるシンプルな画面。メニューとか一切なし。
+* タスクバーに表示されるCouchDBのアイコンをクリックすると、ブラウザでFutonにアクセスできる。 
+* Futon見ると、replicator があるので、これが使えるか否かが肝心ですな。
+* Futonを使うには、milestoneを横にするべき。
+* でもAndroidの標準ブラウザだとCouchDBの返すJSONは読めない…。orz
+
+
+という感じ。レプリケーションとサーバサイドJavaScriptがちゃんと動けば、以前から言われていた&#34;CouchDB on Android ←→ CouchDB on Server/Cloud&#34;が実現でき、オフラインでアプリを使えて、オンラインになったときに同期する、というのがCouchDBだけでできるようになってしまう訳ですな。レプリケーション含め、ちゃんとした検証は明日、というか日付は今日以降やる予定。 [#]_ 
+
+8/3追記
+**************
+
+
+CouchDB for Androidというタイトルでブログを書いたけれど、開発元のCouchioによると、正式名称はCouchDB on Androidでした。意味通じるからまぁいいか。
+
+
+.. rubric:: footnote
+
+.. [#] ：これは.. [#] 見ると分かる
+.. [#] ：途中milestoneの空きメモリ足りなくなって合計20MBほどのアプリ削除した。
+.. [#] ：やっぱり土日はやってる時間無いなぁ…。
+
+
+
+.. author:: mkouhei
+.. categories:: CouchDB, gadget, 
+.. tags::
+
+

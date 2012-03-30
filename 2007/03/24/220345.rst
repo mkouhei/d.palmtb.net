@@ -1,0 +1,25 @@
+﻿ext3ってRead Onlyでの書き込まれるのか？
+####################################################
+
+
+Webサーバのディスクイメージ解析後、Autopsyの画面で見るのはやっぱり辛いので、実際にマウントして確認しようと思って、Read Onlyでマウントしたら、こんなメッセージが。
+
+.. code-block:: none
+
+   # mount -o ro /dev/hda1 /mnt
+   EXT3-fs: INFO: recovery required on readonly filesystem.
+   EXT3-fs: write access will be enabled during recovery.
+   kjournald starting.  Commit interval 5 seconds
+   EXT3-fs: recovery complete.
+   EXT3-fs: mounted filesystem with ordered data mode.
+
+
+ログインせずに直接電源引っこ抜いたから、ジャーナルでリカバリーが掛かるのは納得できるのだが、Read Onlyでマウントしても、リカバリーされてしまうのか？それじゃ、Read Onlyじゃないじゃん。それともそれがジャーナルファイルシステムの仕様なのか？
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

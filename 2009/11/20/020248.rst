@@ -1,0 +1,32 @@
+﻿Gitのオプションは連続して使える。
+####################################
+
+
+昨日知った事実。ハイフンつけて分けなくてもOK。
+
+.. code-block:: none
+
+   $ git status
+   # On branch master
+   # Changed but not updated:
+   #   (use git add file... to update what will be committed)
+   #   (use git checkout -- file... to discard changes in working directory)
+   #
+   #	modified:   common_kakeibo.ods
+   #	modified:   kakeibo.ods
+   #
+   no changes added to commit (use git add and/or git commit -a)
+   $ git commit -asm Update 20091119.
+   [master 7469038] Update 20091119.
+    2 files changed, 2014 insertions(+), 1871 deletions(-)
+    rewrite kakeibo/common_kakeibo.ods (86%)
+
+
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

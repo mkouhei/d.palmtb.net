@@ -1,0 +1,24 @@
+﻿Xfce4がおかしい。
+######################
+
+
+うぬ、xfce4-panelが起動しない。さらに、というかついでにxtermからxfce4-panelを起動して、パネルメニューからiceweaselを起動させるとこんなwarning吐いてる。
+
+.. code-block:: none
+
+   $ Error: No running window found
+   
+   (npviewer.bin:7506): Gtk-WARNING **: /usr/lib/gtk-2.0/2.10.0/engines/libxfce.so: wrong ELF class: ELFCLASS64
+   
+   (snip)
+
+
+これは別の問題だろうな。。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

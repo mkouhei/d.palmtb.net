@@ -1,0 +1,31 @@
+﻿2.6.20.1に-mm2を当ててみたら
+########################################
+
+
+2.6.20に、-mm2のパッチを当てて、2.6.20.1のパッチを当てようとすると失敗する。
+で、2.6.20.1のパッチを当て、2.6.20.1を当てるとうまくいく。で、これを再構築したところ、
+なんか起動時に変なエラーログが出ていた。起動後に確認してみた。
+
+.. code-block:: none
+
+   ACPI: Using IOAPIC for interrupt routing
+   ACPI Exception (evregion-0420): AE_NOT_FOUND, Returned by Handler for [EmbeddedControl] [20070126]
+   ACPI Exception (dswexec-0462): AE_NOT_FOUND, While resolving operands for [OpcodeName unavailable] [20070126]
+   ACPI Error (psparse-0537): Method parse/execution failed [\_SB_.PCI0.LPCB.EC__.SMB0.SBRW] (Node c20dc568), AE_NOT_FOUND
+   ACPI Error (psparse-0537): Method parse/execution failed [\_SB_.BAT0.UBSS] (Node c20dc3d8), AE_NOT_FOUND
+   ACPI Error (psparse-0537): Method parse/execution failed [\_SB_.BAT0._STA] (Node c20dc428), AE_NOT_FOUND
+   ACPI Exception (evregion-0420): AE_NOT_FOUND, Returned by Handler for [EmbeddedControl] [20070126]
+   ACPI Error (psparse-0537): Method parse/execution failed [\_SB_.PCI0.LPCB.EC__._REG] (Node c20dc4c8), AE_NOT_FOUND
+   ACPI Exception (evregion-0513): AE_NOT_FOUND, from region _REG, [EmbeddedControl] [20070126]
+   ACPI: PCI Root Bridge [PCI0] (0000:00)
+
+
+え？　ACPIでエラー？と思って右上見てみたら、確かにバッテリー残量がゼロ。トホホ…。再構築しなおしだな…。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

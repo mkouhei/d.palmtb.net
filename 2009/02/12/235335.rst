@@ -1,0 +1,23 @@
+﻿lighttpdで404 not found対応
+################################################
+
+
+昨日、Webサーバをリプレースし、Wikiも変更したのに伴い、404 not foundが多発していたので、新しく設置したWikiページにリダイレクトさせるエラーページを設定した。
+lighttpd.confは以下のように設定。
+
+.. code-block:: none
+
+   ## Format: errorfile-prefixstatus.html
+   ## - ..../status-404.html for &#39;File not found&#39;
+   server.errorfile-prefix    = /hoge/
+
+
+/hoge/ディレクトリ以下に、404.htmlというファイルを置くと、ちゃんとerrorコード404で/hoge/404.htmlが表示されると。
+
+
+
+.. author:: mkouhei
+.. categories:: Ops, 
+.. tags::
+
+

@@ -1,0 +1,13 @@
+﻿Xymonと名を変え新リリース。
+################################
+
+
+久しぶりにHobbitが（マイナー）バージョンのRC1公開。Xymonと名前を変更したのは既報だが、それも今回ドキュメントに反映された模様。DebianやMandrivaからのパッチもマージされたらしい。気になった更新としては、DevmonというSNMPでのデータ収集ツールの存在。NET-SNMPと何が違うのか気になるな。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, Unix/Linux, 
+.. tags::
+
+

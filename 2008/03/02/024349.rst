@@ -1,0 +1,29 @@
+﻿メモリはダメだがディスクはOK。
+################################
+
+
+Sid on MacBook Airで、hibernate [#]_ を実行すると、サスペンドはダメだが、ハイバネートならOKだった。
+
+.. code-block:: none
+
+   $ sudo hibernate-ram
+   s2ram: unknown machine, see s2ram(8) and the USuspendRamForce option
+   hibernate-ram: Aborting.
+   
+   $ sudo hibernate-disk
+
+
+ハイバネートを実行できるなら、サスペンド出来なくても取り合えず困らんな。
+
+
+.. rubric:: footnote
+
+.. [#] ：2008年3月2日現在、1.97-1.1
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, MacBook, 
+.. tags::
+
+

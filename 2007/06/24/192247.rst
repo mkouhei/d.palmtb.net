@@ -1,0 +1,14 @@
+﻿dmidecode
+##################
+
+
+http://itpro.nikkeibp.co.jp/article/COLUMN/20070621/275252/
+へぇ。初めて知った。便利かも。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

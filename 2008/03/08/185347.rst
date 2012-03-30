@@ -1,0 +1,35 @@
+﻿音が出るようになった。
+######################
+
+
+MacBook Airでも、Debian Wikiにあるように、/etc/modprobe.d/soundを書き換えてやれば、音が出るようになった。
+
+* 変更前
+
+
+.. code-block:: none
+
+   alias snd-card-0 snd-hda-intel
+   options snd-hda-intel index=0
+
+
+
+* 変更後
+
+
+.. code-block:: none
+
+   alias snd-card-0 snd-hda-intel
+   #options snd-hda-intel index=0
+   options snd-hda-intel model=mbp3
+
+
+カーネルモジュールを再ロード後、xfce4-mixerの音量コントロールなどで音量を調整させてよれば良し。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, MacBook, 
+.. tags::
+
+

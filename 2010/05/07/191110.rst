@@ -1,0 +1,31 @@
+﻿MacBook 5,2でxrandrが使えるようになった。
+##########################################################
+
+
+以前は、nvidia-settingでないと外部ディスプレイが使えなかったのだが、Sidの入れ替えでxrandrが使えるようになっていることに気づいた。
+
+.. code-block:: none
+
+   $ xrandr
+   
+   Screen 0: minimum 320 x 200, current 1280 x 800, maximum 1280 x 1280
+   VGA0 connected
+      1024x768       75.0     70.1     60.0  
+      832x624        74.6  
+      800x600        72.2     75.0     60.3     56.2  
+      640x480        75.0     72.8     66.7     59.9  
+      720x400        70.1  
+   DVI1 disconnected
+   LVDS connected 1280x800+0+0 286mm x 178mm
+      1280x800       59.9*+
+
+
+これでawesomeでも外部ディスプレイ使えるな。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, MacBook, 
+.. tags::
+
+

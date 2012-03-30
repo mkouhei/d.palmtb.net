@@ -1,0 +1,224 @@
+﻿Mercurialが分からない自分のためのメモ。
+################################################
+
+
+メンテナンスしているパッケージがMercurialを使っているので、備忘のためのメモです。
+どのブランチにいるのかはhg branchを実行すれば分かります。
+
+.. code-block:: none
+
+   $ hg branch
+   default
+
+
+すべてのブランチを表示するにはhg branches。
+
+.. code-block:: none
+
+   $ hg branches 
+   0.3.x                        153:28528a73b122
+   default                      151:faefc873c619
+
+
+Gitユーザにとって分かりにくいのがhg log。hg logではすべてのブランチのログが表示されます。
+
+.. code-block:: none
+
+   $ hf log
+   チェンジセット:   153:28528a73b122
+   ブランチ:         0.3.x
+   タグ:             tip
+   ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   日付:             Tue Nov 29 23:03:05 2011 +0300
+   要約:             Switched from nosetests to unittest for compatibility
+   
+   チェンジセット:   152:e568fcc9e6d6
+   ブランチ:         0.3.x
+   親:               149:f7b9c45450d7
+   ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   日付:             Tue Nov 29 23:03:03 2011 +0300
+   要約:             Python 3 compatibility
+   
+   チェンジセット:   151:faefc873c619
+   ブックマーク:     master
+   親:               150:570348297487
+   親:               149:f7b9c45450d7
+   ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   日付:             Tue Nov 22 09:39:34 2011 +0300
+   要約:             merge
+   
+   チェンジセット:   150:570348297487
+   親:               143:82b1066c6c18
+   ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   日付:             Fri Nov 18 02:24:40 2011 +0300
+   要約:             Fixed bug #31 in many() backtracking
+   
+   チェンジセット:   149:f7b9c45450d7
+   ブランチ:         0.3.x
+   ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   日付:             Fri Nov 18 02:15:56 2011 +0300
+   要約:             More information in exception objects (Issue 14)
+   (snip)
+
+
+defaultブランチは、&#34;ブランチ: default&#34;とは表示されないんですね。git log --graphのような表示をするには、~/.hgrcに
+
+
+.. code-block:: none
+
+   [extensions]
+   graphlog =
+
+
+http://labs.timedia.co.jp/2011/03/mercurial-extensions-we-should-setup-for-gituser.html
+と書くそうです。
+すると、hg glogもしくはhg log -Gで下記のように表示されます。
+
+.. code-block:: none
+
+   $ hg glog
+   o  チェンジセット:   153:28528a73b122
+   |  ブランチ:         0.3.x
+   |  タグ:             tip
+   |  ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   |  日付:             Tue Nov 29 23:03:05 2011 +0300
+   |  要約:             Switched from nosetests to unittest for compatibility
+   |
+   o  チェンジセット:   152:e568fcc9e6d6
+   |  ブランチ:         0.3.x
+   |  親:               149:f7b9c45450d7
+   |  ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   |  日付:             Tue Nov 29 23:03:03 2011 +0300
+   |  要約:             Python 3 compatibility
+   |
+   | @  チェンジセット:   151:faefc873c619
+   |/|  ブックマーク:     master
+   | |  親:               150:570348297487
+   | |  親:               149:f7b9c45450d7
+   | |  ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   | |  日付:             Tue Nov 22 09:39:34 2011 +0300
+   | |  要約:             merge
+   | |
+
+
+チェックアウトしているチェンジセットが&#34;@&#34;になっています。git checkoutに相当するのがhg updateなので、
+
+.. code-block:: none
+
+   $ hg update 0.3.x
+   ファイル状態: 更新数 20、 マージ数 0、 削除数 14、 衝突未解消数 0
+
+
+と0.3.xブランチのheadにチェックアウトします。hg log -Gを実行して確認してみます。
+
+.. code-block:: none
+
+   @  チェンジセット:   153:28528a73b122
+   |  ブランチ:         0.3.x
+   |  タグ:             tip
+   |  ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   |  日付:             Tue Nov 29 23:03:05 2011 +0300
+   |  要約:             Switched from nosetests to unittest for compatibility
+   |
+   o  チェンジセット:   152:e568fcc9e6d6
+   |  ブランチ:         0.3.x
+   |  親:               149:f7b9c45450d7
+   |  ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   |  日付:             Tue Nov 29 23:03:03 2011 +0300
+   |  要約:             Python 3 compatibility
+   |
+   | o  チェンジセット:   151:faefc873c619
+   |/|  ブックマーク:     master
+   | |  親:               150:570348297487
+   | |  親:               149:f7b9c45450d7
+   | |  ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   | |  日付:             Tue Nov 22 09:39:34 2011 +0300
+   | |  要約:             merge
+   | |
+
+
+@の位置が変わりました。
+git showに相当するのが、hg export。git format-patchに相当するのがどんなものか分からないので、hg exportコマンドで代用できます。
+
+.. code-block:: none
+
+   $ hg export faefc873c619
+   
+   # HG changeset patch
+   # User Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   # Date 1321943974 -10800
+   # Node ID faefc873c6198302a3459c121389d80e974da546
+   # Parent  570348297487181081fb91117d4bd236dfa8bc94
+   # Parent  f7b9c45450d7fbde14892009319c5930cffab9c1
+   merge
+   
+   diff -r 570348297487 -r faefc873c619 .hgignore
+   --- a/.hgignore Fri Nov 18 02:24:40 2011 +0300
+   +++ b/.hgignore Tue Nov 22 09:39:34 2011 +0300
+   @@ -2,11 +2,13 @@
+    MANIFEST
+    build
+    dist
+   +tags
+    tmp
+    tags
+    .idea
+    funcparserlib.egg-info
+    examples/dot/*.png
+   +.idea
+    *.pyc
+    *.swp
+    
+   diff -r 570348297487 -r faefc873c619 .hgtags
+   --- a/.hgtags   Fri Nov 18 02:24:40 2011 +0300
+   +++ b/.hgtags   Tue Nov 22 09:39:34 2011 +0300
+   @@ -5,3 +5,4 @@
+    23cf9ed9635b112fcb2247d960f4a918eaaad4bc 0.3.2
+    dfcce3e0b5765a393489570a41c7c95f5d8f1b15 0.3.3
+    ce8269e2e9ad9795f089b397efbec33758337016 0.3.4
+   +2a094772c9e97ee5de5618f9c4479253fb357e4e 0.3.5
+   diff -r 570348297487 -r faefc873c619 CHANGES
+   --- a/CHANGES   Fri Nov 18 02:24:40 2011 +0300
+   +++ b/CHANGES   Tue Nov 22 09:39:34 2011 +0300
+   @@ -3,6 +3,17 @@
+    (snip)
+
+
+とりあえずこれくらい分かれば、git-format-patchに相当するコマンドが分からないままですが、特定のチェンジセットからパッチを生成できますね。
+
+参考
+********
+
+
+
+*  * http://misc.e-hdk.com/hg-and-git
+*  * http://labs.timedia.co.jp/2011/03/mercurial-extensions-we-should-setup-for-gituser.html
+
+
+
+
+.. author:: mkouhei
+.. categories:: Git, 
+.. tags::
+
+
+----
+
+Comment:
+
+	git showに対応するもう一つの方法として、hg log -p -r REVもあります
+
+	written by  troter
+	03/03/2012 02:23:05
+	http://d.hatena.ne.jp/troter/
+
+----
+
+Comment:
+
+	exportより、そちらの方がわかりやすいですね。ありがとうございます。
+
+	written by  mkouhei
+	03/03/2012 02:32:18
+	http://d.hatena.ne.jp/mkouhei/
+

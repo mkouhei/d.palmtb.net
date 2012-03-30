@@ -1,0 +1,116 @@
+﻿Lenny armelをUSBにインストールする。
+##################################################
+
+
+ARMネイティブマシンとして持っているのはPalm Tungsten|T, Armadillo-J, Armadillo-9, Chumbyしか持っていないので、もちろん作業用の環境ではない。なので、QEMUを使ってUSBメモリにLennyをインストールしてみた。
+
+QEMUをインストールしておく。
+****************************************************************************
+
+
+
+.. code-block:: none
+
+   $ sudo aptitude install qemu
+
+
+
+netboot用のイメージをダウンロードする。
+**********************************************************************************************************
+
+
+lennyのRC2のイメージをダウンロードした。
+
+* kenerlイメージ
+* 初期RAMファイル
+
+
+空のUSBを挿す。
+**************************************
+
+
+今回の環境では/dev/sdb
+
+qemuでインストーラを起動させる。
+****************************************************************************************
+
+
+
+.. code-block:: none
+
+   $ qemu-system-arm -M versatilepb -kernel vmlinuz-2.6.26-1-versatile -initrd initrd.gz -hda /dev/sdb -append root=/dev/ram
+
+
+
+* &#39;-M&#39;で指定するマシンタイプは、chumbyに搭載されているCPUに合わせた。
+
+
+.. code-block:: none
+
+   # cat /proc/cpuinfo
+   Processor       : ARM926EJ-Sid(wb) rev 4 (v5l)
+   (snip)
+
+
+
+* 指定できるマシンタイプは-Mオプションに引数を与えなければ表示される。
+
+
+.. code-block:: none
+
+   $ qemu-system-arm -M
+   Supported machines are:
+   integratorcp ARM Integrator/CP (ARM926EJ-S) (default)
+   versatilepb ARM Versatile/PB (ARM926EJ-S)
+   versatileab ARM Versatile/AB (ARM926EJ-S)
+   realview   ARM RealView Emulation Baseboard (ARM926EJ-S)
+   akita      Akita PDA (PXA270)
+   spitz      Spitz PDA (PXA270)
+   borzoi     Borzoi PDA (PXA270)
+   terrier    Terrier PDA (PXA270)
+   cheetah    Palm Tungsten|E aka. Cheetah PDA (OMAP310)
+   lm3s811evb Stellaris LM3S811EVB
+   lm3s6965evb Stellaris LM3S6965EVB
+   connex     Gumstix Connex (PXA255)
+   verdex     Gumstix Verdex (PXA270)
+   mainstone  Mainstone II (PXA27x)
+
+
+
+後は普通にDebianのインストール。
+**************************************************************************************
+
+
+
+* QEMUプロセスの中では、-hda /dev/sdbで指定したUSBメモリは、/dev/sdaとして認識されるので勘違いしないように。
+* 今回swap領域は用意しない。
+* ファイルシステムはext2とした。
+
+やってみて不思議だったのは、qemuは一般ユーザで起動したのにも関わらず、USBメモリ(/dev/sdb)に書き込みができたこと。fstabのマウントオプションにはuserを付けているものの、別にマウントされているわけでもないのにな。この辺はqemu-ioを使っているKVMと同じと仮定すれば納得できるか。
+
+ブート。
+********************
+
+
+が、このままブートさせても、Netbootのインストール用のinitrdしかないので、インストールにしかならない。とりあえずそのまま一度起動させ、shellモードで、usbのファイルシステムをマウント、chrootし、/boot以下のinitrd.imgをssh経由で別サーバにscpして、ホストOSのローカルにまで持ってきた。
+
+.. code-block:: none
+
+   qemu-system-arm -M versatilepb -kernel vmlinuz-2.6.26-1-versatile -initrd initrd.img-2.6.26-1-versatile -hda /dev/sdb -append root=/dev/sda1
+
+
+起動したらこんな感じ。 [#]_ 
+
+
+
+.. rubric:: footnote
+
+.. [#] ：ホスト名がchumbyとなっているけど、chumbyじゃないので要注意。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, computer, virt., 
+.. tags::
+
+

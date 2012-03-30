@@ -1,0 +1,28 @@
+﻿kernel 2.6.30 でも解決せず…。orz
+##################################################
+
+
+昨夜kernel 2.6.30でカーネル再構築してみたが、MacBook 5,2 whiteでのacpi=offを指定しないと起動しない問題も、Core 2 Duoなのに、CPUが１個しか認識しない問題 [#]_ も解決せず。おまけに、nVidiaのドライバをm-a a-iでビルドしたら、途中でコケしまったので、2.6.29に戻した。他のToDoとしては、音を出す、無線LANを使えるようにする、Bluetoothを使えるようにする、赤外線リモコンを使えるようにする、iSightを使えるようにする、とまだまだ山盛り。
+
+
+.. rubric:: footnote
+
+.. [#] ：もっとも、こっちはacpi=offにしているからであるようであることは、吉田@板橋さんとHack Cafeで確認したのだけど。
+
+
+
+.. author:: mkouhei
+.. categories:: MacBook, Unix/Linux, 
+.. tags::
+
+
+----
+
+Comment:
+
+	Lets bisect :)
+
+	written by  kosaki
+	06/11/2009 18:29:21
+	http://d.hatena.ne.jp/kosaki/
+

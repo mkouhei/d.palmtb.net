@@ -1,0 +1,66 @@
+﻿PowerDNS GUIの困った話（その４）。
+##############################################
+
+
+PowerDNS GUIはインストールするだけなら、PowerDNS自体のゾーン転送の機能を使う方法も、バックエンドのDBのレプリケーションの機能を使う方法 [#]_ のどちらも使えます。しかし、画面上の右上の&#34;Commit changes&#34;ボタンは、前者でしか実質的に使えません。このボタンは裏では下記のようにshell execして、/usr/bin/pdns_controlコマンドを実行しています。
+
+.. code-block:: none
+
+     public static function commit()
+     {
+       // do some checks first
+       $pdns_version = trim(shell_exec(sudo /usr/bin/pdns_control version 21));
+   
+       
+       if (!preg_match(&#39;/^[0-9,\.]+$/&#39;,$pdns_version))
+       {
+         if (preg_match(&#39;/\[sudo\] password/&#39;,$pdns_version))
+         {
+           return Unable to run &#39;sudo /usr/bin/pdns_control&#39;. Is it defined in sud
+   oers file?;
+         }
+         else
+         {
+           return $pdns_version;
+         }
+       }
+
+
+このコマンドはpdnsユーザとしての実行権限が必要なので、
+
+.. code-block:: none
+
+   $ sudo bash -c 
+   chmod 640 /etc/sudoers
+   sed -i &#39;s/\(Defaults\).*env_reset/\1 visiblepw/&#39; /etc/sudoers
+   echo &#39;www-data       localhost=(pdns) NOPASSWD: /usr/bin/pdns_control&#39;  /etc/sudoers
+   chmod 440 /etc/sudoers
+
+
+のように、Defaultsをvisiblepwに、www-dataユーザにパスワード無しでpdnsユーザとして/usr/bin/pdns_controlの実行を許可してやらないといけません。 [#]_ そもそも、このCommit changesボタンはpdns-guiを介した変更履歴の専用のauditテーブルを更新し、マスターからPowerDNSのゾーン転送をスレーブに通知するので、ネイティブモードの場合は実質的には必要ありません。が、変更したままCommit changesボタンを押して正常にバックグラウンドの処理が実行されないと、auditテーブルが更新されず、変更したレコードにフラグが立ったままで太字のままになっているというかなーり気持ち悪い状態です [#]_ 。そもそも、/usr/bin/pdns_controlコマンドがsudoで実行されない様に、コードを変更してもそれとは無関係でServer Internal Error 500が返ってしまいます。何だかなぁ。
+で、今回はこの修正を、と思ったのですが、時間がかかりそうなので、もう一つ別の問題を修正しました。
+
+PowerDNS自体のレプリケーションでの問題。
+************************************************************************************************************
+
+前述のとおり、PowerDNS自体の機能でゾーン転送を行うのですが、PowerDNSの設定 [#]_ を変更するだけではできません。スレーブサーバ側で、ドメイン情報を格納しているdomainsテーブルで、ドメイン毎にTYPE属性をSLAVEに、MASTER属性をマスターサーバのIPアドレスを指定しなければなりません。pdns-guiのWeb管理画面ではDomainテンプレートをMASTER, SLAVE, NATIVEの三種類を選べるのですが、残念ながらSLAVEを指定してドメインを作成しようとしても、マスターサーバのIPアドレスは指定できないため、mysqlで直接MASTER属性を変更しなければなりません。これは困った。
+なので、
+
+のような感じで、ドメイン作成時に、マスターサーバのIPアドレスを指定できるようにしました。この&#34;Master IP addr&#34;のフォームにIPアドレスを入力して実際にスレーブサーバのdomainsテーブルに反映されるのは、選択したテンプレートがSLAVEの場合で、かつ、IPアドレスが入力されている場合にしています。
+これも、パッチを作ってissueに登録しておきました。
+
+
+.. rubric:: footnote
+
+.. [#] ：これはPowerDNSの用語ではネイティブモードと呼びます。
+.. [#] ：DebianやUbuntuでの例
+.. [#] ：単に気持ち悪いだけでPowerDNS自体そのものには影響はありません。
+.. [#] ：/etc/powerdns/pdns.conf
+
+
+
+.. author:: mkouhei
+.. categories:: Dev, 
+.. tags::
+
+

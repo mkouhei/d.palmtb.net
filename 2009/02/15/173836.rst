@@ -1,0 +1,37 @@
+﻿Lennyリリース。
+####################
+
+
+リリースされましたね。おめでとうございます。
+http://www.debian.or.jp/blog/debian50r0.html
+http://www.debian.org/News/2009/20090214
+ちなみにリリースパーティは昨日、henrichさん、h_yamamotoさんと新宿のIL SACCOMANNOでこじんまりと開催。美味しかった。
+大きな地図で見る
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+
+----
+
+Comment:
+
+	美味しいですよね。雰囲気もいいですし。パスタが美味。
+
+	written by  z-ohnami
+	02/15/2009 22:26:00
+	http://d.hatena.ne.jp/z-ohnami/
+
+----
+
+Comment:
+
+	さすが。既に利用済みでしたか。
+
+	written by  mkouhei
+	02/15/2009 22:55:06
+	http://d.hatena.ne.jp/mkouhei/
+

@@ -1,0 +1,155 @@
+﻿DDEで遊んでみる。
+####################
+
+
+Debian Data Exportというのがあるようだ。配布資料は無いし、スライドは小っちゃくて見えないので、とりあえず勝手に遊んでみる。取り合えず、apt-fileの情報を取るというURIで、dashを引数で渡してみる。
+
+.. code-block:: none
+
+   $ curl http://dde.debian.net/dde/q/aptfile/byfile/sid-amd64/dash
+   htmlbody
+   h1Packages containing dash/h1
+   
+   pValue:/p
+   pre
+   [&#39;dash&#39;, &#39;debian-edu-config&#39;, &#39;sauerbraten-data&#39;]
+   
+   /pre
+   ol
+   /ol
+   pa href=&#39;http://dde.debian.net/dde/q/aptfile/byfile/sid-amd64&#39;Go up one level/a/p
+   /body/html
+
+
+デフォルトではHTML形式のようだ。apt-file show dashやapt-file search dashで得られる情報とも違う。
+出力形式はいくつかあるのでいろいろ試してみる。
+
+JSON
+****
+
+
+
+.. code-block:: none
+
+   $ curl http://dde.debian.net/dde/q/aptfile/byfile/sid-amd64/dash?t=json
+   {r:[dash,debian-edu-config,sauerbraten-data]}
+
+
+
+YAML
+****
+
+
+
+.. code-block:: none
+
+   $ curl http://dde.debian.net/dde/q/aptfile/byfile/sid-amd64/dash?t=yaml
+   ---
+   - dash
+   - debian-edu-config
+   - sauerbraten-data
+
+
+
+CSV
+**
+
+
+
+.. code-block:: none
+
+   $ curl http://dde.debian.net/dde/q/aptfile/byfile/sid-amd64/dash?t=csv
+   dash
+   debian-edu-config
+   sauerbraten-data
+
+
+
+text
+****
+
+
+
+.. code-block:: none
+
+   $ curl http://dde.debian.net/dde/q/aptfile/byfile/sid-amd64/dash?t=text
+   [&#39;dash&#39;, &#39;debian-edu-config&#39;, &#39;sauerbraten-data&#39;]
+
+
+
+
+debug
+******
+
+
+
+.. code-block:: none
+
+   $ curl http://dde.debian.net/dde/q/aptfile/byfile/sid-amd64/dash?t=debug
+   body bgcolor=#f0f0f8
+   table width=100% cellspacing=0 cellpadding=2 border=0 summary=heading
+   tr bgcolor=#6622aa
+   td valign=bottom#160;br
+   font color=#ffffff face=helvetica, arial#160;brbigbigstrong#60;type &#39;exceptions.TypeError&#39;#62;/strong/big/big/font/td
+   td align=right valign=bottom
+   font color=#ffffff face=helvetica, arialPython 2.5.2: /usr/bin/pythonbrSun Jul 26 11:53:12 2009/font/td/tr/table
+       
+   pA problem occurred in a Python script.  Here is the sequence of
+   function calls leading up to the error, in the order they occurred./p
+   table width=100% cellspacing=0 cellpadding=0 border=0
+   trtd bgcolor=#d8bbffbig#160;/biga href=file:///var/lib/python-support/python2.5/flup/server/fcgi_base.py/var/lib/python-support/python2.5/flup/server/fcgi_base.py/a in strongrun/strong(self=#60;flup.server.fcgi_base.Request object at 0x6000000000b2c390#62;)/td/tr
+   trtdfont color=#909090ttsmall#160;#160;556/small#160;#160;#160;#160;#160;#160;#160;#160;#160;Runs#160;the#160;handler,#160;flushes#160;the#160;streams,#160;and#160;ends#160;the#160;request.br
+   /tt/font/td/tr
+   trtdfont color=#909090ttsmall#160;#160;557/small#160;#160;#160;#160;#160;#160;#160;#160;#160;try:br
+   /tt/font/td/tr
+   trtd bgcolor=#ffcceettsmall#160;#160;558/small#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;protocolStatus,#160;appStatus#160;=#160;self.server.handler(self)br
+   /tt/td/tr
+   trtdfont color=#909090ttsmall#160;#160;559/small#160;#160;#160;#160;#160;#160;#160;#160;#160;except:br
+   /tt/font/td/tr
+   trtdfont color=#909090ttsmall#160;#160;560/small#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;traceback.print_exc(file=self.stderr)br
+   /tt/font/td/tr
+   trtdsmallfont color=#909090protocolStatus emundefined/em, appStatus emundefined/em, strongself/strong#160;= #60;flup.server.fcgi_base.Request object at 0x6000000000b2c390#62;, self.strongserver/strong#160;= #60;flup.server.fcgi.WSGIServer object at 0x600000000086a6d0#62;, self.server.stronghandler/strong#160;= #60;bound method WSGIServer.handler of #60;flup.server.fcgi.WSGIServer object at 0x600000000086a6d0#62;#62;/font/small/td/tr/table
+   table width=100% cellspacing=0 cellpadding=0 border=0
+   trtd bgcolor=#d8bbffbig#160;/biga href=file:///var/lib/python-support/python2.5/flup/server/fcgi_base.py/var/lib/python-support/python2.5/flup/server/fcgi_base.py/a in stronghandler/strong(self=#60;flup.server.fcgi.WSGIServer object at 0x600000000086a6d0#62;, req=#60;flup.server.fcgi_base.Request object at 0x6000000000b2c390#62;)/td/tr
+   trtdfont color=#909090ttsmall#160;1116/small#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;result#160;=#160;self.application(environ,#160;start_response)br
+   /tt/font/td/tr
+   trtdfont color=#909090ttsmall#160;1117/small#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;try:br
+   /tt/font/td/tr
+   trtd bgcolor=#ffcceettsmall#160;1118/small#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;for#160;data#160;in#160;result:br
+   /tt/td/tr
+   trtdfont color=#909090ttsmall#160;1119/small#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;if#160;data:br
+   /tt/font/td/tr
+   trtdfont color=#909090ttsmall#160;1120/small#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;#160;write(data)br
+   /tt/font/td/tr
+   trtdsmallfont color=#909090data emundefined/em, strongresult/strong#160;= #60;generator object at 0x600000000086bb00#62;/font/small/td/tr/table
+   table width=100% cellspacing=0 cellpadding=0 border=0
+   trtd bgcolor=#d8bbffbig#160;/biga href=file:///org/dde.debian.net/home/dde/dde/wsgi.py/org/dde.debian.net/home/dde/dde/wsgi.py/a in stronghandle_debug/strong(self=#60;dde.wsgi.DDE object at 0x6000000000536310#62;, res=#60;dde.wsgi.Result instance at 0x6000000000993b48#62;, args=(&#39;aptfile&#39;, &#39;byfile&#39;, &#39;sid-amd64&#39;, &#39;dash&#39;), kw={&#39;t&#39;: &#39;debug&#39;})/td/tr
+   trtdfont color=#909090ttsmall#160;#160;405/small#160;#160;#160;#160;#160;def#160;handle_debug(self,#160;res,#160;args,#160;kw):br
+   /tt/font/td/tr
+   trtdfont color=#909090ttsmall#160;#160;406/small#160;#160;#160;#160;#160;#160;#160;#160;#160;body#160;=#160;Args:#160;#160;+#160;repr(args)#160;+#160;#160;kw:#160;#160;+#160;repr(kw)br
+   /tt/font/td/tr
+   trtd bgcolor=#ffcceettsmall#160;#160;407/small#160;#160;#160;#160;#160;#160;#160;#160;#160;res.start_response(type#160;=#160;text/plain,#160;len#160;=#160;len(body))br
+   /tt/td/tr
+   trtdfont color=#909090ttsmall#160;#160;408/small#160;#160;#160;#160;#160;#160;#160;#160;#160;yield#160;resbr
+   /tt/font/td/tr
+   trtdfont color=#909090ttsmall#160;#160;409/small#160;br
+   /tt/font/td/tr
+   trtdsmallfont color=#909090strongres/strong#160;= #60;dde.wsgi.Result instance at 0x6000000000993b48#62;, res.strongstart_response/strong#160;= #60;bound method Result.start_response of #60;dde.wsgi.Result instance at 0x6000000000993b48#62;#62;, embuiltin/em strongtype/strong#160;= #60;type &#39;type&#39;#62;, embuiltin/em stronglen/strong#160;= #60;built-in function len#62;, strongbody/strong#160;= Args: (&#39;aptfile&#39;, &#39;byfile&#39;, &#39;sid-amd64&#39;, &#39;dash&#39;) kw: {&#39;t&#39;: &#39;debug&#39;}/font/small/td/tr/tablepstrong#60;type &#39;exceptions.TypeError&#39;#62;/strong: start_response() got an unexpected keyword argument &#39;len&#39;
+   brttsmall#160;#160;#160;#160;#160;/small#160;/ttargs#160;=
+   (start_response() got an unexpected keyword argument &#39;len&#39;,)
+   brttsmall#160;#160;#160;#160;#160;/small#160;/ttmessage#160;=
+   start_response() got an unexpected keyword argument &#39;len&#39;
+   
+   
+   
+
+
+pickleとかいうのもあるらしいが、文字化けしたので省略。何の情報をとっているのかよく分からんな。もうちょい遊んで調べてみるか。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, 
+.. tags::
+
+

@@ -1,0 +1,30 @@
+﻿Outboundのルールが消えてた。
+####################################
+
+
+送信されないからまさか、と思い、ファイアウォールを見てみたら587ポートへのOutbound通信のルールが消えていた。再設定して、
+
+.. code-block:: none
+
+   $ sudo postfix flush
+
+
+としたら一気に掃けた。多すぎてGmail側の負荷が上がって
+
+.. code-block:: none
+
+   Mar  2 01:25:51 hogehoge postfix/smtp[13725]: F082E96E1C: to=アドレス, \
+   relay=smtp.gmail.com[209.85.147.109]:587, delay=25497, delays=25392/102/4.1/0, \
+   dsn=5.7.1, status=bounced (SASL authentication failed; \
+   server smtp.gmail.com[209.85.147.109] said: 535 5.7.1 Credentials Rejected v37sm21676035wah.12)
+
+
+となってしまったよ。
+
+
+
+.. author:: mkouhei
+.. categories:: Unix/Linux, 
+.. tags::
+
+

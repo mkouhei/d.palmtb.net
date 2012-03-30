@@ -1,0 +1,17 @@
+﻿なんてこった。
+##############
+
+
+MacBookでDebianをブートさせるのに、rEFItとliloを使っているが、Xenをブートさせるのにliloを使うときは、mbootpackでイメージを作成しなおさねばならんらしい。
+しかも、liloはMBRにインストールする必要があるとか。
+Intel Mac/Xen
+うーん、イメージ作りなおすよりも、liloの方が面倒だなぁ。
+MacBook + rEFIt + GRUBでブートできるようにならないかなぁ。
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, MacBook, computer, virt., 
+.. tags::
+
+

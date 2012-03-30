@@ -1,0 +1,18 @@
+﻿Etchでも行けたらしい。
+##########################
+
+
+kvm-develのMLを見ていたら、Javier SmaldoneさんがホストOSをDebian GNU/Linux Etch、kernel 2.6.20、kvm-12、AMD Athlon 64 3500+ (2.2 Ghz)、amd64の64bitの環境で、ゲストOSをetchとWindows xpを動かすことができたらしい [#]_ 。SargeとSidは使っているが、Etchはkvm上と、秋のOSCで作った配布用のVMwareイメージしかないからなぁ。まだ、Etchにはkvmパッケージは無いので、バックポートしたのか、ソースからやったのかな？
+
+
+.. rubric:: footnote
+
+.. [#] ：ゲストは両方とも32bit
+
+
+
+.. author:: mkouhei
+.. categories:: Debian, virt., computer, 
+.. tags::
+
+

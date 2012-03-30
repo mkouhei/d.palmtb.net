@@ -1,0 +1,51 @@
+﻿￥url{}の中でフォントの変更をしたら大変な事になった。
+##########################################################
+
+
+&#34;/testdb/_design/testdb/_show/_id&#34;という表示をしたくて、
+
+.. code-block:: none
+
+   \url{/testdb/\_design/testapp/\_show/{\it \_id\}\}
+
+
+としたところ、
+
+.. code-block:: none
+
+                         /testdb/_design/testapp/_show/{protectprotect
+   protectedefJY1{JY1}letkenc@updaterelaxprotectedefmc{mc}protect
+   edefm{m}protectedefn{n}protectedefOT1{OT1}letenc@updaterelax
+   protectedefcmr{cmr}protectedefm{m}protectedefn{n}protectlet
+   defOT1{OT1}defcmr{cmr}defm{m}defn{n}def10{10}defOT1{OT1}
+   defcmr{cmr}defm{m}defn{n}def10{10}letdefOT1{OT1}defcmr{cmr}
+   defm{m}defn{n}def10{10}defOT1{JY1}defcmr{mc}defm{m}defn{n}
+   def10{10}edef{JY1}\{\{JY1\}\}deflet{let}letletJY1JY1edefJT1{JT1}
+   letfonttfontletJY1JT1xdefOT1/cmr/m/n/7{JY1/mc/m/n/10}OT1/cmr/
+   m/n/7letfontjfontletJY1JY1xdefOT1/cmr/m/n/7{JY1/mc/m/n/10}
+   OT1/cmr/m/n/7defJY1{JY1}kenc@updateletdefOT1{OT1}defcmr{cmr}
+   defm{m}defn{n}def10{10}defOT1{OT1}defcmr{cmr}defm{m}defn{n}
+   def10{10}letfontafontxdefOT1/cmr/m/n/7{OT1/cmr/m/n/10}OT1/
+   cmr/m/n/7enc@updatesize@updateignorespacesprotectrelaxprotect
+   protectedefn{it}protectedefn{it}protectletdefOT1{OT1}defcmr{cmr}
+   defm{m}defn{n}def10{10}defOT1{OT1}defcmr{cmr}defm{m}defn{n}
+   def10{10}letdefOT1{OT1}defcmr{cmr}defm{m}defn{n}def10{10}
+   defOT1{JY1}defcmr{mc}defm{m}defn{n}def10{10}edef{JY1}\{\{JY1\}\}
+   deflet{let}letletJY1JY1edefJT1{JT1}letfonttfontletJY1JT1
+   xdefOT1/cmr/m/n/7{JY1/mc/m/n/10}OT1/cmr/m/n/7letfontjfont
+   letJY1JY1xdefOT1/cmr/m/n/7{JY1/mc/m/n/10}OT1/cmr/m/n/7defJY1{JY1}
+   kenc@updateletdefOT1{OT1}defcmr{cmr}defm{m}defn{n}def10{10}
+   defOT1{OT1}defcmr{cmr}defm{m}defn{n}def10{10}letfontafont
+   xdefOT1/cmr/m/n/7{OT1/cmr/m/n/10}OT1/cmr/m/n/7enc@updatesize@
+   update_id}
+
+
+なんてことに！どうしてこうなった？
+
+
+
+.. author:: mkouhei
+.. categories:: TeX, 
+.. tags::
+
+

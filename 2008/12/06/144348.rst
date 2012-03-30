@@ -1,0 +1,13 @@
+﻿電源と無線がない環境。
+######################
+
+
+MacBook Airをメインにしてから外でもこれを使っていたのだが、emobileを使うようになってからはLet&#39;s note R3が復活。やはりバッテリーの持ちが良いからねぇ。とはいえ、emobile使うと、xbacklight = 8に設定してもバッテリーは8時間持たないなぁ。
+
+
+
+.. author:: mkouhei
+.. categories:: computer, 
+.. tags::
+
+
