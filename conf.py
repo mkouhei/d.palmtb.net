@@ -27,7 +27,7 @@ website = u'http://d.palmtb.net/'
 # **************************************************************
 
 # Add your Disqus shortname to enable comments powered by Disqus
-disqus_shortname = None                                   
+disqus_shortname = 'mkouhei'
 
 # Change your favicon (new favicon goes in _static directory)
 html_favicon = 'tinkerer.ico'           
