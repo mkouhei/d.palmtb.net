@@ -5,6 +5,12 @@
 LUMIXのマイクロ一眼カメラ、マイクロフォーサーズのファームウェアはWindowsかMax OS X用のものしか提供されていない。が、案ずることはない。Max OS X用は単なるzipファイル。Windowsも自己解凍EXEなので、cabextractコマンド [#]_ を使えば、必要なbinファイルは抽出できるだろう。unzipで伸長したのち、SDメモリをマウントしてbinファイルをコピーしておき、1.4以降の手順どおりに行えば問題無し。 [#]_  なお、USBコネクタのカバー蓋を閉じてないと、手順にあるファームウェアのアップデート画面は表示されない。
 ちなみにズームレンズのH-FS045200は今年になってから購入したので、既に最新のファームウェアにアップデートされていたので、GF-1本体と、パンケーキレンズのH-H020だけで済んだ。
 
+.. image:: http://ecx.images-amazon.com/images/I/41yqjA4WYNL._SL160_.jpg
+   :alt: Panasonic デジタル一眼カメラ GF1 レンズキット(20mm/F1.7パンケーキレンズ付属) シェルホワイト DMC-GF1C-W
+
+
+.. image:: http://ecx.images-amazon.com/images/I/41xyQcVxHLL._SL160_.jpg
+   :alt: Panasonic デジタルカメラオプション デジタル一眼カメラ用交換レンズ H-FS045200
 
 
 

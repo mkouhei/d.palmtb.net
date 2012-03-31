@@ -8,7 +8,16 @@
 ただ図をみると、仮想マシンモニタは実マシン上で動き、仮想マシンはその上で動くから、KVMとはどうも違う。単に、図が間違っているだけ？　KVM自体はLinuxのユーザモードやカーネルモードのプロセスとも違い、新たな第三のゲストモードのプロセスなので、KVM自体のアーキテクチャ自体が新しいものと考えるのが妥当な気もする。まぁ、分類なんてそれだけで学問が出来てしまうくらいなので [#]_ 、分類なんて新しい実装が出来ればその分だけ新しい系統樹の枝が出来るのかもしれないなぁ。どのレベルで分類するか、というのもあるし [#]_ 。
 
 
+.. image:: http://images-jp.amazon.com/images/G/09/icons/books/comingsoon_books.gif
+   :alt: UNIX MAGAZINE (ユニックス マガジン) 2007年 01月号 [雑誌]
 
+
+.. image:: http://images-jp.amazon.com/images/P/4844323261.09.THUMBZZZ.jpg
+   :alt: 仮想化技術 完全攻略ガイド
+
+
+.. image:: http://images-jp.amazon.com/images/G/09/icons/books/comingsoon_books.gif
+   :alt: すべてわかる仮想化大全—VMware/Virtual Server
 
 
 

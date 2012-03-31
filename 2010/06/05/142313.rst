@@ -60,10 +60,28 @@ kvmコマンドを実行する場合は、kvmグループに所属していれ�
 起動したら、&#34;New&#34;から新しいVMの作成を始める。VMのドメイン名にはイメージファイル名とは別にしておく。上記の用にguest1.imgというファイル名なら、ドメイン名にはguest1としないで、vm-guest1などのように別名にしておくのが良いだろう。
 で、ステップ通りに設定すれば、無事起動できますよ、と。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100605/20100605140557.png
+   :alt: f:id:mkouhei:20100605140557p:image
 
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100605/20100605140559.png
+   :alt: f:id:mkouhei:20100605140559p:image
 
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100605/20100605140556.png
+   :alt: f:id:mkouhei:20100605140556p:image
+
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100605/20100605140555.png
+   :alt: f:id:mkouhei:20100605140555p:image
+
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100605/20100605140554.png
+   :alt: f:id:mkouhei:20100605140554p:image
+
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100605/20100605140553.png
+   :alt: f:id:mkouhei:20100605140553p:image
 
 
 さっきのは別に大した話では無いんだが。
@@ -71,6 +89,9 @@ kvmコマンドを実行する場合は、kvmグループに所属していれ�
 
 
 先ほどの、ファイル名とは別のドメイン名にしておいた方が無難、と書いたが、単にインポートするファイル名と同じだけど、未定義の名前だからこれ使うか？というだけなので、パスの指定の後に次のダイアログが出たら&#34;Yes&#34;としておけば良いだけの話。
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100605/20100605140558.png
+   :alt: f:id:mkouhei:20100605140558p:image
 
 
 

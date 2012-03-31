@@ -5,15 +5,33 @@
 メモリ8GB、SSD128GB、ハイレゾ＆アンチグレア液晶、英語キーボードに換えたMacBook Pro 15インチ(Early 2011)がやってきたー！一緒に、アスマルで注文した50枚入りマスク10箱もやってきた！ 
 こまちゃんとMacBook Proの段ボール、マスクの段ボールの図。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110303/20110303223655.jpg
+   :alt: f:id:mkouhei:20110303223655j:image
+
 段ボールあけて陳列。
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110303/20110303224849.jpg
+   :alt: f:id:mkouhei:20110303224849j:image
 
 ご開帳。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110303/20110303224959.jpg
+   :alt: f:id:mkouhei:20110303224959j:image
+
 同梱物一覧。
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110303/20110303225030.jpg
+   :alt: f:id:mkouhei:20110303225030j:image
 
 開くとこんな感じ。アンチグレアなので反射しませんな。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110303/20110303225123.jpg
+   :alt: f:id:mkouhei:20110303225123j:image
+
 MacBook 5,2と並べて。デカイっていいねぇ。
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110303/20110303234256.jpg
+   :alt: f:id:mkouhei:20110303234256j:image
 
 
 とりあえず、直近の予定としては、もちろんDebian化ですよ。

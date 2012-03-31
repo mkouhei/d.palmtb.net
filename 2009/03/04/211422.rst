@@ -18,6 +18,9 @@ RESTとはなにかという章もあるにはあるが、そこだけ読んで�
 ちゃんと理解するにはもう一度読みなおして復習せんとアカンなぁ。
 そもそも、この考え方は正しいかどうかよりも、一般的に受け入れられているのか、それともminorityなのかがさっぱりわからないというところも読んでいて思った。
 
+.. image:: http://ecx.images-amazon.com/images/I/51ojIhXBP3L._SL160_.jpg
+   :alt: RESTful Webサービス
+
 
 
 .. rubric:: footnote

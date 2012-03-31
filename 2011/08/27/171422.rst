@@ -78,6 +78,9 @@ x-terminal-emulatorにtermitを設定したので、awesomeではMeta + Enterで
 
 すると、こんな感じになります。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110827/20110827170447.png
+   :alt: f:id:mkouhei:20110827170447p:image
+
 仮想ターミナルだけ背景を変更できたりカッコいいですね！
 
 

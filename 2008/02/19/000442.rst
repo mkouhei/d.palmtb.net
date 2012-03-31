@@ -18,6 +18,9 @@ MacBook AirのDebian化の現在までの状況としては、
 
 ハードウェア周りが出来るところと出来てないところと分かれるが、ボチボチやってくか。Xfce4でDebianを起動させた状態で写真を撮ってみた。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20080219/20080219234545.jpg
+   :alt: f:id:mkouhei:20080219234545j:image
+
 しかし、周り散らかりすぎだな…。
 
 

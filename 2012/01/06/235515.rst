@@ -16,9 +16,18 @@ Awk は, あらゆるプログラミングの問題に対する解答という�
 まだいずれも読んだことがないUnix, GNU/Linux ユーザは、新年の準備運動としてこの連休に読んでみてはいかがでしょうか。
 
 
+.. image:: http://ecx.images-amazon.com/images/I/51T83XNMG7L._SL160_.jpg
+   :alt: プログラミング言語AWK (新紀元社情報工学シリーズ)
 
 
 
+.. image:: http://ecx.images-amazon.com/images/I/518ME653H3L._SL160_.jpg
+   :alt: UNIXという考え方―その設計思想と哲学
+
+
+
+.. image:: http://images-jp.amazon.com/images/G/09/icons/books/comingsoon_books.gif
+   :alt: root(ルート)から/(ルート)へのメッセージ―スーパーユーザーが見たひととコンピュータ
 
 
 

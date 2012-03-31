@@ -13,6 +13,9 @@
 
 ~/.ssh/authorized_keysが既に存在する場合、ファイルの最後に追記するので、ファイルの最後が改行になっていないと、最後に登録した公開鍵に連結されてしまうそうな。 [#]_ 
 
+.. image:: http://ecx.images-amazon.com/images/I/41GJBSC36XL._SL160_.jpg
+   :alt: 実用SSH 第2版―セキュアシェル徹底活用ガイド
+
 
 
 .. rubric:: footnote

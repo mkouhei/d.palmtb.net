@@ -4,8 +4,14 @@
 
 pdns-gui、見た目もGUIとしての登録画面もかなり使いやすいのですが、困った問題が。Toolsに、&#34;Search and replace&#34;というボタンがあります。これをクリックして表示されるのが下のフォーム。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20111018/20111018022958.png
+   :alt: f:id:mkouhei:20111018022958p:image
+
 このツールは&#34;検索と置換&#34;ができるのかと思いきや、&#34;検索かつ置換&#34;しかできないのです。まぁ&#34;and&#34;だし、意味合いは正しいですね、そうですよね。
 んが！非常に使いにくい！これじゃあ困る。それで目を着けたのが、同じくToolsにある&#34;History&#34;という機能。これはレコードのCRUDを行い、その４で書いたCommit changesを行ったときに記録されるAuditの情報です。
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20111018/20111018022959.png
+   :alt: f:id:mkouhei:20111018022959p:image
 
 この下にある検索フォームが結構使いやすいので、これを流用してレコード検索専用のフォームを作って、issueにパッチを投稿しておきました。
 

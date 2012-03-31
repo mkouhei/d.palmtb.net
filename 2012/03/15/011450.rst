@@ -5,7 +5,13 @@
 ID/Passwordの管理にiPhoneではMiniKeePassを、Debianではkeepass2を使っています。先日、このMiniKeePassが突然落ちる問題に遭遇しました。このMiniKeePassで使っているDBのファイルサイズが倍々ゲームでどんどんデカくなっていたのです。6MB超えたところでMiniKeePassが落ちたり、固まったりするようになりました。これは困りました。MiniKeePassではCompressなどに関する設定はありません。Debian側で使っているkeepass2では、compressやdeleteの設定などがあったの、いろいろ試してみた結果、次のように変更すると6MBものファイルサイズが20KB程度まで圧縮することができました。その方法は、
 Tools→Database Maintenance→Entry Historyとたどり、
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20120315/20120315010557.png
+   :alt: f:id:mkouhei:20120315010557p:image
+
 Delete history entries older than (days)の値をデフォルトの365から10などにし、Deleteボタンを押します。
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20120315/20120315010556.png
+   :alt: f:id:mkouhei:20120315010556p:image
 
 keepassのDBはファイルなのでファイル単位でバックアップ取れます。Dropboxなどで同期している場合には、自動でバックアップが取得されていることので、この値小さくても全然問題にならないでしょう。
 

@@ -5,9 +5,24 @@
 今回はHackathon形式で開催。Hackathonは初めての参加。1時間半ちょい遅れて行ったら、id:yssk22さんがDefinitive Guideのネタをやってるところだった。ネタとしてはあったので、到着してからは黙々と作業。他の人も黙々と作業していたのだが、他のHackathonでも同じような感じらしい。2、3年前に秋葉原でやったDebianのBSPのような感じで黙々とやっていた。もうちょいF2Fで会話があっても良いかもしれないが、それだとHackathonの前にIdeathonをやった方が良いのかもしれない。
 宴会 aka 忘年会は近くの飲み屋で。美味かった＆楽しかった。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091227/20091227000134.png
+   :alt: f:id:mkouhei:20091227000134p:image
 
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091227/20091227000133.png
+   :alt: f:id:mkouhei:20091227000133p:image
 
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091227/20091227000132.png
+   :alt: f:id:mkouhei:20091227000132p:image
+
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091227/20091227000131.png
+   :alt: f:id:mkouhei:20091227000131p:image
+
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091227/20091227000130.png
+   :alt: f:id:mkouhei:20091227000130p:image
 
 これで今年は勉強会納めだな。
 

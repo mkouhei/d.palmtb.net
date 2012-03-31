@@ -4,6 +4,9 @@
 
 昨日のOSCでDebian勉強会で寄付して代りにもらったDebianステッカーをMacBook Airに貼った。ぷらっとホームで以前購入していたTUXのエンブレムも貼った。最初、Appleマークの上に貼ろうかと思ったが、なんか落ち着かず、Debianステッカーの上に重ね貼りすることにした。&#34;Debian GNU/Linux&#34;ということだからちょうど良いかな。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20080302/20080302112506.jpg
+   :alt: f:id:mkouhei:20080302112506j:image
+
 AQUOSのリモコン除けとけば良かった。w
 
 

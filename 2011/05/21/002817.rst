@@ -80,7 +80,18 @@ make-html.batを実行すると、git checkout conf.pyで元に戻るように�
 
 
 なお、この環境に合わせてconf.pyを置き換えるやり方は、@tk0miyaさんが複数パスを指定できるようされるそうです。とてもありがたいですね。
- Takeshi Komiyatk0miya 
+ 
+.. image:: http://a2.twimg.com/profile_images/1287595787/tk0miya_normal.jpg
+
+
+.. image:: http://a2.twimg.com/profile_images/1287595787/tk0miya_normal.jpg
+
+
+.. image:: http://a2.twimg.com/profile_images/1287595787/tk0miya_normal.jpg
+
+
+.. image:: http://a2.twimg.com/profile_images/1287595787/tk0miya_normal.jpg
+
 
 バイナリエディタで編集って…
 ================================================================================

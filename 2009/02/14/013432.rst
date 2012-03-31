@@ -101,6 +101,9 @@ qemuでインストーラを起動させる。
 
 起動したらこんな感じ。 [#]_ 
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090214/20090214013422.png
+   :alt: f:id:mkouhei:20090214013422p:image
+
 
 
 .. rubric:: footnote

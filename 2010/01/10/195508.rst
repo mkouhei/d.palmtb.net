@@ -17,6 +17,9 @@ amazonの方が得
 
 (amazonの価格-(amazonの価格/200))-(ヨドバシの価格*(100%-ポイント還元率)-(ヨドバシの価格/200))0
 
+.. image:: http://ecx.images-amazon.com/images/I/41fvRD64x5L._SL160_.jpg
+   :alt: ZOJIRUSHI オーブントースターこんがり倶楽部 ET-VT22-SK ブラウンシルバー
+
 
 
 

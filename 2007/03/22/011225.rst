@@ -33,6 +33,12 @@ fs/ext3/inode.c
 
 
 
+.. image:: http://images-jp.amazon.com/images/P/4797338261.09.THUMBZZZ.jpg
+   :alt: Linuxカーネル2.6解読室
+
+
+.. image:: http://images-jp.amazon.com/images/P/4873111331.09.THUMBZZZ.jpg
+   :alt: 詳解Linuxカーネル 第2版
 
 
 

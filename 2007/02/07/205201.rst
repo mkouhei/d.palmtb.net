@@ -14,6 +14,9 @@
 
 思い込みってどうすれば防げるんだろうなぁ。
 
+.. image:: http://images-jp.amazon.com/images/G/09/icons/books/comingsoon_books.gif
+   :alt: ミスをしない人間はいない—ヒューマン・エラーの研究
+
 
 
 

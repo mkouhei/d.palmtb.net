@@ -95,12 +95,24 @@ ROMの焼き込み
 
 こんな画面が起動する。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100904/20100904133652.png
+   :alt: f:id:mkouhei:20100904133652p:image
+
 United Kingdom &amp; Irelandになっているのでそのまま選択し、Confirm EnglishもOK、Palm License Agreementを読んだらAcceptする。
 次にこの画面が出るので、左側の音量を上げるボタンを押しながらUSBを接続する。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100904/20100904133653.png
+   :alt: f:id:mkouhei:20100904133653p:image
+
 palm preの画面にUSBのマークが表示されたらNextを押し、次の画面でNextを押すとROMの書き込みが始まる。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100904/20100904133654.png
+   :alt: f:id:mkouhei:20100904133654p:image
+
 書き込みはじまると、palm preにはROMに書き込む画面が、meta-doctorはこんな画面になる。
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100904/20100904140015.png
+   :alt: f:id:mkouhei:20100904140015p:image
 
 15分くらいかかるのであとは待つのみ。
 正常に完了するとmeta-doctorはReset Completeの画面になると同時に、palm preの方も自動的に再起動する。

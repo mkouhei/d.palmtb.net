@@ -4,6 +4,9 @@
 
 gitwebとCouchDBをバックエンドにしたリバースプロキシをnginxで設定したのでメモ。構成的には下図。各ノードはlxcのコンテナとして立てている。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100121/20100121233402.png
+   :alt: f:id:mkouhei:20100121233402p:image
+
 nginx自体は、
 
 .. code-block:: none

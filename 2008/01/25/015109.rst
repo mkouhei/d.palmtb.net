@@ -4,6 +4,9 @@
 
 時間が経過したら画像を取れるようになったのだが、文字数が多いとフォーマットが崩れてしまうのだね。カッチョ悪。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20080125/20080125015102.jpg
+   :alt: f:id:mkouhei:20080125015102j:image
+
 
 
 

@@ -5,7 +5,16 @@
 年末に、MacBook用にUSBの無線マウスを購入した。USBのバスパワーによる充電も可能なマウスなのだが、当然充電中は、USBポートを使用することになる。MacBookはUSBポートが２つしかないので、一つはHHKB Professionalを使用しているので、充電用の空きポートが無い。空きポートがあれば、充電しながらでも使えるのだけど。
 隣に置いているLet&#39;s note R3もUSBポートは２つしかなく、簡易USBハブを使用している。ただ、一つは同じくHHKB Professional用で、一つはUSBマウス用、ハブで増やしたもう一つは、これまたUSBバスパワーによるスイッチングHUBを使用しているので、これまた空きがない。もう一個簡易USBハブを買ってくるか…。
 
+.. image:: http://images-jp.amazon.com/images/G/09/icons/electronics/no-image-ce.gif
+   :alt: USB充電式ワイヤレスマウス(ブラック) MA-WH67BK
 
+
+.. image:: http://images-jp.amazon.com/images/P/B0001ZMUFC.09.THUMBZZZ.jpg
+   :alt: PLANEX 8ポート 10/100M スイッチングハブ FX-08Mini
+
+
+.. image:: http://images-jp.amazon.com/images/P/B00009KWI1.09.THUMBZZZ.jpg
+   :alt: Happy Hacking Keyboard Professional
 
 
 

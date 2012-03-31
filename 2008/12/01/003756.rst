@@ -27,9 +27,24 @@
 
 最初の３冊はさっさと読んでしまおう。
 
+.. image:: http://ecx.images-amazon.com/images/I/514nedCC1hL._SL160_.jpg
+   :alt: 新版暗号技術入門 秘密の国のアリス
 
 
+.. image:: http://ecx.images-amazon.com/images/I/31AORd0n52L._SL160_.jpg
+   :alt: イノベーションの神話
 
+
+.. image:: http://ecx.images-amazon.com/images/I/51AgJoQGVJL._SL160_.jpg
+   :alt: Web 2.0ストラテジー ウェブがビジネスにもたらす意味
+
+
+.. image:: http://ecx.images-amazon.com/images/I/41jkFwNcvPL._SL160_.jpg
+   :alt: プログラミングErlang
+
+
+.. image:: http://ecx.images-amazon.com/images/I/51Ckb3wB3sL._SL160_.jpg
+   :alt: Subject To Change -予測不可能な世界で最高の製品とサービスを作る
 
 
 

@@ -7,6 +7,9 @@
 興味があればぜひご覧ください。
 Git本もぜひよろしくです。w
 
+.. image:: http://ecx.images-amazon.com/images/I/51WQ7GsnOZL._SL160_.jpg
+   :alt: Gitによるバージョン管理
+
 
 
 .. rubric:: footnote

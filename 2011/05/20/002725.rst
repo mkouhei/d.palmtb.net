@@ -3,14 +3,58 @@
 
 
 MacBook 5,2のタッチパッドのボタンの戻りが悪いので、なんだろうなぁと思ったら、
- Takeshi HASEGAWAhasegaw 
+ 
+.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+
+
+.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+
+
+.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+
+
+.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+
 と@hasegawさんに教えて頂き、
- Takeshi HASEGAWAhasegaw 
- Takeshi HASEGAWAhasegaw 
+ 
+.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+
+
+.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+
+
+.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+
+
+.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+
+ 
+.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+
+
+.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+
+
+.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+
+
+.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+
 と、交渉次第で無償で交換できるかもしれないという情報も教えていただいたので、AppleStore銀座店で昨日の19時で予約して行ってきました。3階までしか行ったことが無かったので4階があるとは思いませんでした。19時に予約したのですが、実際に担当の人が応対してくれたのは15分くらいかかりました。かなり混んでましたね。
 さて結果としては、バッテリー交換でかかった費用は9,030円で、さすがに無償ではありませんでした。
 が、普通に買うと15,800円で、togetterで見た交換費用は10,920円。
- Takafumi MizuguchiGuttyo 
+ 
+.. image:: http://a3.twimg.com/profile_images/1244339922/lovery_normal.jpg
+
+
+.. image:: http://a3.twimg.com/profile_images/1244339922/lovery_normal.jpg
+
+
+.. image:: http://a3.twimg.com/profile_images/1244339922/lovery_normal.jpg
+
+
+.. image:: http://a3.twimg.com/profile_images/1244339922/lovery_normal.jpg
+
 それを考えると予想外に安かったのでお徳でした。
 一応、ダメ元で「ネットでは無償で交換してもらえる事もあるようですが」と聞いてみたところ、初期保証期間中か、保証期間が切れた直後くらいの場合は無償で交換するが、基本的にバッテリーの膨張はリチウムイオンバッテリー自体の特性なので有償だそうです。しかし、バッテリーの膨張によって他のパーツが壊れてしまった場合には、そのパーツの修理は無償で行う、とのことでした。なお、今回はバッテリーを交換したら、タッチパッドのボタンの戻りが悪くなる現象は直りました [#]_ 。
 

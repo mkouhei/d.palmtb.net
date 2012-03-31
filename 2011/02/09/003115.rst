@@ -5,8 +5,20 @@
 CouchDBをDBとしてPhoneGapで作ったAndroidネイティブアプリのCouchNotesというメモアプリがCouchOneからリリースされていた。リリース翌日にはCouchOneではなくMembaseと合併してCouchbaseになったけど。Couchbase mobileは最初はiOSをターゲットとしてやっていくそうな。Android版はβ版が2週前にリリースされたけど、とりあえずはペンディングになるのかな。
 さて、ネイティブアプリと言いつつもPhoneGapでやっているので実質的にはWebアプリ。jQuery Mobile1.0α3 + jQuery 1.5で作ったWebアプリをブラウザで動かす方が速い感じ。Phone GapよりもやっぱりTitaniumの方が良いのもなぁ。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110208/20110208152247.png
+   :alt: f:id:mkouhei:20110208152247p:image
 
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110208/20110208152248.png
+   :alt: f:id:mkouhei:20110208152248p:image
+
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110208/20110208152249.png
+   :alt: f:id:mkouhei:20110208152249p:image
+
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110208/20110208152250.png
+   :alt: f:id:mkouhei:20110208152250p:image
 
 
 

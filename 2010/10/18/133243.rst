@@ -11,12 +11,21 @@
 
 用意するアプリは３つ。Dropbox、CloudReaders、neu.Notes。いずれも無料で利用可能。そして、あらかじめ著者＆編集者＆レビューワー間で使えるメーリングリストがあるなら、それに登録しているメールアドレスを、iPadのメールに設定しておく必要がある。ワシの場合はGoogle Appsのメールアドレスを設定している。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20101016/20101016084237.png
+   :alt: f:id:mkouhei:20101016084237p:image
+
 
 PDFを用意
 ********************
 
 まず、レビュー用の原稿PDFをDropboxにアップしておく。iPad用のDropboxでそのPDFをCloudReadersに転送したら、Dropboxの役割は終わり。PDFが更新されたときもDropboxを使えば、いちいちUSB経由で母艦のPCとつなぐ必要は無い。 [#]_ 
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20101016/20101016084244.png
+   :alt: f:id:mkouhei:20101016084244p:image
+
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20101016/20101016084246.png
+   :alt: f:id:mkouhei:20101016084246p:image
 
 
 CloudReadersでレビュー
@@ -25,7 +34,13 @@ CloudReadersでレビュー
 
 CloudReadersに転送すると、Dropboxとは異なりiPadのローカルストレージにPDFが保存される。これでオフラインの時にもレビューができる。
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20101016/20101016084248.png
+   :alt: f:id:mkouhei:20101016084248p:image
+
 コメントを記入するには、一度画面をタッチするとメニューバーが表示されるので、上部の右から３つ目のペンのアイコンをタッチする。
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20101018/20101018132152.png
+   :alt: f:id:mkouhei:20101018132152p:image
 
 
 neu.Notesでレビューコメントを記入
@@ -33,9 +48,22 @@ neu.Notesでレビューコメントを記入
 
 
 すると、neu.Notesが起動するので、赤ペンなどでレビューコメントを手描きする。デフォルトでは画像を移動させるモードになっているので要注意。
-レビューコメントを記入したら、右上の矢印のアイコンをタッチすると、共有用メニューが表示される。PNG形式でメールで送付すれば良いだろう。 [#]_ 
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20101016/20101016084249.png
+   :alt: f:id:mkouhei:20101016084249p:image
+
+ [#]_ 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20101016/20101016084249.png
+   :alt: f:id:mkouhei:20101016084249p:image
+
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20101016/20101016084242.png
+   :alt: f:id:mkouhei:20101016084242p:image
 
 メールのサブジェクトはPDFのファイル名とページ数が自動的に挿入される。宛先はiPadのコンタクトリストに登録しておけばそこから選択できる。MLのメールアドレスを登録しておけば、便利だろう。1ページごとにレビューするようにしておけば、レビューに対する修正も楽ですな。
+
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20101016/20101016084243.png
+   :alt: f:id:mkouhei:20101016084243p:image
 
 
 

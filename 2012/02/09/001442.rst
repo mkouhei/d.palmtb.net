@@ -103,6 +103,9 @@ git blameでいつ変更されたのかを確認します。
 
 ここでメッセージが変わっています。なので、この後の変更をgit show 8009d83c wt-status.cで見ると、冒頭の変更だと分かります。もっと楽に調べる方法ないでしょうかね。git bisectと組み合わせれば良いのかなぁ…？
 
+.. image:: http://ecx.images-amazon.com/images/I/51WQ7GsnOZL._SL160_.jpg
+   :alt: Gitによるバージョン管理
+
 
 
 

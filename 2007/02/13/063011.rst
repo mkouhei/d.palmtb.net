@@ -4,6 +4,9 @@
 
 TIME HACKS!からのネタ。Googleカレンダーのデフォルト表示をカスタムビューの次の２週間に変更してみた。なるほど、これは便利かも。
 
+.. image:: http://images-jp.amazon.com/images/P/4492042652.09.THUMBZZZ.jpg
+   :alt: TIME HACKS!
+
 
 
 

@@ -4,6 +4,9 @@
 
 買っていなかったよなぁ、と思って、ハイパフォーマンスWebサイトと一緒に、SQL HACKSを買ったのだが、さっき家の本棚を見たら同じのがあった…。orz アホや…。古本屋に売るのはアレなので、定価の３分の２ [#]_ でも良ければ買い取るよ、という知り合いで欲しい方がいれば連絡ください。 [#]_ 
 
+.. image:: http://ecx.images-amazon.com/images/I/21oQIoluHYL.jpg
+   :alt: SQL Hacks —データベースを自由自在に操るテクニック
+
 
 
 .. rubric:: footnote

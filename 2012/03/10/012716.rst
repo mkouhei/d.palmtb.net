@@ -109,7 +109,39 @@ glogでチェンジセットが112になっていることを確認できます�
 
 
 現在Debianパッケージとなっているfuncparserlib0.3.5は、Python2.7がデフォルトになってからビルドができないバグがあります。これは0.3.xのheadであるチェンジセット112では修正されているので、これをtarballにアーカイブします。doc/changes.mdとdoc/index.mdがsymlinkになっていますが、このままアーカイブするとmercurial-importorigおよびdebuild時にコケます。原因は、
-@mkouhei mercurial-buildpackageが使ってるnekoがsymlink対応してない 6 days ago  via webReplyRetweetFavoritepowered by @socialditto
+
+.. image:: http://a0.twimg.com/profile_images/795732564/openlogo1_normal.jpg
+
+
+.. image:: http://a0.twimg.com/profile_images/795732564/openlogo1_normal.jpg
+
+
+.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
+
+
+.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
+
+
+.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
+
+
+.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
+
+
+.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
+
+
+.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
+
+
+.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
+
+
+.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
+
+
+.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
+
 とのことなので、この二つのsymlinkはアーカイブせずに-Xオプションで除外しておきます。
 
 .. code-block:: none

@@ -46,6 +46,9 @@ PowerDNS自体のレプリケーションでの問題。
 前述のとおり、PowerDNS自体の機能でゾーン転送を行うのですが、PowerDNSの設定 [#]_ を変更するだけではできません。スレーブサーバ側で、ドメイン情報を格納しているdomainsテーブルで、ドメイン毎にTYPE属性をSLAVEに、MASTER属性をマスターサーバのIPアドレスを指定しなければなりません。pdns-guiのWeb管理画面ではDomainテンプレートをMASTER, SLAVE, NATIVEの三種類を選べるのですが、残念ながらSLAVEを指定してドメインを作成しようとしても、マスターサーバのIPアドレスは指定できないため、mysqlで直接MASTER属性を変更しなければなりません。これは困った。
 なので、
 
+.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20111018/20111018021147.png
+   :alt: f:id:mkouhei:20111018021147p:image
+
 のような感じで、ドメイン作成時に、マスターサーバのIPアドレスを指定できるようにしました。この&#34;Master IP addr&#34;のフォームにIPアドレスを入力して実際にスレーブサーバのdomainsテーブルに反映されるのは、選択したテンプレートがSLAVEの場合で、かつ、IPアドレスが入力されている場合にしています。
 これも、パッチを作ってissueに登録しておきました。
 
