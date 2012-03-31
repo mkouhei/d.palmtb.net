@@ -78,4 +78,4 @@ release = tinkerer.__version__
 html_title = project
 html_use_index = True
 html_show_sourcelink = True
-html_add_permalinks = None
+html_add_permalinks = True
