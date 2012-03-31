@@ -19,5 +19,6 @@ http://www.broadcom.com/docs/linux_sta/README.txt
 .. author:: mkouhei
 .. categories:: MacBook, network, 
 .. tags::
+.. comments::
 
 

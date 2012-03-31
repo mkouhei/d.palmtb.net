@@ -207,5 +207,6 @@ udhcpdは/binディレクトリ以下に配置し、アクセス権を変更す�
 .. author:: mkouhei
 .. categories:: Unix/Linux, Ops, gadget, 
 .. tags::
+.. comments::
 
 

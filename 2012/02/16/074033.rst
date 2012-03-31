@@ -14,5 +14,6 @@ CVE-2012-0206の脆弱性のワークアラウンドでcache-ttlをデフォル�
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

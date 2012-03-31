@@ -88,5 +88,6 @@ libc6-dev_2.13-2_amd64.deb, locales_2.13-2_all.debの6つのファイルに対�
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

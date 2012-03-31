@@ -9,5 +9,6 @@ Sidでアップデートしたら使えなくなった。もと戻そう。
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

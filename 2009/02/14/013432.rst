@@ -115,5 +115,6 @@ qemuでインストーラを起動させる。
 .. author:: mkouhei
 .. categories:: Debian, computer, virt., 
 .. tags::
+.. comments::
 
 

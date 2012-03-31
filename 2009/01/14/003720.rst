@@ -73,5 +73,6 @@ id:mkouheiは、手前にものがあっても遠くにオートフォーカス�
 .. author:: mkouhei
 .. categories:: 生活, 
 .. tags::
+.. comments::
 
 

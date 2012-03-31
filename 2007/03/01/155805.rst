@@ -53,5 +53,6 @@ WikiにCCSAで検索してきている人がいることに気がついた。こ
 .. author:: mkouhei
 .. categories:: security, book, 
 .. tags::
+.. comments::
 
 

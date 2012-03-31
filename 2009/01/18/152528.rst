@@ -11,5 +11,6 @@ http://homepage3.nifty.com/kaku-chan/graphviz/index.html
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

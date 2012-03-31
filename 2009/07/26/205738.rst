@@ -151,5 +151,6 @@ pickleとかいうのもあるらしいが、文字化けしたので省略。�
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

@@ -10,5 +10,6 @@ Windows版のFreeMindがなかなか良い。SidのFreeMindは最新版じゃな
 .. author:: mkouhei
 .. categories:: Unix/Linux, virt., meeting, 
 .. tags::
+.. comments::
 
 

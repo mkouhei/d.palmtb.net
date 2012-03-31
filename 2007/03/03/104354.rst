@@ -38,5 +38,6 @@ kvmのパッケージが12-1から14-1になった後、確か初めてWindows�
 .. author:: mkouhei
 .. categories:: Debian, computer, virt., 
 .. tags::
+.. comments::
 
 

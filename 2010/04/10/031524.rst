@@ -59,5 +59,6 @@ http://twitter.com/mkouhei/status/11075310113
 .. author:: mkouhei
 .. categories:: Debian, Unix/Linux, virt., computer, 
 .. tags::
+.. comments::
 
 

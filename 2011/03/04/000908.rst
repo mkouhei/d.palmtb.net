@@ -41,5 +41,6 @@ MacBook 5,2と並べて。デカイっていいねぇ。
 .. author:: mkouhei
 .. categories:: MacBook, 生活, 
 .. tags::
+.. comments::
 
 

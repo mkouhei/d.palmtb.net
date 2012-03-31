@@ -38,5 +38,6 @@ cadavarは日本語のパスをURIに指定しても、パーセントエンコ�
 .. author:: mkouhei
 .. categories:: Unix/Linux, network, Debian, 
 .. tags::
+.. comments::
 
 

@@ -15,5 +15,6 @@ http://www.atmarkit.co.jp/fwin2k/itpropower/admin-kun/063/adminkun063.html
 .. author:: mkouhei
 .. categories:: 駄文, 
 .. tags::
+.. comments::
 
 

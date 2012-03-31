@@ -10,5 +10,6 @@ rEFItで何故かEFI Shellがメニューに現れず、sを押しても当然EF
 .. author:: mkouhei
 .. categories:: MacBook, Debian, 
 .. tags::
+.. comments::
 
 

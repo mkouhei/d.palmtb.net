@@ -15,5 +15,6 @@ Debian on MacBook 5,2では相変わらず、ACPIを無効にするか、nosmp�
 .. author:: mkouhei
 .. categories:: Unix/Linux, MacBook, 
 .. tags::
+.. comments::
 
 

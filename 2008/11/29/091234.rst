@@ -10,5 +10,6 @@ http://www.chumby.jp/news/japanease2.html
 .. author:: mkouhei
 .. categories:: gadget, 
 .. tags::
+.. comments::
 
 

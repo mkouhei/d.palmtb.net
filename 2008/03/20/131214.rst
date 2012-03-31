@@ -101,5 +101,6 @@ local.cfにもこれを忘れていた。
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

@@ -82,5 +82,6 @@ gtkamを起動し、&#34;カメラの追加&#34;で検出してみたところ�
 .. author:: mkouhei
 .. categories:: Unix/Linux, gadget, 
 .. tags::
+.. comments::
 
 

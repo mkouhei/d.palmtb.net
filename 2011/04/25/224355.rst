@@ -28,5 +28,6 @@ postするときに、--tagsオプションでYYYYMMDD-HHという形式でタ�
 .. author:: mkouhei
 .. categories:: Debian, Dev, 
 .. tags::
+.. comments::
 
 

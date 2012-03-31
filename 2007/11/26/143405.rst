@@ -13,5 +13,6 @@ EximをPostfixに置き換えてもシステムを何ら損なうことはあり
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

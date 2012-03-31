@@ -51,5 +51,6 @@ WX321Jが届いたので、AH-K3001Vのアドレス帳を移行させようと�
 .. author:: mkouhei
 .. categories:: computer, Unix/Linux, virt., 
 .. tags::
+.. comments::
 
 

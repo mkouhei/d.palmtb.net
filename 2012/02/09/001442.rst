@@ -112,5 +112,6 @@ git blameでいつ変更されたのかを確認します。
 .. author:: mkouhei
 .. categories:: Git, 
 .. tags::
+.. comments::
 
 

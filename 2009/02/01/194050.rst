@@ -11,5 +11,6 @@ BRAUNのシェーバーが壊れて、修理に出した件の顛末。修理料
 .. author:: mkouhei
 .. categories:: 
 .. tags::
+.. comments::
 
 

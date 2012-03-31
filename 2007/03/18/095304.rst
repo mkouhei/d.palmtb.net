@@ -30,5 +30,6 @@
 .. author:: mkouhei
 .. categories:: Debian, meeting, virt., 
 .. tags::
+.. comments::
 
 

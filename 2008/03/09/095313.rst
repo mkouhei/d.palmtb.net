@@ -23,5 +23,6 @@ Page Down, Page Upのキーで行っていたので、MacBook Airの様にキー
 .. author:: mkouhei
 .. categories:: Unix/Linux, MacBook, 
 .. tags::
+.. comments::
 
 

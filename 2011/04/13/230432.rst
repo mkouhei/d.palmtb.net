@@ -12,5 +12,6 @@ typekitというサービスを利用して、Webフォントを使ってみた�
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

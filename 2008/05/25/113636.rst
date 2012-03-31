@@ -15,5 +15,6 @@ etch化及び、kernelの書き換えに当たっては、Genbako kernel collect
 .. author:: mkouhei
 .. categories:: Debian, gadget, Ops, 
 .. tags::
+.. comments::
 
 

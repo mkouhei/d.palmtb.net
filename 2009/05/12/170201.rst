@@ -11,5 +11,6 @@ PowerPC 600MHz, メモリ1GBで消費電力8W、動作温度条件も55℃まで
 .. author:: mkouhei
 .. categories:: Unix/Linux, Ops, computer, 
 .. tags::
+.. comments::
 
 

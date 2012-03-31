@@ -24,5 +24,6 @@
 .. author:: mkouhei
 .. categories:: Debian, Unix/Linux, 
 .. tags::
+.. comments::
 
 

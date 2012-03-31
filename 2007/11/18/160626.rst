@@ -13,5 +13,6 @@ tomoyoの話はKernel patchの品質で議論が盛り上がったが、個人�
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

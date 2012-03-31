@@ -16,5 +16,6 @@ Windows環境だと、PuTTYで作業することが多いのだが、Windowの�
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

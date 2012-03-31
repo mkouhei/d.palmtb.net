@@ -18,5 +18,6 @@ Google Appsのカレンダーに登録するためには、&#34;http://www.googl
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

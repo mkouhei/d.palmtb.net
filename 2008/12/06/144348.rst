@@ -9,5 +9,6 @@ MacBook Airをメインにしてから外でもこれを使っていたのだが
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

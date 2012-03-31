@@ -11,5 +11,6 @@ CouchDB JP PlanetはPlanet自体で特定のキーワードがタイトルにあ
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

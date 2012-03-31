@@ -9,5 +9,6 @@
 .. author:: mkouhei
 .. categories:: gadget, network, 
 .. tags::
+.. comments::
 
 

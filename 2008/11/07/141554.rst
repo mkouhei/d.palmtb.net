@@ -11,5 +11,6 @@ http://slashdot.jp/askslashdot/article.pl?sid=08/11/07/0353215
 .. author:: mkouhei
 .. categories:: Unix, 
 .. tags::
+.. comments::
 
 

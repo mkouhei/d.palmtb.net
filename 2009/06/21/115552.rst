@@ -20,5 +20,6 @@ Debian GNU/kFreeBSDの月間インストール数だかはきっと来月には�
 .. author:: mkouhei
 .. categories:: Debian, meeting, 
 .. tags::
+.. comments::
 
 

@@ -610,5 +610,6 @@ DHCPSERVER許可するDHCPサーバ
 .. author:: mkouhei
 .. categories:: Debian, network, 
 .. tags::
+.. comments::
 
 

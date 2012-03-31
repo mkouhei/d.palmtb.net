@@ -97,5 +97,6 @@ palm-sdkはアンインストールできない。
 .. author:: mkouhei
 .. categories:: Debian, Unix/Linux, gadget, virt., computer, 
 .. tags::
+.. comments::
 
 

@@ -10,5 +10,6 @@ wlデバイスドライバでようやくMacBook Airでも新しい無線LANル�
 .. author:: mkouhei
 .. categories:: MacBook, Debian, network, 
 .. tags::
+.. comments::
 
 

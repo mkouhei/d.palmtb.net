@@ -65,5 +65,6 @@
 .. author:: mkouhei
 .. categories:: Unix/Linux, Ops, gadget, 
 .. tags::
+.. comments::
 
 

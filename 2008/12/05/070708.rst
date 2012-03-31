@@ -12,5 +12,6 @@ http://tinyurl.com/5hkhfd
 .. author:: mkouhei
 .. categories:: 仕事, 
 .. tags::
+.. comments::
 
 

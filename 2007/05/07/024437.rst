@@ -11,5 +11,6 @@
 .. author:: mkouhei
 .. categories:: 仕事, 生活, Unix/Linux, 
 .. tags::
+.. comments::
 
 

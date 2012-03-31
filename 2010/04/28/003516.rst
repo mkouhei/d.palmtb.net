@@ -60,6 +60,7 @@ debtagsは前回のDebian勉強会で初めてインストールしてみたの�
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 
 ----

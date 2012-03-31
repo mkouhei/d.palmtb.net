@@ -11,5 +11,6 @@ http://ww2.samhart.com/node/130
 .. author:: mkouhei
 .. categories:: Debian, MacBook, 
 .. tags::
+.. comments::
 
 

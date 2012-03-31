@@ -18,5 +18,6 @@ OOoのファイルを管理しているgitリポジトリでの出来事。サ�
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

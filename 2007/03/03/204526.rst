@@ -17,5 +17,6 @@ http://www.mail-archive.com/acpi-bugzilla@lists.sourceforge.net/msg05989.html
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

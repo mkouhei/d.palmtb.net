@@ -96,6 +96,7 @@ Debianパッケージ作成ハンズオンのアシスタント
 .. author:: mkouhei
 .. categories:: Debian, meeting, virt., 
 .. tags::
+.. comments::
 
 
 ----

@@ -25,5 +25,6 @@ henrichさんとiwamatsuさんが話すというので行ってきた。大江�
 .. author:: mkouhei
 .. categories:: Debian, gadget, meeting, 
 .. tags::
+.. comments::
 
 

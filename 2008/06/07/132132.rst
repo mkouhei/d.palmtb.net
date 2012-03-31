@@ -33,5 +33,6 @@ goosh遊んでみた。ちょっと困ったのは次の二つ。
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

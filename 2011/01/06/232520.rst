@@ -16,5 +16,6 @@ HTMLのa要素と同じようなハイパーリンクを張るためにはhyperr
 .. author:: mkouhei
 .. categories:: TeX, 
 .. tags::
+.. comments::
 
 

@@ -9,5 +9,6 @@ Mercurialを使っていたのか…。
 .. author:: mkouhei
 .. categories:: 駄文, 
 .. tags::
+.. comments::
 
 

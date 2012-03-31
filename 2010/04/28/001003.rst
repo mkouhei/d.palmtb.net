@@ -49,5 +49,6 @@ bzip2はあるんだけど。
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

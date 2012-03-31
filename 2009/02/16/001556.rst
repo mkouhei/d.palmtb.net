@@ -158,6 +158,7 @@ chrootを試してみるが…。
 .. author:: mkouhei
 .. categories:: gadget, Debian, virt., computer, 
 .. tags::
+.. comments::
 
 
 ----

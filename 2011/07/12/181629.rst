@@ -362,5 +362,6 @@ with-couchdb/petviewer/_attachments/js/pointer.js
 .. author:: mkouhei
 .. categories:: CouchDB, ねこ, Dev, 
 .. tags::
+.. comments::
 
 

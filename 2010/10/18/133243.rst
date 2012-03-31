@@ -77,5 +77,6 @@ neu.Notesでレビューコメントを記入
 .. author:: mkouhei
 .. categories:: gadget, 
 .. tags::
+.. comments::
 
 

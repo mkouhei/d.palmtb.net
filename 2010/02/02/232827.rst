@@ -9,5 +9,6 @@ view で絞ったデータのうち、必要箇所だけを更新できればよ
 .. author:: mkouhei
 .. categories:: CouchDB, 
 .. tags::
+.. comments::
 
 

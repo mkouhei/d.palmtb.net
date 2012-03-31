@@ -19,5 +19,6 @@ lighttpd.confは以下のように設定。
 .. author:: mkouhei
 .. categories:: Ops, 
 .. tags::
+.. comments::
 
 

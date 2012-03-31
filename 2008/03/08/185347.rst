@@ -31,5 +31,6 @@ MacBook Airでも、Debian Wikiにあるように、/etc/modprobe.d/soundを書�
 .. author:: mkouhei
 .. categories:: Debian, MacBook, 
 .. tags::
+.. comments::
 
 

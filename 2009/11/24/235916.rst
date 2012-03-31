@@ -97,6 +97,7 @@ git stash popしてconflictが発生したらstashのキューから削除され
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 
 ----

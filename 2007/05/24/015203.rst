@@ -10,5 +10,6 @@ http://opentechpress.jp/news/article.pl?sid=07/05/22/0913245
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

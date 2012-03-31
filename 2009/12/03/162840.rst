@@ -86,5 +86,6 @@ halに依存しているのか？ググってみたら既にBTSに登録され�
 .. author:: mkouhei
 .. categories:: Debian, virt., Ops, 
 .. tags::
+.. comments::
 
 

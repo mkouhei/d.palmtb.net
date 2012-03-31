@@ -55,6 +55,7 @@ yamamotoさん、情報ありがとうございました。
 .. author:: mkouhei
 .. categories:: Debian, MacBook, network, 
 .. tags::
+.. comments::
 
 
 ----

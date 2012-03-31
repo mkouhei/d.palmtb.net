@@ -12,5 +12,6 @@ Xを入れていないDebianにPuTTYで接続した状態で、KVMのゲスト�
 .. author:: mkouhei
 .. categories:: Debian, virt., computer, 
 .. tags::
+.. comments::
 
 

@@ -38,5 +38,6 @@ serialの更新、レコードの更新の順かな。
 .. author:: mkouhei
 .. categories:: Dev, 
 .. tags::
+.. comments::
 
 

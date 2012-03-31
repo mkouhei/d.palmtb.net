@@ -45,6 +45,7 @@ Debianでは/bin/shは、dash、つまりDebian Almquist shellへのシンボリ
 .. author:: mkouhei
 .. categories:: Unix/Linux, Debian, 
 .. tags::
+.. comments::
 
 
 ----

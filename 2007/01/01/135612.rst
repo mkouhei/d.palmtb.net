@@ -13,5 +13,6 @@
 .. author:: mkouhei
 .. categories:: Debian, MacBook, virt., computer, 
 .. tags::
+.. comments::
 
 

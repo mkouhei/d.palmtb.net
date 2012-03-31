@@ -183,5 +183,6 @@ http://redmine.lighttpd.net/issues/1817
 .. author:: mkouhei
 .. categories:: Unix/Linux, Debian, 
 .. tags::
+.. comments::
 
 

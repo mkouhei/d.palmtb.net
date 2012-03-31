@@ -91,5 +91,6 @@ Mini’s webOS Localizerを利用。 [#]_
 .. author:: mkouhei
 .. categories:: gadget, Unix/Linux, 
 .. tags::
+.. comments::
 
 

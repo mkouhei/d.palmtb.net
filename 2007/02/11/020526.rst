@@ -39,5 +39,6 @@ Berylで画面グリグリするには、１キーでのマッピングが必要
 .. author:: mkouhei
 .. categories:: Debian, MacBook, computer, 
 .. tags::
+.. comments::
 
 

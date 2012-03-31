@@ -11,5 +11,6 @@
 .. author:: mkouhei
 .. categories:: gadget, 生活, 
 .. tags::
+.. comments::
 
 

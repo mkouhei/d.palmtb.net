@@ -55,5 +55,6 @@ JINS PCではなくJINS Moistureにした理由。
 .. author:: mkouhei
 .. categories:: 生活, 
 .. tags::
+.. comments::
 
 

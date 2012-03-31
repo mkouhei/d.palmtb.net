@@ -38,5 +38,6 @@ update-grub2は今までどおり。
 .. author:: mkouhei
 .. categories:: Unix/Linux, MacBook, Debian, 
 .. tags::
+.. comments::
 
 

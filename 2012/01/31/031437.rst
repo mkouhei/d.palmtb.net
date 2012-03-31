@@ -9,6 +9,7 @@ UTF-8だとE4B8BB、実体参照だとが、縦に点三つの記号に化ける
 .. author:: mkouhei
 .. categories:: Debian, Unix/Linux, 
 .. tags::
+.. comments::
 
 
 ----

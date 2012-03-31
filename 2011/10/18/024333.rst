@@ -26,5 +26,6 @@ pdns-guiは、PHP + Symfony + Ext.JSを使って作られています。Symfony�
 .. author:: mkouhei
 .. categories:: Dev, 
 .. tags::
+.. comments::
 
 

@@ -40,5 +40,6 @@ Awk は, あらゆるプログラミングの問題に対する解答という�
 .. author:: mkouhei
 .. categories:: Unix/Linux, Book, 
 .. tags::
+.. comments::
 
 

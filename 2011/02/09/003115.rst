@@ -26,5 +26,6 @@ CouchDBをDBとしてPhoneGapで作ったAndroidネイティブアプリのCouch
 .. author:: mkouhei
 .. categories:: CouchDB, gadget, 
 .. tags::
+.. comments::
 
 

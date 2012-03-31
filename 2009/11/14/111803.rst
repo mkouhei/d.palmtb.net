@@ -23,5 +23,6 @@ LaTeXで気づいたこと。
 .. author:: mkouhei
 .. categories:: Debian, TeX, 
 .. tags::
+.. comments::
 
 

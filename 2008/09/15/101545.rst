@@ -25,5 +25,6 @@ http://tinyurl.com/6c5o8a
 .. author:: mkouhei
 .. categories:: 駄文, 
 .. tags::
+.. comments::
 
 

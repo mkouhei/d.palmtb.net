@@ -117,5 +117,6 @@ treeコマンドを普通に使うと、
 .. author:: mkouhei
 .. categories:: TeX, Unix/Linux, 
 .. tags::
+.. comments::
 
 

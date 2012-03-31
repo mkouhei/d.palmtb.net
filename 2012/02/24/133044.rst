@@ -188,5 +188,6 @@ xz伸張の所要時間。
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

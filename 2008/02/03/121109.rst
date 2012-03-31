@@ -14,5 +14,6 @@ MacBook Air 1.6Ghz HDDと1.8Ghz SSDのベンチマーク比較
 .. author:: mkouhei
 .. categories:: MacBook, 
 .. tags::
+.. comments::
 
 

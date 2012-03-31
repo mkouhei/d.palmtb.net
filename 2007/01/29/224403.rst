@@ -36,5 +36,6 @@ kernel 2.6.19のChangeLogに該当の変更があった。
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

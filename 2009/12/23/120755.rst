@@ -41,5 +41,6 @@ Xfceの時はそんなことはできなかったので、こんなスクリプ�
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

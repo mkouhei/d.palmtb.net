@@ -29,5 +29,6 @@
 .. author:: mkouhei
 .. categories:: Git, computer, 
 .. tags::
+.. comments::
 
 

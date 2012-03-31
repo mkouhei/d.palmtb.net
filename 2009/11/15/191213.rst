@@ -29,5 +29,6 @@ Kinko&#39;sでの印刷を初経験してみて。
 .. author:: mkouhei
 .. categories:: Debian, meeting, 
 .. tags::
+.. comments::
 
 

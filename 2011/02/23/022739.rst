@@ -27,5 +27,6 @@ regards,
 .. author:: mkouhei
 .. categories:: Debian, gadget, 
 .. tags::
+.. comments::
 
 

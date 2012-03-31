@@ -10,5 +10,6 @@ http://www.redhat.com/about/news/prarchive/2008/qumranet.html
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

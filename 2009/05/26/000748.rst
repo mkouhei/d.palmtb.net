@@ -383,5 +383,6 @@ Webサーバ(Lighty)で公開する。
 .. author:: mkouhei
 .. categories:: Debian, Dev, 
 .. tags::
+.. comments::
 
 

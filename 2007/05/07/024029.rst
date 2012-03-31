@@ -10,5 +10,6 @@ EtchからSargeのファイルシステムをNFSでマウントしようとし�
 .. author:: mkouhei
 .. categories:: Debian, Ops, 
 .. tags::
+.. comments::
 
 

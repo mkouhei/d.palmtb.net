@@ -10,5 +10,6 @@ http://radar.oreilly.com/2008/12/oreilly-media-on-twitter.html
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

@@ -56,5 +56,6 @@ hikiを使う件は、fcgiwrapがうまく行かず、全コードをすべて�
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

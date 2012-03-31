@@ -10,5 +10,6 @@ http://hootsuite.com/
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

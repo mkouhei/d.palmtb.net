@@ -10,5 +10,6 @@ xrandrじゃできなかったので、ググってみたらありましたよ�
 .. author:: mkouhei
 .. categories:: MacBook, Debian, 
 .. tags::
+.. comments::
 
 

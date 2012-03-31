@@ -16,5 +16,6 @@ http://secure-os.yosihiro.com/public/seminar-2007-02-17.html
 .. author:: mkouhei
 .. categories:: security, 
 .. tags::
+.. comments::
 
 

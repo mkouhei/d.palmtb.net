@@ -128,5 +128,6 @@ LDAPの管理自体はコマンドラインで行えば良いのですが、LDAP
 .. author:: mkouhei
 .. categories:: Unix/Linux, Debian, 
 .. tags::
+.. comments::
 
 

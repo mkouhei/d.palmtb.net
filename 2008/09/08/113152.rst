@@ -77,5 +77,6 @@
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

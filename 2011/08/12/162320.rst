@@ -15,5 +15,6 @@ Skypeにログインしようとしたら、&#34;Another Skype instance may exis
 .. author:: mkouhei
 .. categories:: computer, Unix/Linux, 
 .. tags::
+.. comments::
 
 

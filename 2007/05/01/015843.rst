@@ -10,5 +10,6 @@ MacBookを買って、KVMを使うようになったので、はっきり言っ�
 .. author:: mkouhei
 .. categories:: Debian, Ops, 
 .. tags::
+.. comments::
 
 

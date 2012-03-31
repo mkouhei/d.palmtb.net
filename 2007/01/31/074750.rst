@@ -16,5 +16,6 @@
 .. author:: mkouhei
 .. categories:: computer, virt., 
 .. tags::
+.. comments::
 
 

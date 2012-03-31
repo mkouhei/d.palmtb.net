@@ -26,5 +26,6 @@ PCのハードウェアスペックがそれなりに無いと反応が若干悪
 .. author:: mkouhei
 .. categories:: 生活, Debian, 
 .. tags::
+.. comments::
 
 

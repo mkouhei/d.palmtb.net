@@ -42,5 +42,6 @@ Debianというか、Ubuntu 10.04 LTSでの話ですが、/etc/hostnameを変更
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

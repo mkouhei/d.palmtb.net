@@ -9,5 +9,6 @@ wpa_guiでWEPの設定すれば問題なく使えた。ブラウザでのBBモ�
 .. author:: mkouhei
 .. categories:: Debian, network, 
 .. tags::
+.. comments::
 
 

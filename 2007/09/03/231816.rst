@@ -10,5 +10,6 @@
 .. author:: mkouhei
 .. categories:: security, 仕事, 
 .. tags::
+.. comments::
 
 

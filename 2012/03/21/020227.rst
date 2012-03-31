@@ -22,5 +22,6 @@ toxが依存するargparseはPython2.7ではPython自体に組み込まれてい
 .. author:: mkouhei
 .. categories:: Debian, python, Dev, 
 .. tags::
+.. comments::
 
 

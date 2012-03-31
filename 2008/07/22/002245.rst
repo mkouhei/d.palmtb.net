@@ -26,5 +26,6 @@ http://wicd.sourceforge.net/
 .. author:: mkouhei
 .. categories:: Unix/Linux, Debian, MacBook, 
 .. tags::
+.. comments::
 
 

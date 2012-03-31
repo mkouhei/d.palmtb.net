@@ -20,5 +20,6 @@ MacBook Airと比べたらその大きさがよく分かる。
 .. author:: mkouhei
 .. categories:: 生活, 
 .. tags::
+.. comments::
 
 

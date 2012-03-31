@@ -135,5 +135,6 @@ git stashと組み合わせればOK。
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

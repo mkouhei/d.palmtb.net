@@ -101,5 +101,6 @@ Linuxコンテナ用。
 .. author:: mkouhei
 .. categories:: Unix/Linux, Ops, virt., 
 .. tags::
+.. comments::
 
 

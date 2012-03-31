@@ -10,5 +10,6 @@ http://www.enn.com/sci-tech/article/37929
 .. author:: mkouhei
 .. categories:: 駄文, 
 .. tags::
+.. comments::
 
 

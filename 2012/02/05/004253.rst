@@ -11,5 +11,6 @@ TonicDNSは、README.markdownに最低限のインストール方法について
 .. author:: mkouhei
 .. categories:: Dev, 
 .. tags::
+.. comments::
 
 

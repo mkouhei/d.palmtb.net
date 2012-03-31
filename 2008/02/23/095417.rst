@@ -10,5 +10,6 @@ Mac OS XとDebianの両方起動させるのをデモした後、営業と話を
 .. author:: mkouhei
 .. categories:: MacBook, 
 .. tags::
+.. comments::
 
 

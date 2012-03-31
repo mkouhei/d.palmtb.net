@@ -15,6 +15,7 @@ Uか、mopera Biz・ホーダイが表示されていたが、ユーザ、パス
 .. author:: mkouhei
 .. categories:: gadget, network, computer, 
 .. tags::
+.. comments::
 
 
 ----

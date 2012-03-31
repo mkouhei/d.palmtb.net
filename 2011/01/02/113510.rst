@@ -16,5 +16,6 @@ iOSをアップデートしたらやたら無線LANが切れるようになり�
 .. author:: mkouhei
 .. categories:: network, 
 .. tags::
+.. comments::
 
 

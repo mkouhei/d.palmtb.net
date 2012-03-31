@@ -22,5 +22,6 @@ amd64でインストールしてみた。不具合は以下のような感じ。
 .. author:: mkouhei
 .. categories:: Debian, computer, 
 .. tags::
+.. comments::
 
 

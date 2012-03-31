@@ -26,5 +26,6 @@ Etchでlighttpdでsuexecを行っていたが、Lennyにアップグレードし
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

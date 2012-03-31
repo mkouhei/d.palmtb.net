@@ -34,5 +34,6 @@ Lennyは&#39;DB5.0&#39;なのか？と思ってreportbugsを見たら#510884で�
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

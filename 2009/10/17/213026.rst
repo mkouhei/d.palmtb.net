@@ -53,5 +53,6 @@ MapReduceおもしろそうだなぁと今更思ったので、Hadoop Conference
 .. author:: mkouhei
 .. categories:: CouchDB, ねこ, 
 .. tags::
+.. comments::
 
 

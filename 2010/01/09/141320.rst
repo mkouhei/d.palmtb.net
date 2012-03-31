@@ -80,5 +80,6 @@ Scala自体の勉強は、Scalaスケーラブルプログラミングが中心�
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

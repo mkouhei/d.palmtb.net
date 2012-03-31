@@ -125,5 +125,6 @@ etc, home, var, mysqldumpをtarで固めてsshで転送しているのだが、�
 .. author:: mkouhei
 .. categories:: Unix/Linux, Debian, 
 .. tags::
+.. comments::
 
 

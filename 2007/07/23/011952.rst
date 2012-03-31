@@ -9,5 +9,6 @@ https://twitter.com/mkouhei
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

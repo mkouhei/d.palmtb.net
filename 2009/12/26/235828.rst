@@ -31,6 +31,7 @@
 .. author:: mkouhei
 .. categories:: CouchDB, meeting, 
 .. tags::
+.. comments::
 
 
 ----

@@ -9,5 +9,6 @@ kernel 2.6.28をビルドしたが、やっぱりinitrdを作るやりかたで�
 .. author:: mkouhei
 .. categories:: MacBook, Debian, 
 .. tags::
+.. comments::
 
 

@@ -22,5 +22,6 @@ id:z-ohnamiさんの発案で、今月の勉強会は酒Hackと称してウィ�
 .. author:: mkouhei
 .. categories:: meeting, 
 .. tags::
+.. comments::
 
 

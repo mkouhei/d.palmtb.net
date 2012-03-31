@@ -9,5 +9,6 @@
 .. author:: mkouhei
 .. categories:: CouchDB, computer, 
 .. tags::
+.. comments::
 
 

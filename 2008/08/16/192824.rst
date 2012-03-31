@@ -27,5 +27,6 @@ Sid on MacBook Airで、kernel 2.6.26.2の環境で、/proc/cpuinfoでvmxも表�
 .. author:: mkouhei
 .. categories:: Debian, MacBook, virt., computer, 
 .. tags::
+.. comments::
 
 

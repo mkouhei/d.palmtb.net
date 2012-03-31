@@ -43,5 +43,6 @@ SphinxとDoxygenはデモやるつもりで発表用資料はめっちゃ手抜�
 .. author:: mkouhei
 .. categories:: Debian, meeting, 
 .. tags::
+.. comments::
 
 

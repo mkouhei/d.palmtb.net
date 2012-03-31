@@ -14,5 +14,6 @@ CUPSで&#34;Epson PM 770C - CUPS+Gutenprint v5.2.5&#34;を選んで、試しに�
 .. author:: mkouhei
 .. categories:: Unix/Linux, Debian, MacBook, 
 .. tags::
+.. comments::
 
 

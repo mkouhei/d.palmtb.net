@@ -26,5 +26,6 @@ kernelの違いよりも、&#34;(SYSV)&#34;の方が関係ありそうな気が�
 .. author:: mkouhei
 .. categories:: 
 .. tags::
+.. comments::
 
 

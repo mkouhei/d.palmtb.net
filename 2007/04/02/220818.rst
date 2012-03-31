@@ -15,5 +15,6 @@
 .. author:: mkouhei
 .. categories:: Debian, computer, virt., 
 .. tags::
+.. comments::
 
 

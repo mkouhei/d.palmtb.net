@@ -12,5 +12,6 @@ LinuxWorldは行ってないけど。w　仮想化友の会、Debian勉強会の
 .. author:: mkouhei
 .. categories:: meeting, 
 .. tags::
+.. comments::
 
 

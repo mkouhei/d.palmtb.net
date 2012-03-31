@@ -76,5 +76,6 @@ NECのD02NEの動作確認をした。Windows xpでやったのだが、それ�
 .. author:: mkouhei
 .. categories:: network, 
 .. tags::
+.. comments::
 
 

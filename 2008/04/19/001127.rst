@@ -28,5 +28,6 @@ setxkbmapを実行していなかったからだった…。org
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

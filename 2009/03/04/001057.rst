@@ -141,5 +141,6 @@ viで開いてみるとさらに一目瞭然です。
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

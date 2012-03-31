@@ -61,5 +61,6 @@
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

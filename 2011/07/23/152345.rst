@@ -43,5 +43,6 @@ rEFIt + grub-efi + nvidia binaryか、rEFIt + grub-efi + 2.6.38以上でnouveau�
 .. author:: mkouhei
 .. categories:: Unix/Linux, MacBook, Unix/Linux, 
 .. tags::
+.. comments::
 
 

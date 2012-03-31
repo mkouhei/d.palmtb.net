@@ -9,5 +9,6 @@
 .. author:: mkouhei
 .. categories:: エラー, Unix/Linux, meeting, 
 .. tags::
+.. comments::
 
 

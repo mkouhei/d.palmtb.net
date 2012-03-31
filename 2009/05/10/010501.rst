@@ -73,6 +73,7 @@ port install hogeでパッケージをインストールしようとしたら、
 .. author:: mkouhei
 .. categories:: MacBook, 
 .. tags::
+.. comments::
 
 
 ----

@@ -15,5 +15,6 @@ QEMUを使っているようですな。Intel VT-xやAMD-Vにも対応だとか�
 .. author:: mkouhei
 .. categories:: computer, virt., 
 .. tags::
+.. comments::
 
 

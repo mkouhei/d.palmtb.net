@@ -72,5 +72,6 @@ Hardrock Cafeにて昼食。
 .. author:: mkouhei
 .. categories:: 
 .. tags::
+.. comments::
 
 

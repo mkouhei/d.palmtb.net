@@ -38,5 +38,6 @@
 .. author:: mkouhei
 .. categories:: MacBook, Unix/Linux, 
 .. tags::
+.. comments::
 
 

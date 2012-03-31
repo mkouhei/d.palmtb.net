@@ -9,5 +9,6 @@ teeの代わりに使えるとは知らんかった。
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

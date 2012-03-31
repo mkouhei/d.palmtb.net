@@ -65,5 +65,6 @@ PowerDNS自体のレプリケーションでの問題。
 .. author:: mkouhei
 .. categories:: Dev, 
 .. tags::
+.. comments::
 
 

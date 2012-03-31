@@ -13,5 +13,6 @@ MacBook + rEFIt + GRUBでブートできるようにならないかなぁ。
 .. author:: mkouhei
 .. categories:: Debian, MacBook, computer, virt., 
 .. tags::
+.. comments::
 
 

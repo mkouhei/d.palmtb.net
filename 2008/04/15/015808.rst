@@ -20,5 +20,6 @@ RailsをOBS266 128MBモデルで動かして、一日放っておいたが、Swa
 .. author:: mkouhei
 .. categories:: Unix/Linux, Ops, gadget, 
 .. tags::
+.. comments::
 
 

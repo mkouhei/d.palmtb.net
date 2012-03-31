@@ -61,5 +61,6 @@ CACertとGPGキーサインにはパスポートを用意しよう。
 .. author:: mkouhei
 .. categories:: Debian, security, meeting, 
 .. tags::
+.. comments::
 
 

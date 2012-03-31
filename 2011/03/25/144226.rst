@@ -69,5 +69,6 @@ Makefile
 .. author:: mkouhei
 .. categories:: Debian, computer, 
 .. tags::
+.. comments::
 
 

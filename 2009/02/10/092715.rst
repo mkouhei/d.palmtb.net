@@ -10,5 +10,6 @@ Readが発生している。仕方ないのでとりあえず外したが、な�
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

@@ -29,5 +29,6 @@
 .. author:: mkouhei
 .. categories:: 仮想化, 勉強会, 
 .. tags::
+.. comments::
 
 

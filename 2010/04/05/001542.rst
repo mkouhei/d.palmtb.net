@@ -16,6 +16,7 @@ http://tinyurl.com/yf83c3t
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 
 ----

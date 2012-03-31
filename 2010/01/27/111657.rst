@@ -52,5 +52,6 @@ http://lxc.git.sourceforge.net/git/gitweb.cgi?p=lxc/lxc;a=commitdiff;h=65cb447f9
 .. author:: mkouhei
 .. categories:: Debian, Dev, 
 .. tags::
+.. comments::
 
 

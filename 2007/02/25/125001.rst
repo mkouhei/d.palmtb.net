@@ -13,5 +13,6 @@ Macではてなダイアリーを更新していたら、
 .. author:: mkouhei
 .. categories:: エラー, MacBook, 
 .. tags::
+.. comments::
 
 

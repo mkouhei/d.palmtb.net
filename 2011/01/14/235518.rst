@@ -9,5 +9,6 @@ hbstudyとバッティングしていたのだが、会社の後輩が出ると�
 .. author:: mkouhei
 .. categories:: meeting, 
 .. tags::
+.. comments::
 
 

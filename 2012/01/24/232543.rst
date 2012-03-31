@@ -19,5 +19,6 @@ non freeなソフトウェアは辛いすな…。（モチベーション的な
 .. author:: mkouhei
 .. categories:: エラー, 
 .. tags::
+.. comments::
 
 

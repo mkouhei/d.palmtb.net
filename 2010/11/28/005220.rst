@@ -29,5 +29,6 @@ http://lost-founds.appspot.com/GAE Python &amp; JavaScriptで書いた。LTで�
 .. author:: mkouhei
 .. categories:: meeting, 
 .. tags::
+.. comments::
 
 

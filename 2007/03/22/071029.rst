@@ -9,5 +9,6 @@ e2fsckって便利なオプションがあるんだなぁ。本当にその効�
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

@@ -11,5 +11,6 @@ http://gihyo.jp/lifestyle/serial/01/chumby/0003?page=1
 .. author:: mkouhei
 .. categories:: gadget, 
 .. tags::
+.. comments::
 
 

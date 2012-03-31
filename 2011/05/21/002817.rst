@@ -117,6 +117,7 @@ make-html.batを実行すると、git checkout conf.pyで元に戻るように�
 .. author:: mkouhei
 .. categories:: Debian, Unix/Linux, computer, 
 .. tags::
+.. comments::
 
 
 ----

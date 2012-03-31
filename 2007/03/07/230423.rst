@@ -10,5 +10,6 @@ kernel 2.6.21-rc1では普通に使えていたのに、今日起動してみた
 .. author:: mkouhei
 .. categories:: Unix/Linux, MacBook, 
 .. tags::
+.. comments::
 
 

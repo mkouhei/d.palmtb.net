@@ -9,5 +9,6 @@ NokiaとLinuxの引継はほぼ完了。あとは、セキュリティアラー�
 .. author:: mkouhei
 .. categories:: 仕事, 
 .. tags::
+.. comments::
 
 

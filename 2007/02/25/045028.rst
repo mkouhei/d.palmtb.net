@@ -10,5 +10,6 @@ HHKB Pro2が安い。３台目購入しようかなぁ。やっぱこれに勝�
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

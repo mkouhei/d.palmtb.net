@@ -9,5 +9,6 @@ iwamatsuさんのおかげで、iSightが使えるようになった。ekigaで�
 .. author:: mkouhei
 .. categories:: MacBook, Debian, 
 .. tags::
+.. comments::
 
 

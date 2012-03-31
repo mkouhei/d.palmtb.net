@@ -9,5 +9,6 @@ Leopardを入れなおしてみたら、出荷状態よりも3GBほどディス�
 .. author:: mkouhei
 .. categories:: MacBook, 
 .. tags::
+.. comments::
 
 

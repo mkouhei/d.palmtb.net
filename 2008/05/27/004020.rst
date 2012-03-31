@@ -12,5 +12,6 @@ http://www.atmarkit.co.jp/flinux/rensai/mf01/mf01a.html
 .. author:: mkouhei
 .. categories:: Unix/Linux, virt., computer, 
 .. tags::
+.. comments::
 
 

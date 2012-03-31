@@ -21,5 +21,6 @@ http://sourceforge.net/tracker/?atid=893831group_id=180599func=browse二つめ�
 .. author:: mkouhei
 .. categories:: Unix/Linux, computer, virt., 
 .. tags::
+.. comments::
 
 

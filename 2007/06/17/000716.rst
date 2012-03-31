@@ -9,5 +9,6 @@ ERIKAとして出しているのに、提携しているスポンサーのサイ
 .. author:: mkouhei
 .. categories:: 駄文, エラー, 
 .. tags::
+.. comments::
 
 

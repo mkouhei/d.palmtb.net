@@ -171,5 +171,6 @@ gzipやbzip2のcオプションで標準出力に書き出して、実行して�
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

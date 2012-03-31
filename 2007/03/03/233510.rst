@@ -9,5 +9,6 @@
 .. author:: mkouhei
 .. categories:: computer, virt., Debian, 
 .. tags::
+.. comments::
 
 

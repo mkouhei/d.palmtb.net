@@ -16,5 +16,6 @@ http://www.warnermycal.com/cinema/tama/index.html
 .. author:: mkouhei
 .. categories:: 駄文, 
 .. tags::
+.. comments::
 
 

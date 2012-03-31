@@ -9,5 +9,6 @@ DomainやSystem Controllerの停止・起動なんぞやってみる機会に恵
 .. author:: mkouhei
 .. categories:: 仕事, Unix/Linux, 
 .. tags::
+.. comments::
 
 

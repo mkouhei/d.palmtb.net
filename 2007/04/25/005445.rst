@@ -9,5 +9,6 @@
 .. author:: mkouhei
 .. categories:: エラー, 仕事, 
 .. tags::
+.. comments::
 
 

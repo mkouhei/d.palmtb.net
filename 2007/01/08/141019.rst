@@ -11,5 +11,6 @@ ITIL資格が分裂の恐れ、エクシンとISEBは継続提供を強調
 .. author:: mkouhei
 .. categories:: 仕事, 
 .. tags::
+.. comments::
 
 

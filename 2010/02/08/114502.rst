@@ -84,5 +84,6 @@ lxc.rootfsの値が、&#34;./rootfs.test&#34;になっている。ただ、0.6.4
 .. author:: mkouhei
 .. categories:: Debian, Unix/Linux, virt., Ops, 
 .. tags::
+.. comments::
 
 

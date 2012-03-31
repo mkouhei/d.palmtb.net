@@ -10,5 +10,6 @@ PC選びで新宿ビックカメラに。予算内に収まりそうなのをい
 .. author:: mkouhei
 .. categories:: 生活, 
 .. tags::
+.. comments::
 
 

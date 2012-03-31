@@ -25,5 +25,6 @@ mandbの更新の時に、/var/cache/man/以下にindex cacheを作るのを失�
 .. author:: mkouhei
 .. categories:: 
 .. tags::
+.. comments::
 
 

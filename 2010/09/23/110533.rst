@@ -23,5 +23,6 @@
 .. author:: mkouhei
 .. categories:: エラー, 
 .. tags::
+.. comments::
 
 

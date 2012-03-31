@@ -63,5 +63,6 @@
 .. author:: mkouhei
 .. categories:: 生活, ねこ, 
 .. tags::
+.. comments::
 
 

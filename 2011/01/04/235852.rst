@@ -57,5 +57,6 @@
 .. author:: mkouhei
 .. categories:: gadget, CouchDB, 
 .. tags::
+.. comments::
 
 

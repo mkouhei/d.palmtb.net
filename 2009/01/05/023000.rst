@@ -19,5 +19,6 @@ MacBook Proで同じような問題があるみたいなので、この回避方
 .. author:: mkouhei
 .. categories:: MacBook, Debian, 
 .. tags::
+.. comments::
 
 

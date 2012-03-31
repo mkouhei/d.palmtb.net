@@ -25,6 +25,7 @@ CouchDB JPの方では、definitive guideの翻訳も再開しそうな感じな
 .. author:: mkouhei
 .. categories:: CouchDB, gadget, 
 .. tags::
+.. comments::
 
 
 ----

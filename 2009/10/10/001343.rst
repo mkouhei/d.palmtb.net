@@ -16,5 +16,6 @@ CEATECの方も一応行ってみた。16時半から会議だったので１時
 .. author:: mkouhei
 .. categories:: meeting, 
 .. tags::
+.. comments::
 
 

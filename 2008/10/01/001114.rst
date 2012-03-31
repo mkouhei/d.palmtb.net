@@ -35,5 +35,6 @@ MacBook Airでフルスキャンしてみたのだが、うーむ、単純な比
 .. author:: mkouhei
 .. categories:: Unix/Linux, security, 
 .. tags::
+.. comments::
 
 

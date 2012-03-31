@@ -17,5 +17,6 @@ https://github.com/Cysource/TonicDNS/pull/8#issuecomment-3825532仕事で使う�
 .. author:: mkouhei
 .. categories:: Dev, 
 .. tags::
+.. comments::
 
 

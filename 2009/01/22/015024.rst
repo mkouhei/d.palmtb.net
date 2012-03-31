@@ -22,5 +22,6 @@ Let&#39;s noteの方に、多量のPDFを転送したら、途中まではサク
 .. author:: mkouhei
 .. categories:: Unix/Linux, network, 
 .. tags::
+.. comments::
 
 

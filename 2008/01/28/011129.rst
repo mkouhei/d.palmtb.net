@@ -9,5 +9,6 @@ DVD欲しいなぁ。MEGUMIのサバサバ感がサイコー。
 .. author:: mkouhei
 .. categories:: 駄文, 
 .. tags::
+.. comments::
 
 

@@ -9,5 +9,6 @@ kernel 2.6.20にしたらこのドライバがロードされた。でも、ス�
 .. author:: mkouhei
 .. categories:: MacBook, 
 .. tags::
+.. comments::
 
 

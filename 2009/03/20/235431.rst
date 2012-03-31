@@ -20,5 +20,6 @@ Hack Cafeを開催した場所を、Google Mapで記録していくことにし�
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

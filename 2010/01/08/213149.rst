@@ -28,5 +28,6 @@ POP3などでメールを受信してメール本文のデータを処理させ�
 .. author:: mkouhei
 .. categories:: Unix/Linux, network, 
 .. tags::
+.. comments::
 
 

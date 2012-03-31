@@ -34,5 +34,6 @@ futonで、
 .. author:: mkouhei
 .. categories:: CouchDB, 
 .. tags::
+.. comments::
 
 

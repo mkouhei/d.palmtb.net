@@ -122,5 +122,6 @@ libjson-static-camlp4-devパッケージが提供されている。
 .. author:: mkouhei
 .. categories:: Debian, CouchDB, Dev, 
 .. tags::
+.. comments::
 
 

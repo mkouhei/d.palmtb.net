@@ -98,6 +98,7 @@ blockdiagが1.1になって、python2.7からサポートされているOrderedD
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 
 ----

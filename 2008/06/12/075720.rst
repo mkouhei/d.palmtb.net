@@ -27,5 +27,6 @@ ICT業界主導の活動だから、自分達に都合の悪いところは言�
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

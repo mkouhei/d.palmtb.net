@@ -49,5 +49,6 @@
 .. author:: mkouhei
 .. categories:: Debian, network, 
 .. tags::
+.. comments::
 
 

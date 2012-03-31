@@ -10,5 +10,6 @@ wireless gateの会員ページに久々にログインしてみたら、新し�
 .. author:: mkouhei
 .. categories:: network, 
 .. tags::
+.. comments::
 
 

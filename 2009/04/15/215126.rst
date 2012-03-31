@@ -10,5 +10,6 @@ mixingでの開催。ソファの座り心地は非常に良かった。が、�
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

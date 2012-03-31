@@ -207,5 +207,6 @@ motionをshutdownではなく、事前に停止させているのは、shutdown�
 .. author:: mkouhei
 .. categories:: Debian, computer, gadget, 
 .. tags::
+.. comments::
 
 

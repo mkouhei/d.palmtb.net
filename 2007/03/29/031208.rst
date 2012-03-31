@@ -16,5 +16,6 @@ Debian Etchでやる場合のメモ。記載しておいたがセキュリティ
 .. author:: mkouhei
 .. categories:: Debian, security, 
 .. tags::
+.. comments::
 
 

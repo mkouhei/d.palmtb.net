@@ -19,5 +19,6 @@
 .. author:: mkouhei
 .. categories:: 生活, 仕事, 
 .. tags::
+.. comments::
 
 

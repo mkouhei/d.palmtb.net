@@ -14,5 +14,6 @@ Impressに挿入している画像 [#]_ を右クリックで画像として保�
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

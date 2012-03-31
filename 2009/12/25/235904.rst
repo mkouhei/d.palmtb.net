@@ -64,5 +64,6 @@ kmutoさんがマドリッドでの朝食で食べたフォークとナイフが
 .. author:: mkouhei
 .. categories:: 生活, 
 .. tags::
+.. comments::
 
 

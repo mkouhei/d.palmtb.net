@@ -16,5 +16,6 @@
 .. author:: mkouhei
 .. categories:: computer, gadget, 
 .. tags::
+.. comments::
 
 

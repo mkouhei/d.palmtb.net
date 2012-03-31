@@ -10,5 +10,6 @@ http://kvm.qumranet.com/kvmwiki
 .. author:: mkouhei
 .. categories:: virt., computer, 
 .. tags::
+.. comments::
 
 

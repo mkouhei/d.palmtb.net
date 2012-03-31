@@ -20,5 +20,6 @@ hobbit-pluginsのapt.cfgとlibs.cfgは気になるなぁ。自分でやるなら
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

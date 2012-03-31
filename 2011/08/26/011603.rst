@@ -11,5 +11,6 @@ truemmで指定しているので、ミリ単位で正確にPDFを出力でき�
 .. author:: mkouhei
 .. categories:: TeX, 
 .. tags::
+.. comments::
 
 

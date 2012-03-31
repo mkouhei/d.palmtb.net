@@ -332,5 +332,6 @@ getRow()でviewで返される&#34;rows&#34;を取得できるので、これを
 .. author:: mkouhei
 .. categories:: CouchDB, Debian, Dev, 
 .. tags::
+.. comments::
 
 

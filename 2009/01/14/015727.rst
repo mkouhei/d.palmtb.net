@@ -76,5 +76,6 @@
 .. author:: mkouhei
 .. categories:: 
 .. tags::
+.. comments::
 
 

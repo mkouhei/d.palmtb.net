@@ -14,5 +14,6 @@ http://f.hatena.ne.jp/emkouhei/komame/
 .. author:: mkouhei
 .. categories:: ねこ, 
 .. tags::
+.. comments::
 
 

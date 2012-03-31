@@ -22,5 +22,6 @@
 .. author:: mkouhei
 .. categories:: MacBook, computer, 
 .. tags::
+.. comments::
 
 

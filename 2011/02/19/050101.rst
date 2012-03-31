@@ -18,5 +18,6 @@ blkidコマンドなんてあるのか。知らなかった。
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

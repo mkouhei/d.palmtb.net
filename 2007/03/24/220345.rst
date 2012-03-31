@@ -21,5 +21,6 @@ Webサーバのディスクイメージ解析後、Autopsyの画面で見るの�
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

@@ -76,5 +76,6 @@ resolverの設定は行っていないので、/etc/hostsにpackages.vyatta.com�
 .. author:: mkouhei
 .. categories:: Unix/Linux, network, Debian, 
 .. tags::
+.. comments::
 
 

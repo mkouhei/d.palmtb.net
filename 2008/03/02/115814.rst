@@ -9,5 +9,6 @@ akuwanoさんが昨日EeePCを持ってきていたので初めて見ること�
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

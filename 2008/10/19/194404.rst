@@ -13,5 +13,6 @@ JRの券売機で明日の切符を購入し帰路に着いた。なんだ、チ
 .. author:: mkouhei
 .. categories:: 生活, 
 .. tags::
+.. comments::
 
 

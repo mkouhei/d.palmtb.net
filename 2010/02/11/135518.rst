@@ -26,5 +26,6 @@ http://ryuusinndo.com/art/child_real.htm
 .. author:: mkouhei
 .. categories:: 駄文, 
 .. tags::
+.. comments::
 
 

@@ -45,6 +45,7 @@ backports.debian.orgの話やinitramfs、月刊PPC64ポーティングの話な�
 .. author:: mkouhei
 .. categories:: Debian, meeting, 
 .. tags::
+.. comments::
 
 
 ----

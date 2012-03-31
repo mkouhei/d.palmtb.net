@@ -27,5 +27,6 @@ Ubuntu 10.04のKickstartで、%post処理の中でsedを使う場合、
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

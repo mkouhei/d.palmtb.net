@@ -107,5 +107,6 @@ kvmコマンドを実行する場合は、kvmグループに所属していれ�
 .. author:: mkouhei
 .. categories:: Debian, virt., Ops, 
 .. tags::
+.. comments::
 
 

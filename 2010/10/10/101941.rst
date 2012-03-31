@@ -48,5 +48,6 @@ Qpstudy201010 LTView more presentations from Kouhei Maeda.
 .. author:: mkouhei
 .. categories:: meeting, 
 .. tags::
+.. comments::
 
 

@@ -9,5 +9,6 @@ qmailなんて使っている人が結構多いのね。
 .. author:: mkouhei
 .. categories:: 駄文, Debian, 
 .. tags::
+.. comments::
 
 

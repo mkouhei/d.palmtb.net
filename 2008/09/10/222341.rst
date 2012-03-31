@@ -51,5 +51,6 @@ hermitのインストール
 .. author:: mkouhei
 .. categories:: Debian, gadget, computer, 
 .. tags::
+.. comments::
 
 

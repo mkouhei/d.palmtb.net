@@ -17,5 +17,6 @@ DNS/NTPサーバは基本的に内容は変わらないので、Sargeからそ�
 .. author:: mkouhei
 .. categories:: Debian, Ops, 
 .. tags::
+.. comments::
 
 

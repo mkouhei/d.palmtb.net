@@ -702,5 +702,6 @@ masterブランチは古いので要注意。
 .. author:: mkouhei
 .. categories:: network, Debian, 
 .. tags::
+.. comments::
 
 

@@ -30,5 +30,6 @@ mizoさんは何故か来ず。
 .. author:: mkouhei
 .. categories:: Debian, meeting, 
 .. tags::
+.. comments::
 
 

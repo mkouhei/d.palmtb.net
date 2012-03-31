@@ -245,5 +245,6 @@ http://d.hatena.ne.jp/metalglue/20100409/1270798344
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

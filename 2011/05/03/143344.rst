@@ -86,5 +86,6 @@ jQuery Mobileでデータ入力画面を作り、データストアのデータ�
 .. author:: mkouhei
 .. categories:: 生活, 
 .. tags::
+.. comments::
 
 

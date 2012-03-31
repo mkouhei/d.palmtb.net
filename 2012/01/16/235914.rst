@@ -39,6 +39,7 @@ DNSサーバの負荷検証を行う場合、queryperfを使うと思います�
 .. author:: mkouhei
 .. categories:: network, Debian, 
 .. tags::
+.. comments::
 
 
 ----

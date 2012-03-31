@@ -31,5 +31,6 @@ Pre3はwebOS 2.2.0
 .. author:: mkouhei
 .. categories:: gadget, 
 .. tags::
+.. comments::
 
 

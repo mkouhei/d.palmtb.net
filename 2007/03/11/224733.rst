@@ -9,5 +9,6 @@ OSC終わったら、もう一台OBS266購入しよう！ Webサーバがメモ�
 .. author:: mkouhei
 .. categories:: computer, Unix/Linux, 
 .. tags::
+.. comments::
 
 

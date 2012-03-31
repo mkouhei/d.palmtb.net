@@ -45,5 +45,6 @@ XOrg 7.3のリリースノートを見て、xbacklightという、バックラ�
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

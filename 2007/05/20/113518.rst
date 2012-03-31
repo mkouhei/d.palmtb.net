@@ -15,5 +15,6 @@ Etchにしてはまったのって、まだあまりないのだけど、自宅�
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

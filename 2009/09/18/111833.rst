@@ -26,5 +26,6 @@ SmartQ5実物。
 .. author:: mkouhei
 .. categories:: meeting, Debian, 
 .. tags::
+.. comments::
 
 

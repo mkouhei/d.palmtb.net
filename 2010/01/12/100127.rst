@@ -64,5 +64,6 @@ http://packages.debian.org/changelogs/pool/main/l/lxc/lxc_0.6.4-1/changelog
 .. author:: mkouhei
 .. categories:: Debian, virt., Ops, 
 .. tags::
+.. comments::
 
 

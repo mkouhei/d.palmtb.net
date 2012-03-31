@@ -10,6 +10,7 @@ Android Market以外からのパッケージを頻繁にインストールした
 .. author:: mkouhei
 .. categories:: gadget, 
 .. tags::
+.. comments::
 
 
 ----

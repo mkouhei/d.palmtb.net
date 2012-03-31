@@ -9,5 +9,6 @@ Graffitiを再び使える日が来るとは。やっぱりGraffitiの入力方�
 .. author:: mkouhei
 .. categories:: gadget, 
 .. tags::
+.. comments::
 
 

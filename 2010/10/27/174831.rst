@@ -39,5 +39,6 @@ Githubにあるmaster [#]_ から持ってきているcouchappが、Sidだと動
 .. author:: mkouhei
 .. categories:: Debian, CouchDB, 
 .. tags::
+.. comments::
 
 

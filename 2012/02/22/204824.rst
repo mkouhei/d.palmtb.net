@@ -80,6 +80,7 @@ xz 圧縮後のサイズ比19.0%
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 
 ----

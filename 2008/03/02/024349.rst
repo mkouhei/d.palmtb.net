@@ -25,5 +25,6 @@ Sid on MacBook Airで、hibernate [#]_ を実行すると、サスペンドは�
 .. author:: mkouhei
 .. categories:: Debian, MacBook, 
 .. tags::
+.. comments::
 
 

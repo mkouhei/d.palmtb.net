@@ -232,5 +232,6 @@ osdep.c
 .. author:: mkouhei
 .. categories:: Unix/Linux, virt., computer, 
 .. tags::
+.. comments::
 
 

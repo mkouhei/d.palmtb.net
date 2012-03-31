@@ -32,5 +32,6 @@ http://www.nigauri.org/~iwamatsu/d/?date=20111206#p01
 .. author:: mkouhei
 .. categories:: Debian, エラー, 
 .. tags::
+.. comments::
 
 

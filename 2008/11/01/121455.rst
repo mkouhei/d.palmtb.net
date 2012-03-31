@@ -15,5 +15,6 @@ henrichさんとの約束どおり、mixiのメイン写真を変えてみまし
 .. author:: mkouhei
 .. categories:: 駄文, 
 .. tags::
+.. comments::
 
 

@@ -10,5 +10,6 @@ http://mkouhei.myminicity.com/
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

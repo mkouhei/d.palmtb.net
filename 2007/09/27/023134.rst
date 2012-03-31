@@ -10,5 +10,6 @@ id:z-ohnamiさんにMySQLの話をして頂いた。showコマンドは便利で
 .. author:: mkouhei
 .. categories:: Unix/Linux, meeting, 
 .. tags::
+.. comments::
 
 

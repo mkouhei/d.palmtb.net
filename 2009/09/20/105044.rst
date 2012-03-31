@@ -56,5 +56,6 @@ http://www.flickr.com/search/?q=komame_20090919w=alls=int
 .. author:: mkouhei
 .. categories:: 
 .. tags::
+.. comments::
 
 

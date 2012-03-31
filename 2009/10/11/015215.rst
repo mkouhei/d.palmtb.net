@@ -58,5 +58,6 @@ acpi=offにしていた場合は、ハイバネートするところまでは良
 .. author:: mkouhei
 .. categories:: Unix/Linux, MacBook, 
 .. tags::
+.. comments::
 
 

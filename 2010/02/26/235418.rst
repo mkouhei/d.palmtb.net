@@ -88,5 +88,6 @@ Virtual Smartphone over IP システム
 .. author:: mkouhei
 .. categories:: meeting, 
 .. tags::
+.. comments::
 
 

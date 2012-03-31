@@ -606,5 +606,6 @@ test.localゾーンのレコードの削除を行うためには、次のよう�
 .. author:: mkouhei
 .. categories:: Dev, 
 .. tags::
+.. comments::
 
 

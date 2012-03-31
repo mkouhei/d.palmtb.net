@@ -15,5 +15,6 @@ KVMのゲストOSとしてのSLES9インストール失敗のリベンジとし�
 .. author:: mkouhei
 .. categories:: computer, virt., 
 .. tags::
+.. comments::
 
 

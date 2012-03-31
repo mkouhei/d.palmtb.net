@@ -134,5 +134,6 @@
 .. author:: mkouhei
 .. categories:: 生活, 
 .. tags::
+.. comments::
 
 

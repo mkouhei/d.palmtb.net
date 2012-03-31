@@ -85,5 +85,6 @@ start-lxc.shは
 .. author:: mkouhei
 .. categories:: Unix/Linux, Debian, Ops, virt., 
 .. tags::
+.. comments::
 
 

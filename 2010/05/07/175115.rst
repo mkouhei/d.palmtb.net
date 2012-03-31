@@ -74,5 +74,6 @@ git diffで確認。
 .. author:: mkouhei
 .. categories:: Debian, TeX, 
 .. tags::
+.. comments::
 
 

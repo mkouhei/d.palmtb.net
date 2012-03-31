@@ -38,5 +38,6 @@ Next bootのときにGRUB2のプロンプトが表示される前の、
 .. author:: mkouhei
 .. categories:: Debian, MacBook, 
 .. tags::
+.. comments::
 
 

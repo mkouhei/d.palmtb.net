@@ -18,5 +18,6 @@ GPL化の理由は明らかにされていないものの、かつて主要開�
 .. author:: mkouhei
 .. categories:: computer, virt., 
 .. tags::
+.. comments::
 
 

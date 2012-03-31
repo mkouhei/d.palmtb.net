@@ -10,5 +10,6 @@ The Linux Foundation Symposium #8に行って、昼飯を弁当にしたのだ�
 .. author:: mkouhei
 .. categories:: 生活, 
 .. tags::
+.. comments::
 
 

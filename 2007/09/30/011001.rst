@@ -21,5 +21,6 @@ MySQLで、Password Noでアクセスできないのは、-pオプションが�
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

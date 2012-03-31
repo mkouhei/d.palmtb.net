@@ -55,6 +55,7 @@ GDDJ-09でAndroid1.6では問題ないのでこの端末 [#]_ のAndroidMarket�
 .. author:: mkouhei
 .. categories:: gadget, 
 .. tags::
+.. comments::
 
 
 ----

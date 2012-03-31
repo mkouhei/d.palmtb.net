@@ -9,5 +9,6 @@ Linux起動済みの状態で、MacBook AirのSuperDriveをUSBで接続すると
 .. author:: mkouhei
 .. categories:: MacBook, Unix/Linux, 
 .. tags::
+.. comments::
 
 

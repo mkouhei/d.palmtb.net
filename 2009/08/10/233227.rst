@@ -18,5 +18,6 @@
 .. author:: mkouhei
 .. categories:: ねこ, 
 .. tags::
+.. comments::
 
 

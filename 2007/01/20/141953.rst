@@ -13,5 +13,6 @@ Software Designの12月号の懸賞で、また無線LANルータと無線LANカ
 .. author:: mkouhei
 .. categories:: network, 
 .. tags::
+.. comments::
 
 

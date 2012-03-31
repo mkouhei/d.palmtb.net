@@ -105,5 +105,6 @@ Chumby起動時に、USBメモリに入れたchroot環境のLennyからsshdを�
 .. author:: mkouhei
 .. categories:: gadget, Debian, computer, 
 .. tags::
+.. comments::
 
 

@@ -20,5 +20,6 @@ http://www-06.ibm.com/systems/jp/saiteki/event/kvm/index.html
 .. author:: mkouhei
 .. categories:: meeting, virt., 
 .. tags::
+.. comments::
 
 

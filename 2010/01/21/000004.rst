@@ -134,5 +134,6 @@ trac-gitはまだ設定してないが、リバースプロキシに関しては
 .. author:: mkouhei
 .. categories:: Unix/Linux, Debian, CouchDB, Ops, 
 .. tags::
+.. comments::
 
 

@@ -91,5 +91,6 @@ Sidでアップデートしたら大変な事に…。
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

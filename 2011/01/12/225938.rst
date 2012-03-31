@@ -10,6 +10,7 @@ MacBook Air 11インチ欲しい！
 .. author:: mkouhei
 .. categories:: MacBook, 
 .. tags::
+.. comments::
 
 
 ----

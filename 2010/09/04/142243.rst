@@ -129,5 +129,6 @@ palm preでのアクティベーション
 .. author:: mkouhei
 .. categories:: gadget, Debian, 
 .. tags::
+.. comments::
 
 

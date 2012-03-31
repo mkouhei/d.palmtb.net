@@ -9,5 +9,6 @@ LL魂の開始時間にギリギリ間に合うなぁと思ったのに、調布
 .. author:: mkouhei
 .. categories:: エラー, 生活, 
 .. tags::
+.. comments::
 
 

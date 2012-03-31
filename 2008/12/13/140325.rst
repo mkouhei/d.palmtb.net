@@ -114,5 +114,6 @@ SourceForge.JPとか、やたら広告が多くて重いんですな。最近は
 .. author:: mkouhei
 .. categories:: Debian, MacBook, 
 .. tags::
+.. comments::
 
 

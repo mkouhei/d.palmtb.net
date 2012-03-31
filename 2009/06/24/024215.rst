@@ -15,5 +15,6 @@ http://mixi.jp/view_community.pl?id=4311064
 .. author:: mkouhei
 .. categories:: CouchDB, 
 .. tags::
+.. comments::
 
 

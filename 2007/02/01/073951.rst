@@ -9,5 +9,6 @@ udevで管理しているので、/dev/kvm自体のオーナ、グループを�
 .. author:: mkouhei
 .. categories:: computer, virt., 
 .. tags::
+.. comments::
 
 

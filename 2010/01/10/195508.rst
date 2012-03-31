@@ -26,5 +26,6 @@ amazonの方が得
 .. author:: mkouhei
 .. categories:: 生活, 
 .. tags::
+.. comments::
 
 

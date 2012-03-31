@@ -9,5 +9,6 @@ Wii Fitが。予想以上にハード。
 .. author:: mkouhei
 .. categories:: 生活, 
 .. tags::
+.. comments::
 
 

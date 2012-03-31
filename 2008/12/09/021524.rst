@@ -19,5 +19,6 @@ http://dictionary.goo.ne.jp/search.php?MT=%B2%F1%BC%D2%B0%F7kind=jnmode=0kwassis
 .. author:: mkouhei
 .. categories:: 駄文, 
 .. tags::
+.. comments::
 
 

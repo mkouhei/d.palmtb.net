@@ -9,5 +9,6 @@ awstatsでログ解析を自宅鯖ではしているのだが、今日初めて�
 .. author:: mkouhei
 .. categories:: gadget, 
 .. tags::
+.. comments::
 
 

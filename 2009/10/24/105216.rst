@@ -62,6 +62,7 @@ CouchDB JPのplanetが表示されていないことに気づいて調べてみ�
 .. author:: mkouhei
 .. categories:: Debian, CouchDB, Ops, 
 .. tags::
+.. comments::
 
 
 ----

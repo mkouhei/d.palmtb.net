@@ -34,5 +34,6 @@ pystacheは、ヒゲテンプレートエンジンMustacheのPython版なので�
 .. author:: mkouhei
 .. categories:: Dev, python, 
 .. tags::
+.. comments::
 
 

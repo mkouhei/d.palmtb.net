@@ -45,5 +45,6 @@ Debian/Ubuntu JP Advent Calendar 2011がどうやら三日坊主にすらなら�
 .. author:: mkouhei
 .. categories:: Debian, python, 
 .. tags::
+.. comments::
 
 

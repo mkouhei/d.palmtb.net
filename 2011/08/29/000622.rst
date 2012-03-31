@@ -60,5 +60,6 @@ changelogを確認すると、feedが更新され、preware経由でパッケー
 .. author:: mkouhei
 .. categories:: Debian, Unix/Linux, gadget, 
 .. tags::
+.. comments::
 
 

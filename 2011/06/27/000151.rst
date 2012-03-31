@@ -92,5 +92,6 @@ http://wiki.apache.org/couchdb/How_to_enable_SSL
 .. author:: mkouhei
 .. categories:: Debian, CouchDB, 
 .. tags::
+.. comments::
 
 

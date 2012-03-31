@@ -24,5 +24,6 @@ LUMIXのマイクロ一眼カメラ、マイクロフォーサーズのファー
 .. author:: mkouhei
 .. categories:: Unix/Linux, gadget, 
 .. tags::
+.. comments::
 
 

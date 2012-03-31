@@ -44,5 +44,6 @@ PACファイルは、localhost(127.0.0.1)や、イントラネット内で利用
 .. author:: mkouhei
 .. categories:: Debian, Unix/Linux, 
 .. tags::
+.. comments::
 
 

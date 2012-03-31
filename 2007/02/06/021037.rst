@@ -14,5 +14,6 @@ sonodamさんのブログを見て、KVMではどうか調べてみた。予想�
 .. author:: mkouhei
 .. categories:: computer, virt., 
 .. tags::
+.. comments::
 
 

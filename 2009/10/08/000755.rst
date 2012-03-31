@@ -16,5 +16,6 @@ Sid on MacBook 5,2でミキサーの設定がリストアされない。スト�
 .. author:: mkouhei
 .. categories:: Debian, MacBook, 
 .. tags::
+.. comments::
 
 

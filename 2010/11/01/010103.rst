@@ -36,5 +36,6 @@ dancerjに
 .. author:: mkouhei
 .. categories:: TeX, 
 .. tags::
+.. comments::
 
 

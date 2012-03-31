@@ -10,6 +10,7 @@ http://tinyurl.com/cl52d9
 .. author:: mkouhei
 .. categories:: gadget, 
 .. tags::
+.. comments::
 
 
 ----

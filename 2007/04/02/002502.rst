@@ -9,5 +9,6 @@
 .. author:: mkouhei
 .. categories:: 仕事, MacBook, 
 .. tags::
+.. comments::
 
 

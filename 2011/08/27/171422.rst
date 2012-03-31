@@ -93,5 +93,6 @@ x-terminal-emulatorにtermitを設定したので、awesomeではMeta + Enterで
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

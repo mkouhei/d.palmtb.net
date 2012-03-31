@@ -41,5 +41,6 @@ ja-transってどこかで見たなぁと思ったら、これでした。で、
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

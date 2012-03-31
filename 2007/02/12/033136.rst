@@ -9,5 +9,6 @@ vidcapプラグインは諦めて、時間もないのでIstanbulを使用する
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

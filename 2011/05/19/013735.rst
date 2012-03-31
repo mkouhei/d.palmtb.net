@@ -112,5 +112,6 @@ CONCURRENCY_LEVEL=2 MAKEFLAGS=&#34;CC=ccache\ gcc&#34;をつけて、defconfig�
 .. author:: mkouhei
 .. categories:: Debian, virt., Ops, 
 .. tags::
+.. comments::
 
 

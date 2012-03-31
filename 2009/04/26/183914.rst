@@ -44,5 +44,6 @@
 .. author:: mkouhei
 .. categories:: Book, 
 .. tags::
+.. comments::
 
 

@@ -27,5 +27,6 @@
 .. author:: mkouhei
 .. categories:: gadget, 
 .. tags::
+.. comments::
 
 

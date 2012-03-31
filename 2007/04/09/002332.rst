@@ -14,5 +14,6 @@ DNAを印字するサービスができたとか。WBSでやっていたのを�
 .. author:: mkouhei
 .. categories:: security, 駄文, 
 .. tags::
+.. comments::
 
 

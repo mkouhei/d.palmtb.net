@@ -122,5 +122,6 @@ musshでは対話形式のコマンドには対応していません。なので
 .. author:: mkouhei
 .. categories:: Unix/Linux, Debian, 
 .. tags::
+.. comments::
 
 

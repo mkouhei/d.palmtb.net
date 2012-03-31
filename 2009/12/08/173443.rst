@@ -21,5 +21,6 @@ tmuxを使って作業をしている途中で、セッションを残したま�
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

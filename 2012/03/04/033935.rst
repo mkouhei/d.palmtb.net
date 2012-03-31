@@ -154,5 +154,6 @@ debuild時のエラーももちろん解消されました。
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

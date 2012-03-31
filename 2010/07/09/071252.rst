@@ -20,5 +20,6 @@
 .. author:: mkouhei
 .. categories:: Book, virt., 
 .. tags::
+.. comments::
 
 

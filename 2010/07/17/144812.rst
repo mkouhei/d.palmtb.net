@@ -34,5 +34,6 @@ Boogie Board
 .. author:: mkouhei
 .. categories:: 生活, gadget, 
 .. tags::
+.. comments::
 
 

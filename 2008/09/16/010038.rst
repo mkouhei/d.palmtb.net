@@ -10,5 +10,6 @@ http://tokyodebian.alioth.debian.org/2008-09.html
 .. author:: mkouhei
 .. categories:: Debian, meeting, 
 .. tags::
+.. comments::
 
 

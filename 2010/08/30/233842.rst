@@ -41,5 +41,6 @@
 .. author:: mkouhei
 .. categories:: Debian, CouchDB, 
 .. tags::
+.. comments::
 
 

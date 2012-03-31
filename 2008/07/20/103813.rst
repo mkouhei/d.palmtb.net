@@ -32,5 +32,6 @@ TO: ohnamiさん
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

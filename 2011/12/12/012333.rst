@@ -76,5 +76,6 @@ VLANインタフェースの数が多いと設定に時間がかかりますが�
 .. author:: mkouhei
 .. categories:: Debian, network, 
 .. tags::
+.. comments::
 
 

@@ -66,5 +66,6 @@ Debian勉強会参加→常連化→勉強会運営→JP参加→選挙管理委
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

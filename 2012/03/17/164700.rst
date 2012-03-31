@@ -175,5 +175,6 @@ Sarge頃、OpenBlockS266で自宅で自分のドメイン用のメール鯖を�
 .. author:: mkouhei
 .. categories:: Debian, Unix/Linux, 
 .. tags::
+.. comments::
 
 

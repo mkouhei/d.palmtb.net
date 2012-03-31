@@ -10,5 +10,6 @@ wireless gateのサポートに昨夜問い合わせたのに対し、今朝8:02
 .. author:: mkouhei
 .. categories:: network, gadget, 
 .. tags::
+.. comments::
 
 

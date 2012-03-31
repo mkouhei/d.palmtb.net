@@ -123,6 +123,7 @@
 .. author:: mkouhei
 .. categories:: Debian, CouchDB, meeting, virt., 
 .. tags::
+.. comments::
 
 
 ----

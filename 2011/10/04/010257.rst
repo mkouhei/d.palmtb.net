@@ -16,5 +16,6 @@ https://market.android.com/details?id=jp.co.omron.healthcare.wl.android.basic今
 .. author:: mkouhei
 .. categories:: 生活, gadget, 
 .. tags::
+.. comments::
 
 

@@ -73,5 +73,6 @@ ACPIを有効にするとブラックアウトしてしまい起動しなかっ�
 .. author:: mkouhei
 .. categories:: MacBook, Unix/Linux, 
 .. tags::
+.. comments::
 
 

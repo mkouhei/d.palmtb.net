@@ -15,5 +15,6 @@ ITProの記事でSLES10でのXen体験記が掲載されているが、これ32b
 .. author:: mkouhei
 .. categories:: computer, virt., 
 .. tags::
+.. comments::
 
 

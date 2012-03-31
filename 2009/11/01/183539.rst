@@ -72,5 +72,6 @@
 .. author:: mkouhei
 .. categories:: CouchDB, Debian, エラー, 
 .. tags::
+.. comments::
 
 

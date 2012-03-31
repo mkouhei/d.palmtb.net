@@ -15,5 +15,6 @@ IEだったら大丈夫だった。Flashがダメだったのは、Adobe AIRだ�
 .. author:: mkouhei
 .. categories:: エラー, 
 .. tags::
+.. comments::
 
 

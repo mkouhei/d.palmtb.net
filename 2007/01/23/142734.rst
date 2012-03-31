@@ -10,5 +10,6 @@ http://www.lpi.or.jp/pressrelease/20070122.shtml
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

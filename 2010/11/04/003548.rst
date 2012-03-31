@@ -153,5 +153,6 @@ PDF生成前の準備
 .. author:: mkouhei
 .. categories:: TeX, Debian, 
 .. tags::
+.. comments::
 
 

@@ -174,5 +174,6 @@ python2.7
 .. author:: mkouhei
 .. categories:: Debian, python, 
 .. tags::
+.. comments::
 
 

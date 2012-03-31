@@ -14,5 +14,6 @@ GmailのLabsにある、&#34;既読ラベルを非表示にする&#34;を有効�
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

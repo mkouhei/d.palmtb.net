@@ -16,5 +16,6 @@ PowerDNS 2.9.22でSOAレコードのMINIMUMのデフォルトは3600になって
 .. author:: mkouhei
 .. categories:: Unix/Linux, network, 
 .. tags::
+.. comments::
 
 

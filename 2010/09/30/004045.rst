@@ -18,5 +18,6 @@ coreを吐かせてバックトレースを表示させてみると、sysbench/d
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

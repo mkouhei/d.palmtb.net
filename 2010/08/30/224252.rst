@@ -151,5 +151,6 @@ RAMディスクへの書き込み
 .. author:: mkouhei
 .. categories:: Unix/Linux, Debian, gadget, Ops, 
 .. tags::
+.. comments::
 
 

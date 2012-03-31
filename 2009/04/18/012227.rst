@@ -10,6 +10,7 @@ http://www.focal.co.jp/product/poken/index.html
 .. author:: mkouhei
 .. categories:: gadget, 
 .. tags::
+.. comments::
 
 
 ----

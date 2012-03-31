@@ -33,5 +33,6 @@ MacBook AirのDebian化の現在までの状況としては、
 .. author:: mkouhei
 .. categories:: MacBook, Debian, 
 .. tags::
+.. comments::
 
 

@@ -10,5 +10,6 @@
 .. author:: mkouhei
 .. categories:: Debian, Ops, gadget, 
 .. tags::
+.. comments::
 
 

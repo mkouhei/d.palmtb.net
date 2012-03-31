@@ -9,5 +9,6 @@ Let&#39;s note R3で無線LANがipw2200を使って、どう頑張っても電�
 .. author:: mkouhei
 .. categories:: Unix/Linux, network, 
 .. tags::
+.. comments::
 
 

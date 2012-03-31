@@ -55,5 +55,6 @@ JSONにできましたよと。
 .. author:: mkouhei
 .. categories:: python, Dev, 
 .. tags::
+.. comments::
 
 

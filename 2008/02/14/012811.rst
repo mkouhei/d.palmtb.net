@@ -16,5 +16,6 @@ rEFItからのブートはうまく行かなかったのだが、MacBook Air起�
 .. author:: mkouhei
 .. categories:: MacBook, Debian, 
 .. tags::
+.. comments::
 
 

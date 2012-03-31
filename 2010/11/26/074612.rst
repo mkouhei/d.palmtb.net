@@ -50,5 +50,6 @@ https://twitter.com/#!/najeira/status/505204424318976
 .. author:: mkouhei
 .. categories:: Debian, python, Dev, 
 .. tags::
+.. comments::
 
 

@@ -10,5 +10,6 @@ http://www.novell.com/news/press/novell-announces-development-plans-for-suse-lin
 .. author:: mkouhei
 .. categories:: 仕事, Unix/Linux, 
 .. tags::
+.. comments::
 
 

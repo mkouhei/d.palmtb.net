@@ -92,5 +92,6 @@ lighttpdの設定ファイルの記法にも大分なれてきた。理解して
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

@@ -18,5 +18,6 @@ http://mixi.co.jp/press/press_070424.htmlのリンクを見たら、日本自然
 .. author:: mkouhei
 .. categories:: 駄文, 
 .. tags::
+.. comments::
 
 

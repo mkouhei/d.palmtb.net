@@ -12,5 +12,6 @@ cephはネットワークの帯域的に使いどころが難しそうだが、n
 .. author:: mkouhei
 .. categories:: Debian, meeting, 
 .. tags::
+.. comments::
 
 

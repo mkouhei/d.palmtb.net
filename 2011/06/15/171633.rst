@@ -85,5 +85,6 @@ NetCounterを使って３ヶ月計測してみたところ、Cellでの通信量
 .. author:: mkouhei
 .. categories:: network, 
 .. tags::
+.. comments::
 
 

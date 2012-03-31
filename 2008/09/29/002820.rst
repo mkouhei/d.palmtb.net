@@ -9,5 +9,6 @@ Xfce4のウィンドウのタイトルが日本語だと、豆腐になってる
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

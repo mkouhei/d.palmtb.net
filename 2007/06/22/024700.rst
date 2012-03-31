@@ -15,5 +15,6 @@ DHCPサーバを落とす時は、ちゃんと非監視にしていたのに、�
 .. author:: mkouhei
 .. categories:: Unix/Linux, Ops, gadget, 
 .. tags::
+.. comments::
 
 

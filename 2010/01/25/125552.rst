@@ -10,5 +10,6 @@ DDTSSの翻訳作業ならお昼休みにできるなぁと先日気づいたの
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

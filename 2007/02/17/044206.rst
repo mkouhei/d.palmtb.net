@@ -28,5 +28,6 @@ http://opentechpress.jp/opensource/article.pl?sid=07/01/22/0129245
 .. author:: mkouhei
 .. categories:: Unix/Linux, virt., computer, 
 .. tags::
+.. comments::
 
 

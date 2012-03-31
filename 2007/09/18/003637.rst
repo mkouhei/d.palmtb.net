@@ -9,5 +9,6 @@
 .. author:: mkouhei
 .. categories:: computer, Unix/Linux, 
 .. tags::
+.. comments::
 
 

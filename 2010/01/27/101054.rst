@@ -54,5 +54,6 @@
 .. author:: mkouhei
 .. categories:: Debian, Dev, 
 .. tags::
+.. comments::
 
 

@@ -30,5 +30,6 @@ Rubyで無線LANルータの監視用スクリプトを書いていて気がつ�
 .. author:: mkouhei
 .. categories:: Ops, ruby, 
 .. tags::
+.. comments::
 
 

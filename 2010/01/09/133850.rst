@@ -14,5 +14,6 @@ Sid on Macbook 5,2で、無線LANのデバイスドライバはbroadcomのSTAド
 .. author:: mkouhei
 .. categories:: MacBook, Debian, network, 
 .. tags::
+.. comments::
 
 

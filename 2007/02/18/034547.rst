@@ -29,5 +29,6 @@ mm1パッチ当てておかしくなった原因を調べるためにカーネ�
 .. author:: mkouhei
 .. categories:: Unix/Linux, virt., computer, 
 .. tags::
+.. comments::
 
 

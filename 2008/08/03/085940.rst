@@ -9,5 +9,6 @@ z6アーキテクチャやz/Linuxの話が、ITアーキテクトの最新号(Vo
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

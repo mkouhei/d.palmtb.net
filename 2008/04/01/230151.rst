@@ -28,5 +28,6 @@ ls -Zを実行すると、こんな感じ。
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

@@ -9,6 +9,7 @@ git-buildpackageを使って作成したソースパッケージを、mentors.de
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 
 ----

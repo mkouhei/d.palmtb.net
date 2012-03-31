@@ -28,5 +28,6 @@
 .. author:: mkouhei
 .. categories:: 生活, Debian, MacBook, 
 .. tags::
+.. comments::
 
 

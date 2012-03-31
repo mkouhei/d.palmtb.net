@@ -12,6 +12,7 @@ orz サーバもリプレースというか、新規に構築しなおす予定�
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 
 ----

@@ -143,6 +143,7 @@
 .. author:: mkouhei
 .. categories:: Debian, virt., computer, 
 .. tags::
+.. comments::
 
 
 ----

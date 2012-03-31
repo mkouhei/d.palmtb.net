@@ -11,5 +11,6 @@ CouchDB on Androidでスタンドアローンアプリ。View more presentations
 .. author:: mkouhei
 .. categories:: CouchDB, meeting, 
 .. tags::
+.. comments::
 
 

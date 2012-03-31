@@ -9,5 +9,6 @@
 .. author:: mkouhei
 .. categories:: MacBook, Debian, Unix/Linux, 
 .. tags::
+.. comments::
 
 

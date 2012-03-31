@@ -20,5 +20,6 @@ Tripwire, logwatch, fwlogwatch, ファイアウォールのログ, smartctlの�
 .. author:: mkouhei
 .. categories:: 駄文, 
 .. tags::
+.. comments::
 
 

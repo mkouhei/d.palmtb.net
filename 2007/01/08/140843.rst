@@ -11,5 +11,6 @@ Xfce4でBerylを使う
 .. author:: mkouhei
 .. categories:: Debian, MacBook, 
 .. tags::
+.. comments::
 
 

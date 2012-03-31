@@ -10,5 +10,6 @@ blockdiagシリーズをDebianパッケージにする上でPython2.6系で依�
 .. author:: mkouhei
 .. categories:: Debian, python, 
 .. tags::
+.. comments::
 
 

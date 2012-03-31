@@ -14,5 +14,6 @@ kvm-develのMLを見ていたら、Javier SmaldoneさんがホストOSをDebian 
 .. author:: mkouhei
 .. categories:: Debian, virt., computer, 
 .. tags::
+.. comments::
 
 

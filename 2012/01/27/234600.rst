@@ -44,5 +44,6 @@ Chris氏！
 .. author:: mkouhei
 .. categories:: CouchDB, 
 .. tags::
+.. comments::
 
 

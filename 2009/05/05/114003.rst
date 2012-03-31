@@ -19,5 +19,6 @@ grub-installは毎回実行しないで良いのか。
 .. author:: mkouhei
 .. categories:: MacBook, Debian, 
 .. tags::
+.. comments::
 
 

@@ -93,6 +93,7 @@ Gitの初心者の立場 [#]_ から執筆に参加しない？と岩松さん�
 .. author:: mkouhei
 .. categories:: Book, Git, 
 .. tags::
+.. comments::
 
 
 ----

@@ -36,5 +36,6 @@ akuwanoさんの計測結果 [#]_ を見て、自分んちもやってみた。�
 .. author:: mkouhei
 .. categories:: computer, network, 
 .. tags::
+.. comments::
 
 

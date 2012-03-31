@@ -17,5 +17,6 @@ Berlyのプラグインで、vidcapというのがあるので、これで操作
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

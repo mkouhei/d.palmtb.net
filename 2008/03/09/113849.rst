@@ -23,5 +23,6 @@ update-rc.dの処理が削除されたから失敗しているんじゃねぇの
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

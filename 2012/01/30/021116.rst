@@ -20,5 +20,6 @@ ApacheでIndexesで表示させているディレクトリが沢山あってで�
 .. author:: mkouhei
 .. categories:: Unix/Linux, 
 .. tags::
+.. comments::
 
 

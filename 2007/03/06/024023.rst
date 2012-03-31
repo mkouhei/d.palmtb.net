@@ -12,5 +12,6 @@ http://journal.mycom.co.jp/news/2007/03/05/365.html
 .. author:: mkouhei
 .. categories:: computer, 
 .. tags::
+.. comments::
 
 

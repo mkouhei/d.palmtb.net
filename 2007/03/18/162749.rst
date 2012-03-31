@@ -17,5 +17,6 @@ OBSで使うHDDの購入方針としては、
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

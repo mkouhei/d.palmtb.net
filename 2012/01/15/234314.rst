@@ -66,5 +66,6 @@
 .. author:: mkouhei
 .. categories:: 生活, ねこ, 仕事, 
 .. tags::
+.. comments::
 
 

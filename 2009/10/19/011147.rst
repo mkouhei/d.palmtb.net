@@ -16,6 +16,7 @@ http://r25.jp/b/honshi/a/ranking_review_details/id/110000007787
 .. author:: mkouhei
 .. categories:: meeting, 
 .. tags::
+.. comments::
 
 
 ----

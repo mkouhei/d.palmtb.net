@@ -57,5 +57,6 @@ MacBook Airがx86版の時はちゃんと音が出ていたのに、64bitにし�
 .. author:: mkouhei
 .. categories:: MacBook, Debian, 
 .. tags::
+.. comments::
 
 

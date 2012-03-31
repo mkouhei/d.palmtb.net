@@ -200,6 +200,7 @@ git showに相当するのが、hg export。git format-patchに相当するの�
 .. author:: mkouhei
 .. categories:: Git, 
 .. tags::
+.. comments::
 
 
 ----

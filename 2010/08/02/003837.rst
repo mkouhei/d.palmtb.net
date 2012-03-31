@@ -59,5 +59,6 @@ CouchDB for Androidというタイトルでブログを書いたけれど、開�
 .. author:: mkouhei
 .. categories:: CouchDB, gadget, 
 .. tags::
+.. comments::
 
 

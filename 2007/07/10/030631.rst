@@ -57,5 +57,6 @@ make menuconfigで、64bitで検索したら、こんなん出た。ちょー臭
 .. author:: mkouhei
 .. categories:: Unix/Linux, computer, virt., 
 .. tags::
+.. comments::
 
 

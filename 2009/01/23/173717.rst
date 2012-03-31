@@ -59,5 +59,6 @@
 .. author:: mkouhei
 .. categories:: Unix/Linux, Ops, 
 .. tags::
+.. comments::
 
 

@@ -9,5 +9,6 @@ FONルータの方で使っていたので先送りにしていたのだが、�
 .. author:: mkouhei
 .. categories:: gadget, 
 .. tags::
+.. comments::
 
 

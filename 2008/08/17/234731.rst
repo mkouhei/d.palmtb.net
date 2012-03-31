@@ -41,5 +41,6 @@ Debian温泉写真集。
 .. author:: mkouhei
 .. categories:: Debian, meeting, 
 .. tags::
+.. comments::
 
 

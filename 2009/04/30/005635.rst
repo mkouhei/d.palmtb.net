@@ -17,5 +17,6 @@ id:shase-labさんによる*BSDのパッケージ管理の話は、よくまと�
 .. author:: mkouhei
 .. categories:: Unix/Linux, meeting, 
 .. tags::
+.. comments::
 
 

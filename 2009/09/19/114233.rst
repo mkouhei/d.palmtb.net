@@ -16,5 +16,6 @@ http://markets.nikkei.co.jp/kokunai/hotnews.aspx?id=AS1D180BA%2018092009
 .. author:: mkouhei
 .. categories:: 駄文, 
 .. tags::
+.. comments::
 
 

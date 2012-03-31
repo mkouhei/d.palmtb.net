@@ -20,5 +20,6 @@ http://tokyodebian.alioth.debian.org/hackcafe.html
 .. author:: mkouhei
 .. categories:: Debian, 
 .. tags::
+.. comments::
 
 

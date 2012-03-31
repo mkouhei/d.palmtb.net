@@ -24,5 +24,6 @@ Git本もぜひよろしくです。w
 .. author:: mkouhei
 .. categories:: Ops, Git, 
 .. tags::
+.. comments::
 
 

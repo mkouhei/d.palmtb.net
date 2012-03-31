@@ -15,5 +15,6 @@ Linuxの高いスキルを持った数少ない内の一人がとうとう今月
 .. author:: mkouhei
 .. categories:: 仕事, 
 .. tags::
+.. comments::
 
 

@@ -375,5 +375,6 @@ lxc-debianスクリプトはdebootstrapの--includeオプションで指定し�
 .. author:: mkouhei
 .. categories:: Debian, Unix/Linux, virt., Ops, 
 .. tags::
+.. comments::
 
 
