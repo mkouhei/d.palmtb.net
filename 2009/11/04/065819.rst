@@ -45,7 +45,7 @@
 
 
 .. author:: mkouhei
-.. categories:: ねこ, 生活, 
+.. categories:: cat, life, 
 .. tags::
 .. comments::
 

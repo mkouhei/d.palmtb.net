@@ -70,7 +70,7 @@
 
 
 .. author:: mkouhei
-.. categories:: CouchDB, Debian, エラー, 
+.. categories:: CouchDB, Debian, error, 
 .. tags::
 .. comments::
 

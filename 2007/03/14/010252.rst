@@ -7,7 +7,7 @@
 
 
 .. author:: mkouhei
-.. categories:: 駄文, 仕事, 生活, 
+.. categories:: scribbles, work, life, 
 .. tags::
 .. comments::
 

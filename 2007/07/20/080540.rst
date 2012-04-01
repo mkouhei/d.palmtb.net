@@ -8,7 +8,7 @@ Xen Conference Japan 2007は午後から行ってくる。Ian Pratt氏の基調�
 
 
 .. author:: mkouhei
-.. categories:: 生活, 
+.. categories:: life, 
 .. tags::
 .. comments::
 

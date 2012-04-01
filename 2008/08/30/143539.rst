@@ -9,7 +9,7 @@
 
 
 .. author:: mkouhei
-.. categories:: 生活, エラー, 
+.. categories:: life, error, 
 .. tags::
 .. comments::
 

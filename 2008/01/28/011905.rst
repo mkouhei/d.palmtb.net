@@ -11,7 +11,7 @@ http://toku-toku.at.webry.info/200801/article_10.html
 
 
 .. author:: mkouhei
-.. categories:: エラー, 
+.. categories:: error, 
 .. tags::
 .. comments::
 

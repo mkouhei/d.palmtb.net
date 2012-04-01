@@ -8,7 +8,7 @@
 
 
 .. author:: mkouhei
-.. categories:: 生活, network, 
+.. categories:: life, network, 
 .. tags::
 .. comments::
 

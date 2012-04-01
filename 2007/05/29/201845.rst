@@ -7,7 +7,7 @@ WX321Jの液晶保護シートを１００円ショップで購入。が、さ�
 
 
 .. author:: mkouhei
-.. categories:: エラー, 
+.. categories:: error, 
 .. tags::
 .. comments::
 

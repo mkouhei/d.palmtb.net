@@ -70,7 +70,7 @@ http://d.hatena.ne.jp/mkouhei/20110101
 
 
 .. author:: mkouhei
-.. categories:: Debian, 生活, 仕事, 
+.. categories:: Debian, life, work, 
 .. tags::
 .. comments::
 

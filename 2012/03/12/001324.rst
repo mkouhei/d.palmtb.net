@@ -101,7 +101,7 @@ gthumbなどで確認するとちゃんと見られますね。
 
 
 .. author:: mkouhei
-.. categories:: 生活, Unix/Linux, 
+.. categories:: life, Unix/Linux, 
 .. tags::
 .. comments::
 

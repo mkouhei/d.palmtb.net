@@ -12,7 +12,7 @@ DNAを印字するサービスができたとか。WBSでやっていたのを�
 
 
 .. author:: mkouhei
-.. categories:: security, 駄文, 
+.. categories:: security, scribbles, 
 .. tags::
 .. comments::
 

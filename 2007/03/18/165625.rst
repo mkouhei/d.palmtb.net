@@ -13,7 +13,7 @@
 
 
 .. author:: mkouhei
-.. categories:: 仕事, security, 
+.. categories:: work, security, 
 .. tags::
 .. comments::
 

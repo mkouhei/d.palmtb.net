@@ -31,7 +31,7 @@ ITSスカイパックの問合せ。昨日忘れてたら、またヨメにど�
 
 
 .. author:: mkouhei
-.. categories:: 生活, エラー, 
+.. categories:: life, error, 
 .. tags::
 .. comments::
 

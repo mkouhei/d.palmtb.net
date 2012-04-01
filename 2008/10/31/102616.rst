@@ -13,7 +13,7 @@ Twitterのパスワードリセットのメールの冒頭の文句は素敵で�
 
 
 .. author:: mkouhei
-.. categories:: 駄文, 
+.. categories:: scribbles, 
 .. tags::
 .. comments::
 

@@ -13,7 +13,7 @@ ohnamiさんのjQueryのネタは結構おもしろかった。
 
 
 .. author:: mkouhei
-.. categories:: 仕事, Unix/Linux, 
+.. categories:: work, Unix/Linux, 
 .. tags::
 .. comments::
 

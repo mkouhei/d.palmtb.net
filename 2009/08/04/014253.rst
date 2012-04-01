@@ -18,7 +18,7 @@
 
 
 .. author:: mkouhei
-.. categories:: ねこ, 
+.. categories:: cat, 
 .. tags::
 .. comments::
 

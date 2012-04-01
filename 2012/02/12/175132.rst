@@ -13,7 +13,7 @@
 
 
 .. author:: mkouhei
-.. categories:: 生活, security, 
+.. categories:: life, security, 
 .. tags::
 .. comments::
 

@@ -12,7 +12,7 @@ Googleマップで作りました。ハズレだったり、普通の店は載�
 
 
 .. author:: mkouhei
-.. categories:: 生活, 
+.. categories:: life, 
 .. tags::
 .. comments::
 

@@ -13,7 +13,7 @@ http://www3.mizkan.co.jp/sapari/menu/cook/search/index.asp
 
 
 .. author:: mkouhei
-.. categories:: 生活, 
+.. categories:: life, 
 .. tags::
 .. comments::
 

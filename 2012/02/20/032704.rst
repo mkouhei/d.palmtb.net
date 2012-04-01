@@ -7,7 +7,7 @@ VPNで接続して家からでも仕事できるのは良いのですが、な�
 
 
 .. author:: mkouhei
-.. categories:: 生活, 
+.. categories:: life, 
 .. tags::
 .. comments::
 

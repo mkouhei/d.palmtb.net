@@ -20,7 +20,7 @@ http://dic.yahoo.co.jp/dsearch?enc=UTF-8p=%E6%B2%BB%E7%99%82stype=1dtype=0
 
 
 .. author:: mkouhei
-.. categories:: 生活, 
+.. categories:: life, 
 .. tags::
 .. comments::
 

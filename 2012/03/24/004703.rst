@@ -43,7 +43,7 @@
    CONVERT BREAKS: 1
    ALLOW PINGS: 1
    DATE: 12/23/2006 03:24:28 AM
-   CATEGORY: 生活
+   CATEGORY: life
    -----
    BODY:
    

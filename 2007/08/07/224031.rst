@@ -10,7 +10,7 @@ http://www.yodobashi.com/enjoy/more/newstopics/73843024.html
 
 
 .. author:: mkouhei
-.. categories:: エラー, 
+.. categories:: error, 
 .. tags::
 .. comments::
 

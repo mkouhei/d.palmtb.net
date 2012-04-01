@@ -12,7 +12,7 @@ http://f.hatena.ne.jp/emkouhei/komame/
 
 
 .. author:: mkouhei
-.. categories:: ねこ, 
+.. categories:: cat, 
 .. tags::
 .. comments::
 

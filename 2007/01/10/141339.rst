@@ -16,7 +16,7 @@ I got Plutoed by my boss.
 
 
 .. author:: mkouhei
-.. categories:: computer, 駄文, 
+.. categories:: computer, scribbles, 
 .. tags::
 .. comments::
 

@@ -64,7 +64,7 @@
 
 
 .. author:: mkouhei
-.. categories:: 生活, ねこ, 仕事, 
+.. categories:: life, cat, work, 
 .. tags::
 .. comments::
 

@@ -7,7 +7,7 @@ XSSを実際に試してみる、ということで実習でやってみた。�
 
 
 .. author:: mkouhei
-.. categories:: security, 仕事, 
+.. categories:: security, work, 
 .. tags::
 .. comments::
 

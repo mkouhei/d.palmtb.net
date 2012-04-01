@@ -14,7 +14,7 @@
 
 
 .. author:: mkouhei
-.. categories:: 仕事, 生活, 
+.. categories:: work, life, 
 .. tags::
 .. comments::
 

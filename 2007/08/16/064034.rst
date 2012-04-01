@@ -41,7 +41,7 @@ fullcore falseになっとった。そりゃ吐かねぇよ。smittyで変更せ
 
 
 .. author:: mkouhei
-.. categories:: 仕事, Unix/Linux, 
+.. categories:: work, Unix/Linux, 
 .. tags::
 .. comments::
 

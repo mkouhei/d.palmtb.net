@@ -7,7 +7,7 @@ Green Power Campaign。グリーン電力を広めようという趣旨らしい
 
 
 .. author:: mkouhei
-.. categories:: 駄文, 
+.. categories:: scribbles, 
 .. tags::
 .. comments::
 

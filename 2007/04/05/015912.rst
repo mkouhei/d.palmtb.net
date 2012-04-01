@@ -7,7 +7,7 @@
 
 
 .. author:: mkouhei
-.. categories:: 駄文, Unix/Linux, 
+.. categories:: scribbles, Unix/Linux, 
 .. tags::
 .. comments::
 

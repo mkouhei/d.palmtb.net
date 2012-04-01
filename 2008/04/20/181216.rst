@@ -7,7 +7,7 @@
 
 
 .. author:: mkouhei
-.. categories:: computer, エラー, 
+.. categories:: computer, error, 
 .. tags::
 .. comments::
 

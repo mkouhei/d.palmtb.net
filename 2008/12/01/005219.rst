@@ -7,7 +7,7 @@
 
 
 .. author:: mkouhei
-.. categories:: 駄文, security, 
+.. categories:: scribbles, security, 
 .. tags::
 .. comments::
 

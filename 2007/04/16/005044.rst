@@ -7,7 +7,7 @@ IBMのAPARの変更点を調べる必要があって、IBMのサイトで検索�
 
 
 .. author:: mkouhei
-.. categories:: 仕事, 
+.. categories:: work, 
 .. tags::
 .. comments::
 

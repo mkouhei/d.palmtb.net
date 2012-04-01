@@ -13,7 +13,7 @@ http://www.tv-tokyo.co.jp/symbols/
 
 
 .. author:: mkouhei
-.. categories:: 駄文, 
+.. categories:: scribbles, 
 .. tags::
 .. comments::
 

@@ -8,7 +8,7 @@ PMなんてやりたくないよと、２年前まで技術一本でやってき
 
 
 .. author:: mkouhei
-.. categories:: 仕事, 生活, 
+.. categories:: work, life, 
 .. tags::
 .. comments::
 

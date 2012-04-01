@@ -8,7 +8,7 @@ z/Linuxの販促として、自社のWebサイトのサービス紹介ページ�
 
 
 .. author:: mkouhei
-.. categories:: 仕事, 
+.. categories:: work, 
 .. tags::
 .. comments::
 

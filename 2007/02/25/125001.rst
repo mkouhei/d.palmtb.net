@@ -11,7 +11,7 @@ Macではてなダイアリーを更新していたら、
 
 
 .. author:: mkouhei
-.. categories:: エラー, MacBook, 
+.. categories:: error, MacBook, 
 .. tags::
 .. comments::
 

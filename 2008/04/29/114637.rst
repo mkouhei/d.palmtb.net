@@ -11,7 +11,7 @@
 
 
 .. author:: mkouhei
-.. categories:: 駄文, エラー, 
+.. categories:: scribbles, error, 
 .. tags::
 .. comments::
 

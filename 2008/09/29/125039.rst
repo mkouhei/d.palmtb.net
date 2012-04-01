@@ -8,7 +8,7 @@ http://www.atmark-techno.com/news/press-releases/20080925_a500fx
 
 
 .. author:: mkouhei
-.. categories:: 組込, Linux, 
+.. categories:: gadget, Linux, 
 .. tags::
 .. comments::
 

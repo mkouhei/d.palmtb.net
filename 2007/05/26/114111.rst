@@ -20,7 +20,7 @@
 
 
 .. author:: mkouhei
-.. categories:: 駄文, 
+.. categories:: scribbles, 
 .. tags::
 .. comments::
 

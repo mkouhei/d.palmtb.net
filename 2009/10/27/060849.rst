@@ -13,7 +13,7 @@ IEだったら大丈夫だった。Flashがダメだったのは、Adobe AIRだ�
 
 
 .. author:: mkouhei
-.. categories:: エラー, 
+.. categories:: error, 
 .. tags::
 .. comments::
 

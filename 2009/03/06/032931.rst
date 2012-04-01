@@ -20,7 +20,7 @@ http://d.hatena.ne.jp/emkouhei/
 
 
 .. author:: mkouhei
-.. categories:: 生活, 
+.. categories:: life, 
 .. tags::
 .. comments::
 

@@ -8,7 +8,7 @@ http://www.jiji.com/jc/c?g=soc_30k=2008091400105
 
 
 .. author:: mkouhei
-.. categories:: 駄文, 
+.. categories:: scribbles, 
 .. tags::
 .. comments::
 

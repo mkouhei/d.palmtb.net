@@ -7,7 +7,7 @@ Webサイトに出てたヤツとは微妙に違っていて、古いモデル�
 
 
 .. author:: mkouhei
-.. categories:: 生活, 
+.. categories:: life, 
 .. tags::
 .. comments::
 

@@ -9,7 +9,7 @@ http://itpro.nikkeibp.co.jp/article/COLUMN/20061222/257652/
 
 
 .. author:: mkouhei
-.. categories:: 仕事, 
+.. categories:: work, 
 .. tags::
 .. comments::
 

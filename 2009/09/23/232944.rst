@@ -111,7 +111,7 @@ http://www.flickr.com/search/?q=zootamaw=41853584%40N06
 
 
 .. author:: mkouhei
-.. categories:: 生活, 
+.. categories:: life, 
 .. tags::
 .. comments::
 

@@ -9,7 +9,7 @@ http://www.lebihan.jp/lebihan_lebihan/item/item_7.html
 
 
 .. author:: mkouhei
-.. categories:: 生活, 
+.. categories:: life, 
 .. tags::
 .. comments::
 

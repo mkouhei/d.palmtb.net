@@ -13,7 +13,7 @@ Blogなんぞ使うつもりは今までまったく無かったのだが、以�
 
 
 .. author:: mkouhei
-.. categories:: 駄文, 
+.. categories:: scribbles, 
 .. tags::
 .. comments::
 
