@@ -11,4 +11,4 @@
 .. author:: default
 .. categories:: life
 .. tags:: omame
-.. comments::235959
+.. comments::
