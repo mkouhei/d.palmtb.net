@@ -9,6 +9,6 @@ GEEK DAY TOKYOに参加しました。
 
 
 .. author:: default
-.. categories:: Dev
+.. categories:: meeting
 .. tags:: tinkerer, sphinx
 .. comments::
