@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2012/04/04/070000
    2012/04/03/235959
    2012/04/01/235959
    pages/about
