@@ -1,0 +1,62 @@
+tinkererでblockdiagを使う。
+==============================================
+
+tinkererはSphinxを使っているので、blockdiagを組み込むのも簡単です。 `blockdiagの公式ドキュメント <http://blockdiag.com/ja/blockdiag/sphinxcontrib.html#sphinxcontrib-blockdiag>`_ にあるとおり、conf.pyのextensionsに ``shinxcontrib.blockdiag`` を追記し、blockdiag_fontpathでフォントパスを指定します。
+
+.. code-block:: diff
+
+   diff --git a/conf.py b/conf.py
+   index e1fab6c..9e5a79f 100644
+   --- a/conf.py
+   +++ b/conf.py
+   @@ -47,7 +47,7 @@ rss_service = None
+    # **************************************************************
+    
+    # Add other Sphinx extensions here
+   -extensions = ['tinkerer.ext.blog', 'tinkerer.ext.disqus']
+   +extensions = ['tinkerer.ext.blog', 'tinkerer.ext.disqus', 'sphinxcontrib.blockdiag']
+   
+    # Add other template paths here
+    templates_path = ['_templates']
+   @@ -66,6 +66,8 @@ html_sidebars = {
+        "**": ["recent.html", "searchbox.html"]
+    }
+    
+   +blockdiag_fontpath = '/usr/share/fonts/truetype/vlgothic/VL-PGothic-Regular.ttf'
+   +
+    # **************************************************************
+    # Do not modify below lines as the values are required by 
+    # Tinkerer to play nice with Sphinx
+
+
+あとは、tinkerコマンドでブログ用のreSTファイルを生成し、
+
+.. code-block:: sh
+
+   $ tinker -p 235959
+   New post created as '/home/user/blog/2012/04/03/235959.rst'
+
+
+blockdiagのコードを記述します。試しに公式ドキュメントにあるサンプルを記載してみました。
+
+.. blockdiag::
+   :desctable:
+
+   blockdiag {
+      A -> B -> C;
+      A [description = "browsers in each client"];
+      B [description = "web server"];
+      C [description = "database server"];
+   }
+
+最後にtinkerコマンドでビルドすれば完了です。
+
+.. code-block:: sh
+
+   $ tinker -b -q
+
+
+.. author:: default
+.. categories:: computer
+.. tags:: sphinx, blockdiag, tinkerer
+.. comments::

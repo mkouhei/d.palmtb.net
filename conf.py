@@ -47,7 +47,7 @@ rss_service = None
 # **************************************************************
 
 # Add other Sphinx extensions here
-extensions = ['tinkerer.ext.blog', 'tinkerer.ext.disqus']
+extensions = ['tinkerer.ext.blog', 'tinkerer.ext.disqus', 'sphinxcontrib.blockdiag']
 
 # Add other template paths here
 templates_path = ['_templates']
@@ -65,6 +65,8 @@ exclude_patterns = ["drafts/*"]
 html_sidebars = {
     "**": ["recent.html", "searchbox.html"]
 }
+
+blockdiag_fontpath = '/usr/share/fonts/truetype/vlgothic/VL-PGothic-Regular.ttf'
 
 # **************************************************************
 # Do not modify below lines as the values are required by 
