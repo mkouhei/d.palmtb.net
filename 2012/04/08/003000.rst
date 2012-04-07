@@ -1,0 +1,117 @@
+iPXEでサーバの機器情報を取得する。
+======================================================
+
+新しい機器をラックマウントする際には、納品時にメーカー、型番、シリアル番号を控え、ラック位置、棚位置とひもづける必要があると思います。この手の管理作業は台数が増えるほど手間が増えるので手作業ではやりたくないことの一つです。どの型番のどのスペックの機器にどのOSをインストールするか、という観点ではシリアル番号での識別が必要です。実際にPXEブートでOSをインストールするには、シリアル番号に紐づいたMACアドレスを指定してやる必要があります。MACアドレスを指定するためにMACアドレスを控えるにはBIOSの設定画面などからMACアドレスを確認し控えるというアナログなことをやるかもしれませんが、これは怠惰な我々にとっては面倒過ぎて死ねますね。
+
+PXEブートを使っている場合、iPXEを使うとこの面倒な作業をなくすことができます。PXEブートでインストールするには、通常はDHCPでIPアドレスを割り当て、TFTPサーバからブートイメージをダウンロードし、PreseedやKickstartなどでOSをインストールすると思います。DHCP/TFTPサーバとしてdnsmasqを使用していることを前提とすると、OSのインストール用のイメージをダウンロードさせるにはdnsmasqでMACアドレスが登録されていることを必要条件とします。一方、MACアドレスが未登録の場合にはiPXEを使うようにしてやれば、機器情報を取得することができます。
+
+iPXEスクリプトで取得できる情報。
+************************************
+
+ハードウェアの構成情報として、資産管理の観点も含めて必要な情報としては、シリアル番号、MACアドレス、メーカー、機器タイプでしょう。最低限シリアル番号とMACアドレスがあれば問題ないかもしれませんが、シリアル番号をキーにして別でメーカー、機器タイプを記述した管理表を作るのも面倒です。これらの情報を取得するには、次のようなiPXEスクリプトを用意します。
+
+.. code-block:: bash
+
+   #!ipxe
+   
+   dhcp
+   chain http://${next-server}:9393/inventory/${serial:uristring}/${mac}/${manufacturer:uristring}/${product:uristring}
+
+`chainで渡されたURL <http://ipxe.org/howto/chainloading>`_ の各パラメータは次の通りです。iPXEクライアントである各マシンの情報がこのパラメータに埋め込まれた形で、各マシンから${next-server}で指定されたWebサーバ(TFTPサーバ)にアクセスされます。
+
+* ${serial:urlstring}：シリアル番号(string), 21byte
+* ${mac}：MACアドレス(hex)
+* ${manufacturer:uristring}：メーカー(string), 33byte
+* ${product:uristring}：機器型番(string), 31byte
+
+string型のパラメータはそれぞれ固定長なので例えば次のようなコードでログに出力すると
+
+.. code-block:: ruby
+
+   f.puts "#{Time.now} SN: #{params[:sn]} MAC: #{params[:mac]} Manu: #{params[:manufacturer]} prod: #{params[:product]}"
+
+下記のように余計な空白が残ります。
+
+.. code-block:: none
+
+   Thu Apr 05 17:24:59 +0900 2012 SN: MA6S000000           MAC: 00:26:2d:01:01:01 Manu: FUJITSU-SV                       prod: PRIMERGY RX200 S6             
+ 
+不要な半角空白文字は次のようにトリミングしてやれば良いでしょう。
+
+.. code-block:: ruby
+
+   sn = params[:sn].gsub(/\s+$/, '')
+   mac = params[:mac].gsub(/\s+/, '')
+   manufacturer = params[:manufacturer].gsub(/\s+$/, '')
+   product = params[:product].gsub(/\s+$/, '')
+
+.. code-block:: none
+
+   Fri Apr 06 18:37:27 +0900 2012 SN: MA6S000000 MAC: 00:26:2d:01:01:01
+
+なお、iPXEスクリプトのその他の設定項目については `Upstreamのドキュメント <http://ipxe.org/cfg>`_ を参照ください。
+
+iPXEスクリプトに誘導する。
+********************************************
+
+iPXEスクリプトをロードさせるには、DHCPでIPアドレスを割り当て、TFTPサーバからiPXE用のブートイメージをダウンロードできるようにします。dnsmasqを使う場合、下記のように設定します。
+
+.. code-block:: none
+
+   enable-tftp
+   tftp-root=/var/lib/pxelerator/tftpboot
+   dhcp-boot=net:#known,undionly.kpxe
+   dhcp-match=gpxe,175   # gPXE sends a 175 option.
+   dhcp-boot=net:gpxe,http://${next-server}:9393/SNreg.ipxe
+
+各項目は次の通りです。
+
+* enable-tftp
+
+  * TFTP を有功にする
+
+* tftp-root
+
+  * TFTPのルートディレクトリのパスを指定する
+  * このディレクトリの下にiPXEで使うundionly.kpxeや普通のPXEブートでのメニューを表示させるmenu.c32やPXEでのブートローダのpxelinux.0を配置しておく
+
+* dhcp-boot=net:#known,undionly.kpxe
+
+  * knownタグが設定されていなければ、iPXE用のundionly.kpxeを渡す。 `バージョン2.53で、net:タグからtag:やset:タグを使うように、否定を意味する "#" も "!" を使うように変更されている <http://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=blob;f=CHANGELOG;h=5e78f5ece3cd0c171b1c4e23738d9cbb5b576ddc;hb=83e854e359c132fbeeed5aab59003d62efb3dbdb#l453>`_ 。 [#]_ 
+
+* dhcp-match=gpxe,175
+
+  * gpxe、つまるiPXEでブートすると175オプションを送付。175は `"encapsulate ipxe"の意 <http://ipxe.org/howto/dhcpd#ipxe-specific_options>`_ 
+
+* dhcp-boot=net:gpxe,http://${next-server}:9393/SNreg.ipxe
+
+  * gpxeタグが設定されていれば上記のiPXEスクリプト(SNreg.ipxe)をロード
+
+最新バージョンのdnsmasqでは下記のように設定するのが良いでしょう。 [#]_
+
+.. code-block:: none
+
+   enable-tftp
+   tftp-root=/var/lib/pxelerator/tftpboot
+   dhcp-boot=tag:!known,undionly.kpxe
+   dhcp-match=set:gpxe,175   # gPXE sends a 175 option.
+   dhcp-boot=tag:gpxe,http://${next-server}:9393/SNreg.ipxe
+
+iPXEスクリプトでchainで渡されたURLには、は何らかのWebアプリケーションサーバで処理すれば良いでしょう。自分たちの環境では `t9mdさん <https://twitter.com/t9md>`_ が開発した `pxelerator <https://github.com/t9md/pxelerator>`_ というリモートインストールツールの中でこれらの仕組みを使っており、パラメータの処理はRubyの軽量WebフレームワークSinatraで行っています。 [#]_ 
+
+最低限必要な作業。
+****************************
+
+シリアル番号、MACアドレス、メーカー、機器タイプは取得できるようになりました。ラック位置、棚位置は別の方法で取得する必要があります。これは、例えばラック位置や棚位置によって使用するスイッチ、スイッチポートをルールづけしておけば、スイッチで接続している対向機器のMACアドレスを収集すればMACアドレスをキーにして先ほどの情報と突合せできるでしょう。また、ラックマウントでの物理作業を除くと、最低限シリアル番号は控えておく必要があります。これらを取得できれば、rackdiagなどを使えばラック構成図の自動生成もできなくはないでしょう。
+
+しかしこれでもまだ機器毎に任意のOSをインストールすることはできません。そこでpxeleratorのような自動インストール管理ツールの出番です。pxeleratorではMACアドレスが分かればインストールする機器毎にPXEブートでTFTPで渡すbootmenuとKickStartファイルを動的に渡すことができます。MACアドレス毎にインストールの許可不許可を与えるためにMACアドレスとホスト名の対を記述しファイルをdhcp-hostsfileで指定しています。このファイルへのMACアドレスの自動登録の話を次回行う予定です。
+
+
+.. [#] 現在はUbuntu 10.04 LTSを使用しており、このdnsmasqのバージョンは2.52なのでちょうど古い設定方法なのですね。
+.. [#] 下位互換の関係で古い形式でも大丈夫です。
+.. [#] Githubで公開されているのはかなり初期のバージョンなので今とだいぶ違いますし、今回の話の機能はもちろんありません。
+
+.. author:: default
+.. categories:: Ops
+.. tags:: iPXE,dnsmasq,Ruby,Sinatra
+.. comments::
