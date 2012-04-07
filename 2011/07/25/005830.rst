@@ -141,7 +141,6 @@ authinfoで指定した、/etc/mail/authinfoは、
 Gmailにリレーするだけなのに、サーバ証明書とかクライアント証明書は不要ですね、ハイ。あと、LOCAL_DOMAINで指定したドメインが、/etc/aliasesで設定するローカルアカウントのエイリアスのメールアドレスのドメインと同じだと、リレーされませんね。
 
 
-.. rubric:: footnote
 
 .. [#] ：$ egrep -v .. [#] ^#|^dnl.. [#]  sendmail.mcの結果です。
 .. [#] ：authinfoのAuthInfo:smtp.gmail.comで、STARTTLS用のポートTCP/587を指定していませんが、RELAY_MAILER_ARGSで587を指定しているので不要です。

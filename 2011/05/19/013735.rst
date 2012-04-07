@@ -100,7 +100,6 @@ File capabilitiesのみがmissingになってます。/usr/bin/lxc-checkconfig�
 CONCURRENCY_LEVEL=2 MAKEFLAGS=&#34;CC=ccache\ gcc&#34;をつけて、defconfigでビルドしたら約15分くらいでした。かなり速いですね。
 
 
-.. rubric:: footnote
 
 .. [#] ：普段はOpenBlockS 266でメモリ64MBなので。
 .. [#] ：ちなみにWheezy/Sidは0.7.3

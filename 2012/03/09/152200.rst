@@ -67,7 +67,6 @@ Ganglia monitorの設定は、
 resolverの設定は行っていないので、/etc/hostsにpackages.vyatta.comのIPアドレスを追記しておきました。なお、この/etc/hostsの変更と、/etc/ganglia/gmond.confは、Vyattaのconfig(/config/config.boot)の管理外なので、etckeeperで管理しています。 [#]_ 
 
 
-.. rubric:: footnote
 
 .. [#] ：Squeezeベースなので、etckeeperもAPTで入れられるので便利ですね。
 

@@ -33,7 +33,6 @@ SphinxとDoxygenはデモやるつもりで発表用資料はめっちゃ手抜�
 
 
 
-.. rubric:: footnote
 
 .. [#] ：というか無理か
 .. [#] ：最初はslから。

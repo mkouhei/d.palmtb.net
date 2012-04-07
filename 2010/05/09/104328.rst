@@ -25,7 +25,6 @@
 と、Debianに含まれているCAファイルに変更したら、正常にTLS証明書の検証ができるようになった。ちなみに、ThawteのCAファイルも/etc/ssl/certs/thawte_Primary_Root_CA.pemとしてDebianパッケージで更新されるようになっていたようだ。 [#]_ 
 
 
-.. rubric:: footnote
 
 .. [#] ：パッケージ自体にCAファイルが含まれているわけでは無いようだ。
 

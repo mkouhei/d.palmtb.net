@@ -169,7 +169,6 @@ pystacheでは、CSVを読み込んだデータをLaTeX形式で標準出力す�
 https://github.com/mkouhei/GenNenga
 
 
-.. rubric:: footnote
 
 .. [#] ：というか今回も昨年の振り返りやらなかったな…。
 

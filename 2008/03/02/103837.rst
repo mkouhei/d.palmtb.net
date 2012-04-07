@@ -16,7 +16,6 @@ xevで、まずキーコードを調べる。英語キーなので、Debian Wiki
 
 
 
-.. rubric:: footnote
 
 .. [#] ：家計簿つけてるから。
 

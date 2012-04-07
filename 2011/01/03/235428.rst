@@ -322,7 +322,6 @@ getRow()でviewで返される&#34;rows&#34;を取得できるので、これを
 ということで、とりあえずヒゲテンプレートのmustacheを使うとかなり便利。このサンプルコードはこちら。
 
 
-.. rubric:: footnote
 
 .. [#] ：Debian GNU/Linux Squeeze/Sid
 .. [#] ：githubのmasterブランチの0.7.2のtagをチェックアウトしてdebパッケージをビルド。

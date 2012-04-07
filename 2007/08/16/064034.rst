@@ -34,7 +34,6 @@ fullcore falseになっとった。そりゃ吐かねぇよ。smittyで変更せ
 
 
 
-.. rubric:: footnote
 
 .. [#] ：といってもカーネルパラメータを変更するコマンドじゃないけど。
 

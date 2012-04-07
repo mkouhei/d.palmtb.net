@@ -23,7 +23,6 @@
 2.6.26まではmenuconfigがちゃんと機能していたのに [#]_ 、2.6.27にしてからmenuconfigをmake-kpkgの--configの引数に渡してもoldconfigとしてしか実行されなくなった。うーむ何でだ？
 
 
-.. rubric:: footnote
 
 .. [#] ：2.6.26.1～2.6.26.6はoldconfigでしか実行していなかったのでちゃんと機能するかは不明。
 

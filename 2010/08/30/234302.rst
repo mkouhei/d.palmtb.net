@@ -30,7 +30,6 @@ palm-novacomdを止める [#]_ とこのエラーも止まる。
 とりあえずメモ。
 
 
-.. rubric:: footnote
 
 .. [#] ：sudo stop palm-novacomd
 

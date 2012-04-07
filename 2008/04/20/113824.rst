@@ -212,7 +212,6 @@ FastCGIに対応させるため、下記の様なindex.fcgiを作って/var/www/
 ここが一番参考になりますた。
 
 
-.. rubric:: footnote
 
 .. [#] ：/usr/lib/ruby/1.8/直下にfcgiwrap.rbをおいてやればよい。
 

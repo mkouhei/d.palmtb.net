@@ -84,7 +84,6 @@ x-terminal-emulatorにtermitを設定したので、awesomeではMeta + Enterで
 仮想ターミナルだけ背景を変更できたりカッコいいですね！
 
 
-.. rubric:: footnote
 
 .. [#] ：2011年8月時点でのWheezy/Sid。
 

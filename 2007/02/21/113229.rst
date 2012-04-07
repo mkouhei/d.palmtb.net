@@ -6,7 +6,6 @@
 http://www.atmarkit.co.jp/fwin2k/itpropower/admin-kun/063/adminkun063.html
 
 
-.. rubric:: footnote
 
 .. [#] ：司会は当番制
 

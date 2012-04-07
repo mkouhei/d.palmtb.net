@@ -108,7 +108,6 @@ treeコマンドを普通に使うと、
 
 
 
-.. rubric:: footnote
 
 .. [#] ：Lucidでは1.5.3, Sidでは1.6.0です。
 

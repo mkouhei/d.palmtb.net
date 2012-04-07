@@ -80,7 +80,6 @@ Mini’s webOS Localizerを利用。 [#]_
 
 
 
-.. rubric:: footnote
 
 .. [#] ：/usr/lib/luna/customizationというディレクトリ自体が存在しないので。
 .. [#] ：fontconfig入っているのに実際には使ってないのだろうか？

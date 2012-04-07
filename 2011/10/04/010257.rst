@@ -7,7 +7,6 @@ https://market.android.com/details?id=jp.co.omron.healthcare.wl.android.basic今
 結局、予想通り自分で何とか対応させよう、というのはやるやる詐欺になってましたね…。
 
 
-.. rubric:: footnote
 
 .. [#] ：ちなみに上記リンク先の推奨機器にはもちろん記載されていませんが、NSでも問題なくアップロードできます。
 

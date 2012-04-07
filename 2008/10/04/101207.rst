@@ -8,7 +8,6 @@
 明日なのに行くのかと、方々から突っ込まれているが、まぁそれはなんとかなるだろう。
 
 
-.. rubric:: footnote
 
 .. [#] ：Armadillo-9、OpenBlockS、MacBook Airなど。こやつらは自分のだし。
 

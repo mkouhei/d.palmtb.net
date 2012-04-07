@@ -111,7 +111,6 @@ LDFLAGSで無くても良いんだけど、-Lでライブラリのパスを指�
 環境変数LD_LIBRARY_PATHは指定しないでもビルドはできるが、makeの最後にlinkを実行するので、設定していないと、Oracleのライブラリとリンクできなくてそこでコケる。また、sysbenchを実行するユーザにはLD_LIBRACY_PATHを設定してやっていないと、make install後にsysbench自体はパスが通っていても、実行時にリンクできないのでまたまたコケる。ほんでまた、Oracleのインストールパスは、oracleユーザのホームディレクトリにインストールしていたりすると、~oracle/app/oracle/product/11.2.0/client_1自体へのアクセス権がないことが多いので、やっぱり実行時にリンクできずにコケるので、注意するがヨロシ。
 
 
-.. rubric:: footnote
 
 .. [#] ：$ORACLE_HOMEはOracle使いには当たり前なんだろうけど、Oracleのインストールパス。ここでは、Oracle Clientなので、/opt以下にインストールしていたら、.. [#] /opt/app/oracle/product/11.2.0/client_1.. [#] になる。
 

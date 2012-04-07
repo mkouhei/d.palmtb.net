@@ -9,7 +9,6 @@
 
 
 
-.. rubric:: footnote
 
 .. [#] ：広告ページ除く
 

@@ -127,7 +127,6 @@
 ということでOK。
 
 
-.. rubric:: footnote
 
 .. [#] ：.. [#] に.. [#] Debian勉強会でUpstartネタやっていたのに忘れてました…。
 

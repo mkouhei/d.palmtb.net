@@ -114,7 +114,6 @@ objectClassでposixAccountを使用する主目的であるadminグループの�
 てな感じです。今回のユーザアカウントのLDIFではsnやgn、mailを使っていますが、これはWordPressのユーザ管理もSimple LDAP Authentication プラグインを使ってLDAPで行うためです。シェルスクリプトは、githubに置いておこうかと思ったのですが、そもそもExcelでユーザ情報を管理しているのがいかがなもんかと思うので、まぁ必要ないですよね [#]_ 。
 
 
-.. rubric:: footnote
 
 .. [#] ：CSVにしないのは、変換元のデータに、,(カンマ)含まれているからです。
 .. [#] ：function name()のこと。

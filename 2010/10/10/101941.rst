@@ -39,7 +39,6 @@ SlideShareにもアップしたので。
 Qpstudy201010 LTView more presentations from Kouhei Maeda.
 
 
-.. rubric:: footnote
 
 .. [#] ：slideshareでアップロードしたら、やっぱり日本語が表示されなかったのでgithubで。LaTeXでPDF生成しているんだけど、なんでかなぁ？
 

@@ -136,7 +136,6 @@ RAMディスクへの書き込み
 /usr/sbin/sshdだけならまぁ書き込めるのだが、sshdの起動に必要なlibpam.so, libcrypto.so, さらにsftp-serverなんかも入れると到底空き容量足りないのである。起動時に展開する方が無難。
 
 
-.. rubric:: footnote
 
 .. [#] ：
 .. [#] ：

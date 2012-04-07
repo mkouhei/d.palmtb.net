@@ -138,7 +138,6 @@ SSIDとPSKを設定する。
 
 
 
-.. rubric:: footnote
 
 .. [#] ：wpaguiは無くても良いけどな。
 .. [#] ：version 1:0.9.4~rc2-1

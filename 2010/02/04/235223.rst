@@ -110,7 +110,6 @@ etc, home, var, mysqldumpをtarで固めてsshで転送しているのだが、�
 あとはDVDに自動追記するスクリプトを書けば良いのだろうが、growisofsコマンドの-Mオプションで追記できているように一見見える [#]_ のだが、マウントして確認するとなぜか最初に書き込んだファイルしか見えないので、まぁそれを解決できたらかなり楽になるんだが。とはいえ、メディアは自分で交換する必要はあるんだが。
 
 
-.. rubric:: footnote
 
 .. [#] ：/usr/local/sbin/backup.sh
 .. [#] ：/usr/local/sbin/mysqldump.sh

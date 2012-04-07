@@ -6,7 +6,6 @@
 詳細はこちら。
 
 
-.. rubric:: footnote
 
 .. [#] ：Vistaじゃなくてxp Professional
 .. [#] ：SLES9を最初やっていたが、ファイルシステムのフォーマットで時間かかりすぎるので途中で諦めた

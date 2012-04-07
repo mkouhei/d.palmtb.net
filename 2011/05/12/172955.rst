@@ -79,7 +79,6 @@ libc6-dev_2.13-2_amd64.deb, locales_2.13-2_all.debの6つのファイルに対�
 
 
 
-.. rubric:: footnote
 
 .. [#] ：libc死んでるから
 

@@ -96,7 +96,6 @@ S2s websrv201011-presenView more presentations from Kouhei Maeda.
 
 
 
-.. rubric:: footnote
 
 .. [#] ：Githubでは既に公開済み
 

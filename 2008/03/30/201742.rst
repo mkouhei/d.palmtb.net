@@ -116,7 +116,6 @@ Apacheの設定を変更する。hikiconfを読み込めないようにするの
 これで、hiki.cgiでアクセスしても、hiki.fcgiへ書き換えられ、hiki.fcgiでラッパーしたhiki.cgiが呼ばれるように取り合えずはなりましたよ、と。ただ、fcgidが毎回communication errorを起こし、Internal Server Errorになり、リロードしなおさないとダメ、という状態で使い物にならないので、まだ改善の余地ありだな。
 
 
-.. rubric:: footnote
 
 .. [#] ：Rewrite関連の設定だけだと、.. [#] Options FollowSymLinks or SymLinksIfOwnerMatch is off which implies that RewriteRule directive is forbidden: /var/www/hoge/.. [#] というエラーが出るので。
 

@@ -88,7 +88,6 @@ blockdiagが1.1になって、python2.7からサポートされているOrderedD
 でretitleしました…。 [#]_ 
 
 
-.. rubric:: footnote
 
 .. [#] ：.. [#] 。小宮さん、ありがとうございます。
 .. [#] ：retitleするのも宛先間違えてたし…。ダメだ、ワシ…。

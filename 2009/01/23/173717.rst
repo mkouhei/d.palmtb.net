@@ -50,7 +50,6 @@
 
 
 
-.. rubric:: footnote
 
 .. [#] ：/usr/local/bin/revword.awk
 

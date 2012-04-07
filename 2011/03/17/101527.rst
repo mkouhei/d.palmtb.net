@@ -15,7 +15,6 @@ kernel 2.6.38をビルドしようとすると、.arch/x86/kernel/entry_64.oの�
 Xen絡みのパラメータを全て向こうにしたらビルドできた。
 
 
-.. rubric:: footnote
 
 .. [#] ：普段はKVMを使っている環境
 

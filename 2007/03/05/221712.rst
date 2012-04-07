@@ -12,7 +12,6 @@ kvmのMLに投稿された情報より。register dumpを吐いて死ぬ現象�
 http://sourceforge.net/tracker/?atid=893831group_id=180599func=browse二つめのNetBSDの件では、Avi Kivityさんが”-no-kvmつけて起動させてみたらどうだ？”と、言っているのだけど、Windowsではもうそれ試したんだよね [#]_ 。続けて、&#34;rip = 0xfff0&#34;のところでゲストがリブートしているようだと言っている。これはWindowsの場合も同じみたい。
 
 
-.. rubric:: footnote
 
 .. [#] ：延々ループする
 

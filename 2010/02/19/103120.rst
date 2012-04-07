@@ -9,7 +9,6 @@
 Google Appsのカレンダーに登録するためには、&#34;http://www.google.com/calendar/render&#34;の、&#34;calendar/render/&#34;の部分を、&#34;calendar/hosted/yourdomain/render/&#34;と書き換えてやればOK。&#34;yourdomain&#34;の部分に使っているドメインを当てます。&#34;hoge.com&#34;なら&#34;calendar/hosted/hoge.com/render/&#34;ですな。
 
 
-.. rubric:: footnote
 
 .. [#] ：Debian勉強会は明日明後日でDebian温泉があるのでOSCの後はパスしる。まぁぶっちゃけ合流でもよい気も。
 

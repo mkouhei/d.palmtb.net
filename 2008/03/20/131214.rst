@@ -92,7 +92,6 @@ local.cfにもこれを忘れていた。
 
 
 
-.. rubric:: footnote
 
 .. [#] ：X-SPAM-*ヘッダーがついていない。
 

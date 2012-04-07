@@ -8,7 +8,6 @@ Thanks for your contribution mkouhei! We were actually already planning to write
 https://github.com/Cysource/TonicDNS/pull/8#issuecomment-3825532仕事で使うのにドキュメントが必要でしたのでどうせならpull requestしておこうかなというくらいの軽い気持ちでしたが、すぐに反応がもらえるのはうれしいですね！ [#]_ 
 
 
-.. rubric:: footnote
 
 .. [#] ：開発止まっている別のは反応がまったくないので…。^^;
 

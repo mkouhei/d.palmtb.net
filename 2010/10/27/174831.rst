@@ -30,7 +30,6 @@ Githubにあるmaster [#]_ から持ってきているcouchappが、Sidだと動
 10/28のアップデートで、python-restkitが2.2.2になったので、問題解決したなり。うーむ、debian/control見直し必要ですな。
 
 
-.. rubric:: footnote
 
 .. [#] ：git:// github.com/couchapp/couchapp. git
 

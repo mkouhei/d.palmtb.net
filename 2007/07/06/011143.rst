@@ -223,7 +223,6 @@ osdep.c
 
 
 
-.. rubric:: footnote
 
 .. [#] ：4GBもメモリ積んでるPC無いからそんなん知らんかった。
 

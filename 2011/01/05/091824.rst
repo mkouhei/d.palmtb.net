@@ -59,7 +59,6 @@ LaTeXのソース全体ではlanguage={C}にしていて、一部をHTMLのコ�
 
 
 
-.. rubric:: footnote
 
 .. [#] ：jlistingを指定してもファイルがないというwarningが出る。
 

@@ -8,7 +8,6 @@ dancersectionなどのDebian勉強会独自定義に悩み、普通にLaTeXを�
 しかし、Debianの『デ』は出会い系の『で』とかいうと、事情を知らん人が見るとますますDebianを敬遠するんじゃ。www
 
 
-.. rubric:: footnote
 
 .. [#] ：OSCやカーネル読書会ではやってたけど。
 .. [#] ：Testingは全く使ってないですが、何か。

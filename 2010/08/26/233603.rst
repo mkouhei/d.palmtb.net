@@ -88,7 +88,6 @@ palm-sdkはアンインストールできない。
 64bit環境にSDKをインストールするには、Dev Guideにあるとおり、palm-sdkとpalm-novacomを--force-architectureオプションをつけてdpkgコマンドでインストールする [#]_ のだが、palm-sdkはapt-get remove, dpkg -eでもアンインストールできない、という問題にハマる。この問題はワシは未解決。
 
 
-.. rubric:: footnote
 
 .. [#] ：palm-novacomはamd64用だからこのオプション要らんと想うのだが。
 

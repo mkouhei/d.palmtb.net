@@ -9,7 +9,6 @@
 
 
 
-.. rubric:: footnote
 
 .. [#] ：2000円
 .. [#] ：連絡方法は、GMailか、Mixiのメッセージで。

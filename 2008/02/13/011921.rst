@@ -55,7 +55,6 @@ rEFItが起動後、EFI Shellを実行し、gptsyncを実行させる。実行�
 うーん、rEFItでDebianインストーラをDVD起動掛けようとしたら、同じ画面が出てきたので何となく無理なんじゃないかなぁとは予想はしていたのだが…。悔しいなぁ…。
 
 
-.. rubric:: footnote
 
 .. [#] ：liloパッケージを導入するのと、/etc/lilo.confを生成させるのが目的なので
 

@@ -53,7 +53,6 @@ PowerDNS自体のレプリケーションでの問題。
 これも、パッチを作ってissueに登録しておきました。
 
 
-.. rubric:: footnote
 
 .. [#] ：これはPowerDNSの用語ではネイティブモードと呼びます。
 .. [#] ：DebianやUbuntuでの例

@@ -83,7 +83,6 @@ server.crtやserver.key.pemはCouchDBのプロセスを実行するcouchdbユー
 http://wiki.apache.org/couchdb/How_to_enable_SSL
 
 
-.. rubric:: footnote
 
 .. [#] ：別に起動させりゃええんだけど。
 

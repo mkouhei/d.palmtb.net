@@ -7,7 +7,6 @@ Androidでも使うなら、オフラインでも使えるzumodriveのほうが�
 http://tinyurl.com/yf83c3t
 
 
-.. rubric:: footnote
 
 .. [#] ：フリーミアムでもねずみ講がある時代とは。
 

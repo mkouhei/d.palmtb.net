@@ -32,7 +32,6 @@
 
 
 
-.. rubric:: footnote
 
 .. [#] ：Palm Pilotのジェフ・ホーキンスのことを指している。
 

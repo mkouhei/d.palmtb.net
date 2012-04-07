@@ -365,7 +365,6 @@ lxc-debianスクリプトはdebootstrapの--includeオプションで指定し�
 せっかくなので、次回はlxc-sshdでの場合も調べてみることにしよう。
 
 
-.. rubric:: footnote
 
 .. [#] ：実体はlxcパッケージの/usr/share/doc/lxc/examples/lxc-debian.gz
 .. [#] ：/usr/share/doc/lxc/examples/lxc-sshd.gz

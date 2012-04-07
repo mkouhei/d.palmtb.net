@@ -10,7 +10,6 @@ http://www.broadcom.com/docs/linux_sta/README.txt
 で、一通りでき、MacBook Airではeth1として認識された。WEP及びWPAはどうやら使えるみたいなのだが、WPA2はアクセスポイントを認識しない。仕方ないのでまたしばらく2.6.26系で我慢するか…。
 
 
-.. rubric:: footnote
 
 .. [#] ：だから未だに2.6.26.6を使用している。
 

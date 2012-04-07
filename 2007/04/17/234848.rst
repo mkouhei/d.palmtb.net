@@ -6,7 +6,6 @@ Linux版、ではなくて、Windows版。職場で使っている作業用PCに
 ちなみに、以前Debian勉強会で教えてもらった、NTLM認証に最新のAPTが対応してる、という情報は、合っていた。Etchのインストーラーだと、NTLM認証と連携しているProxyサーバも無事越えることが出来た。めでたしめでたし。
 
 
-.. rubric:: footnote
 
 .. [#] ：stdioなんてデバイスは無い、と怒られた
 .. [#] ：当然、Cygtermで、PuttyやPoderosaからCygwinは使わないと、意味なし。

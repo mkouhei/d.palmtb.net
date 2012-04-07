@@ -5,7 +5,6 @@
 先日書いた [#]_ 、SLES10の非常に不安定なXenサーバ。Paravirtualizationで３つ動かしていたが、今日見に行ってもらったら問題なかった。今度は32bitでFull Virtualizationでクラッシュしないか確認してみるか。
 
 
-.. rubric:: footnote
 
 .. [#] ：
 

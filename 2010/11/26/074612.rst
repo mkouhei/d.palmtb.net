@@ -40,7 +40,6 @@ https://twitter.com/#!/najeira/status/505204424318976
 データストアに格納するのやめて、直接img要素で表示させることにした。こっちの方が簡単ですな。
 
 
-.. rubric:: footnote
 
 .. [#] ：なので、python-qrencodeのコードやqr_encode.soとか、libqrencode3パッケージのlibqrencode.so.3とか持っていってももちろん使えない。
 .. [#] ：Debian全く関係ない…。

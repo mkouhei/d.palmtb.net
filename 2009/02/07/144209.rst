@@ -5,7 +5,6 @@
 バレンタインデーにLennyがリリースということで、Release Partyの前に、OpenBlockS266で運用中の家サーバの一台をLennyにアップグレードしてみた [#]_ 。基本的に問題無し。Hobbit-clientの置き換えで、プロセスがうまく落ちなかったことだけか.
 
 
-.. rubric:: footnote
 
 .. [#] ：取り合えず、apt-line書き換えてapt-get {update,upgrade}のみ。
 

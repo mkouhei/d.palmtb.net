@@ -24,7 +24,6 @@ MacBook AirのDebian化の現在までの状況としては、
 しかし、周り散らかりすぎだな…。
 
 
-.. rubric:: footnote
 
 .. [#] ：b43-fwcutterもbcm43xx-fwcutterもupstreamは同じだしなぁ
 

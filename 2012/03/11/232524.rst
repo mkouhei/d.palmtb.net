@@ -41,7 +41,6 @@ blockdiag, actdiagは1.1.2および0.3.0をパッケージにしていますが�
 
 
 
-.. rubric:: footnote
 
 .. [#] ：今日じゃなくて数日前ですけどね。
 .. [#] ：sphinx-contrib.{seq,act,nw}diagは3/11現在はtesting入りしていません。

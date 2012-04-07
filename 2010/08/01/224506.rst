@@ -10,7 +10,6 @@
 
 
 
-.. rubric:: footnote
 
 .. [#] ：e-TRENDも今は売り切れの様子。
 

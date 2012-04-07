@@ -135,7 +135,6 @@ couch_uuids:random()は、src/couchdb/couch_uuids.erlの
 それにしてもすんげぇ脱線だ。（わら
 
 
-.. rubric:: footnote
 
 .. [#] ：パスを変更しているので実際のパスは/opt/couchdb/etc/couchdb/local.iniである。
 .. [#] ：ああ、そういや最初のCouchDBの勉強会の時に、Erlangから追っかけるCouchDBで見た気もする。

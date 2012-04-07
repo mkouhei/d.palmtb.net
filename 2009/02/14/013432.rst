@@ -106,7 +106,6 @@ qemuでインストーラを起動させる。
 
 
 
-.. rubric:: footnote
 
 .. [#] ：ホスト名がchumbyとなっているけど、chumbyじゃないので要注意。
 

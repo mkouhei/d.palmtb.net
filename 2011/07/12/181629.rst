@@ -350,7 +350,6 @@ with-couchdb/petviewer/shows/photo.js
 with-couchdb/petviewer/_attachments/js/pointer.js
 
 
-.. rubric:: footnote
 
 .. [#] ：ドキュメントどおりの正規表現の結果にならないという…。
 .. [#] ：Googleアカウントだけでなく、Google Appsのアカウントもあるのです。

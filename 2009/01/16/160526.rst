@@ -6,7 +6,6 @@
 http://www3.mizkan.co.jp/sapari/menu/cook/search/index.asp
 
 
-.. rubric:: footnote
 
 .. [#] ：ブログで書いておけば自分で見てくれるので。
 

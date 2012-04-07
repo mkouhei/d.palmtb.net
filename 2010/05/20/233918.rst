@@ -65,7 +65,6 @@ U300だとほぼ300kbpsに近いスピード出るらしいこと、Docomo網を
 
 
 
-.. rubric:: footnote
 
 .. [#] ：amazonだと9%オフなので
 

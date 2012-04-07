@@ -52,7 +52,6 @@ NSレコードも同じだった。
 ので、追加パッチを登録しておいた。
 
 
-.. rubric:: footnote
 
 .. [#] ：これはdata/fixtures/sample-data.ymlファイルで指定されており、template_recordテーブルに自動的にinsertされます。
 

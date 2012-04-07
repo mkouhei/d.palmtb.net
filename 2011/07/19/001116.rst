@@ -156,7 +156,6 @@ SSLの鍵と証明書の指定は、/etc/apache2/sites-available/default-sslのS
 
 
 
-.. rubric:: footnote
 
 .. [#] ：Squeeze, Apache 2.2.16, mod-encoding 20040616-5。
 .. [#] ：Satisfy anyの仕様を考えたらそりゃそうなんだけど。

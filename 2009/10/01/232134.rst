@@ -11,7 +11,6 @@ Debian Hack Cafe
 http://tokyodebian.alioth.debian.org/hackcafe.html
 
 
-.. rubric:: footnote
 
 .. [#] ：決めるのが誰か、という点ではちゃんと参加できる人が自分がやりたい場所でやる、というスキームは悪くないと思う。というか、むしろそれが良いと思う。
 

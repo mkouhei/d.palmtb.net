@@ -6,7 +6,6 @@ Berlyのプラグインで、vidcapというのがあるので、これで操作
 結局、Dailyビルドのパッケージをダウンロードしてきて、dpkgコマンドでインストールしてみたものの、予想通り、プラグインの機能は有効にならない。はぁ、なんだったんだか、この１日。そもそも、これって別に本来の目的では無いのに…。
 
 
-.. rubric:: footnote
 
 .. [#] ：myberlyというapt-lineにはあるのだけど、こっちは.. [#] か、.. [#] 、という代物
 .. [#] ：svn co svn://dbservice.com/big/svn/seom/trunk seom

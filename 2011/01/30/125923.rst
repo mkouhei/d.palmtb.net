@@ -18,7 +18,6 @@
 
 
 
-.. rubric:: footnote
 
 .. [#] ：実用SSH p.27参照。
 

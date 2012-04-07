@@ -10,7 +10,6 @@ http://www-06.ibm.com/systems/jp/saiteki/event/kvm/index.html
 ちなみに個人的には色々苦しめられたoVirtについては来週記事公開予定。今回のセミナーで紹介されていた技術資料とかデモとかを考慮するとちょっと間が悪い気がするのだが言ってくれるな。
 
 
-.. rubric:: footnote
 
 .. [#] ：Cooperative memory management
 .. [#] ：Linux on System zですら、ハードウェアアシストによる.. [#] を活用できるようになったのは割と最近だしなぁ。ソフトウェアでの.. [#] だと数年前から使えたようだが。

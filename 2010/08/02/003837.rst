@@ -48,7 +48,6 @@ CouchDBの起動
 CouchDB for Androidというタイトルでブログを書いたけれど、開発元のCouchioによると、正式名称はCouchDB on Androidでした。意味通じるからまぁいいか。
 
 
-.. rubric:: footnote
 
 .. [#] ：これは.. [#] 見ると分かる
 .. [#] ：途中milestoneの空きメモリ足りなくなって合計20MBほどのアプリ削除した。

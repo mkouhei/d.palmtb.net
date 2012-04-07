@@ -6,7 +6,6 @@ Skypeにログインしようとしたら、&#34;Another Skype instance may exis
 そういえば、最近、awesomeのコマンド実行からSkypeのプロセスを終了すると、しばらくマウスカーソルが砂時計になってwait状態になっているみたいなですが、前回のプロセス終了時に正常終了しないままVirtualBoxのセッション保存を行ってしまったのかなぁ…。
 
 
-.. rubric:: footnote
 
 .. [#] ：使用許諾に再度同意が必要ですが。
 

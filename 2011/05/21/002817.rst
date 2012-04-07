@@ -106,7 +106,6 @@ make-html.batを実行すると、git checkout conf.pyで元に戻るように�
 いやぁ、Windowsって本当にめんどいデスねwww。大事なことなので何回も（ry
 
 
-.. rubric:: footnote
 
 .. [#] ：自分では使いたくないですね。
 .. [#] ：コマンドラインだとやはりOpenSSH形式である必要がありますが。

@@ -5,7 +5,6 @@
 昨日購入した、Logicool QCAM-130E [#]_ 、i386のマシンで試してみたら、UVCで自動認識し、あっさり使えた。これならArmadillo-9かChumbyでの稼動確認も簡単にできそうだな。
 
 
-.. rubric:: footnote
 
 .. [#] ：製品名Qcam Communicate STX
 

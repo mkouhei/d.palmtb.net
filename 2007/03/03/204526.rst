@@ -8,7 +8,6 @@
 http://www.mail-archive.com/acpi-bugzilla@lists.sourceforge.net/msg05989.html
 
 
-.. rubric:: footnote
 
 .. [#] ：
 

@@ -13,7 +13,6 @@
 
 
 
-.. rubric:: footnote
 
 .. [#] ：くらは古酒。
 

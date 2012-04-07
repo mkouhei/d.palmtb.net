@@ -194,7 +194,6 @@ udhcpdは/binディレクトリ以下に配置し、アクセス権を変更す�
 これでhalt後に起動かければDHCPサーバとして動く。停止させる時は、&#34;kill -9&#34;で無理やり停止させないといけないのがイケてなくてアカンなぁ。この辺は改善余地アリだなぁ。
 
 
-.. rubric:: footnote
 
 .. [#] ：AtmarkTechno-Productsの選択時
 .. [#] ：atmark-dist-20060801/user/dhcpd/
