@@ -1,0 +1,73 @@
+tinkererの下書きをGitで管理する。
+======================================================
+
+まずは、tinkererで下書きを使う場合の手順のおさらいです。下書き用のreSTファイルを生成するには-dオプションを使います。
+
+.. code-block:: bash
+
+   $ tinker -d hoge
+   New draft created as '/home/user/myblog/drafts/host.rst'
+
+生成されたreSTファイルを編集します。完成したら日付のディレクトリを作り、そこに下書きのreSTファイルを移動させます。master.rstにエントリを登録してビルドしたら終わりです。
+
+.. code-block:: bash
+
+   $ mkdir -p 2012/04/10
+   $ mv draft/host.rst 2012/04/10/
+   $ vi master.rst
+   $ tinker -b -q
+
+簡単ですね。
+
+reSTをGitで管理する。
+**********************************
+
+tinkererをGitで管理する場合、pagesディレクトリ、ブログ用のYYYY/MM/DDディレクトリ以下の各reSTファイル、toctree用のmaster.rst、設定ファイルのconf.py、_staticディレクトリの下のファイルを対象にします [#]_ 。コミットしたらどこかのリモートリポジトリに置いておけば、どこからでもブログを書けるようになります。
+
+ところで、作成途中の下書きは別で管理したいですよね。公開済みのブログの原稿のreSTファイルは、ブログで公開しているのですから、別に公開したところで何も変わりませんが、下書きは公開したくない情報を入れているかもしれません。文章も公開用に推敲されていないかもしれません。下書きだけに。
+
+そこで、下書き用のdraftsブランチを作成します。対象はdraftsディレクトリ以下の下書き用のreSTファイルだけで大丈夫です [#]_ 。下書きが完成するまで、適当にコミットし、完成したら、先ほどの手順でYYYY/MM/DD形式の日付のディレクトリを作成し、reSTファイルを移動しコミットします。
+
+.. code-block:: bash
+
+   $ git branch
+   * drafts
+     master
+   $ git add drafts/hoge.rst
+   $ git commit -sm "Add draft of hoge"
+   $ git add drafts/hoge.rst
+   $ git commit -sm "Update draft of hoge"
+   $ git add drafts/hoge.rst
+   $ git commit -sm "Finish draft of hoge"
+   $ mkdir 2012/04/10
+   $ git mv drafts/hoge.rst 2012/04/10/hoge.rst
+   $ git commit -sm "Add entry hoge"
+
+これをmasterブランチに取り込みたいのですが、masterブランチにmergeしてしまうと、他のdraftsディレクトリで管理されている下書きも追加されてしまいます。困りました。そこでcherry-pickですよ。cherry-pickを使えば、先ほどのコミットだけを取り込むことができます。
+
+.. code-block:: bash
+
+   $ git checkout master
+   $ git log drafts
+   $ git cherry-pick 6890c74 270c118 4f2a0df 2acd8a3
+   [master 1c28f33] Add draft of hoge
+    0 files changed
+    create mode 100644 drafts/hoge.rst
+   [master 503e07a] Update draft of hoge
+    1 file changed, 428 insertions(+)
+   [master 84be7d7] Finish draft of hoge
+    1 file changed, 428 insertions(+)
+   [master 265ec60] Add entry hoge
+    1 file changed, 0 insertions(+), 0 deletions(-)
+   rename drafts/hoge.rst => 2012/04/10/hoge.rst (100%)
+
+
+コミットを取り込んだら、master.rstを編集し、先ほどのエントリを追加して、git commit --amendすれば、取り込んだ下書きと同じコミットとして管理することができます。あるいは、git cherry-pickで--no-commitオプションをつければ、indexに登録するだけなので、そっちの方が良いかもしれません。
+
+.. author:: default
+.. categories:: computer
+.. tags:: Git, tinkerer,
+.. comments::
+
+.. [#] _staticディレクトリに何もファイルが無ければ、.gitkeepを作って管理しておくと、ビルド時に余計なエラーが発生しません。
+.. [#] draftsディレクトリ以下のreSTファイルはビルドの対象にはならないので、下書き用のreSTファイルだけを管理すれば良いわけです。
