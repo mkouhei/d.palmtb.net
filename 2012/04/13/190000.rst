@@ -1,0 +1,25 @@
+λ式でdictionaryを返す。
+========================================
+
+Pythonのλ式って、こういう書き方もできるんですね。便利。
+
+.. code-block:: python
+
+   >>> hoge = lambda act: {"records": 1 } if act else {"name": "moge", "records": 2}
+   >>> hoge(1)
+   {'records': 1}
+   >>> hoge(0)
+   {'records': 2, 'name': 'moge'}
+   >>> hoge(True)
+   {'records': 1}
+   >>> hoge(False)
+   {'records': 2, 'name': 'moge'}
+   >>> import json
+   >>> json.JSONEncoder().encode(hoge(False))
+   '{"records": 2, "name": "moge"}'
+
+
+.. author:: default
+.. categories:: computer
+.. tags:: python, lambda
+.. comments::
