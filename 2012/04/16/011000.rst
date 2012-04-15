@@ -1,0 +1,162 @@
+blockdiag 1.1.3以降ビルド時のエラーの原因。
+============================================================================
+
+結構ハマったので、後々のためにメモっておきました。
+
+フォントの検出部分でのエラー。
+************************************************
+
+":doc:`/2012/03/11/232524`" で書いたとおり、blockdiag 1.1.3以降、SidでのDebianパッケージ作成時に下記のエラーが出ていました。エラーが出るようになったのは、以前はdebuild時にnosetestsを実行していなかったのを、実行するように変更のがきっかけですが、そのままにはできないので原因を調べてみました。
+
+.. code-block:: none
+   
+   ======================================================================
+   FAIL: test_auto_font_detection (blockdiag.tests.test_boot_params.TestBootParams)
+   ----------------------------------------------------------------------
+   Traceback (most recent call last):
+     File "/home/user/debpkg/blockdiag/blockdiag-1.1.4/src/blockdiag/tests/utils.py", line 14, in wrap
+       func(*args, **kwargs)
+     File "/home/user/debpkg/blockdiag/blockdiag-1.1.4/src/blockdiag/tests/test_boot_params.py", line 158, in test_auto_font_detection
+       self.assertTrue(fontpath)
+   AssertionError: None is not True
+       'None is not True' = self._formatMessage('None is not True', "%s is not True" % safe_repr(None))
+   >>  raise self.failureException('None is not True')
+       
+   
+   ----------------------------------------------------------------------
+   Ran 295 tests in 3.400s
+   
+   FAILED (failures=1)
+   make[1]: *** [override_dh_auto_test] エラー 1
+
+
+この原因は、src/blockdiag/utils/bootstrap.pyの下記の部分でした。
+
+.. code-block:: python
+   
+   def detectfont(options):
+       fonts = ['c:/windows/fonts/VL-Gothic-Regular.ttf',  # for Windows
+                'c:/windows/fonts/msgothic.ttf',  # for Windows
+                'c:/windows/fonts/msgoth04.ttc',  # for Windows
+                '/usr/share/fonts/truetype/ipafont/ipagp.ttf',  # for Debian
+                '/usr/local/share/font-ipa/ipagp.otf',  # for FreeBSD
+                '/Library/Fonts/Hiragino Sans GB W3.otf',  # for MacOS
+                '/System/Library/Fonts/AppleGothic.ttf']  # for MacOS
+
+テストでipafontのチェックが行われるようになったのですが、このパスのipagp.ttfはttf-ipafont-gothicパッケージに含まれています。Sidではfonts-ipafont-gothicに変わっており、パスも下記のように変わっています。
+
+.. code-block:: sh
+
+   $ apt-file search ipagp.ttf
+   fonts-ipafont-gothic: /usr/share/fonts/opentype/ipafont-gothic/ipagp.ttf
+
+
+おまけに私の環境ではそもそもIPAフォントはインストールしていないのでエラーになっていたワケです。インストールするフォントは人によって異なるので、インストールしてある何らかのTrueTypeフォントが検出されればOKになるようにパッチを作成しました。
+
+
+.. code-block:: diff
+
+   $ quilt diff 
+   Index: blockdiag-1.1.4/src/blockdiag/utils/bootstrap.py
+   ===================================================================
+   --- blockdiag-1.1.4.orig/src/blockdiag/utils/bootstrap.py       2012-02-13 18:59:29.0000000
+   +++ blockdiag-1.1.4/src/blockdiag/utils/bootstrap.py    2012-04-14 13:17:48.066795947 +0900
+   @@ -181,13 +181,21 @@
+    
+    
+    def detectfont(options):
+   -    fonts = ['c:/windows/fonts/VL-Gothic-Regular.ttf',  # for Windows
+   -             'c:/windows/fonts/msgothic.ttf',  # for Windows
+   -             'c:/windows/fonts/msgoth04.ttc',  # for Windows
+   -             '/usr/share/fonts/truetype/ipafont/ipagp.ttf',  # for Debian
+   -             '/usr/local/share/font-ipa/ipagp.otf',  # for FreeBSD
+   -             '/Library/Fonts/Hiragino Sans GB W3.otf',  # for MacOS
+   -             '/System/Library/Fonts/AppleGothic.ttf']  # for MacOS
+   +    fonts = [
+   +             # for Windows
+   +             'c:/windows/fonts/VL-Gothic-Regular.ttf',
+   +             'c:/windows/fonts/msgothic.ttf',
+   +             'c:/windows/fonts/msgoth04.ttc',
+   +             # for FreeBSD
+   +             '/usr/local/share/font-ipa/ipagp.otf',
+   +             # for MacOS
+   +             '/Library/Fonts/Hiragino Sans GB W3.otf',
+   +             '/System/Library/Fonts/AppleGothic.ttf']
+   +
+   +    # fot Debian
+   +    import glob
+   +    for f in glob.glob('/usr/share/fonts/truetype/*/*.ttf'):
+   +        fonts.append(f)
+    
+        fontpath = None
+        if options.font:
+
+コメントの位置を変更したのは、pep8のポリシーので、元の位置のままだとエラーになるためです。ttf-ipafont-gothicパッケージをインストールして、ttf-ipafont-gothicのパスに変更した場合に出たエラーですが、"for Debian"のコメント部分を含めると一行が長すぎるため、下記のようなエラーが発生します。
+
+
+.. code-block:: none
+
+   ======================================================================
+   FAIL: blockdiag.tests.test_pep8.test_pep8
+   ----------------------------------------------------------------------
+   Traceback (most recent call last):
+     File "/usr/lib/python2.7/dist-packages/nose/case.py", line 197, in runTest
+       self.test(*self.arg)
+     File "/home/user/debpkg/blockdiag/blockdiag-1.1.4/src/blockdiag/tests/test_pep8.py", line 38, in test_pep8
+       assert errors + warnings == 0, message
+   AssertionError: pep8: 1 errors / 0 warnings
+       0 = <module 'pep8' from '/usr/lib/pymodules/python2.7/pep8.pyc'>.get_count('W')
+       'pep8: 1 errors / 0 warnings' = 'pep8: %d errors / %d warnings' % (1, 0)
+       print 'pep8: 1 errors / 0 warnings'
+   >>  assert 1 + 0 == 0, 'pep8: 1 errors / 0 warnings'
+       
+   -------------------- >> begin captured stdout << ---------------------
+   /home/user/debpkg/blockdiag/blockdiag-1.1.4/src/blockdiag/utils/bootstrap.py:187:80: E501 line too long (80 characters)
+                '/usr/share/fonts/opentype/ipafont-gothic/ipagp.ttf',  # for Debian
+                                                                               ^
+   1       E501 line too long (80 characters)
+   pep8: 1 errors / 0 warnings
+   
+   --------------------- >> end captured stdout << ----------------------
+   
+   ----------------------------------------------------------------------
+   Ran 295 tests in 3.676s
+   
+   FAILED (failures=1)
+   make[1]: *** [override_dh_auto_test] エラー 1
+   make[1]: ディレクトリ `/home/user/debpkg/blockdiag/blockdiag-1.1.4' から出ます
+   make: *** [build] エラー 2
+   dpkg-buildpackage: error: debian/rules build gave error exit status 2
+   debuild: fatal error at line 1350:
+   dpkg-buildpackage -rfakeroot -D -us -uc failed
+
+
+ちなみに、下記の位置にコメントを書くとE261エラーになります。
+
+.. code-block:: python
+
+   fonts = [# for Windows
+	    'c:/windows/fonts/VL-Gothic-Regular.ttf',
+
+
+override_dh_auto_testでハマった箇所。
+********************************************************************
+
+前述したとおり1.1.2-1まではoverride_dh_auto_testを行っていませんでした。そのため、1.1.2の時点で既にupstreamではテストが含まれていましたが、debianパッケージ作成時にnosetestsを実行できていませんでした。src/blockdiag/testsディレクトリ以下のテストを実行するには、blockdiagをちゃんとimportしないとpbuilderなどのようなクリーン環境ではコケます。そこで下記のように追記してビルド時にテストを行うようにしました。
+
+.. code-block:: make
+
+   override_dh_auto_test:
+   ifeq (,$(filter nocheck,$(DEB_BUILD_OPTIONS)))
+           set -e; \
+           PYTHONPATH=$(CURDIR)/src nosetests -d 
+   endif
+
+PYTHONPATHに$(CURDIR)/srcを指定するというのが分かるまで、_build/lib.linux-x86_64-2.7や、debian/python-blockdiag/usr/share/pysharedを指定してみて上手くいかず、プギャーと言ってました…。orz
+
+なお、Build-Dependsに何らかのフォントパッケージを指定しておかないと、pbuilder環境ではフォントが全くインストールされないので、前述のようにglobパターンでTrueTypeフォントを検出するようにしてもテストがこけてしまう問題が結局あります。IPAフォントよりも標準的にインストールされるVL Gothic(fonts-vlgothic)を指定したのですが、それなら前述のパッチもVL Gothicのパスをハードコーディングしておけば良いのではないかと、迷いますね…。
+
+.. author:: default
+.. categories:: Dev
+.. tags:: Debian, python, blockdiag,
+.. comments::
