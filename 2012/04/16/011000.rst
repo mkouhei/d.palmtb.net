@@ -6,7 +6,7 @@ blockdiag 1.1.3以降ビルド時のエラーの原因。
 フォントの検出部分でのエラー。
 ************************************************
 
-":doc:`/2012/03/11/232524`" で書いたとおり、blockdiag 1.1.3以降、SidでのDebianパッケージ作成時に下記のエラーが出ていました。エラーが出るようになったのは、以前はdebuild時にnosetestsを実行していなかったのを、実行するように変更のがきっかけですが、そのままにはできないので原因を調べてみました。
+":doc:`/2012/03/11/232524`" で書いたとおり、blockdiag 1.1.3以降、SidでのDebianパッケージ作成時に下記のエラーが出ていました。エラーが出るようになったのは、以前はdebuild時にnosetestsを実行していなかったのを、実行するように変更したのがきっかけですが、そのままにはできないので原因を調べてみました。
 
 .. code-block:: none
    
@@ -51,7 +51,7 @@ blockdiag 1.1.3以降ビルド時のエラーの原因。
    fonts-ipafont-gothic: /usr/share/fonts/opentype/ipafont-gothic/ipagp.ttf
 
 
-おまけに私の環境ではそもそもIPAフォントはインストールしていないのでエラーになっていたワケです。インストールするフォントは人によって異なるので、インストールしてある何らかのTrueTypeフォントが検出されればOKになるようにパッチを作成しました。
+おまけに、私の環境ではそもそもIPAフォントをインストールしていなかったので、エラーになっていたワケです。インストールするフォントは人によって異なるので、インストールしてある何らかのTrueTypeフォントが検出されればOKになるようにパッチを作成しました。
 
 
 .. code-block:: diff
@@ -91,7 +91,7 @@ blockdiag 1.1.3以降ビルド時のエラーの原因。
         fontpath = None
         if options.font:
 
-コメントの位置を変更したのは、pep8のポリシーので、元の位置のままだとエラーになるためです。ttf-ipafont-gothicパッケージをインストールして、ttf-ipafont-gothicのパスに変更した場合に出たエラーですが、"for Debian"のコメント部分を含めると一行が長すぎるため、下記のようなエラーが発生します。
+コメントの位置を変更したのは、pep8のポリシーでは元の位置のままだとエラーになるためです。ttf-ipafont-gothicパッケージをインストールして、リストのttf-ipafont-gothicのパスになるように変更した場合に発生しました。"for Debian"のコメント部分を含めると一行が長すぎるため、下記のようなエラーが発生します。
 
 
 .. code-block:: none
@@ -142,7 +142,7 @@ blockdiag 1.1.3以降ビルド時のエラーの原因。
 override_dh_auto_testでハマった箇所。
 ********************************************************************
 
-前述したとおり1.1.2-1まではoverride_dh_auto_testを行っていませんでした。そのため、1.1.2の時点で既にupstreamではテストが含まれていましたが、debianパッケージ作成時にnosetestsを実行できていませんでした。src/blockdiag/testsディレクトリ以下のテストを実行するには、blockdiagをちゃんとimportしないとpbuilderなどのようなクリーン環境ではコケます。そこで下記のように追記してビルド時にテストを行うようにしました。
+前述したとおり1.1.2-1まではoverride_dh_auto_testを行っていませんでした。1.1.2の時点で既にupstreamにはテストが含まれていましたが、debianパッケージ作成時にはnosetestsを実行できていませんでした。src/blockdiag/testsディレクトリ以下のテストを実行するには、blockdiagのモジュールをちゃんとimportしないとpbuilderなどのようなクリーン環境ではコケます。そこでdebian/rulesに下記のようの追記を行いビルド時にテストを行うようにしました。
 
 .. code-block:: make
 
@@ -154,7 +154,7 @@ override_dh_auto_testでハマった箇所。
 
 PYTHONPATHに$(CURDIR)/srcを指定するというのが分かるまで、_build/lib.linux-x86_64-2.7や、debian/python-blockdiag/usr/share/pysharedを指定してみて上手くいかず、プギャーと言ってました…。orz
 
-なお、Build-Dependsに何らかのフォントパッケージを指定しておかないと、pbuilder環境ではフォントが全くインストールされないので、前述のようにglobパターンでTrueTypeフォントを検出するようにしてもテストがこけてしまう問題が結局あります。IPAフォントよりも標準的にインストールされるVL Gothic(fonts-vlgothic)を指定したのですが、それなら前述のパッチもVL Gothicのパスをハードコーディングしておけば良いのではないかと、迷いますね…。
+なお、debian/controlのBuild-Dependsに何らかのフォントパッケージを指定しておかないと、pbuilder環境ではフォントが全くインストールされません。なので、前述のようにglobパターンでTrueTypeフォントを検出するようにしてもテストがこけてしまう問題が結局あります。IPAフォントよりも標準的にインストールされるVL Gothic(fonts-vlgothic)を指定したのですが、それなら前述のパッチもVL Gothicのパスをハードコーディングしておけば良いのではないかと、迷いますね…。
 
 .. author:: default
 .. categories:: Dev
