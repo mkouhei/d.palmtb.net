@@ -1,0 +1,59 @@
+TonicDNS Clientを作成しました。
+========================================================
+
+俺得シリーズ。 ":doc:`/2012/03/27/154557`"でTonicDNS用にJSONを生成するツールを作成しましたが、これにTonicDNS API用のクライアント機能を実装しました。 `Github <https://github.com/mkouhei/tonicdnscli>`_ および `PyPI <http://pypi.python.org/pypi?:action=display&name=tonicdnscli>`_ で公開しています。使い方は `src/README.rst <https://github.com/mkouhei/tonicdnscli/blob/master/src/README.rst>`_ に記述していますが、現時点でできることは以下の通りです。
+
+* 半角空白文字区切りフォーマットのテキストファイルからJSONへの変換
+* TonicDNS API経由でのPowerDNSの操作
+
+  * 指定ドメインのレコード情報の一括表示
+  * 指定ドメインへのレコード一括登録
+  * 指定ドメインからのレコード一括削除
+
+登録 or 削除対象が100件を超える場合
+------------------------------------------------------------
+
+コミット `7571109876 <https://github.com/mkouhei/tonicdnscli/commit/75711098767beabf36574585403c99463ea560bd>`_ で実装したのですが、登録もしくは削除対象が100件を超える場合は、100件毎に処理するようにしています。例えば345件の登録を行う場合は、100, 100, 100, 45と、計4回処理します。コミットメッセージにも書いたのですが、これはHTTP PUTメソッド、もしくはDELETEメソッドで、送信するbodyサイズ、つまりJSONファイルのサイズが27,915byte以上、27,938byteより下の間が処理可能なサイズの境になっているためです。この送信可能なデータサイズの上限がどこで決められているのかは、現状ではまだ分かっていません。POSTメソッドならTonicDNSが実装されているPHPの場合は、php.iniの `post_max_size <http://www.php.net/manual/ja/ini.core.php#ini.post-max-size>`_ で変更でき、デフォルト値は8MBになっていますが、PUTやDELETEの場合はありません。また、使用している環境に合わせ、PHP 5.3.2,  `TonicDNS <https://github.com/Cysource/TonicDNS>`_ develブランチの `d4906df6 <https://github.com/Cysource/TonicDNS/commit/d4906df6d1a42caff21e734e6ba9bf7937d4de17>`_ , Apache 2.2.14のソースコードを調べてみましたが、現時点ではPUTメソッドやDELETEメソッドでの送信データの上限に関わる値を決めているロジックは見当たりませんでした。
+
+
+初めてのPythonパッケージ
+------------------------------------------
+
+今回、はじめてPythonパッケージを作成してみました。 `公式ドキュメント <http://www.python.jp/doc/2.7/distutils/index.html>`_ と、Debianパッケージのメンテナンスをしているblockdiagを参考にして行ったら結構分かりやすかったです。これは、PythonツールのDebianパッケージ作成を行うときに実行する、
+
+.. code-block:: sh
+
+   dh $@ --with python2
+
+で行う処理が、
+
+.. code-block:: sh
+
+   python setup.py sdist bdist
+
+を実行しているのだな、と理解できるようになったことなど、Pythonパッケージの作成の処理が理解できるようになったのは、PythonのDebianパッケージをメンテナンスする上でも重要なので良かったなと思います。
+
+Upstream = Debian パッケージメンテナ = オレ、ってあり？
+--------------------------------------------------------------------------------------------------
+
+tonicdnscliは、自分で作ったツールですが普段使う際、
+
+.. code-block:: bash
+
+   $ sudo python setup.py install
+
+でインストールはするのは割けたいところです。これだと/usr/local下にインストールされてしまうからです。なので、まだITPはしていませんがDebianパッケージを作成してインストールしています。Githubではdebian/ディレクトリ以下のファイルもリポジトリに追加しています。ITPをしていないので、debain/copyrightのBTS番号のみがテンプレートのままですが、手元でdebuildしてもパッケージを作成することはできます。さて、自分がUpstreamのソフトウェアを自分でITPしてパッケージメンテナになるのはアリなんでしょうか？
+
+PowerDNS + TonicDNSのススメ。
+------------------------------------------------------
+
+現時点では処理対象のレコードが既に登録されているものがないかをチェックする機能を実装していません。また、レコード単位でのアップデートも現時点ではできず、一度対象のレコードを削除した後、再度まとめて登録するしかありませんが、この辺も近々対応する予定です。これを実装すれば、まあかなりtonicdnscliも使える感じになるかなと思っています。
+
+また、TonicDNSとtonicdnscliや、PowerDNS GUI、ton-katsuさんの作成した `novadns <https://github.com/ton-katsu/novadns/blob/master/novadns>`_ [#]_ とPowerDNS + MySQLの環境を活用するツールがだいぶ揃ってきた感じです。特にシステムの自動化を行っていく上でPowerDNSとTonicDNSの組み合わせはかなり便利です。まだDNSの運用を行っていたり、OpenStackでホスト名の登録とIPアドレスの紐付けをどうしようか検討している人もいると思います。そういう人にはうってつけです。TonicDNSは機能的に足りない部分やバグもまだありますが、開発速度も割と速い上、パッチ投げると内容によってはマージしてもらえますので、是非使ってみてはいかがでしょうか。
+
+.. author:: default
+.. categories:: Dev
+.. tags:: Python, PHP, PowerDNS, TonicDNS, Debian, OpenStack
+.. comments::
+
+.. [#] OpenStackのNovaではインスタンスを作成すると、ランダムにホスト名及びインスタンス名が作成されますが、novadnsは、このホスト名とインスタンス作成時に自動的に割り当てられるIPアドレスを使って、自動的にTonicDNS経由でPowerDNSにAレコードを登録するデーモンです。
