@@ -57,6 +57,11 @@ WNPP
 * tinkerer
 * tox
 
+Python packages
+^^^^^^^^^^^^^^^
+
+* `tonicdnscli <http://pypi.python.org/pypi/tonicdnscli>`_
+
 Job carrer
 ^^^^^^^^^^
 
