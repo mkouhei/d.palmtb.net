@@ -1,0 +1,120 @@
+optparseからactparseに変更。
+====================================================
+
+`tonicdnscli <https://github.com/mkouhei/tonicdnscli>`_ のPython 3への対応をしようとした際、コマンドラインオプションに使用している `optparseモジュールがPython 2.7 <http://www.python.jp/doc/release/library/optparse.html?highlight=optparse#optparse>`_ で廃止予定だということを知りました。そこで、optparseからargparseに変更することにしました。optparseでは、入力ファイルをJSON形式で表示させるためのオプションや、TonicDNSからレコードを取得して表示、レコードの登録、レコードの削除を行うのをオプションで行っていましたが、argparseに変更するタイミングで、これらをサブコマンドとして実装しなおしました。変更した結果が下記の表です。
+
++------------+-------------+--------+
+|機能        |optparse     |argparse|
++============+=============+========+
+|変換・表示  |-o/--stdout  |show    |
++------------+-------------+--------+
+|取得表示    |-g/--retrieve|get     |
++------------+-------------+--------+
+|レコード登録|-c/--create  |create  |
++------------+-------------+--------+
+|レコード削除|-d/--delete  |delete  |
++------------+-------------+--------+
+
+基本的には `公式ドキュメント <http://www.python.jp/doc/release/library/argparse.html>`_ を読めばoptparseでやっていたことをargparseに置き換えるのは問題なくできます。ちょいとハマったのが、サブコマンドのオプションを相互排他にする方法。メインパーサと、ArgementParserのadd_subparsers()メソッドで作成するサブパーサと、どちらにadd_mutually_exclusive_group()メソッドを使うのかとか、相互排他でどちらかを必須にするにはrequired=Trueをadd_mutually_exclusive_group()メソッドと、add_argument()メソッドのどちらの引数として渡すのか、といったあたりです。
+
+結果は下記のとおり。(createの例)
+
+.. code-block:: python
+
+    # Create records
+    parser_create = subparsers.add_parser(
+        'create', help='create records of specific zone')
+    parser_create.add_argument('infile', action='store',
+                                 help='pre-converted text file')
+    parser_create.add_argument('-s', dest='server', required=True,
+                               help='specify TonicDNS hostname or IP address')
+    parser_create.add_argument('-u', dest='user', required=True,
+                               help='TonicDNS username')
+    group_create = parser_create.add_mutually_exclusive_group(required=True)
+    group_create.add_argument('-p', dest='password',
+                               help='TonicDNS password')
+    group_create.add_argument('-P', action='store_true',
+                               help='TonicDNS password prompt')
+    parser_create.set_defaults(func=create)
+
+
+argparseを使った場合のヘルプは下記のようになります。
+
+
+.. code-block:: none
+
+   $ tonicdnscli -h
+   usage: tonicdnscli [-h] [-v] {show,get,create,delete} ...
+   
+   usage
+   
+   positional arguments:
+     {show,get,create,delete}
+                           commands
+       show                show converted JSON
+       get                 retrieve records of specific zone
+       create              create records of specific zone
+       delete              delete records of specific zone
+   
+   optional arguments:
+     -h, --help            show this help message and exit
+     -v, --version         show program's version number and exit
+
+
+サブコマンド毎のヘルプも表示できます。(createの場合)
+
+
+.. code-block:: sh
+
+   $ tonicdnscli create -h
+   usage: command.py create [-h] -s SERVER -u USER (-p PASSWORD | -P) infile
+   
+   positional arguments:
+     infile       pre-converted text file
+   
+   optional arguments:
+     -h, --help   show this help message and exit
+     -s SERVER    specify TonicDNS hostname or IP address
+     -u USER      TonicDNS username
+     -p PASSWORD  TonicDNS password
+     -P           TonicDNS password prompt
+
+
+"-p"と"-P"がサブコマンドで相互排他かつ入力必須というわけです。
+
+入力が不完全な場合は、下記のように表示されます。まずはサブコマンドが無い場合。
+
+.. code-block:: sh
+
+   $ tonicdnscli
+   usage: tonicdnscli [-h] [-v] {show,get,create,delete} ...
+   tonicdnscli: error: too few arguments
+
+サブコマンドの引数が足りない場合。
+
+.. code-block:: sh
+
+   $ tonicdnscli create
+   usage: tonicdnscli create [-h] -s SERVER -u USER (-p PASSWORD | -P) infile
+   tonicdnscli create: error: too few arguments
+
+サブコマンドの引数が足りない場合。
+
+.. code-block:: sh
+
+   $ tonicdnscli create examples/example.org.txt
+   usage: tonicdnscli create [-h] -s SERVER -u USER (-p PASSWORD | -P) infile
+   tonicdnscli create: error: argument -s is required
+
+結構親切で便利です。optparseと違ってデフォルトでサブコマンドを作れることも考慮すると、もはやoptparseを使わず、argparseにした方が良いですね。
+
+tonicdnscli/src/tonicdnscli/command.pyでの置き換えは下記の通りです。Gistに上げておきました。置き換え後が結構冗長ですね。
+
+.. raw:: html
+
+   <script src="https://gist.github.com/2448446.js?file=diff%20optparse,%20argparse"></script>
+
+.. author:: default
+.. categories:: Dev
+.. tags:: python, TonicDNS
+.. comments::
