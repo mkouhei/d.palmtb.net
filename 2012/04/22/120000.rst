@@ -1,5 +1,5 @@
-optparseからactparseに変更。
-====================================================
+optparseからargparseに変更。 [#]_
+=========================================================
 
 `tonicdnscli <https://github.com/mkouhei/tonicdnscli>`_ のPython 3への対応をしようとした際、コマンドラインオプションに使用している `optparseモジュールがPython 2.7 <http://www.python.jp/doc/release/library/optparse.html?highlight=optparse#optparse>`_ で廃止予定だということを知りました。そこで、optparseからargparseに変更することにしました。optparseでは、入力ファイルをJSON形式で表示させるためのオプションや、TonicDNSからレコードを取得して表示、レコードの登録、レコードの削除を行うのをオプションで行っていましたが、argparseに変更するタイミングで、これらをサブコマンドとして実装しなおしました。変更した結果が下記の表です。
 
@@ -118,3 +118,5 @@ tonicdnscli/src/tonicdnscli/command.pyでの置き換えは下記の通りです
 .. categories:: Dev
 .. tags:: python, TonicDNS
 .. comments::
+
+
