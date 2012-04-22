@@ -108,11 +108,9 @@ argparseを使った場合のヘルプは下記のようになります。
 
 結構親切で便利です。optparseと違ってデフォルトでサブコマンドを作れることも考慮すると、もはやoptparseを使わず、argparseにした方が良いですね。
 
-tonicdnscli/src/tonicdnscli/command.pyでの置き換えは下記の通りです。Gistに上げておきました。置き換え後が結構冗長ですね。
+tonicdnscli/src/tonicdnscli/command.pyでの置き換えは `Gistに上げておきました <https://gist.github.com/2448446.js?file=diff%20optparse,%20argparse>`_ 。置き換え後が結構冗長ですね。
 
-.. raw:: html
-
-   <script src="https://gist.github.com/2448446.js?file=diff%20optparse,%20argparse"></script>
+.. [#] タイトルが間違ってました。 `Vさん、ご指摘ありがとうございました。 <https://twitter.com/#!/voluntas/status/193921508232531968>`_
 
 .. author:: default
 .. categories:: Dev
