@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2012/05/15/multi_nw_dnsmasq
    2012/05/11/gitlab
    2012/04/22/120000
    2012/04/21/211900
