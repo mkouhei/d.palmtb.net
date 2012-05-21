@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2012/05/22/couchdb1_2_0_squeeze
    2012/05/21/lxc_migration
    2012/05/15/multi_nw_dnsmasq
    2012/05/11/gitlab
