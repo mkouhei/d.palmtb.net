@@ -47,7 +47,7 @@ rss_service = None
 # **************************************************************
 
 # Add other Sphinx extensions here
-extensions = ['tinkerer.ext.blog', 'tinkerer.ext.disqus', 'sphinxcontrib.blockdiag', 'sphinxcontrib.googleanalytics']
+extensions = ['tinkerer.ext.blog', 'tinkerer.ext.disqus', 'sphinxcontrib.blockdiag', 'sphinxcontrib.googleanalytics', 'sphinxcontrib.nwdiag']
 
 # Google Analytics
 googleanalytics_id = 'UA-1309764-3'
