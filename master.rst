@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2012/06/19/enable_recoursion_pdns-server
    2012/06/17/vyatta_nat_stateful_failover_limitation
    2012/05/31/genpw_with_mkpasswd
    2012/05/24/do_you_know_mkfifo
