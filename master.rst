@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2012/07/11/lxc_libvirt_sid
    2012/06/20/python_mysqldb
    2012/06/19/enable_recoursion_pdns-server
    2012/06/17/vyatta_nat_stateful_failover_limitation
