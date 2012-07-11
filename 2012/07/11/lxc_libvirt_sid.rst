@@ -37,7 +37,7 @@ Sidでlxcを使うには、lxcパッケージをインストールし、README.D
 
 .. code-block:: bash
 
-   $ sudo virsh --connect lxc:/// define vm1
+   $ sudo virsh --connect lxc:/// define vm1.xml
    $ sudo virsh --connect lxc:/// start vm1
 
 これで起動できる！と思ったら大間違い。下記のようなエラーを吐いてこけます。
@@ -79,6 +79,13 @@ Sidでlxcを使うには、lxcパッケージをインストールし、README.D
   error: Unable to add bridge virbr0 port veth0: No such device
 
 のようなエラーを吐いてコンテナ自体を起動できないので注意。debootstrapで作成したDebianイメージもlibvirtで問題なく起動できるか否かは未確認。
+
+
+追記
+--------
+
+3.2.0をインストールしてみましたが、GRUBでのcgroup_enable=memoryのオプションはやはり必要でした。
+
 
 .. author:: default
 .. categories:: Ops
