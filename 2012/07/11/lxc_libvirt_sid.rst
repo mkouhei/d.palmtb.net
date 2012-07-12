@@ -25,7 +25,7 @@ Sidでlxcを使うには、lxcパッケージをインストールし、README.D
      <on_reboot>restart</on_reboot>
      <on_crash>destroy</on_crash>
      <devices>
-       <emulator>/usr/lib/libexec/libvirt_lxc</emulator>
+       <emulator>/usr/lib/libvirt/libvirt_lxc</emulator>
        <interface type='network'>
          <source network='default'/>
        </interface>
