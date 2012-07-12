@@ -33,12 +33,12 @@ Sidでlxcを使うには、lxcパッケージをインストールし、README.D
      </devices>
    </domain>
 
-のようなlibvirtの定義ファイルを用意してやります。
+のようなlibvirtの定義ファイルを用意してやります。libvirtグループのアカウントで下記を実行します。
 
 .. code-block:: bash
 
-   $ sudo virsh --connect lxc:/// define vm1.xml
-   $ sudo virsh --connect lxc:/// start vm1
+   $ virsh --connect lxc:/// define vm1.xml
+   $ virsh --connect lxc:/// start vm1
 
 これで起動できる！と思ったら大間違い。下記のようなエラーを吐いてこけます。
 
@@ -58,10 +58,10 @@ Sidでlxcを使うには、lxcパッケージをインストールし、README.D
 
 .. code-block:: bash
 
-   $ sudo virsh --connect lxc:/// start vm1
+   $ virsh --connect lxc:/// start vm1
    Domain vm1 started
    
-   $ sudo virsh --connect lxc:/// list --all
+   $ virsh --connect lxc:/// list --all
    Id    Name                           State
    ----------------------------------------------------
    5511  vm1                            running
