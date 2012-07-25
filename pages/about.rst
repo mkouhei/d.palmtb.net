@@ -30,7 +30,7 @@ Floss community
 * Tokyo Debian Meeting(2006-)
 * Debian JP Project (Nov 2008-)
 * CouchDB JP (Aug 2009-)
-* Debian JP Project Leader (Apr 2011-)
+* Debian JP Project Leader (Apr 2011, 2012)
 
 `Debian Packages <http://qa.debian.org/developer.php?login=mkouhei@palmtb.net>`_
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -56,13 +56,16 @@ WNPP
 * tomahawk
 * tinkerer
 * tox
+* tonicdns
+* tonicdnscli
 
 Python packages
 ^^^^^^^^^^^^^^^
 
 * `tonicdnscli <http://pypi.python.org/pypi/tonicdnscli>`_
+* `Iori <http://pypi.python.org/pypi/iori>`_
 
-Job carrer
+Job career
 ^^^^^^^^^^
 
 * in a systems integrator, worked as a systems engineer. (Apr 2001 - Aug 2011)
