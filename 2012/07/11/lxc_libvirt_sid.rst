@@ -89,5 +89,5 @@ Sidでlxcを使うには、lxcパッケージをインストールし、README.D
 
 .. author:: default
 .. categories:: Ops
-.. tags:: Debian, LXC
+.. tags:: Debian, lxc
 .. comments::
