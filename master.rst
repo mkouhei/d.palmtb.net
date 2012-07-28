@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2012/07/28/git_pyfes201207
    2012/07/26/lxc_cfcrjp8
    2012/07/11/lxc_libvirt_sid
    2012/06/20/python_mysqldb
