@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2012/08/12/poe_switch
    2012/07/30/gitlab_update
    2012/07/28/git_pyfes201207
    2012/07/26/lxc_cfcrjp8
