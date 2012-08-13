@@ -3,7 +3,7 @@ Replaced PoE switch
 
 Recently, repeater hub that we were using to connect to the Internet at home was broken. The hub that had been prepared from the beginning at the time of purchase condominiums, had been placed under the floor of the closet. When I was calling the help desk of the provider, they said that the hub was not their asset, which is rather our asset. They said to me that the period a defect of the hub was finished, and I exchanged with myself. The hub had to ensure the power from the electrical outlet under the floor, but I want to operate switch without the AC adapter, so I bought a switch for PoE.
 
-I purchased two kinds of intelligent Switches. Those are GS108PEv2 GS108Tv2 of NETGEAR. The former is for the power supply switch, switch for receiving the latter. In addition, I has used Plathome’s OpenMicroServeres are supporting for PoE, we  decided to operate without AC adapter those as well.
+I purchased two kinds of intelligent switches. Those are GS108PEv2 and GS108Tv2 of NETGEAR. The former is for the power supply switch, switch for receiving the latter. In addition, I has used Plathome’s OpenMicroServeres are supporting for PoE, we  decided to operate without AC adapter those as well.
 
 After exchanging was to look like below.
 
