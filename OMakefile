@@ -22,7 +22,10 @@ SRCS = $(glob 20*/*/*/*.rst)
 .DEFAULT: $(SRCS)
 	$(TINKER) -b -q
 
-.PHONY: publish
+.PHONY: publish staging
 
 publish:
 	$(RSYNC) -a blog/html/ blogadm@proxy:/var/www/d.palmtb.net/
+
+staging:
+	$(RSYNC) -a blog/html/ /var/www/d.palmtb.net/
