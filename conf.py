@@ -33,7 +33,7 @@ disqus_shortname = 'mkouhei'
 html_favicon = 'tinkerer.ico'           
 
 # Pick another Tinkerer theme or use your own
-html_theme = "modern"
+html_theme = "modern5"
 
 # Theme-specific options, see docs
 html_theme_options = { }                                  
@@ -81,6 +81,6 @@ master_doc = tinkerer.master_doc
 version = tinkerer.__version__
 release = tinkerer.__version__
 html_title = project
-html_use_index = True
+html_use_index = False
 html_show_sourcelink = True
 html_add_permalinks = True
