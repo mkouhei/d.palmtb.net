@@ -1,15 +1,16 @@
-﻿PHSから。
-############
-
+PHSから。
+=========
 
 今更ながらPHSメールから日記の更新を出来るようにした。
+
 文字数が多いと更新できなかったのと、PHSのメール送信は基本料で無制限なので。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: gadget, 
 .. tags::
 .. comments::
-
-

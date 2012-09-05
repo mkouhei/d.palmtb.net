@@ -1,14 +1,14 @@
-﻿libvirtとvirt-managerを…
-############################################
-
+libvirtとvirt-managerを…
+=========================
 
 試してみようかと、ソースコードをダウンロードして普通にコンパイルしてみようとしたら、libvirtの方はXenのライブラリが無いとか言うし、virt-managerはpygtk2が無い、とかいう。前者はサポートしたとかいうならXenとの依存関係を解消してほしいなぁ。後者は、Debianでのpygtkはソースパッケージなので、バイナリのpython-glade2、python-gtk2、python-gtk2-devのうち、最初のふたつは既に導入済みだったので、python-gtk2-devはインストールしようとしたら他に22個も一緒に入るで一時中断。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, virt., Debian, 
 .. tags::
 .. comments::
-
-

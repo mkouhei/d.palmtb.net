@@ -1,33 +1,52 @@
-﻿Debian on chumbyに挑戦。その３
-##############################################
+Debian on chumbyに挑戦。その３
+==============================
+
+先日、Lennyのarmel版をQemuを使ってUSBメモリに入れ、chumbyで動かしてみる、という試みを行ったが、"Illegal instruction"となり行き詰まってしまっていたところ、id:kinnekoさんに、
 
 
-先日、Lennyのarmel版をQemuを使ってUSBメモリに入れ、chumbyで動かしてみる、という試みを行ったが、&#34;Illegal instruction&#34;となり行き詰まってしまっていたところ、id:kinnekoさんに、
 
-lennyはarmel(EABI)? chumbyはARM(OABI)だから注意。
+   lennyはarmel(EABI)? chumbyはARM(OABI)だから注意。
+
+
+
+
 
 とアドバイスを頂いたので、armアーキテクチャでのイメージを使うことにしてみた。のだが、Lennyで公開されているインストールイメージは、Qemuでは軒並みインストールできなかった。何故かなぁと思って、Lennyのインストールガイドをちゃんと読んだら書いていた。
 
-Versatile プラットフォームは QEMU でエミュレートされており、そのためハードウェアがなくても ARM での Debian のテストや実行を行う良い方法です。 
 http://www.debian.org/releases/stable/arm/ch02s01.html.ja#id2713668
+
+   Versatile プラットフォームは QEMU でエミュレートされており、そのためハードウェアがなくても ARM での Debian のテストや実行を行う良い方法です。 
+
+
+
+
+
 Versatileサブアーキテクチャはarmelだった。残念。
-とはいえ、諦めるわけにもいかんので、どうしたもんかなぁと思っていたのだが、前回のOSCで使ったARM9の組込機器の存在を忘れていた。Armadillo-9ですな。しかも、Armadillo-9自体が販売開始されたのは3年以上前。確実にEABIじゃないはず。ということで、Armadillo-9はDebian用のハードディスクイメージが公開されているので、そのイメージを使ってみることにした。結果から言うと、あっさりできた。前回同様、/mnt/usb2にマウントしたDebianイメージ(etch)にchrootできた。良かったよかった。
+
+
+
+とはいえ、諦めるわけにもいかんので、どうしたもんかなぁと思っていたのだが、前回のOSCで使ったARM9の組込機器の存在を忘れていた。Armadillo-9ですな。しかも、Armadillo-9自体が販売開始されたのは3年以上前。 `確実にEABIじゃない <http://armadillo.atmark-techno.com/specs/processors>`_ はず。ということで、 `Armadillo-9はDebian用のハードディスクイメージが公開されている <http://armadillo.atmark-techno.com/filebrowser/armadillo-9/debian>`_ ので、そのイメージを使ってみることにした。結果から言うと、あっさりできた。前回同様、/mnt/usb2にマウントしたDebianイメージ(etch)にchrootできた。良かったよかった。
+
+
+
 手順は非常に簡単。
 
-* リンク先* のtarボールとmd5ハッシュをすべてダウンロード。
+*  `リンク先 <http://armadillo.atmark-techno.com/filebrowser/armadillo-9/debian>`_ のtarボールとmd5ハッシュをすべてダウンロード。
+
 * md5ハッシュのチェック。
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ md5sum -c *.md5
-
 
 
 * ext2フォーマットのUSBメモリ領域に、上記5つのtarボールを展開する。
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ sudo mount /dev/sda2 /mnt
    $ cd /mnt
@@ -38,12 +57,13 @@ Versatileサブアーキテクチャはarmelだった。残念。
    $ tar zxf ~/debian-etch-a9-5.tgz
 
 
-
 * Chumbyの電源を落としてから、USBメモリを挿し、電源を入れる。
+
 * sshdを起動し、ssh経由でログインし、/mnt/usr2にchrootする。
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ ssh root@chumby
                                                        ,.....,                     
@@ -85,7 +105,7 @@ Versatileサブアーキテクチャはarmelだった。残念。
    
    
    BusyBox v1.6.1 (2008-07-24 11:14:52 PDT) Built-in shell (ash)
-   Enter &#39;help&#39; for a list of built-in commands.
+   Enter 'help' for a list of built-in commands.
    
    chumby:~# df
    Filesystem                Size      Used Available Use% Mounted on
@@ -107,23 +127,28 @@ Versatileサブアーキテクチャはarmelだった。残念。
 
 うむ、素晴らしい。
 
+
+
+
 ついでにchroot環境のetchをlennyにアップグレードを試みた。
-********************************************************************************************************************************************************
+---------------------------------------------------------
 
 
 Etchで最新状態にした後、apt lineをlennyに変更し、apt-get updateまでは良かったのだが、upgrade途中でコケる。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    (Reading database ... 7335 files and directories currently installed.)
    Preparing to replace coreutils 5.97-5.3 (using .../coreutils_6.10-6_arm.deb) ...
    Unpacking replacement coreutils ...
-   rm: cannot remove `/var/lib/dpkg/tmp.ci/control&#39;: Function not implemented
+   rm: cannot remove `/var/lib/dpkg/tmp.ci/control': Function not implemented
    dpkg: error while cleaning up:
     subprocess rm cleanup returned error exit status 1
    Setting up coreutils (6.10-6) ...
    
-   rm: cannot remove `/var/lib/dpkg/tmp.ci/control&#39;: Function not implemented
+   rm: cannot remove `/var/lib/dpkg/tmp.ci/control': Function not implemented
    dpkg: error processing /var/cache/apt/archives/diff_2.8.1-12_arm.deb (--unpack):
     subprocess rm cleanup returned error exit status 1
    Errors were encountered while processing:
@@ -135,29 +160,10 @@ Etchで最新状態にした後、apt lineをlennyに変更し、apt-get update�
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: gadget, Debian, computer, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	Etchだと去年、debootstrapしたUSB環境にchrootはできています。lennyはまだ試してません。
-
-	written by  kinneko
-	02/19/2009 07:46:16
-	http://d.hatena.ne.jp/kinneko/
-
-----
-
-Comment:
-
-	OSC終わったら、debootstrapでも試してみます。
-
-	written by  mkouhei
-	02/19/2009 20:38:43
-	http://d.hatena.ne.jp/mkouhei/
-

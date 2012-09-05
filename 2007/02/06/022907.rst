@@ -1,18 +1,15 @@
-﻿x86_64 &amp;amp; VT命令か…。
-########################################
-
+x86_64 & VT命令か…。
+=====================
 
 先日書いた [#]_ 、SLES10の非常に不安定なXenサーバ。Paravirtualizationで３つ動かしていたが、今日見に行ってもらったら問題なかった。今度は32bitでFull Virtualizationでクラッシュしないか確認してみるか。
 
 
 
-.. [#] ：
+
+.. [#] d:id:mkouhei:20070202
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: computer, virt., 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿風邪ひいた。
-############
-
+風邪ひいた。
+============
 
 無理が重なって、結局風邪ひいた。めっちゃしんどいのに、休めない。せめてまともな睡眠を取れる時間が欲しい…。
 
 
 
-.. author:: mkouhei
-.. categories:: life, work, 
+
+
+
+.. author:: default
+.. categories:: 生活, 仕事, 
 .. tags::
 .. comments::
-
-

@@ -1,24 +1,34 @@
-﻿つん読書会
-##########
+つん読書会
+==========
+
+`はじめて社外の会議室での開催 <http://atnd.org/events/1783>`_ 。ワインバーグ先生の『コンサルタントの秘密』をお題に輪講を行った。
 
 
-はじめて社外の会議室での開催。ワインバーグ先生の『コンサルタントの秘密』をお題に輪講を行った。
+
 印象に残ったというか、耳が痛かったのは、次の２点。
 
 * 歴史家ではないので未来に目を向けよう。
+
 * 顧客は最初の５分間に問題の回答を(意図せず)言っている。
 
-自分の担当分は第３章「わからないことをしているときでも有効であるの法」
 
-.. image:: http://ecx.images-amazon.com/images/I/418S5FJ6RHL._SL160_.jpg
-   :alt: コンサルタントの秘密―技術アドバイスの人間学
 
+自分の担当分は第３章「 `わからないことをしているときでも有効であるの法 <http://github.com/mkouhei/presentation/blob/master/hack200910-presen.pdf>`_ 」
 
 
 
-.. author:: mkouhei
+
+
+`コンサルタントの秘密―技術アドバイスの人間学 <http://www.amazon.co.jp/exec/obidos/ASIN/4320025377/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+.. author:: default
 .. categories:: meeting, 
 .. tags::
 .. comments::
-
-

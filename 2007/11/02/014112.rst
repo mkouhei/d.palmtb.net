@@ -1,10 +1,11 @@
-﻿引数に大文字はダメなのか。
-##########################
-
+引数に大文字はダメなのか。
+==========================
 
 Rubyで無線LANルータの監視用スクリプトを書いていて気がついたこと。メソッドを定義するのに、引数の先頭を大文字にするとエラーがでる。例えばこんな↓メソッドを定義する。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    def hoge(A, Bb, cC)
      puts A + Bb + Cc
@@ -13,7 +14,9 @@ Rubyで無線LANルータの監視用スクリプトを書いていて気がつ�
 
 実行するとこんなエラーが出る。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ ruby test.rb
    test.rb:7: formal argument cannot be a constant
@@ -27,9 +30,10 @@ Rubyで無線LANルータの監視用スクリプトを書いていて気がつ�
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Ops, ruby, 
 .. tags::
 .. comments::
-
-

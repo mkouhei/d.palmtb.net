@@ -1,18 +1,15 @@
-﻿無事届いた。
-############
-
+無事届いた。
+============
 
 さっき、先日注文して、送付先を間違えた [#]_ OpenBlockS266が無事に届いた。良かった良かった。週末にDebian化だな。
 
 
 
-.. [#] ：前の住所にしちまった。
+
+.. [#] 前の住所にしちまった。
 
 
-
-.. author:: mkouhei
-.. categories:: scribbles, 
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

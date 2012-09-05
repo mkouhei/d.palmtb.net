@@ -1,16 +1,18 @@
-﻿やっぱり不安定だ。
-##################
-
+やっぱり不安定だ。
+==================
 
 先週の金曜日にあげっぱなしにしていった、研究会のXenのサーバ、仕事を終えてから本社に行ってみたらやっぱりフリーズしていた。xm listとvmstatでログ収集かけていたが、日付変わって0:45にはログへの出力が止まっていたので、正味２時間ほどしか動いていなかったという訳か。
-環境としては、Dell Dimension 9200でCore 2 Duoをx86_64モードでVT命令を有効にし、64bit版のSLES10を動かしている。DVDドライブをイジェクトボタンを押すと必ずDomain-0がハングアップするが、ejectコマンドでメディアを出す場合は問題ない。I/O周りがおかしいんだろうなぁ。問題の切り分けのため、とりあえずFull VirtualizationとParavirtualizationとで動きが変わるかを確認することにした。
-以前Paravirtualizationでインストールしようとしたらやたらと遅かったのだが、解決方法が分かったので、試してみたら、エラい違い。作成したDom-Uをコピーして、３つ起動させた状態でまた放置してきた。来週もう一回様子を見に行ってみよう。
+
+`環境としては、Dell Dimension 9200でCore 2 Duoをx86_64モードでVT命令を有効にし、64bit版のSLES10を動かしている <http://www.palmtb.net/index.php?DELL%20Dimension%209200>`_ 。DVDドライブをイジェクトボタンを押すと必ずDomain-0がハングアップするが、ejectコマンドでメディアを出す場合は問題ない。I/O周りがおかしいんだろうなぁ。問題の切り分けのため、とりあえずFull VirtualizationとParavirtualizationとで動きが変わるかを確認することにした。
+
+以前Paravirtualizationでインストールしようとしたらやたらと遅かったのだが、 `解決方法が分かった <http://cropcrusher.web.infoseek.co.jp/shufuden/xensemi/index.html>`_ ので、試してみたら、エラい違い。作成したDom-Uをコピーして、３つ起動させた状態でまた放置してきた。来週もう一回様子を見に行ってみよう。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, virt., 
 .. tags::
 .. comments::
-
-

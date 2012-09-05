@@ -1,14 +1,14 @@
-﻿Chumby注文した。
-######################
-
+Chumby注文した。
+================
 
 送料は別だった。orz
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: gadget, 
 .. tags::
 .. comments::
-
-

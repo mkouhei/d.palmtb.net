@@ -1,14 +1,16 @@
-﻿訃報。
-######
-
+訃報。
+======
 
 知合いのおばさんが無くなったと実家から連絡。御冥福をお祈りします。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

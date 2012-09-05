@@ -1,14 +1,14 @@
-﻿原因解決。
-##########
-
+原因解決。
+==========
 
 mm1パッチを当てたら動かなくなった、マウスとキーボードだが、mm1パッチで追加された、MAC_EMUMOUSEBTNというカーネルオプションを有効にしたためだった。これを無効にしてやったらちゃんと動くようになった。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, MacBook, 
 .. tags::
 .. comments::
-
-

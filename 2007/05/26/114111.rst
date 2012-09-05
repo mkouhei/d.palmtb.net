@@ -1,26 +1,27 @@
-﻿たま駅長。
-##########
-
+`たま駅長 <http://www.wakayama-dentetsu.co.jp/news/070105_necokish/ekityou.htm>`_ 。
+====================================================================================
 
 でこの数日盛り上がってる [#]_ 。メールのやりとりは必ずたま駅長のネタで始まるか、終わるか。「たま駅長を観に行こう」ツアーなんぞどうと話してみたり。駐車場は無いので電車だそうな。そりゃそうだな [#]_ 。そういや和歌山は行ったこと無いなぁ。
 
-* Wikipedia 貴志駅
-* 貴志川線応援ブログ
-* いちご電車の中をレポートしたブログ。
-* おなじく、たま駅長の様子を綴ってます。
-* こっちは携帯用の壁紙。
+*  `Wikipedia 貴志駅 <http://ja.wikipedia.org/wiki/%E8%B2%B4%E5%BF%97%E9%A7%85>`_ 
+
+*  `貴志川線応援ブログ <http://masatosan.blogzine.jp/cb/>`_ 
+
+*  `いちご電車の中をレポートしたブログ。 <http://blog.livedoor.jp/benimashiko/archives/50801521.html>`_ 
+
+*  `おなじく、たま駅長の様子を綴ってます。 <http://blog.livedoor.jp/benimashiko/archives/50798842.html>`_ 
+
+*  `こっちは携帯用の壁紙。 <http://blog.livedoor.jp/benimashiko/archives/50801521.html>`_ 
 
 
 
 
-.. [#] ：YouTubeにも駅長就任式とかアップされていたけどリンクは張りません。
-.. [#] ：貴志川線の再建がそもそもたま駅長の発端だし。
+
+.. [#] YouTubeにも駅長就任式とかアップされていたけどリンクは張りません。
+.. [#] 貴志川線の再建がそもそもたま駅長の発端だし。
 
 
-
-.. author:: mkouhei
-.. categories:: scribbles, 
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

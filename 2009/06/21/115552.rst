@@ -1,25 +1,28 @@
-﻿第53回東京エリアDebian勉強会
-####################################
+第53回東京エリアDebian勉強会
+============================
+
+市ヶ谷のITS会議室で `開催 <http://tokyodebian.alioth.debian.org/2009-06.html>`_ 。円卓の会議室だったので、前回の和室に引き続き、今回もちょっといつもと違う雰囲気。
 
 
-市ヶ谷のITS会議室で開催。円卓の会議室だったので、前回の和室に引き続き、今回もちょっといつもと違う雰囲気。
-
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090621/20090621114556.png
-   :alt: f:id:mkouhei:20090621114556p:image
+.. image:: /img/20090621114556.png
 
 今回の勉強会はDDTSSの事前課題を元にした議論が大半だったので、議論するには良かったかも。でも、やっぱり利用料がちょっと高いのが難点か。大体進め方の方向性としては意識合わせできたと思うのだけど、誰か議事録取っていたのかな、とふと思った。ワシは宴会で細かい話は忘れてしまった。w
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090620/20090620202656.jpg
-   :alt: f:id:mkouhei:20090620202656j:image
+
+.. image:: /img/20090620202656.jpg
 
 Debian GNU/kFreeBSDの月間インストール数だかはきっと来月には上位に食い込んでいるに違いない。
-宴会は牛込柳町駅前の安安で開催。emasakaさんがOpenBlockS 600を注文するとつぶやいていたので、その話を聞いたらますます欲しくなった…。
 
 
 
-.. author:: mkouhei
+宴会は牛込柳町駅前の安安で開催。emasakaさんが `OpenBlockS 600を注文するとつぶやいていた <http://twitter.com/emasaka/status/2219451920>`_ ので、その話を聞いたらますます欲しくなった…。
+
+
+
+
+
+
+.. author:: default
 .. categories:: Debian, meeting, 
 .. tags::
 .. comments::
-
-

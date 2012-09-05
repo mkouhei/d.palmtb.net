@@ -1,10 +1,11 @@
-﻿Lennyにアップデートしたら消えたので。
-##########################################
+Lennyにアップデートしたら消えたので。
+=====================================
+
+Etchでlighttpdでsuexecを行っていたが、Lennyにアップグレードしたら/usr/lib/apache2/suexecが消えてしまい、起動しなくなったので、 `ここからダウンロード <http://packages.debian.org/lenny/apache2-suexec>`_ し、展開。
 
 
-Etchでlighttpdでsuexecを行っていたが、Lennyにアップグレードしたら/usr/lib/apache2/suexecが消えてしまい、起動しなくなったので、ここからダウンロードし、展開。
+.. code-block:: sh
 
-.. code-block:: none
 
    $ dpkg-deb -x apache2-suexec_2.2.9-10+lenny2_powerpc.deb ./
    $ cd ./usr/lib/apache2/
@@ -13,7 +14,9 @@ Etchでlighttpdでsuexecを行っていたが、Lennyにアップグレードし
 
 サーバに配置後、パーミッションを変更して正常に起動できるようになりましたよと。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo mv suexec /usr/lib/apache2/
    $ sudo chown root:www-data suexec
@@ -23,9 +26,9 @@ Etchでlighttpdでsuexecを行っていたが、Lennyにアップグレードし
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

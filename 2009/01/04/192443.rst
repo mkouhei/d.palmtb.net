@@ -1,18 +1,15 @@
-﻿黒MacBookにSid amd64版が入らん。
-################################################
-
+黒MacBookにSid amd64版が入らん。
+================================
 
 ヨメの友人が遊びにきて、15時過ぎからSex and the CityのDVD鑑賞会になったので、年末に失敗した黒MacBookへのSid 64bit版のインストールを再挑戦。が、なかなかうまくいかん。ハードディスクのデバイスが見つからんと、Kernel Panicになってしまう。インストーラが古いのが原因か [#]_ 、インストール途中でsources.listを書き換え、そのままapt-get {update,upgrade,dist-upgrade}するからなのか、ようわからん。最新版のインストールイメージを探して再挑戦してみるか。
 
 
 
-.. [#] ：Debian GNU/Linux testing .. [#] Lenny.. [#]  - Official RC amd64 NETINST Binary-1 20081104-23:38版。
+
+.. [#] Debian GNU/Linux testing "Lenny" - Official RC amd64 NETINST Binary-1 20081104-23:38版。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

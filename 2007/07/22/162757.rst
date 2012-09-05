@@ -1,14 +1,14 @@
-﻿肩凝り酷い…。
-##############
-
+肩凝り酷い…。
+==============
 
 右肩痛い。今日は昼寝ばっか。風呂わかして入るか。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿「読み逃げ」なんて言葉があるそうな。
-####################################
-
+「読み逃げ」なんて言葉があるそうな。
+====================================
 
 最近の人の考えていることはよくわからんですな。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, computer, 
+
+
+
+.. author:: default
+.. categories:: 駄文, computer, 
 .. tags::
 .. comments::
-
-

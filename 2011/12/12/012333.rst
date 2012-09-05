@@ -1,10 +1,11 @@
-﻿Vyattaの設定をシェルスクリプトで行う。
-############################################
-
+Vyattaの設定をシェルスクリプトで行う。
+======================================
 
 Vyattaは通常configureコマンドで設定モードに入り、setコマンドを使って設定します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ configure
    # set service ssh
@@ -12,9 +13,13 @@ Vyattaは通常configureコマンドで設定モードに入り、setコマン�
    # save
 
 
+
+
 さて、同じような設定を複数設定する場合には、あとあと楽したいのでシェルスクリプトを書いておいてそれを実行するだけにしたいですよね。例えば、いくつかのVLANインタフェースに複数IPアドレスを設定したい場合、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #!/bin/sh
    
@@ -29,9 +34,13 @@ Vyattaは通常configureコマンドで設定モードに入り、setコマン�
    commit
 
 
-というようにして、設定しようと思うわけです。でも、これはコケます。正解はUnofficial Vyatta Wikiのcli-shell-apiのドキュメントのModifying configurationにあります。上記のスクリプトは次のように書きなおします。
+というようにして、設定しようと思うわけです。でも、これはコケます。正解は `Unofficial Vyatta Wiki <http://wiki.het.net/wiki/Main_Page>`_ の `cli-shell-apiのドキュメントのModifying configuration <http://wiki.het.net/index.php?title=Cli-shell-api&redirect=no#Modifying_configuration>`_ にあります。上記のスクリプトは次のように書きなおします。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    #!/bin/vbash
    
@@ -47,13 +56,17 @@ Vyattaは通常configureコマンドで設定モードに入り、setコマン�
 
 ポイントは、
 
-* shebangは/bin/shや/bin/bashではなくVyatta専用の/bin/vbashにしておく
-* configureで設定モードに入るのはスクリプト外でやる
-* setコマンドやcommitコマンドはではなく、${vyatta_sbindir}/my_setや${vyatta_sbindir}/my_commitコマンドを使う
+#. shebangは/bin/shや/bin/bashではなくVyatta専用の/bin/vbashにしておく
+
+#. configureで設定モードに入るのはスクリプト外でやる
+
+#. setコマンドやcommitコマンドはではなく、 :command:`${vyatta_sbindir}/my_set` や :command:`${vyatta_sbindir}/my_set` コマンドを使う
 
 の3点です。このスクリプトは、configureコマンドで設定モードに入ってから実行します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ configure
    # ./setup-if.sh
@@ -61,20 +74,22 @@ Vyattaは通常configureコマンドで設定モードに入り、setコマン�
 
 VLANインタフェースの数が多いと設定に時間がかかりますが、無事設定できると思います。
 
+
+
+
 設定が多すぎるとコケる件。
-==========================================================================
-
-ちなみに、Static NAT, Destination NATを双方向に1対1で500ルール、Destination NAT用にVLANインタフェースに仮想IPアドレスを500程度設定しようとした際、setコマンドでの設定自体はさらに数倍に増えますが、これは300ルール程度設定しようとしたところで&#34;Set failed&#34;でコケてしまう、という問題にも遭遇しました。ちなみにその問題は、そもそも1対1に双方向NATさせるために1IPアドレスずつ設定するのではなく、同じネットマスクのネットワークアドレスを指定することことで解決しました。 [#]_ 
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-
-.. [#] ：Vyatta.comでレジストするとダウンロードできるPDFのドキュメントに書いていました…。orz
+ちなみに、Static NAT, Destination NATを双方向に1対1で500ルール、Destination NAT用にVLANインタフェースに仮想IPアドレスを500程度設定しようとした際、setコマンドでの設定自体はさらに数倍に増えますが、これは300ルール程度設定しようとしたところで"Set failed"でコケてしまう、という問題にも遭遇しました。ちなみにその問題は、そもそも1対1に双方向NATさせるために1IPアドレスずつ設定するのではなく、同じネットマスクのネットワークアドレスを指定することことで解決しました。 [#]_ 
 
 
 
-.. author:: mkouhei
+
+.. [#] Vyatta.comでレジストするとダウンロードできるPDFのドキュメントに書いていました…。orz
+
+
+.. author:: default
 .. categories:: Debian, network, 
 .. tags::
 .. comments::
-
-

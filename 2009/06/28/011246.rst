@@ -1,18 +1,17 @@
-﻿カレー巡り準備会
-################
-
+カレー巡り準備会
+================
 
 6/17のHack Cafeの前に行ったカレー屋さん、インド定食ターリー屋南新宿店。やすべえの隣に最近できた店で、割と安いので入ってキーマカレーを頼んだのだが、おいしいことはおいしいのだが、どうも水っぽい。そういうそういうもんなのだろうか。他のカレー屋で食べるキーマカレーはもっとペースト状なんだけどな。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090617/20090617191029.jpg
-   :alt: f:id:mkouhei:20090617191029j:image
+
+.. image:: /img/20090617191029.jpg
 
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

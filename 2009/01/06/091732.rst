@@ -1,14 +1,14 @@
-﻿２回やるのは面倒だ。
-####################
+２回やるのは面倒だ。
+====================
+
+kernel 2.6.28をビルドしたが、やっぱりinitrdを作るやりかたではダメだった。やむなくまた `例の回避方法 <http://linux.derkeiler.com/Mailing-Lists/Debian/2008-11/msg01918.html>`_ でカーネルをビルド。/ramdiskは2.6.26で使っているので、/ramとした。initrdではなく、展開したディレクトリを指定するこのworkaroundは２回ビルドしないといけないので面倒だな。
 
 
-kernel 2.6.28をビルドしたが、やっぱりinitrdを作るやりかたではダメだった。やむなくまた例の回避方法でカーネルをビルド。/ramdiskは2.6.26で使っているので、/ramとした。initrdではなく、展開したディレクトリを指定するこのworkaroundは２回ビルドしないといけないので面倒だな。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

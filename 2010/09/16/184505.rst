@@ -1,16 +1,20 @@
-﻿Oracle用にsysbenchをビルドしてハマる。
-####################################################
-
+Oracle用にsysbenchをビルドしてハマる。
+======================================
 
 RHEL5.5で、Oracle 11g r2用にsysbench 0.4.12をビルドしようとしてハマったのでメモ。ハマった原因は2つ。一つは、sysbench自体のバグ。もう一つはOracle Call Interfaceを使うためのライブラリ指定。
 
+
+
+
 sysbenchのバグ。
-************************************
+----------------
 
 
-こっちは、すでにRHEL5.3やFedora8でも昨年の4月、7月にバグ報告されているのだがまだ修正されていない。原因は./configureを実行してMakefileを作成する際にソースツリーにAUTHORSファイルとNEWSファイルが無いため、引数チェックに記述されている文字&#34;X&#34;がlibtoolスクリプト用のオプションと連結された変なlibtoolスクリプトが作成されるため。なので、makeを実行すると、
+こっちは、すでに `RHEL5.3 <http://sourceforge.net/tracker/?func=detail&aid=2779912&group_id=102348&atid=631676>`_ や `Fedora8 <http://sourceforge.net/tracker/?func=detail&aid=2820800&group_id=102348&atid=631676>`_ でも昨年の4月、7月にバグ報告されているのだがまだ修正されていない。原因は./configureを実行してMakefileを作成する際にソースツリーにAUTHORSファイルとNEWSファイルが無いため、引数チェックに記述されている文字"X"がlibtoolスクリプト用のオプションと連結された変なlibtoolスクリプトが作成されるため。なので、makeを実行すると、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    ../libtool: line 838: X--tag=CC: command not found
    ../libtool: line 871: libtool: ignoring unknown tag : command not found
@@ -25,18 +29,20 @@ sysbenchのバグ。
    X: user not authorized to run the X server, aborting.
    ../libtool: line 2412: Xsysbench: command not found
    ../libtool: line 2420: mkdir /.libs: No such file or directory
-   mkdir: cannot create directory `/.libs&#39;: Permission denied
+   mkdir: cannot create directory `/.libs': Permission denied
    make[2]: *** [sysbench] エラー 1
-   make[2]: ディレクトリ `/home/user/tmp/sysbench-0.4.12/sysbench&#39; から出ます
+   make[2]: ディレクトリ `/home/user/tmp/sysbench-0.4.12/sysbench' から出ます
    make[1]: *** [all-recursive] エラー 1
-   make[1]: ディレクトリ `/home/user/tmp/sysbench-0.4.12/sysbench&#39; から出ます
+   make[1]: ディレクトリ `/home/user/tmp/sysbench-0.4.12/sysbench' から出ます
    make: *** [all-recursive] エラー 1
    ../libtool: line 838: X--tag=CC: command not found
 
 
 のような形でエラーになってしまう。これはDebianでも同じ。これは、AUTHORS, NEWSファイルを作成し、下記の手順を実行してやれば回避できる。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ touch AUTHORS NEWS
    $ autoreconf -ifv
@@ -44,7 +50,9 @@ sysbenchのバグ。
 
 または
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ libtoolize --force --copy
    $ aclocal
@@ -53,15 +61,22 @@ sysbenchのバグ。
    $ automake
 
 
+
+
 なのでDebianのソースパッケージではちゃんとAUTHORS, NEWSファイルが作成されている。Upstreamにフィードバックしてないとは考えにくいのと、昨年のバグが放置されているところを見ると、sysbench自体の開発が止まっているんだろうかねぇ…。
 
+
+
+
 Oracle Call Interfaceを使うためのライブラリ指定。
-**************************************************************************************************************************
+-------------------------------------------------
 
 
 sysbenchはもともとMySQL用だが、PostgreSQLやOracle用にもOLTPのベンチマークに使える。Oracleで使うためには、Oracle Call Interfaceを使う必要があるのだが、sysbench自体にはMySQL以外のビルド方法についてはちゃんとドキュメント揃っていない。ググってみると、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ ./configure --without-mysql --with-oracle
    $ make
@@ -70,24 +85,35 @@ sysbenchはもともとMySQL用だが、PostgreSQLやOracle用にもOLTPのベ�
 
 で行ける、となっているのが多いのだが、実際のところはこのままではビルドできず、もうちょっとgccやlink用のオプション指定が必要だったりする。んで、どうすれば良いかというと、以下のように環境変数指定する。 [#]_ 
 
-.. code-block:: none
 
-   export CFLAGS=-I${ORACLE_HOME}/rdbms/public
-   export CXXFLAGS=$CFLAGS
+
+
+.. code-block:: sh
+
+
+   export CFLAGS="-I${ORACLE_HOME}/rdbms/public"
+   export CXXFLAGS="$CFLAGS"
    export LDFLAGS=-L${ORACLE_HOME}/lib
    export LD_LIBRARY_PATH=${ORACLE_HOME}/lib
 
 
+
+
 LDFLAGSで無くても良いんだけど、-Lでライブラリのパスを指定になかなか気づかなくて四苦八苦した。orz
+
 なので、こんなスクリプトを書いて、展開したソースツリー内で実行すればビルドできる。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    #!/bin/bash
    
-   export ORACLE_HOME=your oracle client path
-   export CFLAGS=-I${ORACLE_HOME}/rdbms/public
-   export CXXFLAGS=$CFLAGS
+   export ORACLE_HOME=<your oracle client path>
+   export CFLAGS="-I${ORACLE_HOME}/rdbms/public"
+   export CXXFLAGS="$CFLAGS"
    export LDFLAGS=-L${ORACLE_HOME}/lib
    export LD_LIBRARY_PATH=${ORACLE_HOME}/lib
    
@@ -104,41 +130,22 @@ LDFLAGSで無くても良いんだけど、-Lでライブラリのパスを指�
 
 ビルドしたら、make installでインストールしておこう。
 
+
+
+
 環境変数LD_LIBRARY_PATHは必要か？
-********************************************************************************
+---------------------------------
 
 
 環境変数LD_LIBRARY_PATHは指定しないでもビルドはできるが、makeの最後にlinkを実行するので、設定していないと、Oracleのライブラリとリンクできなくてそこでコケる。また、sysbenchを実行するユーザにはLD_LIBRACY_PATHを設定してやっていないと、make install後にsysbench自体はパスが通っていても、実行時にリンクできないのでまたまたコケる。ほんでまた、Oracleのインストールパスは、oracleユーザのホームディレクトリにインストールしていたりすると、~oracle/app/oracle/product/11.2.0/client_1自体へのアクセス権がないことが多いので、やっぱり実行時にリンクできずにコケるので、注意するがヨロシ。
 
 
 
-.. [#] ：$ORACLE_HOMEはOracle使いには当たり前なんだろうけど、Oracleのインストールパス。ここでは、Oracle Clientなので、/opt以下にインストールしていたら、.. [#] /opt/app/oracle/product/11.2.0/client_1.. [#] になる。
+
+.. [#] $ORACLE_HOMEはOracle使いには当たり前なんだろうけど、Oracleのインストールパス。ここでは、Oracle Clientなので、/opt以下にインストールしていたら、"/opt/app/oracle/product/11.2.0/client_1"になる。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, Debian, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	Oracleネタとか珍しいですねー
-
-	written by  shase_lab
-	09/18/2010 19:33:31
-	http://d.hatena.ne.jp/shase_lab/
-
-----
-
-Comment:
-
-	全くもってその通り。多分二度とやる機会は無い気がする。やりたくもないし。w
-
-	written by  mkouhei
-	09/19/2010 03:10:14
-	http://d.hatena.ne.jp/mkouhei/
-

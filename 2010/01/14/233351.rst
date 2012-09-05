@@ -1,25 +1,35 @@
-﻿ああ勘違い。
-############
-
+ああ勘違い。
+============
 
 CouchAppとデザインドキュメントの仕様をよく理解していなかった。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ couchapp init myapp
 
 
 で作ったディレクトリに、hoge.jsonデータを放り込み、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ couchapp push http://couchdb:5984/myapp
 
 
 とすればデータはDBに放り込まれるのだと思っていたら、http://couchdb:5984/_design/myapps/の下にhogeとしてpushされるのでなぜ？と悩んでしまった。
+
+
+
 futonで、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    function(doc) {
      emit(null,doc);
@@ -27,13 +37,17 @@ futonで、
 
 
 としても、hogeで入れたドキュメントが表示されないし、どういうこと？と。そもそもデザインドキュメントの仕様をちゃんと理解していないことと、CouchAppの仕様も理解していなかったのが原因。まぁ、おかげでようやくデザインドキュメント(のviewだけだけど)とCouchAppの使い方を理解できたので、悩んだ甲斐はあった。
+
+
+
 前回のrelaxonでデータ取得したり加工するよりも先にハンズオンをやっておくべきだろ、とも思ったけど、まぁ理解できたからええか。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: CouchDB, 
 .. tags::
 .. comments::
-
-

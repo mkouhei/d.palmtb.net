@@ -1,14 +1,14 @@
-﻿mとH
-######
-
+mとH
+====
 
 日経Linux 4月号の新連載「トラブルを乗り越えよう　走れ！カーネル探険隊」で、CPUの状態を調べるというテーマでpsコマンドでm, Hオプションの紹介がされていた。スレッドの状態表示するオプションだとさ。へぇ。知らなんだ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿EMのSIMでGDDフォン通話できるか？
-########################################
-
+EMのSIMでGDDフォン通話できるか？
+================================
 
 昨日のHack Cafe@Marunouchi Cafeで、takayaくんが帰ったあとに、matsuuさんのEMのSIMでtryしてみたがダメだった。残念。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: gadget, network, 
 .. tags::
 .. comments::
-
-

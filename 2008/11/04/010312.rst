@@ -1,33 +1,32 @@
-﻿越佐庵で頂いたプレミア。
-########################
+越佐庵で頂いたプレミア。
+========================
 
+先日、ヨメと二人で久々に `越佐庵 <http://maps.google.com/maps/ms?hl=ja&ie=UTF8&msa=0&msid=116353817628604507840.0000011240131ae54a00c&ll=35.693548,139.697122&spn=0.001882,0.003578&z=18>`_ を訪れた。結婚したことをご報告したら、帰り際に３０００本に１本という貴重な「ラッキー・ヱビス」というプレミアビールを頂いた。
 
-先日、ヨメと二人で久々に越佐庵を訪れた。結婚したことをご報告したら、帰り際に３０００本に１本という貴重な「ラッキー・ヱビス」というプレミアビールを頂いた。
 
 全体像
-**************
+------
 
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20081022/20081022233815.jpg
-   :alt: f:id:mkouhei:20081022233815j:image
+.. image:: /img/20081022233815.jpg
 
 
 拡大図
-**************
+------
 
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20081022/20081022233920.jpg
-   :alt: f:id:mkouhei:20081022233920j:image
+.. image:: /img/20081022233920.jpg
 
 めっちゃ嬉しい。家宝にしました。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

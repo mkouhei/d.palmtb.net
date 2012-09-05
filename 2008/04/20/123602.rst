@@ -1,19 +1,20 @@
-﻿Apache Benchかけてみた。
-####################################
-
+Apache Benchかけてみた。
+========================
 
 lighttpdにしたことでどれくらい速くなったのか、試してみようと、Apache Benchをかけてみた。
+
 Apacheのほうは、制限かけているので、mod_securityにApacheBenchを許可して、mod_limitipconnで制限をかけているので、同じくらいのドキュメントサイズになるように調整して実行してみた。多少、ドキュメントサイズがApacheの方が良いけど、それでもかなり良い感じ。
 
+
 リクエスト数、同時接続数とも1でやってみた結果
-**********************************************************************************************************************************
+---------------------------------------------
 
 
+* lighttpd & FastCGI & Hiki
 
-* lighttpd * &amp;*  FastCGI * &amp;*  Hiki
 
+.. code-block:: sh
 
-.. code-block:: none
 
    Document Length:        43399 bytes
    
@@ -37,11 +38,11 @@ Apacheのほうは、制限かけているので、mod_securityにApacheBenchを
    Total:       3915 3915   0.0   3915    3915
 
 
+* Apache2 & mod_php & PukiWiki
 
-* Apache2 * &amp;*  mod_php * &amp;*  PukiWiki
 
+.. code-block:: sh
 
-.. code-block:: none
 
    Document Length:        44109 bytes
    
@@ -67,15 +68,18 @@ Apacheのほうは、制限かけているので、mod_securityにApacheBenchを
 
 約２分の１のレスポンスと考えたら、かなり良いですな。
 
-リクエスト数1、同時接続数2
-************************************************************************
 
+
+
+リクエスト数1、同時接続数2
+--------------------------
 
 
 * lighttpd
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    Document Length:        43399 bytes
    
@@ -110,11 +114,11 @@ Apacheのほうは、制限かけているので、mod_securityにApacheBenchを
     100%   3903 (longest request)
 
 
-
 * Apache
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    Document Length:        44109 bytes
    
@@ -151,14 +155,14 @@ Apacheのほうは、制限かけているので、mod_securityにApacheBenchを
 
 
 リクエスト数2、同時接続数2
-************************************************************************
-
+--------------------------
 
 
 * lighttpd
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    Document Length:        43399 bytes
    
@@ -193,11 +197,11 @@ Apacheのほうは、制限かけているので、mod_securityにApacheBenchを
     100%   7424 (longest request)
 
 
-
 * Apache
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    Document Length:        44109 bytes
    
@@ -236,9 +240,10 @@ Apacheのほうは、制限かけているので、mod_securityにApacheBenchを
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, Ops, gadget, 
 .. tags::
 .. comments::
-
-

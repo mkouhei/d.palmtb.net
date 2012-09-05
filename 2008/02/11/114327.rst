@@ -1,14 +1,14 @@
-﻿Puppetって
-################
+Puppetって
+==========
+
+`Mercurial <http://www.selenic.com/mercurial/wiki/>`_ を `使っていた <http://gihyo.jp/admin/serial/01/puppet/0011>`_ のか…。
 
 
-Mercurialを使っていたのか…。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

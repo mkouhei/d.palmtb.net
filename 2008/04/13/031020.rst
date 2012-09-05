@@ -1,61 +1,66 @@
-﻿Apache&amp;amp;mod_fcgid&amp;amp;Railsを検証。
-####################################################################
-
+Apache&mod_fcgid&Railsを検証。
+==============================
 
 aliasディレクティブとDirectoryディレクティブで指定すると、動いてくれない。例えばこんな風に↓。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    NameVirtualHost *
-   VirtualHost *
+   <VirtualHost *>
    (snip)
    	DocumentRoot /var/www/
-   	Directory /
+   	<Directory />
    		Options None
    		AllowOverride None
-   	/Directory
+   	</Directory>
    (snip)
    
    	SuexecUserGroup hoge hoge
-           Alias /rails/ /var/www/rails/public/
-           Directory /var/www/rails/public/
+           Alias /rails/ "/var/www/rails/public/"
+           <Directory "/var/www/rails/public/">
                    Options ExecCGI FollowSymlinks
                    AllowOverride all
                    Allow from all
                    Order allow,deny
-           /Directory
+           </Directory>
    (snip)
-   /VirtualHost
+   </VirtualHost>
 
 
 VirtualHostを別にしてDocumentRootを指定してやるとちゃんと動く。
 
-.. code-block:: none
 
-   VirtualHost rails.hoge.com
+.. code-block:: sh
+
+
+   <VirtualHost rails.hoge.com>
    	DocumentRoot /var/www/rails/public
    
    	SuexecUserGroup hoge hoge
    
-           Alias /rails/ /var/www/rails/public/
-   	Directory /var/www/rails/public/
+           Alias /rails/ "/var/www/rails/public/"
+   	<Directory "/var/www/rails/public/">
    		Options ExecCGI FollowSymlinks
    		AllowOverride all
    		Allow from all
    		Order allow,deny
-   	/Directory
+   	</Directory>
    (snip)
-   /VirtualHost
+   </VirtualHost>
 
 
 はて？何でやろなぁ。今度調べてみよ。
-hikiを使う件は、fcgiwrapがうまく行かず、全コードをすべて変更するのは非常に面倒なのでやめた。Railsで作られたWikiのinstikiを使ってみることにしたが、MySQLをDBにしてみたら、最初のロード自体がうまく行かず動かない。やっぱり１台のOBS266でApache2_fcgidにMySQLを動かそうというのが無理があったのか？それとも、DNSBLモジュールが重すぎるのか？うーん、ちゃんと試してみないと断言はできないが、コマンドラインでMySQLをいじっていた感じではそうでもないので、どうも後者のような気もするんだけどなぁ。前者なら、SQLiteを試してみるか、MySQLを別サーバに移すんだけど。
+
+hikiを使う件は、fcgiwrapがうまく行かず、全コードをすべて変更するのは非常に面倒なのでやめた。Railsで作られたWikiのinstikiを使ってみることにしたが、MySQLをDBにしてみたら、最初のロード自体がうまく行かず動かない。やっぱり１台のOBS266でApache2&mod_fcgid&RoRにMySQLを動かそうというのが無理があったのか？それとも、DNSBLモジュールが重すぎるのか？うーん、ちゃんと試してみないと断言はできないが、コマンドラインでMySQLをいじっていた感じではそうでもないので、どうも後者のような気もするんだけどなぁ。前者なら、SQLiteを試してみるか、MySQLを別サーバに移すんだけど。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

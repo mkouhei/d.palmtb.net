@@ -1,10 +1,11 @@
-﻿なんか、内蔵のUSBキーボードとマウスがマズイっぽい
-####################################################
-
+なんか、内蔵のUSBキーボードとマウスがマズイっぽい
+=================================================
 
 ブートログを見てると、最初にエラーを起こしているが、USBハブを検出した時点。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    Feb 17 15:31:55 hostname kernel: usb 5-1: new high speed USB device using ehci_hcd and address 2
    Feb 17 15:31:55 hostname kernel: usb 5-1: new device found, idVendor=0409, idProduct=005a
@@ -19,9 +20,13 @@
    Feb 17 15:31:55 hostname kernel: hub: probe of 5-4:1.0 failed with error -5
 
 
+
+
 で、そのあと、MacBookのキーボードとタッチパッド(どちらもUSB接続)のprobeでエラー出してる。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    Feb 17 15:31:55 hostname kernel: usb 1-2: new device found, idVendor=05ac, idProduct=021a
    Feb 17 15:31:55 hostname kernel: usb 1-2: new device strings: Mfr=1, Product=2, SerialNumber=0
@@ -38,14 +43,16 @@
 
 USB接続している、HHKBと内蔵のIrDAは問題なし。iSight用のデバイスがおかしい。
 
-.. code-block:: none
 
-   Feb 17 15:31:55 hostname kernel: uvcvideo: Found UVC 0.00 device unnamed (05ac:8300)
+.. code-block:: sh
+
+
+   Feb 17 15:31:55 hostname kernel: uvcvideo: Found UVC 0.00 device <unnamed> (05ac:8300)
    Feb 17 15:31:55 hostname kernel: uvcvideo: No valid video chain found.
    Feb 17 15:31:55 hostname kernel: uvcvideo: No valid video chain found.
    Feb 17 15:31:55 hostname kernel: uvcvideo: Found UVC 0.00 device IR Receiver (05ac:8240)
    Feb 17 15:31:55 hostname kernel: uvcvideo: No valid video chain found.
-   Feb 17 15:31:55 hostname kernel: uvcvideo: Found UVC 0.00 device unnamed (05ac:1000)
+   Feb 17 15:31:55 hostname kernel: uvcvideo: Found UVC 0.00 device <unnamed> (05ac:1000)
    Feb 17 15:31:55 hostname kernel: uvcvideo: No valid video chain found.
    Feb 17 15:31:55 hostname kernel: usbcore: registered new interface driver uvcvideo
    Feb 17 15:31:55 hostname kernel: usbcore: registered new interface driver hiddev
@@ -57,9 +64,10 @@ USB接続している、HHKBと内蔵のIrDAは問題なし。iSight用のデバ
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

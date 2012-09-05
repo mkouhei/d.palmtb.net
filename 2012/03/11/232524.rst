@@ -1,55 +1,71 @@
-﻿blockdiagシリーズがmain入りしました。
-##################################################
+blockdiagシリーズがmain入りしました。
+=====================================
+
+`blockdiagシリーズがようやく全てSidのmain入り <http://qa.debian.org/developer.php?login=mkouhei@palmtb.net>`_ しました。 [#]_  スポンサーをお願いした `岩松さん <http://www.nigauri.org/~iwamatsu/>`_ 、upstreamの `tk0miyaさん <https://twitter.com/tk0miya>`_ 、依存パッケージ(funcparserlib)のupstreamの `Andreyさん <https://twitter.com/vlasovskikh>`_ には大変お世話になりました。ありがとうございました。
 
 
-blockdiagシリーズがようやく全てSidのmain入りしました。 [#]_  スポンサーをお願いした岩松さん、upstreamのtk0miyaさん、依存パッケージ(funcparserlib)のupstreamのAndreyさんには大変お世話になりました。ありがとうございました。それぞれ、Sidおよび、testing(wheezy)では下記のパッケージ名でインストールすることができます。 [#]_ 
+
+それぞれ、Sidおよび、testing(wheezy)では下記のパッケージ名でインストールすることができます。 [#]_ 
 
 * python-blockdiag
+
 * python-seqdiag
+
 * python-actdiag
+
 * python-nwdiag
+
 * python-sphinxcontrib.blockdiag
+
 * python-sphinxcontrib.seqdiag
+
 * python-sphinxcontrib.actdiag
+
 * python-sphinxcontrib.nwdiag
+
+
 
 Sidユーザでblockdiagシリーズをパッケージで待っていた方はぜひ使ってみてください。
 
+
+
+
 次のリリース
-********************************
+------------
 
 
 blockdiag, actdiagは1.1.2および0.3.0をパッケージにしていますが、既にそれぞれ1.1.3、0.3.1がリリースされています。actdiagはパッケージ作成しスポンサー依頼をこれからするのですが、blockdiagは下記のテストがコケるのでこれを解決してからになります。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    ======================================================================
    FAIL: test_auto_font_detection (blockdiag.tests.test_boot_params.TestBootParams)
    ----------------------------------------------------------------------
    Traceback (most recent call last):
-     File /home/kohei/devel/debpkg/blockdiag/blockdiag-1.1.3/src/blockdiag/tests/utils.py, li
+     File "/home/kohei/devel/debpkg/blockdiag/blockdiag-1.1.3/src/blockdiag/tests/utils.py", li
    ne 14, in wrap
        func(*args, **kwargs)
-     File /home/kohei/devel/debpkg/blockdiag/blockdiag-1.1.3/src/blockdiag/tests/test_boot_par
-   ams.py, line 158, in test_auto_font_detection
+     File "/home/kohei/devel/debpkg/blockdiag/blockdiag-1.1.3/src/blockdiag/tests/test_boot_par
+   ams.py", line 158, in test_auto_font_detection
        self.assertTrue(fontpath)
    AssertionError: None is not True
-       &#39;None is not True&#39; = self._formatMessage(&#39;None is not True&#39;, %s is not True % safe_rep
+       'None is not True' = self._formatMessage('None is not True', "%s is not True" % safe_rep
    r(None))
-   &gt;&gt;  raise self.failureException(&#39;None is not True&#39;)
+   >>  raise self.failureException('None is not True')
 
 
 
 
 
-.. [#] ：今日じゃなくて数日前ですけどね。
-.. [#] ：sphinx-contrib.{seq,act,nw}diagは3/11現在はtesting入りしていません。
+.. [#] 今日じゃなくて数日前ですけどね。
+.. [#] sphinx-contrib.{seq,act,nw}diagは3/11現在はtesting入りしていません。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: python, Debian, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿MacBook Air初期化
-############################
+MacBook Air初期化
+=================
+
+諸事情により、明日下取りに出すことになったので、現在初期化中。初期化する直前に、設定を `記録しておいた <http://www.palmtb.net/wiki/?Debian+Sid+on+MacBook+Air>`_ 。完了まであと約2時間。
 
 
-諸事情により、明日下取りに出すことになったので、現在初期化中。初期化する直前に、設定を記録しておいた。完了まであと約2時間。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Debian, MacBook, 
 .. tags::
 .. comments::
-
-

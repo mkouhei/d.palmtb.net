@@ -1,62 +1,69 @@
-﻿Lenny armelをUSBにインストールする。
-##################################################
-
+Lenny armelをUSBにインストールする。
+====================================
 
 ARMネイティブマシンとして持っているのはPalm Tungsten|T, Armadillo-J, Armadillo-9, Chumbyしか持っていないので、もちろん作業用の環境ではない。なので、QEMUを使ってUSBメモリにLennyをインストールしてみた。
 
+
+
+
 QEMUをインストールしておく。
-****************************************************************************
+----------------------------
 
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ sudo aptitude install qemu
 
 
 
 netboot用のイメージをダウンロードする。
-**********************************************************************************************************
+---------------------------------------
 
 
 lennyのRC2のイメージをダウンロードした。
 
-* kenerlイメージ
-* 初期RAMファイル
+
+*  `kenerlイメージ <http://ftp.nl.debian.org/debian/dists/testing/main/installer-armel/current/images/versatile/netboot/vmlinuz-2.6.26-1-versatile>`_ 
+
+*  `初期RAMファイル <http://ftp.nl.debian.org/debian/dists/testing/main/installer-armel/current/images/versatile/netboot/initrd.gz>`_ 
 
 
 空のUSBを挿す。
-**************************************
+---------------
 
 
 今回の環境では/dev/sdb
 
+
 qemuでインストーラを起動させる。
-****************************************************************************************
+--------------------------------
 
 
 
-.. code-block:: none
-
-   $ qemu-system-arm -M versatilepb -kernel vmlinuz-2.6.26-1-versatile -initrd initrd.gz -hda /dev/sdb -append root=/dev/ram
+.. code-block:: sh
 
 
+   $ qemu-system-arm -M versatilepb -kernel vmlinuz-2.6.26-1-versatile -initrd initrd.gz -hda /dev/sdb -append "root=/dev/ram"
 
-* &#39;-M&#39;で指定するマシンタイプは、chumbyに搭載されているCPUに合わせた。
+
+* '-M'で指定するマシンタイプは、chumbyに搭載されているCPUに合わせた。
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    # cat /proc/cpuinfo
    Processor       : ARM926EJ-Sid(wb) rev 4 (v5l)
    (snip)
 
 
-
 * 指定できるマシンタイプは-Mオプションに引数を与えなければ表示される。
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ qemu-system-arm -M
    Supported machines are:
@@ -77,43 +84,48 @@ qemuでインストーラを起動させる。
 
 
 
-後は普通にDebianのインストール。
-**************************************************************************************
 
+
+後は普通にDebianのインストール。
+--------------------------------
 
 
 * QEMUプロセスの中では、-hda /dev/sdbで指定したUSBメモリは、/dev/sdaとして認識されるので勘違いしないように。
+
 * 今回swap領域は用意しない。
+
 * ファイルシステムはext2とした。
 
 やってみて不思議だったのは、qemuは一般ユーザで起動したのにも関わらず、USBメモリ(/dev/sdb)に書き込みができたこと。fstabのマウントオプションにはuserを付けているものの、別にマウントされているわけでもないのにな。この辺はqemu-ioを使っているKVMと同じと仮定すれば納得できるか。
 
+
+
+
 ブート。
-********************
+--------
 
 
 が、このままブートさせても、Netbootのインストール用のinitrdしかないので、インストールにしかならない。とりあえずそのまま一度起動させ、shellモードで、usbのファイルシステムをマウント、chrootし、/boot以下のinitrd.imgをssh経由で別サーバにscpして、ホストOSのローカルにまで持ってきた。
 
-.. code-block:: none
 
-   qemu-system-arm -M versatilepb -kernel vmlinuz-2.6.26-1-versatile -initrd initrd.img-2.6.26-1-versatile -hda /dev/sdb -append root=/dev/sda1
+.. code-block:: sh
+
+
+   qemu-system-arm -M versatilepb -kernel vmlinuz-2.6.26-1-versatile -initrd initrd.img-2.6.26-1-versatile -hda /dev/sdb -append "root=/dev/sda1"
 
 
 起動したらこんな感じ。 [#]_ 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090214/20090214013422.png
-   :alt: f:id:mkouhei:20090214013422p:image
+
+.. image:: /img/20090214013422.png
 
 
 
 
-.. [#] ：ホスト名がchumbyとなっているけど、chumbyじゃないので要注意。
+.. [#] ホスト名がchumbyとなっているけど、chumbyじゃないので要注意。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Debian, computer, virt., 
 .. tags::
 .. comments::
-
-

@@ -1,27 +1,41 @@
-﻿麺屋 海神に行ってみた。
-########################
-
+麺屋 海神に行ってみた。
+=======================
 
 昨日、新宿に行く用があったので、帰り間際にid:z-ohnamiさんに教えてもらったラーメン屋、麺屋 海神に行ってみた。本日のアラというのが壁に毛筆でかかれているのが面白い。なお昨日のアラは、以下の通り。高級魚が多いな。
 
 * 鯛
+
 * 鮭
+
 * ブリ
+
 * 穴子
+
 * 金目鯛
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090201/20090201195522.jpg
-   :alt: f:id:mkouhei:20090201195522j:image
+
+
+.. image:: /img/20090201195522.jpg
+
+
 
 感想は、ズバリ美味い。さっぱりした味で食べやすかった。ラーメンというよりはなんだろう、スープはお吸い物のようでもあり、エビ入りの鱈のつみれと軟骨入りの鶏のつくねがまた良かった。id:z-ohnamiさんもおすすめの焼きおにぎのセットにして置いたのだが、焼きおにぎりはそれだけで食べるとむしろまずいくらいだったのに、麺を食べ終わった後のスープに入れて、焼きおにぎりに添えられていた山椒をかけると、全然違う味になった。めっちゃ美味かった。
-大きな地図で見る
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+.. raw:: html
+
+    <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps/ms?oe=utf-8&amp;client=iceweasel-a&amp;hl=ja&amp;ie=UTF8&amp;s=AARTsJq4h4vhQhOQiCrUCJPG8uG1GjBPiw&amp;msa=0&amp;msid=116353817628604507840.0000011240131ae54a00c&amp;ll=35.690089,139.702299&amp;spn=0.001525,0.00228&amp;z=18&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps/ms?oe=utf-8&amp;client=iceweasel-a&amp;hl=ja&amp;ie=UTF8&amp;msa=0&amp;msid=116353817628604507840.0000011240131ae54a00c&amp;ll=35.690089,139.702299&amp;spn=0.001525,0.00228&amp;z=18&amp;source=embed" style="color:#0000FF;text-align:left">大きな地図で見る</a></small>
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

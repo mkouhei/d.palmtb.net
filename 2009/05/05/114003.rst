@@ -1,10 +1,11 @@
-﻿MacBookが起動しない問題。
-################################
-
+MacBookが起動しない問題。
+=========================
 
 liloからgrub2, grub-pcに変更することで解決。ただ最近、kernelをビルド、インストールしても自動でinitrdが作成されないので、インストール後に自分で下記を実行しないとダメ。/etc/kernel/postinst.d/initramfs-toolsがちゃんと機能してないのか？
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo update-initramfs -c -k 2.6.xx.x
    $ sudo update-grub2
@@ -12,13 +13,17 @@ liloからgrub2, grub-pcに変更することで解決。ただ最近、kernel�
 
 
 grub-installは毎回実行しないで良いのか。
-インストールしなおすと、Xが上がらない現象でハマったが、Debian Wikiのxorg.confを一部変更してやったらちゃんと起動できる。ヨメのMacBookではModuleセクションのfreetype, type1と、DeviceセクションのDriver &#34;i810&#34;をコメントアウトして、InputDeviceセクションのXkbModelをpc104に変更してやった。この設定だと、初代の黒MacBookでもマルチタッチが有効になるのか。
 
 
 
-.. author:: mkouhei
+インストールしなおすと、Xが上がらない現象でハマったが、 `Debian Wikiのxorg.conf <http://wiki.debian.org/MacBookJp#sid.2BdLBYgzBnmacbook.2BMJJPfzBGMGswbw->`_ を一部変更してやったらちゃんと起動できる。ヨメのMacBookではModuleセクションのfreetype, type1と、DeviceセクションのDriver "i810"をコメントアウトして、InputDeviceセクションのXkbModelをpc104に変更してやった。この設定だと、初代の黒MacBookでもマルチタッチが有効になるのか。
+
+
+
+
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

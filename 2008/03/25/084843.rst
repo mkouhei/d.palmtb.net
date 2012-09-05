@@ -1,14 +1,14 @@
-﻿暑い！
-######
-
+暑い！
+======
 
 まるで黄金週間過ぎの陽気のようだ。汗ダラダラ。(;´д｀)
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

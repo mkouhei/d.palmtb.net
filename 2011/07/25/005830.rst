@@ -1,91 +1,113 @@
-﻿SendmailからGmail経由でメールを送信する。
-######################################################
+SendmailからGmail経由でメールを送信する。
+=========================================
+
+諸事情により久々にSendmailを触ることになり、Gmail経由でメール送信させるテストをしたのでその備忘録です。GmailまたはGoogle Apps経由で、他のドメインのメールアドレス宛にメールを送信する場合の例です。
 
 
-諸事情により久々にSendmailを触ることになり、Gmail経由でメール送信させるテストをしたのでその備忘録です。GmailまたはGoogle Apps経由で、他のドメインのメールアドレス宛にメールを送信する場合の例です。sendmail.mc [#]_ 
 
-.. code-block:: none
+sendmail.mc [#]_ 
+
+
+.. code-block:: make
+
 
    divert(-1)dnl
    divert(0)dnl
-   define(`_USE_ETC_MAIL_&#39;)dnl
-   include(`/usr/share/sendmail/cf/m4/cf.m4&#39;)dnl
-   VERSIONID(`$Id: sendmail.mc, v 8.14.3-9.4 2010-09-21 11:05:34 cowboy Exp $&#39;)
-   OSTYPE(`debian&#39;)dnl
-   DOMAIN(`debian-mta&#39;)dnl
-   undefine(`confHOST_STATUS_DIRECTORY&#39;)dnl        #DAEMON_HOSTSTATS=
-   FEATURE(`no_default_msa&#39;)dnl
-   DAEMON_OPTIONS(`Family=inet,  Name=MTA-v4, Port=smtp, Addr=127.0.0.1&#39;)dnl
-   DAEMON_OPTIONS(`Family=inet,  Name=MSP-v4, Port=submission, M=Ea, Addr=127.0.0.1&#39;)dnl
-   define(`confPRIVACY_FLAGS&#39;,dnl`needmailhelo,needexpnhelo,needvrfyhelo,restrictqrun,restrictexpand,nobodyreturn,authwarnings&#39;)dnl
-   define(`confCONNECTION_RATE_THROTTLE&#39;, `15&#39;)dnl
-   define(`confCONNECTION_RATE_WINDOW_SIZE&#39;,`10m&#39;)dnl
-   FEATURE(`use_cw_file&#39;)dnl
-   FEATURE(`access_db&#39;, , `skip&#39;)dnl
-   FEATURE(`greet_pause&#39;, `1000&#39;)dnl
-   FEATURE(`delay_checks&#39;, `friend&#39;, `n&#39;)dnl
-   define(`confBAD_RCPT_THROTTLE&#39;,`3&#39;)dnl
-   FEATURE(`conncontrol&#39;, `nodelay&#39;, `terminate&#39;)dnl
-   FEATURE(`conncontrol&#39;, `nodelay&#39;, `terminate&#39;)dnl
-   FEATURE(`ratecontrol&#39;, `nodelay&#39;, `terminate&#39;)dnl
-   EXPOSED_USER(`root&#39;)dnl
-   LOCAL_DOMAIN(`example.org&#39;)dnl
-   define(`SMART_HOST&#39;, `smtp.gmail.com&#39;)dnl
-   define(`RELAY_MAILER_ARGS&#39;, `TCP $h 587&#39;)
-   define(`CERT_DIR&#39;, `/etc/ssl/certs&#39;)dnl
-   define(`confCACERT_PATH&#39;, `CERT_DIR&#39;)dnl
-   define(`confCACERT&#39;, `CERT_DIR/ca-certificates.crt&#39;)dnl
-   define(`confCRL&#39;, `CERT_DIR/ca-certificates.crt&#39;)dnl
-   define(`confSERVER_CERT&#39;, `CERT_DIR/ca.pem&#39;)dnl
-   define(`confSERVER_KEY&#39;, `CERT_DIR/ca.pem&#39;)dnl
-   define(`confCLIENT_CERT&#39;, `CERT_DIR/ca.pem&#39;)dnl
-   define(`confCLIENT_KEY&#39;, `CERT_DIR/ca.pem&#39;)dnl
-   define(`confAUTH_MECHANISMS&#39;, `EXTERNAL GSSAPI DIGEST-MD5 CRAM-MD5 LOGIN PLAIN&#39;)dnl
-   TRUST_AUTH_MECH(`EXTERNAL DIGEST-MD5 CRAM-MD5 LOGIN PLAIN&#39;)
-   FEATURE(`authinfo&#39;,`hash /etc/mail/authinfo&#39;)dnl
-   FEATURE(genericstable,DATABASE_MAP_TYPE` -o &#39;MAIL_SETTINGS_DIR`genericstable&#39;)
-   GENERICS_DOMAIN_FILE(MAIL_SETTINGS_DIR`genericsdomain&#39;)
-   FEATURE(`generics_entire_domain&#39;)
-   include(`/etc/mail/m4/dialup.m4&#39;)dnl
-   include(`/etc/mail/m4/provider.m4&#39;)dnl
+   define(`_USE_ETC_MAIL_')dnl
+   include(`/usr/share/sendmail/cf/m4/cf.m4')dnl
+   VERSIONID(`$Id: sendmail.mc, v 8.14.3-9.4 2010-09-21 11:05:34 cowboy Exp $')
+   OSTYPE(`debian')dnl
+   DOMAIN(`debian-mta')dnl
+   undefine(`confHOST_STATUS_DIRECTORY')dnl        #DAEMON_HOSTSTATS=
+   FEATURE(`no_default_msa')dnl
+   DAEMON_OPTIONS(`Family=inet,  Name=MTA-v4, Port=smtp, Addr=127.0.0.1')dnl
+   DAEMON_OPTIONS(`Family=inet,  Name=MSP-v4, Port=submission, M=Ea, Addr=127.0.0.1')dnl
+   define(`confPRIVACY_FLAGS',dnl`needmailhelo,needexpnhelo,needvrfyhelo,restrictqrun,restrictexpand,nobodyreturn,authwarnings')dnl
+   define(`confCONNECTION_RATE_THROTTLE', `15')dnl
+   define(`confCONNECTION_RATE_WINDOW_SIZE',`10m')dnl
+   FEATURE(`use_cw_file')dnl
+   FEATURE(`access_db', , `skip')dnl
+   FEATURE(`greet_pause', `1000')dnl
+   FEATURE(`delay_checks', `friend', `n')dnl
+   define(`confBAD_RCPT_THROTTLE',`3')dnl
+   FEATURE(`conncontrol', `nodelay', `terminate')dnl
+   FEATURE(`conncontrol', `nodelay', `terminate')dnl
+   FEATURE(`ratecontrol', `nodelay', `terminate')dnl
+   EXPOSED_USER(`root')dnl
+   LOCAL_DOMAIN(`example.org')dnl
+   define(`SMART_HOST', `smtp.gmail.com')dnl
+   define(`RELAY_MAILER_ARGS', `TCP $h 587')
+   define(`CERT_DIR', `/etc/ssl/certs')dnl
+   define(`confCACERT_PATH', `CERT_DIR')dnl
+   define(`confCACERT', `CERT_DIR/ca-certificates.crt')dnl
+   define(`confCRL', `CERT_DIR/ca-certificates.crt')dnl
+   define(`confSERVER_CERT', `CERT_DIR/ca.pem')dnl
+   define(`confSERVER_KEY', `CERT_DIR/ca.pem')dnl
+   define(`confCLIENT_CERT', `CERT_DIR/ca.pem')dnl
+   define(`confCLIENT_KEY', `CERT_DIR/ca.pem')dnl
+   define(`confAUTH_MECHANISMS', `EXTERNAL GSSAPI DIGEST-MD5 CRAM-MD5 LOGIN PLAIN')dnl
+   TRUST_AUTH_MECH(`EXTERNAL DIGEST-MD5 CRAM-MD5 LOGIN PLAIN')
+   FEATURE(`authinfo',`hash /etc/mail/authinfo')dnl
+   FEATURE(genericstable,DATABASE_MAP_TYPE` -o 'MAIL_SETTINGS_DIR`genericstable')
+   GENERICS_DOMAIN_FILE(MAIL_SETTINGS_DIR`genericsdomain')
+   FEATURE(`generics_entire_domain')
+   include(`/etc/mail/m4/dialup.m4')dnl
+   include(`/etc/mail/m4/provider.m4')dnl
    MAILER_DEFINITIONS
-   MAILER(`local&#39;)dnl
-   MAILER(`smtp&#39;)dnl
+   MAILER(`local')dnl
+   MAILER(`smtp')dnl
 
 
 sendmail.mcを変更したら、makeを実行してsendmail.cfを更新し、sendmailを再起動します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo make
    $ sudo /etc/init.d/sendmail restart
 
 
+
+
 authinfoで指定した、/etc/mail/authinfoは、
 
-.. code-block:: none
 
-   AuthInfo:smtp.gmail.com U:smmsp I:user P:password M:PLAIN
+.. code-block:: apache
+
+
+   AuthInfo:smtp.gmail.com "U:smmsp" "I:user" "P:password" "M:PLAIN"
 
 
 のように作成し、
 
-.. code-block:: none
 
-   $ sudo bash -c makemap -r hash /etc/mail/authinfo.db  /etc/mail/authinfo
+.. code-block:: sh
+
+
+   $ sudo bash -c "makemap -r hash /etc/mail/authinfo.db < /etc/mail/authinfo"
 
 
 と実行します [#]_ 。
-これが、Google Appsを使う場合はauthinfoで指定している&#34;I:&#34;と&#34;P:&#34;をGoogle Appsのアカウント、パスワードにすればOKです。
 
-.. code-block:: none
 
-   AuthInfo:smtp.gmail.com U:smmsp I:user@example.org P:password M:PLAIN
+
+これが、Google Appsを使う場合はauthinfoで指定している"I:"と"P:"をGoogle Appsのアカウント、パスワードにすればOKです。
+
+
+.. code-block:: apache
+
+
+   AuthInfo:smtp.gmail.com "U:smmsp" "I:user@example.org" "P:password" "M:PLAIN"
 
 
 てな具合です。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ date | mail -s test hoge@gmail.com
 
@@ -93,63 +115,71 @@ authinfoで指定した、/etc/mail/authinfoは、
 とすると、上記の例では、Gmailならuser@gmail.comから、Google Appsならuser@example.orgから、hoge@gmail.com宛にメール配送されます。
 
 
+
+
+
+
 修正版
-**************
+------
 
 
 もちっといろいろやってみたら結構不要なのが多かったので、以下に修正版を掲載しておきます。
 
-.. code-block:: none
+
+
+
+.. code-block:: make
+
 
    divert(-1)dnl
    divert(0)dnl
-   define(`_USE_ETC_MAIL_&#39;)dnl
-   include(`/usr/share/sendmail/cf/m4/cf.m4&#39;)dnl
-   VERSIONID(`$Id: sendmail.mc, v 8.14.3-9.4 2010-09-21 11:05:34 cowboy Exp $&#39;)
-   OSTYPE(`debian&#39;)dnl
-   DOMAIN(`debian-mta&#39;)dnl
-   undefine(`confHOST_STATUS_DIRECTORY&#39;)dnl        #DAEMON_HOSTSTATS=
-   FEATURE(`no_default_msa&#39;)dnl
-   DAEMON_OPTIONS(`Family=inet,  Name=MTA-v4, Port=smtp, Addr=127.0.0.1&#39;)dnl
-   DAEMON_OPTIONS(`Family=inet,  Name=MSP-v4, Port=submission, M=Ea, Addr=127.0.0.1&#39;)dnl
-   define(`confPRIVACY_FLAGS&#39;,dnl`needmailhelo,needexpnhelo,needvrfyhelo,restrictqrun,restrictexpand,nobodyreturn,authwarnings&#39;)dnl
-   define(`confCONNECTION_RATE_THROTTLE&#39;, `15&#39;)dnl
-   define(`confCONNECTION_RATE_WINDOW_SIZE&#39;,`10m&#39;)dnl
-   FEATURE(`use_cw_file&#39;)dnl
-   FEATURE(`access_db&#39;, , `skip&#39;)dnl
-   FEATURE(`greet_pause&#39;, `1000&#39;)dnl
-   FEATURE(`delay_checks&#39;, `friend&#39;, `n&#39;)dnl
-   define(`confBAD_RCPT_THROTTLE&#39;,`3&#39;)dnl
-   FEATURE(`conncontrol&#39;, `nodelay&#39;, `terminate&#39;)dnl
-   FEATURE(`conncontrol&#39;, `nodelay&#39;, `terminate&#39;)dnl
-   FEATURE(`ratecontrol&#39;, `nodelay&#39;, `terminate&#39;)dnl
-   EXPOSED_USER(`root&#39;)dnl
-   LOCAL_DOMAIN(`hoge.example.org&#39;)dnl
-   define(`SMART_HOST&#39;, `smtp.gmail.com&#39;)dnl
-   define(`RELAY_MAILER_ARGS&#39;, `TCP $h 587&#39;)
-   define(`CERT_DIR&#39;, `/etc/ssl/certs&#39;)dnl
-   define(`confCACERT_PATH&#39;, `CERT_DIR&#39;)dnl
-   define(`confCACERT&#39;, `CERT_DIR/ca-certificates.crt&#39;)dnl
-   define(`confAUTH_MECHANISMS&#39;, `EXTERNAL GSSAPI DIGEST-MD5 CRAM-MD5 LOGIN PLAIN&#39;)dnl
-   TRUST_AUTH_MECH(`EXTERNAL DIGEST-MD5 CRAM-MD5 LOGIN PLAIN&#39;)
-   FEATURE(`authinfo&#39;,`hash /etc/mail/authinfo&#39;)dnl
+   define(`_USE_ETC_MAIL_')dnl
+   include(`/usr/share/sendmail/cf/m4/cf.m4')dnl
+   VERSIONID(`$Id: sendmail.mc, v 8.14.3-9.4 2010-09-21 11:05:34 cowboy Exp $')
+   OSTYPE(`debian')dnl
+   DOMAIN(`debian-mta')dnl
+   undefine(`confHOST_STATUS_DIRECTORY')dnl        #DAEMON_HOSTSTATS=
+   FEATURE(`no_default_msa')dnl
+   DAEMON_OPTIONS(`Family=inet,  Name=MTA-v4, Port=smtp, Addr=127.0.0.1')dnl
+   DAEMON_OPTIONS(`Family=inet,  Name=MSP-v4, Port=submission, M=Ea, Addr=127.0.0.1')dnl
+   define(`confPRIVACY_FLAGS',dnl`needmailhelo,needexpnhelo,needvrfyhelo,restrictqrun,restrictexpand,nobodyreturn,authwarnings')dnl
+   define(`confCONNECTION_RATE_THROTTLE', `15')dnl
+   define(`confCONNECTION_RATE_WINDOW_SIZE',`10m')dnl
+   FEATURE(`use_cw_file')dnl
+   FEATURE(`access_db', , `skip')dnl
+   FEATURE(`greet_pause', `1000')dnl
+   FEATURE(`delay_checks', `friend', `n')dnl
+   define(`confBAD_RCPT_THROTTLE',`3')dnl
+   FEATURE(`conncontrol', `nodelay', `terminate')dnl
+   FEATURE(`conncontrol', `nodelay', `terminate')dnl
+   FEATURE(`ratecontrol', `nodelay', `terminate')dnl
+   EXPOSED_USER(`root')dnl
+   LOCAL_DOMAIN(`hoge.example.org')dnl
+   define(`SMART_HOST', `smtp.gmail.com')dnl
+   define(`RELAY_MAILER_ARGS', `TCP $h 587')
+   define(`CERT_DIR', `/etc/ssl/certs')dnl
+   define(`confCACERT_PATH', `CERT_DIR')dnl
+   define(`confCACERT', `CERT_DIR/ca-certificates.crt')dnl
+   define(`confAUTH_MECHANISMS', `EXTERNAL GSSAPI DIGEST-MD5 CRAM-MD5 LOGIN PLAIN')dnl
+   TRUST_AUTH_MECH(`EXTERNAL DIGEST-MD5 CRAM-MD5 LOGIN PLAIN')
+   FEATURE(`authinfo',`hash /etc/mail/authinfo')dnl
    MAILER_DEFINITIONS
-   MAILER(`local&#39;)dnl
-   MAILER(`smtp&#39;)dnl
+   MAILER(`local')dnl
+   MAILER(`smtp')dnl
+
+
 
 
 Gmailにリレーするだけなのに、サーバ証明書とかクライアント証明書は不要ですね、ハイ。あと、LOCAL_DOMAINで指定したドメインが、/etc/aliasesで設定するローカルアカウントのエイリアスのメールアドレスのドメインと同じだと、リレーされませんね。
 
 
 
-.. [#] ：$ egrep -v .. [#] ^#|^dnl.. [#]  sendmail.mcの結果です。
-.. [#] ：authinfoのAuthInfo:smtp.gmail.comで、STARTTLS用のポートTCP/587を指定していませんが、RELAY_MAILER_ARGSで587を指定しているので不要です。
+
+.. [#] $ egrep -v '^#|^dnl' sendmail.mcの結果です。
+.. [#] authinfoのAuthInfo:smtp.gmail.comで、STARTTLS用のポートTCP/587を指定していませんが、RELAY_MAILER_ARGSで587を指定しているので不要です。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, Debian, 
 .. tags::
 .. comments::
-
-

@@ -1,10 +1,13 @@
-﻿リモコン其の２
-##############
-
+リモコン其の２
+==============
 
 リモコンでBerylの画面をグリグリ回したいなぁと思い、
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    int keymap[8]={
      0,                /* reserved */
@@ -18,9 +21,14 @@
 
 
 のように変更してみた。けどダメ。あれ、待てよIrDAって、一度に一つの入力しかダメ？と、xevでリモコンのボタンを同時に入力してみたが、やっぱり反応無し。orz
+
 仕方ないので、Berylのショートカットで何とかするか。取り敢えず、キーマップを下記のように変更した。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    int keymap[8]={
      0,                /* reserved */
@@ -36,9 +44,9 @@
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, MacBook, 
 .. tags::
 .. comments::
-
-

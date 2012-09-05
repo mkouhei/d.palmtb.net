@@ -1,10 +1,11 @@
-﻿サスペンド復帰時に。
-####################
-
+サスペンド復帰時に。
+====================
 
 何かうまくできてないのか？そういや１回目は大丈夫だけど、２回目はサスペンドから復帰できなかったような…。
 
-.. code-block:: none
+
+.. code-block:: console
+
 
    [21635.666603] ------------[ cut here ]------------
    [21635.666610] WARNING: at kernel/power/suspend_test.c:52 suspend_devices_and_enter+0x197/0x1c8()
@@ -13,31 +14,31 @@
    [21635.666615] Modules linked in: usb_storage uinput binfmt_misc uvcvideo videodev v4l1_compat v4l2_compat_ioctl32 sco bridge stp llc bnep rfcomm l2cap bluetooth rfkill kvm_intel kvm nf_conntrack_ipv4 nf_defrag_ipv4 xt_state xt_tcpudp ipt_LOG iptable_filter ip_tables x_tables nf_conntrack_ftp nf_conntrack ipv6 cpufreq_stats cpufreq_conservative cpufreq_powersave cpufreq_userspace acpi_cpufreq loop snd_hda_codec_realtek snd_hda_intel snd_hda_codec snd_pcm_oss snd_mixer_oss snd_pcm snd_seq_dummy snd_seq_oss snd_seq_midi snd_rawmidi snd_seq_midi_event snd_seq snd_timer snd_seq_device snd joydev shpchp soundcore isight_firmware appletouch snd_page_alloc pcspkr evdev pci_hotplug nvidia(P) i2c_nforce2 processor battery button ac ext3 jbd mbcache dm_mod sg sd_mod sr_mod cdrom ata_generic ahci libata scsi_mod ohci1394 ide_pci_generic ohci_hcd ieee1394 ssb ide_core forcedeth ehci_hcd thermal fan thermal_sys [last unloaded: scsi_wait_scan]
    [21635.666674] Pid: 9991, comm: s2ram Tainted: P           2.6.31.6 #1
    [21635.666676] Call Trace:
-   [21635.666681]  [ffffffff8106c50e] ? suspend_devices_and_enter+0x197/0x1c8
-   [21635.666684]  [ffffffff8106c50e] ? suspend_devices_and_enter+0x197/0x1c8
-   [21635.666688]  [ffffffff81042bae] ? warn_slowpath_common+0x77/0xa3
-   [21635.666691]  [ffffffff81042c36] ? warn_slowpath_fmt+0x51/0x59
-   [21635.666697]  [ffffffff8120e34a] ? pm_dev_dbg+0xa1/0xc6
-   [21635.666701]  [ffffffff812ed143] ? mutex_lock+0xd/0x31
-   [21635.666704]  [ffffffff8120ec6f] ? dpm_resume_end+0x42f/0x43e
-   [21635.666707]  [ffffffff8106c705] ? suspend_test_finish+0x46/0x75
-   [21635.666710]  [ffffffff8106c50e] ? suspend_devices_and_enter+0x197/0x1c8
-   [21635.666713]  [ffffffff8106c638] ? enter_state+0xf9/0x13a
-   [21635.666716]  [ffffffff8106bd98] ? state_store+0xb4/0xd5
-   [21635.666720]  [ffffffff81126b37] ? sysfs_write_file+0xd0/0x107
-   [21635.666724]  [ffffffff8102573e] ? default_spin_lock_flags+0x5/0xb
-   [21635.666729]  [ffffffff810d74bc] ? vfs_write+0xad/0x169
-   [21635.666732]  [ffffffff810d7634] ? sys_write+0x45/0x6e
-   [21635.666735]  [ffffffff8100ba82] ? system_call_fastpath+0x16/0x1b
+   [21635.666681]  [<ffffffff8106c50e>] ? suspend_devices_and_enter+0x197/0x1c8
+   [21635.666684]  [<ffffffff8106c50e>] ? suspend_devices_and_enter+0x197/0x1c8
+   [21635.666688]  [<ffffffff81042bae>] ? warn_slowpath_common+0x77/0xa3
+   [21635.666691]  [<ffffffff81042c36>] ? warn_slowpath_fmt+0x51/0x59
+   [21635.666697]  [<ffffffff8120e34a>] ? pm_dev_dbg+0xa1/0xc6
+   [21635.666701]  [<ffffffff812ed143>] ? mutex_lock+0xd/0x31
+   [21635.666704]  [<ffffffff8120ec6f>] ? dpm_resume_end+0x42f/0x43e
+   [21635.666707]  [<ffffffff8106c705>] ? suspend_test_finish+0x46/0x75
+   [21635.666710]  [<ffffffff8106c50e>] ? suspend_devices_and_enter+0x197/0x1c8
+   [21635.666713]  [<ffffffff8106c638>] ? enter_state+0xf9/0x13a
+   [21635.666716]  [<ffffffff8106bd98>] ? state_store+0xb4/0xd5
+   [21635.666720]  [<ffffffff81126b37>] ? sysfs_write_file+0xd0/0x107
+   [21635.666724]  [<ffffffff8102573e>] ? default_spin_lock_flags+0x5/0xb
+   [21635.666729]  [<ffffffff810d74bc>] ? vfs_write+0xad/0x169
+   [21635.666732]  [<ffffffff810d7634>] ? sys_write+0x45/0x6e
+   [21635.666735]  [<ffffffff8100ba82>] ? system_call_fastpath+0x16/0x1b
    [21635.666737] ---[ end trace 5428c5b02edd2346 ]---
 
 
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: MacBook, Unix/Linux, 
 .. tags::
 .. comments::
-
-

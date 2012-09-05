@@ -1,28 +1,30 @@
-﻿cpufrequtilsのアップデートでエラーが出た。
-######################################################
-
+cpufrequtilsのアップデートでエラーが出た。
+==========================================
 
 本日のアップデートでcpufrequtilsをアップデートしたら、下記のようなエラーが出た。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    設定ファイル /etc/init.d/cpufrequtils を新規にインストールしています ...
-   usage: update-rc.d [-n] [-f] basename remove
-          update-rc.d [-n] basename defaults [NN | SS KK]
-          update-rc.d [-n] basename start|stop NN runlvl [runlvl] [...] .
+   usage: update-rc.d [-n] [-f] <basename> remove
+          update-rc.d [-n] <basename> defaults [NN | SS KK]
+          update-rc.d [-n] <basename> start|stop NN runlvl [runlvl] [...] .
    		-n: not really
    		-f: force
    dpkg: cpufrequtils の処理中にエラーが発生しました (--configure):
     サブプロセス post-installation script はエラー終了ステータス 1 を返しました
 
 
-update-rc.dの処理が削除されたから失敗しているんじゃねぇのかと。報告されたようだ。
+`update-rc.dの処理が削除された <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=468483>`_ から失敗しているんじゃねぇのかと。 `報告された <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=470062>`_ ようだ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

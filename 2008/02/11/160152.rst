@@ -1,14 +1,14 @@
-﻿こんなのやるそうな。
-####################
+こんなのやるそうな。
+====================
+
+`Green Power Campaign <http://www.greenpower.ne.jp/>`_ 。グリーン電力を広めようという趣旨らしいのだが、グリーン電力で本当に自然エネルギーから作られているのかを証明する方法が無いのが痛いところですな。
 
 
-Green Power Campaign。グリーン電力を広めようという趣旨らしいのだが、グリーン電力で本当に自然エネルギーから作られているのかを証明する方法が無いのが痛いところですな。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

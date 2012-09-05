@@ -1,14 +1,14 @@
-﻿不毛過ぎる…。
-##############
-
+不毛過ぎる…。
+==============
 
 何故こんな案件引き受けてしまったんだ…。後悔先立たず、とは正にこの事だな…。
 
 
 
-.. author:: mkouhei
-.. categories:: work, 
+
+
+
+.. author:: default
+.. categories:: 仕事, 
 .. tags::
 .. comments::
-
-

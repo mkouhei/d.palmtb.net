@@ -1,18 +1,22 @@
-﻿きらきらアフロ正月SP
-######################
+きらきらアフロ正月SP
+====================
 
-
-きらきらアフロの正月スペシャルやっていたので、Webサイトへアクセスしてみたら、Flashで超英人(ちょうええひと)の歌が流れた。いや、ポイントは超英人じゃなくて、Sid on MacBookでちゃんと音が出たよ、ってところ。
-
-.. image:: http://images-jp.amazon.com/images/P/B000JBWXVY.09.THUMBZZZ.jpg
-   :alt: きらきらアフロ in 大阪城ホール2006
+きらきらアフロの正月スペシャルやっていたので、 `Webサイト <http://www.tv-osaka.co.jp/afro/>`_ へアクセスしてみたら、Flashで `超英人(ちょうええひと) <http://www.tv-osaka.co.jp/kirakiraafro2006/eehito/>`_ の歌が流れた。いや、ポイントは超英人じゃなくて、Sid on MacBookでちゃんと音が出たよ、ってところ。
 
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+`きらきらアフロ in 大阪城ホール2006 <http://www.amazon.co.jp/o/ASIN/B000JBWXVY/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

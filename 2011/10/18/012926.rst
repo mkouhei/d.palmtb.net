@@ -1,14 +1,14 @@
-﻿PowerDNS GUIの困った話（その３）。
-##############################################
+PowerDNS GUIの困った話（その３）。
+==================================
+
+`その１ <http://d.hatena.ne.jp/mkouhei/20111005/1317802982>`_ の問題はよくよく考えたらMXレコードでも同じで、さらにサンプルのテンプレートが固定のドメインになっているのもどうかなと思ったので、 `インストール時に作成されるテンプレートも%DOMAIN%で作成してしまおう <http://code.google.com/p/pdns-gui/issues/attachmentText?id=24&aid=240005000&name=0001-change-specified-value-to-variable-DOMAIN-of-default.patch&token=31956f97ddddcec9041a4cf9b227d0d1>`_ 、ということで、これもパッチ作ってその１と同じ `issueに追加登録 <http://code.google.com/p/pdns-gui/issues/detail?id=24&thanks=24&ts=1317802374>`_ しておきました。
 
 
-その１の問題はよくよく考えたらMXレコードでも同じで、さらにサンプルのテンプレートが固定のドメインになっているのもどうかなと思ったので、インストール時に作成されるテンプレートも%DOMAIN%で作成してしまおう、ということで、これもパッチ作ってその１と同じissueに追加登録しておきました。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Dev, 
 .. tags::
 .. comments::
-
-

@@ -1,26 +1,39 @@
-﻿nf_conntrackのカーネルオプション
-############################################
+nf_conntrackのカーネルオプション
+================================
 
 
-USAGIプロジェクトが2004年に開発して、2005年11月にマージされたらしい。ここに書いてあったよ。
 
-2.1で述べたnf_conntrackに対する全ての変更はLinux 2.6.20に取り込まれる予定であり、
-・・・
-現在nf_conntrackはip_conntrackと同レベルの機能全てを実現しているため、十分なnf_conntrackの安定化作業の後ip_conntrackはLinuxカーネルから削除される予定である。但し、ユーザから見た使用方法に変更はない。
+USAGIプロジェクトが `2004年に開発 <http://member.wide.ad.jp/draft/wide-draft-usagi-netfilter2004-01.txt>`_ して、 `2005年11月にマージされた <http://member.wide.ad.jp/tr/wide-tr-usagi-netfilter-02.txt>`_ らしい。ここに書いてあったよ。
 
-kernel 2.6.19のChangeLogに該当の変更があった。
 
-.. code-block:: none
+
+   2.1で述べたnf_conntrackに対する全ての変更はLinux 2.6.20に取り込まれる予定であり、
+
+   ・・・
+
+   現在nf_conntrackはip_conntrackと同レベルの機能全てを実現しているため、十分なnf_conntrackの安定化作業の後ip_conntrackはLinuxカーネルから削除される予定である。但し、ユーザから見た使用方法に変更はない。
+
+
+
+
+
+
+
+`kernel 2.6.19のChangeLog <http://www.kernel.org/pub/linux/kernel/v2.6/ChangeLog-2.6.19>`_ に該当の変更があった。
+
+
+.. code-block:: sh
+
 
    commit 0719bdf1b5e7eb0d9c3c73ebbd9c9d5d382bb9e1
-   Author: Benoit Boissinot benoit.boissinot@ens-lyon.org
+   Author: Benoit Boissinot <benoit.boissinot@ens-lyon.org>
    Date:   Mon Aug 28 17:50:37 2006 -0700
    
        [NETFILTER]: xt_CONNMARK.c build fix
    
-       net/netfilter/xt_CONNMARK.c: In function &#39;target&#39;:
+       net/netfilter/xt_CONNMARK.c: In function 'target':
        net/netfilter/xt_CONNMARK.c:59: warning: implicit declaration of
-       function &#39;nf_conntrack_event_cache&#39;
+       function 'nf_conntrack_event_cache'
    
        The warning is due to the following .config:
        CONFIG_IP_NF_CONNTRACK=m
@@ -29,13 +42,16 @@ kernel 2.6.19のChangeLogに該当の変更があった。
        CONFIG_IP_NF_CONNTRACK_NETLINK=m
 
 
-とりあえず、&#34;CONFIG_IP_NF_CONNTRACK_NETLINK=m&#34;を設定するか。
+
+
+とりあえず、"CONFIG_IP_NF_CONNTRACK_NETLINK=m"を設定するか。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

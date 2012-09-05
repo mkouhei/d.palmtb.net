@@ -1,15 +1,18 @@
-﻿Sid on MacBook 5,2の外部ディスプレイが使えるようになった。
-############################################################################
+Sid on MacBook 5,2の外部ディスプレイが使えるようになった。
+==========================================================
+
+xrandrじゃできなかったので、 `ググってみたらありました <http://mylinux.blog42.fc2.com/blog-entry-226.html>`_ よ。原因は、nVidiaのVideoカード。xrandrではなく、nvidia-settingでないとできなかったわけだ。
 
 
-xrandrじゃできなかったので、ググってみたらありましたよ。原因は、nVidiaのVideoカード。xrandrではなく、nvidia-settingでないとできなかったわけだ。
+
 ちゃんと使えるようになったのはよいけど、xrandrに比べるとかなり不便ですな。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

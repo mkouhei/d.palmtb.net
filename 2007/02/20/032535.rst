@@ -1,14 +1,14 @@
-﻿kvm-14
-############
-
+kvm-14
+======
 
 早い。まだkvm-13にしないうちに、もうkvm-14が出てしまった。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, virt., 
 .. tags::
 .. comments::
-
-

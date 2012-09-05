@@ -1,18 +1,17 @@
-﻿broadcom STAドライバが悪い訳ではないらしい。
-########################################################
+broadcom STAドライバが悪い訳ではないらしい。
+============================================
 
-
-Sid on Macbook 5,2で、無線LANのデバイスドライバはbroadcomのSTAドライバを使っているが [#]_ 、自宅のBuffaloの無線LANルータWZR-HP-G300NHだとWPA2-AESの認証が通らないので、他ではどうなんだろうと思っていたが保留にしていた。が、某所の環境でWPA2-AESで接続する機会があったので試してみたらちゃんと接続できた。ということは、Buffaloの無線LANルータの方の問題か…。新しいファームウェアも出ているので、アップデートして試してみるか。
-
-
-
-.. [#] ：実際には.. [#] を使っているが
+Sid on Macbook 5,2で、無線LANのデバイスドライバは `broadcomのSTAドライバ <http://www.broadcom.com/support/802.11/linux_sta.php>`_ を使っているが [#]_ 、自宅のBuffaloの無線LANルータWZR-HP-G300NHだと `WPA2-AESの認証が通らない <http://d.hatena.ne.jp/mkouhei/20090412/1239462880>`_ ので、他ではどうなんだろうと思っていたが保留にしていた。が、某所の環境でWPA2-AESで接続する機会があったので試してみたらちゃんと接続できた。ということは、Buffaloの無線LANルータの方の問題か…。 `新しいファームウェアも出ている <http://buffalo.jp/download/driver/lan/wzr-hp-g300nh_fw-mac.html>`_ ので、アップデートして試してみるか。
 
 
 
-.. author:: mkouhei
+
+
+
+.. [#] 実際には `Debianパッケージ <http://packages.debian.org/source/sid/broadcom-sta>`_ を使っているが
+
+
+.. author:: default
 .. categories:: MacBook, Debian, network, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿ひとつだけなのか。
-##################
+ひとつだけなのか。
+==================
+
+check\*padのモーニングリスト設定は一つのリストしか設定できないのか。
 
 
-check*padのモーニングリスト設定は一つのリストしか設定できないのか。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

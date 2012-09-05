@@ -1,14 +1,14 @@
-﻿吐き気する。
-############
-
+吐き気する。
+============
 
 胃液逆流中。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

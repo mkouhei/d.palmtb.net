@@ -1,21 +1,24 @@
-﻿Ubuntu 10.04のKickstartで使えないsedの記法。
-####################################################################
-
+Ubuntu 10.04のKickstartで使えないsedの記法。
+============================================
 
 Ubuntu 10.04のKickstartで、%post処理の中でsedを使う場合、
 
-.. code-block:: none
 
-   sed -i &#39;{
+.. code-block:: sh
+
+
+   sed -i '{
    s/\(auto eth0\)/\1.100/
    s/\(iface eth0\)/\1.100/
    /iface eth0/a vlan-raw-device eth0.100
-   }&#39; /etc/network/interfaces
+   }' /etc/network/interfaces
 
 
 みたいな書き方をすると、vlan-raw-deviceだけが/etc/network/interfacesに追記されていました。はて？と思ったら、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    s/\(hoge\)/\1.moge/
 
@@ -24,9 +27,10 @@ Ubuntu 10.04のKickstartで、%post処理の中でsedを使う場合、
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

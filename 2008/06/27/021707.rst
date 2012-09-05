@@ -1,14 +1,14 @@
-﻿DB勉強会。
-############
-
+DB勉強会。
+==========
 
 毎月やっている勉強会を今月からいつも参加していただいている方々に幹事を手伝ってもらうことにした。今月はDBをテーマに、DB2のネタから、FLOSSの３大DBのPostgreSQL, MySQL, Firebirdのネタ、DB2とOracleのロックの話とDBづくしでした。かなり濃い内容で楽しかったですな。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: meeting, 
 .. tags::
 .. comments::
-
-

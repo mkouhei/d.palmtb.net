@@ -1,10 +1,11 @@
-﻿kvmが上がらない…。
-######################
+kvmが上がらない…。
+===================
+
+mm1パッチの問題が解決したので、昨日リリースされていたmm2パッチを当ててカーネルを再構築したら、今度はKVMが上がらなくなった [#]_ 。が、先日上川さんが日記に書かれていた、 `KVM_API_VERSION <http://www.netfort.gr.jp/~dancer/diary/daily/2007-Feb-7.html.ja#2007-Feb-7-22:07:34>`_ のバージョンのことを思い出して、grepしてみたら、ビンゴでした。
 
 
-mm1パッチの問題が解決したので、昨日リリースされていたmm2パッチを当ててカーネルを再構築したら、今度はKVMが上がらなくなった [#]_ 。が、先日上川さんが日記に書かれていた、KVM_API_VERSIONのバージョンのことを思い出して、grepしてみたら、ビンゴでした。
+.. code-block:: sh
 
-.. code-block:: none
 
    ./drivers/kvm/kvm_main.c:       r = KVM_API_VERSION;
    ./include/linux/kvm.h:#define KVM_API_VERSION 3
@@ -12,7 +13,9 @@ mm1パッチの問題が解決したので、昨日リリースされていたmm
 
 失敗したなぁ…。kvm-13にするつもりだったのに、やる暇なくて放置してた…。もっとも、mm2パッチではなくて、mm1パッチで既に変わってましたな。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ grep KVM_API_VERSION 2.6.20-mm*
    2.6.20-mm1:-#define KVM_API_VERSION 2
@@ -25,13 +28,11 @@ mm1パッチの問題が解決したので、昨日リリースされていたmm
 
 
 
-.. [#] ：単に、QEMUとして上がるんですな
+
+.. [#] 単に、QEMUとして上がるんですな
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, virt., computer, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿Lennyにアップグレードしてみた。#2
-########################################
-
+Lennyにアップグレードしてみた。#2
+=================================
 
 dist-upgradeも基本的に問題無し。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, Ops, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿ロゴ。
-######
+ロゴ。
+======
+
+昨日のEximでもまずは女の子受けするロゴとかキャラだ！とかいう話があったが、 `Rubyでも公式ロゴを募集している <http://www.ruby-assn.org/logo-contest.html.ja>`_ とか。
 
 
-昨日のEximでもまずは女の子受けするロゴとかキャラだ！とかいう話があったが、Rubyでも公式ロゴを募集しているとか。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

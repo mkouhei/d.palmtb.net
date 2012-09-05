@@ -1,14 +1,14 @@
-﻿寝坊して６時半
-##############
-
+寝坊して６時半
+==============
 
 で、もうぎりぎりになる。うーん、戸田は遠いなぁ。
 
 
 
-.. author:: mkouhei
-.. categories:: work, 
+
+
+
+.. author:: default
+.. categories:: 仕事, 
 .. tags::
 .. comments::
-
-

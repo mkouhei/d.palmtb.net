@@ -1,35 +1,54 @@
-﻿7月Debian勉強会参加した。
-################################
-
+7月Debian勉強会参加した。
+=========================
 
 今月はDebconf7の参加報告会と、日本でDebconf開催するには、というテーマ。去年もそうだったがこのテーマは難しかった。
+
 今回のキーワードは以下の三つ。
 
 * Debianは敷居が低い
+
 * 荻窪ならDebian、杉並区ならDebian
+
 * 王子
 
 敷居が高いというイメージを払拭するのが重要だろうなぁ。だからと言って、個人的には『できるDebian』なんて本が出てきたら非常に嫌だなぁ…。
+
 宴会でおすすめの本の話をして、『rootから/(ルート)へのメッセージの紹介』をする。『My Job Went To India』が良いと聞いたので、探してみるか。図書館には無いようだ。
+
 あと、自分の言いたいことを伝えられないのは非常にもどかしいし、情けない。今は仕事上は読めれば問題ないのだけど、それだけじゃだめだな。英会話の勉強ちゃんとやってみるか。
+
 mizoさんは何故か来ず。
+
+
+
 予想通りツッコミがあったが、順調ですよと返す。w 実際そうだし。
 
-.. image:: http://ec1.images-amazon.com/images/I/117J65onfkL.jpg
-   :alt: root(ルート)から/(ルート)へのメッセージ—スーパーユーザーが見たひととコンピュータ
 
 
 
 
-.. image:: http://ec1.images-amazon.com/images/I/31QZNFBQFML.jpg
-   :alt: My Job Went To India オフショア時代のソフトウェア開発者サバイバルガイド
+`root(ルート)から/(ルート)へのメッセージ&#8212;スーパーユーザーが見たひととコンピュータ <http://www.amazon.co.jp/exec/obidos/ASIN/4756107869/palmtb-22/ref=nosim/>`_
 
 
 
 
-.. author:: mkouhei
+
+
+
+
+
+
+
+`My Job Went To India オフショア時代のソフトウェア開発者サバイバルガイド <http://www.amazon.co.jp/exec/obidos/ASIN/4274066592/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+.. author:: default
 .. categories:: Debian, meeting, 
 .. tags::
 .. comments::
-
-

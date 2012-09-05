@@ -1,15 +1,18 @@
-﻿こわ。
-######
+こわ。
+======
+
+`■ MacBookの発火事故 <http://www.st.ryukoku.ac.jp/~kjm/security/memo/2007/07.html#20070720_MacBook>`_ 
 
 
-■ MacBookの発火事故
+
 第２世代だけど、MacBook使っている身としてはかなり不安。Linuxとしてしか使っていない似非マカーだけど。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, 
 .. tags::
 .. comments::
-
-

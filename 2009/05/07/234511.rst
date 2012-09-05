@@ -1,14 +1,14 @@
-﻿USBee
-##########
+USBee
+=====
+
+以前購入した、USB接続のバーコードリーダ。Debianではどうしてもデータの読み取りができなかったのだが、Windowsだとちゃんとできた。とりあえず、家の蔵書を片っ端から `本棚.org <http://hondana.org/mkouhei/>`_ に登録していくか。
 
 
-以前購入した、USB接続のバーコードリーダ。Debianではどうしてもデータの読み取りができなかったのだが、Windowsだとちゃんとできた。とりあえず、家の蔵書を片っ端から本棚.orgに登録していくか。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

@@ -1,15 +1,18 @@
-﻿困ったなぁ…。
-##############
+困ったなぁ…。
+==============
+
 
 
 このBloggerって、HTTPSは使えないのか。公開用のpalmtb.blogger.comの方は別に必要ないのだけど、管理メニューの方のwww2.blogger.comはHTTPSを使えるようにしてほしいなぁ。
-正式版になったばかりだからかな？ GmailもGoogle CalendarもDocs &amp; SpreadsheetsもHTTPSでアクセスできるから、そのうち対応されれば良いなぁ。
+
+正式版になったばかりだからかな？ GmailもGoogle CalendarもDocs & SpreadsheetsもHTTPSでアクセスできるから、そのうち対応されれば良いなぁ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

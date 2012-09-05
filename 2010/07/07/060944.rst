@@ -1,10 +1,11 @@
-﻿grub2 1.98+20100705-1でようやく。
-######################################################
+grub2 1.98+20100705-1でようやく。
+=================================
+
+昨日の昼に `やまねさんがつぶやいていたので <http://twitter.com/henrich/status/17829176588>`_ 試してみたら、MacBookでrEFIt使っていても大丈夫だったね、と。
 
 
-昨日の昼にやまねさんがつぶやいていたので試してみたら、MacBookでrEFIt使っていても大丈夫だったね、と。
+.. code-block:: sh
 
-.. code-block:: none
 
    (snip)
    grub-common (1.98+20100705-1) を設定しています ...
@@ -34,9 +35,9 @@
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

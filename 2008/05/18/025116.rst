@@ -1,27 +1,40 @@
-﻿OpenSSLの脆弱性に関する報道。
-####################################
+OpenSSLの脆弱性に関する報道。
+=============================
+
+`確かに <http://www.jpcert.or.jp/at/2008/at080008.txt>`_ 、Debianが前面に出すぎていますね。 `こ <http://pc.nikkeibp.co.jp/article/news/20080516/1002564/>`_  `こ <http://itpro.nikkeibp.co.jp/article/NEWS/20080516/302127/>`_ の記事では最後に一文だけ、
 
 
-確かに、Debianが前面に出すぎていますね。ここの記事では最後に一文だけ、
 
-ただし、DebianおよびDebian由来のディストリビューションを利用していなくても、脆弱性のあるOpenSSLで生成した鍵を使っている場合には影響を受けるので要注意である。
+   ただし、DebianおよびDebian由来のディストリビューションを利用していなくても、脆弱性のあるOpenSSLで生成した鍵を使っている場合には影響を受けるので要注意である。
 
-となっているが、これじゃDebianだけじゃなく、他のディストロだろうと、商用Unixであろうと、極端な話をすれば、Cygwinでsshdを動かしていたとしても影響を受ける、ということは、普通の人じゃ気づかないよなぁ…。とりあえず、Debianな人もそうでない人もここを読んで確認すべきですね。
+
+
+
+
+となっているが、これじゃDebianだけじゃなく、他のディストロだろうと、商用Unixであろうと、極端な話をすれば、Cygwinでsshdを動かしていたとしても影響を受ける、ということは、普通の人じゃ気づかないよなぁ…。とりあえず、Debianな人もそうでない人も `ここ <http://www.debian.or.jp/blog/openssl_package_and_its_vulnerability.html>`_ を読んで確認すべきですね。
+
+
+
+
 
 関連URL
 
 * http://www.us-cert.gov/cas/techalerts/TA08-137A.html
+
 * http://blog.japan.zdnet.com/jla/a/2008/05/debian_ubuntuop.html
+
 * http://blog.japan.zdnet.com/jla/a/2008/05/openssl.html
+
 * http://metasploit.com/users/hdm/tools/debian-openssl/
+
 * http://www.st.ryukoku.ac.jp/~kjm/security/memo/2008/05.html#20080514_openssl
 
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: security, Debian, 
 .. tags::
 .. comments::
-
-

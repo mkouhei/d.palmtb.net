@@ -1,14 +1,14 @@
-﻿年賀状作成。
-############
-
+年賀状作成。
+============
 
 文面の方をGimpで作成し、ヨメの分と含めて全部印刷した。あとは表書きを印刷または手で書いたら終わり。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

@@ -1,10 +1,11 @@
-﻿Lennyにした際の忘れ物。
-############################
-
+Lennyにした際の忘れ物。
+=======================
 
 毎週金曜の定期リブートで、DNSサーバで、inydns/dnscacheが起動しなかった。そもそも、/etc/inittabの下記のパスにsvscanbootが無い！
 
-.. code-block:: none
+
+.. code-block:: apache
+
 
    SV:123456:respawn:/command/svscanboot
 
@@ -13,9 +14,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

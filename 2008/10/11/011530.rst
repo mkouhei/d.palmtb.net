@@ -1,14 +1,14 @@
-﻿続・何をやっとるんだ。
-######################
-
+続・何をやっとるんだ。
+======================
 
 結局最後の最後でまた寝過ごして、終点の若葉台まで行ってしまった。orz
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

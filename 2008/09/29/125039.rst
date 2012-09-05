@@ -1,15 +1,16 @@
-﻿こいつは面白そうだ。
-####################
-
+こいつは面白そうだ。
+====================
 
 http://www.atmark-techno.com/news/press-releases/20080925_a500fx
+
 難点は高くて手が出せないこと…。ちょうど物入りのときだし。
 
 
 
-.. author:: mkouhei
-.. categories:: gadget, Linux, 
+
+
+
+.. author:: default
+.. categories:: 組込, Linux, 
 .. tags::
 .. comments::
-
-

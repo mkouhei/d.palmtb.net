@@ -1,19 +1,28 @@
-﻿MacBook AirのHDDとSSDのベンチマーク
-####################################################
-
+MacBook AirのHDDとSSDのベンチマーク
+===================================
 
 mixiのコミュニティより。Ramdom Write/Readだけでなく、Sequential ReadでもSSDの方が速くなるとは思わなかった。Ramdom Readはやっぱり圧倒的にSSDの方が速いな。それ以外の値はトントンか。
+
 ………って、微妙に罠が。
 
-MacBook Air 1.6Ghz HDDと1.8Ghz SSDのベンチマーク比較
+
+
+   MacBook Air 1.6Ghz HDDと1.8Ghz SSDのベンチマーク比較
+
+
+
+
 
 って、たかが0.2GHzとは言え、ベンチマークとしてはミスリードだな。
 
 
 
-.. author:: mkouhei
+
+
+
+
+
+.. author:: default
 .. categories:: MacBook, 
 .. tags::
 .. comments::
-
-

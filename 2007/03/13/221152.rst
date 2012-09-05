@@ -1,14 +1,14 @@
-﻿晩飯食うと…。
-##############
-
+晩飯食うと…。
+==============
 
 最近、晩飯食うと眠くなる。食べ終わってメールとかテレビとか見てると、いつの間にやらウトウトしてる。あぁ、眠い。
 
 
 
-.. author:: mkouhei
-.. categories:: life, scribbles, 
+
+
+
+.. author:: default
+.. categories:: 生活, 駄文, 
 .. tags::
 .. comments::
-
-

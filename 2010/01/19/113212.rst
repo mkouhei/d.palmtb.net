@@ -1,56 +1,77 @@
-﻿no branchを使う。
-##########################
-
+no branchを使う。
+=================
 
 gitでno branchを使うメリットがよく分からなかったのだが、以前のコミットでのファイルの中身をgit diffではなく、実際の内容を確認したいときに使えば便利なのかと思ったのでメモ。
+
+
+
 ワーキングコピーを変更してコミット前の状態なら、git addでindexに登録していても、そうでなくてもgit stashで一時的に退避させてしまえば、最新のHEADの状態を確認できる。でも、以前のコミットの状態のファイルを確認するには、この方法が使えない。
+
+
+
 最新のHEADでのhogeファイルの内容が以下で、
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ cat hoge
    2010年  1月 19日 火曜日 02:07:44 UTC
    2010年  1月 19日 火曜日 02:08:05 UTC
 
 
+
+
 ひとつ前のコミットの状態を確認したいとする。
 
-.. code-block:: none
+
+
+
+.. code-block:: diff
+
 
    commit b2e3cd8f9b1555b35d96789ca21e71c176cfdbd3
-   Author: Adam Smith adam@hoge.org
+   Author: Adam Smith <adam@hoge.org>
    Date:   Tue Jan 19 02:11:16 2010 +0000
    
        next date.
    
-       Signed-off-by: Adam Smith adam@hoge.org
+       Signed-off-by: Adam Smith <adam@hoge.org>
    
    commit db168f3e25531cc25435bc0934bfda512029e41a
-   Author: Adam Smith adam@hoge.org
+   Author: Adam Smith <adam@hoge.org>
    Date:   Tue Jan 19 02:07:54 2010 +0000
    
        date now.
    
-       Signed-off-by: Adam Smith adam@hoge.org
+       Signed-off-by: Adam Smith <adam@hoge.org>
    
    commit 002b7a77b5e725ec713057c792c832cd518f26a9
-   Author: Adam Smith adam@hoge.org
+   Author: Adam Smith <adam@hoge.org>
    Date:   Tue Jan 19 02:07:34 2010 +0000
    
        first commit.
    
-       Signed-off-by: Adam Smith adam@hoge.org
+       Signed-off-by: Adam Smith <adam@hoge.org>
+
+
 
 
 コミットログでは、HEAD^(db168f3e25531cc25435bc0934bfda512029e41a)なので、
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ git checkout HEAD^
-   Note: moving to &#39;HEAD^&#39; which isn&#39;t a local branch
+   Note: moving to 'HEAD^' which isn't a local branch
    If you want to create a new branch from this checkout, you may do so
    (now or later) by using -b with the checkout command again. Example:
-     git checkout -b new_branch_name
+     git checkout -b <new_branch_name>
    HEAD is now at db168f3... date now.
    $ git branch
    * (no branch)
@@ -59,13 +80,19 @@ gitでno branchを使うメリットがよく分からなかったのだが、�
    2010年  1月 19日 火曜日 02:07:44 UTC
 
 
+
+
 元のmasterブランチに戻るには、git checkout masterを実行すればよし。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ git checkout master
    Previous HEAD position was db168f3... date now.
-   Switched to branch &#39;master&#39;
+   Switched to branch 'master'
    $ git branch
    * master
    $ cat hoge
@@ -73,36 +100,44 @@ gitでno branchを使うメリットがよく分からなかったのだが、�
    2010年  1月 19日 火曜日 02:08:05 UTC
 
 
+
+
 ワーキングコピーを変更していると、いきなりgit checkoutはできない。
 
-.. code-block:: none
 
-   $ date  hoge
+.. code-block:: sh
+
+
+   $ date >> hoge
    $ git status
    # On branch master
    # Changed but not updated:
-   #   (use git add file... to update what will be committed)
-   #   (use git checkout -- file... to discard changes in working directory)
+   #   (use "git add <file>..." to update what will be committed)
+   #   (use "git checkout -- <file>..." to discard changes in working directory)
    #
    #       modified:   hoge
    #
-   no changes added to commit (use git add and/or git commit -a)
+   no changes added to commit (use "git add" and/or "git commit -a")
    $ git checkout HEAD^
-   error: You have local changes to &#39;hoge&#39;; cannot switch branches.
+   error: You have local changes to 'hoge'; cannot switch branches.
+
+
 
 
 git stashと組み合わせればOK。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ git stash
    Saved working directory and index state WIP on master: b2e3cd8 next date.
    HEAD is now at b2e3cd8 next date.
    $ git checkout HEAD^
-   Note: moving to &#39;HEAD^&#39; which isn&#39;t a local branch
+   Note: moving to 'HEAD^' which isn't a local branch
    If you want to create a new branch from this checkout, you may do so
    (now or later) by using -b with the checkout command again. Example:
-     git checkout -b new_branch_name
+     git checkout -b <new_branch_name>
    HEAD is now at db168f3... date now.
    $ git branch
    * (no branch)
@@ -111,16 +146,16 @@ git stashと組み合わせればOK。
    2010年  1月 19日 火曜日 02:07:44 UTC
    $ git checkout master
    Previous HEAD position was db168f3... date now.
-   Switched to branch &#39;master&#39;
+   Switched to branch 'master'
    $ git stash apply
    # On branch master
    # Changed but not updated:
-   #   (use git add file... to update what will be committed)
-   #   (use git checkout -- file... to discard changes in working directory)
+   #   (use "git add <file>..." to update what will be committed)
+   #   (use "git checkout -- <file>..." to discard changes in working directory)
    #
    #       modified:   hoge
    #
-   no changes added to commit (use git add and/or git commit -a)
+   no changes added to commit (use "git add" and/or "git commit -a")
    $ cat hoge
    2010年  1月 19日 火曜日 02:07:44 UTC
    2010年  1月 19日 火曜日 02:08:05 UTC
@@ -132,9 +167,11 @@ git stashと組み合わせればOK。
 
 
 
-.. author:: mkouhei
+
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

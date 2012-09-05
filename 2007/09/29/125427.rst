@@ -1,42 +1,48 @@
-﻿pcc-acpiが使えなくなったと思ったら。
-############################################
+pcc-acpiが使えなくなったと思ったら。
+====================================
+
+Let's noteのファンクションキーを使えるようにするための、pcc-acpiだが、先日、kernel 2.6.22.6にした時、makeは普通にできるのに、kernel moduleロードで失敗する、という問題にぶち当たっていた。一昨日、kernel 2.6.22.9にしたので、再度やってみたら、今度はmakeでwarningが出まくった。
 
 
-Let&#39;s noteのファンクションキーを使えるようにするための、pcc-acpiだが、先日、kernel 2.6.22.6にした時、makeは普通にできるのに、kernel moduleロードで失敗する、という問題にぶち当たっていた。一昨日、kernel 2.6.22.9にしたので、再度やってみたら、今度はmakeでwarningが出まくった。
+.. code-block:: sh
 
-.. code-block:: none
 
    ~/pcc-acpi-0.8.4$ make
    make -C /lib/modules/2.6.22.9/build SUBDIRS=/home/hoge/pcc-acpi-0.8.4 modules
-   make[1]: ディレクトリ `/home/hoge/kernel/linux-2.6.22&#39; に入ります
+   make[1]: ディレクトリ `/home/hoge/kernel/linux-2.6.22' に入ります
      CC [M]  /home/hoge/pcc-acpi-0.8.4/pcc_acpi.o
    /home/hoge/pcc-acpi-0.8.4/pcc_acpi.c:163: warning: initialization from incompatible pointer type
    /home/hoge/pcc-acpi-0.8.4/pcc_acpi.c: In function ‘acpi_pcc_retrieve_biosdata’:
    /home/hoge/pcc-acpi-0.8.4/pcc_acpi.c:261: warning: implicit declaration of function ‘acpi_os_free’
      Building modules, stage 2.
      MODPOST 1 modules
-   WARNING: /home/hoge/pcc-acpi-0.8.4/pcc_acpi.o(.text+0x73c): Section mismatch: reference to .init.text: (between &#39;acpi_pcc_hotkey_add&#39; and &#39;acpi_pcc_dc_brightness_open_fs&#39;)
-   WARNING: /home/hoge/pcc-acpi-0.8.4/pcc_acpi.o(.text+0x751): Section mismatch: reference to .init.text: (between &#39;acpi_pcc_hotkey_add&#39; and &#39;acpi_pcc_dc_brightness_open_fs&#39;)
-   WARNING: /home/hoge/pcc-acpi-0.8.4/pcc_acpi.o(.text+0x4ae): Section mismatch: reference to .exit.text: (between &#39;acpi_pcc_hotkey_remove&#39; and &#39;acpi_pcc_hotkey_notify&#39;)
-   WARNING: /home/hoge/pcc-acpi-0.8.4/pcc_acpi.o(.text+0x4bf): Section mismatch: reference to .exit.text: (between &#39;acpi_pcc_hotkey_remove&#39; and &#39;acpi_pcc_hotkey_notify&#39;)
-   WARNING: &#34;acpi_os_free&#34; [/home/hoge/pcc-acpi-0.8.4/pcc_acpi.ko] undefined!
+   WARNING: /home/hoge/pcc-acpi-0.8.4/pcc_acpi.o(.text+0x73c): Section mismatch: reference to .init.text: (between 'acpi_pcc_hotkey_add' and 'acpi_pcc_dc_brightness_open_fs')
+   WARNING: /home/hoge/pcc-acpi-0.8.4/pcc_acpi.o(.text+0x751): Section mismatch: reference to .init.text: (between 'acpi_pcc_hotkey_add' and 'acpi_pcc_dc_brightness_open_fs')
+   WARNING: /home/hoge/pcc-acpi-0.8.4/pcc_acpi.o(.text+0x4ae): Section mismatch: reference to .exit.text: (between 'acpi_pcc_hotkey_remove' and 'acpi_pcc_hotkey_notify')
+   WARNING: /home/hoge/pcc-acpi-0.8.4/pcc_acpi.o(.text+0x4bf): Section mismatch: reference to .exit.text: (between 'acpi_pcc_hotkey_remove' and 'acpi_pcc_hotkey_notify')
+   WARNING: "acpi_os_free" [/home/hoge/pcc-acpi-0.8.4/pcc_acpi.ko] undefined!
      CC      /home/hoge/pcc-acpi-0.8.4/pcc_acpi.mod.o
      LD [M]  /home/hoge/pcc-acpi-0.8.4/pcc_acpi.ko
-   make[1]: ディレクトリ `/home/hoge/kernel/linux-2.6.22&#39; から出ます
+   make[1]: ディレクトリ `/home/hoge/kernel/linux-2.6.22' から出ます
 
 
 pcc_acpi.cの163行目と261行目ですか。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
       163                                  .resume =       acpi_pcc_hotkey_resume,
       261          acpi_os_free(buffer.pointer);
 
 
-まぁ、間違いなくkernelを上げたことによるのが原因だろうと思って、久々にpcc-acpiの開発元のページを見てみた。最新版は0.8.4じゃなくて、0.9が出てました…。で、やってみたら、あー、無事できました。
+まぁ、間違いなくkernelを上げたことによるのが原因だろうと思って、久々に `pcc-acpiの開発元のページ <http://www.da-cha.jp/letsnote>`_ を見てみた。最新版は0.8.4じゃなくて、0.9が出てました…。で、やってみたら、あー、無事できました。
+
 0.8.4と0.9のpcc-acpi.cをdiffってみたらやっぱり。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
     $ diff -c pcc-acpi-0.8.4/pcc_acpi.c pcc-acpi-0.9/pcc_acpi.c
     *** pcc-acpi-0.8.4/pcc_acpi.c   2006-05-30 00:17:10.000000000 +0900
@@ -70,7 +76,7 @@ pcc_acpi.cの163行目と261行目ですか。
       };
     ～中略～
     *** 258,264 ****
-            sinf[hkey-package.count] = -1;
+            sinf[hkey->package.count] = -1;
     
       end:
     !       acpi_os_free(buffer.pointer);
@@ -83,9 +89,10 @@ Mainlineにマージしてほしいなぁ…。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

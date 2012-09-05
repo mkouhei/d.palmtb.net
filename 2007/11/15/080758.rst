@@ -1,14 +1,14 @@
-﻿ちょっとヤバイ。
-################
-
+ちょっとヤバイ。
+================
 
 体が持たない…。早く帰りたい。
 
 
 
-.. author:: mkouhei
-.. categories:: life, work, 
+
+
+
+.. author:: default
+.. categories:: 生活, 仕事, 
 .. tags::
 .. comments::
-
-

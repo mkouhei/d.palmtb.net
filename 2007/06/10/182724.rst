@@ -1,14 +1,14 @@
-﻿うまい店追加。
-##############
+うまい店追加。
+==============
+
+昨日の祖母の米寿のお祝いで行った、 `冠三宝 <http://www.kansanpou.com/restraunt.html>`_ と、浪花そばを `追加しておいた <http://maps.google.com/maps/ms?f=q&hl=ja&ie=UTF8&msa=0&msid=116353817628604507840.0000011240131ae54a00c&ll=38.255436,138.010254&spn=7.555264,15.644531&z=6&om=1>`_ 。
 
 
-昨日の祖母の米寿のお祝いで行った、冠三宝と、浪花そばを追加しておいた。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

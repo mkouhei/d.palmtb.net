@@ -1,14 +1,14 @@
-﻿exec &amp;gt; hoge
-############################
-
+exec > hoge
+===========
 
 teeの代わりに使えるとは知らんかった。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

@@ -1,54 +1,56 @@
-﻿Apache2.2 + fcgid + rubyを試してみる。
-##############################################################
-
+Apache2.2 + fcgid + rubyを試してみる。
+======================================
 
 WebサーバをSargeからEtchに移行するにあたり、PukiWikiに比べ、Hikiの方が速いというのを見かけたので、検証してみることにした。で、まずその前に、Apache2.2 + fcgid + Rubyで動くようにしたのでメモ。
+
 EtchがTestingの時に、仮想化友の会でOSCで配布するためにRuby on Rails on DebianのVMwareイメージを作ったが、あの時に比べたら、fcgid + Rubyでやるのは非常に楽ちんになりましたな。
 
+
 パッケージの導入。
-**************************************************
+------------------
 
 
 
-.. code-block:: none
+.. code-block:: sh
 
-   $ sudo apt-get install libfcgi-ruby1.8 libapache2-mod-fcgid hiki tdiary-theme 
+
+   $ sudo apt-get install libfcgi-ruby1.8 libapache2-mod-fcgid hiki tdiary-theme \
    libopenssl-ruby1.8 apache2-mpm-worker   
    Reading package lists... Done
    Building dependency tree... Done
    The following extra packages will be installed:
-     apache2-utils apache2.2-common libapr1 libaprutil1 libexpat1 libfcgi0c2 libpcre3 
+     apache2-utils apache2.2-common libapr1 libaprutil1 libexpat1 libfcgi0c2 libpcre3 \
    libpq4 libruby1.8 libsqlite3-0 libuconv-ruby1.8 mime-support ruby ruby1.8
    Suggested packages:
      apache httpd libimage-size-ruby1.8 librd-ruby1.8 ruby1.8-examples rdoc1.8 ri1.8 tdiary
    The following NEW packages will be installed:
-     apache2-mpm-worker apache2-utils apache2.2-common hiki libapache2-mod-fcgid libapr1 
+     apache2-mpm-worker apache2-utils apache2.2-common hiki libapache2-mod-fcgid libapr1 \
    libaprutil1 libexpat1 libfcgi-ruby1.8 libfcgi0c2 libopenssl-ruby1.8
      libpcre3 libpq4 libruby1.8 libsqlite3-0 libuconv-ruby1.8 mime-support ruby ruby1.8 tdiary-theme
    0 upgraded, 20 newly installed, 0 to remove and 0 not upgraded.
    Need to get 7502kB of archives.
    After unpacking 25.2MB of additional disk space will be used.
-   Do you want to continue Y/n]? 
-   Get:1 http://cdn.debian.or.jp etch/main mime-support 3.39-1 30.9kB]
-   Get:2 http://cdn.debian.or.jp etch/main libapr1 1.2.7-8.2 113kB]     
-   Get:3 http://cdn.debian.or.jp etch/main libexpat1 1.95.8-3.4 67.5kB]          
-   Get:4 http://cdn.debian.or.jp etch/main libpq4 8.1.11-0etch1 280kB]           
-   Get:5 http://security.debian.org etch/updates/main libpcre3 6.7+7.4-3 198kB]
-   Get:6 http://cdn.debian.or.jp etch/main libsqlite3-0 3.3.8-1.1 194kB]
-   Get:7 http://cdn.debian.or.jp etch/main libaprutil1 1.2.7+dfsg-2 72.1kB]
-   Get:8 http://cdn.debian.or.jp etch/main apache2-utils 2.2.3-4+etch4 353kB]
-   Get:9 http://cdn.debian.or.jp etch/main apache2.2-common 2.2.3-4+etch4 1035kB]
-   Get:10 http://cdn.debian.or.jp etch/main apache2-mpm-worker 2.2.3-4+etch4 431kB]
-   Get:11 http://cdn.debian.or.jp etch/main libruby1.8 1.8.5-4etch1 1590kB]
-   Get:12 http://cdn.debian.or.jp etch/main ruby1.8 1.8.5-4etch1 219kB]                                                                                                             
-   Get:13 http://cdn.debian.or.jp etch/main ruby 1.8.2-1 19.0kB]                                                                                                                    
-   Get:14 http://cdn.debian.or.jp etch/main libuconv-ruby1.8 0.4.12-2 107kB]                                                                                                        
-   Get:15 http://cdn.debian.or.jp etch/main hiki 0.8.6-1etch1 228kB]                                                                                                                                                                                                                   
-   Get:16 http://cdn.debian.or.jp etch/main libapache2-mod-fcgid 1:1.10-2 37.9kB]                                                                                                   
-   Get:17 http://cdn.debian.or.jp etch/main libfcgi0c2 2.4.0-6 281kB]                                                                                                               
-   Get:18 http://cdn.debian.or.jp etch/main libfcgi-ruby1.8 0.8.7-3+b1 17.2kB]                                                                                                      
-   Get:19 http://cdn.debian.or.jp etch/main libopenssl-ruby1.8 1.8.5-4etch1 294kB]                                                                                                  
-   Get:20 http://cdn.debian.or.jp etch/main tdiary-theme 2.0.2+20060303-5 1920kB]                                                                                                   
+   Do you want to continue [Y/n]? 
+   Get:1 http://cdn.debian.or.jp etch/main mime-support 3.39-1 [30.9kB]
+   Get:2 http://cdn.debian.or.jp etch/main libapr1 1.2.7-8.2 [113kB]     
+   Get:3 http://cdn.debian.or.jp etch/main libexpat1 1.95.8-3.4 [67.5kB]          
+   Get:4 http://cdn.debian.or.jp etch/main libpq4 8.1.11-0etch1 [280kB]           
+   Get:5 http://security.debian.org etch/updates/main libpcre3 6.7+7.4-3 [198kB]
+   Get:6 http://cdn.debian.or.jp etch/main libsqlite3-0 3.3.8-1.1 [194kB]
+   Get:7 http://cdn.debian.or.jp etch/main libaprutil1 1.2.7+dfsg-2 [72.1kB]
+   Get:8 http://cdn.debian.or.jp etch/main apache2-utils 2.2.3-4+etch4 [353kB]
+   Get:9 http://cdn.debian.or.jp etch/main apache2.2-common 2.2.3-4+etch4 [1035kB]
+   Get:10 http://cdn.debian.or.jp etch/main apache2-mpm-worker 2.2.3-4+etch4 [431kB]
+   Get:11 http://cdn.debian.or.jp etch/main libruby1.8 1.8.5-4etch1 [1590kB]
+   Get:12 http://cdn.debian.or.jp etch/main ruby1.8 1.8.5-4etch1 [219kB]                                                                                                             
+   Get:13 http://cdn.debian.or.jp etch/main ruby 1.8.2-1 [19.0kB]                                                                                                                    
+   Get:14 http://cdn.debian.or.jp etch/main libuconv-ruby1.8 0.4.12-2 [107kB]                                                                                                        
+   Get:15 http://cdn.debian.or.jp etch/main hiki 0.8.6-1etch1 [228kB]                                                                                                                                                                                                                   
+   Get:16 http://cdn.debian.or.jp etch/main libapache2-mod-fcgid 1:1.10-2 [37.9kB]                                                                                                   
+   Get:17 http://cdn.debian.or.jp etch/main libfcgi0c2 2.4.0-6 [281kB]                                                                                                               
+   Get:18 http://cdn.debian.or.jp etch/main libfcgi-ruby1.8 0.8.7-3+b1 [17.2kB]                                                                                                      
+   Get:19 http://cdn.debian.or.jp etch/main libopenssl-ruby1.8 1.8.5-4etch1 [294kB]                                                                                                  
+   Get:20 http://cdn.debian.or.jp etch/main tdiary-theme 2.0.2+20060303-5 [1920kB]                                                                                                   
    Fetched 7502kB in 13s (539kB/s)                                                                                                                                                   
    Selecting previously deselected package libpcre3.
    (Reading database ... 10076 files and directories currently installed.)
@@ -107,7 +109,7 @@ EtchがTestingの時に、仮想化友の会でOSCで配布するためにRuby o
    
    Setting up apache2-utils (2.2.3-4+etch4) ...
    Setting up apache2.2-common (2.2.3-4+etch4) ...
-   Setting Apache2 to Listen on port 80. If this is not desired, please edit 
+   Setting Apache2 to Listen on port 80. If this is not desired, please edit \
    /etc/apache2/ports.conf as desired. Note that the Port directive no longer works.
    Module alias installed; run /etc/init.d/apache2 force-reload to enable.
    Module autoindex installed; run /etc/init.d/apache2 force-reload to enable.
@@ -145,7 +147,7 @@ EtchがTestingの時に、仮想化友の会でOSCで配布するためにRuby o
 
 
 Apacheの設定
-**************************
+------------
 
 
 
@@ -153,40 +155,42 @@ Apacheの設定
 
 下記を追加。
 
-.. code-block:: none
 
-   VirtualHost *
+.. code-block:: sh
+
+
+   <VirtualHost *>
    	ServerAdmin webmaster@hoge.com
    	
    	DocumentRoot /var/www/
    (snip)
-           Alias /hoge/ /var/www/hoge/
-           Directory /var/www/hoge/
+           Alias /hoge/ "/var/www/hoge/"
+           <Directory "/var/www/hoge/">
                    Options ExecCGI
                    AllowOverride all
                    Order allow,deny
                    Allow from all
-           /Directory
+           </Directory>
    (snip)
-   /VirtualHost
-
+   </VirtualHost>
 
 
 * Apacheの再起動。
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ sudo apache2 -t
    Syntax OK
    $ sudo /etc/init.d/apache2 reload
 
 
-
 * /var/log/apache2/error.logに下記のようにロギングされればOK。
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    [Sun Mar 30 14:36:39 2008] [notice] mod_fcgid: server /var/www/hoge/hoge.rb(3191) started
 
@@ -194,9 +198,9 @@ Apacheの設定
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

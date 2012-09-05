@@ -1,18 +1,20 @@
-﻿ワロス。
-########
+ワロス。
+========
 
 
 
-.. image:: http://maker.usoko.net/nounai/img/mkouhei.gif
-   :alt: mkouheiの脳内イメージ
+http://maker.usoko.net/nounai/
+
+
 
 他にも本名とか、よく呼ばれる名称でもやってみた。ヤバス。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

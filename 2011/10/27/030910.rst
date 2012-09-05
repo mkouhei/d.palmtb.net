@@ -1,13 +1,16 @@
-﻿python2.6から2.7になってfuncparserlibのテストがコケる。
-################################################################################
+python2.6から2.7になってfuncparserlibのテストがコケる。
+=======================================================
+
+公式パッケージになった際には問題なかったのだが、登録されたBTSのメールを見て、自分の環境でもdebuildを実行してみたら同様にコケた。ビルドログは `こちら <http://people.debian.org/~lucas/logs/2011/10/22/funcparserlib_0.3.5-1_lsid64.buildlog>`_ 。
 
 
-公式パッケージになった際には問題なかったのだが、登録されたBTSのメールを見て、自分の環境でもdebuildを実行してみたら同様にコケた。ビルドログはこちら。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    
-   make[2]: ディレクトリ `/home/kohei/devel/debpkg/funcparserlib/funcparserlib-0.3.5/examples/json&#39; に入ります
+   make[2]: ディレクトリ `/home/kohei/devel/debpkg/funcparserlib/funcparserlib-0.3.5/examples/json' に入ります
    ../run-tests
    test-1-array ok
    test-1-object ok
@@ -43,21 +46,25 @@
    --- stats ---
    fail 1 ok 10 excpt 0
    make[2]: *** [test] エラー 1
-   make[2]: ディレクトリ `/home/kohei/devel/debpkg/funcparserlib/funcparserlib-0.3.5/examples/json&#39; から出ます
+   make[2]: ディレクトリ `/home/kohei/devel/debpkg/funcparserlib/funcparserlib-0.3.5/examples/json' から出ます
    make[1]: *** [override_dh_auto_test] エラー 2
-   make[1]: ディレクトリ `/home/kohei/devel/debpkg/funcparserlib/funcparserlib-0.3.5&#39; から出ます
+   make[1]: ディレクトリ `/home/kohei/devel/debpkg/funcparserlib/funcparserlib-0.3.5' から出ます
    make: *** [build] エラー 2
    dpkg-buildpackage: error: debian/rules build gave error exit status 2
    debuild: fatal error at line 1348:
    dpkg-buildpackage -rfakeroot -D -us -uc failed
 
 
+
+
 コケているtest-numbersのコードはこれ。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #!/bin/sh
-   exec python json.py END
+   exec python json.py <<END
    [
        0, 1, -1, 14, -14, 65536,
        0.0, 3.14, -3.14, -123.456,
@@ -67,9 +74,15 @@
    
 
 
-この１ヶ月で大きく変わったことと言えば、Pythonのデフォルトのバージョンが2.6から2.7になったことくらいだろうと思い、&#34;exec python json.py&#34;の部分を、python2.6に変えて実行してみた。
 
-.. code-block:: none
+
+この１ヶ月で大きく変わったことと言えば、Pythonのデフォルトのバージョンが2.6から2.7になったことくらいだろうと思い、"exec python json.py"の部分を、python2.6に変えて実行してみた。
+
+
+
+
+.. code-block:: sh
+
 
    $ ../run-tests 
    test-1-array ok
@@ -88,92 +101,122 @@
 
 
 予想通り、問題無し。
+
+
+
 python2.6でtest-numbersを手動で組み込みコマンドのreprで表示させてみるとこんな感じになる。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ python2.6
    Python 2.6.7 (r267:88850, Aug  3 2011, 11:33:52) 
    [GCC 4.6.1] on linux2
-   Type help, copyright, credits or license for more information.
-   &gt;&gt;&gt; repr(0);repr(1);repr(-1);repr(14);repr(-14);repr(65536);repr(0.0)
-   &#39;0&#39;
-   &#39;1&#39;
-   &#39;-1&#39;
-   &#39;14&#39;
-   &#39;-14&#39;
-   &#39;65536&#39;
-   &#39;0.0&#39;
+   Type "help", "copyright", "credits" or "license" for more information.
+   >>> repr(0);repr(1);repr(-1);repr(14);repr(-14);repr(65536);repr(0.0)
+   '0'
+   '1'
+   '-1'
+   '14'
+   '-14'
+   '65536'
+   '0.0'
+
+
 
 
 python2.7だと次のとおり。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ python
    Python 2.7.2+ (default, Oct  5 2011, 10:41:47) 
    [GCC 4.6.1] on linux2
-   Type help, copyright, credits or license for more information.
-   &gt;&gt;&gt; repr(0);repr(1);repr(-1);repr(14);repr(-14);repr(65536);repr(0.0)
-   &#39;0&#39;
-   &#39;1&#39;
-   &#39;-1&#39;
-   &#39;14&#39;
-   &#39;-14&#39;
-   &#39;65536&#39;
-   &#39;0.0&#39;
+   Type "help", "copyright", "credits" or "license" for more information.
+   >>> repr(0);repr(1);repr(-1);repr(14);repr(-14);repr(65536);repr(0.0)
+   '0'
+   '1'
+   '-1'
+   '14'
+   '-14'
+   '65536'
+   '0.0'
+
+
 
 
 ここまでは差異無し。浮動小数点で違いがはっきり。
+
+
+
 python2.6
 
-.. code-block:: none
 
-   &gt;&gt;&gt; repr(3.14);repr(-3.14);repr(-123.456);repr(6.67428e-11);repr(-1.602176e-19);repr(6.67428E-11)
-   &#39;3.1400000000000001&#39;
-   &#39;-3.1400000000000001&#39;
-   &#39;-123.456&#39;
-   &#39;6.6742799999999995e-11&#39;
-   &#39;-1.602176e-19&#39;
-   &#39;6.6742799999999995e-11&#39;
+.. code-block:: sh
+
+
+   >>> repr(3.14);repr(-3.14);repr(-123.456);repr(6.67428e-11);repr(-1.602176e-19);repr(6.67428E-11)
+   '3.1400000000000001'
+   '-3.1400000000000001'
+   '-123.456'
+   '6.6742799999999995e-11'
+   '-1.602176e-19'
+   '6.6742799999999995e-11'
+
+
 
 
 python2.7
 
-.. code-block:: none
 
-   &gt;&gt;&gt; repr(3.14);repr(-3.14);repr(-123.456);repr(6.67428e-11);repr(-1.602176e-19);repr(6.67428E-11)
-   &#39;3.14&#39;
-   &#39;-3.14&#39;
-   &#39;-123.456&#39;
-   &#39;6.67428e-11&#39;
-   &#39;-1.602176e-19&#39;
-   &#39;6.67428e-11&#39;
+.. code-block:: sh
 
 
-先ほどのテストの結果のとおりですね。2進数で割りきれない数字が、2.6と2.7の浮動小数点の扱いが変わったのがの原因で、2.7から丸められるようになったためのようです。
+   >>> repr(3.14);repr(-3.14);repr(-123.456);repr(6.67428e-11);repr(-1.602176e-19);repr(6.67428E-11)
+   '3.14'
+   '-3.14'
+   '-123.456'
+   '6.67428e-11'
+   '-1.602176e-19'
+   '6.67428e-11'
+
+
+
+
+先ほどのテストの結果のとおりですね。2進数で割りきれない数字が、 `2.6と2.7の浮動小数点の扱いが変わったのがの原因で、2.7から丸められるようになった <http://docs.python.org/dev/tutorial/floatingpoint.html#tut-fp-issues>`_ ためのようです。
+
+
+
 2.6系と同じ結果にするには、下記のようにすれば良いようです。
 
-.. code-block:: none
 
-   &gt;&gt;&gt; from decimal import Decimal
-   &gt;&gt;&gt; format(Decimal.from_float(3.14), &#39;.16f&#39;)
-   &#39;3.1400000000000001&#39;
-   &gt;&gt;&gt; format(Decimal.from_float(-3.14), &#39;.16f&#39;)
-   &#39;-3.1400000000000001&#39;
-   &gt;&gt;&gt; format(Decimal.from_float(6.67428e-11), &#39;.16e&#39;)
-   &#39;6.6742799999999995e-11&#39;
-   &gt;&gt;&gt; format(Decimal.from_float(6.67428E-11), &#39;.16e&#39;)
-   &#39;6.6742799999999995e-11&#39;
+.. code-block:: sh
+
+
+   >>> from decimal import Decimal
+   >>> format(Decimal.from_float(3.14), '.16f')
+   '3.1400000000000001'
+   >>> format(Decimal.from_float(-3.14), '.16f')
+   '-3.1400000000000001'
+   >>> format(Decimal.from_float(6.67428e-11), '.16e')
+   '6.6742799999999995e-11'
+   >>> format(Decimal.from_float(6.67428E-11), '.16e')
+   '6.6742799999999995e-11'
+
+
 
 
 でも、2.7ではなく2.6に合わせるというのではそもそも問題は解決しないので、さて、どうしたもんかなぁ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, python, 
 .. tags::
 .. comments::
-
-

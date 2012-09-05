@@ -1,14 +1,14 @@
-﻿エコ　その２。
-##############
+エコ　その２。
+==============
+
+`グリーンITイニシアティブ <http://www.meti.go.jp/press/20071207005/20071207005.html>`_ というのが開催されたそうな。
 
 
-グリーンITイニシアティブというのが開催されたそうな。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

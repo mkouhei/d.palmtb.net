@@ -1,14 +1,14 @@
-﻿足が痛い。
-##########
-
+足が痛い。
+==========
 
 長いなぁ。だが外見は何も変化ないので病院行っても原因不明なので困っちまうなぁ。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

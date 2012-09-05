@@ -1,34 +1,14 @@
-﻿Relax重要。
-################
-
+Relax重要。
+===========
 
 コード書いてて行き詰まった時は、風呂入ってリラックスした時に閃く、というのが多いですね、感覚的には。ということでもう寝よう。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Dev, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	私は席を離れて、ぶらぶら歩いていると解決することが多いです。
-
-	written by  z-ohnami
-	02/26/2012 14:48:56
-	http://d.hatena.ne.jp/z-ohnami/
-
-----
-
-Comment:
-
-	考え抜いて、リラックスしたときにふときますね。
-
-	written by  mkouhei
-	02/27/2012 19:37:20
-	http://d.hatena.ne.jp/mkouhei/
-

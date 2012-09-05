@@ -1,14 +1,14 @@
-﻿夏バテ。
-########
-
+夏バテ。
+========
 
 多分。冷たいもの食べ過ぎだと思うが、水みたいな下痢に見舞われる。めっちゃ辛い。明日は仕事に行けるだろうか…。さっさと寝るか。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

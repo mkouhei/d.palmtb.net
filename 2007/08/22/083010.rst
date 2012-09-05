@@ -1,14 +1,16 @@
-﻿寝違えた。
-##########
-
+寝違えた。
+==========
 
 首が痛い。うーん、枕が合わなくなったかなぁ。最近ずっと首が痛いのも枕が原因なのかなぁ…。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

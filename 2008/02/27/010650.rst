@@ -1,17 +1,20 @@
-﻿IBM System z10発表。
-##################################
-
+IBM System z10発表。
+====================
 
 本当は行きたかったのだが、別件とバッティングしたため断念。別件の方は優先しただけの価値があったので、まぁ明日の定例会で聞いてみよう。どうせすぐに購入という話にはならんのだろうし。
+
 http://www-06.ibm.com/jp/press/2008/02/2601.html
+
 http://opentechpress.jp/enterprise/article.pl?sid=08/02/26/0956251
+
 http://www.atmarkit.co.jp/news/200802/26/systemz.html
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

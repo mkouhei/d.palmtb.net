@@ -1,39 +1,40 @@
-﻿Planet回復。
-##################
-
+Planet回復。
+============
 
 回復したといっても、何もしてない。今朝、自然復旧。表示されなくなったときのエラーは、
 
-.. code-block:: none
 
-      /usr/lib/ruby/1.8/uri/generic.rb:195:in `initialize&#39;: the scheme http does not \
+.. code-block:: sh
+
+
+      /usr/lib/ruby/1.8/uri/generic.rb:195:in `initialize': the scheme http does not \
       accept registry part: user:pass@host:port (or bad hostname?) (URI::InvalidURIError)
-          from /usr/lib/ruby/1.8/uri/http.rb:78:in `initialize&#39;
-          from /usr/lib/ruby/1.8/uri/common.rb:488:in `new&#39;
-          from /usr/lib/ruby/1.8/uri/common.rb:488:in `parse&#39;
-          from /usr/lib/ruby/1.8/td2planet/formatter.rb:124:in `relative_path_to_absolute_uri&#39;
-          from /usr/lib/ruby/1.8/td2planet/formatter.rb:134:in `tag_attr_relative_path_to_absolute_uri&#39;
-          from /usr/lib/ruby/1.8/td2planet/formatter.rb:133:in `gsub!&#39;
-          from /usr/lib/ruby/1.8/td2planet/formatter.rb:133:in `tag_attr_relative_path_to_absolute_uri&#39;
-          from /usr/lib/ruby/1.8/td2planet/formatter.rb:144:in `to_section_body&#39;
-          from /usr/lib/ruby/1.8/td2planet/formatter.rb:143:in `gsub&#39;
-          from /usr/lib/ruby/1.8/td2planet/formatter.rb:143:in `to_section_body&#39;
-          from /usr/share/td2planet/templates/section.rhtml:3:in `section&#39;
-          from /usr/share/td2planet/templates/day.rhtml:18:in `day&#39;
-          from /usr/share/td2planet/templates/day.rhtml:17:in `each&#39;
-          from /usr/share/td2planet/templates/day.rhtml:17:in `day&#39;
-          from /usr/share/td2planet/templates/layout.rhtml:24:in `layout&#39;
-          from /usr/share/td2planet/templates/layout.rhtml:23:in `each&#39;
-          from /usr/share/td2planet/templates/layout.rhtml:23:in `layout&#39;
-          from /usr/lib/ruby/1.8/td2planet/formatter.rb:119:in `to_html&#39;
-          from /usr/lib/ruby/1.8/td2planet/writer.rb:29:in `output_html&#39;
-          from /usr/lib/ruby/1.8/pathname.rb:798:in `open&#39;
-          from /usr/lib/ruby/1.8/pathname.rb:798:in `open&#39;
-          from /usr/lib/ruby/1.8/td2planet/writer.rb:28:in `output_html&#39;
-          from /usr/lib/ruby/1.8/td2planet/runner.rb:56:in `run&#39;
-          from /usr/lib/ruby/1.8/td2planet/runner.rb:30:in `main&#39;
-          from /usr/lib/ruby/1.8/td2planet/runner.rb:28:in `each&#39;
-          from /usr/lib/ruby/1.8/td2planet/runner.rb:28:in `main&#39;
+          from /usr/lib/ruby/1.8/uri/http.rb:78:in `initialize'
+          from /usr/lib/ruby/1.8/uri/common.rb:488:in `new'
+          from /usr/lib/ruby/1.8/uri/common.rb:488:in `parse'
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:124:in `relative_path_to_absolute_uri'
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:134:in `tag_attr_relative_path_to_absolute_uri'
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:133:in `gsub!'
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:133:in `tag_attr_relative_path_to_absolute_uri'
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:144:in `to_section_body'
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:143:in `gsub'
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:143:in `to_section_body'
+          from /usr/share/td2planet/templates/section.rhtml:3:in `section'
+          from /usr/share/td2planet/templates/day.rhtml:18:in `day'
+          from /usr/share/td2planet/templates/day.rhtml:17:in `each'
+          from /usr/share/td2planet/templates/day.rhtml:17:in `day'
+          from /usr/share/td2planet/templates/layout.rhtml:24:in `layout'
+          from /usr/share/td2planet/templates/layout.rhtml:23:in `each'
+          from /usr/share/td2planet/templates/layout.rhtml:23:in `layout'
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:119:in `to_html'
+          from /usr/lib/ruby/1.8/td2planet/writer.rb:29:in `output_html'
+          from /usr/lib/ruby/1.8/pathname.rb:798:in `open'
+          from /usr/lib/ruby/1.8/pathname.rb:798:in `open'
+          from /usr/lib/ruby/1.8/td2planet/writer.rb:28:in `output_html'
+          from /usr/lib/ruby/1.8/td2planet/runner.rb:56:in `run'
+          from /usr/lib/ruby/1.8/td2planet/runner.rb:30:in `main'
+          from /usr/lib/ruby/1.8/td2planet/runner.rb:28:in `each'
+          from /usr/lib/ruby/1.8/td2planet/runner.rb:28:in `main'
           from /usr/bin/td2planet:10
    use template layout.rhtml: /usr/share/td2planet/templates/layout.rhtml
    use template day.rhtml: /usr/share/td2planet/templates/day.rhtml
@@ -46,34 +47,37 @@
 
 
 となっていたのだが、何が原因か分からず、取り合えず放置していた。誰かのrssがダメなのかと思って一つ一つ無効にして実行してみたがダメだった。複数のrssが同時に同じ状態だったとしたら一つ一つ無効にして試すやり方ではだめだな。
+
 復旧したと言っても、別のエラーは出ているんだけど、まぁいいか。
 
-.. code-block:: none
 
-      /usr/lib/ruby/1.8/rss/maker/1.0.rb:54:in `setup_items&#39;: required variables of \
+.. code-block:: sh
+
+
+      /usr/lib/ruby/1.8/rss/maker/1.0.rb:54:in `setup_items': required variables of \
       maker are not set: items (RSS::NotSetError)
-          from /usr/lib/ruby/1.8/rss/maker/1.0.rb:38:in `to_feed&#39;
-          from /usr/lib/ruby/1.8/rss/maker/base.rb:215:in `_set_default_values&#39;
-          from /usr/lib/ruby/1.8/rss/maker/base.rb:351:in `_set_default_values&#39;
-          from /usr/lib/ruby/1.8/rss/maker/base.rb:208:in `set_default_values&#39;
-          from /usr/lib/ruby/1.8/rss/maker/1.0.rb:30:in `to_feed&#39;
-          from /usr/lib/ruby/1.8/rss/maker/base.rb:370:in `setup_channel&#39;
-          from /usr/lib/ruby/1.8/rss/maker/1.0.rb:21:in `setup_elements&#39;
-          from /usr/lib/ruby/1.8/rss/maker/base.rb:406:in `to_feed&#39;
-          from /usr/lib/ruby/1.8/rss/maker/base.rb:397:in `make&#39;
-          from /usr/lib/ruby/1.8/rss/maker/base.rb:361:in `make&#39;
-          from /usr/lib/ruby/1.8/rss/maker.rb:11:in `make&#39;
-          from /usr/lib/ruby/1.8/td2planet/formatter.rb:203:in `to_rss&#39;
-          from /usr/lib/ruby/1.8/td2planet/writer.rb:47:in `output_rss&#39;
-          from /usr/lib/ruby/1.8/pathname.rb:798:in `open&#39;
-          from /usr/lib/ruby/1.8/pathname.rb:798:in `open&#39;
-          from /usr/lib/ruby/1.8/td2planet/writer.rb:46:in `output_rss&#39;
-          from /usr/lib/ruby/1.8/td2planet/writer.rb:42:in `each&#39;
-          from /usr/lib/ruby/1.8/td2planet/writer.rb:42:in `output_rss&#39;
-          from /usr/lib/ruby/1.8/td2planet/runner.rb:58:in `run&#39;
-          from /usr/lib/ruby/1.8/td2planet/runner.rb:30:in `main&#39;
-          from /usr/lib/ruby/1.8/td2planet/runner.rb:28:in `each&#39;
-          from /usr/lib/ruby/1.8/td2planet/runner.rb:28:in `main&#39;
+          from /usr/lib/ruby/1.8/rss/maker/1.0.rb:38:in `to_feed'
+          from /usr/lib/ruby/1.8/rss/maker/base.rb:215:in `_set_default_values'
+          from /usr/lib/ruby/1.8/rss/maker/base.rb:351:in `_set_default_values'
+          from /usr/lib/ruby/1.8/rss/maker/base.rb:208:in `set_default_values'
+          from /usr/lib/ruby/1.8/rss/maker/1.0.rb:30:in `to_feed'
+          from /usr/lib/ruby/1.8/rss/maker/base.rb:370:in `setup_channel'
+          from /usr/lib/ruby/1.8/rss/maker/1.0.rb:21:in `setup_elements'
+          from /usr/lib/ruby/1.8/rss/maker/base.rb:406:in `to_feed'
+          from /usr/lib/ruby/1.8/rss/maker/base.rb:397:in `make'
+          from /usr/lib/ruby/1.8/rss/maker/base.rb:361:in `make'
+          from /usr/lib/ruby/1.8/rss/maker.rb:11:in `make'
+          from /usr/lib/ruby/1.8/td2planet/formatter.rb:203:in `to_rss'
+          from /usr/lib/ruby/1.8/td2planet/writer.rb:47:in `output_rss'
+          from /usr/lib/ruby/1.8/pathname.rb:798:in `open'
+          from /usr/lib/ruby/1.8/pathname.rb:798:in `open'
+          from /usr/lib/ruby/1.8/td2planet/writer.rb:46:in `output_rss'
+          from /usr/lib/ruby/1.8/td2planet/writer.rb:42:in `each'
+          from /usr/lib/ruby/1.8/td2planet/writer.rb:42:in `output_rss'
+          from /usr/lib/ruby/1.8/td2planet/runner.rb:58:in `run'
+          from /usr/lib/ruby/1.8/td2planet/runner.rb:30:in `main'
+          from /usr/lib/ruby/1.8/td2planet/runner.rb:28:in `each'
+          from /usr/lib/ruby/1.8/td2planet/runner.rb:28:in `main'
           from /usr/bin/td2planet:10
    use template layout.rhtml: /usr/share/td2planet/templates/layout.rhtml
    use template day.rhtml: /usr/share/td2planet/templates/day.rhtml
@@ -88,9 +92,9 @@
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: CouchDB, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿冬眠中。
-########
-
+冬眠中。
+========
 
 トッピーは冬眠中です。w
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

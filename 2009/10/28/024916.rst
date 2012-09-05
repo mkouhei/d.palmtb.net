@@ -1,18 +1,17 @@
-﻿昨日は天気良かったなぁ。
-########################
+昨日は天気良かったなぁ。
+========================
 
 
-
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091027/20091027083647.jpg
-   :alt: f:id:mkouhei:20091027083647j:image
+.. image:: /img/20091027083647.jpg
 
 そういや会社から富士山が見えたの、実は入社して初めてのような気がする。
 
 
 
-.. author:: mkouhei
-.. categories:: life, scribbles, 
+
+
+
+.. author:: default
+.. categories:: 生活, 駄文, 
 .. tags::
 .. comments::
-
-

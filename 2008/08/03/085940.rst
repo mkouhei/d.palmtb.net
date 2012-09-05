@@ -1,14 +1,14 @@
-﻿z6アーキテクチャ
-##################
-
+z6アーキテクチャ
+================
 
 z6アーキテクチャやz/Linuxの話が、ITアーキテクトの最新号(Vol.18)やCOMPUTERWORLDの最新号(9月号)に載っていたので買ってしまった。こんな雑誌にも載るってことは、やっぱり今年のSystem z10のリリースはそれほどインパクトがあったということか。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

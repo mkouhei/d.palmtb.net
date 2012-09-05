@@ -1,14 +1,14 @@
-﻿めっちゃ寒い。
-##############
-
+めっちゃ寒い。
+==============
 
 コートもマフラーも持たずに出たらめっちゃ寒い。今日から寒くなるって言ってたの忘れてた。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

@@ -1,10 +1,15 @@
-﻿かなり強引に復帰。
-##################
+かなり強引に復帰。
+==================
+
 
 
 インストールCDでレスキューモードでブートさせたものの、当然chrootはダメなので [#]_ 、仕方ないのでdebファイルを下記のように手動で展開して復帰させました。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    # cd /tmp
    # ar -x /target/var/cache/apt/archives/libc-bin_2.13-2_amd64.deb
@@ -13,19 +18,28 @@
 
 
 上記をlibc-bin_2.13-2_amd64.deb, libc6-i386_2.13-2_amd64.deb,
+
 libc-dev-bin_2.13-2_amd64.deb, libc6_2.13-2_amd64.deb,
+
 libc6-dev_2.13-2_amd64.deb, locales_2.13-2_all.debの6つのファイルに対して実行して、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # cd /target
    # tar zxpf /tmp/libc-bin-data.tgz
 
 
 として展開して再起動したら、無事復帰できました。
+
+
+
 が、このままだとパッケージ情報が2.13-3のままなので、起動後に下記を実行。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd /var/cache/apt/archives
    $ sudo dpkg -i --dry-run *2.13-2*.deb
@@ -80,13 +94,12 @@ libc6-dev_2.13-2_amd64.deb, locales_2.13-2_all.debの6つのファイルに対�
 
 
 
-.. [#] ：libc死んでるから
 
 
+.. [#] libc死んでるから
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

@@ -1,18 +1,17 @@
-﻿O’Reillyネタ2。
-########################
-
+O'Reillyネタ2。
+===============
 
 時間が経過したら画像を取れるようになったのだが、文字数が多いとフォーマットが崩れてしまうのだね。カッチョ悪。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20080125/20080125015102.jpg
-   :alt: f:id:mkouhei:20080125015102j:image
+
+.. image:: /img/20080125015102.jpg
 
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, computer, 
+
+
+.. author:: default
+.. categories:: 駄文, computer, 
 .. tags::
 .. comments::
-
-

@@ -1,10 +1,13 @@
-﻿Couchappのdebパッケージ化。
-######################################
-
+Couchappのdebパッケージ化。
+===========================
 
 とりあえず、手っ取り早くcouchappのdebパッケージが欲しかったので。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ git clone git://github.com/couchapp/couchapp.git
    $ cd couchapp
@@ -34,13 +37,16 @@
    $ sudo dpkg -i couchapp_0.7.0-1_all.deb
 
 
+
+
 ダメ人間。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, CouchDB, 
 .. tags::
 .. comments::
-
-

@@ -1,62 +1,72 @@
-﻿emacsでreportbug用の文面を生成する。
-##################################################
+emacsでreportbug用の文面を生成する。
+====================================
+
+blockdiagが1.1になって、OrderedDictが使われるようになったようです。この機能を使うためには、pypiに公開されている `ordereddict <http://pypi.python.org/pypi/ordereddict>`_ が必要で、実際blockdiagでもこれを使っているので、blockdiagのパッケージの前に、ordereddictをITPする必要が出てきました。 [#]_ 
 
 
-blockdiagが1.1になって、python2.7からサポートされているOrderedDictが使われるようになったようです。Debianではpython2.6もまだサポートされているので、この機能を使うためには、pypiに公開されているordereddictが必要で、実際blockdiagでもこれを使っているので、blockdiagのパッケージの前に、python2.6用にordereddictをITPする必要が出てきました。 [#]_ 
+
 で、いつものようにreportbugを使ってITPしようとしたところ、
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    (snip)
    What sort of request is this? (If none of these things mean anything to you, or you are trying to report a bug in an existing package, please press Enter to exit reportbug.)
    
-   1 ITP  This is an `Intent To Package&#39;. Please submit a package description along with copyright and URL in such a report.
-   2 O    The package has been `Orphaned&#39;. It needs a new maintainer as soon as possible.
-   3 RFA  This is a `Request for Adoption&#39;. Due to lack of time, resources, interest or something similar, the current maintainer is asking for someone else to maintain this package.
+   1 ITP  This is an `Intent To Package'. Please submit a package description along with copyright and URL in such a report.
+   2 O    The package has been `Orphaned'. It needs a new maintainer as soon as possible.
+   3 RFA  This is a `Request for Adoption'. Due to lack of time, resources, interest or something similar, the current maintainer is asking for someone else to maintain this package.
           They will maintain it in the meantime, but perhaps not in the best possible way. In short: the package needs a new maintainer.
-   4 RFH  This is a `Request For Help&#39;. The current maintainer wants to continue to maintain this package, but they needs some help to do this, because their time is limited or the
+   4 RFH  This is a `Request For Help'. The current maintainer wants to continue to maintain this package, but they needs some help to do this, because their time is limited or the
           package is quite big and needs several maintainers.
-   5 RFP  This is a `Request For Package&#39;. You have found an interesting piece of software and would like someone else to maintain it for Debian. Please submit a package description
+   5 RFP  This is a `Request For Package'. You have found an interesting piece of software and would like someone else to maintain it for Debian. Please submit a package description
           along with copyright and URL in such a report.
    
    Choose the request type: 1
    Please enter the proposed package name: python-ordereddict
    Checking status database...
    Traceback (most recent call last):
-     File /usr/bin/reportbug, line 2194, in module
+     File "/usr/bin/reportbug", line 2194, in <module>
        main()
-     File /usr/bin/reportbug, line 1077, in main
+     File "/usr/bin/reportbug", line 1077, in main
        return iface.user_interface()
-     File /usr/bin/reportbug, line 1672, in user_interface
+     File "/usr/bin/reportbug", line 1672, in user_interface
        self.options.http_proxy)
-     File /usr/bin/reportbug, line 513, in special_prompts
+     File "/usr/bin/reportbug", line 513, in special_prompts
        return pkgprompts(package, bts, ui, fromaddr, timeout, online, http_proxy)
-     File /usr/lib/pymodules/python2.7/reportbug/debbugs.py, line 575, in handle_wnpp
-       package, &#39;0&#39;, timeout, http_proxy=http_proxy)):
-     File /usr/lib/pymodules/python2.7/reportbug/checkversions.py, line 197, in check_available
+     File "/usr/lib/pymodules/python2.7/reportbug/debbugs.py", line 575, in handle_wnpp
+       package, '0', timeout, http_proxy=http_proxy)):
+     File "/usr/lib/pymodules/python2.7/reportbug/checkversions.py", line 197, in check_available
        stuff = get_versions_available(package, timeout, dists, http_proxy, arch)
-     File /usr/lib/pymodules/python2.7/reportbug/checkversions.py, line 126, in get_versions_available
-       dist = utils.SUITES2DISTS.get(l[2], &#39;&#39;)
+     File "/usr/lib/pymodules/python2.7/reportbug/checkversions.py", line 126, in get_versions_available
+       dist = utils.SUITES2DISTS.get(l[2], '')
    IndexError: list index out of range
 
 
-のようにreportbugがコケてしまいます。困ったねと思って、ドキュメントを読んでみたら、emacs用にdebian-bugコマンドがあることを知りました。インストールしていなかったので、まずはインストール。
+のようにreportbugがコケてしまいます。困ったねと思って、 `ドキュメント <http://www.debian.org/Bugs/Reporting>`_ を読んでみたら、emacs用にdebian-bugコマンドがあることを知りました。インストールしていなかったので、まずはインストール。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get install debian-el
 
 
 んで、emacsを起動して、M-x debian-bug-wnppを実行すると、reportbugと同じようにいくつか質問され、下記の文面をsubmit@bugs.debian.orgに送信。
 
-.. code-block:: none
 
-   From: Kouhei Maeda mkouhei@palmtb.net
-   To: Debian Bug Tracking System submit@bugs.debian.org 
+.. code-block:: ini
+
+
+   From: Kouhei Maeda <mkouhei@palmtb.net>
+   To: Debian Bug Tracking System <submit@bugs.debian.org> 
    Subject: ITP: python-ordereddict -- recipe has big-oh performance
-   X-Debbugs-CC: Kouhei Maeda mkouhei@palmtb.net
+   X-Debbugs-CC: Kouhei Maeda <mkouhei@palmtb.net>
    Package: wnpp
-   Owner: Kouhei Maeda mkouhei@palmtb.net
+   Owner: Kouhei Maeda <mkouhei@palmtb.net>
    Severity: wishlist
    
    
@@ -67,20 +77,25 @@ blockdiagが1.1になって、python2.7からサポートされているOrderedD
    * License         : The MIT License
      Description     : recipe has big-oh performance
     collections.OrderedDict that works in Python 2.4-2.6. Drop-in
-    substitute for Py2.7&#39;s new collections.OrderedDict. The recipe has
+    substitute for Py2.7's new collections.OrderedDict. The recipe has
     big-oh performance that matches regular dictionaries (amortized O(1) 
     insertion/deletion/lookup and O(n) iteration/repr/copy/equality_testing).
 
 
 
-.. code-block:: none
+
+
+.. code-block:: sh
+
 
    --text follows this line--
 
 
-を消し忘れて何度か怒られ、なんとか受け付けられましたよ…。でも、上記だとno titleになってしまったので、
+を消し忘れて何度か怒られ、なんとか `受け付けられました <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=649895>`_ よ…。でも、上記だとno titleになってしまったので、
 
-.. code-block:: none
+
+.. code-block:: ini
+
 
    retitle 649895 ITP: python-ordereddict -- recipe has big-oh performance
 
@@ -89,34 +104,12 @@ blockdiagが1.1になって、python2.7からサポートされているOrderedD
 
 
 
-.. [#] ：.. [#] 。小宮さん、ありがとうございます。
-.. [#] ：retitleするのも宛先間違えてたし…。ダメだ、ワシ…。
+
+.. [#]  `python2.7同梱のものは使ってないとのご指摘いただきました <https://twitter.com/#!/tk0miya/status/139886280732450816>`_ 。小宮さん、ありがとうございます。
+.. [#] retitleするのも宛先間違えてたし…。ダメだ、ワシ…。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	MUA が emacs の奴だと debian-el のインターフェースが便利っすよね。reportbug と reportbug-ng はパッケージそのものの Bug が散在しているので、ちょっと使いにくい、というか...
-
-	written by  sasakyh
-	11/25/2011 02:28:19
-	http://d.hatena.ne.jp/sasakyh/
-
-----
-
-Comment:
-
-	reportbug-ngなんてあるんだ、知らなかった…。
-
-	written by  mkouhei
-	11/25/2011 02:52:26
-	http://d.hatena.ne.jp/mkouhei/
-

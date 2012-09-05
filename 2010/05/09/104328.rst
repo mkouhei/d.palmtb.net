@@ -1,20 +1,25 @@
-﻿Gmail経由でメール送信できなくなった。
-##########################################
-
+Gmail経由でメール送信できなくなった。
+=====================================
 
 一昨日くらいから突然メールが送信できなくなっていることに気づいたので、smtp_tls_loglevel=1にしてログを確認してみると、
 
-.. code-block:: none
+
+.. code-block:: ini
+
 
    May  9 10:13:31 silicon postfix/smtp[3732]: smtp.gmail.com[72.14.213.109]:587: re-using session with untrusted certificate, look for details earlier in the log
    May  9 10:13:31 silicon postfix/smtp[3732]: Untrusted TLS connection established to smtp.gmail.com[72.14.213.109]:587: TLSv1 with cipher RC4-MD5 (128/128 bits)
-   May  9 10:13:31 silicon postfix/smtp[3732]: 8C29EE07D9: to=user@mydomain, relay=smtp.gmail.com[72.14.213.109]:587, delay=2182, delays=2182/0.03/0.53/0, d
+   May  9 10:13:31 silicon postfix/smtp[3732]: 8C29EE07D9: to=<user@mydomain>, relay=smtp.gmail.com[72.14.213.109]:587, delay=2182, delays=2182/0.03/0.53/0, d
    sn=4.7.5, status=deferred (Server certificate not trusted)
 
 
-元々、ThawteのCAファイルをroot CAにしていたのだが、これではダメになったようだ。
 
-.. code-block:: none
+
+元々、 `Thawte <https://www.thawte.com/roots/index.html>`_ のCAファイルをroot CAにしていたのだが、これではダメになったようだ。
+
+
+.. code-block:: sh
+
 
    $ sudo postconf smtp_tls_CAfile
    /etc/postfix/ThawtePremiumServerCA.pem
@@ -26,13 +31,11 @@
 
 
 
-.. [#] ：パッケージ自体にCAファイルが含まれているわけでは無いようだ。
+
+.. [#] パッケージ自体にCAファイルが含まれているわけでは無いようだ。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Debian, Unix/Linux, security, 
 .. tags::
 .. comments::
-
-

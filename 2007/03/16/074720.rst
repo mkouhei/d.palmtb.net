@@ -1,14 +1,16 @@
-﻿寒いな。
-########
-
+寒いな。
+========
 
 雨降りそうだなぁ。寒いから体調くずさないようにしないと。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

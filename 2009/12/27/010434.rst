@@ -1,23 +1,23 @@
-﻿GmailではPOPで一度受信すると見えなくなる？
-##################################################
-
+GmailではPOPで一度受信すると見えなくなる？
+==========================================
 
 と思ったのだが、どうやらGmailの設定を間違えていた。
 
 * メール転送と POP/IMAP
 
-* POP ダウンロード
 
-* 1. ステータス: 今後受信するメールで POP を有効にする
-* 2. POP でメールにアクセスする場合: メールのコピーを受信トレイに残す
+  * POP ダウンロード
 
 
+    * 1. ステータス: 今後受信するメールで POP を有効にする
 
-
+    * 2. POP でメールにアクセスする場合: メールのコピーを受信トレイに残す
 
 にしていると一度受信したあとではこうなる。
 
-.. code-block:: none
+
+.. code-block:: ini
+
 
    $ openssl s_client -connect pop.gmail.com:995 -quiet
    depth=1 /C=US/O=Google Inc/CN=Google Internet Authority
@@ -36,9 +36,13 @@
    read:errno=0
 
 
-ステータスを&#34;すべてのメールで POP を有効にする (ダウンロード済みのメールを含む)&#34;としていなければならなかった様だ。
 
-.. code-block:: none
+
+ステータスを"すべてのメールで POP を有効にする (ダウンロード済みのメールを含む)"としていなければならなかった様だ。
+
+
+.. code-block:: ini
+
 
    $ openssl s_client -connect pop.gmail.com:995 -quiet
    depth=1 /C=US/O=Google Inc/CN=Google Internet Authority
@@ -68,16 +72,17 @@
 
 
 追記
-********
+----
 
 
 アーカイブすると上記の設定でも見えなくなる、と。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: network, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿そろそろ…。
-############
-
+そろそろ…。
+============
 
 疲れが溜ってきた。そりゃ３日連続で帰宅が〇時回ってりゃ疲れるよなぁ。
 
 
 
-.. author:: mkouhei
-.. categories:: life, work, 
+
+
+
+.. author:: default
+.. categories:: 生活, 仕事, 
 .. tags::
 .. comments::
-
-

@@ -1,18 +1,19 @@
-﻿2.6.27のカーネルビルドの動きがおかしい。
-##############################################
-
+2.6.27のカーネルビルドの動きがおかしい。
+========================================
 
 こんなスクリプトでカーネルビルドをしているのだが、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #!/bin/bash
    
    REVISION=$(date +%Y%m%d.%H%M)
    
-   case $1 in
+   case "$1" in
    (snip)
-   &#39;menuconfig&#39;)
+   'menuconfig')
    	sudo make-kpkg --rootcmd fakeroot clean
    	time make-kpkg --rootcmd fakeroot --config menuconfig --initrd --revision=$REVISION \
    kernel-image kernel_headers modules_image
@@ -24,13 +25,11 @@
 
 
 
-.. [#] ：2.6.26.1～2.6.26.6はoldconfigでしか実行していなかったのでちゃんと機能するかは不明。
+
+.. [#] 2.6.26.1～2.6.26.6はoldconfigでしか実行していなかったのでちゃんと機能するかは不明。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Debian, Unix/Linux, 
 .. tags::
 .. comments::
-
-

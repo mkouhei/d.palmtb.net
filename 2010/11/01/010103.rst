@@ -1,41 +1,50 @@
-﻿LaTeXでを表示する方法。
-############################
-
+LaTeXで<, >を表示する方法。
+===========================
 
 いつも\verb//を使って、
 
-.. code-block:: none
 
-   verb//
+.. code-block:: latex
+
+
+   \verb/<>/
 
 
 としていたのだが、もっと簡単に記述する方法があったのね。
 
-.. code-block:: none
 
-   ()
+.. code-block:: latex
+
+
+   \(<>\)
 
 
 これは楽だ。
 
+
+
+
 追記
-********
+----
 
 
 dancerjに
 
-.. code-block:: none
 
-   $$
-
-
-だろjk、と教えてもらった。thx。
+.. code-block:: latex
 
 
+   $<>$
 
-.. author:: mkouhei
+
+だろjk、と `教えてもらった <http://twitter.com/#!/dancerj/status/29329721833>`_ 。thx。
+
+
+
+
+
+
+.. author:: default
 .. categories:: TeX, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿体脂肪率20%。
-################
-
+体脂肪率20%。
+=============
 
 ここ最近の不摂生で今まで見たことない、体脂肪率に突入。ヤバイ(^^;
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

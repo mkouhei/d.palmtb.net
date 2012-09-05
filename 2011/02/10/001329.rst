@@ -1,53 +1,74 @@
-﻿PDFにパスワードを設定し制限を加える。
-########################################
-
+PDFにパスワードを設定し制限を加える。
+=====================================
 
 会社のPCではPDFに閲覧用のパスワードも設定できないので、外部に送るときにはzipでパスワードを設定する、という手段を取るしかないので、なんか無いかなぁとDebianパッケージを調べてみたら、qpdfというのを見つけた。
-インストールは&#34;qpdf&#34;を指定してインストールするだけ。
 
-.. code-block:: none
+
+
+インストールは"qpdf"を指定してインストールするだけ。
+
+
+.. code-block:: sh
+
 
    $ sudo apt-get install qpdf
 
 
+
+
 使い方はコマンドラインで行うのでとても便利。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ qpdf --encrypt user-password owner-password 128 \
-    --print=none --modify=none --extract=n --accessibility=n 
-    --use-aes=y -- original.pdf encrypted.pdf
+   > --print=none --modify=none --extract=n --accessibility=n 
+   > --use-aes=y -- original.pdf encrypted.pdf
 
 
 original.pdfに元のPDFを、encrypted.pdfに生成するPDFのファイル名を指定する。--encryptオプションは、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    --encrytp user-password owner-password key-length --
 
 
 となる。それ以外の設定は鍵長によって使えるものが決まる。
+
 上記は128bitで暗号化している。なお、他の制限を加えるオプションは、key-lengthと--との間に記述する。
 
 *  --print=none 印刷不可
+
 *  --modify=none 編集不可
+
 *  --extract=n 図やテキストの抽出不可
+
 *  --accessibiliry=n 視覚障害者へのアクセシビリティを許可しない
+
 *  --use-aes=y PDF自体をAESで暗号化する
+
+
 
 40bitだと出来ないこともあるので要注意。
 
+
+
+
 マニュアル
-**************************
+----------
 
 
 http://qpdf.sourceforge.net/files/qpdf-manual.html#ref.encryption-options
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, Debian, 
 .. tags::
 .. comments::
-
-

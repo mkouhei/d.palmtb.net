@@ -1,10 +1,11 @@
-﻿rbl.rbで引っかかる。
-##########################
-
+rbl.rbで引っかかる。
+====================
 
 自宅でHikiの編集を行おうとおもったら、ログインできなかったので調べてみたら、lighttpdのエラーログに
 
-.. code-block:: none
+
+.. code-block:: ini
+
 
    RBL : xxx.xxx.xxx.xxx
 
@@ -13,9 +14,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

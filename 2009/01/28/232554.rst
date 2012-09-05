@@ -1,44 +1,60 @@
-﻿Debian Hack Meeting #0
-############################################
-
+Debian Hack Meeting #0
+======================
 
 初回はiwamatsuさんとワシの二人。
 
-今回の場所
-**************************
 
+
+
+今回の場所
+----------
 
 
 * JR新宿駅新南口のGOOD TIMES
+
 * 電源無し
+
 * wireless gate使える
+
 * 食事高い。
+
 * ちょっと周りがうるさい
 
 
-本日の成果
-**************************
 
+
+本日の成果
+----------
 
 
 * githubのアカウント作成
+
 * emacsのchangelogモードに慣れた。
+
 * gitの操作に慣れた。
-* Panasonic hotkeys utility* の現在のSid環境でのパッケージ化、しようとしてcontrolと必要パッケージの準備だけで終わる。
+
+*  `Panasonic hotkeys utility <http://www.da-cha.jp/letsnote>`_ の現在のSid環境でのパッケージ化、しようとしてcontrolと必要パッケージの準備だけで終わる。
+
+
 
 進捗はあまり芳しくなかった。理由は
 
 * 最初のgithubやchangelogモードに手間どる。
+
 * もともと予定していたToDoを途中で変えた。
+
 * Twitter、Gmailで注意力散漫。
+
+
 
 記事の締切りなど考えたら、毎日やることを習慣付けた方が確かに良いですなぁ。電源と通信環境は無い方が良いかも。限られた時間と環境で終わらせなければならない、という危機感が違う。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

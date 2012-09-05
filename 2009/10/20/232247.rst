@@ -1,19 +1,21 @@
-﻿こまめ５月齢。
-##############
-
+こまめ５月齢。
+==============
 
 こまめは今月で５月齢になったとさ。最近はワシやヨメがいないところで悪さするようになってきて、ちょっと困りもの。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091020/20091020231859.png
-   :alt: f:id:mkouhei:20091020231859p:image
+
+.. image:: /img/20091020231859.png
+
+
 
 困っているといえば、写真。こまめの写真が多すぎて、オンラインのフォトストレージはいずれもいっぱいに。で、Google Appsにメールを切り替えたことで遊休になっているOpenBlockS 266を復活させることにした。写真専用サーバ。ディスクの容量を気にしないで済むもんな。週末にやろうかな。
 
 
 
-.. author:: mkouhei
-.. categories:: cat, computer, 
+
+
+
+.. author:: default
+.. categories:: ねこ, computer, 
 .. tags::
 .. comments::
-
-

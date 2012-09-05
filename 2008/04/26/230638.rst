@@ -1,14 +1,14 @@
-﻿風邪治った。
-############
-
+風邪治った。
+============
 
 ほぼ丸一日寝ていたので、風邪もようやく治ったっぽい。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

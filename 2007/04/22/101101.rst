@@ -1,14 +1,14 @@
-﻿Xfce4が…。
-################
-
+Xfce4が…。
+===========
 
 Sidでアップデートしたら使えなくなった。もと戻そう。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

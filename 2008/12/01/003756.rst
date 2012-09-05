@@ -1,57 +1,83 @@
-﻿オラとアリスと分散処理
-######################
-
+オラとアリスと分散処理
+======================
 
 散髪終わった後、調布の真光書店を物色し、４冊衝動買い。ヨメに「そのうち床が抜ける」と文句言われた。でも後悔はしてない。
 
-* 新版 暗号技術入門 秘密の国のアリス* 
-
-* 旧版をそのうち買おう買おうと思って、いつも買い忘れていたのだが、たまたま新版が出ていたので即購入。
+*  `新版 暗号技術入門 秘密の国のアリス <http://www.amazon.co.jp/exec/obidos/ASIN/4797350997/palmtb-22/ref=nosim/>`_ 
 
 
-* イノベーションの神話* 
-
-* 『* SUBJECT TO CHANGE* 』のカバー折込にあったので、読んでみようと思っていた。
+  * 旧版をそのうち買おう買おうと思って、いつも買い忘れていたのだが、たまたま新版が出ていたので即購入。
 
 
-* Web 2.0 ストラテジー ウェブがビジネスにもたらす意味* 
-
-* オライリーの新刊案内を見て、興味があったので。
+*  `イノベーションの神話 <http://www.amazon.co.jp/exec/obidos/ASIN/4873113458/palmtb-22/ref=nosim/>`_ 
 
 
-* プログラミング Erlang* 
+  * 『 `SUBJECT TO CHANGE <http://www.amazon.co.jp/exec/obidos/ASIN/4873113857/palmtb-22/ref=nosim/>`_ 』のカバー折込にあったので、読んでみようと思っていた。
 
-* Erlangとこの本自体の存在は知っていたのだがそれだけでは特に食指は動かなかった。が、* id:z-ohnami* さんに教えてもらったCouchDBがErlangで実装されているというのを知り、最近勉強を始めた。Webサイトだけだとなかなか時間もアレなので通勤中に読めると便利だと思い購入。
+
+*  `Web 2.0 ストラテジー ウェブがビジネスにもたらす意味 <http://www.amazon.co.jp/exec/obidos/ASIN/4873113504/palmtb-22/ref=nosim/>`_ 
+
+
+  * オライリーの新刊案内を見て、興味があったので。
+
+
+*  `プログラミング Erlang <http://www.amazon.co.jp/exec/obidos/ASIN/4274067149/palmtb-22/ref=nosim/>`_ 
+
+
+  * Erlangとこの本自体の存在は知っていたのだがそれだけでは特に食指は動かなかった。が、id:z-ohnamiさんに教えてもらったCouchDBがErlangで実装されているというのを知り、最近勉強を始めた。Webサイトだけだとなかなか時間もアレなので通勤中に読めると便利だと思い購入。
 
 
 
 最初の３冊はさっさと読んでしまおう。
 
-.. image:: http://ecx.images-amazon.com/images/I/514nedCC1hL._SL160_.jpg
-   :alt: 新版暗号技術入門 秘密の国のアリス
-
-
-.. image:: http://ecx.images-amazon.com/images/I/31AORd0n52L._SL160_.jpg
-   :alt: イノベーションの神話
-
-
-.. image:: http://ecx.images-amazon.com/images/I/51AgJoQGVJL._SL160_.jpg
-   :alt: Web 2.0ストラテジー ウェブがビジネスにもたらす意味
-
-
-.. image:: http://ecx.images-amazon.com/images/I/41jkFwNcvPL._SL160_.jpg
-   :alt: プログラミングErlang
-
-
-.. image:: http://ecx.images-amazon.com/images/I/51Ckb3wB3sL._SL160_.jpg
-   :alt: Subject To Change -予測不可能な世界で最高の製品とサービスを作る
 
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+`新版暗号技術入門 秘密の国のアリス <http://www.amazon.co.jp/exec/obidos/ASIN/4797350997/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+`イノベーションの神話 <http://www.amazon.co.jp/exec/obidos/ASIN/4873113458/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+`Web 2.0ストラテジー ―ウェブがビジネスにもたらす意味 <http://www.amazon.co.jp/exec/obidos/ASIN/4873113504/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+`プログラミングErlang <http://www.amazon.co.jp/exec/obidos/ASIN/4274067149/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+`Subject To Change ―予測不可能な世界で最高の製品とサービスを作る <http://www.amazon.co.jp/exec/obidos/ASIN/4873113857/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

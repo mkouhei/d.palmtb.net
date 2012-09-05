@@ -1,10 +1,11 @@
-﻿VRRP構成のVyattaでMapping NATを行う。
-##########################################################
-
+VRRP構成のVyattaでMapping NATを行う。
+=====================================
 
 VRRP構成のVyattaでNAT Statuful failoverで192.168.0.0/24→10.0.0.0/24とか192.168.1.0/24→10.0.1.0/24にMapping NATを行う場合、下記のようなNATの設定を行います。Vyattaの公式ドキュメントではMapping NATは双方向Source NATにする方法が掲載されているので、typeはdestinationではなくsourceになっています。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    service {
        conntrack-sync {
@@ -64,47 +65,71 @@ VRRP構成のVyattaでNAT Statuful failoverで192.168.0.0/24→10.0.0.0/24とか
    }
 
 
+
+
 ところでNAT用のIPアドレスはどう設定するのかまでは書かれていません。1台でMapping NATを使う場合は、今回の用にVLANを使っているならvifの下に直接addressで設定すれば良いのですが、VRRP構成ではそれやると行きのパケットは到達しても戻りのパケットがスイッチのARPテーブルの状態によってはちゃんとmasterのVyattaを通過するものと、backupのVyattaのI/Fに到達してしまい、行きのパケットが無くてVyattaで破棄されてしまうものとが発生します。運が良ければ疎通があり、悪ければ疎通できない、という状態です。
+
+
+
 VRRPを使う場合、virtual-addressを使い、仮想IPアドレスとして仮想ルータに設定すれば良いのですが、Vyatta Core 6.3時点の仕様では、vrrp-groupで設定するVRID毎に20 VIPしか使えません。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # set interfaces ethernet eth0 vrrp vrrp-group 1 virtual-address 
    Possible completions:
-     x.x.x.x     Virtual IP address (up to 20 per group)
-     x.x.x.x/x   Virtual IP address with prefix (up to 20 per group)
+     <x.x.x.x>     Virtual IP address (up to 20 per group)
+     <x.x.x.x/x>   Virtual IP address with prefix (up to 20 per group)
          
    [edit]
 
 
 さて困りました。VRRPでMapping NATを使いたい場合、20個までしか1対1でマッピングできないということでしょうか？いんや、そんなこたぁ無い。20個のVIP毎にVRIDを新しく設定すればこの問題を回避できます。ただ、この問題点、VRIDを枯渇する可能性があります。VRIDはRFC 3768で、1-255の整数しか使えません。
 
-
-.. code-block:: none
+http://www.ietf.org/rfc/rfc3768.txt
 
    5.3.3.  Virtual Rtr ID (VRID)
+
    
+
       The Virtual Router Identifier (VRID) field identifies the virtual
+
       router this packet is reporting status for.  Configurable item in the
+
       range 1-255 (decimal).  There is no default.
 
 
-http://www.ietf.org/rfc/rfc3768.txt
+
+
+
 なので、サブネットマスクの値が小さいほど枯渇するという問題は回避できません。が、そもそもそんなにNATすることは無いでしょということで、24bitのサブネットマスクのネットワークを2つマッピングできることは確認済みなので、20VIP毎にVRIDを作るスクリプトをGistで公開しておきました。
+
+
+.. raw:: html
+
+    <script src="https://gist.github.com/2155904.js?file=set-vrrp-vyatta.sh"></script>
+
+
+
 
 これで、私と同じ問題で悩むヒトは減りますね。いや、きっといないですね。ググる先生に訊ねても、Vyattaのフォーラム見ても、公式ドキュメント見てもそんなこと無かったので、こんな使い方をしようってヒトがいないんでしょう。って、どんだけソフトウェアルータを酷使するつもりなんでしょうか、このオッチャンわ。
 
+
+
+
 追記。
-**************
+------
 
 
-&#34;bidirectionalな&#34;とか付けてたけどMapping NATで十分だからエントリのタイトルから削りますた。
+"bidirectionalな"とか付けてたけどMapping NATで十分だからエントリのタイトルから削りますた。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: network, Ops, 
 .. tags::
 .. comments::
-
-

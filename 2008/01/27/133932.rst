@@ -1,14 +1,14 @@
-﻿システム自動管理ツールの比較検証候補。
-######################################
-
+システム自動管理ツールの比較検証候補。
+======================================
 
 今のところ、FLOSSならHinemos、PuppetとFunc。商用製品ならz/LinuxというよかSLESとの親和性を考慮してZENworksとTivoli関連製品かな。z/Linuxだけでなくて、IDCの他の運用も考慮せなあかんな。それぞれ課題点がありすぎだな。
 
 
 
-.. author:: mkouhei
-.. categories:: work, 
+
+
+
+.. author:: default
+.. categories:: 仕事, 
 .. tags::
 .. comments::
-
-

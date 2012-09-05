@@ -1,14 +1,14 @@
-﻿あーあ、台無し。
-################
+あーあ、台無し。
+================
+
+ERIKAとして出しているのに、提携しているスポンサーの `サイト <http://www.subaru.jp/about/cm/stella/index.html>`_ で、沢尻エリカとなっている。ちゃんと連携しなさいよ。
 
 
-ERIKAとして出しているのに、提携しているスポンサーのサイトで、沢尻エリカとなっている。ちゃんと連携しなさいよ。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, error, 
+
+.. author:: default
+.. categories:: 駄文, エラー, 
 .. tags::
 .. comments::
-
-

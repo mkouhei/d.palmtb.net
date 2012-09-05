@@ -1,24 +1,14 @@
-﻿git-buildpackageで作成したソースパッケージがアップロードされない。
-##################################################################################
+git-buildpackageで作成したソースパッケージがアップロードされない。
+==================================================================
+
+git-buildpackageを使って作成したソースパッケージを、mentors.debian.netにdputするとコマンド自体ではうまく行っているようなのですが、実際にはアップロード完了のメールがこないし、mentors上のステータスも変わりません。なんか手順が間違っているんだろうなぁ…。時間があるときに `マニュアル <http://honk.sigxcpu.org/projects/git-buildpackage/manual-html/gbp.html>`_ を読んでみることにします。
 
 
-git-buildpackageを使って作成したソースパッケージを、mentors.debian.netにdputするとコマンド自体ではうまく行っているようなのですが、実際にはアップロード完了のメールがこないし、mentors上のステータスも変わりません。なんか手順が間違っているんだろうなぁ…。時間があるときにマニュアルを読んでみることにします。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	pristine-tar ?
-
-	written by  iwamatsu
-	02/21/2012 09:03:35
-	
-

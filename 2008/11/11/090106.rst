@@ -1,16 +1,20 @@
-﻿Goodbye ”Hobbit”, hello ”Xymon”
-##############################################################
-
+Goodbye "Hobbit", hello "Xymon"
+===============================
 
 HobbitのMLで知ったこの事実。
+
 http://www.hswn.dk/hobbiton/2008/11/msg00123.html
+
+
+
 DebianでもHobbitは正式パッケージになっているけど、Upstreamの名称が変わる場合はどういう扱いになるんでしょうか。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, computer, 
 .. tags::
 .. comments::
-
-

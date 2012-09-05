@@ -1,31 +1,21 @@
-﻿ちょっと興味があるソフトウェア
-##############################
+ちょっと興味があるソフトウェア
+==============================
+
+:Touchlib:[http://nuigroup.com/touchlib/]
 
 
+  * マルチタッチ対応のライブラリ。Linuxでも使えるようだ。Debian on MacBook Airでマルチタッチを実現できるだろうか…。
 
-Touchlib
-http://nuigroup.com/touchlib/
+:wicd:[http://wicd.sourceforge.net/]
 
-
-
-* マルチタッチ対応のライブラリ。Linuxでも使えるようだ。Debian on MacBook Airでマルチタッチを実現できるだろうか…。
-
-
-
-wicd
-http://wicd.sourceforge.net/
-
-
-
-* 有線/無線LANのGUI設定ツール。Pythonでかかれているようだ。WEB/WPA/WPA2も設定できるらしい。使えるようになればDebianでもネットワーク設定がもっと楽になるかな。
+  * 有線/無線LANのGUI設定ツール。Pythonでかかれているようだ。WEB/WPA/WPA2も設定できるらしい。使えるようになればDebianでもネットワーク設定がもっと楽になるかな。
 
 
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Unix/Linux, Debian, MacBook, 
 .. tags::
 .. comments::
-
-

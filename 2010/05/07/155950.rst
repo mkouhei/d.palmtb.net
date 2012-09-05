@@ -1,19 +1,21 @@
-﻿EPSON CC-700で普通に印刷できてしまった。
-####################################################
+EPSON CC-700で普通に印刷できてしまった。
+========================================
+
+先日MacBookにSidを入れ直して、不要なプロセス停止し、パッケージを削除しているときに、CUPS削除する前に10年近くWindowsで年賀状しか印刷していなかったEPSONの初代複合機CC-700を試してみるかと、プリンタとしてちゃんと認識できるので、"CUPS CC-700"でググってみたら `2001年時点でEPSON PM-770Cと同じドライバで動いている実績があるじゃないか <http://search.luky.org/vine-users.3/msg04226.html>`_ と。何てこった。探し方が下手くそだったのだな…。
 
 
-先日MacBookにSidを入れ直して、不要なプロセス停止し、パッケージを削除しているときに、CUPS削除する前に10年近くWindowsで年賀状しか印刷していなかったEPSONの初代複合機CC-700を試してみるかと、プリンタとしてちゃんと認識できるので、&#34;CUPS CC-700&#34;でググってみたら2001年時点でEPSON PM-770Cと同じドライバで動いている実績があるじゃないかと。何てこった。探し方が下手くそだったのだな…。
-
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100507/20100507155725.png
-   :alt: f:id:mkouhei:20100507155725p:image
-
-CUPSで&#34;Epson PM 770C - CUPS+Gutenprint v5.2.5&#34;を選んで、試しに印刷してみたら、あっさり印刷できた。これで、Let&#39;s note R3に唯一デュアルブートで残していたWindowsを使用する理由がまた一つ減ったな。
+.. image:: /img/20100507155725.png
 
 
 
-.. author:: mkouhei
+CUPSで"Epson PM 770C - CUPS+Gutenprint v5.2.5"を選んで、試しに印刷してみたら、あっさり印刷できた。これで、Let's note R3に唯一デュアルブートで残していたWindowsを使用する理由がまた一つ減ったな。
+
+
+
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, Debian, MacBook, 
 .. tags::
 .. comments::
-
-

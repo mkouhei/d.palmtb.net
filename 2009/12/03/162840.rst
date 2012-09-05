@@ -1,19 +1,24 @@
-﻿libvirtdが起動しない。
-##############################
-
+libvirtdが起動しない。
+======================
 
 virshでlxcにコネクトしてみようと思ったら、失敗した。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo virsh --connect lxc:///
-   error: unable to connect to &#39;/var/run/libvirt/libvirt-sock&#39;: 接続を拒否されました
+   error: unable to connect to '/var/run/libvirt/libvirt-sock': 接続を拒否されました
    error: failed to connect to the hypervisor
+
+
 
 
 そもそもlibvirtdが起動してない。起動させようとしたら失敗。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo  /etc/init.d/libvirt-bin start
    Starting libvirt management daemon: libvirtd.
@@ -25,9 +30,11 @@ virshでlxcにコネクトしてみようと思ったら、失敗した。
    16:12:19.163: error : main:3089 : Driver state initialization failed
 
 
-halに依存しているのか？ググってみたら既にBTSに登録されていたよ。早速0.7.2-4にアップグレードしたら、halがインストールされて、ちゃんと起動した。
+halに依存しているのか？ググってみたら既に `BTSに登録されていたよ <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=556730>`_ 。早速0.7.2-4にアップグレードしたら、halがインストールされて、ちゃんと起動した。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get upgrade
    パッケージリストを読み込んでいます... 完了
@@ -44,7 +51,7 @@ halに依存しているのか？ググってみたら既にBTSに登録され�
    状態情報を読み取っています... 完了
    以下のパッケージが自動でインストールされましたが、もう必要とされていません:
      openssl-blacklist
-   これらを削除するには &#39;apt-get autoremove&#39; を利用してください。
+   これらを削除するには 'apt-get autoremove' を利用してください。
    以下の特別パッケージがインストールされます:
      consolekit hal hal-info libcap-ng0 libck-connector0 libdbus-glib-1-2 libeggdbus-1-0 libhal-storage1 libpam-ck-connector libpolkit-gobject-1-0 libvirt-dev libvirt0
      pm-utils powermgmt-base radeontool vbetool
@@ -67,15 +74,19 @@ halに依存しているのか？ググってみたら既にBTSに登録され�
    Checking status of libvirt management daemon: libvirtd running.
 
 
+
+
 無事コネクトできた。めでたしめでたし。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo virsh --connect lxc:///
    Welcome to virsh, the virtualization interactive terminal.
    
-   Type:  &#39;help&#39; for help with commands
-          &#39;quit&#39; to quit
+   Type:  'help' for help with commands
+          'quit' to quit
    
    virsh #
 
@@ -83,9 +94,9 @@ halに依存しているのか？ググってみたら既にBTSに登録され�
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, virt., Ops, 
 .. tags::
 .. comments::
-
-

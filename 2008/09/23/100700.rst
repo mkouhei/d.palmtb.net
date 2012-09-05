@@ -1,14 +1,14 @@
-﻿起動確認したよ。
-################
-
+起動確認したよ。
+================
 
 やまもとさん作成のLiveDVDをkvmで起動確認したので、焼き始めることにする。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

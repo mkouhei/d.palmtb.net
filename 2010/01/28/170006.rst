@@ -1,12 +1,15 @@
-﻿LaTeX + graphvizのPostScriptで日本語表示できた。
-##########################################################################
+LaTeX + graphvizのPostScriptで日本語表示できた。
+================================================
 
 
-LaTeXがISO-2022-JPで、graphvizがUTF-8で日本語表示させるのにPNG形式にするのが嫌で、なんとかPostScriptでちゃんと日本語表示できんかのぉと探してみたら、ばっちりのがあった。-Tpsオプションだけだと、
 
-.. code-block:: none
+LaTeXがISO-2022-JPで、graphvizがUTF-8で日本語表示させるのにPNG形式にするのが嫌で、なんとかPostScriptでちゃんと日本語表示できんかのぉと探してみたら、 `ばっちりのがあった <http://d.hatena.ne.jp/r_takaishi/20100114/1263439304>`_ 。-Tpsオプションだけだと、
 
-   $ dot -Tps  hoge.dot  hoge.eps
+
+.. code-block:: sh
+
+
+   $ dot -Tps < hoge.dot > hoge.eps
    Warning: UTF-8 input uses non-Latin1 characters which cannot be handled in PostScript output
 
 
@@ -14,9 +17,12 @@ LaTeXがISO-2022-JPで、graphvizがUTF-8で日本語表示させるのにPNG形
 
 
 
-.. author:: mkouhei
+
+
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, TeX, 
 .. tags::
 .. comments::
-
-

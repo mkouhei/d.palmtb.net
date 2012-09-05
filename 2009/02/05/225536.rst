@@ -1,18 +1,15 @@
-﻿新幹線でIRC。
-################
+新幹線でIRC。
+=============
 
-
-名古屋から新横浜の間、新幹線からDebian JPのIRC会議に参加してみた。帰りの私鉄はで立ちながらDebianでネット。Let&#39;s noteだから為せる業。 [#]_ 
-
-
-
-.. [#] ：軽さとかバッテリーとか。
+名古屋から新横浜の間、新幹線からDebian JPのIRC会議に参加してみた。帰りの私鉄はで立ちながらDebianでネット。Let's noteだから為せる業。 [#]_ 
 
 
 
-.. author:: mkouhei
+
+.. [#] 軽さとかバッテリーとか。
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

@@ -1,24 +1,28 @@
-﻿lennyでもインストールできない。
-####################################
+lennyでもインストールできない。
+===============================
+
+Debian GNU/Linux testing "Lenny" - Official Snapshot amd64 NETINST Binary-1 20090104-09:09版を使って、黒MacBookへのインストールを再度挑戦してみたがやっぱりインストール後の起動時にKernel Panicになるなぁ。
 
 
-Debian GNU/Linux testing &#34;Lenny&#34; - Official Snapshot amd64 NETINST Binary-1 20090104-09:09版を使って、黒MacBookへのインストールを再度挑戦してみたがやっぱりインストール後の起動時にKernel Panicになるなぁ。
+.. code-block:: sh
 
-.. code-block:: none
 
-   RAMDISK: Couldnt find valid RAM disk image staring at 0.
+   RAMDISK: Couldn't find valid RAM disk image staring at 0.
    List of all partitions:
    No filesystem could mount root, tried:
    Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(8,4)
 
 
-MacBook Proで同じような問題があるみたいなので、この回避方法を試してみたら、無事起動できた。ただ、あんまりスマートではないなぁ。
+
+
+`MacBook Proで同じような問題があるみたいなので、この回避方法 <http://linux.derkeiler.com/Mailing-Lists/Debian/2008-11/msg01918.html>`_ を試してみたら、無事起動できた。ただ、あんまりスマートではないなぁ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

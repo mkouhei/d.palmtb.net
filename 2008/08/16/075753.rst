@@ -1,14 +1,14 @@
-﻿Debian温泉
-################
-
+Debian温泉
+==========
 
 洗濯が終わったらDebian温泉に行ってきます。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: meeting, 
 .. tags::
 .. comments::
-
-

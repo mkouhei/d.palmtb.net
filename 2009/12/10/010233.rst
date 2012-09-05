@@ -1,14 +1,14 @@
-﻿大丈夫だったみたい。
-####################
-
+大丈夫だったみたい。
+====================
 
 今日のうんちは正常だった。良かった良かった。
 
 
 
-.. author:: mkouhei
-.. categories:: cat, 
+
+
+
+.. author:: default
+.. categories:: ねこ, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿chumbyの予約開始。
-########################
-
+chumbyの予約開始。
+==================
 
 9/3の正午から予約開始するようだ。予約せねば。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: gadget, 
 .. tags::
 .. comments::
-
-

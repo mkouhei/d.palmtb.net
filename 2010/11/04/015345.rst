@@ -1,109 +1,120 @@
-﻿Webサーバ勉強会に参加してきた。
-##################################
+Webサーバ勉強会に参加してきた。
+===============================
+
+id:oranieさんが主催した `Webサーバ勉強会 <http://d.hatena.ne.jp/oranie/20101103>`_ に参加してきた。モジュールを読み込むだけのとこの話で、認証まわりモジュールを担当することになったので、auth, authn, authz, authnzとかあるけど違いをよう知らんのぉということで、関係図を作ることに一所懸命になって、肝心のモジュール自体を一行ずつ解説はしない、という手抜きっぷり。他の方はちゃんと一行ずつ解説してたので、ちょっと恥ずかしくなった。
 
 
-id:oranieさんが主催したWebサーバ勉強会に参加してきた。モジュールを読み込むだけのとこの話で、認証まわりモジュールを担当することになったので、auth, authn, authz, authnzとかあるけど違いをよう知らんのぉということで、関係図を作ることに一所懸命になって、肝心のモジュール自体を一行ずつ解説はしない、という手抜きっぷり。他の方はちゃんと一行ずつ解説してたので、ちょっと恥ずかしくなった。さっきのエントリでようやくSlideShareに日本語ちゃんと表示できる形でアップできるようにしたので、こっちにも添付しておいた。 [#]_ 
-S2s websrv201011-presenView more presentations from Kouhei Maeda.
+
+さっきのエントリでようやくSlideShareに日本語ちゃんと表示できる形でアップできるようにしたので、こっちにも添付しておいた。 [#]_ 
+
+
+`S2s websrv201011-presen <http://www.slideshare.net/mkouhei/s2s-websrv201011presen>`_
+
+
+
+
 他の人もブログに書かれているが、発表形式とかも特に指定も無く20人いればいろんな発表形式になったので面白いかった。知らん設定とか結構あったので勉強にもなったし。また次回あれば、都合つけて参加したいですな。参加者の皆様どうもありがとうございました。
 
+
+
+
 おまけ
-**************
+------
 
 
 なお、p.6の図は、graphvizで作ったので、コードもはっつけておこう。
 
-.. code-block:: none
+
+.. code-block:: ini
+
 
    # dot -Tps:cairo -o mod_auth.eps mod_auth.dot
    
    digraph base {
-           graph [rankdir=LR,style=rounded,color=#8888ff];
+           graph [rankdir=LR,style=rounded,color="#8888ff"];
            edge [labelfloat=true,fontsize=10];
            node [shape=box,fontsize=10,fixedsize=true,width=1.5,height=0.3];
-           mod2 [label=mod_dbd,color=gray];
-           mod3 [label=mod_ldap];
+           mod2 [label="mod_dbd",color=gray];
+           mod3 [label="mod_ldap"];
            subgraph cluster0 {
-                   index0 [label=認証フロントエンド\nモジュール,shape=plaintext,height=0.5];
-                   mod00 [label=mod_auth_basic];
-                   mod01 [label=mod_auth_digest];
+                   index0 [label="認証フロントエンド\nモジュール",shape=plaintext,height=0.5];
+                   mod00 [label="mod_auth_basic"];
+                   mod01 [label="mod_auth_digest"];
            }
            subgraph cluster1 {
-                   mod10 [label=mod_authn_file];
-                   mod11 [label=mod_authn_dbm];
-                   mod12 [label=mod_authn_dbd,color=gray];
-                   mod13 [label=mod_authnz_ldap];
-                   mod14 [label=mod_authn_anon];
-                   mod15 [label=mod_authn_alias];
-                   index1 [label=ユーザ認証\nモジュール,shape=plaintext,height=0.5];
+                   mod10 [label="mod_authn_file"];
+                   mod11 [label="mod_authn_dbm"];
+                   mod12 [label="mod_authn_dbd",color=gray];
+                   mod13 [label="mod_authnz_ldap"];
+                   mod14 [label="mod_authn_anon"];
+                   mod15 [label="mod_authn_alias"];
+                   index1 [label="ユーザ認証\nモジュール",shape=plaintext,height=0.5];
            }
            subgraph cluster2 {
-                   index2 [label=承認モジュール,shape=plaintext];
+                   index2 [label="承認モジュール",shape=plaintext];
                    subgraph cluster20 {
-                           index20 [label=ユーザ承認,shape=plaintext];
-                           mod200 [label=mod_authz_user];
-                           mod201 [label=mod_authz_owner];
+                           index20 [label="ユーザ承認",shape=plaintext];
+                           mod200 [label="mod_authz_user"];
+                           mod201 [label="mod_authz_owner"];
                    }
                    subgraph cluster21 {
-                           index21 [label=グループ承認,shape=plaintext];
-                           mod210 [label=mod_authz_host];
-                           mod211 [label=mod_authz_groupfile,width=1.68];
-                           mod212 [label=mod_authz_dbm];
+                           index21 [label="グループ承認",shape=plaintext];
+                           mod210 [label="mod_authz_host"];
+                           mod211 [label="mod_authz_groupfile",width=1.68];
+                           mod212 [label="mod_authz_dbm"];
                    }
            }
            subgraph cluster3 {
-                   index3 [label=フォールバック\nモジュール,shape=plaintext,height=0.5];
-                   mod30 [label=mod_authn_default,width=1.7];
-                   mod31 [label=mod_authz_default,width=1.7];
+                   index3 [label="フォールバック\nモジュール",shape=plaintext,height=0.5];
+                   mod30 [label="mod_authn_default",width=1.7];
+                   mod31 [label="mod_authz_default",width=1.7];
            }
    
            subgraph cluster4 {
-                   index4 [label=認証プロバイダ,shape=plaintext];
-                   provider0 [label=file];
-                   provider1 [label=dbm];
-                   provider2 [label=dbd,color=gray];
-                   provider3 [label=ldap];
+                   index4 [label="認証プロバイダ",shape=plaintext];
+                   provider0 [label="file"];
+                   provider1 [label="dbm"];
+                   provider2 [label="dbd",color=gray];
+                   provider3 [label="ldap"];
    
            }
            subgraph cluster5 {
-                   index5 [label=OS管理の情報など,shape=plaintext];
-                   resource0 [label=ホスト名\nor\nIPアドレス,height=0.68];
-                   resource1 [label=ファイル所有者];
+                   index5 [label="OS管理の情報など",shape=plaintext];
+                   resource0 [label="ホスト名\nor\nIPアドレス",height=0.68];
+                   resource1 [label="ファイル所有者"];
            }
-           index6 [label=anonymous認証,shape=plaintext];
-           index0-index1;
-           index1-index21;
-           mod10-provider0;
-           mod11-provider1;
-           mod12-provider2;
-           mod13-provider3;
-           provider2-mod2 [label=コネクションプール、\nキャッシュ];
-           provider3-mod3 [label=コネクションプール、\nキャッシュ];
-           mod211-provider0;
-           mod212-provider1;
-           index0-mod30 [label=設定なし];
-           index2-mod31 [label=設定なし];
-           mod210-resource0;
-           mod201-resource1 [label=file-owner];
-           index1-mod200 [label=user\nvalid-user];
-           index1-mod201 [label=file-owner\nfile-group];
-           mod15-mod10 [label=alias];
-           mod15-mod11 [label=alias];
-           mod15-mod12 [label=alias];
-           mod15-mod13 [label=alias];
-           index6-mod14 [rank=same];
+           index6 [label="anonymous認証",shape=plaintext];
+           index0->index1;
+           index1->index21;
+           mod10->provider0;
+           mod11->provider1;
+           mod12->provider2;
+           mod13->provider3;
+           provider2->mod2 [label="コネクションプール、\nキャッシュ"];
+           provider3->mod3 [label="コネクションプール、\nキャッシュ"];
+           mod211->provider0;
+           mod212->provider1;
+           index0->mod30 [label="設定なし"];
+           index2->mod31 [label="設定なし"];
+           mod210->resource0;
+           mod201->resource1 [label="file-owner"];
+           index1->mod200 [label="user\nvalid-user"];
+           index1->mod201 [label="file-owner\nfile-group"];
+           mod15->mod10 [label="alias"];
+           mod15->mod11 [label="alias"];
+           mod15->mod12 [label="alias"];
+           mod15->mod13 [label="alias"];
+           index6->mod14 [rank=same];
    }
 
 
 
 
 
-.. [#] ：Githubでは既に公開済み
+.. [#] Githubでは既に公開済み
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

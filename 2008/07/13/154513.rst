@@ -1,11 +1,13 @@
-﻿音が出なかった理由。
-####################
-
+音が出なかった理由。
+====================
 
 MacBook Airがx86版の時はちゃんと音が出ていたのに、64bitにしたら出なくなった理由が判明。
+
 もともとは、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    snd_hda_intel         303356  6 
    snd_pcm_oss            37792  0 
@@ -20,7 +22,9 @@ MacBook Airがx86版の時はちゃんと音が出ていたのに、64bitにし�
 
 だったのに、amd64版に変えたら、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    
    $ lsmod | grep snd
@@ -36,7 +40,9 @@ MacBook Airがx86版の時はちゃんと音が出ていたのに、64bitにし�
 
 となっており、snd_hwdepモジュールがロードされていなかった。で、これをロードしたらちゃんと音が出るようになりましたよ、っと。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ lsmod | grep snd
    snd_hwdep              14728  0 
@@ -54,9 +60,10 @@ MacBook Airがx86版の時はちゃんと音が出ていたのに、64bitにし�
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

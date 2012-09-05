@@ -1,61 +1,35 @@
-﻿upstartでプロセスを自動再起動させる。
-############################################
-
+upstartでプロセスを自動再起動させる。
+=====================================
 
 おぷすたでインスタンスを作成した際に、自動でDNSにAレコードを登録するデーモンが(チーム内で作って)あるのですが、これが落ちていたためインスタンス起動時にレコードが登録されない、ということがありました。プロセスが死んだとしても勝手に再起動させればよいので、inittabかdaemontoolsかmonitあたりでやろうかなぁと考えていたら、
 
-.. image:: http://a0.twimg.com/profile_images/1738614755/matsuu_normal.jpg
+
+http://twitter.com/#!/matsuu/status/182835985619501057::
+
+   ああ、もうdaemontoolsいらないね。落ちた時の自動起動だけならupstartで実現できる。Debianは6以降、RHELも6以降は標準でインストールされてる。Amazon Linuxも標準装備。ただしGentooでは使えません。 12 hours ago
 
 
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
 
 
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
+との `matsuuさん <https://twitter.com/matsuu>`_ のtweetでupstartでもできることを思い出し [#]_ 、Ubuntu上で稼働していたので、そうすることにしました。
 
 
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
- [#]_ 
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
 
 
 設定ファイルの作成。
-********************************************************
+--------------------
+
+
 
 
 /etc/init/novadns.conf
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # novadns
-   description     novadns
+   description     "novadns"
    
    start on filesystem
    stop on runlevel S
@@ -76,13 +50,18 @@
 
 とこんな感じでファイルを作成します。
 
+
+
+
 ジョブの制御。
-**************************************
+--------------
 
 
 ファイルを作成すると早速確認できます。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo initctl status novadns
    novadns stop/waiting
@@ -90,9 +69,13 @@
    20667    23885 23382  0 11:22 pts/1    00:00:00 grep --color=auto novadns
 
 
+
+
 プロセス起動してみます。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo initctl start novadns
    novadns start/running, process 23909
@@ -103,9 +86,13 @@
    20667    23912 23382  0 11:23 pts/1    00:00:00 grep --color=auto novadns
 
 
+
+
 プロセス停止してみます。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo initctl stop novadns
    novadns stop/waiting
@@ -113,9 +100,13 @@
    novadns stop/waiting
 
 
+
+
 プロセス殺しても自動で再起動するか確認してみます。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo initctl start novadns
    novadns start/running, process 23924
@@ -128,13 +119,11 @@
 
 
 
-.. [#] ：.. [#] に.. [#] Debian勉強会でUpstartネタやっていたのに忘れてました…。
+
+.. [#]  `一昨年 <http://tokyodebian.alioth.debian.org/2010-02.html>`_ に `2回も <http://tokyodebian.alioth.debian.org/2010-04.html>`_ Debian勉強会でUpstartネタやっていたのに忘れてました…。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, Debian, 
 .. tags::
 .. comments::
-
-

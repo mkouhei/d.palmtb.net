@@ -1,14 +1,14 @@
-﻿温度上昇防止対策その２
-######################
+温度上昇防止対策その２
+======================
+
+先日の対策だけでは効果が低かったので、今度はnetfilterでドロップさせようと、現在設定しているNetfilter用のスクリプトに、 `krfilter <http://www.hakusan.tsg.ne.jp/tjkawa/lib/krfilter/index.jsp>`_ を組み込んで見たのだが、あまり効果なし。で、SpamAssassinでSPAMとして検出されたメールのメールヘッダのReceivedヘッダーのIPアドレスに書き換えてみたところ、早速効果が現れた。現在は１IPアドレス毎にルールを書いているのだが、もうちょっと様子をみてセグメント毎のルール二書き直してみるか。
 
 
-先日の対策だけでは効果が低かったので、今度はnetfilterでドロップさせようと、現在設定しているNetfilter用のスクリプトに、krfilterを組み込んで見たのだが、あまり効果なし。で、SpamAssassinでSPAMとして検出されたメールのメールヘッダのReceivedヘッダーのIPアドレスに書き換えてみたところ、早速効果が現れた。現在は１IPアドレス毎にルールを書いているのだが、もうちょっと様子をみてセグメント毎のルール二書き直してみるか。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

@@ -1,10 +1,11 @@
-﻿LaTeXでディレクトリツリーを表示する。
-##########################################
-
+LaTeXでディレクトリツリーを表示する。
+=====================================
 
 treeコマンドを普通に使うと、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    my-first-blueprint/
    |-- files
@@ -32,9 +33,11 @@ treeコマンドを普通に使うと、
 
 と表示されますが、バッククオートがLaTeXではフォントによっては違った見え方になります。なので、
 
-.. code-block:: none
 
-   $ tree -d my-first-blueprint | sed &#39;s/`/+/g&#39;
+.. code-block:: sh
+
+
+   $ tree -d my-first-blueprint | sed 's/`/+/g'
    my-first-blueprint/
    |-- files
    |   +-- tmp
@@ -60,9 +63,14 @@ treeコマンドを普通に使うと、
 
 
 としてやれば、lstlisting環境などで意図どおりの表示になるのですが、treeコマンド自体のオプションで指定できないんでしょうかね。
+
+
+
 ちなみに、LANG=en_US.UTF-8になっている、Ubuntu 10.04では、treeコマンドのパス表示に使われる記号が全角の罫線になっています。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    my-first-blueprint/
    ├── files
@@ -90,32 +98,34 @@ treeコマンドを普通に使うと、
 
 罫線記号は全角なのでlstlistingなどの環境の中ではもれなくズレます。LANG=Cに指定すればバッククオートの形式になります。Sidではならないんですけど、何ででしょう。バージョンの違い？ [#]_ 
 
+
+
+
 余談。
-**************
+------
 
 
 最初、LANG=Cすりゃええやん、と気づかず、下記のようなワンライナー書いてました。ダサ。
 
-.. code-block:: none
 
-   $ tree -d my-first-blueprint/ | sed &#39;{
+.. code-block:: sh
+
+
+   $ tree -d my-first-blueprint/ | sed '{
    s/└─/+-/g
    s/├─/+-/g
    s/─/--/g
    s/│/| /g
-   }&#39;
+   }'
 
 
 
 
 
-.. [#] ：Lucidでは1.5.3, Sidでは1.6.0です。
+.. [#] Lucidでは1.5.3, Sidでは1.6.0です。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: TeX, Unix/Linux, 
 .. tags::
 .. comments::
-
-

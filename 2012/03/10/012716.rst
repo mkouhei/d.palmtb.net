@@ -1,18 +1,26 @@
-﻿mercurial-buildpackageを使ってDebianパッケージを作成。
-##################################################################################
-
+mercurial-buildpackageを使ってDebianパッケージを作成。
+======================================================
 
 upstreamがmercurialで管理されているソフトウェアをDebianパッケージにするのに、mercurial-buildpackageを使ってみたのでそのメモです。
+
+
+
 まずはパッケージの導入。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get install mercurial-buildpackage
 
 
+
+
 upstream(今回はfuncparserlib)からcloning。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ hg clone https://code.google.com/p/funcparserlib/
    複製先ディレクトリ: funcparserlib
@@ -25,9 +33,13 @@ upstream(今回はfuncparserlib)からcloning。
    ファイル状態: 更新数 33、 マージ数 0、 削除数 0、 衝突未解消数 0
 
 
+
+
 デフォルトのブランチはdefaultですが、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd funcparserlib
    $ hg branch
@@ -39,7 +51,9 @@ upstream(今回はfuncparserlib)からcloning。
 
 funcparserlibは0.3.xがリリース用のブランチなので、0.3.xにチェックアウトします。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ hg update 0.3.x
    ファイル状態: 更新数 20、 マージ数 0、 削除数 14、 衝突未解消数 0
@@ -47,55 +61,61 @@ funcparserlibは0.3.xがリリース用のブランチなので、0.3.xにチェ
 
 glogでチェンジセットが112になっていることを確認できます。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ hg glog
    (snip)
    | o  チェンジセット:   113:f7bb0e84c0fe
    | |  親:               111:004c67aabeb3
-   | |  ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   | |  ユーザ:           Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
    | |  日付:             Wed May 05 17:49:27 2010 +0400
    | |  要約:             m
    | |
    | | @  チェンジセット:   112:28528a73b122
    | | |  ブランチ:         0.3.x
    | | |  親:               110:e568fcc9e6d6
-   | | |  ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   | | |  ユーザ:           Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
    | | |  日付:             Tue Nov 29 23:03:05 2011 +0300
    | | |  要約:             Switched from nosetests to unittest for compatibility
    | | |
    | o |  チェンジセット:   111:004c67aabeb3
    | | |  親:               109:e33b53943458
-   | | |  ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   | | |  ユーザ:           Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
    | | |  日付:             Mon Mar 15 12:43:18 2010 +0300
    | | |  要約:             m
    | | |
    +---o  チェンジセット:   110:e568fcc9e6d6
    | |    ブランチ:         0.3.x
    | |    親:               108:f7b9c45450d7
-   | |    ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   | |    ユーザ:           Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
    | |    日付:             Tue Nov 29 23:03:03 2011 +0300
    | |    要約:             Python 3 compatibility
    | |
    | o  チェンジセット:   109:e33b53943458
    | |  親:               107:c2069a3825d2
-   | |  ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   | |  ユーザ:           Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
    | |  日付:             Sun Mar 14 13:18:09 2010 +0300
    | |  要約:             Fixed #12: Positions in lexer error ouput are now 1-based instead of 0-based
    | |
    o |  チェンジセット:   108:f7b9c45450d7
    | |  ブランチ:         0.3.x
    | |  親:               106:4e1434e9013b
-   | |  ユーザ:           Andrey Vlasovskikh andrey.vlasovskikh@gmail.com
+   | |  ユーザ:           Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
    | |  日付:             Fri Nov 18 02:15:56 2011 +0300
    | |  要約:             More information in exception objects (Issue 14)
    | |
    (snip)
 
 
+
+
 なお最新のリリースの0.3.5のタグは、.hgtagsファイルで確認できます。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cat .hgtags 
    7d24cd9e4b75a85b1ee04f761e59857296d535d4 0.1
@@ -108,50 +128,32 @@ glogでチェンジセットが112になっていることを確認できます�
    2a094772c9e97ee5de5618f9c4479253fb357e4e 0.3.5
 
 
+
+
 現在Debianパッケージとなっているfuncparserlib0.3.5は、Python2.7がデフォルトになってからビルドができないバグがあります。これは0.3.xのheadであるチェンジセット112では修正されているので、これをtarballにアーカイブします。doc/changes.mdとdoc/index.mdがsymlinkになっていますが、このままアーカイブするとmercurial-importorigおよびdebuild時にコケます。原因は、
 
-.. image:: http://a0.twimg.com/profile_images/795732564/openlogo1_normal.jpg
 
+http://twitter.com/#!/yy_y_ja_jp/status/176181847347298305::
 
-.. image:: http://a0.twimg.com/profile_images/795732564/openlogo1_normal.jpg
+   @mkouhei mercurial-buildpackageが使ってるnekoがsymlink対応してない 6 days ago
 
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
 
 とのことなので、この二つのsymlinkはアーカイブせずに-Xオプションで除外しておきます。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ hg archive --prefix funcparserlib/ -r 112 -t tgz -X doc/Changes.md -X doc/index.md ../funcparserlib_0.3.5+hg~100.orig.tar.gz
 
 
+
+
 このアーカイブしたファイルを元にmercurial-importorigを行います。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ mkdir -p deb/funcparserlib
    $ cd deb/funcparserlib
@@ -160,9 +162,13 @@ glogでチェンジセットが112になっていることを確認できます�
    I: Reverting branch funcparserlib to state before import.
 
 
+
+
 importができたらdh_makeを実行します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ dh_make -p funcparserlib_0.3.5+hg~100 -f ../../funcparserlib_0.3.5+hg~100.orig.tar.gz 
    
@@ -177,22 +183,30 @@ importができたらdh_makeを実行します。
    Version          : 0.3.5+hg~100
    License          : blank
    Type of Package  : Single
-   Hit enter to confirm: 
+   Hit <enter> to confirm: 
    Done. Please edit the files in the debian/ subdirectory now. You should also
    check that the funcparserlib Makefiles install into $DESTDIR and not in / .
 
 
-debian/*を編集後、debianディレクトリを登録しコミットします。
 
-.. code-block:: none
+
+debian/\*を編集後、debianディレクトリを登録しコミットします。
+
+
+.. code-block:: sh
+
 
    $ hg add debian
    $ hg commit
 
 
+
+
 Debianバージョン用のタグを設定します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cat .hgtags
    b4881fbed50135a62b070892f1f6fc2f91b81c5d funcparserlib_0.3.5+hg~112
@@ -202,16 +216,24 @@ Debianバージョン用のタグを設定します。
    2e1787194ce0a880ef38e2ac09af5648a7cae27c funcparserlib_0.3.5+hg~112-1
 
 
+
+
 mercurial-buildpackageコマンドでビルドすると、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ mercurial-buildpackage
 
 
+
+
 親ディレクトリにパッケージが生成されます。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ ls -lrt ..
    (snip)
@@ -223,9 +245,13 @@ mercurial-buildpackageコマンドでビルドすると、
    -rw-r--r-- 1 user user  4790  3月  4 04:50 funcparserlib_0.3.5+hg~112-1_amd64.build
 
 
+
+
 あとはいつもと同じようにpbuilderでチェックします。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd ..
    $ sudo pbuilder --build funcparserlib_0.3.5+hg~112-1.dsc
@@ -233,18 +259,23 @@ mercurial-buildpackageコマンドでビルドすると、
 
 
 
+
+
+
 参考
-********
+----
 
 
 リンク先はgit-buildpackageを使っていて、野良パッケージの作成が目的で、origファイルを消すという謎の手順がありますが、基本的な手順は参考になりました。
+
 http://d.hatena.ne.jp/metalglue/20100409/1270798344
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

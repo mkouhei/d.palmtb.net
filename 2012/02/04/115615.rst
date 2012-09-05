@@ -1,45 +1,60 @@
-﻿はじめてのpull request。
-####################################
-
+はじめてのpull request。
+========================
 
 いつもはgit format-patchでパッチ生成して、git send-emailで投げるのですが、Githubで管理しているOSSなので、初めてpull requestを使ってみました、というだけのお話です。
 
 
+
+
+
+
 Mergeはや！
-************************
+-----------
 
 
-対象は先日ブログにも書いたTonicDNSなのですが、PowerDNSの他の管理ツール(PowerDNS GUI)と共存させる上で２つ問題になるうちの一つ、&#34;MX, SRVレコード以外のレコード登録にpriorityが設定されるのはイケてない問題&#34;は単純に実装上のバグなので修正パッチを書いて、pull requestを出したら、1,2時間程度ですぐマージされてビックリしました。まぁバグというより実装する上で優先度低いから後回しにしたという感じもします。MySQLをDBとしてPowerDNS使っている場合、MXレコードとSRVレコード以外にpriorityが設定されていてもPowerDNSは無視してくれるので。
+対象は先日ブログにも書いた `TonicDNS <http://d.hatena.ne.jp/mkouhei/20120128/1327769951>`_ なのですが、PowerDNSの他の管理ツール(PowerDNS GUI)と共存させる上で２つ問題になるうちの一つ、"MX, SRVレコード以外のレコード登録にpriorityが設定されるのはイケてない問題"は単純に実装上のバグなので `修正パッチを書いて <https://github.com/mkouhei/TonicDNS/commit/2dbd77380e87d8823df380c75a4702b4027b5a23>`_ 、 `pull requestを出したら <https://github.com/Cysource/TonicDNS/pull/7>`_ 、1,2時間程度で `すぐマージされて <https://github.com/Cysource/TonicDNS/commit/d4906df6d1a42caff21e734e6ba9bf7937d4de17>`_ ビックリしました。まぁバグというより実装する上で優先度低いから後回しにしたという感じもします。MySQLをDBとしてPowerDNS使っている場合、MXレコードとSRVレコード以外にpriorityが設定されていてもPowerDNSは無視してくれるので。
+
+
+
+
 
 
 NULL-safe operator便利ですね。
-********************************************************************
+------------------------------
 
 
 今回、一つのprepared statementを修正するだけで対応できないものかと調べていたら、MySQLだとNULL-safe operatorなるものがあるのを知りました。これを使えば、NULLの場合の判定を
 
-.. code-block:: none
 
-   SELECT * from hoge where comment = NULL;
+.. code-block:: sh
+
+
+   SELECT * from hoge where comment <=> NULL;
 
 
 とできるので、prepared statementで
 
-.. code-block:: none
 
-   SELECT  from hoge where comment = :comment;
+.. code-block:: sh
+
+
+   SELECT * from hoge where comment <=> :comment;
 
 
 という感じの書き方ができるのは便利ですね。ただし、TonicDNSはSQLiteもサポートしています。SQLiteはこの記法は使えません。この方法を使って、SQLiteとの互換性もちゃんと残しておくには、MySQLとSQLiteで処理を分けないといけません。SQLiteでは、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    SELECT * from hoge where comment is NULL;
 
 
 MySQLでは
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    SELECT * from hoge where comment = :comment
 
@@ -47,39 +62,45 @@ MySQLでは
 というのを、接続先のDBを判定して用意する方がめんどいので、結局レコードのTypeでprepared statementを変更することにしました。
 
 
+
+
+
+
 TonicDNSの残タスク。
-************************************************
+--------------------
 
 
-
-* 使い方のドキュメントが無い* 
-
-* ユーザドキュメントを作る。これは先日のブログをベースにすれば良いですね
+* 使い方のドキュメントが無い
 
 
-* レコードの更新ができない* 
-
-* レコードの更新もできるようにする
+  * ユーザドキュメントを作る。これは先日のブログをベースにすれば良いですね
 
 
-* MX, SRVレコード以外のレコード登録にpriorityが設定されるのはイケてない* どね
+* レコードの更新ができない
+
+
+  * レコードの更新もできるようにする
+
+
+* MX, SRVレコード以外のレコード登録にpriorityが設定されるのはイケてない どね
+
 * ユーザ作成ができない
 
-* これはどうやって許可された人がアカウント作成できるようにするかを考えないとですね。
+
+  * これはどうやって許可された人がアカウント作成できるようにするかを考えないとですね。
 
 
-* レコード更新してもSOAレコードのserialが更新されない* 
-
-* 更新できるようにする
+* レコード更新してもSOAレコードのserialが更新されない
 
 
-
+  * 更新できるようにする
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Dev, 
 .. tags::
 .. comments::
-
-

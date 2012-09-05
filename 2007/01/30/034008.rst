@@ -1,14 +1,14 @@
-﻿appletouch
-####################
-
+appletouch
+==========
 
 kernel 2.6.20にしたらこのドライバがロードされた。でも、スクロールトラックパッドの設定方法がよくわからん。Mac OS Xなみに使えるようにしたい。まずはChangeLogを見てみるか。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, 
 .. tags::
 .. comments::
-
-

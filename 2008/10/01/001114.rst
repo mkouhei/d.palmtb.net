@@ -1,10 +1,11 @@
-﻿ClamAVのフルスキャン
-##########################
-
+ClamAVのフルスキャン
+====================
 
 MacBook Airでフルスキャンしてみたのだが、うーむ、単純な比較はできないが、I/Oが多い分、z/Linuxの方が早そうだ。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
     ----------- SCAN SUMMARY -----------
     Known viruses: 434637
@@ -20,9 +21,13 @@ MacBook Airでフルスキャンしてみたのだが、うーむ、単純な比
     sys	3m19.116s
 
 
+
+
 ちなみに検出されたファイルは、JDを使っていて紛れ込んだようだ。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo clamscan -i -r / -l clam.log
    //home/user/.jd/pc11.2ch.net/blog/1117635651.dat: Exploit.HTML.MHTRedir.2n FOUND
@@ -32,9 +37,9 @@ MacBook Airでフルスキャンしてみたのだが、うーむ、単純な比
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Unix/Linux, security, 
 .. tags::
 .. comments::
-
-

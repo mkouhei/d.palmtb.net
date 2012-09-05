@@ -1,14 +1,14 @@
-﻿Armadillo-9 Debian化完了。
-############################################
-
+Armadillo-9 Debian化完了。
+==========================
 
 うむ、なんかOBSより速い気がする。しかも全然熱出ないし。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, gadget, computer, 
 .. tags::
 .. comments::
-
-

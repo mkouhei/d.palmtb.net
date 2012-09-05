@@ -1,67 +1,109 @@
-﻿libvirtのnwfilterについて調べてみた。
-####################################################
+libvirtのnwfilterについて調べてみた。
+=====================================
+
+もともとの経緯としては、 `2月のDebian勉強会 <http://tokyodebian.alioth.debian.org/2011-02.html>`_ でSqueezeリリース記念で、「ヤッター、リリースしたよ！ Squeezeになってうれしいこと、Squeezeになって変わったことを教えてください。」という事前課題で `自分の回答してそれに対して自分自身に課した宿題 <http://d.hatena.ne.jp/mkouhei/20110220/1298212250>`_ でした。が、手つかずで最近やるやる詐欺になっていました。あかんですな。まぁ連休を使ってようやくまとめて調べる機会ができたので、自分のために整理してみました。
 
 
-もともとの経緯としては、2月のDebian勉強会でSqueezeリリース記念で、「ヤッター、リリースしたよ！ Squeezeになってうれしいこと、Squeezeになって変わったことを教えてください。」という事前課題で自分の回答してそれに対して自分自身に課した宿題でした。が、手つかずで最近やるやる詐欺になっていました。あかんですな。まぁ連休を使ってようやくまとめて調べる機会ができたので、自分のために整理してみました。
+
 
 環境
-********
+----
 
 
 もちろんDebianです。環境としてはWheezy/Sidを使ったり、Squeezeだったりなのですが、このブログでの最終的な設定自体はSqueezeです。Squeezeな理由は後述します。Wheezy/Sidな環境ではnwfilterが含まれるlibvirt-binは0.9.0、Squeezeは0.8.3です。
 
+
+
+
 なぜSqueeze？
-****************************
+-------------
+
 
 なんでSidじゃなく、Squeezeなのか。普段はSidを使っている方が断然多いのですが、サーバ用途ではstableも使っています。今回のきっかけはハードウェア老朽化＆機能拡張のためにシステムを刷新しようとしている労働組合のサーバがあるのですが、最終的には自分じゃなく組合の他の人でも管理できるようにするためにSqueezeで構築している、というわけです [#]_ 。
 
-どうしてnwfilterに気づいたのか？
-************************************************************************************
 
-現状、nwfilterに関する日本語ドキュメントは皆無です。@ITの「libvirt探訪(基礎編)」でその単語と一文概要のみ載っていますが、他には今のところ見かけません。それじゃあ後述のlibvirt本家のドキュメントを読んでいて、というわけでもありません。普段、ルータやファイアウォール用途の機器だけでなく、全ホストでiptablesでフィルタリングを自作のスクリプトで/etc/init.d/経由で実行しているのです [#]_ が、構築中の鯖にKVM/QEMU + Libvirtを使おうと思っていたら、フィルタリングの挙動が違っているのでテーブル見てみると知らないルールが設定されている、何じゃこりゃ？と思って調べてみたらnwfilterに行きついた、という経緯です。
+
+
+どうしてnwfilterに気づいたのか？
+--------------------------------
+
+
+現状、nwfilterに関する日本語ドキュメントは皆無です。 `@ITの「libvirt探訪(基礎編)」 <http://www.atmarkit.co.jp/flinux/rensai/linuxkvm03/03a.html>`_ でその単語と一文概要のみ載っていますが、他には今のところ見かけません。それじゃあ後述のlibvirt本家のドキュメントを読んでいて、というわけでもありません。普段、ルータやファイアウォール用途の機器だけでなく、全ホストでiptablesでフィルタリングを自作のスクリプトで/etc/init.d/経由で実行しているのです [#]_ が、構築中の鯖にKVM/QEMU + Libvirtを使おうと思っていたら、フィルタリングの挙動が違っているのでテーブル見てみると知らないルールが設定されている、何じゃこりゃ？と思って調べてみたらnwfilterに行きついた、という経緯です。
+
+
+
 
 とりあえず、これ読んどけ
-********************************************************************
+------------------------
 
 
 日本語じゃなくてもいいよ、という方はlibvirtのドキュメントを読むべきです。
 
-* Firewall and network filtering in libvirt
-* Network Filters
+
+*  `Firewall and network filtering in libvirt <http://libvirt.org/firewall.html>`_ 
+
+*  `Network Filters <http://libvirt.org/formatnwfilter.html>`_ 
+
+
 
 調べてみた、と言いながらいきなりなんだこの展開。（わら
+
 とは言うものの、ドキュメントをちゃんと読まないとハマるポイントもあったので、気になる方は続きを読んでみてください。
 
+
+
+
 そもそもnwfilterって何よ
-************************************************************
+------------------------
 
-「VM向け仮想ネットワークのフィルタリング機能」、以上。 [#]_ ……。これではブログにわざわざ書く意味はないので、もう少し説明を加えておきます。VM向け仮想ネットワークに対するフィルタリング機能の実態は、ebtables, iptables, ip6tablesコマンドを利用します。ただし、ebtablesは仮想ネットワークがbridgeモードでないとき機能しません。libvirtdの起動時やVMの起動時に定義(された|した)ルールが設定されるのですが、libvirtの仮想ネットワークのフォワーディングの種類 [#]_ によって、設定されるフィルタリングルールが変わります。今回は、仮想ネットワークはnat, isolated, routedの３種類の設定の場合の挙動を見ます。iptablesのデフォルトは何も設定していない状態とします。これらが仮想ネットワークの設定でどう変わるか見てみます [#]_ 。なお、それぞれの仮想ネットワークは下記のものとします。
 
-ネットワーク名デバイス名モードIPアドレス/マスク長
-defaultvirbr0nat192.168.122.1/24
-backvirbr1isolate virtual network192.168.123.1/24
-dmzvirbr2routed192.168.2.1/24
+「VM向け仮想ネットワークのフィルタリング機能」、以上。 [#]_ 
+
+
+
+……。これではブログにわざわざ書く意味はないので、もう少し説明を加えておきます。VM向け仮想ネットワークに対するフィルタリング機能の実態は、ebtables, iptables, ip6tablesコマンドを利用します。ただし、ebtablesは仮想ネットワークがbridgeモードでないとき機能しません。libvirtdの起動時やVMの起動時に定義(された|した)ルールが設定されるのですが、libvirtの仮想ネットワークのフォワーディングの種類 [#]_ によって、設定されるフィルタリングルールが変わります。
+
+
+
+今回は、仮想ネットワークはnat, isolated, routedの３種類の設定の場合の挙動を見ます。iptablesのデフォルトは何も設定していない状態とします。これらが仮想ネットワークの設定でどう変わるか見てみます [#]_ 。なお、それぞれの仮想ネットワークは下記のものとします。
+
+
+
++=================+=============+=========================+======================+
+|  ネットワーク名 |  デバイス名 |  モード                 |  IPアドレス/マスク長 |
++=================+=============+=========================+======================+
+| default         | virbr0      | nat                     | 192.168.122.1/24     |
++-----------------+-------------+-------------------------+----------------------+
+| back            | virbr1      | isolate virtual network | 192.168.123.1/24     |
++-----------------+-------------+-------------------------+----------------------+
+| dmz             | virbr2      | routed                  | 192.168.2.1/24       |
++-----------------+-------------+-------------------------+----------------------+
+
 
 どのようにルールが設定されるのかを確認するために、下記の手順で行いました。iptablesおよびlibvirt-binともに/etc/rc2.d/S02で起動した場合です。
 
-.. code-block:: none
 
-   $ virsh --connect qemu:///system net-destroy ネットワーク
-   $ virsh --connect qemu:///system net-autostart --disable ネットワーク
+.. code-block:: sh
+
+
+   $ virsh --connect qemu:///system net-destroy <ネットワーク>
+   $ virsh --connect qemu:///system net-autostart --disable <ネットワーク>
    $ sudo iptables --flush; sudo iptables -t nat --flash
    $ /etc/init.d/libvirt-bin restart
 
 
 
-isolated virtual networkの場合
-==============================================================
 
+
+isolated virtual networkの場合
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 * iptables filterテーブル
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ sudo iptables -L -n -v
    Chain INPUT (policy ACCEPT 279 packets, 21132 bytes)
@@ -80,15 +122,17 @@ isolated virtual networkの場合
 
 
 
-natモードの場合
-======================================
 
+
+natモードの場合
+^^^^^^^^^^^^^^^
 
 
 * iptables filterテーブル
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ sudo iptables -L -n -v
    Chain INPUT (policy ACCEPT 3788 packets, 2274K bytes)
@@ -109,10 +153,12 @@ natモードの場合
 
 
 
+
 * iptables natテーブル
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ sudo iptables -t nat -L -n -v
    (snip)
@@ -125,12 +171,15 @@ natモードの場合
 
 
 
+
+
 routeモードの場合
-******************************************
+-----------------
 
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ sudo iptables -L -n -v
    Chain INPUT (policy ACCEPT 18 packets, 1510 bytes)
@@ -149,15 +198,22 @@ routeモードの場合
        0     0 REJECT     all  --  virbr2 *       0.0.0.0/0            0.0.0.0/0           reject-with icmp-port-unreachable 
 
 
+
+
 はい、以上libvirtのドキュメントどおりですね。ここからはドキュメントに無いところもちょっと見てみます。
 
+
+
+
 全ての仮想ネットワークを有効にした場合
-**************************************************************************************************************
+--------------------------------------
 
 
 これらのネットワークをすべて有効にした状態の場合は、次のように全てのルールが設定されます。優先順序はインタフェース名の順ですね。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo iptables -L -n -v
    Chain INPUT (policy ACCEPT 161 packets, 12452 bytes)
@@ -194,7 +250,10 @@ routeモードの場合
 
 
 
-.. code-block:: none
+
+
+.. code-block:: sh
+
 
    $ sudo iptables -L -n -v -t nat
    (snip)
@@ -207,13 +266,23 @@ routeモードの場合
 
 
 
+
+
 既存のルールとの関係
-********************************************************
+--------------------
 
 
-ところで、私が今回nwfilterを調べるきっかけとなったように、iptables-{save,restore}や、/etc/network/if-pre-up.d/、あるいは、/etc/init.d/以下でupdate-rc.dの起動スクリプトとしてiptablesやebtablesのルールをすでに設定している場合、nwfilterで設定されるルールはどのように設定されるのでしょうか。insservのランレベルSで、ebtablesのデフォルトと同じ起動順序にしている場合 [#]_ での、libvirtdの起動可否(/etc/default/libvirt-binの&#34;start_libvirtd&#34;を(yes|no)で制御)によってfilterテーブルとnatテーブルがどのように変わるかを見てみます。-dis-libvirtがついているのがlibvirtdが起動していない場合の状態です。
+ところで、私が今回nwfilterを調べるきっかけとなったように、iptables-{save,restore}や、/etc/network/if-pre-up.d/、あるいは、/etc/init.d/以下でupdate-rc.dの起動スクリプトとしてiptablesやebtablesのルールをすでに設定している場合、nwfilterで設定されるルールはどのように設定されるのでしょうか。
 
-.. code-block:: none
+
+
+insservのランレベルSで、ebtablesのデフォルトと同じ起動順序にしている場合 [#]_ での、libvirtdの起動可否(/etc/default/libvirt-binの"start_libvirtd"を(yes|no)で制御)によってfilterテーブルとnatテーブルがどのように変わるかを見てみます。-dis-libvirtがついているのがlibvirtdが起動していない場合の状態です。
+
+
+
+
+.. code-block:: sh
+
 
    $ diff -u iptables-S-S13 iptables-S-S13-dis-libvirt
    --- iptables-S-S13      2011-05-07 18:32:40.036111541 +0900
@@ -234,11 +303,11 @@ routeモードの場合
    -    0     0 ACCEPT     udp  --  virbr2 *       0.0.0.0/0            0.0.0.0/0           udp dpt:67 
    -    0     0 ACCEPT     tcp  --  virbr2 *       0.0.0.0/0            0.0.0.0/0           tcp dpt:67 
         0     0 ACCEPT     all  --  lo     *       0.0.0.0/0            0.0.0.0/0           
-        0     0 LOG        all  --  *      *       255.0.0.0/8          0.0.0.0/0           LOG flags 0 level 4 prefix `Spoofed source IP!&#39; 
+        0     0 LOG        all  --  *      *       255.0.0.0/8          0.0.0.0/0           LOG flags 0 level 4 prefix `Spoofed source IP!' 
         0     0 DROP       all  --  *      *       255.0.0.0/8          0.0.0.0/0           
    @@ -19,7 +7,7 @@
         0     0 DROP       all  --  *      *       127.0.0.0/8          0.0.0.0/0           
-        0     0 LOG        tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp flags:!0x17/0x02 state NEW LOG flags 0 level 4 prefix `Stealth scan attempt?&#39; 
+        0     0 LOG        tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp flags:!0x17/0x02 state NEW LOG flags 0 level 4 prefix `Stealth scan attempt?' 
         0     0 DROP       tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp flags:!0x17/0x02 state NEW 
    -  676 54501 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED 
    +  147 13983 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED 
@@ -280,10 +349,17 @@ routeモードの場合
         0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:123 state NEW 
 
 
+
+
 これを見るとlibvirtdによってルールが先頭に挿入されているのが分かります。自分で設定しているルールからすると、先頭でないほうが都合が良いのですけどね。
+
+
+
 natテーブルも同様です。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ diff -u iptables-S-S13-nat iptables-S-S13-nat-dis-libvirt 
    --- iptables-S-S13-nat  2011-05-07 18:32:46.920112642 +0900
@@ -303,9 +379,15 @@ natテーブルも同様です。
      pkts bytes target     prot opt in     out     source               destination 
 
 
+
+
 insservでのiptablesの起動順序を変えると、設定されるルールが変わることが分かります。ランレベル2でlibvirt-binの起動と同じ順番(S02)の場合は上記と設定されるルールは変わりません。しかし、libvirt-binよりも後にiptablesを実行すると(S04)、下記のようになります。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ diff -u iptables-S-S13 iptables-S02-04
    --- iptables-S-S13      2011-05-07 18:32:40.036111541 +0900
@@ -314,11 +396,11 @@ insservでのiptablesの起動順序を変えると、設定されるルール�
         0     0 ACCEPT     udp  --  virbr2 *       0.0.0.0/0            0.0.0.0/0           udp dpt:67 
         0     0 ACCEPT     tcp  --  virbr2 *       0.0.0.0/0            0.0.0.0/0           tcp dpt:67 
         0     0 ACCEPT     all  --  lo     *       0.0.0.0/0            0.0.0.0/0           
-   -    0     0 LOG        all  --  *      *       255.0.0.0/8          0.0.0.0/0           LOG flags 0 level 4 prefix `Spoofed source IP!&#39; 
+   -    0     0 LOG        all  --  *      *       255.0.0.0/8          0.0.0.0/0           LOG flags 0 level 4 prefix `Spoofed source IP!' 
         0     0 DROP       all  --  *      *       255.0.0.0/8          0.0.0.0/0           
-        0     0 LOG        all  --  *      *       127.0.0.0/8          0.0.0.0/0           LOG flags 0 level 4 prefix `Spoofed source IP!&#39; 
+        0     0 LOG        all  --  *      *       127.0.0.0/8          0.0.0.0/0           LOG flags 0 level 4 prefix `Spoofed source IP!' 
         0     0 DROP       all  --  *      *       127.0.0.0/8          0.0.0.0/0           
-   -    0     0 LOG        tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp flags:!0x17/0x02 state NEW LOG flags 0 level 4 prefix `Stealth scan attempt?&#39; 
+   -    0     0 LOG        tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp flags:!0x17/0x02 state NEW LOG flags 0 level 4 prefix `Stealth scan attempt?' 
         0     0 DROP       tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp flags:!0x17/0x02 state NEW 
    -  676 54501 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED 
    +  401 33673 ACCEPT     all  --  *      *       0.0.0.0/0            0.0.0.0/0           state RELATED,ESTABLISHED 
@@ -337,107 +419,142 @@ insservでのiptablesの起動順序を変えると、設定されるルール�
 
 
 期待値としては、nwfitlerによって設定されるルールがflushされ、スクリプトで設定されるルールだけが表示されることでした。スクリプトで設定する際に、全てのtableをflushしているからです。しかし、なぜかnwfilterで設定されるルールではなく、自分のスクリプトの一部ルールが勝手に削除されています。なんでや…。
+
+
+
 とりあえず、スクリプトの起動順序によって、既存ルールを残したままnwfilterによってルールが追加される、ということが分かります。細かい挙動についてはもうちょっと確認が必要ですね…。
 
 
+
+
+
+
 ルールの設定方法
-********************************************
+----------------
 
 
 さて、nwfilterでのルールの設定方法について見てみます。ざっくり、以下の流れです。
 
-* /etc/libvirt/nwfilter/ディレクトリの下にルールファイル作る
-* nwfilterとしてルールファイルを定義する
-* VMの定義ファイルの* interface* 要素の子要素として* filterref filter=&#39;フィルター名&#39;/* を追記する
+#. /etc/libvirt/nwfilter/ディレクトリの下にルールファイル作る
 
-これはやはりlibvirtのドキュメントのExample custom filterとかSecond example custom filterを見ればいいでしょう。
+#. nwfilterとしてルールファイルを定義する
+
+#. VMの定義ファイルの<interface>要素の子要素として<filterref filter='フィルター名'/>を追記する
+
+
+
+これはやはりlibvirtのドキュメントの `Example custom filter <http://libvirt.org/formatnwfilter.html#nwfwriteexample>`_ とか `Second example custom filter <http://libvirt.org/formatnwfilter.html#nwfwriteexample2nd>`_ を見ればいいでしょう。
+
+
+
 前者のExample custom filterを実際に設定してみます。このルールは最初にclean-trafficを実行し、その後VMに対するSSH, HTTPと、VMからのICMPとDNS Queryを許可し、それ以外はすべてinbound, outboundともにドロップする、という設定です。同じ設定をnwfilter-dumpxmlで出力したのが下記です。
 
-.. code-block:: none
 
-   filter name=&#39;moge&#39; chain=&#39;root&#39;
-     uuidcb1b6bd6-0c51-530c-a218-2534042ccadc/uuid
-     filterref filter=&#39;clean-traffic&#39;/
-     rule action=&#39;accept&#39; direction=&#39;in&#39; priority=&#39;500&#39;
-       tcp dstportstart=&#39;22&#39;/
-     /rule
-     rule action=&#39;accept&#39; direction=&#39;in&#39; priority=&#39;500&#39;
-       tcp dstportstart=&#39;80&#39;/
-     /rule
-     rule action=&#39;accept&#39; direction=&#39;out&#39; priority=&#39;500&#39;
-       icmp/
-     /rule
-     rule action=&#39;accept&#39; direction=&#39;out&#39; priority=&#39;500&#39;
-       udp dstportstart=&#39;53&#39;/
-     /rule
-     rule action=&#39;drop&#39; direction=&#39;inout&#39; priority=&#39;500&#39;
-       all/
-     /rule
-   /filter
+.. code-block:: text
 
 
-これをVM hogeに設定してみます。ConceptsにあるようにVMの設定ファイルのinterface要素の子要素として、
+   <filter name='moge' chain='root'>
+     <uuid>cb1b6bd6-0c51-530c-a218-2534042ccadc</uuid>
+     <filterref filter='clean-traffic'/>
+     <rule action='accept' direction='in' priority='500'>
+       <tcp dstportstart='22'/>
+     </rule>
+     <rule action='accept' direction='in' priority='500'>
+       <tcp dstportstart='80'/>
+     </rule>
+     <rule action='accept' direction='out' priority='500'>
+       <icmp/>
+     </rule>
+     <rule action='accept' direction='out' priority='500'>
+       <udp dstportstart='53'/>
+     </rule>
+     <rule action='drop' direction='inout' priority='500'>
+       <all/>
+     </rule>
+   </filter>
 
-.. code-block:: none
 
-   filterref filter=&#39;moge&#39;/
-     parameter name=&#39;IP&#39; value=&#39;xxx.xxx.xxx.xxx&#39;/
-   /filterref
+これをVM hogeに設定してみます。 `Concepts <http://libvirt.org/formatnwfilter.html#nwfconcepts>`_ にあるようにVMの設定ファイルの<interface>要素の子要素として、
 
 
-を設定します。paramter要素でVMのIPアドレスを変数IPに設定しています。この設定を使うには、この仮想NICのIPアドレスは静的に設定する必要があります。
+.. code-block:: text
+
+
+   <filterref filter='moge'/>
+     <parameter name='IP' value='xxx.xxx.xxx.xxx'/>
+   </filterref>
+
+
+を設定します。<paramter>要素でVMのIPアドレスを変数IPに設定しています。この設定を使うには、この仮想NICのIPアドレスは静的に設定する必要があります。
+
+
+
 
 DHCPでIPアドレスを割り当てる場合
-======================================================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-ノードPCを利用している場合などは、NATモードで、かつDHCPでVMの仮想NICにIPアドレスを割り当てていることも多いとおもいます。仮想NICのMACアドレスは同じMACアドレスを使わない限り、MACアドレスごとに一意のIPアドレスが割り当てられることが多いので、一見先ほどのparameter要素でIPアドレスを設定しても良さそうですが、実際にやってみたところ、この設定を行ってもQEMUのDHCPサーバとの通信ができず設定できません。
+ノードPCを利用している場合などは、NATモードで、かつDHCPでVMの仮想NICにIPアドレスを割り当てていることも多いとおもいます。仮想NICのMACアドレスは同じMACアドレスを使わない限り、MACアドレスごとに一意のIPアドレスが割り当てられることが多いので、一見先ほどの<parameter>要素でIPアドレスを設定しても良さそうですが、実際にやってみたところ、この設定を行ってもQEMUのDHCPサーバとの通信ができず設定できません。
+
+
+
 そこで、NATでDHCPで設定するには以下のように行うと設定はできます。まず、前述のnwfilterのルールにはDHCPを許可するルールがないので下記を追加します。
 
-.. code-block:: none
 
-     rule action=&#39;accept&#39; direction=&#39;out&#39;
-       udp srcipaddr=&#39;0.0.0.0&#39; dstipaddr=&#39;255.255.255.255&#39; srcportstart=&#39;68&#39; dstportstart=&#39;67&#39;/
-     /rule
-     rule action=&#39;accept&#39; direction=&#39;in&#39;
-       udp srcportstart=&#39;67&#39; dstportstart=&#39;68&#39;/
-     /rule
+.. code-block:: text
+
+
+     <rule action='accept' direction='out'>
+       <udp srcipaddr='0.0.0.0' dstipaddr='255.255.255.255' srcportstart='68' dstportstart='67'/>
+     </rule>
+     <rule action='accept' direction='in'>
+       <udp srcportstart='67' dstportstart='68'/>
+     </rule>
 
 
 そして、非常にイケてないのですがclean-trafficのルールを削除します。最終的には下記にようになります。
 
-.. code-block:: none
 
-   filter name=&#39;moge&#39; chain=&#39;root&#39;
-     uuidcb1b6bd6-0c51-530c-a218-2534042ccadc/uuid
-     rule action=&#39;accept&#39; direction=&#39;out&#39;
-       udp srcipaddr=&#39;0.0.0.0&#39; dstipaddr=&#39;255.255.255.255&#39; srcportstart=&#39;68&#39; dstportstart=&#39;67&#39;/
-     /rule
-     rule action=&#39;accept&#39; direction=&#39;in&#39;
-       udp srcportstart=&#39;67&#39; dstportstart=&#39;68&#39;/
-     /rule
-     rule action=&#39;accept&#39; direction=&#39;in&#39; priority=&#39;500&#39;
-       tcp dstportstart=&#39;22&#39;/
-     /rule
-     rule action=&#39;accept&#39; direction=&#39;in&#39; priority=&#39;500&#39;
-       tcp dstportstart=&#39;80&#39;/
-     /rule
-     rule action=&#39;accept&#39; direction=&#39;out&#39; priority=&#39;500&#39;
-       icmp/
-     /rule
-     rule action=&#39;accept&#39; direction=&#39;out&#39; priority=&#39;500&#39;
-       udp dstportstart=&#39;53&#39;/
-     /rule
-     rule action=&#39;drop&#39; direction=&#39;inout&#39; priority=&#39;500&#39;
-       all/
-     /rule
-   /filter
+.. code-block:: text
 
 
-なぜDHCPのときにclean-trafficを追加するとDHCPの通信ができないのか、原因は現時点では分かってない [#]_ ので、追加検証してみる予定です。なお、clean-trafficは、libvirtのドキュメントにあります。
-なお、libvirtのドキュメントによると、parameterでIPアドレスを設定しない場合は、VMで使用しているeth0のMACアドレス、IPアドレスが自動的に割り当てられるようなのですが、実際に設定せずにVMを起動すると失敗します。
+   <filter name='moge' chain='root'>
+     <uuid>cb1b6bd6-0c51-530c-a218-2534042ccadc</uuid>
+     <rule action='accept' direction='out'>
+       <udp srcipaddr='0.0.0.0' dstipaddr='255.255.255.255' srcportstart='68' dstportstart='67'/>
+     </rule>
+     <rule action='accept' direction='in'>
+       <udp srcportstart='67' dstportstart='68'/>
+     </rule>
+     <rule action='accept' direction='in' priority='500'>
+       <tcp dstportstart='22'/>
+     </rule>
+     <rule action='accept' direction='in' priority='500'>
+       <tcp dstportstart='80'/>
+     </rule>
+     <rule action='accept' direction='out' priority='500'>
+       <icmp/>
+     </rule>
+     <rule action='accept' direction='out' priority='500'>
+       <udp dstportstart='53'/>
+     </rule>
+     <rule action='drop' direction='inout' priority='500'>
+       <all/>
+     </rule>
+   </filter>
 
-.. code-block:: none
+
+
+
+なぜDHCPのときにclean-trafficを追加するとDHCPの通信ができないのか、原因は現時点では分かってない [#]_ ので、追加検証してみる予定です。なお、clean-trafficは、 `libvirtのドキュメント <http://libvirt.org/firewall.html>`_ にあります。
+
+
+
+なお、libvirtのドキュメントによると、<parameter>でIPアドレスを設定しない場合は、VMで使用しているeth0のMACアドレス、IPアドレスが自動的に割り当てられるようなのですが、実際に設定せずにVMを起動すると失敗します。
+
+
+.. code-block:: sh
+
 
    $ virsh --connect qemu:///system start hoge
    error: Failed to start domain hoge
@@ -446,13 +563,19 @@ DHCPでIPアドレスを割り当てる場合
 
 
 
+
+
 VM用に設定されるフィルタリングルール
-======================================================================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 先ほどの設定を行ったあと、VMを起動すると以下のようなルールが設定されます。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    Chain INPUT (policy ACCEPT 68 packets, 5024 bytes)
     pkts bytes target     prot opt in     out     source               destination         
@@ -533,82 +656,111 @@ VM用に設定されるフィルタリングルール
        0     0 FO-vnet2   all  --  *      *       0.0.0.0/0            0.0.0.0/0           [goto] PHYSDEV match --physdev-out vnet2 
 
 
+
+
 natテーブルはルール設定していないので当然変わりません。また、現状わかっているのはVMを起動したときに下記のエラーがでます。
 
-.. code-block:: none
+
+.. code-block:: console
+
 
    [29044.580539] physdev match: using --physdev-out in the OUTPUT, FORWARD and POSTROUTING chains for non-bridged traffic is not supported anymore.
 
 
 メッセージを見る限り、仮想ネットワークがbridgeモードになっていないからとも見えますが、これも後日確認するつもりです。
 
+
+
+
 その他、後日確認するつもりの事
-**************************************************************************************
+------------------------------
 
 
 ドキュメント読む限り、下記の事はできない感じなのですが、ソースコードも確認してみますかね。
 
 * デフォルトポリシーがACCEPTになっているが、これいずれのチェインでもDROPにしたい。0.9.0のソースコード見る限り、まだ実装されてない？
+
 * 基本的にはやはりログを取りたい。これもまだ実装されてない？
+
 * nwfilterのデフォルトのルールを変更する方法
+
+
 
 あとは前述の後日確認事項。
 
 * 既存のルールとnwfilterの設定順序の仕組み
+
 * clean-trafficを設定したときにDHCPが設定できない理由
+
 * bridgeモードの挙動
 
 
+
+
 今回の結論
-**************************
+----------
 
 
 まだできないこともあるようなので、現時点ではスクリプトで--flush, --delete-chainして、上書きする、というやり方が、自分の期待通りのフィルタリングルールを設定できるかなと、個人的には思います。が、スクリプトで記述しているルールを全部nwfilterに移行する方が分かりやすいかなと。ただ、VMごとのルールではなく、nwfilterのデフォルトルールを変更する方法(優先度とか)も把握が必要かなと。
+
+
+
 ということで、本日は以上。(そのうち)続きます。
 
+
+
+
 備忘録
-**************
+------
 
 
 以下は単純に備忘録。
 
+
 filterの書き方
-================================
+^^^^^^^^^^^^^^
 
 
++==================+==============================================+===============+
+|  項目            |  値                                          |  デフォルト値 |
++==================+==============================================+===============+
+| action           | drop, reject, accept                         |               |
++------------------+----------------------------------------------+---------------+
+| direction        | in, out, inout                               |               |
++------------------+----------------------------------------------+---------------+
+| priority         | 0-1000の間。小さい数値ほど優先度が高い [#]_  | 500           |
++------------------+----------------------------------------------+---------------+
+| statematch [#]_  | 0, falseまたは 1, true                       | true          |
++------------------+----------------------------------------------+---------------+
 
-項目値デフォルト値
-actiondrop, reject, accept
-directionin, out, inoutpriority0-1000の間。小さい数値ほど優先度が高い [#]_ 500statematch [#]_ 0, falseまたは 1, truetrue
 
 
 変数で取りうる値
-============================================
+^^^^^^^^^^^^^^^^
+
+
++====================+=====================+====================+
+|  IP                |  MAC                |  DHCPSERVER        |
++====================+=====================+====================+
+| VM自身のIPアドレス | VM自身のMACアドレス | 許可するDHCPサーバ |
++--------------------+---------------------+--------------------+
 
 
 
-IPVM自身のIPアドレス
-MACVM自身のMACアドレス
-DHCPSERVER許可するDHCPサーバ
 
 
+.. [#] ちなみに今のサーバはSargeです。その上で動かしているアプリも古くて拡張するよりも新しく作った方が早いので。
+.. [#] この方法がベストだとは思いませんが、デフォルトで設定されるルールだと、OUTPUTのデフォルトポリシーが許可されていたり、ちょいと複雑なサービス(NFS, Sambaとか)だと使いそうなポートがざっくり許可されていたりというのが嫌で、基本的には必要なサービスをtcpdumpかけて自分で細かくルールを設定しています。なので、スクリプトで制御したほうが、私にとっては管理しやすいからです。/etc/network/if-pre-up.dで制御した方が良くないか、というのもあると思いますが、initにsysvinitを使っている場合は/etc/init.d/networkingよりも先に実行してやれば良いんじゃない？と思いますがどうでしょうかね。upstartだと話変わりますが。
+.. [#]  `第3回 libvirt探訪（基礎編）&copy;レッドハット株式会社 佐藤 暁 氏 <http://www.atmarkit.co.jp/flinux/rensai/linuxkvm03/03a.html>`_ 
+.. [#] /etc/libvirt/qemu/networks/以下のXMLファイルのforward要素の設定。
+.. [#] これは上記のlibvirtのドキュメントに載っているので、必要なければ読み飛ばしてくらはい。
+.. [#] ifupdown→iptables,ebtables→networkingの順。
+.. [#] 普通に考えればclean-trafficで設定されるDROPルールの所為だと思いますが。
+.. [#] 先に評価される
+.. [#] -m state --stateですな。
 
 
-.. [#] ：ちなみに今のサーバはSargeです。その上で動かしているアプリも古くて拡張するよりも新しく作った方が早いので。
-.. [#] ：この方法がベストだとは思いませんが、デフォルトで設定されるルールだと、OUTPUTのデフォルトポリシーが許可されていたり、ちょいと複雑なサービス(NFS, Sambaとか)だと使いそうなポートがざっくり許可されていたりというのが嫌で、基本的には必要なサービスをtcpdumpかけて自分で細かくルールを設定しています。なので、スクリプトで制御したほうが、私にとっては管理しやすいからです。/etc/network/if-pre-up.dで制御した方が良くないか、というのもあると思いますが、initにsysvinitを使っている場合は/etc/init.d/networkingよりも先に実行してやれば良いんじゃない？と思いますがどうでしょうかね。upstartだと話変わりますが。
-.. [#] ：
-.. [#] ：/etc/libvirt/qemu/networks/以下のXMLファイルのforward要素の設定。
-.. [#] ：これは上記のlibvirtのドキュメントに載っているので、必要なければ読み飛ばしてくらはい。
-.. [#] ：ifupdown→iptables,ebtables→networkingの順。
-.. [#] ：普通に考えればclean-trafficで設定されるDROPルールの所為だと思いますが。
-.. [#] ：先に評価される
-.. [#] ：-m state --stateですな。
-
-
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Debian, network, 
 .. tags::
 .. comments::
-
-

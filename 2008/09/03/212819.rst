@@ -1,14 +1,14 @@
-﻿chumby予約した。
-######################
-
+chumby予約した。
+================
 
 ラテを予約した。ブラック、パールホワイトも欲しいがそこは我慢した。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: gadget, 
 .. tags::
 .. comments::
-
-

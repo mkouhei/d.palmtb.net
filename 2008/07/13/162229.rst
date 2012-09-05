@@ -1,11 +1,13 @@
-﻿iSightを使えるようにした。
-################################
-
+iSightを使えるようにした。
+==========================
 
 iwamatsuさんのおかげでMacBook Airでも使えるようになったiSight。64bitにしたので早速使えるようにしてみる。
+
 isight-firmware-toolsをインストールしていたので、dpkg-reconfigure isight-firmware-toolsで再設定してみたところ、どうやら64bit環境ではこけてしまうので、手動でコマンドを実行してみた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
     $ sudo ift-extract -a AppleUSBVideoSupport 
     ** Message: Mac OS X.5.x (Macbook Air) ドライバが見つかりました。
@@ -24,9 +26,10 @@ isight-firmware-toolsをインストールしていたので、dpkg-reconfigure 
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

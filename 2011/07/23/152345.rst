@@ -1,11 +1,17 @@
-﻿Linux Kernel 3.0で解決された問題。
-##################################################
-
+Linux Kernel 3.0で解決された問題。
+==================================
 
 昨日リリースされたLinux Kernel 3.0をMacBook 5,2でビルドしたら、認識されるディスプレイサイズがおかしい問題や、xrandrで外部出力が使えない問題が修正されていました。また、描画も若干シャープになった感じ。
+
+
+
 そして、何よりの改善は、grubのオプションにnosmpを指定しなくても、ちゃんと起動できるようになったこと。でも、コアを1つしか利用できない問題自体は解決してないんですけどね。
 
-.. code-block:: none
+
+
+
+.. code-block:: ini
+
 
    [    0.068196] CPU0: Intel(R) Core(TM)2 Duo CPU     P7350  @ 2.00GHz stepping 0a
    [    0.072003] Performance Events: PEBS fmt0+, Core2 events, Intel PMU driver.
@@ -24,25 +30,41 @@
    [    5.148016] Total of 1 processors activated (3980.07 BogoMIPS).
 
 
+
+
 それでもこれはうれしいですね。とりあえず、Debian勉強会などで外部ディスプレイを使えないためにわざわざOS Xを使わなくてはいけない、という問題はなくなりました。その代わり、実はバックライトの調整ができなくなっているので、どっちがええだろうかねぇ。
 
+
+
+
 コアを１つしか使えない問題の現状。
-**************************************************************************************************
+----------------------------------
 
 
 
-refit + grub-efi + nvidia binary = works and you have 2 cores, 3D and compiz
-effect but it&#39;s a real pain to change the brightness plus it&#39;s a blob.
-refit + grub-efi + nouveau WITH a kernel at least 2.6.38 = works like a charm
-: 2 cores, 2D and you can change easily the brightness
+
 https://bugzilla.kernel.org/show_bug.cgi?id=13170
+
+   refit + grub-efi + nvidia binary => works and you have 2 cores, 3D and compiz
+
+   effect but it's a real pain to change the brightness plus it's a blob.
+
+   refit + grub-efi + nouveau WITH a kernel at least 2.6.38 => works like a charm
+
+   : 2 cores, 2D and you can change easily the brightness
+
+
+
+
+
 rEFIt + grub-efi + nvidia binaryか、rEFIt + grub-efi + 2.6.38以上でnouveauを使えば、コア2個使えるようになっているっぽいです。しかしgrub-efi自体への切り替えがなぁ…。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, MacBook, Unix/Linux, 
 .. tags::
 .. comments::
-
-

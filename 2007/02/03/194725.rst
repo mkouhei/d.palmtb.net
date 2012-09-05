@@ -1,14 +1,14 @@
-﻿ディスク拡張
-############
+ディスク拡張
+============
+
+KVMで使用しているWindows xpのディスクサイズがSP2とIE7を入れたらディスクがあっという間にたりなくなった。 `試行錯誤してディスク拡張できた <http://www.palmtb.net/index.php?%A5%C7%A5%A3%A5%B9%A5%AF%A5%A4%A5%E1%A1%BC%A5%B8%A4%CE%B3%C8%C4%A5>`_ 。結構面倒だったけど、これで今後は楽できる。Windowsが一番の難関だし。
 
 
-KVMで使用しているWindows xpのディスクサイズがSP2とIE7を入れたらディスクがあっという間にたりなくなった。試行錯誤してディスク拡張できた。結構面倒だったけど、これで今後は楽できる。Windowsが一番の難関だし。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: computer, virt., 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿アリスというキーワード
-######################
-
+アリスというキーワード
+======================
 
 アリスとボブは無いのか…。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, security, 
+
+
+
+.. author:: default
+.. categories:: 駄文, security, 
 .. tags::
 .. comments::
-
-

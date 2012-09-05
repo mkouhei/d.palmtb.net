@@ -1,9 +1,11 @@
-﻿今年初の温度警告
-################
+今年初の温度警告
+================
 
 
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    Subject: Hobbit [629595] ホスト名:hddtemp warning (YELLOW)
    
@@ -17,9 +19,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

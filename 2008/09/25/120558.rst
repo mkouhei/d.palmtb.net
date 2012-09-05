@@ -1,10 +1,11 @@
-﻿applesmc
-################
-
+applesmc
+========
 
 これがそのバグか。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    [ 1569.914760] applesmc: Apple MacBook detected:
    [ 1569.914760] applesmc:  - Model with accelerometer
@@ -120,9 +121,9 @@
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

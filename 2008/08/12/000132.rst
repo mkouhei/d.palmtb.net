@@ -1,14 +1,14 @@
-﻿墓所記録。
-##########
-
+墓所記録。
+==========
 
 今回の帰省で墓参りした墓所をGoogle Mapで記録しておいた。きっと忘れるからな。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

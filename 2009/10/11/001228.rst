@@ -1,16 +1,20 @@
-﻿acpi=off から maxcpus=1 に変更。
-####################################################
+acpi=off から maxcpus=1 に変更。
+================================
 
+ACPIを有効にするとブラックアウトしてしまい起動しなかったMacBook 5,2だが、 `このバグの件一歩前進したよう <http://www.mail-archive.com/acpi-bugzilla@lists.sourceforge.net/msg26653.html>`_ で、grubのオプションを
 
-ACPIを有効にするとブラックアウトしてしまい起動しなかったMacBook 5,2だが、このバグの件一歩前進したようで、grubのオプションを
 
 * acpi=off
+
 * nosmp
+
 * maxcpus=1
 
 のいずれかにすれば起動出来るようになったらしい [#]_ 。以前、HackCafeでmaxcpus=1を設定してもダメだったので、これはかなり期待大。ということで/etc/default/grubを早速変更してみた。
 
-.. code-block:: none
+
+.. code-block:: apache
+
 
    $ cd /etc/default
    $ sudo git diff
@@ -20,26 +24,34 @@ ACPIを有効にするとブラックアウトしてしまい起動しなかっ�
    +++ b/default/grub
    @@ -4,8 +4,7 @@ GRUB_DEFAULT=0
     GRUB_TIMEOUT=5
-    GRUB_DISTRIBUTOR=`lsb_release -i -s 2 /dev/null || echo Debian`
-    GRUB_CMDLINE_LINUX_DEFAULT=quiet
-   -#GRUB_CMDLINE_LINUX=acpi=off quiet
-   -GRUB_CMDLINE_LINUX=acpi=off
-   +GRUB_CMDLINE_LINUX=maxcpus=1
+    GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+    GRUB_CMDLINE_LINUX_DEFAULT="quiet"
+   -#GRUB_CMDLINE_LINUX="acpi=off quiet"
+   -GRUB_CMDLINE_LINUX="acpi=off"
+   +GRUB_CMDLINE_LINUX="maxcpus=1"
     
     # Uncomment to disable graphical terminal (grub-pc only)
     #GRUB_TERMINAL=console
 
 
+
+
 で、/boot/grub.d/grub.cfgを更新。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo update-grub2
 
 
+
+
 再起動してみたら、無事起動。そして予想通り、ACPIがちゃんと機能するようになった！
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cat /proc/acpi/ac_adapter/ADP1/state 
    state:                   on-line
@@ -59,19 +71,26 @@ ACPIを有効にするとブラックアウトしてしまい起動しなかっ�
    OEM info:                SMPN016
 
 
+
+
 そして、shutdown してもちゃんと電源が切れる！これでshutdown後に電源ボタンを押して電源を切らなければあかん状況や、バッテリー駆動していて残り時間が分からんとかいう状況から開放される。
-ところで、maxcpus=1にしてcoreを1個しか使えないんじゃcore 2 duoの意味が無いんじゃね？というツッコミもあるかもしれない。ここはそれ、acpi=offにしていた段階から既にCPUは1個しか認識されていないから、現時点では良いのだ。ノートPCでACPIの機能が使えないことの方がよっぽど辛い。何はともあれ良かった良かった。 [#]_ 
 
 
 
-.. [#] ：BTSのスレッドのタイトルが変更されていたので気づいた。
-.. [#] ：まぁ、自分は利用するだけで何もしてないけどな。
+ところで、maxcpus=1にしてcoreを1個しか使えないんじゃcore 2 duoの意味が無いんじゃね？というツッコミもあるかもしれない。ここはそれ、acpi=offにしていた段階から既にCPUは1個しか認識されていないから、現時点では良いのだ。ノートPCでACPIの機能が使えないことの方がよっぽど辛い。
 
 
 
-.. author:: mkouhei
+何はともあれ良かった良かった。 [#]_ 
+
+
+
+
+.. [#] BTSのスレッドのタイトルが変更されていたので気づいた。
+.. [#] まぁ、自分は利用するだけで何もしてないけどな。
+
+
+.. author:: default
 .. categories:: MacBook, Unix/Linux, 
 .. tags::
 .. comments::
-
-

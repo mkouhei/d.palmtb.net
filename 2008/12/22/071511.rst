@@ -1,14 +1,16 @@
-﻿年賀状投函。
-############
-
+年賀状投函。
+============
 
 今朝投函したので、元日には間に合いますな。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

@@ -1,17 +1,28 @@
-﻿LaTeXから生成するPDFが、SlideShareで日本語が表示できるようにしてみた。
-########################################################################################
-
+LaTeXから生成するPDFが、SlideShareで日本語が表示できるようにしてみた。
+======================================================================
 
 Debian勉強会資料のGitリポジトリを用いて、LaTeXからPDFを生成する場合、フォントは埋め込まれていないので、SlideShareでは日本語が表示されない。 [#]_ 
+
+
+
 で、フォントを埋め込むためにはどうすればいいかなぁとやってみた。今回はきろ字フォントをPDFに埋め込む、という例。
 
+
+
+
 システム全体の設定
-**************************************************
+------------------
+
+
 
 
 まず、dvipdfmxコマンドがフォントを読む込めるようにする。Squeeze/Sidでは/etc/texmf/texmf.d/75DviPS.cnfのOSFONTDIRの値がダミーの値になっているので、これを/usr/share/fontsに変更する。/etc/texmf/texmf.cnfは、このファイルにも書いてあるとおり直接編集してはならない。
 
-.. code-block:: none
+
+
+
+.. code-block:: diff
+
 
    $ sudo git diff
    diff --git a/texmf/texmf.d/75DviPS.cnf b/texmf/texmf.d/75DviPS.cnf
@@ -19,10 +30,10 @@ Debian勉強会資料のGitリポジトリを用いて、LaTeXからPDFを生成
    --- a/texmf/texmf.d/75DviPS.cnf
    +++ b/texmf/texmf.d/75DviPS.cnf
    @@ -6,7 +6,7 @@ TEXPSHEADERS.gsftopk = .;$TEXMF/{dvips,fonts/{enc,type1,type42,t
-   ype3,truetype\}\}/
+   ype3,truetype}}/
     % OSFONTDIR is to provide a convenient hook for allowing TeX to find
     % fonts installed on the system (outside of TeX).  An empty default
-    % value would add // to the search paths, so we give it a dummy value.
+    % value would add "//" to the search paths, so we give it a dummy value.
    -OSFONTDIR = /please/set/osfontdir/in/the/environment
    +OSFONTDIR = /usr/share/fonts
     
@@ -30,18 +41,28 @@ Debian勉強会資料のGitリポジトリを用いて、LaTeXからPDFを生成
     T1FONTS = .;$TEXMF/fonts/{type1,hbf}//;$OSFONTDIR//
 
 
+
+
 変更後、update-texmfで/etc/texmf/texmf.cnfファイルを生成する。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo update-texmf -v
    Merging information from /etc/texmf/texmf.d/ into /etc/texmf/texmf.cnf ... Replacing config file /etc/texmf/texmf.cnf with new version
    done
 
 
+
+
 実行すると、以下のようにファイルが更新される。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ sudo git diff
    diff --git a/texmf/texmf.cnf b/texmf/texmf.cnf
@@ -49,10 +70,10 @@ Debian勉強会資料のGitリポジトリを用いて、LaTeXからPDFを生成
    --- a/texmf/texmf.cnf
    +++ b/texmf/texmf.cnf
    @@ -370,7 +370,7 @@ TEXPSHEADERS.gsftopk = .;$TEXMF/{dvips,fonts/{enc,type1,type
-   42,type3,truetype\}\}/
+   42,type3,truetype}}/
     % OSFONTDIR is to provide a convenient hook for allowing TeX to find
     % fonts installed on the system (outside of TeX).  An empty default
-    % value would add // to the search paths, so we give it a dummy value.
+    % value would add "//" to the search paths, so we give it a dummy value.
    -OSFONTDIR = /please/set/osfontdir/in/the/environment
    +OSFONTDIR = /usr/share/fonts
     
@@ -63,10 +84,10 @@ Debian勉強会資料のGitリポジトリを用いて、LaTeXからPDFを生成
    --- a/texmf/texmf.d/75DviPS.cnf
    +++ b/texmf/texmf.d/75DviPS.cnf
    @@ -6,7 +6,7 @@ TEXPSHEADERS.gsftopk = .;$TEXMF/{dvips,fonts/{enc,type1,type42,t
-   ype3,truetype\}\}/
+   ype3,truetype}}/
     % OSFONTDIR is to provide a convenient hook for allowing TeX to find
     % fonts installed on the system (outside of TeX).  An empty default
-    % value would add // to the search paths, so we give it a dummy value.
+    % value would add "//" to the search paths, so we give it a dummy value.
    -OSFONTDIR = /please/set/osfontdir/in/the/environment
    +OSFONTDIR = /usr/share/fonts
     
@@ -77,32 +98,40 @@ Debian勉強会資料のGitリポジトリを用いて、LaTeXからPDFを生成
    --- a/texmf/texmf.d/75DviPS.cnf
    +++ b/texmf/texmf.d/75DviPS.cnf
    @@ -6,7 +6,7 @@ TEXPSHEADERS.gsftopk = .;$TEXMF/{dvips,fonts/{enc,type1,type42,t
-   ype3,truetype\}\}/
+   ype3,truetype}}/
     % OSFONTDIR is to provide a convenient hook for allowing TeX to find
     % fonts installed on the system (outside of TeX).  An empty default
-    % value would add // to the search paths, so we give it a dummy value.
+    % value would add "//" to the search paths, so we give it a dummy value.
    -OSFONTDIR = /please/set/osfontdir/in/the/environment
    +OSFONTDIR = /usr/share/fonts
     
     % PostScript Type 1 outline fonts.
     T1FONTS = .;$TEXMF/fonts/{type1,hbf}//;$OSFONTDIR//
+
+
 
 
 
 ユーザ個別で指定する場合
-====================================================================
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 ホームディレクトリ直下に、.texmf-config として、texmf.cnfを用意してやれば良いみたいだが、未検証。
 
 
+
+
+
+
 PDF生成前の準備
-**************************************
+---------------
 
 
 フォントマップを用意する。きろ字フォントは、/usr/share/fonts/truetype/kiloji/ディレクトリの下に、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    ls /usr/share/fonts/truetype/kiloji/
    kiloji.ttf  kiloji_b.ttf  kiloji_d.ttf  kiloji_p.ttf
@@ -110,7 +139,9 @@ PDF生成前の準備
 
 のように存在する。拡張子の.ttfはフォントマップには書かない。プロポーショナルフォントのkiloji_pを指定する場合は以下のようになる。
 
-.. code-block:: none
+
+.. code-block:: apache
+
 
    rml H kiloji_p
    gbm H kiloji_p
@@ -118,40 +149,48 @@ PDF生成前の準備
    gbmv V kiloji_p
 
 
+
+
 あとは、dvipdfmxコマンドを実行するときに、このファイル(custfont.mapとでもしておこう)を-fオプションで指定すればよい。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ dvipdfmx -f custfont.map hoge.dvi
 
 
 するとフォントを埋め込んだPDFを生成できる。Debian勉強会のMakefileだと、
 
-.. code-block:: none
+
+.. code-block:: makefile
+
 
    %.pdf: %.dvi
-           umask 002 ; dvipdfmx -o $@.tmp $
+           umask 002 ; dvipdfmx -o $@.tmp $<
 
 
 となっているところを、
 
-.. code-block:: none
+
+.. code-block:: makefile
+
 
    %.pdf: %.dvi
-           umask 002 ; dvipdfmx -f custfont.map -o $@.tmp $
+           umask 002 ; dvipdfmx -f custfont.map -o $@.tmp $<
 
 
 とすれば良い。
 
 
 
-.. [#] ：Debian勉強会ではGitや勉強会のWebサイトで資料配布しているので別に困らないのだけど、他の勉強会で資料を作るときは、このリポジトリをfork、カスタマイズしているのだが、他の人は大体SlideShareを使っているので、まぁちょっと不便。
+
+.. [#] Debian勉強会ではGitや勉強会のWebサイトで資料配布しているので別に困らないのだけど、他の勉強会で資料を作るときは、このリポジトリをfork、カスタマイズしているのだが、他の人は大体SlideShareを使っているので、まぁちょっと不便。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: TeX, Debian, 
 .. tags::
 .. comments::
-
-

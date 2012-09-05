@@ -1,16 +1,18 @@
-﻿そうそう、これで困ってるのですよ。
-##################################
-
+そうそう、これで困ってるのですよ。
+==================================
 
 https://bugs.launchpad.net/ubuntu/+source/xkbset/+bug/215496
+
 http://ww2.samhart.com/node/130
+
 まったく同じ現象だな。右クリックに割り当てられないので困っちまうのです。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, MacBook, 
 .. tags::
 .. comments::
-
-

@@ -1,45 +1,56 @@
-﻿続・CouchDB 0.10を試してみる。
-##########################################
+続・CouchDB 0.10を試してみる。
+==============================
+
+`先日 <http://d.hatena.ne.jp/mkouhei/20091017/1255790269>`_ の続き。1個手順を見落としていた。
 
 
-先日の続き。1個手順を見落としていた。
+.. code-block:: sh
 
-.. code-block:: none
 
    $ ./bootstrap 
    You have bootstrapped Apache CouchDB, time to relax.
    
-   Run `./configure&#39; to configure the source before you install.
+   Run `./configure' to configure the source before you install.
 
 
 ああ、凡ミス。後は普通の手順。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ ./configure --prefix=/opt/couchdb
    (snip)
    
    You have configured Apache CouchDB, time to relax.
    
-   Run `make  sudo make install&#39; to install.
-   $ make  sudo make install
+   Run `make && sudo make install' to install.
+   $ make && sudo make install
+
+
 
 
 ユーザの作成。パスとデフォルトシェルを変更して実行。果たしてdashでcouchdbはちゃんと動くのか？（わら
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo adduser --system --home /opt/couchdb/var/lib/couchdb \
-    --no-create-home --shell /bin/dash --group --gecos CouchDB Administrator couchdb
-   Adding system user `couchdb&#39; (UID 112) ...
-   Adding new group `couchdb&#39; (GID 124) ...
-   Adding new user `couchdb&#39; (UID 112) with group `couchdb&#39; ...
-   Not creating home directory `/opt/couchdb/var/lib/couchdb&#39;.
+    --no-create-home --shell /bin/dash --group --gecos "CouchDB Administrator" couchdb
+   Adding system user `couchdb' (UID 112) ...
+   Adding new group `couchdb' (GID 124) ...
+   Adding new user `couchdb' (UID 112) with group `couchdb' ...
+   Not creating home directory `/opt/couchdb/var/lib/couchdb'.
+
+
 
 
 オーナ、パーミッションの変更もパスを変更して実行。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo chown -R couchdb:couchdb /opt/couchdb/{etc/couchdb,var/{lib,log,run}/couchdb}
    $ sudo chmod -R 0770            /opt/couchdb/{etc/couchdb,var/{lib,log,run}/couchdb}
@@ -50,28 +61,35 @@
    drwxrwx--- 2 couchdb couchdb 4096 2009-11-01 18:11 /opt/couchdb/var/run/couchdb
 
 
+
+
 起動は、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo /opt/couchdb/etc/init.d/couchdb start
 
 
 でおk。稼働確認とるとこんな風に表示される。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ curl http://localhost:5984/
-   {couchdb:Welcome,version:0.11.0ba0d616d6-git}
+   {"couchdb":"Welcome","version":"0.11.0ba0d616d6-git"}
 
 
-ム、0.10じゃねぇ、0.11だ！ああ、svnのtrunkから取ってきたからか。&#34;-git&#34;がついているのは、git svn cloneで取ってきたからだな。とまぁ、落ちもついたところで次回は機能自体を試してみるか。
+ム、0.10じゃねぇ、0.11だ！ああ、svnのtrunkから取ってきたからか。"-git"がついているのは、git svn cloneで取ってきたからだな。とまぁ、落ちもついたところで次回は機能自体を試してみるか。
 
 
 
-.. author:: mkouhei
-.. categories:: CouchDB, Debian, error, 
+
+
+
+.. author:: default
+.. categories:: CouchDB, Debian, エラー, 
 .. tags::
 .. comments::
-
-

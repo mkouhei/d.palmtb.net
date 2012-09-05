@@ -1,10 +1,11 @@
-﻿ssh-agent + tmux便利。
-######################################
-
+ssh-agent + tmux便利。
+======================
 
 Windows環境だと、PuTTYで作業することが多いのだが、Windowの切り替えとssh-addの実行がめんどい。screenでも良いのだけど、tmuxの方がいいんじゃね？というのを見かけるので、切り替えてみた。ssh-addのめんどいの解消には、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    ssh-agent tmux
 
@@ -13,9 +14,10 @@ Windows環境だと、PuTTYで作業することが多いのだが、Windowの�
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

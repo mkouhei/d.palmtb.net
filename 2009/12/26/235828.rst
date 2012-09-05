@@ -1,46 +1,35 @@
-﻿RelaxCafe@CouchDB break.4 参加＆今年の勉強会納め。
-############################################################################
+RelaxCafe@CouchDB break.4 参加＆今年の勉強会納め。
+==================================================
+
+今回はHackathon形式で `開催 <http://atnd.org/events/2319>`_ 。Hackathonは初めての参加。1時間半ちょい遅れて行ったら、id:yssk22さんがDefinitive Guideのネタをやってるところだった。ネタとしてはあったので、到着してからは黙々と作業。他の人も黙々と作業していたのだが、他のHackathonでも同じような感じらしい。2、3年前に秋葉原でやったDebianのBSPのような感じで黙々とやっていた。もうちょいF2Fで会話があっても良いかもしれないが、それだとHackathonの前にIdeathonをやった方が良いのかもしれない。
 
 
-今回はHackathon形式で開催。Hackathonは初めての参加。1時間半ちょい遅れて行ったら、id:yssk22さんがDefinitive Guideのネタをやってるところだった。ネタとしてはあったので、到着してからは黙々と作業。他の人も黙々と作業していたのだが、他のHackathonでも同じような感じらしい。2、3年前に秋葉原でやったDebianのBSPのような感じで黙々とやっていた。もうちょいF2Fで会話があっても良いかもしれないが、それだとHackathonの前にIdeathonをやった方が良いのかもしれない。
+
 宴会 aka 忘年会は近くの飲み屋で。美味かった＆楽しかった。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091227/20091227000134.png
-   :alt: f:id:mkouhei:20091227000134p:image
+
+.. image:: /img/20091227000134.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091227/20091227000133.png
-   :alt: f:id:mkouhei:20091227000133p:image
+.. image:: /img/20091227000133.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091227/20091227000132.png
-   :alt: f:id:mkouhei:20091227000132p:image
+.. image:: /img/20091227000132.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091227/20091227000131.png
-   :alt: f:id:mkouhei:20091227000131p:image
+.. image:: /img/20091227000131.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091227/20091227000130.png
-   :alt: f:id:mkouhei:20091227000130p:image
+.. image:: /img/20091227000130.png
 
 これで今年は勉強会納めだな。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: CouchDB, meeting, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	もうちょいF2Fで会話があっても良いかもしれないが、それだとHackathonの前にIdeathonをやった方が良いのかもしれない。なるほど、ネタだしは別途専用の時間を設けることを明示してやったほうやった方が良さそうですね。手探りながらもRelaxedなものをやってきたいですね。
-
-	written by  yssk22
-	12/27/2009 09:39:51
-	http://d.hatena.ne.jp/yssk22/
-

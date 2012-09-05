@@ -1,18 +1,17 @@
-﻿私はここよ。
-############
-
-
-sonodamさんのブログを見て、KVMではどうか調べてみた。予想通り、というか結果は知っていたのだが。z/VM上だとどうなんだろう？ [#]_ 
+私はここよ。
+============
 
 
 
-.. [#] ：春になったら確認してみるか…。
+`sonodamさんのブログ <http://d.hatena.ne.jp/sonodam/20070205>`_ を見て、KVMではどうか `調べてみた <http://www.palmtb.net/index.php?%A5%B2%A5%B9%A5%C8OS%A4%CF%BC%AB%CA%AC%A4%CE%B5%EF%BE%EC%BD%EA%A4%F2%C3%CE%A4%C3%A4%C6%A4%A4%A4%BF>`_ 。予想通り、というか結果は知っていたのだが。z/VM上だとどうなんだろう？ [#]_ 
 
 
 
-.. author:: mkouhei
+
+.. [#] 春になったら確認してみるか…。
+
+
+.. author:: default
 .. categories:: computer, virt., 
 .. tags::
 .. comments::
-
-

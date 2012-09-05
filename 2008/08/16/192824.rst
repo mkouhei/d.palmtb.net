@@ -1,21 +1,24 @@
-﻿KVM動いたよ。
-################
-
+KVM動いたよ。
+=============
 
 Sid on MacBook Airで、kernel 2.6.26.2の環境で、/proc/cpuinfoでvmxも表示されているし、kvmモジュールもkvm-intelモジュールもロードされていて、実行ユーザもkvmグループに入れたのにKVMが動かねぇ、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ kvm -hda debian-etch.img -cdrom ../download/debian-iso/mini.iso -boot d m 384 -monitor stdio
    open /dev/kvm: Permission denied
    Could not initialize KVM, will disable KVM support
-   QEMU 0.9.1 monitor - type &#39;help&#39; for more information
+   QEMU 0.9.1 monitor - type 'help' for more information
    (qemu) 
 
 
-と思ったら、&#34;open /dev/kvm: Permission denied&#34;となってるじゃねえの。
+と思ったら、"open /dev/kvm: Permission denied"となってるじゃねえの。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo adduser user group
 
@@ -24,9 +27,10 @@ Sid on MacBook Airで、kernel 2.6.26.2の環境で、/proc/cpuinfoでvmxも表�
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, MacBook, virt., computer, 
 .. tags::
 .. comments::
-
-

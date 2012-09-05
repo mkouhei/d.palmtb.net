@@ -1,10 +1,11 @@
-﻿kvm固有のログ
-################
-
+kvm固有のログ
+=============
 
 かどうかは断言できない [#]_ が、カーネル起動時にこんなログが出力される。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    Feb 18 01:43:05 hostname kernel: sanitize start
    Feb 18 01:43:05 hostname kernel: sanitize end
@@ -13,7 +14,9 @@
 
 mm1パッチ当てておかしくなった原因を調べるためにカーネルログを見ていて気がついた。こっち↓はkvmを起動すると出るので、すぐ気がつくのだけど。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    Feb 18 02:26:42 hostname kernel: kvm: emulating exchange as write
 
@@ -21,13 +24,10 @@ mm1パッチ当てておかしくなった原因を調べるためにカーネ�
 
 
 
-.. [#] ：QEMUだけでも出るのかも知れないがQEMUだけ入れた環境が無いので未確認。.. [#] のでたぶんそうだろう
+.. [#] QEMUだけでも出るのかも知れないがQEMUだけ入れた環境が無いので未確認。 `ググった限りではkernel 2.6.20でばかり引っかかる <http://www.google.co.jp/search?q=kernel%3A+Booting+paravirtualized+kernel+on+bare+hardware&ie=utf-8&oe=utf-8&rls=org.debian:ja:unofficial&client=firefox>`_ のでたぶんそうだろう
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, virt., computer, 
 .. tags::
 .. comments::
-
-

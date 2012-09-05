@@ -1,10 +1,11 @@
-﻿デジカメのデータを読み込む。
-############################
-
+デジカメのデータを読み込む。
+============================
 
 Canon IXY DIGITAL 820 ISのデータをDebianで読み込んでみた。使ったのはgtkam。まずgtkamを導入。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get install gtkam gphoto2 
    パッケージリストを読み込んでいます... 完了
@@ -13,7 +14,7 @@ Canon IXY DIGITAL 820 ISのデータをDebianで読み込んでみた。使っ�
    以下のパッケージが自動でインストールされましたが、もう必要とされていません:
      voikko-fi libdaemon0 libc-ares2 app-install-data libcurl3-gnutls libcupsys2
      libetpan13
-   これらを削除するには &#39;apt-get autoremove&#39; を利用してください。
+   これらを削除するには 'apt-get autoremove' を利用してください。
    以下の特別パッケージがインストールされます:
      libcdk5 libexif-gtk5 libgphoto2-2 libgphoto2-port0 libltdl3
    提案パッケージ:
@@ -61,7 +62,9 @@ Canon IXY DIGITAL 820 ISのデータをDebianで読み込んでみた。使っ�
 
 USBケーブルで接続して、電源を入れ、認識されているか確認する。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ dmesg
    (snip)
@@ -75,13 +78,14 @@ USBケーブルで接続して、電源を入れ、認識されているか確�
    [ 5731.661385] usb 7-1: SerialNumber: 1CDB5311F6FE48CDBCDBAFBE3FFECACF
 
 
-gtkamを起動し、&#34;カメラの追加&#34;で検出してみたところ、型式はUSB PTP Class Camera、ポートはUniversal Serial Bus (usb:)として認識できた。あとは普通に保存して終わり。
+gtkamを起動し、"カメラの追加"で検出してみたところ、型式はUSB PTP Class Camera、ポートはUniversal Serial Bus (usb:)として認識できた。あとは普通に保存して終わり。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, gadget, 
 .. tags::
 .. comments::
-
-

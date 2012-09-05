@@ -1,10 +1,11 @@
-﻿sshでProxyCommandを使うとlastlogは更新されない。
-######################################################################
-
+sshでProxyCommandを使うとlastlogは更新されない。
+================================================
 
 あるサーバの背後にあるサーバにSSHでログインしたい場合、~/.ssh/configに、
 
-.. code-block:: none
+
+.. code-block:: apache
+
 
    Host targetserver-*
            ProxyCommand ssh StSt nc -w 22222 %h %p
@@ -14,33 +15,11 @@
 
 
 
-.. [#] ：Stepping Stoneの略。踏み台って、英語では踏み石なんですね。
+
+.. [#] Stepping Stoneの略。踏み台って、英語では踏み石なんですね。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, security, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	ssh host command で載りませんからね．
-
-	written by  yy_y_ja_jp
-	07/09/2011 02:16:45
-	
-
-----
-
-Comment:
-
-	あー、それでも記録されないんですね。
-
-	written by  mkouhei
-	07/09/2011 02:29:36
-	http://d.hatena.ne.jp/mkouhei/
-

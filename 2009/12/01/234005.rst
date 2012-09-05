@@ -1,14 +1,14 @@
-﻿wireless gate ログインできず。
-############################################
-
+wireless gate ログインできず。
+==============================
 
 久々のDebian Hack Cafe参加。今週から毎週火曜日19:00から、場所も渋谷に変更しての開催となり、今回はCafe Miyama 渋谷公園通り店だったが、wireless gateのmobilepoint, livedoor-webのどちらもブラウザでのログインできない現象に遭遇。wireless gateのサイトでログインはちゃんとできるのに何でだ？原因不明なので、問い合わせてみることにした。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: network, Debian, 
 .. tags::
 .. comments::
-
-

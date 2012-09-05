@@ -1,22 +1,26 @@
-﻿DNS/NTPサーバ on OBSのEtch化完了。
-####################################################
-
+DNS/NTPサーバ on OBSのEtch化完了。
+==================================
 
 DNS/NTPサーバは基本的に内容は変わらないので、SargeからそのままEtchにアップグレードした。
+
 手順としては、
 
-* kernelイメージのファームウェアアップデート
-* APT LineをSargeからEtchに変更し、update/upgrade/dist-upgradeを実行。
-* アップグレードにより一部おかしくなった部分を修正
+#. kernelイメージのファームウェアアップデート
+
+#. APT LineをSargeからEtchに変更し、update/upgrade/dist-upgradeを実行。
+
+#. アップグレードにより一部おかしくなった部分を修正
 
 以上で終わり。
+
 おかしくなった部分としては、/etc/pam.d/以下の設定をSargeの設定を維持したままにすると、suやsudoの動きが期待した動きにならない、というところかな。それ以外は特に困った事は無し。手順2の所要時間は約１時間。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, Ops, 
 .. tags::
 .. comments::
-
-

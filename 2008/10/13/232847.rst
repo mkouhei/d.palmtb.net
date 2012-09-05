@@ -1,10 +1,11 @@
-﻿make-kpkgが変更されてる。
-##################################
-
+make-kpkgが変更されてる。
+=========================
 
 む、10/10に変更されてるな。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #                              -*- Mode: Perl -*-
    # make-kpkg ---
@@ -21,9 +22,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, Unix/Linux, 
 .. tags::
 .. comments::
-
-

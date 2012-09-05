@@ -1,14 +1,14 @@
-﻿世の中Vistaだらけなんだろうなぁ
-####################################
-
+世の中Vistaだらけなんだろうなぁ
+===============================
 
 Windowsなんてぶっ潰せのワシにとってはどうでも良いことだが。Linuxはないと困るけど、Windowsは無くても困らないからなぁ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

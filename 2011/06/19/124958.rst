@@ -1,47 +1,55 @@
-﻿第77回東京エリアDebian勉強会参加。
-##########################################
+第77回東京エリアDebian勉強会参加。
+==================================
+
+`今回 <http://tokyodebian.alioth.debian.org/2011-06.html>`_ は久々にオリンピックセンターでの開催でした。上川さんがXSLTの話を、私がSphinxとDoxygenの話をしました。「XSLTって懐かしい、なぜ今頃XSLTなんだ？」と思ったのですが、まだFirefox(Iceweasel)で使われていたりというのを聞いて、単に表から見えなくなっただけなのだなぁと。
 
 
-今回は久々にオリンピックセンターでの開催でした。上川さんがXSLTの話を、私がSphinxとDoxygenの話をしました。「XSLTって懐かしい、なぜ今頃XSLTなんだ？」と思ったのですが、まだFirefox(Iceweasel)で使われていたりというのを聞いて、単に表から見えなくなっただけなのだなぁと。
-SphinxとDoxygenはデモやるつもりで発表用資料はめっちゃ手抜き資料になったので、特に公開しませんが事前配布資料に一通りまとめてあります。SphinxからPDF生成するとこはブログでいくつか見かけたのですが、日本語表示するのに最低限必要な手順は実際やってみると若干違うなーという感じでした。rst2pdfだとsphinxcontrib-*diag使えない問題は何とかしなきゃなぁと。なお昨日の参加者で、Sphinx、Doxygenを使ったことがあったのは、Sphinxは私のみ、Doxygenは5名ほどという感じでした。実際のところ、Debian勉強会に参加している人は
- 
-.. image:: http://a0.twimg.com/profile_images/1374594278/profile_normal.png
+
+SphinxとDoxygenはデモやるつもりで発表用資料はめっちゃ手抜き資料になったので、特に公開しませんが `事前配布資料 <http://tokyodebian.alioth.debian.org/pdf/debianmeetingresume201106.pdf>`_ に一通りまとめてあります。SphinxからPDF生成するとこはブログでいくつか見かけたのですが、日本語表示するのに最低限必要な手順は実際やってみると若干違うなーという感じでした。rst2pdfだとsphinxcontrib-\*diag使えない問題は何とかしなきゃなぁと。なお昨日の参加者で、Sphinx、Doxygenを使ったことがあったのは、Sphinxは私のみ、Doxygenは5名ほどという感じでした。実際のところ、Debian勉強会に参加している人は
 
 
-.. image:: http://a0.twimg.com/profile_images/1374594278/profile_normal.png
+https://twitter.com/#!/mkouhei/status/82109678955397120::
+
+   LaTeX &gt;&gt; Doxygen &gt;&gt;&gt;Sphinx な感じでLaTeXな人が圧倒的に多いDebian勉強会。less than a minute ago via HootSuite
 
 
-.. image:: http://a0.twimg.com/profile_images/1374594278/profile_normal.png
-
-
-.. image:: http://a0.twimg.com/profile_images/1374594278/profile_normal.png
 
 のような状態が実態ではないかなと思います。
+
+
+
 以下は、その他、宴会も含めてあったネタとか話の備忘録。
 
 * 窓際ならWiMAXも入る
+
 * オリンピックセンターでのDebConfの開催はかなりハードル高い [#]_ 
+
 * 利用者に学生多いね
+
 * 中尾さんによる放射線観測の仕組み
+
 * debパッケージングのクロスレビュー大会やろうぜ！ [#]_ 
+
 * 勉強会会場の探索＆recomendation engine
+
 * libvirtでlxcやるなら自分でHack。というかコンテナ系全滅
-* AndroidでGPGキー管理するツール* APG
+
+* AndroidでGPGキー管理するツール `APG <http://thialfihar.org/projects/apg/>`_ 
+
 * CouchDBってよく分からない、いいえ、CouchDBは変態です(ｷﾘｯ
+
 * とりあえず来月はDebian JP Project運用鯖のハッカソンやるべ
+
 * 早くパッケージつ作れよゴラ
 
 
 
 
-.. [#] ：というか無理か
-.. [#] ：最初はslから。
+.. [#] というか無理か
+.. [#] 最初はslから。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Debian, meeting, 
 .. tags::
 .. comments::
-
-

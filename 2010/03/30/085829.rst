@@ -1,14 +1,14 @@
-﻿b-mobile SIMがAndroid 1.6で使えない。
-############################################################
+b-mobile SIMがAndroid 1.6で使えない。
+=====================================
+
+`日本通信側ではどうしようもなくて、GoogleかHTCがファームウェア変更してくれないといかんともし難いらしい <http://b-mobile.jugem.jp/?eid=26>`_ 。うーむ、今更Android 1.5には戻したくないんだけどなぁ…。
 
 
-日本通信側ではどうしようもなくて、GoogleかHTCがファームウェア変更してくれないといかんともし難いらしい。うーむ、今更Android 1.5には戻したくないんだけどなぁ…。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: network, gadget, 
 .. tags::
 .. comments::
-
-

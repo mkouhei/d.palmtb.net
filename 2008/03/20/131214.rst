@@ -1,35 +1,37 @@
-﻿spamがちゃんと処理されない。
-################################
-
+spamがちゃんと処理されない。
+============================
 
 spamメールが最近、spamdで処理されない [#]_ ので、調査してみることにした。
+
 fetchmailのログをvervoseモードで出力させると、メールを受信した際にprocmailに渡している部分で、タイムアウトになっている。んで、同じメールを何度も受信するのか。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    Mar 20 12:53:12 fuga fetchmail[1374]: 6.3.6 querying hogehoge.jp (protocol APOP) at Thu Mar 20 12:53:12 2008: poll started
    Mar 20 12:53:12 fuga fetchmail[1374]: Trying to connect to 211.11.96.132/110...connected.
-   Mar 20 12:53:12 fuga fetchmail[1374]: POP3 +OK Qpopper (version 4.0.5) at hogehoge.jp starting.  11533.1205985192@hogehoge.jp
-   Mar 20 12:53:12 fuga fetchmail[1374]: POP3 APOP hoge cb98708ec27de4530beb818910cab7c0
-   Mar 20 12:53:12 fuga fetchmail[1374]: POP3 +OK hoge has 11 visible messages (0 hidden) in 115543 octets.
+   Mar 20 12:53:12 fuga fetchmail[1374]: POP3< +OK Qpopper (version 4.0.5) at hogehoge.jp starting.  <11533.1205985192@hogehoge.jp>
+   Mar 20 12:53:12 fuga fetchmail[1374]: POP3> APOP hoge cb98708ec27de4530beb818910cab7c0
+   Mar 20 12:53:12 fuga fetchmail[1374]: POP3< +OK hoge has 11 visible messages (0 hidden) in 115543 octets.
    Mar 20 12:53:12 fuga fetchmail[1374]: selecting or re-polling default folder
-   Mar 20 12:53:12 fuga fetchmail[1374]: POP3 STAT
-   Mar 20 12:53:12 fuga fetchmail[1374]: POP3 +OK 11 115543
-   Mar 20 12:53:12 fuga fetchmail[1374]: POP3 LAST
-   Mar 20 12:53:12 fuga fetchmail[1374]: POP3 +OK 0 is the last read message.
+   Mar 20 12:53:12 fuga fetchmail[1374]: POP3> STAT
+   Mar 20 12:53:12 fuga fetchmail[1374]: POP3< +OK 11 115543
+   Mar 20 12:53:12 fuga fetchmail[1374]: POP3> LAST
+   Mar 20 12:53:12 fuga fetchmail[1374]: POP3< +OK 0 is the last read message.
    Mar 20 12:53:12 fuga fetchmail[1374]: 11 messages for hoge at hogehoge.jp (115543 octets).
-   Mar 20 12:53:12 fuga fetchmail[1374]: POP3 LIST 1
-   Mar 20 12:53:12 fuga fetchmail[1374]: POP3 +OK 1 13231
-   Mar 20 12:53:12 fuga fetchmail[1374]: POP3 TOP 1 99999999
-   Mar 20 12:53:12 fuga fetchmail[1374]: POP3 +OK Message follows
+   Mar 20 12:53:12 fuga fetchmail[1374]: POP3> LIST 1
+   Mar 20 12:53:12 fuga fetchmail[1374]: POP3< +OK 1 13231
+   Mar 20 12:53:12 fuga fetchmail[1374]: POP3> TOP 1 99999999
+   Mar 20 12:53:12 fuga fetchmail[1374]: POP3< +OK Message follows
    Mar 20 12:53:12 fuga fetchmail[1374]: reading message hoge@hogehoge.jp:1 of 11 (13231 octets)
    Mar 20 12:53:12 fuga fetchmail[1374]: about to deliver with: /usr/bin/procmail
    Mar 20 12:56:38 fuga fetchmail[1374]:  flushed
-   Mar 20 12:56:38 fuga fetchmail[1374]: POP3 DELE 1
-   Mar 20 12:56:38 fuga fetchmail[1374]: POP3 -ERR POP timeout from hogehoge.jp
+   Mar 20 12:56:38 fuga fetchmail[1374]: POP3> DELE 1
+   Mar 20 12:56:38 fuga fetchmail[1374]: POP3< -ERR POP timeout from hogehoge.jp
    Mar 20 12:56:38 fuga fetchmail[1374]: POP timeout from hogehoge.jp
-   Mar 20 12:56:38 fuga fetchmail[1374]: POP3 QUIT
-   Mar 20 12:56:38 fuga fetchmail[1374]: POP3 +OK Pop server at hogehoge.jp signing off.
+   Mar 20 12:56:38 fuga fetchmail[1374]: POP3> QUIT
+   Mar 20 12:56:38 fuga fetchmail[1374]: POP3< +OK Pop server at hogehoge.jp signing off.
    Mar 20 12:56:38 fuga fetchmail[1374]: 6.3.6 querying hogehoge.jp (protocol APOP) at Thu Mar 20 12:56:38 2008: poll completed
    Mar 20 12:56:38 fuga fetchmail[1374]: Query status=24
    Mar 20 12:56:38 fuga fetchmail[1374]: Deleting fetchids file.
@@ -38,22 +40,26 @@ fetchmailのログをvervoseモードで出力させると、メールを受信�
 
 やっぱりspamdが原因だろうなぁ、とspamdを再起動してみたら、とりあえずは直った様にみえる。のだが、spamdのログを見たら、多量にparseエラーを吐いている。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    Mar 20 13:27:17 fuga spamd[2250]: spamd: connection from localhost [127.0.0.1] at port 3619
    Mar 20 13:27:17 fuga spamd[2250]: spamd: setuid to hoge succeeded
    Mar 20 13:27:18 fuga spamd[2250]: config: failed to parse, now a plugin, skipping: ok_languages ja en
-   Mar 20 13:27:18 fuga spamd[2250]: config: not parsing, &#39;allow_user_rules&#39; is 0: header ISO2022JP_CHARSET Content-Type =~ /charset=[&#39;&#34;]?iso-2022-jp[&#39;&#34;]?/i
+   Mar 20 13:27:18 fuga spamd[2250]: config: not parsing, 'allow_user_rules' is 0: header ISO2022JP_CHARSET Content-Type =~ /charset=['"]?iso-2022-jp['"]?/i
    (snip)
    Mar 20 13:27:33 fuga spamd[2250]: config: failed to parse line, skipping: header COMBZMAGAZINEID exists: MagazineId
-   Mar 20 13:27:34 fuga spamd[2250]: spamd: processing message 000a01c88ac0$07e0dd92$126cf499@wmrfjn for hoge:1000
+   Mar 20 13:27:34 fuga spamd[2250]: spamd: processing message <000a01c88ac0$07e0dd92$126cf499@wmrfjn> for hoge:1000
    Mar 20 13:27:38 fuga spamd[2250]: spamd: identified spam (14.5/13.0) for hoge:1000 in 20.8 seconds, 2663 bytes.
-   Mar 20 13:27:38 fuga spamd[2250]: spamd: result: Y 14 - BAYES_99,DATE_IN_FUTURE_12_24,HELO_DYNAMIC_DHCP,HTML_50_60,HTML_MESSAGE scantime=20.8,size=2663,user=hoge,uid=1000,required_score=13.0,rhost=localhost,raddr=127.0.0.1,rport=3619,mid=000a01c88ac0$07e0dd92$126cf499@wmrfjn,bayes=1,autolearn=no
+   Mar 20 13:27:38 fuga spamd[2250]: spamd: result: Y 14 - BAYES_99,DATE_IN_FUTURE_12_24,HELO_DYNAMIC_DHCP,HTML_50_60,HTML_MESSAGE scantime=20.8,size=2663,user=hoge,uid=1000,required_score=13.0,rhost=localhost,raddr=127.0.0.1,rport=3619,mid=<000a01c88ac0$07e0dd92$126cf499@wmrfjn>,bayes=1,autolearn=no
 
 
 SpamAssassinのPluginが足りないのだろうとok_languagesで検索してみた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd /usr/share/perl5/Mail/SpamAssassin/Plugin
    $ grep ok_languages *
@@ -62,16 +68,18 @@ SpamAssassinのPluginが足りないのだろうとok_languagesで検索して�
    TextCat.pm:  ok_languages en          (only allow English)
    TextCat.pm:  ok_languages en ja zh    (allow English, Japanese, and Chinese)
    TextCat.pm:Note: if there are multiple ok_languages lines, only the last one is used.
-   TextCat.pm:    setting = &#39;ok_languages&#39;,
-   TextCat.pm:default.  Note that listing a language in Cok_languages automatically
-   TextCat.pm:    delete $skip{$_} for split(&#39; &#39;, $opts-{conf}-{ok_languages});
-   TextCat.pm:  my @languages = split(&#39; &#39;, $scan-{conf}-{ok_languages});
-   TextCat.pm:  my @languages = split(&#39; &#39;, $scan-{conf}-{ok_languages});
+   TextCat.pm:    setting => 'ok_languages',
+   TextCat.pm:default.  Note that listing a language in C<ok_languages> automatically
+   TextCat.pm:    delete $skip{$_} for split(' ', $opts->{conf}->{ok_languages});
+   TextCat.pm:  my @languages = split(' ', $scan->{conf}->{ok_languages});
+   TextCat.pm:  my @languages = split(' ', $scan->{conf}->{ok_languages});
 
 
 んで、SpamAssassinの設定ファイルを修正。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd /etc/spamassassin/
    $ grep TextCat *
@@ -81,11 +89,16 @@ SpamAssassinのPluginが足りないのだろうとok_languagesで検索して�
 
 再起動したらエラーが吐かれなくなったよ、と。そもそも、正月にSargeからEtchに移行した際にこのwarningの対応はpendingしてたんだっけな。
 
+
+
+
 * 追記。
 
 local.cfにもこれを忘れていた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    allow_user_rules 1
 
@@ -93,13 +106,10 @@ local.cfにもこれを忘れていた。
 
 
 
-.. [#] ：X-SPAM-*ヘッダーがついていない。
+.. [#] X-SPAM-\*ヘッダーがついていない。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

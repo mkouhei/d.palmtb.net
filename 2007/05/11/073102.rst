@@ -1,14 +1,14 @@
-﻿辛い…。
-########
-
+辛い…。
+========
 
 寝不足で辛い。しんどい。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

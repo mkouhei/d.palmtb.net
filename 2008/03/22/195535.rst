@@ -1,16 +1,18 @@
-﻿黒MacBookの無線LANを使えるようにしてみた。
-####################################################
+黒MacBookの無線LANを使えるようにしてみた。
+==========================================
+
+最近放置していた黒MacBookだが、久しぶりに使ってみた。 `どうやら無線LANが使えるようになった <http://wiki.debian.org/MacBook#head-6bf5cdb079ddbb2980e9f19580d6cd7ca5b85455>`_ ようなので、設定してみた。
 
 
-最近放置していた黒MacBookだが、久しぶりに使ってみた。どうやら無線LANが使えるようになったようなので、設定してみた。
-必要なパッケージ
-********************************************
+必要なパッケージ [#]_ 
+------------------------------------------------
 
- [#]_ 
 
-.. code-block:: none
 
-   sudo dpkg -l | egrep  &#39;wireless|wpa&#39;
+.. code-block:: sh
+
+
+   sudo dpkg -l | egrep  'wireless|wpa'
    ii  wireless-tools         29-1              Tools for manipulating Linux Wireless Extensio
    ii  wpagui                 0.6.3-1           GUI for wpa_supplicant
    ii  wpasupplicant          0.6.3-1           Client support for WPA and WPA2 (IEEE 802.11i)
@@ -18,11 +20,14 @@
 
 
 madwifiのコンパイル
-**********************************************
+-------------------
+
 
 Debian Sidのmadwifi-source [#]_ では、まだ黒MacBookの無線LANは使えないので、開発元のSnapshotを取ってくる。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ wget http://snapshots.madwifi.org/madwifi-ng-current.tar.gz
    $ tar zxf madwifi-ng-current.tar.gz
@@ -33,14 +38,15 @@ Debian Sidのmadwifi-source [#]_ では、まだ黒MacBookの無線LANは使え�
 
 
 モジュールをロードする。
-********************************************************************
+------------------------
 
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ sudo modprobe ath_pci
-   $ lsmod | egrep &#39;wlan|ath&#39;
+   $ lsmod | egrep 'wlan|ath'
    wlan_tkip              12800  1 
    wlan_ccmp               8960  1 
    ath_pci               178092  0 
@@ -52,11 +58,12 @@ Debian Sidのmadwifi-source [#]_ では、まだ黒MacBookの無線LANは使え�
 
 
 wpasupplicantの設定
-****************************************
+-------------------
 
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ cd /usr/share/doc/wpasupplicant/examples/
    $ sudo cp -i wpa-roam.conf /etc/wpasupplicant/
@@ -67,14 +74,18 @@ wpasupplicantの設定
 
 SSIDとPSKを設定する。
 
-.. code-block:: none
 
-   $ wpa_passphrase SSID passphrase  wpa_supplicant.conf
+.. code-block:: sh
+
+
+   $ wpa_passphrase SSID passphrase >> wpa_supplicant.conf
 
 
 その他をAPに合わせて設定する。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    update_config=1
    ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -83,8 +94,8 @@ SSIDとPSKを設定する。
    	key_mgmt=WPA-PSK
    	proto=WPA WPA2
    	pairwise=CCMP TKIP
-   	ssid=&#34;ssid&#34;
-   	#psk=&#34;passphrase&#34;
+   	ssid="ssid"
+   	#psk="passphrase"
    	psk=passphrase
    	priority=1
    }
@@ -92,11 +103,12 @@ SSIDとPSKを設定する。
 
 
 ネットワークの設定を変更
-********************************************************************
+------------------------
 
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    auto ath0
    iface ath0 inet dhcp
@@ -106,15 +118,16 @@ SSIDとPSKを設定する。
 
 
 ネットワーク再起動して使えるようになると。
-**************************************************************************************************************************
+------------------------------------------
 
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ sudo /etc/init.d/networking restart
    $ sudo iwconfig ath0
-   ath0      IEEE 802.11g  ESSID:&#34;ssid&#34;  Nickname:&#34;&#34;
+   ath0      IEEE 802.11g  ESSID:"ssid"  Nickname:""
              Mode:Managed  Frequency:2.437 GHz  Access Point: APのMACアドレス   
              Bit Rate:12 Mb/s   Tx-Power:17 dBm   Sensitivity=1/1  
              Retry:off   RTS thr:off   Fragment thr:off
@@ -139,14 +152,11 @@ SSIDとPSKを設定する。
 
 
 
-.. [#] ：wpaguiは無くても良いけどな。
-.. [#] ：version 1:0.9.4~rc2-1
+.. [#] wpaguiは無くても良いけどな。
+.. [#] version 1:0.9.4~rc2-1
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: MacBook, Debian, network, 
 .. tags::
 .. comments::
-
-

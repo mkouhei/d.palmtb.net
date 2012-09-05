@@ -1,23 +1,31 @@
-﻿kernel 2.6.28でBroadcom配布の無線デバイスドライバを使う。
-##############################################################################
+kernel 2.6.28でBroadcom配布の無線デバイスドライバを使う。
+=========================================================
+
+kernel 2.6.27から、ndiswrapperのコンパイルが通らなくなり困っていたのだが [#]_ 、 `BroadcomがLinux専用のデバイスドライバを配布している <http://www.broadcom.com/support/802.11/linux_sta.php>`_ のを知り、試してみた。
 
 
-kernel 2.6.27から、ndiswrapperのコンパイルが通らなくなり困っていたのだが [#]_ 、BroadcomがLinux専用のデバイスドライバを配布しているのを知り、試してみた。
+
 使用するドライバは
+
 http://www.broadcom.com/docs/linux_sta/hybrid-portsrc-x86-64_5_10_27_12.tar.gz
+
+
+
 手順は
+
 http://www.broadcom.com/docs/linux_sta/README.txt
+
+
+
 で、一通りでき、MacBook Airではeth1として認識された。WEP及びWPAはどうやら使えるみたいなのだが、WPA2はアクセスポイントを認識しない。仕方ないのでまたしばらく2.6.26系で我慢するか…。
 
 
 
-.. [#] ：だから未だに2.6.26.6を使用している。
+
+.. [#] だから未だに2.6.26.6を使用している。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: MacBook, network, 
 .. tags::
 .. comments::
-
-

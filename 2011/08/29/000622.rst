@@ -1,16 +1,26 @@
-﻿Pre3にprewareをインストール。
-########################################
+Pre3にprewareをインストール。
+=============================
+
+palm preのときと違い、meta-doctorでROMを再作成＆焼き直しをしなくても、HP Pre3ではDeveloper modeにできる代わりに、App Catalogが使えない、という制約があります。完全に開発用の端末になってしまうので、ちょいと不便です。なので、prewareでipkgパッケージをインストールできるようにしましょう [#]_ 。
 
 
-palm preのときと違い、meta-doctorでROMを再作成＆焼き直しをしなくても、HP Pre3ではDeveloper modeにできる代わりに、App Catalogが使えない、という制約があります。完全に開発用の端末になってしまうので、ちょいと不便です。なので、prewareでipkgパッケージをインストールできるようにしましょう [#]_ 。NovacomとPalm SDKは最新状態になっているものとします [#]_ 。
-Pre3をUSBで接続し、&#34;Just Charge&#34;ボタンをタップします。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110829/20110829000458.jpg
-   :alt: f:id:mkouhei:20110829000458j:image
+NovacomとPalm SDKは最新状態になっているものとします [#]_ 。
 
-novatermコマンドをGNU/Linux側で実行し、webOS InternalsのInstalling Preware from the Commandlineを実行します。(下記)
 
-.. code-block:: none
+
+Pre3をUSBで接続し、"Just Charge"ボタンをタップします。
+
+
+.. image:: /img/20110829000458.jpg
+
+
+
+novatermコマンドをGNU/Linux側で実行し、webOS Internalsの `Installing Preware from the Commandline <http://www.webos-internals.org/wiki/Application:Preware#Installing_Preware_from_the_Commandline>`_ を実行します。(下記)
+
+
+.. code-block:: sh
+
 
    $ novaterm
    root@Pre3:/# cd /tmp
@@ -30,35 +40,32 @@ novatermコマンドをGNU/Linux側で実行し、webOS InternalsのInstalling P
    
 
 
+
+
 起動すると、下記のようにprewareがインストールされます。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110829/20110829000502.jpg
-   :alt: f:id:mkouhei:20110829000502j:image
+
+.. image:: /img/20110829000502.jpg
 
 changelogを確認すると、feedが更新され、preware経由でパッケージをインストールできるようになります。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110829/20110829000501.jpg
-   :alt: f:id:mkouhei:20110829000501j:image
+
+.. image:: /img/20110829000501.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110829/20110829000500.jpg
-   :alt: f:id:mkouhei:20110829000500j:image
+.. image:: /img/20110829000500.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110829/20110829000459.jpg
-   :alt: f:id:mkouhei:20110829000459j:image
+.. image:: /img/20110829000459.jpg
 
 
 
 
-.. [#] ：って、日本人でどんだけの人がPre3なんて持っているんだろうかw
-.. [#] ：もし、そうでない場合は、.. [#] インストール or アップデートしておきましょう。
+.. [#] って、日本人でどんだけの人がPre3なんて持っているんだろうかw
+.. [#] もし、そうでない場合は、 `webOS Developer Centerから最新のものを入手して <https://developer.palm.com/content/resources/develop/sdk_pdk_download.html#linux>`_ インストール or アップデートしておきましょう。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Debian, Unix/Linux, gadget, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿予想Guy。
-############
-
+予想Guy。
+=========
 
 うーん、普通にアクセスする分には引っかからなかったので、大丈夫だろうと思っていたら、どうもサーバの負荷状況によっては監視サーバからのアクセスも叩いてしまう。監視サーバからのみアクセス許可しているURIをLocationで指定し、NoIPLimitで対象のファイルの種類を指定して様子見。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, security, 
 .. tags::
 .. comments::
-
-

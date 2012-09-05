@@ -1,10 +1,11 @@
-﻿Xfce4がおかしい。
-######################
-
+Xfce4がおかしい。
+=================
 
 うぬ、xfce4-panelが起動しない。さらに、というかついでにxtermからxfce4-panelを起動して、パネルメニューからiceweaselを起動させるとこんなwarning吐いてる。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ Error: No running window found
    
@@ -17,9 +18,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

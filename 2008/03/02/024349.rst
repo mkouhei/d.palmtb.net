@@ -1,10 +1,11 @@
-﻿メモリはダメだがディスクはOK。
-################################
-
+メモリはダメだがディスクはOK。
+==============================
 
 Sid on MacBook Airで、hibernate [#]_ を実行すると、サスペンドはダメだが、ハイバネートならOKだった。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo hibernate-ram
    s2ram: unknown machine, see s2ram(8) and the USuspendRamForce option
@@ -17,13 +18,11 @@ Sid on MacBook Airで、hibernate [#]_ を実行すると、サスペンドは�
 
 
 
-.. [#] ：2008年3月2日現在、1.97-1.1
+
+.. [#] 2008年3月2日現在、1.97-1.1
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Debian, MacBook, 
 .. tags::
 .. comments::
-
-

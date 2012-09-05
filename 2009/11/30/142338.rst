@@ -1,20 +1,21 @@
-﻿grubまだおかしいね。
-########################
-
+grubまだおかしいね。
+====================
 
 /bootはなくなったのだけど…。
 
-.. code-block:: none
+
+.. code-block:: ini
+
 
    ### BEGIN /etc/grub.d/10_linux ###
-   menuentry Debian GNU/Linux, with Linux 2.6.31.6 {
+   menuentry "Debian GNU/Linux, with Linux 2.6.31.6" {
    	insmod ext2
    	set root=(hd0,3)
    	search --no-floppy --fs-uuid --set cd19d76b-a1e3-4bb5-a873-2f4317414d89
    	linux	//vmlinuz-2.6.31.6 root=UUID=d53d33d3-a20f-4d08-8963-e386f730a3b1 ro nosmp irqpoll acpi=noirq quiet
    	initrd	//initrd.img-2.6.31.6
    }
-   menuentry Debian GNU/Linux, with Linux 2.6.31.6 (recovery mode) {
+   menuentry "Debian GNU/Linux, with Linux 2.6.31.6 (recovery mode)" {
    	insmod ext2
    	set root=(hd0,3)
    	search --no-floppy --fs-uuid --set cd19d76b-a1e3-4bb5-a873-2f4317414d89
@@ -23,9 +24,11 @@
    }
 
 
-なぜ？ bashならこれでも大丈夫だけど、grubはどうなんだ？でも大丈夫だった。/proc/cmdlineが…。
+なぜ？ bashならこれでも大丈夫だけど、grubでも大丈夫だった。/proc/cmdlineが…。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cat /proc/cmdline 
    BOOT_IMAGE=//vmlinuz-2.6.31.6 root=UUID=d53d33d3-a20f-4d08-8963-e386f730a3b1 ro nosmp irqpoll acpi=noirq quiet
@@ -34,9 +37,9 @@
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Unix/Linux, Debian, 
 .. tags::
 .. comments::
-
-

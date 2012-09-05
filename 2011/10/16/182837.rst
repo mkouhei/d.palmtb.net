@@ -1,117 +1,135 @@
-﻿Git本がようやく出版されます。
-################################
+Git本がようやく出版されます。
+=============================
+
+『 `Gitによるバージョン管理 <http://ssl.ohmsha.co.jp/cgi-bin/menu.cgi?ISBN=978-4-274-06864-5>`_ 』がようやく出版されることになりました。
 
 
-『Gitによるバージョン管理』がようやく出版されることになりました。
 
-.. image:: http://ecx.images-amazon.com/images/I/61RadqMWMBL._SL160_.jpg
-   :alt: Ｇｉｔによるバージョン管理
+
+
+`Ｇｉｔによるバージョン管理 <http://www.amazon.co.jp/exec/obidos/ASIN/4274068641/palmtb-22/ref=nosim/>`_
+
+
+
+
 
 この子はとても難産でした。どれくらい大変だったかは、原稿のリポジトリのgit logを見ると分かります。logと共に自分の過去を振り返ってみました。
 
+
+
+
 最初のコミット。
-********************************************
+----------------
 
 
 今から約3年前ですね。
 
-.. code-block:: none
 
-   $ git log --pretty=format:%h %ci %an %s --reverse
+.. code-block:: sh
+
+
+   $ git log --pretty=format:"%h %ci %an %s" --reverse
    a7f6736 2008-09-01 17:48:33 +0900 Nobuhiro Iwamatsu First commit
    (snip)
 
 
-このときは私はまだこの執筆には加わっていませんでした。というか、この時点ではまだ結婚もしておらず、Debian JP Projectにも参加していませんでした。 [#]_ 
+このときは私はまだこの執筆には加わっていませんでした。というか、この時点では `まだ結婚もしておらず <http://d.hatena.ne.jp/mkouhei/20081005/1223209041>`_ 、Debian JP Projectにも参加していませんでした。 [#]_ 
+
+
+
 
 Git本の執筆に参加。
-**************************************************
+-------------------
+
 
 Gitの初心者の立場 [#]_ から執筆に参加しない？と岩松さんに誘われて参加後、最初のコミットがこれ。
 
-.. code-block:: none
 
-   $ git log --reverse --pretty=format:%h %ci %an %s --author=Kouhei
+.. code-block:: sh
+
+
+   $ git log --reverse --pretty=format:"%h %ci %an %s" --author=Kouhei
    85dae47 2009-05-09 20:07:14 +0900 Kouhei Maeda add msysgit screen shot
    (snip)
 
 
-この時はKVMの記事の最終回用に、oVirtの検証を帰宅後夜中にやって、なかなか上手く行かずハマってヒーヒー言っていたころですね。
+この時は `KVMの記事の最終回 <http://www.atmarkit.co.jp/flinux/rensai/kvm03/kvm03a.html>`_ 用に、oVirtの検証を帰宅後夜中にやって、なかなか上手く行かずハマってヒーヒー言っていたころですね。
+
+
+
 
 小川さんが参加。
-********************************************
+----------------
 
 
-自身のブログにエントリを投稿されていましたが、レビュワーとして協力して頂いていた小川さんが執筆に参加して、最初のコミットがこれ。
+自身のブログに `エントリを投稿されていました <http://stnard.jp/2011/10/09/533/>`_ が、レビュワーとして協力して頂いていた小川さんが執筆に参加して、最初のコミットがこれ。
 
-.. code-block:: none
 
-   $ git log --reverse --pretty=format:%h %ci %an %s --author=OGAWA
+.. code-block:: sh
+
+
+   $ git log --reverse --pretty=format:"%h %ci %an %s" --author=OGAWA
    5dfcb23 2009-10-25 20:08:49 +0900 Shin-ichiro OGAWA Add user stories of development of Rails applications.
    (snip)
 
 
-ここまでの間に、CouchDB JPを立ち上げ、ヨメさんは最初の子供(通称こまめ)を稽留流産し、掻爬手術のすぐ後、ヨメさん置いて私はDeb Conf 参加 のため スペイン に行き、帰国後、こまめを新しい家族として迎えました。
+ここまでの間に、 `CouchDB JPを立ち上げ <http://d.hatena.ne.jp/mkouhei/20090624/1245778935>`_ 、ヨメさんは最初の子供(通称こまめ)を稽留流産し、掻爬手術のすぐ後、ヨメさん置いて私は `Deb <http://d.hatena.ne.jp/emkouhei/20090704/1246718826>`_   `Conf <http://d.hatena.ne.jp/emkouhei/20090723/1248295056>`_   `参加 <http://d.hatena.ne.jp/emkouhei/20090723/1248296269>`_   `のため <http://d.hatena.ne.jp/emkouhei/20090723/1248326697>`_   `スペイン <http://d.hatena.ne.jp/emkouhei/20090725/1248472352>`_   `に行き <http://d.hatena.ne.jp/emkouhei/20090726/1248590421>`_ 、帰国後、 `こまめを新しい家族として迎え <http://d.hatena.ne.jp/mkouhei/20090802/1249178713>`_ ました。
+
+
+
 
 そして2年後。
-**********************************
+-------------
 
 
 ようやく出版にされることになったのですが、編集で大変お世話になった森田さんによる最新のコミットがこれ。
 
-.. code-block:: none
 
-   $ git log --pretty=format:%h %ci %an %s
+.. code-block:: sh
+
+
+   $ git log --pretty=format:"%h %ci %an %s"
    5391850 2011-10-07 10:09:52 +0900 Hisashi Morita Adjust tag message with the tag name. Fix #629.
    (snip)
 
 
-ここまでの間に後から執筆に参加させて頂いた本が先に出版され、CouchDBの記事を書き、Debian JP Projectの会長になり、ここ数ヶ月では待望の第一子(通称おまめ)が安定期に入り、転職し、初の自動車を購入しました。2年半も経てばいろいろありますね。
+
+
+ここまでの間に `後から執筆に参加させて頂いた本が先に出版され <http://d.hatena.ne.jp/mkouhei/20100709/1278627172>`_ 、 `CouchDBの記事を書き <http://www.atmarkit.co.jp/fdb/rensai/09_couchdb/05/couchdb01.html>`_ 、 `Debian JP Projectの会長になり <http://d.hatena.ne.jp/mkouhei/20110417>`_ 、ここ数ヶ月では `待望の第一子(通称おまめ)が安定期 <http://d.hatena.ne.jp/mkouhei/20110927/1317061291>`_ に入り、 `転職 <http://d.hatena.ne.jp/emkouhei/20110811/1312993308>`_ し、 `初の自動車を購入 <http://d.hatena.ne.jp/mkouhei/20111004/1317656380>`_ しました。2年半も経てばいろいろありますね。
+
+
+
 私にとってはこの本は、Git初心者たる自分のために執筆して、他の三人のノウハウを学ぶための一冊だと思ってます。来週末には発売される予定なので、ぜひ書店でお手に取って購入して、Gitを使ってみてください。
 
 
+
+
+
+
 追記。
-**************
+------
 
 
 ちなみに、私のバージョン管理システムの利用経験は、
 
-* 日付付きのファイルのコピー(hoge.YYYYMMDD)
-* rcs
-* Git
+
+
+#. 日付付きのファイルのコピー(hoge.YYYYMMDD)
+
+#. rcs
+
+#. Git
 
 と、CVSやSubversionをすっ飛ばして、いきなりGitです。
 
 
 
-.. [#] ：JPに参加したのは結婚後の2008年11月。
-.. [#] ：Debian勉強会の資料は、LaTeXで書いて、Gitで管理しているので、勉強会資料を書いたり、印刷するために編集したり、するために最低限必要な程度にはGitを使っていました。
+
+.. [#] JPに参加したのは結婚後の2008年11月。
+.. [#] Debian勉強会の資料は、LaTeXで書いて、Gitで管理しているので、勉強会資料を書いたり、印刷するために編集したり、するために最低限必要な程度にはGitを使っていました。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Book, Git, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	おめでとうございます！
-
-	written by  popowa
-	10/17/2011 07:26:41
-	http://d.hatena.ne.jp/popowa/
-
-----
-
-Comment:
-
-	小室さん、レビューではお世話になりました。ありがとうございます！
-
-	written by  mkouhei
-	10/17/2011 08:23:37
-	http://d.hatena.ne.jp/mkouhei/
-

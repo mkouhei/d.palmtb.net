@@ -1,14 +1,14 @@
-﻿あと一回。
-##########
-
+あと一回。
+==========
 
 仕事帰りにまた髪の毛を刈ってきた。これで今年は残り一回。最後の一回は飛石連休のどこかだな。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

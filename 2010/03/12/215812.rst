@@ -1,28 +1,27 @@
-﻿今年の誕生日
-############
-
+今年の誕生日
+============
 
 昨日、ヨメが祝ってくれた。チーズケーキを作ってくれた。人生初のケーキ作りだったそうな。美味。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100311/20100311205537.jpg
-   :alt: f:id:mkouhei:20100311205537j:image
+
+.. image:: /img/20100311205537.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100311/20100311205834.jpg
-   :alt: f:id:mkouhei:20100311205834j:image
+.. image:: /img/20100311205834.jpg
 
 そしてプレゼントは手作りのフェルト製こまちゃんに、こまちゃん似の座布団。こまめづくし。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100311/20100311210453.jpg
-   :alt: f:id:mkouhei:20100311210453j:image
+
+.. image:: /img/20100311210453.jpg
 
 いいヨメです。いつもありがとう。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

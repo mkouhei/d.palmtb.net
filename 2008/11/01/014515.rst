@@ -1,18 +1,24 @@
-﻿chumbyのリストア方法
-##########################
-
+chumbyのリストア方法
+====================
 
 ちゃんとあったよ。良かった良かった。スタンドアロンモードで起動させるのに、ファイル忘れて起動させられなくなるヘマやらかしたのでどうしようか悩んでいたんだよ。これでまた遊べる。
+
 http://www.chumby.jp/help/faq/11
+
 http://fenrir.naruoka.org/archives/000672.html
+
 http://forum.chumby.com/viewtopic.php?pid=11745
+
+
+
 ちなみにspecial modeをロードするのはどうやら時間がかかるので、気長に待つしかない。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: gadget, 
 .. tags::
 .. comments::
-
-

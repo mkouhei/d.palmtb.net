@@ -1,19 +1,30 @@
-﻿MacBookのSid化は完了。
-################################
+MacBookのSid化は完了。
+======================
 
 
-先週、EtchからSidへのアップグレードに失敗していたが、とりあえず別の方法で解決したので、昨日一日寝ていたけどちゃんと寝るか。
+
+先週、EtchからSidへのアップグレードに失敗していたが、とりあえず `別の方法で解決した <http://www.palmtb.net/index.php?Debian%20Etch%28Testing%29%A4%AB%A4%E9Sid%A4%D8%A5%A2%A5%C3%A5%D7%A5%B0%A5%EC%A1%BC%A5%C9%A4%C7%A4%AD%A4%CA%A4%A4>`_ ので、昨日一日寝ていたけどちゃんと寝るか。
+
+
+
 最近、週末になると平日の睡眠不足の反動で丸一日眠っちゃうんだよなぁ…。
 
-.. image:: http://images-jp.amazon.com/images/P/B000KGB5F8.09.THUMBZZZ.jpg
-   :alt: Apple MacBook Core2 Duo2.0GHz/13.3TFT/1GB/120GB/SuperDrive DL/Gigabit/AMex/BT/DVI Black [MA701J/A]
 
 
 
 
-.. author:: mkouhei
-.. categories:: life, Debian, MacBook, 
+`Apple MacBook Core2 Duo2.0GHz/13.3TFT/1GB/120GB/SuperDrive DL/Gigabit/AMex/BT/DVI Black [MA701J/A] <http://www.amazon.co.jp/o/ASIN/B000KGB5F8/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, Debian, MacBook, 
 .. tags::
 .. comments::
-
-

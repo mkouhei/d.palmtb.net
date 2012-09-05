@@ -1,10 +1,13 @@
-﻿Multihost SSH wrapperによる複数ノードでのコマンド実行。
-############################################################################
+Multihost SSH wrapperによる複数ノードでのコマンド実行。
+=======================================================
+
+仕事で複数ノードから同時に別々のWebサーバに対してabで負荷を掛ける必要があったので、普段なら `dsh <http://www.netfort.gr.jp/~dancer/software/dsh.html.ja>`_ を使うところなのですが、複数ノードにコマンド発行できるサーバはあいにくCentOS 5.5でした。不幸な事に `tomahawk <https://github.com/oinume/tomahawk>`_ も導入されていませんでした。複数ノードに対してsshができるパッケージが無いかなと思って探してみたらちゃんとあるではありませんか。
 
 
-仕事で複数ノードから同時に別々のWebサーバに対してabで負荷を掛ける必要があったので、普段ならdshを使うところなのですが、複数ノードにコマンド発行できるサーバはあいにくCentOS 5.5でした。不幸な事にtomahawkも導入されていませんでした。複数ノードに対してsshができるパッケージが無いかなと思って探してみたらちゃんとあるではありませんか。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ yum search ssh
    (snip)
@@ -14,7 +17,9 @@
 
 特に依存関係もないFedora Projectがパッケージベンダーとなっているrpmパッケージです。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ rpm -qi mussh
    Name        : mussh                        Relocations: (not relocatable)
@@ -24,7 +29,7 @@
    Group       : Applications/System           Source RPM: mussh-0.7-1.el5.src.rpm
    Size        : 32686                            License: GPL
    Signature   : DSA/SHA1, Wed Jul 11 12:36:32 2007, Key ID 119cc036217521f6
-   Packager    : Fedora Project http://bugzilla.redhat.com/bugzilla
+   Packager    : Fedora Project <http://bugzilla.redhat.com/bugzilla>
    URL         : http://www.sourceforge.net/projects/mussh
    Summary     : Multihost SSH wrapper
    Description :
@@ -34,24 +39,36 @@
    more than once.
 
 
+
+
 この実体(/usr/bin/mussh)は単なるシェルスクリプトでした。なお、Debianにも同じパッケージ名musshで存在します。Sidの場合はバージョン1.0です。使い方はmanマニュアルとREADME, EXAMPLEを見れば分かりますが下記に例示しておきます。
 
+
+
+
 複数ノードからそれぞれ別のノードにabを掛ける。
-************************************************************************************************************************************
+----------------------------------------------
 
 
 この手のツールは、同じコマンドを同時に実行させてやることはできても、違うコマンドを実行させることができません。なので、実際にabを実行するノード上に次のようなワンライナーを用意してやります。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #!/bin/dash
    ab -k -c $1 -n $2 xxx.xxx.xxx.xxx/
 
 
 別のノードでは、IPアドレスを別のサーバのものにしたワンライナーを用意しておきます。1対1で対応していたので楽ですね。
+
+
+
 musshを導入したホストでは次のようなシェルスクリプトを用意します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #!/bin/sh
    
@@ -65,26 +82,30 @@ musshを導入したホストでは次のようなシェルスクリプトを用
    mussh -h user1@xxx.xxx.xxx.xxx user2@yyy.yyy.yyy.yyy zzz.zzz.zzz.zzz \
            -m3 -b \
            -i /home/user/test/id_rsa \
-           -c sh ab.sh $1 $2
+           -c "sh ab.sh $1 $2"
    }
    
    for i in $(seq $REQ_BEGIN $INCR $REQ_END)
    do
-   echo request: $i
-   func_mussh $CONN $i  log/ab-${i}-${DATE}.log
+   echo "request: $i"
+   func_mussh $CONN $i > log/ab-${i}-${DATE}.log
    sleep 10
    done
 
 
 
-* &#34;-h&#34;オプションでコマンドを実行させたいノードを半角スペース区切りで羅列します。ユーザが異なる場合はSSHラッパーなので上記のように&#34;user@&#34;をprefixで指定してやります
-* &#34;-mN&#34;で並列度を指定します。上記では3台のノードに対して同時に実行するために&#34;-m3&#34;と指定しています
-* &#34;-b&#34;をつけることで出力をノード毎にまとめてくれます。こうすると、関数func_musshでリダイレクトしている結果が、
+
+* "-h"オプションでコマンドを実行させたいノードを半角スペース区切りで羅列します。ユーザが異なる場合はSSHラッパーなので上記のように"user@"をprefixで指定してやります
+
+* "-mN"で並列度を指定します。上記では3台のノードに対して同時に実行するために"-m3"と指定しています
+
+* "-b"をつけることで出力をノード毎にまとめてくれます。こうすると、関数func_musshでリダイレクトしている結果が、
 
 
-.. code-block:: none
+.. code-block:: sh
 
-   user2@yyy.yyy.yyy.yyy: This is ApacheBench, Version 2.3 $Revision: 655654 $
+
+   user2@yyy.yyy.yyy.yyy: This is ApacheBench, Version 2.3 <$Revision: 655654 $>
    user2@yyy.yyy.yyy.yyy: Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
    user2@yyy.yyy.yyy.yyy: Licensed to The Apache Software Foundation, http://www.apache.org/
    (snip)
@@ -92,7 +113,7 @@ musshを導入したホストでは次のようなシェルスクリプトを用
    user2@yyy.yyy.yyy.yyy: 98%     20
    user2@yyy.yyy.yyy.yyy: 99%     33
    user2@yyy.yyy.yyy.yyy: 100%    421 (longest request)
-   user1@xxx.xxx.xxx.xxx: This is ApacheBench, Version 2.3 $Revision: 655654 $
+   user1@xxx.xxx.xxx.xxx: This is ApacheBench, Version 2.3 <$Revision: 655654 $>
    user1@xxx.xxx.xxx.xxx: Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
    user1@xxx.xxx.xxx.xxx: Licensed to The Apache Software Foundation, http://www.apache.org/
    user1@xxx.xxx.xxx.xxx: Benchmarking aaa.aaa.aaa.aaa (be patient)
@@ -103,24 +124,26 @@ musshを導入したホストでは次のようなシェルスクリプトを用
 
 のように対象ノード毎にまとめられた形で出力されます。
 
-* &#34;-i&#34;オプションを使うとSSH公開鍵認証の秘密鍵を指定します。これもOpenSSHのsshコマンドと同じですね
-* &#34;-c&#34;オプションで実行させたいコマンドを指定します。今回はseqコマンドでリクエスト数を10000ずつ増分させるようにループ処理しています。セミコロン&#34;;&#34;で区切れば複数コマンドを渡すこともできます
+* "-i"オプションを使うとSSH公開鍵認証の秘密鍵を指定します。これもOpenSSHのsshコマンドと同じですね
+
+* "-c"オプションで実行させたいコマンドを指定します。今回はseqコマンドでリクエスト数を10000ずつ増分させるようにループ処理しています。セミコロン";"で区切れば複数コマンドを渡すこともできます
+
+
 
 
 musshでできないこと
-************************************************
-
-musshでは対話形式のコマンドには対応していません。なので、visiblepwを有効にしてやっても使えないものは使えません。sudoを使いたければ、特定コマンドだけをパスワードなしで実行できるユーザを用意してやるか、mussh自体がシェルスクリプトなのでsudo対応できるようにしてやるようにパッチでも書くと良いかもしれませんが、そもそもsudoで実行する必要があるようなコマンドをリモートホストから実行する、という運用自体が微妙ですね…。良い案があれば教えてください。 [#]_ 
+-------------------
 
 
-
-.. [#] ：セキュアOSを使う、という以外のワークアラウンドでw。
+musshでは対話形式のコマンドには対応していません。なので、 `visiblepwを有効にしてやっても <http://d.hatena.ne.jp/akuwano/20120302>`_ 使えないものは使えません。sudoを使いたければ、特定コマンドだけをパスワードなしで実行できるユーザを用意してやるか、mussh自体がシェルスクリプトなのでsudo対応できるようにしてやるようにパッチでも書くと良いかもしれませんが、そもそもsudoで実行する必要があるようなコマンドをリモートホストから実行する、という運用自体が微妙ですね…。良い案があれば教えてください。 [#]_ 
 
 
 
-.. author:: mkouhei
+
+.. [#] セキュアOSを使う、という以外のワークアラウンドでw。
+
+
+.. author:: default
 .. categories:: Unix/Linux, Debian, 
 .. tags::
 .. comments::
-
-

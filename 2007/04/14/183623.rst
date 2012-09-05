@@ -1,14 +1,14 @@
-﻿PASMOって便利だな。
-########################
+PASMOって便利だな。
+===================
+
+と思ったのは、 `利用履歴をインターネットで見られる <https://www.pasmo-mypage.jp/LoginWebForm.aspx>`_ ことを知ったから。推奨環境となっているが、Debian GNU/Linux Sid＆iceweaselでも問題なく利用できる。
 
 
-と思ったのは、利用履歴をインターネットで見られることを知ったから。推奨環境となっているが、Debian GNU/Linux Sid＆iceweaselでも問題なく利用できる。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

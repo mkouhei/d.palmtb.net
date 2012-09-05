@@ -1,16 +1,24 @@
-﻿どこかで見た風景だと思ったら。
-##############################
-
+どこかで見た風景だと思ったら。
+==============================
 
 上野の文楽じゃないか。
+
 http://r25.jp/b/report/a/report_details/id/110000007111?vos=dr25rss000000000001
-より大きな地図で メシと酒のうまい店 を表示
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+.. raw:: html
+
+    <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps/ms?ie=UTF8&amp;hl=ja&amp;om=1&amp;msa=0&amp;msid=116353817628604507840.0000011240131ae54a00c&amp;ll=35.710455,139.774906&amp;spn=0.001525,0.00228&amp;z=18&amp;output=embed"></iframe><br /><small>より大きな地図で <a href="http://maps.google.com/maps/ms?ie=UTF8&amp;hl=ja&amp;om=1&amp;msa=0&amp;msid=116353817628604507840.0000011240131ae54a00c&amp;ll=35.710455,139.774906&amp;spn=0.001525,0.00228&amp;z=18&amp;source=embed" style="color:#0000FF;text-align:left">メシと酒のうまい店</a> を表示</small>
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

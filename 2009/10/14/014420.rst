@@ -1,18 +1,20 @@
-﻿こまめでいっぱい。
-##################
-
+こまめでいっぱい。
+==================
 
 これで仕事中もこまめで満たされます。
 
-.. image:: http://farm3.static.flickr.com/2539/4009001066_cec4e99783_o.png
-   :alt: komame_wall1
+
+.. image:: /img/4009001066_cec4e99783_o.png
+   :target: http://www.flickr.com/photos/41853584@N06/4009001066/
 
 
 
 
-.. author:: mkouhei
-.. categories:: cat, 
+
+
+
+
+.. author:: default
+.. categories:: ねこ, 
 .. tags::
 .. comments::
-
-

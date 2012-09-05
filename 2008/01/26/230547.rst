@@ -1,22 +1,24 @@
-﻿輝度が調節できないと思ったら…。
-################################
+輝度が調節できないと思ったら…。
+================================
 
 
+.. code-block:: sh
 
-.. code-block:: none
 
    $ cat /proc/acpi/video/GRFX/LCD1/brightness
-   &lt;not supported
+   <not supported>
 
 
 え？サポートしてないとは…。Hotkeyで調節できないのは、そもそもこれがダメだからなのか。/procじゃなくて、/sysにも同じようなのあるのかな。
-ググってみたら、R4では/sys/hotkey/brightness経由で調整できるようにしている英国人がいるな。参考にしてみるか。
+
+ググってみたら、 `R4では/sys/hotkey/brightness経由で調整できるようにしている英国人がいる <http://www.laohu.co.uk/r4/>`_ な。参考にしてみるか。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, Debian, 
 .. tags::
 .. comments::
-
-

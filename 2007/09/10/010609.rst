@@ -1,19 +1,17 @@
-﻿シンボルず。
-############
-
+シンボルず。
+============
 
 最近のハマり。MEGUMIが他の番組よりも妙にエロい [#]_ 。そして『じじょうのうた』サイコー。
+
 http://www.tv-tokyo.co.jp/symbols/
 
 
 
-.. [#] ：特にシャツ
+
+.. [#] 特にシャツ
 
 
-
-.. author:: mkouhei
-.. categories:: scribbles, 
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

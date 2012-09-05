@@ -1,28 +1,38 @@
-﻿あけましておめでとうございます。
-################################
-
+あけましておめでとうございます。
+================================
 
 一年の振り返りをしないまま、年が明けました。まぁ昨年も個人的にはいろいろありましたが、それは胸のうちに秘めて、その反省も踏まえて今年はいろんな意味で「動」の年にしたいなと思います。
 
+
+
+
+
 さて、昨年同様今年の年賀状の絵柄はやっぱりこまちゃんです。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110101/20110101120748.png
-   :alt: f:id:mkouhei:20110101120748p:image
+
+.. image:: /img/20110101120748.png
+
+
+
 
 
 でも、こんなに可愛いこまちゃんも、実はこんなに目付き悪かったのは内緒の話。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20101205/20101205111726.jpg
-   :alt: f:id:mkouhei:20101205111726j:image
+
+.. image:: /img/20101205111726.jpg
+
+
+
 
 
 今年もよろしくお願いします。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

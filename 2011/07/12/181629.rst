@@ -1,127 +1,149 @@
-﻿こまちゃん監視システムをPicasaからCouchDBに切り替えた。
-####################################################################
+こまちゃん監視システムをPicasaからCouchDBに切り替えた。
+=======================================================
+
+3.11の震災をきっかけに、 `こまちゃん監視サーバを構築しました <http://d.hatena.ne.jp/mkouhei/20110314/1300038462>`_ が、運用しはじめて問題が３つほど出てきました。
 
 
-3.11の震災をきっかけに、こまちゃん監視サーバを構築しましたが、運用しはじめて問題が３つほど出てきました。
 
 * 写真のアップロード先をPicasaにしていましたが、1アルバムへのアップロード数の上限が1000ファイルまでと少ない
 
-* こまちゃんが写らないときは、30分毎のスナップショットだけなので問題ありませんが、写る場合は数秒で数十枚は撮影されます。なので写る場合の時間当たりの平均枚数は100-200枚になるため、すぐに上限に達してしまいます
-* そのためアップロードとは別に定期的に削除が必要でした
+
+  * こまちゃんが写らないときは、30分毎のスナップショットだけなので問題ありませんが、写る場合は数秒で数十枚は撮影されます。なので写る場合の時間当たりの平均枚数は100-200枚になるため、すぐに上限に達してしまいます
+
+  * そのためアップロードとは別に定期的に削除が必要でした
 
 
 
 
 * 一度にアップロードまたは削除するファイル数が多いとエラーになる
 
-* これはアップロード用に使っているgoogleclだけでなく、webブラウザ経由でも同じ問題です
-* また、googleclでは写真の検索が期待値通りにならない、という問題もあります [#]_ 
+
+  * これはアップロード用に使っているgoogleclだけでなく、webブラウザ経由でも同じ問題です
+
+  * また、googleclでは写真の検索が期待値通りにならない、という問題もあります [#]_ 
 
 
 
 
 * 致命的なのは、ヨメがGoogleアカウントのID、パスワードを覚えないので、 「こまちゃんの写真を見られない」と頻繁に言われる
 
-* 原因はキャッシュが切れてログアウトされているのに、ログインしないままアクセスしたり、ログインしてもアクセス権限のないID, パスワードを入力していたりといったところです。 [#]_ 
-* これらはシステム的な問題ではありませんが、ヨメがログインとかを気にせずに使えるようにする必要があります。
 
-* 普通の人には複数のアカウントを管理して、パスワードも別にしておいて、というのは結構敷居が高いのですね。
+  * 原因はキャッシュが切れてログアウトされているのに、ログインしないままアクセスしたり、ログインしてもアクセス権限のないID, パスワードを入力していたりといったところです。 [#]_ 
+
+  * これらはシステム的な問題ではありませんが、ヨメがログインとかを気にせずに使えるようにする必要があります。
 
 
+    * 普通の人には複数のアカウントを管理して、パスワードも別にしておいて、というのは結構敷居が高いのですね。
 
 
 
 上記の問題をクリアして、簡単にDBとアプリをコピーできるようにする必要があるので、データのアップロード先をPicasaからCouchDBに変更しました。
 
+
+
+
 アップロード先をCouchDBに変更する上での仕様
-**********************************************************************************************************************
+-------------------------------------------
 
 
 ざっくりやること決めて、最低限の機能を実装したので、まとめてみました。
 
+
+
+
 * こまちゃん監視カメラで取得した写真画像を、撮影された時刻と一緒にアップロードする
+
 * 時間単位でサムネイルをプレビューできるようにする
+
 * 定期的なスナップショットは不要とする
+
 * 撮影された時間単位で写真の枚数を表示し、過去に遡る形で10件(断続的に10時間分)をリストする
+
 * 指定したサムネイルから実際の画像ファイルを表示する
 
-という感じです。詳細は次のとおりです。 ソースコードはPicasaの時と同様に、githubに晒しています。 
+
+
+という感じです。詳細は次のとおりです。 ソースコードはPicasaの時と同様に、 `github <https://github.com/CouchDB-JP/watchcat>`_ に晒しています。 
+
+
+
 
 アップロード処理
-============================================
+^^^^^^^^^^^^^^^^
+
 
 
 
 * オリジナル画像からサムネイルを生成する
 
 
-.. code-block:: none
+.. code-block:: sh
 
-      &#39;&#39;&#39;Generating thumbnail.&#39;&#39;&#39;
+
+      '''Generating thumbnail.'''
        def generateThumbnail(self):
            import Image, os
-           image = Image.open(self.filename,mode=&#39;r&#39;)
+           image = Image.open(self.filename,mode='r')
            image.thumbnail([60,60])
-           self.thumbnail_name = os.path.splitext(self.filename)[0] + _s.jpg
+           self.thumbnail_name = os.path.splitext(self.filename)[0] + "_s.jpg"
            image.save(self.thumbnail_name)
-
 
 
 * オリジナル画像とサムネイルは撮影時刻などのメタ情報を紐付けるため、CouchDBのStandaloneの添付ファイルを使わず、ドキュメントのインラインの添付ファイルにする
 
 
-.. code-block:: none
+.. code-block:: sh
 
-       &#39;&#39;&#39;generate dict as document.&#39;&#39;&#39;
+
+       '''generate dict as document.'''
        def generateDict(self):
            self.doc = {
    (snip)
-               photo:self.filename,
-               thumbnail:self.thumbnail_name,
-               _attachments:{
+               "photo":self.filename,
+               "thumbnail":self.thumbnail_name,
+               "_attachments":{
                    self.filename:
                        {
-                       content_type:image/jpeg,
-                       data:self.image_base64
+                       "content_type":"image/jpeg",
+                       "data":self.image_base64
                        },
                    self.thumbnail_name:
                        {
-                       content_type:image/jpeg,
-                       data:self.thumbnail_base64
+                       "content_type":"image/jpeg",
+                       "data":self.thumbnail_base64
                        }
                    }
                }
 
 
 
-
-* インラインの添付ファイルにするため、画像ファイルはbase64にエンコードする
-
+  * インラインの添付ファイルにするため、画像ファイルはbase64にエンコードする
 
 
-.. code-block:: none
+.. code-block:: sh
 
-       &#39;&#39;&#39;Encoding photo image file to base64 ascii strings.&#39;&#39;&#39;
+
+       '''Encoding photo image file to base64 ascii strings.'''
        def encodeBase64(self, image):
            import base64
-           return base64.encodestring(open(image,rb).read())
+           return base64.encodestring(open(image,"rb").read())
 
 
 
 * 時刻情報などのメタ情報は、画像のファイル名から取得する
 
-* 当初、ctimeから取得しようとしましたが、撮影された時刻と、ファイルが生成されてファイルシステムに書き込まれた時刻に30-60秒ほどのタイムラグがあるので、撮影された時刻が正確なファイル名から取得することにしました
+
+  * 当初、ctimeから取得しようとしましたが、撮影された時刻と、ファイルが生成されてファイルシステムに書き込まれた時刻に30-60秒ほどのタイムラグがあるので、撮影された時刻が正確なファイル名から取得することにしました
 
 
+.. code-block:: sh
 
 
-.. code-block:: none
-
-       &#39;&#39;&#39;Getting date info from filename.&#39;&#39;&#39;
+       '''Getting date info from filename.'''
        def getDate(self):
            import re
-           t = re.match(&#39;^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})&#39;,
-                        re.match(&#39;(\d+)-(\d+)-(\d+)-(\d).jpg&#39;, self.filename)
+           t = re.match('^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})',
+                        re.match('(\d+)-(\d+)-(\d+)-(\d).jpg', self.filename)
                         .group(2))
            self.year = t.group(1)
            self.mon = t.group(2)
@@ -134,60 +156,78 @@
 
 * メタ情報とbase64にエンコードした画像をJSONにする
 
-* 1画像=1ドキュメントです
+
+  * 1画像=1ドキュメントです
 
 
 * まとめて複数画像をアップロードするため、CouchDBの_bulk_docs APIを使うために、単一のJSONオブジェクトにする
 
 
-.. code-block:: none
+.. code-block:: sh
 
-       &#39;&#39;&#39;Serializing JSON for bulk_docs.&#39;&#39;&#39;
+
+       '''Serializing JSON for bulk_docs.'''
        def serializedJson(self):
            import json
            self.bulk_docs = json.JSONEncoder().encode({
-                   all_or_nothing:true,
-                   docs:self.docs
+                   "all_or_nothing":"true",
+                   "docs":self.docs
                    })
-
 
 
 * JSON化済みの画像は重複アップロードを防ぐために、削除する 
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
       # remove jpg files.
                    os.remove(self.filename)
                    os.remove(self.thumbnail_name)
 
 
-上記のJSONに変換するための処理のコードはこちらです。
+
+
+上記のJSONに変換するための処理のコードは `こちら <https://github.com/CouchDB-JP/watchcat/blob/master/with-couchdb/uploader/bulkphotos.py>`_ です。
+
+
+
 次に、実際のファイルをアップロードするための処理は今回はcurlコマンドで_bulk_docs APIにPOSTするだけにしました。
 
 * 複数の画像をまとめたJSONをアップロードする(_bulk_docs)
 
 
-.. code-block:: none
+.. code-block:: sh
 
-   curl -X POST -H &#39;Content-Type:application/json&#39; -d @${JSON} \
+
+   curl -X POST -H 'Content-Type:application/json' -d @${JSON} \
    	    http://${USER}:${PASS}@${HOSTNAME}/${DB}/_bulk_docs
 
 
-コードはこちら。
+
+
+コードは `こちら <https://github.com/CouchDB-JP/watchcat/blob/master/with-couchdb/uploader/upload.sh>`_ 。
+
+
+
 
 CouchDBの処理
-============================
+^^^^^^^^^^^^^
 
 
 CouchDB側はデータストア兼画像ビューワーなので、前述の通り、撮影された時間帯のリストアップ、時間帯毎にサムネイルの一覧表示、選んだサムネイルを拡大表示、前後に撮影した写真の直接表示ができればOKです。
 
 
+
+
+
 * ドキュメントの年(year)、月(mon)、日(mday)、時(hour)の配列をキーに、_view/dateで一時間当たりの画像の総数を取得する
 
-with-couchdb/petviewer/views/date/map.js
+`with-couchdb/petviewer/views/date/map.js <https://github.com/CouchDB-JP/watchcat/blob/master/with-couchdb/petviewer/views/date/map.js>`_ 
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    function(doc) {
        if (doc.photo) {
@@ -199,12 +239,14 @@ with-couchdb/petviewer/views/date/map.js
 
 
 
-* reduce処理で一時間当たりのMap処理の結果の総数を算出する
+
+  * reduce処理で一時間当たりのMap処理の結果の総数を算出する
+
+`with-couchdb/petviewer/views/date/reduce.js <https://github.com/CouchDB-JP/watchcat/blob/master/with-couchdb/petviewer/views/date/reduce.js>`_ 
 
 
-with-couchdb/petviewer/views/date/reduce.js
+.. code-block:: sh
 
-.. code-block:: none
 
    function(keys,values) {
        return sum(values);
@@ -212,9 +254,12 @@ with-couchdb/petviewer/views/date/reduce.js
 
 
 追記
+
 CouchDBのReduce処理には組み込み関数が用意されているので、上記のようにsumを行う場合は、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    _sum
 
@@ -222,12 +267,14 @@ CouchDBのReduce処理には組み込み関数が用意されているので、�
 とするだけでも大丈夫です [#]_ 。他には基本的な統計情報を出すための_stat関数も用意されています。
 
 
-* MapReduce処理の結果から時間帯毎に画像の件数を取得し、mustacheとjQuery Mobileを使ってリンクリストにする [#]_ 
+
+  * MapReduce処理の結果から時間帯毎に画像の件数を取得し、mustacheとjQuery Mobileを使ってリンクリストにする [#]_ 
+
+`with-couchdb/petviewer/lists/hours.js <https://github.com/CouchDB-JP/watchcat/blob/master/with-couchdb/petviewer/lists/hours.js>`_ 
 
 
-with-couchdb/petviewer/lists/hours.js
+.. code-block:: sh
 
-.. code-block:: none
 
    (snip)
        var datalist = [];
@@ -244,28 +291,36 @@ with-couchdb/petviewer/lists/hours.js
    (snip)
 
 
-with-couchdb/petviewer/templates/hours.html
 
-.. code-block:: none
+
+`with-couchdb/petviewer/templates/hours.html <https://github.com/CouchDB-JP/watchcat/blob/master/with-couchdb/petviewer/templates/hours.html>`_ 
+
+
+.. code-block:: sh
+
 
    (snip)
-         div data-role=content
-           ul data-role=listview
-             \{\{#datalist\}\}
-             lia href=../hour/thumbnail?key=%22\{\{year\}\}\{\{mon\}\}\{\{mday\}\}\{\{hour\}\}%22 data-ajax=false\{\{mon\}\}/\{\{mday\}\} \{\{hour\}\}時/aspan class=ui-li-co
-   unt\{\{num\}\}/span/li
-             \{\{/datalist\}\}
-           /ul
-         /div
+         <div data-role="content">
+           <ul data-role="listview">
+             {{#datalist}}
+             <li><a href="../hour/thumbnail?key=%22{{year}}{{mon}}{{mday}}{{hour}}%22" data-ajax="false">{{mon}}/{{mday}} {{hour}}時</a><span class="ui-li-co
+   unt">{{num}}</li>
+             {{/datalist}}
+           </ul>
+         </div>
    (snip)
 
 
 
-* &#34;YYYYMMDDhh&#34;を検索キーとして_view/thumbnailを取得する
 
-with-couchdb/petviewer/views/thumbnail/map.js
 
-.. code-block:: none
+* "YYYYMMDDhh"を検索キーとして_view/thumbnailを取得する
+
+`with-couchdb/petviewer/views/thumbnail/map.js <https://github.com/CouchDB-JP/watchcat/blob/master/with-couchdb/petviewer/views/thumbnail/map.js>`_ 
+
+
+.. code-block:: sh
+
 
    function(doc) {
        if(doc.photo) {
@@ -274,12 +329,13 @@ with-couchdb/petviewer/views/thumbnail/map.js
    }
 
 
-
 * _view/thumbnailの結果を_list/hourに渡して、mustacheでサムネイルの一覧画面を生成する
 
-with-couchdb/petviewer/lists/hour.js
+`with-couchdb/petviewer/lists/hour.js <https://github.com/CouchDB-JP/watchcat/blob/master/with-couchdb/petviewer/lists/hour.js>`_ 
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    (snip)
        var datalist = [];
@@ -301,29 +357,32 @@ with-couchdb/petviewer/lists/hour.js
    }
 
 
-with-couchdb/petviewer/templates/hour.html
+`with-couchdb/petviewer/templates/hour.html <https://github.com/CouchDB-JP/watchcat/blob/master/with-couchdb/petviewer/templates/hour.html>`_ 
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    (snip)
-         div data-role=content
-             \{\{#datalist\}\}
-             span
-               a href=../../_show/photo/\{\{_id\}\} data-ajax=false
-                 img id=thumbnail src=../../../../\{\{_id\}\}/\{\{thumbnail\}\}
-                      alt=\{\{year\}\}/\{\{mon\}\}/\{\{mday\}\} \{\{hour\}\}:\{\{min\}\}:\{\{sec\}\}//a
-             /span
-             \{\{/datalist\}\}
-         /div
+         <div data-role="content">
+             {{#datalist}}
+             <span>
+               <a href="../../_show/photo/{{_id}}" data-ajax="false">
+                 <img id="thumbnail" src="../../../../{{_id}}/{{thumbnail}}"
+                      alt="{{year}}/{{mon}}/{{mday}} {{hour}}:{{min}}:{{sec}}"/></a>
+             
+             {{/datalist}}
+         </div>
    (snip)
-
 
 
 * photo showで、画像の表示を行う
 
-with-couchdb/petviewer/shows/photo.js
+`with-couchdb/petviewer/shows/photo.js <https://github.com/CouchDB-JP/watchcat/blob/master/with-couchdb/petviewer/shows/photo.js>`_ 
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    function (doc, req) {
    (snip)
@@ -341,26 +400,91 @@ with-couchdb/petviewer/shows/photo.js
 
 
 
+
 * 画像の表示画面では時系列で前後の画像表示画面に直接遷移できるようにする
 
-* ドキュメントには時系列で前後のドキュメントの情報は持っていません。なので、JavaScriptで、時刻(YYYYMMDDhh)をキーに_view/thumbnailから一時間あたりの全ドキュメントのdoc._idをJSONで取得し、それから前後の写真をそれぞれ指すdoc._idを配列として保持し、表示している写真のdoc._idをキーに前後を検索し、リンクを作ります
+
+  * ドキュメントには時系列で前後のドキュメントの情報は持っていません。なので、JavaScriptで、時刻(YYYYMMDDhh)をキーに_view/thumbnailから一時間あたりの全ドキュメントのdoc._idをJSONで取得し、それから前後の写真をそれぞれ指すdoc._idを配列として保持し、表示している写真のdoc._idをキーに前後を検索し、リンクを作ります
+
+`with-couchdb/petviewer/_attachments/js/pointer.js <https://github.com/CouchDB-JP/watchcat/blob/master/with-couchdb/petviewer/_attachments/js/pointer.js>`_ 
 
 
-
-with-couchdb/petviewer/_attachments/js/pointer.js
-
+.. code-block:: sh
 
 
-.. [#] ：ドキュメントどおりの正規表現の結果にならないという…。
-.. [#] ：Googleアカウントだけでなく、Google Appsのアカウントもあるのです。
-.. [#] ：というか、このブログを書いた後に、.. [#] を読んで知りました。
-.. [#] ：mustacheとjQuery Mobileについては、.. [#] を参照のこと。
+       function getSearchKey() {
+           return $('input#searchkey').val();
+       }
+   
+       function basename(path) {
+           return path.replace(/\\/g,'/').replace( /.*\//, '' );
+       }
+   
+       function getDocId () {
+           return basename(window.location.pathname);
+       }
+   
+       function getJsonUri() {
+           return "../../_view/thumbnail?key=%22" + getSearchKey() + "%22";
+       }
+   
+       function getThumbnailListUri() {
+           return "../../_list/hour/thumbnail?key=%22" + getSearchKey() + "%22";
+       }
+   
+       $.getJSON(getJsonUri(),
+                 function(data) {
+   
+                     var id = [];
+                     var nextid = [];
+                     var previd = [''];
+                     var idlist = new Array();
+   
+                     // parse JSON.
+                     $.each(data, function(key, val) {
+   
+                         if (data.rows) {
+                             $.each(val, function(key2, val2) {
+   
+                                 $.each(val2, function(key3, val3) {
+   
+                                     if (key3 == "id") {
+                                         id.push(val3);
+                                     }
+                                 });
+                             });
+                         }
+                     });
+   
+                     // next id list.
+                     nextid = id.slice(0);
+                     nextid.shift();
+                     nextid.push('');
+   
+                     // previous id list.
+                     previd = previd.concat(id.slice(0));
+                     previd.pop();
+   
+                     // Array idlist is [["id", "previd", "nextid"], [],...]
+                     for (var i in id) {
+                         idlist.push([
+                             id[i], 
+                             previd[i],
+                             nextid[i]
+                         ]);
+                     }
+   
+                     // search previd, nextid by id.
+                     for (var i = 0; i < idlist 
+   
+
+.. [#] ドキュメントどおりの正規表現の結果にならないという…。
+.. [#] Googleアカウントだけでなく、Google Appsのアカウントもあるのです。
+.. [#] というか、このブログを書いた後に、 `Writing and Querying MapReduce Views in CouchDB <http://oreilly.com/catalog/0636920018247>`_ を読んで知りました。
+.. [#] mustacheとjQuery Mobileについては、 `以前のエントリ <http://d.hatena.ne.jp/CouchDB-JP/20110103/1294066468>`_ を参照のこと。
 
 
-
-.. author:: mkouhei
-.. categories:: CouchDB, cat, Dev, 
+.. author:: default
+.. categories:: CouchDB, ねこ, Dev, 
 .. tags::
 .. comments::
-
-

@@ -1,28 +1,29 @@
-﻿MacBook Airにリモコン。
-##################################
-
+MacBook Airにリモコン。
+=======================
 
 コンパイルするのに必要なパッケージを忘れて困ったので、備忘のためメモ。
 
 * libxt-dev
 
-* libice-dev
-* libsm-dev
+
+  * libice-dev
+
+  * libsm-dev
 
 
 * libxtst-dev
 
-* x11proto-record-dev
 
-
+  * x11proto-record-dev
 
 でもそのまんまコンパイルしただけでは、Airでは動かなかったので、これから使えるようにするか。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, MacBook, 
 .. tags::
 .. comments::
-
-

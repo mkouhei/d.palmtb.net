@@ -1,22 +1,25 @@
-﻿/etc/modprobe.d/arch/以下は変更しちゃアカンようだ。
-########################################################################
-
+/etc/modprobe.d/arch/以下は変更しちゃアカンようだ。
+===================================================
 
 先日のHack Cafeで実行した下記コマンドの結果による不具合。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd /etc/modprobe.d/
-   $ for i in `find -type f ! -name *.conf`; do sudo mv $i{,.conf} ; done
+   $ for i in `find -type f ! -name "*.conf"`; do sudo mv $i{,.conf} ; done
 
 
 これを実行していたせいで、initramfsの作成がうまく行かないようだ。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get update
    (snip)
-   E: dpkg was interrupted, you must manually run &#39;dpkg --configure -a&#39; to correct the problem.
+   E: dpkg was interrupted, you must manually run 'dpkg --configure -a' to correct the problem.
    $ sudo dpkg --configure -a
    menu のトリガを処理しています ...
    initramfs-tools (0.93.2) を設定しています ...
@@ -30,7 +33,9 @@
 
 仕方ないので、symlink張っておいた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd /etc/modprobe.d/arch
    $ sudo ln -s i386.conf i386
@@ -40,9 +45,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: 
 .. tags::
 .. comments::
-
-

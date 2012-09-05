@@ -1,10 +1,11 @@
-﻿LaTeXでハイパーリンク。
-############################
-
+LaTeXでハイパーリンク。
+=======================
 
 HTMLのa要素と同じようなハイパーリンクを張るためにはhyperrefパッケージで、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    \href{url}{text}
 
@@ -13,9 +14,10 @@ HTMLのa要素と同じようなハイパーリンクを張るためにはhyperr
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: TeX, 
 .. tags::
 .. comments::
-
-

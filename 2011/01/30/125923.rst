@@ -1,31 +1,36 @@
-﻿ssh-copy-idコマンド便利。
-####################################
-
+ssh-copy-idコマンド便利。
+=========================
 
 このコマンドを知らなくて、いつもログイン後に.ssh/authorized_keysに公開鍵を登録していた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ ls ~/.ssh/id_rsa-hoge*
    .ssh/id_rsa-hoge  .ssh/id_rsa-hoge.pub
    $ ssh-copy-id -i ~/.ssh/id_rsa-hoge user@targethost
 
 
+
+
 ~/.ssh/authorized_keysが既に存在する場合、ファイルの最後に追記するので、ファイルの最後が改行になっていないと、最後に登録した公開鍵に連結されてしまうそうな。 [#]_ 
 
-.. image:: http://ecx.images-amazon.com/images/I/41GJBSC36XL._SL160_.jpg
-   :alt: 実用SSH 第2版―セキュアシェル徹底活用ガイド
 
 
 
 
-.. [#] ：実用SSH p.27参照。
+`実用SSH 第2版―セキュアシェル徹底活用ガイド <http://www.amazon.co.jp/exec/obidos/ASIN/4873112877/palmtb-22/ref=nosim/>`_
 
 
 
-.. author:: mkouhei
+
+
+
+.. [#] 実用SSH p.27参照。
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

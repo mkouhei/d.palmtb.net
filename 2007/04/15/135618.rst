@@ -1,15 +1,16 @@
-﻿午後Ⅰも
-########
-
+午後Ⅰも
+========
 
 簡単だった。やはり問題は午前Ⅱの小論文だなぁ。
+
 ところでシステム管理の受験者、何故か年齢層が高いなぁ。w
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

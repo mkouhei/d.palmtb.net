@@ -1,14 +1,14 @@
-﻿右後頭部が痛い。
-################
-
+右後頭部が痛い。
+================
 
 昨晩から時々ズキッとする痛みがある。咳すると響く。なんだろうな…。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

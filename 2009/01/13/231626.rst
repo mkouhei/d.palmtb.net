@@ -1,64 +1,75 @@
-﻿Xを落とすとappletouchが使えなくなる。
-################################################
-
+Xを落とすとappletouchが使えなくなる。
+=====================================
 
 黒MacBookをヨメとのID切り替えのためにgdmのログアウト・ログインを行う。するとXももれなく再起動してくれる。Xを再起動かけると、タッチパッドが使えなくなる。
+
+
+
 最初の起動時のログ
 
-.. code-block:: none
 
-   (WW) default pointer: No Device specified, looking for one...
-   (II) default pointer: Setting Device option to /dev/input/mice
-   (--) default pointer: Device: /dev/input/mice
-   (==) default pointer: Protocol: Auto
-   () Option CorePointer
-   () default pointer: always reports core events
-   (==) default pointer: Emulate3Buttons, Emulate3Timeout: 50
-   () default pointer: ZAxisMapping: buttons 4 and 5
-   () default pointer: Buttons: 9
-   () default pointer: Sensitivity: 1
-   () Option CoreKeyboard
-   () Generic Keyboard: always reports core events
-   () Option Protocol standard
-   () Generic Keyboard: Protocol: standard
-   () Option AutoRepeat 500 30
-   () Option XkbRules xorg
-   () Generic Keyboard: XkbRules: xorg
-   () Option XkbModel pc104
-   () Generic Keyboard: XkbModel: pc104
-   () Option XkbLayout us
-   () Generic Keyboard: XkbLayout: us
-   () Option CustomKeycodes off
-   () Generic Keyboard: CustomKeycodes disabled
-   (II) evaluating device (default pointer)
-   (II) XINPUT: Adding extended input device default pointer (type: MOUSE)
+.. code-block:: sh
+
+
+   (WW) <default pointer>: No Device specified, looking for one...
+   (II) <default pointer>: Setting Device option to "/dev/input/mice"
+   (--) <default pointer>: Device: "/dev/input/mice"
+   (==) <default pointer>: Protocol: "Auto"
+   (**) Option "CorePointer"
+   (**) <default pointer>: always reports core events
+   (==) <default pointer>: Emulate3Buttons, Emulate3Timeout: 50
+   (**) <default pointer>: ZAxisMapping: buttons 4 and 5
+   (**) <default pointer>: Buttons: 9
+   (**) <default pointer>: Sensitivity: 1
+   (**) Option "CoreKeyboard"
+   (**) Generic Keyboard: always reports core events
+   (**) Option "Protocol" "standard"
+   (**) Generic Keyboard: Protocol: standard
+   (**) Option "AutoRepeat" "500 30"
+   (**) Option "XkbRules" "xorg"
+   (**) Generic Keyboard: XkbRules: "xorg"
+   (**) Option "XkbModel" "pc104"
+   (**) Generic Keyboard: XkbModel: "pc104"
+   (**) Option "XkbLayout" "us"
+   (**) Generic Keyboard: XkbLayout: "us"
+   (**) Option "CustomKeycodes" "off"
+   (**) Generic Keyboard: CustomKeycodes disabled
+   (II) evaluating device (<default pointer>)
+   (II) XINPUT: Adding extended input device "<default pointer>" (type: MOUSE)
    (II) evaluating device (Generic Keyboard)
-   (II) XINPUT: Adding extended input device Generic Keyboard (type: KEYBOARD)
-   (--) default pointer: PnP-detected protocol: ExplorerPS/2
-   (II) default pointer: ps2EnableDataReporting: succeeded
-   (II) LoadModule: synaptics
+   (II) XINPUT: Adding extended input device "Generic Keyboard" (type: KEYBOARD)
+   (--) <default pointer>: PnP-detected protocol: "ExplorerPS/2"
+   (II) <default pointer>: ps2EnableDataReporting: succeeded
+   (II) LoadModule: "synaptics"
    (II) Loading /usr/lib/xorg/modules/input//synaptics_drv.so
-   (II) Module synaptics: vendor=X.Org Foundation
+   (II) Module synaptics: vendor="X.Org Foundation"
            compiled for 4.3.99.902, module version = 1.0.0
            Module class: X.Org XInput Driver
            ABI class: X.Org XInput driver, version 2.0
    (II) Synaptics touchpad driver version 0.14.6 (1406)
    (--) appletouch auto-dev sets device to /dev/input/event12
-   () Option Device /dev/input/event12
+   (**) Option "Device" "/dev/input/event12"
    (--) appletouch touchpad found
-   () appletouch: always reports core events
-   (II) XINPUT: Adding extended input device appletouch (type: MOUSE)
+   (**) appletouch: always reports core events
+   (II) XINPUT: Adding extended input device "appletouch" (type: MOUSE)
    (--) appletouch auto-dev sets device to /dev/input/event12
-   () Option Device /dev/input/event12
+   (**) Option "Device" "/dev/input/event12"
    (--) appletouch touchpad found
+
+
 
 
 gdmにログインしないでXを再起動かけた場合は、ちゃんとそのまま動く場合もある。
+
+
+
 使えなくなる場合はこれ。
 
-.. code-block:: none
 
-   (II) Module synaptics: vendor=X.Org Foundation
+.. code-block:: sh
+
+
+   (II) Module synaptics: vendor="X.Org Foundation"
    	compiled for 4.3.99.902, module version = 1.0.0
    	Module class: X.Org XInput Driver
    	ABI class: X.Org XInput driver, version 2.0
@@ -66,17 +77,20 @@ gdmにログインしないでXを再起動かけた場合は、ちゃんとそ�
    appletouch no synaptics event device found
    (EE) xf86OpenSerial: No Device specified.
    Synaptics driver unable to open device
-   (EE) PreInit failed for input device appletouch
-   (II) UnloadModule: synaptics
+   (EE) PreInit failed for input device "appletouch"
+   (II) UnloadModule: "synaptics"
+
+
 
 
 新婚旅行の直前にやっていて、はてダの下書きで残っていたので忘れかけてるな…。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

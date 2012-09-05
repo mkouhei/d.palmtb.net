@@ -1,14 +1,16 @@
-﻿腹減った
-########
-
+腹減った
+========
 
 うどん食べよ。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

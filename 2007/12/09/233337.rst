@@ -1,22 +1,24 @@
-﻿OP25B対策。
-################
+OP25B対策。
+===========
+
+自宅のプロバイダがOP25Bを今週から導入するに伴い、 `ここを参考 <http://d.hatena.ne.jp/ayokoyama/20061207>`_ にGmailのSubmissionポートでSMTP-AUTHクライアントとしてメールを送信することにした。こんなwarningとエラーが出て、
 
 
-自宅のプロバイダがOP25Bを今週から導入するに伴い、ここを参考にGmailのSubmissionポートでSMTP-AUTHクライアントとしてメールを送信することにした。こんなwarningとエラーが出て、
+.. code-block:: sh
 
-.. code-block:: none
 
    Dec  9 23:21:15 hogehoge postfix/smtp[31332]: warning: SASL authentication failure: No worthy mechs found
    Dec  9 23:21:15 hogehoge postfix/smtp[31332]: 9EAE0B0004: Authentication failed: cannot SASL authenticate to server smtp.gmail.com[xxx.xxx.xxx.xxx]: no mechanism available
 
 
-うまく行かねぇと思ったら、libsasl2-modulesとやらが必要だとか。入れてみたらちゃんと認証出来ましたよ。
+うまく行かねぇと思ったら、 `libsasl2-modulesとやらが必要 <http://argrath.ub32.org/memo/2006012.xhtml#p27-12>`_ だとか。入れてみたらちゃんと認証出来ましたよ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

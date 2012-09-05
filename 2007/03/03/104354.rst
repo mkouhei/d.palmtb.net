@@ -1,10 +1,11 @@
-﻿Windowsが起動しない。
-############################
-
+Windowsが起動しない。
+=====================
 
 kvmのパッケージが12-1から14-1になった後、確か初めてWindowsを起動させたと思うのだが、こんなの↓出して、ブルースクリーンで死ぬ。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    (qemu) unhandled vm exit:  0x80000021
    rax 0000000000000000 rbx 0000000000000000 rcx 0000000000000000 rdx 0000000000000600
@@ -26,17 +27,19 @@ kvmのパッケージが12-1から14-1になった後、確か初めてWindows�
    /home/user/bin/startwin.sh: line 4: 10380 アボートしました
 
 
+何度やっても同じ。KNOPPIXをkvmで起動させてディスクを見てみると特に壊れていないみたい。Linuxは起動できるのにWindowsは何でダメなんだ？ まぁこっちのWindowsは使えなくても困らないけど [#]_ 。
+
+
+
 ちなみに、-no-kvmを付けて実行すると、起動モード選択の画面が表示されてそこで、延々ループする。
 
 
 
-.. [#] ：確定申告で使っている方はVMwareの方だし
+
+.. [#] 確定申告で使っている方はVMwareの方だし
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Debian, computer, virt., 
 .. tags::
 .. comments::
-
-

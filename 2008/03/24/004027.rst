@@ -1,14 +1,14 @@
-﻿某国陸軍。
-##########
-
+某国陸軍。
+==========
 
 なかのひとのログを見てたら、某国陸軍からのアクセスがあったのに気がついた。日本語なのになぜ？英語なんて書いてないのにな。w
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,18 @@
-﻿debuildつけて、debsignつけず。
-############################################
+debuildつけて、debsignつけず。
+==============================
+
+昨年末の `Debian/Ubuntu Advent Calendar <http://www.debian.or.jp/~iwamatsu/advent/>`_  6日目の岩松さんの『dget でソースパッケージが展開できない問題を回避する』を見て、気づきました。-kオプションで4096bitの鍵を指定しているはずなのに、なぜか、1024bitの鍵のkeyIDであることに。
 
 
-昨年末のDebian/Ubuntu Advent Calendar 6日目の岩松さんの『dget でソースパッケージが展開できない問題を回避する』を見て、気づきました。-kオプションで4096bitの鍵を指定しているはずなのに、なぜか、1024bitの鍵のkeyIDであることに。
 
+http://www.nigauri.org/~iwamatsu/d/?date=20111206#p01
 
-.. code-block:: none
+   
+.. code-block:: sh
+
 
    $ dget http://mentors.debian.net/debian/pool/main/t/tomahawk/tomahawk_0.4.3-1.dsc
-   ......
+   (snip)
    tomahawk_0.4.3-1.dsc:
    dscverify: tomahawk_0.4.3-1.dsc failed signature check:
    gpg: 2011年12月04日 02時10分15秒 JSTにDSA鍵ID DD783BD9で施された署名
@@ -16,22 +20,34 @@
    Validation FAILED!!
 
 
-http://www.nigauri.org/~iwamatsu/d/?date=20111206#p01
+
+
+
+
+
+
 .bashrcに、debuildしかaliasを設定していませんでした…。orz
 
-.. code-block:: none
 
-   alias debuild=&#39;debuild -k0x7E37CE41&#39;
-   alias debsign=&#39;debsign -k0x7E37CE41&#39;
+
+
+.. code-block:: sh
+
+
+   alias debuild='debuild -k0x7E37CE41'
+   alias debsign='debsign -k0x7E37CE41'
 
 
 とdebsignにも-kオプションで4096bitのkeyID指定するようにしました。
 
 
 
-.. author:: mkouhei
-.. categories:: Debian, error, 
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, エラー, 
 .. tags::
 .. comments::
-
-

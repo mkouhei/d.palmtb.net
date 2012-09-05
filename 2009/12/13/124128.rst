@@ -1,10 +1,13 @@
-﻿scala-modeがないな。
-##############################
-
+scala-modeがないな。
+====================
 
 Debianでは、scala-tool-supportのパッケージがないので、trunkから突っ込むことにした。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ git svn clone http://lampsvn.epfl.ch/svn-repos/scala/scala-tool-support/trunk/ scala-tool-support
    $ cd scala-tool-support/src/emacs
@@ -12,22 +15,32 @@ Debianでは、scala-tool-supportのパッケージがないので、trunkから
 
 
 として、コンパイルかけておく。
+
+
+
 ~/.emacsに下記を追記。
 
-.. code-block:: none
 
-   (add-to-list load-path /home/hoge/scala-tool-support/src/emacs)
-   (require scala-mode-auto)
-   (setq scala-interpreter /usr/bin/scala)
+.. code-block:: scheme
+
+
+   (add-to-list 'load-path "/home/hoge/scala-tool-support/src/emacs")
+   (require 'scala-mode-auto)
+   (setq scala-interpreter "/usr/bin/scala")
+
+
 
 
 これでemacsでscala-modeを使えますな。
 
 
 
-.. author:: mkouhei
+
+
+
+
+
+.. author:: default
 .. categories:: Debian, Unix/Linux, 
 .. tags::
 .. comments::
-
-

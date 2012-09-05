@@ -1,13 +1,10 @@
-﻿我が家にCouchがやってきた。
-################################
+我が家にCouchがやってきた。
+===========================
+
+先日、 `sweethome3dでシミュレーションした <http://d.hatena.ne.jp/mkouhei/20101027/1288105331>`_ が、昨日配送された。やってきたのがこれ↓
 
 
-先日、sweethome3dでシミュレーションしたが、昨日配送された。やってきたのがこれ↓
-
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20101213/20101213002607.png
-   :alt: f:id:mkouhei:20101213002607p:image
-
-
+.. image:: /img/20101213002607.png
 
 
 
@@ -23,17 +20,37 @@
 
 
 
-はい、冗談。ネタのために、こんなことはできない。本当はこっち。
-
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20101212/20101212121721.jpg
-   :alt: f:id:mkouhei:20101212121721j:image
 
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+はい、冗談。 `ネタ <http://couchdb.apache.org/img/couchdb-logo.svg>`_ のために、こんなことはできない。本当はこっち。
+
+
+.. image:: /img/20101212121721.jpg
+
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

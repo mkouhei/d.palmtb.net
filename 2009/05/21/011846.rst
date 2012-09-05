@@ -1,14 +1,14 @@
-﻿とうとう手放す。
-################
-
+とうとう手放す。
+================
 
 MacBook Airだけでなく、Libretto L5、CLIE, Visor Platinum, Tungsten Tなど諸々処分することにした。今度の日曜に集荷がやってくるのか。。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, gadget, 
 .. tags::
 .. comments::
-
-

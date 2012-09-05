@@ -1,14 +1,14 @@
-﻿/dev/kvmへのアクセス権
-##############################
+/dev/kvmへのアクセス権
+======================
+
+udevで管理しているので、/dev/kvm自体のオーナ、グループを変更するよりKVMを使う `ユーザのサブグループにkvmを指定した方が良い <http://www.palmtb.net/index.php?KVM%20-%20Debian%20Sid%20on%20MacBook>`_ だろう。
 
 
-udevで管理しているので、/dev/kvm自体のオーナ、グループを変更するよりKVMを使うユーザのサブグループにkvmを指定した方が良いだろう。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: computer, virt., 
 .. tags::
 .. comments::
-
-

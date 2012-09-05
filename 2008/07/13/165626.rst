@@ -1,27 +1,29 @@
-﻿DVD処理。
-############
-
+DVD処理。
+=========
 
 先日購入した、「L change the World」とかなり前に購入して封も切っていなかった「硫黄島からの手紙」をMacBook AirへのDebian入れ直しと洗濯物を畳みながら見た。L～の方は、設定はDEATH NOTEをうまく使いつつ、何だか既に別物の話ですな。話の展開がちょっと無理やりっぽい。硫黄島～の方は話の方向性としてはラストサムライな感じ。所々余所見していたので、中村獅童が演じた役は道化のまま、最後どうなったのか分からなかった。 [#]_ 
+
 フラガールもまだ見ないままになっているので、来週見るか。
 
-.. image:: http://ecx.images-amazon.com/images/I/51gSIgeY3pL._SL160_.jpg
-   :alt: L change the WorLd [通常版]
 
 
-.. image:: http://ecx.images-amazon.com/images/I/510VJYUnpDL._SL160_.jpg
-   :alt: 硫黄島からの手紙
+`L change the WorLd [通常版] <http://www.amazon.co.jp/exec/obidos/ASIN/B001859AQG/palmtb-22/ref=nosim/>`_
 
 
 
 
-.. [#] ：見逃しただけか？
+
+`硫黄島からの手紙 <http://www.amazon.co.jp/exec/obidos/ASIN/B000XG9Q9C/palmtb-22/ref=nosim/>`_
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. [#] 見逃しただけか？
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

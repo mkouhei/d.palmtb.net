@@ -1,14 +1,25 @@
-﻿kernel 2.6.20で…。
-################################
-
+kernel 2.6.20で…。
+===================
 
 KVMを使おうと思い、kernel 2.6.20-rc6でカーネルの再構築をしたところ、何故か知らんが、netfilterの機能の一部の機能が使えなくなった。-m stateを指定していると、そんなオプションを知らねぇとか言う。
+
+
+
 lsmodをしてみたら、ip_conntrackがロードされてない！
+
 カーネルオプションにも無い！そもそも、make oldconfigとして利用した.configファイルにも無い。なんてこった。再構築しなおそう。
+
+
+
 というわけで、寝ている間にビルドしなおして正常に使えるようになった。よしよし。どうやら、原因はNetfilter用のモジュール名が変更されたためらしい。
+
+
+
 kernel 2.6.20でのNetfilter関連のモジュール。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    ipt_REJECT              5504  1
    nf_conntrack_ipv4      17804  29
@@ -22,7 +33,9 @@ kernel 2.6.20でのNetfilter関連のモジュール。
 
 こっちはkernel 2.6.18の。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    ipt_REJECT              4928  1
    ipt_LOG                 5568  8
@@ -35,19 +48,30 @@ kernel 2.6.20でのNetfilter関連のモジュール。
 
 
 
+
+
 * nf_conntrack_ipv4
+
 * nf_conntrack
+
 * nf_conntrack_ftp
 
 とかのprefixがip_からnf_に変わっている。だからkernel 2.6.18の.configでmake oldしてもダメだったのか…。あ、nfnetlinkが抜けてる！実体が何かよく分からんので検索してみたら、どうやらNetlink層で処理を行うのか。って名前の通りだ…。orz
+
+
+
 http://lwn.net/Articles/144507/
+
+
+
 帰ってきたらもう一度再構築するか…。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

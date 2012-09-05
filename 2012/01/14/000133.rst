@@ -1,46 +1,49 @@
-﻿pystacheのtestがコケる件。
-######################################
-
+pystacheのtestがコケる件。
+==========================
 
 mustacheのpython版であるpystacheをDebianパッケージにしようとしています。python3版のpython3-pystacheも作ってほしい、という要望ももらっているのですが、現時点ではpystacheはpython2.xのみサポートされているので、とりあえずそれは後回しにする予定です。
+
+
+
 さて、今回テストがコケる問題ですが、pystacheのmasterブランチのHEAD(2011/11/30の7ccb55fd9)をnosetestsを実行すると56件あるテストのうち1つだけコケる、状況です。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ nosetests 
-   .........................F..............................
-   ======================================================================
+   (snip)
    FAIL: test_non_strings (test_pystache.TestPystache)
-   ----------------------------------------------------------------------
+   (snip)
    Traceback (most recent call last):
-     File /home/kohei/devel/debpkg/pystache/pystache/tests/test_pystache.py, line 57, in test_non_strings
-       self.assertEquals(ret, (123  [&#39;something&#39;])(chris  0.9))
-   AssertionError: Markup(u&#39;(123  [#39;something#39;])(chris  0.9)&#39;) != (123  [&#39;something&#39;])(chris  0.9)
-   
-   ----------------------------------------------------------------------
-   Ran 56 tests in 0.035s
-   
-   FAILED (failures=1)
+     File "/home/kohei/devel/debpkg/pystache/pystache/tests/test_pystache.py", line 57, in test_non_strings
+       self.assertEquals(ret, """(123 & ['something'])(chris & 0.9)""")
+   AssertionError: Markup(u'(123 & [&#39;something&#39;])(chris & 0.9)') != "(123 & ['something'])(chris & 0.9)"
+   (snip)
 
 
-アポストロフィ(apostrophe)&#34;&#39;&#34;が&#34;&#34;に変換されているため、一致しないのが原因です。apostropheはHTML decimalでですね。
+アポストロフィ(apostrophe)"'"が"&#39;"に変換されているため、一致しないのが原因です。apostropheはHTML decimalで&#39;ですね。
+
+
+
 debugモードで実行すると、markupsafeのMarkup()で例外処理されています。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    
    $ nosetests -d
-   .........................F..............................
-   ======================================================================
+   (snip)
    FAIL: test_non_strings (test_pystache.TestPystache)
-   ----------------------------------------------------------------------
+   (snip)
    Traceback (most recent call last):
-     File /home/kohei/devel/debpkg/pystache/pystache/tests/test_pystache.py, line 57, in test_non_strings
-       self.assertEquals(ret, (123  [&#39;something&#39;])(chris  0.9))
-   AssertionError: Markup(u&#39;(123  [#39;something#39;])(chris  0.9)&#39;) != (123  [&#39;something&#39;])(chris  0.9)
-       &#39;Markup(u\&#39;(123  [#39;something#39;])(chris  0.9)\&#39;) != (123  [\&#39;something\&#39;])(chris  0.9)&#39; = &#39;%s != %s&#39; % (safe_repr(Markup(u&#39;(123  [#39;something#39;])(chris  0.9)&#39;)), safe_repr((123  [&#39;something&#39;])(chris  0.9)))
-       &#39;Markup(u\&#39;(123  [#39;something#39;])(chris  0.9)\&#39;) != (123  [\&#39;something\&#39;])(chris  0.9)&#39; = self._formatMessage(&#39;Markup(u\&#39;(123  [#39;something#39;])(chris  0.9)\&#39;) != (123  [\&#39;something\&#39;])(chris  0.9)&#39;, &#39;Markup(u\&#39;(123  [#39;something#39;])(chris  0.9)\&#39;) != (123  [\&#39;something\&#39;])(chris  0.9)&#39;)
-   &gt;&gt;  raise self.failureException(&#39;Markup(u\&#39;(123  [#39;something#39;])(chris  0.9)\&#39;) != (123  [\&#39;something\&#39;])(chris  0.9)&#39;)
+     File "/home/kohei/devel/debpkg/pystache/pystache/tests/test_pystache.py", line 57, in test_non_strings
+       self.assertEquals(ret, """(123 & ['something'])(chris & 0.9)""")
+   AssertionError: Markup(u'(123 & [&#39;something&#39;])(chris & 0.9)') != "(123 & ['something'])(chris & 0.9)"
+       'Markup(u\'(123 & [&#39;something&#39;])(chris & 0.9)\') != "(123 & [\'something\'])(chris & 0.9)"' = '%s != %s' % (safe_repr(Markup(u'(123 & [&#39;something&#39;])(chris & 0.9)')), safe_repr("(123 & ['something'])(chris & 0.9)"))
+       'Markup(u\'(123 & [&#39;something&#39;])(chris & 0.9)\') != "(123 & [\'something\'])(chris & 0.9)"' = self._formatMessage('Markup(u\'(123 & [&#39;something&#39;])(chris & 0.9)\') != "(123 & [\'something\'])(chris & 0.9)"', 'Markup(u\'(123 & [&#39;something&#39;])(chris & 0.9)\') != "(123 & [\'something\'])(chris & 0.9)"')
+   >>  raise self.failureException('Markup(u\'(123 & [&#39;something&#39;])(chris & 0.9)\') != "(123 & [\'something\'])(chris & 0.9)"')
        
    
    ----------------------------------------------------------------------
@@ -49,32 +52,46 @@ debugモードで実行すると、markupsafeのMarkup()で例外処理されて
    FAILED (failures=1)
 
 
+
+
 原因は、markupsafeにありました。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    FUNCTIONS
        escape(...)
-           escape(s) - markup
+           escape(s) -> markup
            
-           Convert the characters , , , &#39;, and  in string s to HTML-safe
+           Convert the characters &, <, >, ', and " in string s to HTML-safe
            sequences.  Use this if you need to display text that might contain
            such characters in HTML.  Marks return value as markup string.
 
 
+
+
 developementブランチではこの問題は修正されているようなのですが、0.3.1から大分変わってしまうので、git cherry-pickで持ってきて修正する、というのは無理っぽいので、結局v0.3.1のタグをチェックアウトして、python2.7専用のDebianパッケージを作ってmentorsにアップロードしました。
 
+
+
+
 タグを打たれていない0.4.0ではどうなん？
-************************************************************************************************************
+---------------------------------------
 
 
 ちなみに、pystache 0.4.0だと一見nosetestsはうまく行くのですが、テストの一部がgit submoduledeでの管理になっていて、git submodule init; git submodule update後にnosetestsを実行すると盛大にコケましたよ、と…。
 
 
 
-.. author:: mkouhei
+
+
+
+
+
+.. author:: default
 .. categories:: python, Debian, 
 .. tags::
 .. comments::
-
-

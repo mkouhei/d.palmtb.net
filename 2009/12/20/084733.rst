@@ -1,27 +1,40 @@
-﻿すごい人ゴミ。
-##############
-
+すごい人ゴミ。
+==============
 
 「見たまえ、人がゴミのようだ」
+
+
+
 じゃなくて、めっちゃ人が多かった。昨日ディズニーシーに行ったのだが、クリスマス前の土曜日ということもあり、途中歩くのも大変なくらいだった。目的は、こまめに似ているというチャンドゥと、各種ショーを見るため。
+
+
+
 こまめと似ている、とヨメは言い張っていたのだが、確かに似ている仕草とか多かった。カワユス。でもこまめの方がかわいい。
+
+
+
 こまめチャン
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091220/20091220083910.png
-   :alt: f:id:mkouhei:20091220083910p:image
+
+.. image:: /img/20091220083910.png
+
+
 
 チャンドゥ
-ディズニー関係はめんどいのでリンク先を見ておくれ。めっちゃ寒いというので結構着込んで行ったいったが、帰ってきた自宅付近(多摩方面)の方がよっぽど寒かったな。疲れたがまぁたまには良いですな。今度は空いているとき [#]_ が良いね。
+
+`ディズニー関係はめんどいのでリンク先を見ておくれ。 <http://images.google.co.jp/imglanding?q=%E3%83%81%E3%83%A3%E3%83%B3%E3%83%89%E3%82%A5&imgurl=http://image.blog.livedoor.jp/hina_sakura/imgs/e/c/ecc3e9f3.JPG&imgrefurl=http://blog.livedoor.jp/hina_sakura/archives/51711603.html&usg=__wHlcSN7Onkdouz52raNUDqF-KN4=&h=480&w=640&sz=150&hl=ja&sig2=lTglIulYZFof5b4B8ss8Jw&um=1&tbnid=aQrvuFq_fbCgvM:&tbnh=103&tbnw=137&prev=/images%3Fq%3D%25E3%2583%2581%25E3%2583%25A3%25E3%2583%25B3%25E3%2583%2589%25E3%2582%25A5%26hl%3Dja%26sa%3DN%26um%3D1&ei=N2MtS4LrNIve7AO40IiDBg&sa=N&um=1&start=0#tbnid=aQrvuFq_fbCgvM&start=0>`_ 
 
 
 
-.. [#] ：平日.. [#] &amp;.. [#] &amp;.. [#] シーズンオフ.. [#] &amp;.. [#] &amp;.. [#] 寒くないとき
+めっちゃ寒いというので結構着込んで行ったいったが、帰ってきた自宅付近(多摩方面)の方がよっぽど寒かったな。疲れたがまぁたまには良いですな。今度は空いているとき [#]_ が良いね。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+.. [#] 平日&&シーズンオフ&&寒くないとき
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

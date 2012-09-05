@@ -1,14 +1,14 @@
-﻿久しぶり。
-##########
-
+久しぶり。
+==========
 
 午前様にならず、さらに自宅で仕事をせざるを得ない状況にならなかったのは久々。折角なので今日ははよ寝よ。
 
 
 
-.. author:: mkouhei
-.. categories:: work, 
+
+
+
+.. author:: default
+.. categories:: 仕事, 
 .. tags::
 .. comments::
-
-

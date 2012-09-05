@@ -1,17 +1,22 @@
-﻿upstartでのホスト名の変更。
-##################################
-
+upstartでのホスト名の変更。
+===========================
 
 Debianというか、Ubuntu 10.04 LTSでの話ですが、/etc/hostnameを変更後、
 
-.. code-block:: none
 
-   $ sudo stop hostname  sudo start hostname
+.. code-block:: sh
 
 
-を実行し、ログインしなおすとホスト名が変更されます。/etc/init.d/hostname restartとかやってもwarningが表示されつつ、stop &amp; startコマンドが実行されている罠。upstartが、というのが正しいですね。
+   $ sudo stop hostname && sudo start hostname
 
-.. code-block:: none
+
+を実行し、ログインしなおすとホスト名が変更されます。/etc/init.d/hostname restartとかやってもwarningが表示されつつ、stop & startコマンドが実行されている罠。upstartが、というのが正しいですね。
+
+
+
+
+.. code-block:: sh
+
 
    
    $ sudo /etc/init.d/hostname restart
@@ -39,9 +44,9 @@ Debianというか、Ubuntu 10.04 LTSでの話ですが、/etc/hostnameを変更
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

@@ -1,18 +1,22 @@
-﻿仕事する前に、suExecだけやっておいた。
-############################################
-
+仕事する前に、suExecだけやっておいた。
+======================================
 
 HikiのdataディレクトリはDocumentRoot以下から別のアクセス不能な場所に移動し、@data_pathを修正。
+
 suexec対応するために、dataディレクトリ以下はすべて、suexecさせるユーザに所有者、グループも変更させた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo chown -R hoge:fuga data
 
 
 次に、Apacheのsuexecモジュールを使ってsuExecさせるために、/var/www/hoge以下に下記のようなスクリプトを置く。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    (hoge.sh)
    ======
@@ -25,7 +29,9 @@ suexec対応するために、dataディレクトリ以下はすべて、suexec�
 
 で、10-fastcgi.confを下記のように修正。
 
-.. code-block:: none
+
+.. code-block:: diff
+
 
    $ rcsdiff -r1.3 -r1.4 -u ./10-fastcgi.conf 
    ===================================================================
@@ -37,39 +43,44 @@ suexec対応するために、dataディレクトリ以下はすべて、suexec�
     +++ ./10-fastcgi.conf	2008/04/20 04:27:52	1.4
     @@ -34,7 +34,8 @@
      fastcgi.server = (
-     	.fcgi = (
+     	".fcgi" => (
      		(
-    -			bin-path = /var/www/hoge/index.fcgi,
-    +			#bin-path = /var/www/hoge/index.fcgi,
-    +			bin-path = /var/www/hoge/hoge.sh,
-     			socket = /tmp/hoge.socket,
-     			min-procs = 1,
-     			max-procs = 2,
+    -			"bin-path" => "/var/www/hoge/index.fcgi",
+    +			#"bin-path" => "/var/www/hoge/index.fcgi",
+    +			"bin-path" => "/var/www/hoge/hoge.sh",
+     			"socket" => "/tmp/hoge.socket",
+     			"min-procs" => 1,
+     			"max-procs" => 2,
 
 
 あと、Apacheだと、hikiのディレクトリ直下に、.htaccessがあるのだが、これは当然lighttpdでは使えないので、同じような設定をせなアカンことに気がついた。
+
 suexecのラッパースクリプトも直接アクセスさせないようにするには、.htaccessなら下記の様にするが、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    Options +ExecCGI
    
    AddHandler cgi-script .cgi
    DirectoryIndex hiki.cgi
    
-   Files hikiconf.rb
+   <Files "hikiconf.rb">
    	deny from all
-   /Files
-   Files hoge.sh
+   </Files>
+   <Files "hoge.sh">
    	deny from all
-   /Files
+   </Files>
 
 
 lighttpdなら下記のようにする。
 
-.. code-block:: none
 
-   $ rcsdiff -r1.2 -r1.3 -u ./lighttpd.conf | sed &#39;s/^/ /g&#39;
+.. code-block:: diff
+
+
+   $ rcsdiff -r1.2 -r1.3 -u ./lighttpd.conf | sed 's/^/ /g'
    ===================================================================
    RCS file: ./RCS/lighttpd.conf,v
    retrieving revision 1.2
@@ -81,17 +92,18 @@ lighttpdなら下記のようにする。
      # ~    is for backupfiles from vi, emacs, joe, ...
      # .inc is often used for code includes which should in general not be part
      #      of the document-root
-    -url.access-deny            = ( ~, .inc )
-    +url.access-deny            = ( ~, .inc, .rb, .sh )
+    -url.access-deny            = ( "~", ".inc" )
+    +url.access-deny            = ( "~", ".inc", ".rb", ".sh" )
 
 
 lighttpdの設定ファイルの記法にも大分なれてきた。理解してしまえば、Apacheよりも分かりやすいなぁ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

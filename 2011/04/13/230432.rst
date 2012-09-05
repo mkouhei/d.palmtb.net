@@ -1,17 +1,24 @@
-﻿Webフォントを使ってみた。
-############################
+Webフォントを使ってみた。
+=========================
+
+`typekit <http://typekit.com/fonts>`_ というサービスを利用して、Webフォントを使ってみた。Chromium Browser(10.0.648.204 (79063)), iceweasel(3.5.18), Opera(11.10), Android 2.3.3のブラウザ, iOS 4.3のSafariではちゃんと指定したフォントが表示された。それぞれのブラウザで若干見え方が違うのだけど、まぁ気にするほどではない。
 
 
-typekitというサービスを利用して、Webフォントを使ってみた。Chromium Browser(10.0.648.204 (79063)), iceweasel(3.5.18), Opera(11.10), Android 2.3.3のブラウザ, iOS 4.3のSafariではちゃんと指定したフォントが表示された。それぞれのブラウザで若干見え方が違うのだけど、まぁ気にするほどではない。
-サンプルは、こちら。
+
+サンプルは、 `こちら <http://www.palmtb.net/>`_ 。
+
+
+
+
 
 え、IEってなんですか？
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

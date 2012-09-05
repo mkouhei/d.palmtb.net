@@ -1,35 +1,18 @@
-﻿これは確かに！
-##############
-
+これは確かに！
+==============
 
 MacBook Air 11インチ欲しい！
+
+
+
 という訳で応募。そういやMacBook Pro 15インチが値下がりしている気がするなぁ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	うひひ、買っちゃったよん
-
-	written by  popowa
-	01/13/2011 04:40:26
-	http://d.hatena.ne.jp/popowa/
-
-----
-
-Comment:
-
-	いいねぇ。もうDebianにした？
-
-	written by  mkouhei
-	01/13/2011 07:18:43
-	http://d.hatena.ne.jp/mkouhei/
-

@@ -1,52 +1,45 @@
-﻿変数を上書きできないようにする。
-################################
-
+変数を上書きできないようにする。
+================================
 
 /etc/profileなどに
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    typeset -r HOGE=moge
    export HOGE
 
 
 とします。
+
+
+
 シェルログイン後、unsetしても
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    -bash: unset: HOGE: cannot unset: readonly variable
 
 
 となります。
+
+
+
 historyの履歴から特定のコマンドを削除しる、という話をしていたので、システム的に防ぐならこれやんないと意味ないですよね、というお話。
+
+
+
 cf. http://linuxjm.sourceforge.jp/html/GNU_bash/man1/bash.1.html
 
 
 
-.. author:: mkouhei
-.. categories:: Unix/Linux, error, 
+
+
+
+.. author:: default
+.. categories:: Unix/Linux, エラー, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	readonly HOGE=moge のほうが良さげ．
-
-	written by  yy_y_ja_jp
-	02/13/2012 11:47:13
-	
-
-----
-
-Comment:
-
-	readonlyコマンドの方が良さげである、理由プリーズ。
-
-	written by  mkouhei
-	02/13/2012 13:51:05
-	http://d.hatena.ne.jp/mkouhei/
-

@@ -1,22 +1,24 @@
-﻿kvm-28に。
-################
-
+kvm-28に。
+==========
 
 Sidのkvmがrelease 18から一気に28に。この２ヶ月半、メール見ている暇無くて、kvm-develのMLがついに先日未読1000通越えたと思ったら、少なくとももう28まで上がってたのか…。release 30以上はいってそうだなぁ。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo m-a a-i --force kvm
    $ sudo dpkg -i kvm-modules-2.6.21.5_28-2+20070617.0030_i386.deb
 
 
-とkvmモジュールを作りなおしてインストール。Windows xpは今回もちゃんと起動した、と思ったら、&#34;wgatray.exe&#34;とやらが起動失敗。なんだこれ？　MSの標準ツールっぽいからとりあえず放っておくか。気が向いたら調べよ。なんか、Windowsの起動が若干、というか、かなり速くなった気がする。
+とkvmモジュールを作りなおしてインストール。Windows xpは今回もちゃんと起動した、と思ったら、"wgatray.exe"とやらが起動失敗。なんだこれ？　MSの標準ツールっぽいからとりあえず放っておくか。気が向いたら調べよ。なんか、Windowsの起動が若干、というか、かなり速くなった気がする。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, computer, virt., 
 .. tags::
 .. comments::
-
-

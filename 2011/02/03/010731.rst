@@ -1,14 +1,14 @@
-﻿CouchDB for Androidベータ版。
-################################################
+CouchDB for Androidベータ版。
+=============================
+
+気がついたらいつの間にか `ベータ版が出ていた <http://jp.androlib.com/android.application.com-couchone-couchdb-ztxAD.aspx>`_ 。 `Android 2.3でインストーラがヌルポで落ちるバグ <http://d.hatena.ne.jp/mkouhei/20110107/1294328055>`_ は修正されていて、インストールまでは出来たのだけど、実際に起動する際にloading状態のまま反応がなく止まってしまう。ErlangがAndroid SDKではなくNDKベースで開発されているからだろうなぁ。Milestoneは当面現役のままですな。
 
 
-気がついたらいつの間にかベータ版が出ていた。Android 2.3でインストーラがヌルポで落ちるバグは修正されていて、インストールまでは出来たのだけど、実際に起動する際にloading状態のまま反応がなく止まってしまう。ErlangがAndroid SDKではなくNDKベースで開発されているからだろうなぁ。Milestoneは当面現役のままですな。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: CouchDB, 
 .. tags::
 .. comments::
-
-

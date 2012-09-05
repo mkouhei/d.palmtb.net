@@ -1,14 +1,14 @@
-﻿風邪引いたっぽい。
-##################
-
+風邪引いたっぽい。
+==================
 
 しんどい。はよ寝よう。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

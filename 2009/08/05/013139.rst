@@ -1,18 +1,15 @@
-﻿UVCであっさり動いた。
-########################
-
+UVCであっさり動いた。
+=====================
 
 昨日購入した、Logicool QCAM-130E [#]_ 、i386のマシンで試してみたら、UVCで自動認識し、あっさり使えた。これならArmadillo-9かChumbyでの稼動確認も簡単にできそうだな。
 
 
 
-.. [#] ：製品名Qcam Communicate STX
+
+.. [#] 製品名Qcam Communicate STX
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, gadget, 
 .. tags::
 .. comments::
-
-

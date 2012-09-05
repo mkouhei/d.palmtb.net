@@ -1,9 +1,9 @@
-﻿git cloneでタイムアウトした時にkernel panicを起こしたようだ。
-##################################################################################
+git cloneでタイムアウトした時にkernel panicを起こしたようだ。
+=============================================================
 
 
+.. code-block:: ini
 
-.. code-block:: none
 
    init: PANIC: segmentation violation! sleeping for 30 seconds.
 
@@ -12,9 +12,10 @@ OpenBlockS 266でGitのリモートリポジトリを運用しているのだが
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, Git, Ops, 
 .. tags::
 .. comments::
-
-

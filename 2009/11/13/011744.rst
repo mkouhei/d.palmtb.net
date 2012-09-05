@@ -1,14 +1,14 @@
-﻿なんと！
-########
-
+なんと！
+========
 
 13日の金曜日。そんだけ。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

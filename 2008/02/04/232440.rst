@@ -1,14 +1,14 @@
-﻿サイト売買
-##########
-
+サイト売買
+==========
 
 なんてものが流行っているそうな。へぇ。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

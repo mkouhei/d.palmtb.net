@@ -1,10 +1,11 @@
-﻿IP aliasとRoutingの興味深い挙動。
-################################################
-
+IP aliasとRoutingの興味深い挙動。
+=================================
 
 IP aliasのアドレスを送信元アドレスとする場合、Postfixだとsmtp_bind_addressを指定すれば良いが、じゃあpingなど一般的な通信はどうするんだと、ルーティングの設定の仕方で挙動が異なることに気づいた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # ifconfig eth0   10.0.0.1 netmask 255.0.0.0
    # ifconfig eth0:1 10.0.0.2 netmask 255.0.0.0
@@ -12,7 +13,9 @@ IP aliasのアドレスを送信元アドレスとする場合、Postfixだとsm
 
 てな感じで、IPアドレスを設定し、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # route add -host 10.0.0.3 dev eth0:1
    または
@@ -21,7 +24,9 @@ IP aliasのアドレスを送信元アドレスとする場合、Postfixだとsm
 
 とした場合は、10.0.0.3にはちゃんと10.0.0.2からのパケットで到達するが、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # route add default gw 10.0.0.254 dev eth0:1
 
@@ -30,9 +35,10 @@ IP aliasのアドレスを送信元アドレスとする場合、Postfixだとsm
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

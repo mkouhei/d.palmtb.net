@@ -1,10 +1,11 @@
-﻿WN511TをNDISwrapperでロード結果
-################################################
+WN511TをNDISwrapperでロード結果
+===============================
+
+ちゃんとロードはできて、Let's note R3のオンボード搭載の無線LANアダプタと違い、ちゃんと認識できて、しかも近所のSSID垂れ流しのAPは拾えているが、まだ使えていない。黒MacBookと同じようにWPA-PSKで設定しても使えない…。
 
 
-ちゃんとロードはできて、Let&#39;s note R3のオンボード搭載の無線LANアダプタと違い、ちゃんと認識できて、しかも近所のSSID垂れ流しのAPは拾えているが、まだ使えていない。黒MacBookと同じようにWPA-PSKで設定しても使えない…。
+.. code-block:: sh
 
-.. code-block:: none
 
    $ sudo modprobe ndiswrapper
    
@@ -12,11 +13,11 @@
    (snip)
    ndiswrapper version 1.52 loaded (smp=yes, preempt=no)
    ndiswrapper: driver netmw14x (NETGEAR,09/08/2006, 2.1.3.9) loaded
-   PCI: Enabling device 0000:03:00.0 (0000 - 0002)
-   ACPI: PCI Interrupt 0000:03:00.0[A] - Link [LNKG] - GSI 10 (level, low) - IRQ 10
+   PCI: Enabling device 0000:03:00.0 (0000 -> 0002)
+   ACPI: PCI Interrupt 0000:03:00.0[A] -> Link [LNKG] -> GSI 10 (level, low) -> IRQ 10
    ndiswrapper: using IRQ 10
    wlan0: ethernet device 00:14:6c:df:8d:b7 using NDIS driver: netmw14x, version: 0x2010309, \
-   NDIS version: 0x501, vendor: &#39;NDIS Network Adapter&#39;, 11AB:2A02.5.conf
+   NDIS version: 0x501, vendor: 'NDIS Network Adapter', 11AB:2A02.5.conf
    wlan0: encryption modes supported: WEP; TKIP with WPA, WPA2, WPA2PSK; AES/CCMP with WPA, WPA2, \
    WPA2PSK
    usbcore: registered new interface driver ndiswrapper
@@ -33,7 +34,7 @@
              Tx excessive retries:0  Invalid misc:0   Missed beacon:0
    
    $ sudo ndiswrapper-1.9 -m
-   adding &#34;alias wlan0 ndiswrapper&#34; to /etc/modprobe.d/ndiswrapper ...
+   adding "alias wlan0 ndiswrapper" to /etc/modprobe.d/ndiswrapper ...
    
     ************************************************************************
     * 
@@ -46,9 +47,9 @@
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, network, 
 .. tags::
 .. comments::
-
-

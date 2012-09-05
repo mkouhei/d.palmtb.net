@@ -1,14 +1,14 @@
-﻿とりあえず回復。
-################
-
+とりあえず回復。
+================
 
 フェイルセーフなセッションでログインして再度Xfce4 Sessionでログインして、とやったら直った。原因はよう分からん。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

@@ -1,18 +1,22 @@
-﻿次の２週間
-##########
-
+次の２週間
+==========
 
 TIME HACKS!からのネタ。Googleカレンダーのデフォルト表示をカスタムビューの次の２週間に変更してみた。なるほど、これは便利かも。
 
-.. image:: http://images-jp.amazon.com/images/P/4492042652.09.THUMBZZZ.jpg
-   :alt: TIME HACKS!
 
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+`TIME HACKS! <http://www.amazon.co.jp/o/ASIN/4492042652/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

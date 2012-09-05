@@ -1,10 +1,11 @@
-﻿MacBook 5,2でxrandrが使えるようになった。
-##########################################################
+MacBook 5,2でxrandrが使えるようになった。
+=========================================
+
+`以前は、nvidia-settingでないと外部ディスプレイが使えなかった <http://d.hatena.ne.jp/mkouhei/20091027/1256639661>`_ のだが、Sidの入れ替えでxrandrが使えるようになっていることに気づいた。
 
 
-以前は、nvidia-settingでないと外部ディスプレイが使えなかったのだが、Sidの入れ替えでxrandrが使えるようになっていることに気づいた。
+.. code-block:: sh
 
-.. code-block:: none
 
    $ xrandr
    
@@ -24,9 +25,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, MacBook, 
 .. tags::
 .. comments::
-
-

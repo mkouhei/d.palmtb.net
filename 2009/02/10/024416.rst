@@ -1,21 +1,22 @@
-﻿bastilleエラー
-######################
-
+bastilleエラー
+==============
 
 Lennyでbastilleを実行しようとしたら下記のようなエラーになった。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo bastille
-   ERROR:   &#39;DB5.0&#39; is not a supported operating system.
+   ERROR:   'DB5.0' is not a supported operating system.
             Valid operating system versions are as follows:
-            &#39;DB2.2&#39; &#39;DB3.0&#39; &#39;DB3.1&#39; &#39;DB4.0&#39; &#39;RH6.0&#39; 
-            &#39;RH6.1&#39; &#39;RH6.2&#39; &#39;RH7.0&#39; &#39;RH7.1&#39; &#39;RH7.2&#39; 
-            &#39;RH7.3&#39; &#39;RH8.0&#39; &#39;RH9&#39; &#39;MN6.0&#39; &#39;MN6.1&#39; 
-            &#39;MN7.0&#39; &#39;MN7.1&#39; &#39;MN7.2&#39; &#39;MN8.0&#39; &#39;MN8.1&#39; 
-            &#39;MN8.2&#39; &#39;HP-UX11.00&#39; &#39;HP-UX11.11&#39; &#39;HP-UX11.22&#39; &#39;HP-UX11.23&#39; 
-            &#39;SE7.2&#39; &#39;SE7.3&#39; &#39;SE8.0&#39; &#39;TB7.0&#39; &#39;OSX10.2.0&#39; 
-            &#39;OSX10.2.1&#39; &#39;OSX10.2.2&#39; &#39;OSX10.2.3&#39; &#39;OSX10.2.4&#39; 
+            'DB2.2' 'DB3.0' 'DB3.1' 'DB4.0' 'RH6.0' 
+            'RH6.1' 'RH6.2' 'RH7.0' 'RH7.1' 'RH7.2' 
+            'RH7.3' 'RH8.0' 'RH9' 'MN6.0' 'MN6.1' 
+            'MN7.0' 'MN7.1' 'MN7.2' 'MN8.0' 'MN8.1' 
+            'MN8.2' 'HP-UX11.00' 'HP-UX11.11' 'HP-UX11.22' 'HP-UX11.23' 
+            'SE7.2' 'SE7.3' 'SE8.0' 'TB7.0' 'OSX10.2.0' 
+            'OSX10.2.1' 'OSX10.2.2' 'OSX10.2.3' 'OSX10.2.4' 
    ERROR:   Invalid argument list:
             Usage: bastille [ -b | -c | -r | -x [ --os version ] ]
             -b : use a saved config file to apply changes
@@ -27,13 +28,14 @@ Lennyでbastilleを実行しようとしたら下記のようなエラーにな�
                            version.  e.g. --os RH6.0
 
 
-Lennyは&#39;DB5.0&#39;なのか？と思ってreportbugsを見たら#510884で報告されてた。
+Lennyは'DB5.0'なのか？と思ってreportbugsを見たら `#510884 <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=%23510884>`_ で報告されてた。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

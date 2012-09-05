@@ -1,14 +1,14 @@
-﻿surfaceって…。
-######################
-
+surfaceって…。
+===============
 
 まんま、MITの石井教授が研究されているタンジブルビットだな。工学院大学で石井先生の講義を受けたときは感動したよなぁ。surfaceにも関わっていらっしゃるのだろうか。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

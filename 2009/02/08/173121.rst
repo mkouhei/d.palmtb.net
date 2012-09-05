@@ -1,18 +1,20 @@
-﻿買って読んでみるか。
-####################
-
+買って読んでみるか。
+====================
 
 面白そうなので読んでみるか。
 
-.. image:: http://ecx.images-amazon.com/images/I/31OnB6uumlL._SL160_.jpg
-   :alt: 問題は「数字センス」で8割解決する
+
+
+`問題は「数字センス」で8割解決する <http://www.amazon.co.jp/exec/obidos/ASIN/4774135356/palmtb-22/ref=nosim/>`_
 
 
 
 
-.. author:: mkouhei
-.. categories:: life, scribbles, 
+
+
+
+
+.. author:: default
+.. categories:: 生活, 駄文, 
 .. tags::
 .. comments::
-
-

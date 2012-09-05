@@ -1,14 +1,14 @@
-﻿明日、届くようだ。
-##################
-
+明日、届くようだ。
+==================
 
 先日予約した第二世代のiPod touchが明日届くようだ。嫁に受け取っておいてとお願いしておいた。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: gadget, 
 .. tags::
 .. comments::
-
-

@@ -1,27 +1,34 @@
-﻿USBの無線マウスは便利なんだか不便なんだか
-############################################
+USBの無線マウスは便利なんだか不便なんだか
+=========================================
+
+年末に、MacBook用にUSBの無線マウスを購入した。 `USBのバスパワーによる充電も可能なマウス <http://www.sanwa.co.jp/product/syohin.asp?code=MA-WH67BK>`_ なのだが、当然充電中は、USBポートを使用することになる。MacBookはUSBポートが２つしかないので、一つはHHKB Professionalを使用しているので、充電用の空きポートが無い。空きポートがあれば、充電しながらでも使えるのだけど。
 
 
-年末に、MacBook用にUSBの無線マウスを購入した。USBのバスパワーによる充電も可能なマウスなのだが、当然充電中は、USBポートを使用することになる。MacBookはUSBポートが２つしかないので、一つはHHKB Professionalを使用しているので、充電用の空きポートが無い。空きポートがあれば、充電しながらでも使えるのだけど。
-隣に置いているLet&#39;s note R3もUSBポートは２つしかなく、簡易USBハブを使用している。ただ、一つは同じくHHKB Professional用で、一つはUSBマウス用、ハブで増やしたもう一つは、これまたUSBバスパワーによるスイッチングHUBを使用しているので、これまた空きがない。もう一個簡易USBハブを買ってくるか…。
 
-.. image:: http://images-jp.amazon.com/images/G/09/icons/electronics/no-image-ce.gif
-   :alt: USB充電式ワイヤレスマウス(ブラック) MA-WH67BK
-
-
-.. image:: http://images-jp.amazon.com/images/P/B0001ZMUFC.09.THUMBZZZ.jpg
-   :alt: PLANEX 8ポート 10/100M スイッチングハブ FX-08Mini
-
-
-.. image:: http://images-jp.amazon.com/images/P/B00009KWI1.09.THUMBZZZ.jpg
-   :alt: Happy Hacking Keyboard Professional
+隣に置いているLet's note R3もUSBポートは２つしかなく、簡易USBハブを使用している。ただ、一つは同じくHHKB Professional用で、一つはUSBマウス用、ハブで増やしたもう一つは、これまた `USBバスパワーによるスイッチングHUB <http://www.planex.co.jp/product/hub/fx08mini.shtml>`_ を使用しているので、これまた空きがない。もう一個簡易USBハブを買ってくるか…。
 
 
 
 
-.. author:: mkouhei
+
+`PLANEX 5ポート 10/100M スイッチングハブ FX-05Mini <http://www.amazon.co.jp/exec/obidos/ASIN/B0001ZMUF2/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+`PFU Happy Hacking Keyboard Professional2 墨 英語配列 静電容量無接点 USBキーボード Nキーロールオーバー UNIX配列 WINDOWS/MAC両対応 ブラック PD-KB400B <http://www.amazon.co.jp/exec/obidos/ASIN/B000EXZ0VC/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+.. author:: default
 .. categories:: MacBook, computer, 
 .. tags::
 .. comments::
-
-

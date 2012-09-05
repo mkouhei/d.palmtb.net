@@ -1,25 +1,42 @@
-﻿元日の新宿
-##########
-
+元日の新宿
+==========
 
 USBハブを買うために新宿へ。元日はやっぱり人が少ないねぇ。
-たぶんやってないだろうなぁと思いつつ、やすべぇへ行ってみたら予想通り正月休み。４日から営業だそうだ。Webサイトにそういうことちゃんと掲示しておいて欲しいなぁ。
+
+たぶんやってないだろうなぁと思いつつ、 `やすべぇ <http://maps.google.co.jp/maps?f=q&hl=ja&amp;q=%E3%82%84%E3%81%99%E3%81%B9%E3%81%88%E3%80%80%E6%96%B0%E5%AE%BF%E5%BA%97&sll=35.686302,139.697685&amp;sspn=0.064694,0.122566&ie=UTF8&amp;om=1&z=16&amp;ll=35.689352,139.69717&spn=0.008086,0.015321&amp;iwloc=A>`_ へ行ってみたら予想通り正月休み。４日から営業だそうだ。 `Webサイト <http://www.yasubee.com/>`_ にそういうことちゃんと掲示しておいて欲しいなぁ。
+
+
+
 西口のヨドバシカメラへ行ったらゲーム館だけでなく、本館のPCパーツ売り場やDVD売り場でもPS3を売っていた。パーツ売り場では２０GBモデルに１００GBのHDDを付けて6万7千円くらいで、DVD売り場では６０GBモデルが6万2千円で。PS3を買ってやることと言ったらLinux化するだけで、常時稼働させるにはデカすぎるし、高いので却下。6万もすぐに出せるのならOpenBlockS266 128MBモデルに2.5インチHDDを即買うよなぁ。
+
+
+
 USBハブだけ買ってかえるのは癪なので、書籍売り場へ行って、ライフハックス鮮やかな仕事術をざっと立ち読み。悪くない内容だったが、求めていたものとは少し違っていたので購入は取り止め。GOOGLE MAPS HACKSをポイントで購入して帰宅。
 
-.. image:: http://images-jp.amazon.com/images/P/483992211X.09.THUMBZZZ.jpg
-   :alt: ライフハックス鮮やかな仕事術—やる気と時間を生み出すアイディア
-
-
-.. image:: http://images-jp.amazon.com/images/P/4873112931.09.THUMBZZZ.jpg
-   :alt: Google Maps Hacks -地図検索サービス徹底活用テクニック-
 
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+`ライフハックス鮮やかな仕事術―やる気と時間を生み出すアイディア (MYCOM新書) <http://www.amazon.co.jp/exec/obidos/ASIN/483992211X/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+`Google Maps Hacks 第2版 ―地図検索サービスをもっと活用するテクニック <http://www.amazon.co.jp/exec/obidos/ASIN/4873113415/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

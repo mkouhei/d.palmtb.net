@@ -1,10 +1,11 @@
-﻿virt-manager入れてみた。
-####################################
+virt-manager入れてみた。
+========================
+
+２年前の春のOSCでの仮想化友の会＆東京エリアDebian勉強会 合同勉強会での発表前に、 `virt-managerを導入しようとして敗北して <http://d.hatena.ne.jp/mkouhei/20070310/1173544216>`_ 、OSCが終わった後はコマンドラインで普通に使えるから必要ねぇなぁ、とそのまま放置プレイしていたのだが、 `Debian Wikiを見たら <http://wiki.debian.org/KVM>`_ いつの間にかvirt-managerを使えるようになっていたので、インストールしてみた。
 
 
-２年前の春のOSCでの仮想化友の会＆東京エリアDebian勉強会 合同勉強会での発表前に、virt-managerを導入しようとして敗北して、OSCが終わった後はコマンドラインで普通に使えるから必要ねぇなぁ、とそのまま放置プレイしていたのだが、Debian Wikiを見たらいつの間にかvirt-managerを使えるようになっていたので、インストールしてみた。
+.. code-block:: sh
 
-.. code-block:: none
 
    $ sudo apt-get install virt-manager
    パッケージリストを読み込んでいます... 完了
@@ -16,7 +17,7 @@
      arj libmudflap0 libgnome2-canvas-perl libglib-perl libconfuse0
      libdaemon0 libc-ares2 app-install-data perl-tk svgalibg1 cowdancer
      libcupsys2 perl-doc libetpan13 libcucul0
-   これらを削除するには &#39;apt-get autoremove&#39; を利用してください。
+   これらを削除するには 'apt-get autoremove' を利用してください。
    以下の特別パッケージがインストールされます:
      dmsetup dnsmasq dnsmasq-base libgtk-vnc-1.0-0 libpolkit-dbus2
      libpolkit2 libvirt-bin libvirt0 libxenstore3.0 lvm2 netcat-openbsd
@@ -113,7 +114,7 @@
    libxenstore3.0 (3.2.1-2) を設定しています ...
    libvirt0 (0.4.6-10) を設定しています ...
    libvirt-bin (0.4.6-10) を設定しています ...
-   Adding group `libvirt&#39; (GID 118) ...
+   Adding group `libvirt' (GID 118) ...
    終了。
    Starting libvirt management daemon: libvirtd.
    lvm2 (2.02.39-6) を設定しています ...
@@ -136,33 +137,17 @@
 
 
 導入されるパッケージ多すぎ。
+
+
+
 取り合えず、使い方は今度確認するか。コマンドラインだけで十分だと思うんだけどな…。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, virt., computer, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	cuiでしか使ってないです。というかvirt-installのためだけに入れてると言っても過言ではありませんｗ
-
-	written by  akuwano
-	02/08/2009 21:20:23
-	http://d.hatena.ne.jp/akuwano/
-
-----
-
-Comment:
-
-	実はまだこの後何もやってまへん。（わらおお、そうですか。今度試してみます。
-
-	written by  mkouhei
-	02/08/2009 21:34:58
-	http://d.hatena.ne.jp/mkouhei/
-

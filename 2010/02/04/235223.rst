@@ -1,50 +1,69 @@
-﻿気がついたらだんだん増殖。
-##########################
+気がついたらだんだん増殖。
+==========================
+
+組合サーバのバックアップは、tarでデータだけを固めて、sshでDVD-RWドライブのついているリモートホストに転送しているのだが、なんか気がついたらスクリプトが増殖していた。前回バックアップを取得してから結構時間が経っているので、どうやるんだっけかなぁと確認してみたら、どうやら以前、一発実行スクリプトを用意していた。そんなことすら忘れていたのか。スクリプトを見ると組合鯖の運用の歴史を紐解ける(気がする)ので、洗い出してみた。
 
 
-組合サーバのバックアップは、tarでデータだけを固めて、sshでDVD-RWドライブのついているリモートホストに転送しているのだが、なんか気がついたらスクリプトが増殖していた。前回バックアップを取得してから結構時間が経っているので、どうやるんだっけかなぁと確認してみたら、どうやら以前、一発実行スクリプトを用意していた。そんなことすら忘れていたのか。スクリプトを見ると組合鯖の運用の歴史を紐解ける(気がする)ので、洗い出してみた。もともとのバックアップ用のスクリプトはこれ [#]_ 。
 
-.. code-block:: none
+もともとのバックアップ用のスクリプトはこれ [#]_ 。
+
+
+.. code-block:: sh
+
 
    #!/bin/bash
    KEY=/home/user/.ssh/backup.key
    TARGETDIR=$1
-   test -z $1  echo -n Target Dir (Full Path) :   read TARGETDIR
+   test -z $1 && echo -n "Target Dir (Full Path) : " && read TARGETDIR
    BACKUP=$2
-   test -z $2  echo -n Backup File Name       :   read BACKUP
+   test -z $2 && echo -n "Backup File Name       : " && read BACKUP
    BACKUPFILE=${BACKUP}_$(date +%Y%m%d).tgz
-   USER=user
-   BACKUPHOST=xxx.xxx.xxx.xxx
-   BACKUPDIR=~${USER}/backup/$(date +%Y%m%d)
-   tar zcf - $TARGETDIR | ssh -i $KEY ${USER}@${BACKUPHOST} dd of=${BACKUPDIR}/${BACKUPFILE}
+   USER="user"
+   BACKUPHOST="xxx.xxx.xxx.xxx"
+   BACKUPDIR="~${USER}/backup/$(date +%Y%m%d)"
+   tar zcf - $TARGETDIR | ssh -i $KEY ${USER}@${BACKUPHOST} "dd of=${BACKUPDIR}/${BACKUPFILE}"
    sleep 5
 
 
-わざわざsshで転送しているのだが、そもそもこのホストと転送先のホストの間は、外部ネットワークからアクセスできないセグメントにしてあるんだからncで良かったんじゃねぇのと今更思うが、これ書いた当時はncなんてダメだ、sshでやらなあかん、という無意味にセキュリティ重視していたのだなと。このホスト、MySQLも動かしているのでデータ量は大したことがないので、バックアップは上記スクリプトで/var以下を手動で指定して取得していたのだが、そのうちmysqldumpを取得するようにした。 [#]_ 
 
-.. code-block:: none
+
+わざわざsshで転送しているのだが、そもそもこのホストと転送先のホストの間は、外部ネットワークからアクセスできないセグメントにしてあるんだからncで良かったんじゃねぇのと今更思うが、これ書いた当時はncなんてダメだ、sshでやらなあかん、という無意味にセキュリティ重視していたのだなと。
+
+
+
+このホスト、MySQLも動かしているのでデータ量は大したことがないので、バックアップは上記スクリプトで/var以下を手動で指定して取得していたのだが、そのうちmysqldumpを取得するようにした。 [#]_ 
+
+
+.. code-block:: sh
+
 
    #!/bin/bash
    
-   host=`awk &#39;/^host/ {print $3}&#39; /etc/mysql/debian.cnf`
-   user=`awk &#39;/^user/ {print $3}&#39; /etc/mysql/debian.cnf`
-   password=`awk &#39;/^password/ {print $3}&#39; /etc/mysql/debian.cnf`
+   host=`awk '/^host/ {print $3}' /etc/mysql/debian.cnf`
+   user=`awk '/^user/ {print $3}' /etc/mysql/debian.cnf`
+   password=`awk '/^password/ {print $3}' /etc/mysql/debian.cnf`
    date=$(date +%Y%m%d)
-   dbs=$(mysqlshow  -h $host -u $user --password=$password | awk -F&#39;| &#39; &#39;{print $2}&#39; | egrep -v &#39;^$&#39;)
+   dbs=$(mysqlshow  -h $host -u $user --password=$password | awk -F'| ' '{print $2}' | egrep -v '^$')
    tmpdir=/tmp/mysql
    test -d $tmpdir || mkdir $tmpdir
    for db in ${dbs[@]}
    do
-           mysqldump -h $host -u $user --password=$password $db  ${tmpdir}/${db}_dumpfile_${date}.sql
+           mysqldump -h $host -u $user --password=$password $db > ${tmpdir}/${db}_dumpfile_${date}.sql
    done
    exit 0
 
 
-DebianのMySQLのパッケージは、/etc/mysql/debian.cnfに管理用のユーザ名、パスワードが設定してあるので、直接スクリプトに書くよりはマシだろうとそこから読み取り変数にしている。「bashの配列なんか使うのをはじめて見た」と先月のrelaxonでも言われたのだが、まぁ、ここでも使っているんですな。
+DebianのMySQLのパッケージは、/etc/mysql/debian.cnfに管理用のユーザ名、パスワードが設定してあるので、直接スクリプトに書くよりはマシだろうとそこから読み取り変数にしている。「 `bashの配列なんか使うのをはじめて見た <http://twitter.com/yssk22/status/7551873488>`_ 」と `先月のrelaxon <http://groups.google.co.jp/group/couchdb-jp/web/couchdb-hackathon-relaxon>`_ でも言われたのだが、まぁ、ここでも使っているんですな。
+
+
+
+
 
 ある時点まで、これらのスクリプトを手動で実行していたのだが、だんだん面倒になって、スクリプト一発で取得できるように、と書いたのがこれ。 [#]_ 
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #!/bin/bash
    
@@ -58,12 +77,14 @@ DebianのMySQLのパッケージは、/etc/mysql/debian.cnfに管理用のユー
    /usr/local/sbin/backup.sh /var       myhost_var
    /usr/local/sbin/backup.sh /tmp/mysql myhost_mysqldump
    /usr/local/sbin/prebackup.sh start
-   echo Backup executed at $(LANG=C date) | mail -s backup $DATE done. root
+   echo "Backup executed at $(LANG=C date)" | mail -s "backup $DATE done." root
 
 
 etc, home, var, mysqldumpをtarで固めてsshで転送しているのだが、他にもいくつか別のスクリプトを実行している。一つ目は、転送先のホストに指定のディレクトリがあるかをチェックするだけのスクリプト。 [#]_ 
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #!/bin/bash
    if [ ! -d /home/user/backup/$1 ];
@@ -74,13 +95,17 @@ etc, home, var, mysqldumpをtarで固めてsshで転送しているのだが、�
    fi
 
 
+
+
 二つ目は、tar実行前後にサービスを停止・起動するためのスクリプト。 [#]_ 
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #!/bin/bash
-   SERVICE=apache2 usermin webmin mysql samba nfs-kernel-server nfs-common portmap postfix
-   case $1 in
+   SERVICE="apache2 usermin webmin mysql samba nfs-kernel-server nfs-common portmap postfix"
+   case "$1" in
    start)
    SERVICE=`echo $SERVICE | gawk -f /usr/local/bin/revword.awk`
    FLAG=start
@@ -89,7 +114,7 @@ etc, home, var, mysqldumpをtarで固めてsshで転送しているのだが、�
    FLAG=stop
    ;;
    *)
-   echo Usage: $0 {start|stop}
+   echo "Usage: $0 {start|stop}"
    exit 1
    ;;
    esac
@@ -101,29 +126,31 @@ etc, home, var, mysqldumpをtarで固めてsshで転送しているのだが、�
 
 このなかで実行しているawkスクリプトは、$SERVICEに格納した文字列を逆順に並び替えるだけのワンライナー。 [#]_ 
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #!/usr/bin/gawk
-   {for (i=NF; i0; i--) {printf %s , $i;} printf \n }
+   {for (i=NF; i>0; i--) {printf "%s ", $i;} printf "\n" }
+
+
 
 
 あとはDVDに自動追記するスクリプトを書けば良いのだろうが、growisofsコマンドの-Mオプションで追記できているように一見見える [#]_ のだが、マウントして確認するとなぜか最初に書き込んだファイルしか見えないので、まぁそれを解決できたらかなり楽になるんだが。とはいえ、メディアは自分で交換する必要はあるんだが。
 
 
 
-.. [#] ：/usr/local/sbin/backup.sh
-.. [#] ：/usr/local/sbin/mysqldump.sh
-.. [#] ：/usr/local/sbin/autobackup.sh
-.. [#] ：/usr/local/bin/checkdir.sh
-.. [#] ：/usr/local/sbin/prebackup.sh
-.. [#] ：/usr/local/bin/revword.awk
-.. [#] ：エラーが出てない
+
+.. [#] /usr/local/sbin/backup.sh
+.. [#] /usr/local/sbin/mysqldump.sh
+.. [#] /usr/local/sbin/autobackup.sh
+.. [#] /usr/local/bin/checkdir.sh
+.. [#] /usr/local/sbin/prebackup.sh
+.. [#] /usr/local/bin/revword.awk
+.. [#] エラーが出てない
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, Debian, 
 .. tags::
 .. comments::
-
-

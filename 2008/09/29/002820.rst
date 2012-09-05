@@ -1,14 +1,14 @@
-﻿む、豆腐だ。
-############
-
+む、豆腐だ。
+============
 
 Xfce4のウィンドウのタイトルが日本語だと、豆腐になってるな。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

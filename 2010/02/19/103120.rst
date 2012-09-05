@@ -1,22 +1,29 @@
-﻿”Google Calendarに登録”の予定をGoogle Appsのカレンダーに登録する。
-##############################################################################################
+"Google Calendarに登録"の予定をGoogle Appsのカレンダーに登録する。
+==================================================================
 
+普通にやると、Googleアカウントのカレンダーがロードされて、そっちにしか登録できないので、Google Appsをメインに使っている人にはちょいと不便。でもURLを書き換えてやるだけで対応できます。
 
-普通にやると、Googleアカウントのカレンダーがロードされて、そっちにしか登録できないので、Google Appsをメインに使っている人にはちょいと不便。でもURLを書き換えてやるだけで対応できます。例えば、CouchDB-JPの今度のOSC Tokyo 2010/Springの後の懇親会 [#]_ 。先日行った勉強会で教えてもらったTweetviteを使っていますが、ここにもカレンダーに登録するために&#34;Add to Calendar&#34;があります。これをクリックし、Google Calendarのリンクをクリックすると、呼ばれるリンクは次のとおり。
-
-長いのでリンクをコピーして見てね。
-
-Google Appsのカレンダーに登録するためには、&#34;http://www.google.com/calendar/render&#34;の、&#34;calendar/render/&#34;の部分を、&#34;calendar/hosted/yourdomain/render/&#34;と書き換えてやればOK。&#34;yourdomain&#34;の部分に使っているドメインを当てます。&#34;hoge.com&#34;なら&#34;calendar/hosted/hoge.com/render/&#34;ですな。
+例えば、 `CouchDB-JPの今度のOSC Tokyo 2010/Springの後の懇親会 <http://tweetvite.com/event/egdo>`_  [#]_ 。先日行った勉強会で教えてもらったTweetviteを使っていますが、ここにもカレンダーに登録するために"Add to Calendar"があります。これをクリックし、Google Calendarのリンクをクリックすると、呼ばれるリンクは次のとおり。
 
 
 
-.. [#] ：Debian勉強会は明日明後日でDebian温泉があるのでOSCの後はパスしる。まぁぶっちゃけ合流でもよい気も。
+
+
+`長いのでリンクをコピーして見てね。 <http://www.google.com/calendar/render?action=TEMPLATE&pprop=name%3ATweetvite.com&pprop=website%3Ahttp%3A%2F%2Ftweetvite.com%2Fevent%2Fegdo&text=%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E6%8C%87%E5%90%91%E3%81%AA%E6%87%87%E8%A6%AA%E4%BC%9A%EF%BC%88After+OSC+2010+Tokyo%2FSpring%EF%BC%89&details=%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E6%8C%87%E5%90%91%E3%81%AE%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%8C%E7%B5%82%E3%82%8F%E3%81%A3%E3%81%A6%E3%80%81%E3%83%A9%E3%82%A4%E3%83%88%E3%83%8B%E3%83%B3%E3%82%B0%E3%83%88%E3%83%BC%E3%82%AF%E3%82%92%E8%81%9E%E3%81%84%E3%81%9F%E3%82%89%E3%81%9D%E3%81%AE%E3%81%BE%E3%81%BE%E3%81%A9%E3%81%93%E3%81%8B%E3%81%B8%E7%B9%B0%E3%82%8A%E5%87%BA%E3%81%97%E3%81%BE%E3%81%97%E3%82%87%E3%81%86%E3%80%82%26%238230%3B%3Cbr%3E%3Cbr%3EFor+updates%2C+check+out+the+event+at+http%3A%2F%2Ftweetvite.com%2Fevent%2Fegdo&dates=20100227T090000Z%2F20100227T100000Z&location=TBD&gsessionid=6rM78cqwbz73c923qmCPww&sf=true&output=xml>`_ 
 
 
 
-.. author:: mkouhei
+
+
+Google Appsのカレンダーに登録するためには、"http://www.google.com/calendar/render"の、"calendar/render/"の部分を、"calendar/hosted/yourdomain/render/"と書き換えてやればOK。"yourdomain"の部分に使っているドメインを当てます。"hoge.com"なら"calendar/hosted/hoge.com/render/"ですな。
+
+
+
+
+.. [#] Debian勉強会は明日明後日でDebian温泉があるのでOSCの後はパスしる。まぁぶっちゃけ合流でもよい気も。
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

@@ -1,26 +1,21 @@
-﻿dyson購入。
-################
-
+dyson購入。
+===========
 
 社会人になってからずっと使ってきた掃除機がかなり劣化してきたこともあり [#]_ 、前々から欲しかったdysonの掃除機を遂に購入。dyson DC22 ddm turbinehead、77,100円也。今まで使っていた掃除機に比べ、フローリングの溝に残った埃をしっかりと吸い取ることができますた。コンパクトに収納できますが、まるで戦隊物のロボットのようですな。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20080608/20080608195659.jpg
-   :alt: f:id:mkouhei:20080608195659j:image
+
+.. image:: /img/20080608195659.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20080608/20080608195605.jpg
-   :alt: f:id:mkouhei:20080608195605j:image
-
-
-
-
-.. [#] ：社会人歴＝８年の掃除機。でも実際には高校の頃の神戸の自身の時からあって、被災した祖母が住んでいた家でも使っていたので１５年もの骨董品。
+.. image:: /img/20080608195605.jpg
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+.. [#] 社会人歴＝８年の掃除機。でも実際には高校の頃の神戸の自身の時からあって、被災した祖母が住んでいた家でも使っていたので１５年もの骨董品。
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

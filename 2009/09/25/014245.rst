@@ -1,15 +1,18 @@
-﻿hootsuite登録してみた。
-################################
+hootsuite登録してみた。
+=======================
+
+複数アカウント使えるので、 `通常 <http://twitter.com/mkouhei/>`_ と `英語用 <http://twitter.com/emkouhei/>`_ とで使い分けていると結構便利。なんだけど、HTTPしかサポートしてないので、会社では使えんし、そのままログインしたり、Profile追加するのにID&Passwordをそのまま登録するのはイケてないなぁ…。
 
 
-複数アカウント使えるので、通常と英語用とで使い分けていると結構便利。なんだけど、HTTPしかサポートしてないので、会社では使えんし、そのままログインしたり、Profile追加するのにIDをそのまま登録するのはイケてないなぁ…。
+
 http://hootsuite.com/
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

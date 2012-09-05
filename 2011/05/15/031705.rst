@@ -1,20 +1,29 @@
-﻿upstream更新時のDebianパッケージ更新手順。
-########################################################
-
+upstream更新時のDebianパッケージ更新手順。
+==========================================
 
 ようやく重い腰を上げて、パッケージのメンテナンスにチャレンジ始めたので、備忘録として。
+
+
+
 debian/watchファイルを下記のように書いておくのが前提。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    version=3
-   http://pypi.python.org/packages/source/b/blockdiag/blockdiag-(.).tar.gz
+   http://pypi.python.org/packages/source/b/blockdiag/blockdiag-(.*)\.tar\.gz
 
 
 以下の手順でアップデートできますよと。
+
+
+
 まずはuscanコマンド。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd blockdiag/blockdiag-0.8.0/
    $ uscan
@@ -27,7 +36,9 @@ debian/watchファイルを下記のように書いておくのが前提。
 
 symlinkが確かに作られてますね。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ ls -lrt ../
    合計 472
@@ -39,25 +50,29 @@ symlinkが確かに作られてますね。
    -rw-r--r-- 1 kohei kohei   1536 2011-05-11 01:48 blockdiag_0.8.0-1_amd64.changes
    -rw-r--r-- 1 kohei kohei  64170 2011-05-11 01:48 blockdiag_0.8.0-1_all.deb
    -rw-r--r-- 1 kohei kohei  44816 2011-05-11 01:48 blockdiag_0.8.0-1_amd64.build
-   lrwxrwxrwx 1 kohei kohei     22 2011-05-14 22:09 blockdiag_0.8.1.orig.tar.gz - blockdiag-0.8.1.tar.gz
+   lrwxrwxrwx 1 kohei kohei     22 2011-05-14 22:09 blockdiag_0.8.1.orig.tar.gz -> blockdiag-0.8.1.tar.gz
    -rw-r--r-- 1 kohei kohei 111706 2011-05-14 22:09 blockdiag-0.8.1.tar.gz
 
 
 次はuupdateコマンド。第一引数に最新バージョンのupstreamのアーカイブ、第二引数にバージョンを指定します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ uupdate ../blockdiag-0.8.1.tar.gz 0.8.1
    New Release will be 0.8.1-1.
    -- Untarring the new sourcecode archive ../blockdiag-0.8.1.tar.gz
    Unpacking the debian/ directory from version 0.8.0-1 worked fine.
    Remember: Your current directory is the OLD sourcearchive!
-   Do a cd ../blockdiag-0.8.1 to see the new package
+   Do a "cd ../blockdiag-0.8.1" to see the new package
 
 
 すっと、新しいバージョンでディレクトリとdebianディレクトリが引き継がれますよと。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd ../blockdiag-0.8.1
    $ ls
@@ -68,13 +83,16 @@ symlinkが確かに作られてますね。
    changelog    control  docs       rules     watch
 
 
+
+
 あとは、debuildするなりなんなりと。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿生涯経県値
-##########
+生涯経県値
+==========
+
+`東北地方ばっか <http://keiken.uub.jp/km.cgi?MAP=44444444434555430044344034350000140000000000004&NAM=mkouhei&CAT=mkouhei%82%CC%90%B6%8AU%8Co%8C%A7%92l>`_ だな。学生時分によく避暑目的で１８切符や東北ユース切符などで行ったからなぁ。
 
 
-東北地方ばっかだな。学生時分によく避暑目的で１８切符や東北ユース切符などで行ったからなぁ。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

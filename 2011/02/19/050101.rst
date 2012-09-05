@@ -1,23 +1,26 @@
-﻿ブロックデバイスのUUIDを調べる。
-####################################
-
+ブロックデバイスのUUIDを調べる。
+================================
 
 blkidコマンドなんてあるのか。知らなかった。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ /sbin/blkid 
-   /dev/sda1: LABEL=EFI UUID=2860-11F4 TYPE=vfat 
-   /dev/sda2: UUID=f25615e0-a7b7-3deb-859d-e671e3c347a4 LABEL=Macintosh HD TYPE=hfsplus 
-   /dev/sda5: UUID=c669781d-3d3a-4a72-b2f5-7a8afc12d318 TYPE=swap 
+   /dev/sda1: LABEL="EFI" UUID="2860-11F4" TYPE="vfat" 
+   /dev/sda2: UUID="f25615e0-a7b7-3deb-859d-e671e3c347a4" LABEL="Macintosh HD" TYPE="hfsplus" 
+   /dev/sda5: UUID="c669781d-3d3a-4a72-b2f5-7a8afc12d318" TYPE="swap" 
 
 
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

@@ -1,34 +1,14 @@
-﻿GDDフォン、WPA2-PSKで接続できない。
-##############################################
-
+GDDフォン、WPA2-PSKで接続できない。
+===================================
 
 無線LANルータのアクセスログにも出てこないとは…。パシフィコ横浜でのWEPは行けたのに。さて、困ったな。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: gadget, network, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	はじめまして。わたしも同じく、WPA2(AES) に繋がらず難儀しています。正確に言えば、繋がってるように見えるのですがブラウザで外まで出られないという症状です。任天堂DSi、iPhone では問題ないんですけど…
-
-	written by  hidea
-	06/10/2009 11:49:13
-	http://d.hatena.ne.jp/hidea/
-
-----
-
-Comment:
-
-	僕は結局Fonで接続するようにしました。
-
-	written by  mkouhei
-	06/21/2009 22:18:01
-	http://d.hatena.ne.jp/mkouhei/
-

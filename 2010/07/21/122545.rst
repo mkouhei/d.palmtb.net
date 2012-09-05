@@ -1,10 +1,13 @@
-﻿backlightの調整。
-##########################
-
+backlightの調整。
+=================
 
 先日バックライトの調整ができなくて困ったとか書いていたが、xbacklightではなく直接sysfsで変更すれば良いことを教えてもらった。thx 岩松さん。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ cd /sys/class/backlight/mbp_backlight
    $ ls -l
@@ -14,19 +17,23 @@
    -rw-r--r-- 1 root root 4096 2010-07-20 17:15 brightness ←こやつを変更。
    -r--r--r-- 1 root root 4096 2010-07-20 17:10 max_brightness ←最大はMacBook 5,2だと15
    drwxr-xr-x 2 root root    0 2010-07-20 17:14 power
-   lrwxrwxrwx 1 root root    0 2010-07-20 17:10 subsystem - ../../../../class/backlight
+   lrwxrwxrwx 1 root root    0 2010-07-20 17:10 subsystem -> ../../../../class/backlight
    -rw-r--r-- 1 root root 4096 2010-07-20 17:10 uevent
-   $ sudo bash -c echo 1  brightness
+   $ sudo bash -c "echo 1 > brightness"
 
 
 てな感じで変更できる。
+
+
+
 pommedでもいじれるらしいのだが、MacBookのファンクションキーは特に使っていないので、シェルスクリプトで直変更してしまうことにしたなり。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

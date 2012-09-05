@@ -1,18 +1,22 @@
-﻿MOT-S305BK購入。
-##########################
+MOT-S305BK購入。
+================
 
-
-milestoneで有線のイヤフォンでPodcastを聞くのが鬱陶しかったので、Bluetoothのヘッドフォンを購入した。milestoneと同じく、MotorolaのMOT-S305BK。Amazonで昨夕注文して今日のお昼宅配ボックスに届いた。充電中は使えないので、最初に充電必要。ペアリングは何も考えずに簡単にできた。doubleTwistの操作もヘッドフォン側のコントローラからできるので便利。
-
-.. image:: http://ecx.images-amazon.com/images/I/31d0tFpVOeL._SL160_.jpg
-   :alt: 【正規品】 MOTOROLA Bluetooth ワイヤレスステレオヘッドセット MOT-S305BK
+milestoneで有線のイヤフォンでPodcastを聞くのが鬱陶しかったので、Bluetoothのヘッドフォンを購入した。milestoneと同じく、Motorolaの `MOT-S305BK <http://www.amazon.co.jp/exec/obidos/ASIN/B002C1ABXG/palmtb-22/ref=nosim/>`_ 。Amazonで昨夕注文して今日のお昼宅配ボックスに届いた。充電中は使えないので、最初に充電必要。ペアリングは何も考えずに簡単にできた。 `doubleTwist <http://jp.androlib.com/android.application.com-doubletwist-androidplayer-wpAj.aspx>`_ の操作もヘッドフォン側のコントローラからできるので便利。
 
 
 
 
-.. author:: mkouhei
+
+`【正規品】 MOTOROLA Bluetooth ワイヤレスステレオヘッドセット MOT-S305BK <http://www.amazon.co.jp/exec/obidos/ASIN/B002C1ABXG/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+.. author:: default
 .. categories:: gadget, 
 .. tags::
 .. comments::
-
-

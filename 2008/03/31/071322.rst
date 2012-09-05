@@ -1,14 +1,14 @@
-﻿肩凝り辛い。
-############
-
+肩凝り辛い。
+============
 
 今朝起きたら肩凝りが。起きたらヒヤッとして寒いのも関係あるのかもなぁ。風呂入って出かけるか。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

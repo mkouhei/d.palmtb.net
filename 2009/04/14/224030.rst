@@ -1,9 +1,9 @@
-﻿Bit rateを指定してみた。
-################################
+Bit rateを指定してみた。
+========================
 
 
+.. code-block:: sh
 
-.. code-block:: none
 
    $ sudo iwconfig eth1 rate 11M
 
@@ -12,9 +12,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, network, Debian, 
 .. tags::
 .. comments::
-
-

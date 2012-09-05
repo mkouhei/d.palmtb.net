@@ -1,14 +1,14 @@
-﻿twitter登録してみた。
-############################
-
+twitter登録してみた。
+=====================
 
 https://twitter.com/mkouhei
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

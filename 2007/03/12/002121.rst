@@ -1,14 +1,14 @@
-﻿引継ほぼ完了。
-##############
-
+引継ほぼ完了。
+==============
 
 NokiaとLinuxの引継はほぼ完了。あとは、セキュリティアラート用のスクリプトの引継で終わりだな。
 
 
 
-.. author:: mkouhei
-.. categories:: work, 
+
+
+
+.. author:: default
+.. categories:: 仕事, 
 .. tags::
 .. comments::
-
-

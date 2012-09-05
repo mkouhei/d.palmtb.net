@@ -1,49 +1,41 @@
-﻿新婚旅行初日　いろいろ初体験。
-##############################
-
+新婚旅行初日　いろいろ初体験。
+==============================
 
 初めての海外。飛行機も１、２歳のころに乗ったことしかないので実質的に初めて。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090106/20090106204647.jpg
-   :alt: f:id:mkouhei:20090106204647j:image
+
+.. image:: /img/20090106204647.jpg
 
 最近のケータイは賢いですな。USA表示に。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090107/20090107040822.jpg
-   :alt: f:id:mkouhei:20090107040822j:image
+
+.. image:: /img/20090107040822.jpg
 
 初日の昼飯は質素に。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090106/20090106132151.jpg
-   :alt: f:id:mkouhei:20090106132151j:image
 
- [#]_ 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090106/20090106132151.jpg
-   :alt: f:id:mkouhei:20090106132151j:image
+.. image:: /img/20090106132151.jpg
+
+ヒルトン・ハワイアン・ビレッジ前の海岸を散歩。この後、ブログでは書けない場所に迷い込み、知らずに格安の値段でおみやげを購入できた。 [#]_ 
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090106/20090106183042.jpg
-   :alt: f:id:mkouhei:20090106183042j:image
+.. image:: /img/20090106183042.jpg
 
 夕食はヒルトンの近くで飯。日本語がほとんど通じなかった。MacBookのACアダプタとの比較。でかすぎるよ。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090106/20090106212328.jpg
-   :alt: f:id:mkouhei:20090106212328j:image
+
+.. image:: /img/20090106212328.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090106/20090106212313.jpg
-   :alt: f:id:mkouhei:20090106212313j:image
-
-
-
-
-.. [#] ：後日、本来なら購入できないはずだったことを知った。同じものでも40～50％くらい安かったなあ。
+.. image:: /img/20090106212313.jpg
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+.. [#] 後日、本来なら購入できないはずだったことを知った。同じものでも40～50％くらい安かったなあ。
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

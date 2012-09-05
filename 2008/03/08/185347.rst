@@ -1,23 +1,23 @@
-﻿音が出るようになった。
-######################
+音が出るようになった。
+======================
 
-
-MacBook Airでも、Debian Wikiにあるように、/etc/modprobe.d/soundを書き換えてやれば、音が出るようになった。
+MacBook Airでも、 `Debian Wiki <http://wiki.debian.org/MacBook#head-d374bb9e1b7183c133759a8c6877a34c50c4ba7d>`_ にあるように、/etc/modprobe.d/soundを書き換えてやれば、音が出るようになった。
 
 * 変更前
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    alias snd-card-0 snd-hda-intel
    options snd-hda-intel index=0
 
 
-
 * 変更後
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    alias snd-card-0 snd-hda-intel
    #options snd-hda-intel index=0
@@ -28,9 +28,12 @@ MacBook Airでも、Debian Wikiにあるように、/etc/modprobe.d/soundを書�
 
 
 
-.. author:: mkouhei
+
+
+
+
+
+.. author:: default
 .. categories:: Debian, MacBook, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿当て馬か。
-##########
-
+当て馬か。
+==========
 
 今朝のめざましの芸能ニュースを見て。マナカナのチアリーダー姿はかわいかったが、何故ハリセンボンまで？ネタか？当て馬か？
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

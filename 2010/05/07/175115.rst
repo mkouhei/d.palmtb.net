@@ -1,10 +1,11 @@
-﻿dvipdfmxでエラーとなりPDFを生成できない問題。
-########################################################
+dvipdfmxでエラーとなりPDFを生成できない問題。
+=============================================
+
+`Squeeze/Sidでの'\*\* ERROR \*\* Could not find encoding file "H".'の問題 <https://twitter.com/mkouhei/status/13259269748>`_ 、 `ここ <http://beam.kisarazu.ac.jp/~saito/linux/debian/squeeze.html>`_ を参考に/etc/texmf/texmf.d/85Misc.cnfを以下のように修正。
 
 
-Squeeze/Sidでの’** ERROR ** Could not find encoding file ”H”.’の問題、ここを参考に/etc/texmf/texmf.d/85Misc.cnfを以下のように修正。
+.. code-block:: diff
 
-.. code-block:: none
 
    diff --git a/texmf/texmf.d/85Misc.cnf b/texmf/texmf.d/85Misc.cnf
    index dee63d0..9c6b3b6 100644
@@ -21,16 +22,24 @@ Squeeze/Sidでの’** ERROR ** Could not find encoding file ”H”.’の問�
     SFDFONTS = .;$TEXMF/fonts/sfd//
 
 
+
+
 /etc/texmx/texmf.cnfに反映。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo update-texmf
 
 
+
+
 git diffで確認。
 
-.. code-block:: none
+
+.. code-block:: diff
+
 
    diff --git a/texmf/texmf.cnf b/texmf/texmf.cnf
    index da79dd4..73a5cbb 100644
@@ -62,7 +71,9 @@ git diffで確認。
 
 ワークアラウンドとしてとりあえずこれでPDF生成を生成できるようになった。が、コンソールからevinceでPDFを実行すると、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    Error: Illegal entry in bfrange block in ToUnicode CMap
 
@@ -71,9 +82,10 @@ git diffで確認。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, TeX, 
 .. tags::
 .. comments::
-
-

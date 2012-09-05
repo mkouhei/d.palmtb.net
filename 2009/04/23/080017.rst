@@ -1,15 +1,18 @@
-﻿アスファルトの熱で発電
-######################
+アスファルトの熱で発電
+======================
+
+Software Design 5月号の `三酔人電脳問答 <http://d.hatena.ne.jp/software_design/20090410#1234407324>`_ で再生可能エネルギーに触れられているのを読んで、アスファルトの熱で発電すりゃええんじゃね？と思った。そういうの考えている他人はちゃんといるんですね。
 
 
-Software Design 5月号の三酔人電脳問答で再生可能エネルギーに触れられているのを読んで、アスファルトの熱で発電すりゃええんじゃね？と思った。そういうの考えている他人はちゃんといるんですね。
+
 http://www.enn.com/sci-tech/article/37929
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

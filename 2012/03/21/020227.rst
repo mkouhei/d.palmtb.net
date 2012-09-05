@@ -1,27 +1,31 @@
-﻿tinkererとtoxをパッケージ作成中＆BTS。
-####################################################
+tinkererとtoxをパッケージ作成中＆BTS。
+======================================
+
+前々からの計画をそろそろ実行しようと思って探している中で見つけた `tinkerer <http://tinkerer.bitbucket.org/index.html>`_ が試してみたら結構良さげなのと、これのBuild時のテストに必要な `tox <http://pypi.python.org/pypi/tox>`_ をパッケージ作成中＆BTSしました。
 
 
-前々からの計画をそろそろ実行しようと思って探している中で見つけたtinkererが試してみたら結構良さげなのと、これのBuild時のテストに必要なtoxをパッケージ作成中＆BTSしました。
 
 * tinkerer
 
-* http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=664760
+
+  * http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=664760
 
 
 * tox
 
-* http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=664759
+
+  * http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=664759
 
 
 
-toxが依存するargparseはPython2.7ではPython自体に組み込まれているので対応しません。tinkererにはWebフォントが含まれているのですが、これは他のフォントパッケージのように&#34;fonts-&#34;という名前のパッケージにするか、パッケージ対象から外すのがええのかなぁ…？
+toxが依存する `argparse <http://pypi.python.org/pypi/argparse>`_ はPython2.7ではPython自体に組み込まれているので対応しません。tinkererにはWebフォントが含まれているのですが、これは他のフォントパッケージのように"fonts-"という名前のパッケージにするか、パッケージ対象から外すのがええのかなぁ…？
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, python, Dev, 
 .. tags::
 .. comments::
-
-

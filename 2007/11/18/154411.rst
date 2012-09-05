@@ -1,14 +1,16 @@
-﻿風邪引いたっぽい。
-##################
-
+風邪引いたっぽい。
+==================
 
 頭痛い…。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

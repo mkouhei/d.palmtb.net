@@ -1,13 +1,16 @@
-﻿lxcのホストOSでルーティングさせる。
-########################################
+lxcのホストOSでルーティングさせる。
+===================================
+
+今月のDebian勉強会の `資料 <http://tokyodebian.alioth.debian.org/pdf/debianmeetingresume200912.pdf>`_ ではbrctl使ってL2で外部ネットワークからコンテナにアクセスさせるようにしていたが、コンテナのIPアドレスを別セグメントにして、ホストOSでルーティングするように変更した。
 
 
-今月のDebian勉強会の資料ではbrctl使ってL2で外部ネットワークからコンテナにアクセスさせるようにしていたが、コンテナのIPアドレスを別セグメントにして、ホストOSでルーティングするように変更した。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    commit d437bc77197df49a92a033ec085d3fcff226f4b1
-   Author: root root@hostos.(none)
+   Author: root <root@hostos.(none)>
    Date:   Thu Dec 17 06:25:07 2009 +0900
    
        daily autocommit
@@ -74,13 +77,17 @@
 
 
 コンテナの方のIPアドレスを変更するのを忘れんように。
+
+
+
 まぁ、なんだ、コソーリと勝手にコンテナにもconnectedなセグメントのIPアドレスを勝手に割り振って使っていたら、他のところで端末増やしてIPアドレスの競合が発生してバレた、からなんだが。ほとんど使っていないテスト用の環境だからまあ断らないでエエかと、勝手にやるのはアカンよ、というお話。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, network, Ops, virt., 
 .. tags::
 .. comments::
-
-

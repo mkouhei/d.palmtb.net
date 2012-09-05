@@ -1,28 +1,33 @@
-﻿Hikiのセットアップ
-######################
-
+Hikiのセットアップ
+==================
 
 あとでsuEXECで動かすのに、専用のユーザを作成。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo adduser --system --home /var/www/hoge --no-create-home --disabled-login hogehoge
 
 
 hikisetupを実行すると、失敗した。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo -u hogehoge /usr/bin/hikisetup 
    INFO: hiki basedir is /var/www/hoge
    Please input data_path [/var/www/hoge/data]: 
-   Error: private method `makedirs&#39; called for File:Class
+   Error: private method `makedirs' called for File:Class
    hikisetup failed!
 
 
-ここを参考にしてhikisetupを修正。
+`ここ <https://epa.scitec.kobe-u.ac.jp/~itpass/hiki/hiki.cgi?%5BEPA%5DHiki%A4%CE%A5%A4%A5%F3%A5%B9%A5%C8%A1%BC%A5%EB%A4%C8%C0%DF%C4%EA#hikisetup+-A4-CE-BD-A4-C0-B5>`_ を参考にしてhikisetupを修正。
 
-.. code-block:: none
+
+.. code-block:: diff
+
 
    $ rcsdiff -r1.2 -r1.1 ./hikisetup 
    ===================================================================
@@ -31,14 +36,16 @@ hikisetupを実行すると、失敗した。
    retrieving revision 1.1
    diff -r1.2 -r1.1
    140c140
-   &lt;     makedirs(@hikidir)
+   <     makedirs(@hikidir)
    ---
-        File.makedirs(@hikidir)
+   >     File.makedirs(@hikidir)
 
 
 hikiconf.rb.sampleを作成する。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd /usr/share/doc/hiki/examples
    $ sudo gzip -d hikiconf.rb.sample.ja.gz
@@ -47,7 +54,9 @@ hikiconf.rb.sampleを作成する。
 
 もう一回作り直し。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo -u hogehoge /usr/bin/hikisetup 
    INFO: hiki basedir is /var/www/hoge
@@ -58,14 +67,18 @@ hikiconf.rb.sampleを作成する。
 
 パーミッションの変更
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo chmod -R go+w data
 
 
 次に、RAAからfcgiwrapをダウンロードしてくる。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ wget http://rubyforge.org/frs/download.php/34207/fcgiwrap-0.1.6.tgz
    $ tar zxf fcgiwrap-0.1.6.tgz
@@ -74,15 +87,17 @@ hikiconf.rb.sampleを作成する。
 
 ラッパー用のスクリプトを作成。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd /var/www/hoge
    $ sudo -u hogehoge vi hiki.fcgi
    ===hiki.fcgi===
    #!/usr/bin/ruby
-   require &#39;fcgiwrap&#39;
+   require 'fcgiwrap'
    FCGIWrap.each {
-     load &#39;/var/www/hoge/hiki.cgi&#39;
+     load '/var/www/hoge/hiki.cgi'
    }
    ===========
    $ sudo chmod 755 hiki.fcgi
@@ -90,26 +105,28 @@ hikiconf.rb.sampleを作成する。
 
 Apacheの設定を変更する。hikiconfを読み込めないようにするのと、RewriteルールとFollowSymLinksを追記する。 [#]_ 
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd /etc/apache2/site-available
    $ sudo a2enmod rewrite
    $ sudo vi default
    ===default===
    (snip)
-           Directory /var/www/hoge/
+           <Directory "/var/www/hoge/">
                    Options ExecCGI FollowSymLinks
                    AllowOverride all
                    Order allow,deny
                    Allow from all
-                   Files hikiconf.rb
+                   <Files "hikiconf.rb">
                            deny from all
-                   /Files
+                   </Files>
                    RewriteEngine on
                    RewriteBase /hoge/
                    RewriteRule ^hiki.cgi(.*)$ hiki.fcgi$1
                    RewriteRule ^hiki.cgi$ hiki.fcgi
-           /Directory
+           </Directory>
    (snip)
 
 
@@ -117,13 +134,11 @@ Apacheの設定を変更する。hikiconfを読み込めないようにするの
 
 
 
-.. [#] ：Rewrite関連の設定だけだと、.. [#] Options FollowSymLinks or SymLinksIfOwnerMatch is off which implies that RewriteRule directive is forbidden: /var/www/hoge/.. [#] というエラーが出るので。
+
+.. [#] Rewrite関連の設定だけだと、"Options FollowSymLinks or SymLinksIfOwnerMatch is off which implies that RewriteRule directive is forbidden: /var/www/hoge/"というエラーが出るので。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

@@ -1,18 +1,17 @@
-﻿北海道物産展
-############
-
+北海道物産展
+============
 
 新宿小田急11階でやってました。昨日帰りに、うに丼を食べようと思ったら売り切れだったので、隣のドライブンインいとうで豚丼(\900)を食べマスタ。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20080913/20080913173759.jpg
-   :alt: f:id:mkouhei:20080913173759j:image
+
+.. image:: /img/20080913173759.jpg
 
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

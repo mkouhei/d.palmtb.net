@@ -1,14 +1,14 @@
-﻿新メンバー加入。
-################
-
+新メンバー加入。
+================
 
 昨日から今のチームに新しい仲間が増えました。早く職場に馴染んでくれるといいですね。
 
 
 
-.. author:: mkouhei
-.. categories:: work, life, 
+
+
+
+.. author:: default
+.. categories:: 仕事, 生活, 
 .. tags::
 .. comments::
-
-

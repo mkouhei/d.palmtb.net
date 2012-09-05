@@ -1,11 +1,17 @@
-﻿特定ホストとの通信用スクリプト。
-################################
-
+特定ホストとの通信用スクリプト。
+================================
 
 自宅では普段、有線LANを使っている。自宅外とのFTPで通信したいとき、利用しているブロードバンドルータに静的ポリシーでhigh portでざっくりOKにしないといけないのが非常に嫌なのである。通信したいのは作業用の環境だけなのに、他のノードにまでアクセスできるようになるのは気持ち悪い。
+
+
+
 まぁそこは抜け道として、ブロードバンドルータの外側にFONを設置しているので、FTPだけでなくhigh port使っていて、ブロードバンドルーターで細かいポリシーを扱えないのはFON経由でやるようにしている。いちいち設定するのは面倒なので、シェルスクリプト書いてやった。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    #!/bin/sh
    
@@ -16,18 +22,18 @@
    GW=xxx.xxx.xxx.yyy
    FTP=zzz.zzz.zzz.zzz
    
-   case $1 in
+   case "$1" in
    
    start)
-   test -f $PID  exit 2
+   test -f $PID && exit 2
    
-   cat EOF  $CONF
+   cat <<EOF > $CONF
    ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
    ap_scan=2
    update_config=1
    
    network={
-           ssid=essid
+           ssid="essid"
            scan_ssid=1
            psk=yourwlanrouterpresharedkey
            key_mgmt=WPA-PSK
@@ -54,7 +60,7 @@
    ;;
    
    *)
-   echo Usage; $0 {start|stop}
+   echo "Usage; $0 {start|stop}"
    exit 1
    ;;
    esac
@@ -65,9 +71,9 @@
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Unix/Linux, network, 
 .. tags::
 .. comments::
-
-

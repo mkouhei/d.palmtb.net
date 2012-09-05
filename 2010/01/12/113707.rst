@@ -1,11 +1,17 @@
-﻿続々・lxcが起動しない。
-##########################
-
+続々・lxcが起動しない。
+=======================
 
 新バージョンで作成したコンテナの設定ファイルがどこにあるのか見当がつかないので、findでやみくもに探すのも時間がかかるので、既存のコンテナのconfigのlxc.mountを削除して起動させてみたが、ダメだった。
+
+
+
 で、とりあえず、既存のコンテナを起動させることを優先して、destroy, createを行った。destroy時にrootfsを削除しないこと、create時に既存の設定どおりにIPアドレスなどを指定し、rootfsを既存のrootfsのフルパスを指定することがポイント。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ sudo bash lxc-debian-new destroy
    What is the name for the container ? [debian] hoge
@@ -27,16 +33,23 @@
    update-rc.d: using dependency based boot sequencing
    Done.
    
-   You can run your container with the &#39;lxc-start -n hoge&#39;
+   You can run your container with the 'lxc-start -n hoge'
    
    $ lxc-start -n hoge -d
    $
 
 
+
+
 これで無事起動できるようになった。
+
+
+
 新しいコンテナは、/tmp下に一時ディレクトリを作るのだが、中身は特にない。lxc-stopかけてsegfaultを起こすと、このディレクトリが残ってしまうんだが。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ ls -l /tmp/
    合計 16
@@ -47,9 +60,9 @@
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, virt., computer, 
 .. tags::
 .. comments::
-
-

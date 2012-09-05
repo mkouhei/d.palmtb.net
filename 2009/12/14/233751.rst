@@ -1,14 +1,14 @@
-﻿そろそろ。
-##########
-
+そろそろ。
+==========
 
 年賀状書かないといかんと思いつつ、なかなかやる気がでない。毎年のことなんだけど。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

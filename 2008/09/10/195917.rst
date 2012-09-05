@@ -1,15 +1,16 @@
-﻿clamscanの--unzipオプションが無くなった。
-########################################################
-
+clamscanの--unzipオプションが無くなった。
+=========================================
 
 こんなスクリプトでzipファイルを一括でスキャンして展開しているのだが、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #!/bin/bash
    
    clamscan --unzip *.zip
-   test 0 -ne $? &amp;&amp; exit 1
+   test 0 -ne $? && exit 1
    for i in *.zip
    do
      unzip $i
@@ -18,17 +19,21 @@
 
 さっき実行してみたら、エラーになった。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ unzips.sh 
-   clamscan: unrecognized option `--unzip&#39;
+   clamscan: unrecognized option `--unzip'
    ERROR: Unknown option passed.
-   ERROR: Can&#39;t parse the command line
+   ERROR: Can't parse the command line
 
 
-#496276で消されたのか…。
+`#496276 <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=%23496276>`_ で消されたのか…。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    clamav (0.94.dfsg-1) unstable; urgency=low
    (snip)
@@ -39,9 +44,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

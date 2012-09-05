@@ -1,51 +1,121 @@
-﻿品薄続く。
-##########
-
+品薄続く。
+==========
 
 Amazonで注文したLUMIXのズームレンズのお届け予定日が今日までだったのだが、いまだ在庫を確保できていないようでどうなんのかな、と思ったらこんなメールが送られてきた。
 
-English follows Japanese ( 文章の最後に英語で同様のご案内がございます）
-このたびは、Amazon.co.jpをご利用いただき、ありがとうございます。
-2010-01-16 (注文番号：xxx-xxxxxxx-xxxxxxx)にご注文いただいた商品のお届け予定日がまだ確定しておりません。
-  &#34;Panasonic デジタルカメラオプション デジタル一眼カメラ用交換レンズ H-FS045200&#34;
- http://www.amazon.co.jp/gp/product/B001FWYH7O
-継続して商品の調達に努めてまいりますが、調達不能な場合または入荷数の関係上
-キャンセルをさせていただくこともございます。
-なお、発送手続き前のご注文は、お客様により、いつでもキャンセルすることができます。
-当サイトの規約により、商品の代金は発送時に請求させていただくため、現時点で
-この商品に関するお客様へのご請求は行われておりません。
-ご注文商品のキャンセル方法につきましては、以下のURLから「ヘルプデスク」に
-リンクしてご覧いただくことができます。
-http://www.amazon.co.jp/cancel-howto/
-商品の入荷にお時間がかかり大変申し訳ございませんが、今しばらくお待ちください。
-なお、商品のお届け予定日が確定次第、別途Eメールにてお知らせします。
-English: We have learned that there has been a delay with some of the item(s) in your order indicated above.
-When your order is shipped you will receive an e-mail message confirming the date, contents and method of shipment.
-As per our standard policy, we do not charge you for items until they enter the shipping process, so you will not be charged for this item until it is available and we have shipped it to you.
-Amazon.co.jpのまたのご利用をお待ちしております。
-誠に申し訳ございませんが、こちらのＥメールは配信専用のアドレスとなっておりますため、
-お問い合わせ等のメッセージを受け付けることができません。恐れ入りますが、ご不明な点は、
-下記のURLからカスタマーサービスにＥメールでお問い合わせください。
-http://www.amazon.co.jp/contact-us/
-Amazon.co.jp
-カスタマーサービス部門
+
+
+
+
+   English follows Japanese ( 文章の最後に英語で同様のご案内がございます）
+
+   
+
+   このたびは、Amazon.co.jpをご利用いただき、ありがとうございます。
+
+   
+
+   2010-01-16 (注文番号：xxx-xxxxxxx-xxxxxxx)にご注文いただいた商品のお届け予定日がまだ確定しておりません。
+
+   
+
+     "Panasonic デジタルカメラオプション デジタル一眼カメラ用交換レンズ H-FS045200"
+
+    http://www.amazon.co.jp/gp/product/B001FWYH7O
+
+   
+
+   継続して商品の調達に努めてまいりますが、調達不能な場合または入荷数の関係上
+
+   キャンセルをさせていただくこともございます。
+
+   
+
+   なお、発送手続き前のご注文は、お客様により、いつでもキャンセルすることができます。
+
+   当サイトの規約により、商品の代金は発送時に請求させていただくため、現時点で
+
+   この商品に関するお客様へのご請求は行われておりません。
+
+   ご注文商品のキャンセル方法につきましては、以下のURLから「ヘルプデスク」に
+
+   リンクしてご覧いただくことができます。
+
+   
+
+   http://www.amazon.co.jp/cancel-howto/
+
+   
+
+   商品の入荷にお時間がかかり大変申し訳ございませんが、今しばらくお待ちください。
+
+   なお、商品のお届け予定日が確定次第、別途Eメールにてお知らせします。
+
+   
+
+   English: We have learned that there has been a delay with some of the item(s) in your order indicated above.
+
+   When your order is shipped you will receive an e-mail message confirming the date, contents and method of shipment.
+
+   As per our standard policy, we do not charge you for items until they enter the shipping process, so you will not be charged for this item until it is available and we have shipped it to you.
+
+   
+
+   Amazon.co.jpのまたのご利用をお待ちしております。
+
+   
+
+   誠に申し訳ございませんが、こちらのＥメールは配信専用のアドレスとなっておりますため、
+
+   お問い合わせ等のメッセージを受け付けることができません。恐れ入りますが、ご不明な点は、
+
+   下記のURLからカスタマーサービスにＥメールでお問い合わせください。
+
+   
+
+   http://www.amazon.co.jp/contact-us/
+
+   
+
+   Amazon.co.jp
+
+   カスタマーサービス部門
+
+
+
+
+
+
 
 今週の火曜にヨドバシに行った時も、次回入荷予定が2/28になっていたので、全体的に品薄なんだろう。需要がありすぎるのか、供給量が少ないのか、いずれにしても早く入荷されないかなぁ。
+
+
+
 それにしても、これはヤメテ～。
 
-継続して商品の調達に努めてまいりますが、調達不能な場合または入荷数の関係上
-キャンセルをさせていただくこともございます。
+
+
+   継続して商品の調達に努めてまいりますが、調達不能な場合または入荷数の関係上
+
+   キャンセルをさせていただくこともございます。
+
+
+
+
+
+
+
 ところで、1/16に注文した時は、33,570円だったのが、今は37,646円に値上がりしてる。まさか入荷されても値上がりした値段で販売、なんてことは無いよね。 [#]_ 
 
 
 
-.. [#] ：つか、それはいくらなんでも酷すぎるだろ。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+.. [#] つか、それはいくらなんでも酷すぎるだろ。
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

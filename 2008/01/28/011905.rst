@@ -1,18 +1,24 @@
-﻿EUは内部統制まだ緩いのか？
-############################
-
+EUは内部統制まだ緩いのか？
+==========================
 
 大学時代の友人のブログから。ほほう。
 
-フランス大手の投資銀行Societe Generaleで、一トレーダーが個人権限を逸した不正取引から約72億ドルの損失を出したというもの。
 http://toku-toku.at.webry.info/200801/article_10.html
-元情報はこっち。
+
+   フランス大手の投資銀行Societe Generaleで、一トレーダーが個人権限を逸した不正取引から約72億ドルの損失を出したというもの。
 
 
 
-.. author:: mkouhei
-.. categories:: error, 
+
+
+元情報は `こっち <http://www.nytimes.com/2008/01/26/business/worldbusiness/26bank.html>`_ 。
+
+
+
+
+
+
+.. author:: default
+.. categories:: エラー, 
 .. tags::
 .. comments::
-
-

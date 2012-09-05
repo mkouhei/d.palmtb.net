@@ -1,20 +1,29 @@
-﻿分割してメールで送られてきた画像ファイルをデコードする。
-########################################################
-
+分割してメールで送られてきた画像ファイルをデコードする。
+========================================================
 
 おまめちゃんのお宮参りのために、父親からこんなメールが送られて来ました。
 
-(妹の名前)がお宮参りに着た着物の写真を送ります。
-よければ、おまめちゃんのお宮参りに使って！
-(snip)
 
-.. code-block:: none
+
+
+
+   (妹の名前)がお宮参りに着た着物の写真を送ります。
+
+   よければ、おまめちゃんのお宮参りに使って！
+
+   (snip)
+
+   
+
+   
+.. code-block:: sh
+
 
    --------_4F5C5649000000006A0F_MULTIPART_MIXED_
    Content-Type: image/jpeg;
-    name=IMG_0874.JPG
+    name="IMG_0874.JPG"
    Content-Disposition: attachment;
-    filename=IMG_0874.JPG
+    filename="IMG_0874.JPG"
    Content-Transfer-Encoding: base64
    
    /9j/4Sn+RXhpZgAASUkqAAgAAAAKAA4BAgAgAAAAhgAAAA8BAgAGAAAApgAAABABAgAZAAAArAAA
@@ -24,18 +33,25 @@
 
 
 
+
+
+
 普通ですね。2通目。
 
-.. code-block:: none
 
-   Subject: =?ISO-2022-JP?B?GyRCJCo1XDsyJGokTkNlSiobKEI=?= 2/4]
-   References: xxxxxxx@example.com
-   Message-Id: xxxxxxx@example.com
+
+
+.. code-block:: sh
+
+
+   Subject: =?ISO-2022-JP?B?GyRCJCo1XDsyJGokTkNlSiobKEI=?= [2/4]
+   References: <xxxxxxx@example.com>
+   Message-Id: <xxxxxxx@example.com>
    MIME-Version: 1.0
    Content-Type: message/partial; number=2; total=4;
-    id=xxxxxxx@example.com
+    id="<xxxxxxx@example.com>"
    Content-Transfer-Encoding: 7bit
-   X-Mailer: Becky! ver. 2.58 ja]
+   X-Mailer: Becky! ver. 2.58 [ja]
    
    LDtTou4fX+ppgisB/wAUuZ7hREBtDgnIQk9M+vWjVpxby2rYLQEfM8YzgfSmx3C8lLxISSsYHUdS
    P60/7MtwiyRrgCMtj2AzmpaGiDS+NNEyFchNxRzgjnp7n6Uk0rEg4UMcEhDnFAmeh+FA6zTMhDkx
@@ -45,7 +61,9 @@
 
 と、いきなりbase64でエンコードされた文字列だけで始まるメールががが。3通目も同じで、最後の4通目は
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    jHUivCvFtm10bnKhkA+6DnNUjK/Y+f77TJdPlJCbo+pGOa51ZYvtEjFApGR6CqsTcoi4kFwBCn7s
    MSSe341rOyw+RKC20tkfNyKQXPbfC9iBCs6oYwDyHPUVPqc0f2hw2IV5JIb73HApMaPMiWurgyh8
@@ -56,53 +74,68 @@
 
 
 で終わってました。これでは用を成さないのでデコードしてみます。
+
+
+
 まず、この4通のメッセージをソースで表示して、[1-4].txtで保存し、メールヘッダや本文を削除してbase64の文字列だけにします。一通目の
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    --------_4F5C5649000000006A0F_MULTIPART_MIXED_
    Content-Type: image/jpeg;
-    name=IMG_0874.JPG
+    name="IMG_0874.JPG"
    Content-Disposition: attachment;
-    filename=IMG_0874.JPG
+    filename="IMG_0874.JPG"
    Content-Transfer-Encoding: base64
    
 
 
 と、4通目の
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    --------_4F5C5649000000006A0F_MULTIPART_MIXED_--
 
 
 も削除します。
+
+
+
 そして、base64コマンドでデコードします。
 
-.. code-block:: none
 
-   $ cat [1-4].txt | base64 -d  kimono.jpg
+.. code-block:: sh
+
+
+   $ cat [1-4].txt | base64 -d > kimono.jpg
    $ ls -l kimono.jpg
    -rw-r--r--  1 user user  2953927  3月 11 19:55 kimono.jpg
 
 
 gthumbなどで確認するとちゃんと見られますね。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20120311/20120311161241.jpg
-   :alt: f:id:mkouhei:20120311161241j:image
+
+.. image:: /img/20120311161241.jpg
 
 ちなみにもう一通送られてきた、背面の写真。よう30年近くもちゃんと保管してますなぁ。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20120311/20120311161430.jpg
-   :alt: f:id:mkouhei:20120311161430j:image
+
+.. image:: /img/20120311161430.jpg
+
+
 
 それにしても、Becky!って、勝手に添付ファイル分割してくれるんですね。でも一般人だと分割しても元に戻す方法知らない気がするので、送った人は「画像見られないヨ！」と文句言われると思うんですけど、大丈夫なのでしょうかね。
 
 
 
-.. author:: mkouhei
-.. categories:: life, Unix/Linux, 
+
+
+
+.. author:: default
+.. categories:: 生活, Unix/Linux, 
 .. tags::
 .. comments::
-
-

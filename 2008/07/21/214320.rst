@@ -1,13 +1,14 @@
-﻿sylpheedが使えない。
-############################
-
+sylpheedが使えない。
+====================
 
 うむ、困った。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sylpheed --debug
-   ssl_init(): /home/hoge/.sylpheed-2.0/certs doesn&#39;t exist, or not a directory.
+   ssl_init(): /home/hoge/.sylpheed-2.0/certs doesn't exist, or not a directory.
    ssl_init(): certs dir /etc/ssl/certs found.
    looking for /home/hoge/.sylpheed-2.0/ca-certificates.crt
    looking for /home/hoge/.sylpheed-2.0/ca-bundle.crt
@@ -52,9 +53,9 @@
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

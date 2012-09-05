@@ -1,14 +1,14 @@
-﻿シンボルず
-##########
-
+シンボルず
+==========
 
 DVD欲しいなぁ。MEGUMIのサバサバ感がサイコー。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

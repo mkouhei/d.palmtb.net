@@ -1,19 +1,26 @@
-﻿KVMネタ。
-############
+KVMネタ。
+=========
 
-
-
-Cisco社、IOSにKVMを搭載
-(snip)
-さらに、Cisco社は今回、同社製ハイエンドルータの最高峰である「ASR 1000」向けで、Linuxをベースにする新しいIOS-XE OSにこれを搭載してきた。
 http://www.virtualization.info/jp/2008/03/ciscoioskvm-20080305-1.html
+
+   Cisco社、IOSにKVMを搭載
+
+   (snip)
+
+   さらに、Cisco社は今回、同社製ハイエンドルータの最高峰である「ASR 1000」向けで、Linuxをベースにする新しいIOS-XE OSにこれを搭載してきた。
+
+
+
+
+
 だそうな。ほほう。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, virt., network, 
 .. tags::
 .. comments::
-
-

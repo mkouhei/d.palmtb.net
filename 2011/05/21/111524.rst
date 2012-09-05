@@ -1,53 +1,83 @@
-﻿udev 169-1でデバイスを認識できない問題。
-##################################################
-
+udev 169-1でデバイスを認識できない問題。
+========================================
 
 昨夜いつもどおりapt-get update, upgradeしてshutdownしたのですが、今朝MacBookを起動してみたらメンテナンスモードになってしまいました。
+
+
+
 /ファイルシステムマウント後、fsckが実行される前に、udevが他のファイルシステムのデバイスを認識できていないようで、/etc/fstabにはUUID指定でデバイスを設定しているので、それが指しているデバイスが見つからず、結果として他のファイルシステムをマウントできず、メンテナンスモードになってしまう、という現象ですね。
-昨夜のアップデートで、昨夜のudevがアップデートされていたのを思いだしたので、/var/cache/apt/archivesの下に、udev, libudev0, libgudev-1.0.0がそれぞれ169-1と168-2があるのを確認し、一度shutdown。インストールCDから&#34;rescue maxcpus=1&#34;でCD-ROMブートし [#]_ 、
+
+
+
+昨夜のアップデートで、昨夜のudevがアップデートされていたのを思いだしたので、/var/cache/apt/archivesの下に、udev, libudev0, libgudev-1.0.0がそれぞれ169-1と168-2があるのを確認し、一度shutdown。
+
+
+
+インストールCDから"rescue maxcpus=1"でCD-ROMブートし [#]_ 、
+
+
+
 /dev/sda3を/bootでマウント、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # mount /dev/sda3 /boot
 
 
+
+
 先ほどの3つの168-2の方のdebパッケージをインストール、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # cd /var/cache/apt/archives
    # dpkg -i libgudev-1.0-0_168-2_amd64.deb libudev0_168-2_amd64.deb udev_168-2_amd64.deb
 
 
+
+
 念のためinitramfsをアップデートし直し、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # update-initramfs -u -k 2.6.38
 
 
+
+
 update-grub2で/boot/grub/grub.cfgを更新 [#]_ 、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # update-grub2
 
 
+
+
 で、再起動したら無事、起動できましたよ、と。
 
-とりあえず、同じような現象にあっている人いなさそうな感じですねぇ…。自分だけなんだろうか…。
 
 
 
-.. [#] ：これは以前からのエントリにも記述しているが、MacBook 5,2だけの問題で、コア1個しか認識できず、これかnosmpなどを指定しないとブート途中で止まってしまうため。
-.. [#] ：ちなみにCD-ROMブートではなくメンテナンスモードでそのままやると、/bootファイルシステムをマウントしてないのでここでコケる。
+
+とりあえず、 `同じような現象にあっている人いなさそうな感じ <http://bugs.debian.org/cgi-bin/pkgreport.cgi?pkg=udev;dist=unstable#_0_0_4>`_ ですねぇ…。自分だけなんだろうか…。
 
 
 
-.. author:: mkouhei
+
+.. [#] これは以前からのエントリにも記述しているが、MacBook 5,2だけの問題で、コア1個しか認識できず、これかnosmpなどを指定しないとブート途中で止まってしまうため。
+.. [#] ちなみにCD-ROMブートではなくメンテナンスモードでそのままやると、/bootファイルシステムをマウントしてないのでここでコケる。
+
+
+.. author:: default
 .. categories:: Debian, MacBook, 
 .. tags::
 .. comments::
-
-

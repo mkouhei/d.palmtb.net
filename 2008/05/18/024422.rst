@@ -1,14 +1,14 @@
-﻿KVM Forum 2008なんてやるのか。
-############################################
+KVM Forum 2008なんてやるのか。
+==============================
+
+Debian勉強会でKVMの話をしたら、久しぶりに気になったのでKVMのサイトを久々にアクセスしてみたら、 `こんな <http://kforum.qumranet.com/KVMForum/about_kvmforum.php>`_ のやるんですな。日本でもやってくれないかなぁ。
 
 
-Debian勉強会でKVMの話をしたら、久しぶりに気になったのでKVMのサイトを久々にアクセスしてみたら、こんなのやるんですな。日本でもやってくれないかなぁ。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: virt., meeting, 
 .. tags::
 .. comments::
-
-

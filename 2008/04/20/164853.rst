@@ -1,10 +1,11 @@
-﻿SSLを有効にする。
-####################
-
+SSLを有効にする。
+=================
 
 Apacheと対して違わないので、困らなかった。10-ssl.confを設定してやればよし。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ rcsdiff -r1.1 -r1.2 -u ./10-ssl.conf 
    ===================================================================
@@ -16,21 +17,23 @@ Apacheと対して違わないので、困らなかった。10-ssl.confを設定
     +++ ./10-ssl.conf	2008/04/20 07:42:32	1.2
     @@ -6,5 +6,10 @@
      #### SSL engine
-     $SERVERsocket] == 0.0.0.0:443 {
-                       ssl.engine                  = enable
-    -                  ssl.pemfile                 = /etc/lighttpd/server.pem
-    +                  ssl.pemfile                 = /etc/lighttpd/server.pem
-    +#		  ssl.ca-file = /etc/lighttpd/server.crt
-    +		  server.name = hoge.com
-    +		  server.document-root = /var/www/ssl
-    +		  server.errorlog = /var/log/lighttpd/ssl-error.log
-    +		  accesslog.filename = /var/log/lighttpd/ssl-access.log
+     $SERVER["socket"] == "0.0.0.0:443" {
+                       ssl.engine                  = "enable"
+    -                  ssl.pemfile                 = "/etc/lighttpd/server.pem"
+    +                  ssl.pemfile                 = "/etc/lighttpd/server.pem"
+    +#		  ssl.ca-file = "/etc/lighttpd/server.crt"
+    +		  server.name = "hoge.com"
+    +		  server.document-root = "/var/www/ssl"
+    +		  server.errorlog = "/var/log/lighttpd/ssl-error.log"
+    +		  accesslog.filename = "/var/log/lighttpd/ssl-access.log"
    }
 
 
-起動時にpassphraseを聞かれないようにするには、Apacheと同じなので、PEMファイルも秘密鍵とCRTを結合すりゃよいので、秘密鍵、CRT申請後に、下記にようなスクリプトを実行すればよし。
+`起動時にpassphraseを聞かれないようにする <http://www.palmtb.net/wiki/?Apache+TLS%C0%DF%C4%EA%BC%EA%BD%E7>`_ には、Apacheと同じなので、PEMファイルも秘密鍵とCRTを結合すりゃよいので、秘密鍵、CRT申請後に、下記にようなスクリプトを実行すればよし。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #!/bin/bash
    USER=www
@@ -41,7 +44,7 @@ Apacheと対して違わないので、困らなかった。10-ssl.confを設定
    PEM=server.pem
    
    openssl rsa -in $KEY -out $NEWKEY
-   cat $NEWKEY $CRT  $PEM
+   cat $NEWKEY $CRT > $PEM
    chmod 600 $PEM $NEWKEY
    chown ${USER}:${GROUP} $PEM
 
@@ -49,9 +52,9 @@ Apacheと対して違わないので、困らなかった。10-ssl.confを設定
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

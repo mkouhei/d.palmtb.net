@@ -1,14 +1,14 @@
-﻿寒い。
-######
-
+寒い。
+======
 
 今日はめちゃ寒いなぁ。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

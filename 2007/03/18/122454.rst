@@ -1,22 +1,23 @@
-﻿そういう路線に変更したのか。
-############################
-
+そういう路線に変更したのか。
+============================
 
 昨日帰ったらUnix Magazine2007年春号が来ていた。今回はセキュアＯＳの特集。というか、2007年冬号ではかろうじて特集以外の連載になるのかなぁと思っていた記事もばっさり切って、全132ページ中、119ページが特集という形 [#]_ 。前回も結構思いきったなぁと思ったのだが、今回はさらにそれを加速した感じ。内容は濃いのでそれはそれで良し。
 
-.. image:: http://images-jp.amazon.com/images/G/09/icons/books/comingsoon_books.gif
-   :alt: UNIX MAGAZINE (ユニックス マガジン) 2007年 04月号 [雑誌]
 
 
 
 
-.. [#] ：広告ページ除く
+`UNIX MAGAZINE (ユニックス マガジン) 2007年 04月号 [雑誌] <http://www.amazon.co.jp/o/ASIN/B000O58X50/palmtb-22/ref=nosim/>`_
 
 
 
-.. author:: mkouhei
+
+
+
+.. [#] 広告ページ除く
+
+
+.. author:: default
 .. categories:: Book, 
 .. tags::
 .. comments::
-
-

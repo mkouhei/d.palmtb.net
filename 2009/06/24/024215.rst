@@ -1,20 +1,32 @@
-﻿CouchDB勉強会開催＆CouchDB JP発足会
-####################################################
+CouchDB勉強会開催＆CouchDB JP発足会
+===================================
+
+社内勉強会を先月から社外の方も募集して開催しているのですが、 `今回 <http://atnd.org/events/817>`_ はCouchDBに絞って行ったところ、第25回にして最大の参加者でした。社外、社内とも史上最大。初対面にも関わらずネタを濃いバナをしてくださった、id:yssk22さん、 `yoheiさん <http://yohei-y.blogspot.com/>`_ 、勝どきという交通の便の悪い場所に関わらず参加くださった皆様、幹事を勤めてくれた、id:shase_labさん、id:z-ohnamiさん(しかもしっかりとネタも提供してくれたし)、どうもありがとうございました。
+
+懇親会の中で、 `CouchDB JP <http://groups.google.co.jp/group/couchdb-jp>`_ というMLを作ったこと、 `planet <http://planet.palmtb.net/>`_ を設置したことをお話ししました。発足会と言っても畏まった話ではなく、要は議論したり相談したりする場が今までなかったので、気軽にお話出来る場になれば良いですね、というお話。
 
 
-社内勉強会を先月から社外の方も募集して開催しているのですが、今回はCouchDBに絞って行ったところ、第25回にして最大の参加者でした。社外、社内とも史上最大。初対面にも関わらずネタを濃いバナをしてくださった、id:yssk22さん、yoheiさん、勝どきという交通の便の悪い場所に関わらず参加くださった皆様、幹事を勤めてくれた、id:shase_labさん、id:z-ohnamiさん(しかもしっかりとネタも提供してくれたし)、どうもありがとうございました。
-懇親会の中で、CouchDB JPというMLを作ったこと、planetを設置したことをお話ししました。発足会と言っても畏まった話ではなく、要は議論したり相談したりする場が今までなかったので、気軽にお話出来る場になれば良いですね、というお話。
+
 http://groups.google.co.jp/group/couchdb-jp
+
 http://planet.palmtb.net/
+
+
+
 planetは、CouchDB, Erlang, JavaScriptでフィルタリングするようにしてますが、JSONやMapReduce, RESTも引っ掛けるほうが良いかなぁと思うので、多分明日あたり変更するつもりです。 
+
+
+
 それと、Mixiにもコミュニティができたようです。
+
 http://mixi.jp/view_community.pl?id=4311064
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: CouchDB, 
 .. tags::
 .. comments::
-
-

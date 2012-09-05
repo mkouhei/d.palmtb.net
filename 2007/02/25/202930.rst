@@ -1,14 +1,14 @@
-﻿SLES10は大丈夫だった。
-############################
+SLES10は大丈夫だった。
+======================
+
+KVMのゲストOSにSLES9はインストール出来なかったが、 `SLES10は無事インストール出来た <http://www.palmtb.net/index.php?KVM%A4%CE%A5%B2%A5%B9%A5%C8OS%C6%B0%BA%EE%B3%CE%C7%A7%BA%D1%A4%DF%A5%EA%A5%B9%A5%C8#vdbf0c81>`_ 。
 
 
-KVMのゲストOSにSLES9はインストール出来なかったが、SLES10は無事インストール出来た。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Unix/Linux, computer, virt., 
 .. tags::
 .. comments::
-
-

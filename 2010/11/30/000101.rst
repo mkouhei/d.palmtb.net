@@ -1,36 +1,42 @@
-﻿分散BTSについてのメモ。
-##########################
+分散BTSについてのメモ。
+=======================
+
+
+`ditz <http://ditz.rubyforge.org/>`_ 
+-------------------------------------
 
 
 
-ditz
-****
+.. code-block:: sh
 
-
-
-.. code-block:: none
 
    $ sudo apt-get install ditz
 
 
 
-DITrack
-**********
+
+
+`DITrack <http://www.ditrack.org/>`_ 
+-------------------------------------
 
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ sudo apt-get install ditrack
 
 
 
-sd
+
+
+`sd <http://fsck.com/sd>`_ 
+---------------------------
 
 
 
+.. code-block:: sh
 
-.. code-block:: none
 
    $ curl fsck.com/sd | perl
    $ export PATH=~/sd/bin:$PATH
@@ -38,22 +44,27 @@ sd
 
 
 
-Scmbug
-********
+
+
+`Scmbug <http://www.mkgnu.net/?q=scmbug>`_ 
+-------------------------------------------
+
+
 
 
 
 the other
-**************
+---------
 
 
 http://lwn.net/Articles/281849/
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

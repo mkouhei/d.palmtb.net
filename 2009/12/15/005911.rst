@@ -1,14 +1,14 @@
-﻿GDDJ-09をAndroid1.6にアップデート。
-####################################################
-
+GDDJ-09をAndroid1.6にアップデート。
+===================================
 
 ずっと放置していたAndroid 1.6へのアップデートを行った。Debianではadb devicesで情報を取れなかったので、しゃあないのでMac OS Xを立ち上げて実行。あっさり終了。確かにさくさく動くようになった気がする。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, gadget, 
 .. tags::
 .. comments::
-
-

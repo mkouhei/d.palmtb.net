@@ -1,12 +1,15 @@
-﻿2.6.20.1に-mm2を当ててみたら
-########################################
-
+2.6.20.1に-mm2を当ててみたら
+============================
 
 2.6.20に、-mm2のパッチを当てて、2.6.20.1のパッチを当てようとすると失敗する。
+
 で、2.6.20.1のパッチを当て、2.6.20.1を当てるとうまくいく。で、これを再構築したところ、
+
 なんか起動時に変なエラーログが出ていた。起動後に確認してみた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    ACPI: Using IOAPIC for interrupt routing
    ACPI Exception (evregion-0420): AE_NOT_FOUND, Returned by Handler for [EmbeddedControl] [20070126]
@@ -24,9 +27,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

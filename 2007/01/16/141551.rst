@@ -1,20 +1,22 @@
-﻿これはちょっと試してみようかな。
-################################
+これはちょっと試してみようかな。
+================================
+
+*  `Intel Mac対応仮想ソフトがまたひとつ-VirtualBoxがオープンソースに <http://journal.mycom.co.jp/news/2007/01/16/341.html>`_ 
 
 
 
-* Intel Mac対応仮想ソフトがまたひとつ-VirtualBoxがオープンソースに
+*  `VirtualBox <http://www.virtualbox.org/>`_ 
 
 
-* VirtualBox
 
 QEMUを使っているようですな。Intel VT-xやAMD-Vにも対応だとか。IntelMac対応ということなら、Debian on MacBookでも試せるかな。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, virt., 
 .. tags::
 .. comments::
-
-

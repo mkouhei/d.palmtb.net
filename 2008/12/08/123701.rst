@@ -1,14 +1,14 @@
-﻿昼飯カロリーメイト2本。
-########################
-
+昼飯カロリーメイト2本。
+=======================
 
 ２００kcalなり。やりすぎか。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

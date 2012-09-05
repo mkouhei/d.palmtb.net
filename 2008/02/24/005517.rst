@@ -1,14 +1,14 @@
-﻿MacBook Airに対応した。
-##################################
+MacBook Airに対応した。
+=======================
+
+`rEFIt 0.11 <http://refit.sourceforge.net/>`_ で、MacBook Airが対応となった。
 
 
-rEFIt 0.11で、MacBook Airが対応となった。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: MacBook, Unix/Linux, 
 .. tags::
 .. comments::
-
-

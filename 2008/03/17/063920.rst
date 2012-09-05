@@ -1,14 +1,14 @@
-﻿嫁と出勤。
-##########
-
+嫁と出勤。
+==========
 
 嫁が早起きなので、久々に余裕を持って出勤できました。
 
 
 
-.. author:: mkouhei
-.. categories:: life, work, 
+
+
+
+.. author:: default
+.. categories:: 生活, 仕事, 
 .. tags::
 .. comments::
-
-

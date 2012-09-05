@@ -1,14 +1,14 @@
-﻿結局、Istanbulを使用することにした。
-############################################
+結局、Istanbulを使用することにした。
+====================================
+
+vidcapプラグインは諦めて、時間もないので `Istanbulを使用することにした <http://www.palmtb.net/index.php?%A5%C7%A5%B9%A5%AF%A5%C8%A5%C3%A5%D7%A1%A6%A5%BB%A5%C3%A5%B7%A5%E7%A5%F3%A1%A6%A5%EC%A5%B3%A1%BC%A5%C0>`_ 。デスクトップの録画って重いなぁ…。デジカメの動画記録も検討しようかなぁ…。
 
 
-vidcapプラグインは諦めて、時間もないのでIstanbulを使用することにした。デスクトップの録画って重いなぁ…。デジカメの動画記録も検討しようかなぁ…。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

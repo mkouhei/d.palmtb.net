@@ -1,14 +1,16 @@
-﻿今日は代休。
-############
-
+今日は代休。
+============
 
 日曜出勤だったので、今日は代休。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

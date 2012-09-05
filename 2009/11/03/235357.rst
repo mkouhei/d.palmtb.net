@@ -1,28 +1,41 @@
-﻿自動的にパスワードがハッシュ化される。
-######################################
-
+自動的にパスワードがハッシュ化される。
+======================================
 
 CouchDBのFutonへのアクセスは、http://localhost:5984/_utils/でできるわけだが、外に公開するサーバだと勝手に更新されるのはいかがなものかなぁと思い、/etc/couchdb/local.iniを調べてみたら [#]_ 、認証かけられそうな設定があった。 [#]_ 
 
-.. code-block:: none
 
-   ; To create an admin account uncomment the &#39;[admins]&#39; section below and add a
-   ; line in the format &#39;username = password&#39;. When you next start CouchDB, it
-   ; will change the password to a hash (so that your passwords don&#39;t linger
+
+
+.. code-block:: apache
+
+
+   ; To create an admin account uncomment the '[admins]' section below and add a
+   ; line in the format 'username = password'. When you next start CouchDB, it
+   ; will change the password to a hash (so that your passwords don't linger
    ; around in plain-text files). You can add more admin accounts with more
-   ; &#39;username = password&#39; lines. Don&#39;t forget to restart CouchDB after
+   ; 'username = password' lines. Don't forget to restart CouchDB after
    ; changing this.
    [admins]
    ;admin = mysecretpassword
 
 
+
+
 む、
 
- When you next start CouchDB, it will change the password to a hash (so that your passwords don&#39;t linger around in plain-text files). 
+
+
+    When you next start CouchDB, it will change the password to a hash (so that your passwords don't linger around in plain-text files). 
+
+
+
+
 
 とな。実際にやってみる。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # git diff
    diff --git a/local.ini b/local.ini
@@ -39,7 +52,7 @@ CouchDBのFutonへのアクセスは、http://localhost:5984/_utils/でできる
     [log]
     ;level = debug
    @@ -28,4 +28,4 @@
-    ; &#39;username = password&#39; lines. Don&#39;t forget to restart CouchDB after
+    ; 'username = password' lines. Don't forget to restart CouchDB after
     ; changing this.
     [admins]
    -;admin = mysecretpassword
@@ -48,14 +61,22 @@ CouchDBのFutonへのアクセスは、http://localhost:5984/_utils/でできる
 
 とパスワードとしてCouchDBを再起動してみる。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ sudo /opt/couchdb/etc/init.d/couchdb restart
 
 
+
+
 再度、diffってみる。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    diff --git a/local.ini b/local.ini
    index 0a11877..eec1be3 100755
@@ -71,7 +92,7 @@ CouchDBのFutonへのアクセスは、http://localhost:5984/_utils/でできる
     [log]
     ;level = debug
    @@ -28,4 +28,4 @@
-    ; &#39;username = password&#39; lines. Don&#39;t forget to restart CouchDB after
+    ; 'username = password' lines. Don't forget to restart CouchDB after
     ; changing this.
     [admins]
    -;admin = mysecretpassword
@@ -80,71 +101,88 @@ CouchDBのFutonへのアクセスは、http://localhost:5984/_utils/でできる
 
 と、まぁ勝手に書き換えてくれる [#]_ 。これは便利だ。
 
+
+
+
 Erlangで書き換えている部分
-********************************************************************
+--------------------------
 
 
 実際のソースコード中ではこんな処理になってる。
+
+
+
 src/couchdb/couch_server.erl
 
-.. code-block:: none
 
-        82 is_admin(User, ClearPwd) -
-        83     case couch_config:get(admins, User) of
-        84     -hashed- ++ HashedPwdAndSalt -
-        85         [HashedPwd, Salt] = string:tokens(HashedPwdAndSalt, ,),
+.. code-block:: erlang
+
+
+        82 is_admin(User, ClearPwd) ->
+        83     case couch_config:get("admins", User) of
+        84     "-hashed-" ++ HashedPwdAndSalt ->
+        85         [HashedPwd, Salt] = string:tokens(HashedPwdAndSalt, ","),
         86         couch_util:to_hex(crypto:sha(ClearPwd ++ Salt)) == HashedPwd;
-        87     _Else -
+        87     _Else ->
         88         false
         89     end.
 
 
-平文だったら、&#34;-hashed-&#34;という接頭辞をつけて、ハッシュ化したパスワードで書き換えるわけですな。ハッシュ化されたパスワードの途中に&#34;,&#34;があるが、最初これもランダムで書き換えられた文字列かと思っていたが、そうではないみたいだ。上記の85行目に
-
-.. code-block:: none
-
-   string:tokens(HashedPwdAndSalt, ,),
+平文だったら、"-hashed-"という接頭辞をつけて、ハッシュ化したパスワードで書き換えるわけですな。ハッシュ化されたパスワードの途中に","があるが、最初これもランダムで書き換えられた文字列かと思っていたが、そうではないみたいだ。上記の85行目に
 
 
-とあるので、stringモジュールのtokens(String, SeparatorList) - Tokensで、&#34;,&#34;で文字列をHashedPwdとSaltに分割していたわけだ。パスワードのハッシュ化とSalt自体の生成は以下で行われている。
+.. code-block:: sh
 
-.. code-block:: none
 
-       100 hash_admin_passwords(Persist) -
+   string:tokens(HashedPwdAndSalt, ","),
+
+
+とあるので、stringモジュールのtokens(String, SeparatorList) -> Tokensで、","で文字列をHashedPwdとSaltに分割していたわけだ。パスワードのハッシュ化とSalt自体の生成は以下で行われている。
+
+
+.. code-block:: erlang
+
+
+       100 hash_admin_passwords(Persist) ->
        101     lists:foreach(
-       102         fun({_User, -hashed- ++ _}) -
+       102         fun({_User, "-hashed-" ++ _}) ->
        103             ok; % already hashed
-       104         ({User, ClearPassword}) -
+       104         ({User, ClearPassword}) ->
        105             Salt = ?b2l(couch_uuids:random()),
        106             Hashed = couch_util:to_hex(crypto:sha(ClearPassword ++ Salt)        ),
-       107             couch_config:set(admins,
-       108                 User, -hashed- ++ Hashed ++ , ++ Salt, Persist)
-       109         end, couch_config:get(admins)).
+       107             couch_config:set("admins",
+       108                 User, "-hashed-" ++ Hashed ++ "," ++ Salt, Persist)
+       109         end, couch_config:get("admins")).
 
 
 couch_uuids:random()は、src/couchdb/couch_uuids.erlの
 
-.. code-block:: none
 
-        32 random() -
+.. code-block:: erlang
+
+
+        32 random() ->
         33     list_to_binary(couch_util:to_hex(crypto:rand_bytes(16))).
 
 
 と。local.iniで上書きされたハッシュ化されたパスワードの中のカンマが気になってたのですっきりした。
 
+
+
+
+
 それにしてもすんげぇ脱線だ。（わら
 
 
 
-.. [#] ：パスを変更しているので実際のパスは/opt/couchdb/etc/couchdb/local.iniである。
-.. [#] ：ああ、そういや最初のCouchDBの勉強会の時に、Erlangから追っかけるCouchDBで見た気もする。
-.. [#] ：gitのハッシュもハッシュ化されたパスワードも実際の元とはちゃうよ。
 
 
+.. [#] パスを変更しているので実際のパスは/opt/couchdb/etc/couchdb/local.iniである。
+.. [#] ああ、そういや最初のCouchDBの勉強会の時に、Erlangから追っかけるCouchDBで見た気もする。
+.. [#] gitのハッシュもハッシュ化されたパスワードも実際の元とはちゃうよ。
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: CouchDB, computer, 
 .. tags::
 .. comments::
-
-

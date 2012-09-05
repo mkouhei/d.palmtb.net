@@ -1,21 +1,30 @@
-﻿社内勉強会のネタのフィードバックで…。
-######################################
+社内勉強会のネタのフィードバックで…。
+======================================
 
+６月の社内勉強会の仮想化ネタに、QEMU & KQEMUの話をして、参加者が早速試してくれた。で、実メモリ4GBで、利用可能なメモリが2.7GBほどあったのに、メモリを2GB割り当てたら起動できなかったと聞き [#]_ 、ハードコーディングされているんじゃないかと、QEMUのソースコード読んでみたら案の定だった。
 
-６月の社内勉強会の仮想化ネタに、QEMU &amp; KQEMUの話をして、参加者が早速試してくれた。で、実メモリ4GBで、利用可能なメモリが2.7GBほどあったのに、メモリを2GB割り当てたら起動できなかったと聞き [#]_ 、ハードコーディングされているんじゃないかと、QEMUのソースコード読んでみたら案の定だった。
 vl.c
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
     101 #define PHYS_RAM_MAX_SIZE (2047 * 1024 * 1024)
 
 
 これじゃ、-m 2048とやったらダメだなぁ。でもなぜ2GB(2047MB)までにしているのかまでは分からず。どうしてなのだろう…。
 
+
+
+
+
 以下は、qemu-0.9.0のコードよりメモリ割り当て関連のコードを抜粋。特定機能だけに注目して読めば読み易いなぁ。
+
 vl.h
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
     167 /* XXX: make it dynamic */
     168 #if defined (TARGET_PPC) || defined (TARGET_SPARC64)
@@ -33,7 +42,9 @@ vl.h
 
 vl.c
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
     101 #define PHYS_RAM_MAX_SIZE (2047 * 1024 * 1024)
     102 
@@ -52,7 +63,7 @@ vl.c
    ~~~
    6217 const QEMUOption qemu_options[] = {
    ~~~
-   6234     { m, HAS_ARG, QEMU_OPTION_m },
+   6234     { "m", HAS_ARG, QEMU_OPTION_m },
    ~~~
    6295     { NULL },
    6296 };
@@ -65,21 +76,21 @@ vl.c
    6567     bios_size = BIOS_SIZE;
    ~~~
    6603     for(;;) {
-   6604         if (optind = argc)
+   6604         if (optind >= argc)
    6605             break;
    6606         r = argv[optind];
-   6607         if (r[0] != &#39;-&#39;) {
+   6607         if (r[0] != '-') {
    6608             hd_filename[0] = argv[optind++];
    6609         } else {
    ~~~
-   6638             switch(popt-index) {
+   6638             switch(popt->index) {
    ~~~
    6783             case QEMU_OPTION_m:
    6784                 ram_size = atoi(optarg) * 1024 * 1024;
-   6785                 if (ram_size = 0)
+   6785                 if (ram_size <= 0)
    6786                     help();
-   6787                 if (ram_size  PHYS_RAM_MAX_SIZE) {
-   6788                     fprintf(stderr, qemu: at most %d MB RAM can be simulated\n,
+   6787                 if (ram_size > PHYS_RAM_MAX_SIZE) {
+   6788                     fprintf(stderr, "qemu: at most %d MB RAM can be simulated\n",
    6789                             PHYS_RAM_MAX_SIZE / (1024 * 1024));
    6790                     exit(1);
    6791                 }
@@ -92,10 +103,10 @@ vl.c
    7080     /* init the memory */
    7081     phys_ram_size = ram_size + vga_ram_size + bios_size;
    7082 
-   7083     for (i = 0; i  nb_option_roms; i++) {
+   7083     for (i = 0; i < nb_option_roms; i++) {
    7084         int ret = get_image_size(option_rom[i]);
    7085         if (ret == -1) {
-   7086             fprintf(stderr, Could not load option rom &#39;%s&#39;\n, option_rom[i]);
+   7086             fprintf(stderr, "Could not load option rom '%s'\n", option_rom[i]);
    7087             exit(1);
    7088         }
    7089         phys_ram_size += ret;
@@ -103,7 +114,7 @@ vl.c
    7091 
    7092     phys_ram_base = qemu_vmalloc(phys_ram_size);
    7093     if (!phys_ram_base) {
-   7094         fprintf(stderr, Could not allocate physical memory\n);
+   7094         fprintf(stderr, "Could not allocate physical memory\n");
    7095         exit(1);
    7096     }
    ~~~
@@ -112,7 +123,9 @@ vl.c
 
 osdep.c
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
     63 #if defined(_WIN32)
     64 
@@ -137,69 +150,69 @@ osdep.c
     96     struct statfs stfs;
     97 #endif
     98 
-    99     if (phys_ram_fd  0) {
-   100         tmpdir = getenv(QEMU_TMPDIR);
+    99     if (phys_ram_fd < 0) {
+   100         tmpdir = getenv("QEMU_TMPDIR");
    101         if (!tmpdir)
    102 #ifdef HOST_SOLARIS
-   103             tmpdir = /tmp;
-   104         if (statvfs(tmpdir, stfs) == 0) {
+   103             tmpdir = "/tmp";
+   104         if (statvfs(tmpdir, &stfs) == 0) {
    105 #else
-   106             tmpdir = /dev/shm;
-   107         if (statfs(tmpdir, stfs) == 0) {
+   106             tmpdir = "/dev/shm";
+   107         if (statfs(tmpdir, &stfs) == 0) {
    108 #endif
    109             int64_t free_space;
    110             int ram_mb;
    111 
    112             extern int ram_size;
    113             free_space = (int64_t)stfs.f_bavail * stfs.f_bsize;
-   114             if ((ram_size + 8192 * 1024) = free_space) {
+   114             if ((ram_size + 8192 * 1024) >= free_space) {
    115                 ram_mb = (ram_size / (1024 * 1024));
    116                 fprintf(stderr,
-   117                         You do not have enough space in &#39;%s&#39; for the %d MB of QEMU virtual RAM.\n,
+   117                         "You do not have enough space in '%s' for the %d MB of QEMU virtual RAM.\n",
    118                         tmpdir, ram_mb);
-   119                 if (strcmp(tmpdir, /dev/shm) == 0) {
-   120                     fprintf(stderr, To have more space available provided you have enough RAM and swap, do as root:\n
-   121                             umount /dev/shm\n
-   122                             mount -t tmpfs -o size=%dm none /dev/shm\n,
+   119                 if (strcmp(tmpdir, "/dev/shm") == 0) {
+   120                     fprintf(stderr, "To have more space available provided you have enough RAM and swap, do as root:\n"
+   121                             "umount /dev/shm\n"
+   122                             "mount -t tmpfs -o size=%dm none /dev/shm\n",
    123                             ram_mb + 16);
    124                 } else {
    125                     fprintf(stderr,
-   126                             Use the &#39;-m&#39; option of QEMU to diminish the amount of virtual RAM or use the\n
-   127                             QEMU_TMPDIR environment variable to set another directory where the QEMU\n
-   128                             temporary RAM file will be opened.\n);
+   126                             "Use the '-m' option of QEMU to diminish the amount of virtual RAM or use the\n"
+   127                             "QEMU_TMPDIR environment variable to set another directory where the QEMU\n"
+   128                             "temporary RAM file will be opened.\n");
    129                 }
-   130                 fprintf(stderr, Or disable the accelerator module with -no-kqemu\n);
+   130                 fprintf(stderr, "Or disable the accelerator module with -no-kqemu\n");
    131                 exit(1);
    132             }
    133         }
-   134         snprintf(phys_ram_file, sizeof(phys_ram_file), %s/qemuXXXXXX,
+   134         snprintf(phys_ram_file, sizeof(phys_ram_file), "%s/qemuXXXXXX",
    135                  tmpdir);
    136         phys_ram_fd = mkstemp(phys_ram_file);
-   137         if (phys_ram_fd  0) {
+   137         if (phys_ram_fd < 0) {
    138             fprintf(stderr,
-   139                     warning: could not create temporary file in &#39;%s&#39;.\n
-   140                     Use QEMU_TMPDIR to select a directory in a tmpfs filesystem.\n
-   141                     Using &#39;/tmp&#39; as fallback.\n,
+   139                     "warning: could not create temporary file in '%s'.\n"
+   140                     "Use QEMU_TMPDIR to select a directory in a tmpfs filesystem.\n"
+   141                     "Using '/tmp' as fallback.\n",
    142                     tmpdir);
-   143             snprintf(phys_ram_file, sizeof(phys_ram_file), %s/qemuXXXXXX,
-   144                      /tmp);
+   143             snprintf(phys_ram_file, sizeof(phys_ram_file), "%s/qemuXXXXXX",
+   144                      "/tmp");
    145             phys_ram_fd = mkstemp(phys_ram_file);
-   146             if (phys_ram_fd  0) {
-   147                 fprintf(stderr, Could not create temporary memory file &#39;%s&#39;\n,
+   146             if (phys_ram_fd < 0) {
+   147                 fprintf(stderr, "Could not create temporary memory file '%s'\n",
    148                         phys_ram_file);
    149                 exit(1);
    150             }
    151         }
    152         unlink(phys_ram_file);
    153     }
-   154     size = (size + 4095)  ~4095;
+   154     size = (size + 4095) & ~4095;
    155     ftruncate(phys_ram_fd, phys_ram_size + size);
    156     ptr = mmap(NULL,
    157                size,
    158                PROT_WRITE | PROT_READ, MAP_SHARED,
    159                phys_ram_fd, phys_ram_size);
    160     if (ptr == MAP_FAILED) {
-   161         fprintf(stderr, Could not map physical memory\n);
+   161         fprintf(stderr, "Could not map physical memory\n");
    162         exit(1);
    163     }
    164     phys_ram_size += size;
@@ -224,13 +237,10 @@ osdep.c
 
 
 
-.. [#] ：4GBもメモリ積んでるPC無いからそんなん知らんかった。
+.. [#] 4GBもメモリ積んでるPC無いからそんなん知らんかった。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, virt., computer, 
 .. tags::
 .. comments::
-
-

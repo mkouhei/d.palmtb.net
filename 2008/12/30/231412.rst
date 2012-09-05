@@ -1,14 +1,14 @@
-﻿無線のAPの設定を変更してみた。
-################################
+無線のAPの設定を変更してみた。
+==============================
+
+"WPA-PSK [TKIP] + WPA2-PSK [AES]"となっているのを、"WPA2-PSK [AES]"にしてみた。Debianで無線繋いでいると、時々両方探しているので。どうせWPA-PSKの方は使わないし。安定するか否かはちょっと様子見。
 
 
-&#34;WPA-PSK [TKIP] + WPA2-PSK [AES]&#34;となっているのを、&#34;WPA2-PSK [AES]&#34;にしてみた。Debianで無線繋いでいると、時々両方探しているので。どうせWPA-PSKの方は使わないし。安定するか否かはちょっと様子見。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: network, 
 .. tags::
 .. comments::
-
-

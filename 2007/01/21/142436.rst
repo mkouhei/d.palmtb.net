@@ -1,19 +1,24 @@
-﻿オライリー、また購入。
-######################
-
+オライリー、また購入。
+======================
 
 昨日、発売されたばかりのPERL HACKSを購入。 Perlは自分で一からは書かないクセに（人のコードの修正はやるのだが）。
+
 買いに行ったヨドバシカメラの入口に、Vista発売まであと１０日とでていた。Windowsをわざわざ購入しよう、という人の気が知れん。って、Linux Onlyの生活をしているワシの方が世間的には特殊か。
 
-.. image:: http://images-jp.amazon.com/images/P/4873113148.09.THUMBZZZ.jpg
-   :alt: Perl Hacks —プロが教えるテクニック &amp; ツール101選
 
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+`Perl Hacks &#8212;プロが教えるテクニック & ツール101選 <http://www.amazon.co.jp/o/ASIN/4873113148/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

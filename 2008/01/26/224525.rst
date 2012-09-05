@@ -1,36 +1,43 @@
-﻿今更だが…。
-############
+今更だが…。
+============
+
+Let's note CF-R3でhibernateとsuspendを出来るようにした。Kernel 2.6.22あたりから、acpiの仕様が変わったのか、hotkeyでディスプレイの輝度を調節できなくなり、誰か解決していないかなぁ、と検索していて、 `このサイト <http://kazunoko.kuee.kyoto-u.ac.jp/~kobayasi/pukiwiki-1.4.6/index.php?Let%27s_Note_Y5#d55f7ef1>`_ を見たのだがダメだった。hibernate, suspendの話があったので、そういやできるようにしていないなぁというのを思い出し、hibernateパッケージを導入してみたら、特に何も考えずにあっさりできた。hotkeyではできないのは輝度と同じだが。
 
 
-Let&#39;s note CF-R3でhibernateとsuspendを出来るようにした。Kernel 2.6.22あたりから、acpiの仕様が変わったのか、hotkeyでディスプレイの輝度を調節できなくなり、誰か解決していないかなぁ、と検索していて、このサイトを見たのだがダメだった。hibernate, suspendの話があったので、そういやできるようにしていないなぁというのを思い出し、hibernateパッケージを導入してみたら、特に何も考えずにあっさりできた。hotkeyではできないのは輝度と同じだが。
+.. code-block:: sh
 
-.. code-block:: none
 
    $ sudo apt-get install hibernate
 
 
 hiebernateは、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo hibernate
 
 
 suspendは
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $sudo hibernate-ram
 
 
 で実施。suspendさせると、電源スイッチでもある、電源のLEDが2秒感覚くらいで蛍のように明滅する。ディスプレイを閉じてもちゃんとsuspend状態なのだが、ディスプレイを開けると自動的にsuspendから復帰してくれるのは便利だな。
+
 hibernateはLEDの明滅は無いが、同じようにディスプレイを開けると復帰してくれる。暗号化するような設定はしていないのだが、復帰途中でパスフレーズの入力を求められた。そういうものなのか？
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, Debian, 
 .. tags::
 .. comments::
-
-

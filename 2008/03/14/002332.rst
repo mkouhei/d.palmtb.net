@@ -1,15 +1,16 @@
-﻿蒸し暑い。
-##########
-
+蒸し暑い。
+==========
 
 まるで露時のようだ。寒さがぶり返さなければ来週はもう股引は穿いちゃダメだな。
+
 明日は晴れたら良いな。
 
 
 
-.. author:: mkouhei
-.. categories:: life, work, 
+
+
+
+.. author:: default
+.. categories:: 生活, 仕事, 
 .. tags::
 .. comments::
-
-

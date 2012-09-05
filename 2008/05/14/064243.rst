@@ -1,14 +1,14 @@
-﻿AirでiSightが使えるように。
-####################################
-
+AirでiSightが使えるように。
+===========================
 
 iwamatsuさんのおかげで、iSightが使えるようになった。ekigaではちゃんと映る＆写るものの、なぜかcheeseでは動作が非常に不安定。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

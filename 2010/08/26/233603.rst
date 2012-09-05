@@ -1,48 +1,60 @@
-﻿KVM &amp;amp; libvirtの環境にvirtualbox-oseをインストールしてみた。
-##############################################################################################
+KVM & libvirtの環境にvirtualbox-oseをインストールしてみた。
+===========================================================
+
+ちょいとPalm web OSを試したくなったので、Palm webOS SDKをSidの64bit環境にインストールしてみた。もともとKVM & libvirt & virt-managerを使用している環境なのだが、ここにvirtualbox-oseをインストールするとちょいと色々変わる。
 
 
-ちょいとPalm web OSを試したくなったので、Palm webOS SDKをSidの64bit環境にインストールしてみた。もともとKVM &amp; libvirt &amp; virt-managerを使用している環境なのだが、ここにvirtualbox-oseをインストールするとちょいと色々変わる。
+
 
 そもそもKVMと共存できない。
-**************************************************************************
+---------------------------
 
 
 palm-emulatorコマンドで、virtualboxを起動した後、kvmのカーネルモジュールがロードされた状態のまま、KVMゲストを起動させると、以下のようにCall Traceを吐く。
 
-.. code-block:: none
+
+.. code-block:: ini
+
 
     kernel:[ 5126.608323] Call Trace:
    
    Message from syslogd@host at Aug 26 23:26:47 ...
     kernel:[ 5126.608367] Code: 00 0f 20 d8 4a 89 84 02 80 06 00 00 0f 20 e0 4a 89 84 02 88 06 00 
-   00 48 83 e0 70 42 8b 8c 02 68 0a 00 00 23 4a 20 09 c8 0b 42 24 0Domain sid-squeeze-couchdb 
+   00 48 83 e0 70 42 8b 8c 02 68 0a 00 00 23 4a 20 09 c8 0b 42 24 <0Domain sid-squeeze-couchdb 
    started3 e0 04 0d 3b 00 00 80 0f 22 
 
 
 まぁ、それでもKVMは動くんだが。その代わり、VirtualBoxを既に起動中だったらVirtualBoxのゲスト、つまりpalm emulutorは止まってしまう。これを吐かせないようにするには、kvmのカーネルモジュールをアンロードしておく。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo /etc/init.d/qemu-kvm stop
    Succesfully unloaded kvm module kvm_intel.
 
 
 
+
+
 virshの挙動が変わる。
-******************************************************
+---------------------
 
 
 今までのように
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo virsh list --all
 
 
 と実行するのではKVMの定義が表示されなくなる。sudoをつけずにvirsh list --allを実行すると、VirtualBoxで使うwebOS SDKの仮想マシンの定義が表示される。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ virsh list --all
    
@@ -53,13 +65,15 @@ virshの挙動が変わる。
 
 じゃあどうするかと言うと、対話モードでqemu:///systemに接続すれば使える。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo virsh
    Welcome to virsh, the virtualization interactive terminal.
    
-   Type:  &#39;help&#39; for help with commands
-          &#39;quit&#39; to quit
+   Type:  'help' for help with commands
+          'quit' to quit
    
    virsh # connect qemu:///system
    
@@ -74,28 +88,35 @@ virshの挙動が変わる。
    
 
 
+
+
 ちなみに、virt-managerではqemu:///systemへの接続がデフォルトのままなので、普通に起動できる。
 
+
+
+
 palm-novacomが動かない。
-********************************************************
+------------------------
 
 
 起動スクリプトがupstart用なので、sysvinitからupstartに切り替えよう。
 
+
+
+
 palm-sdkはアンインストールできない。
-************************************************************************************************
-
-64bit環境にSDKをインストールするには、Dev Guideにあるとおり、palm-sdkとpalm-novacomを--force-architectureオプションをつけてdpkgコマンドでインストールする [#]_ のだが、palm-sdkはapt-get remove, dpkg -eでもアンインストールできない、という問題にハマる。この問題はワシは未解決。
+------------------------------------
 
 
-
-.. [#] ：palm-novacomはamd64用だからこのオプション要らんと想うのだが。
+64bit環境にSDKをインストールするには、 `Dev Guide <http://developer.palm.com/index.php?option=com_content&view=article&layout=page&id=1585&Itemid=55>`_ にあるとおり、palm-sdkとpalm-novacomを--force-architectureオプションをつけてdpkgコマンドでインストールする [#]_ のだが、palm-sdkはapt-get remove, dpkg -eでもアンインストールできない、という問題にハマる。この問題はワシは未解決。
 
 
 
-.. author:: mkouhei
+
+.. [#] palm-novacomはamd64用だからこのオプション要らんと想うのだが。
+
+
+.. author:: default
 .. categories:: Debian, Unix/Linux, gadget, virt., computer, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿あたし彼女
-##########
-
+あたし彼女
+==========
 
 早速検索して見てみたが、非常にイライラする。１ページもしないうちに見るの止めた。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

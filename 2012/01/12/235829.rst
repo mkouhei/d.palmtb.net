@@ -1,15 +1,18 @@
-﻿python-ordereddictサヨウナラ。
-################################################
+python-ordereddictサヨウナラ。
+==============================
+
+blockdiagシリーズをDebianパッケージにする上でPython2.6系で依存関係のある `python-ordereddictが先日アップロードされた <http://packages.qa.debian.org/o/ordereddict/news/20120107T130508Z.html>`_ ばかりなのですが、 `python2.6自体がもうオワコン(次のstableのWheezyではpython2.7がデフォルトになる様子)なので、rejectされることになった <http://lists.debian.org/debian-python/2012/01/msg00020.html>`_ ので、 `RM申請をしました <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=655576>`_ よ、と。短命でしたね…。
 
 
-blockdiagシリーズをDebianパッケージにする上でPython2.6系で依存関係のあるpython-ordereddictが先日アップロードされたばかりなのですが、python2.6自体がもうオワコン(次のstableのWheezyではpython2.7がデフォルトになる様子)なので、rejectされることになったので、RM申請をしましたよ、と。短命でしたね…。
+
 なので、blockdiagシリーズのDebianパッケージもpython2.7だけをサポート対象にする予定です。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, python, 
 .. tags::
 .. comments::
-
-

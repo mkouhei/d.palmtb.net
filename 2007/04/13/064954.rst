@@ -1,14 +1,14 @@
-﻿あー眠い。
-##########
-
+あー眠い。
+==========
 
 眠いなぁ。二度寝したいけど仕事行かなきゃ、ですよ。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

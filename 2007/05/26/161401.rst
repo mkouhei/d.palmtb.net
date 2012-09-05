@@ -1,14 +1,14 @@
-﻿で、結局…。
-############
-
+で、結局…。
+============
 
 注文しちゃいました。組込み機器やノートPC以外は久しぶりだな。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿Etchリリース。
-##################
+Etchリリース。
+==============
+
+やっとこさ `Etchがリリースされた <http://www.debian.org/News/2007/20070408>`_ ので、OpenBlockS266用のディスクイメージを作りますか、と。
 
 
-やっとこさEtchがリリースされたので、OpenBlockS266用のディスクイメージを作りますか、と。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

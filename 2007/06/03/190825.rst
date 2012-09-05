@@ -1,14 +1,14 @@
-﻿未だに…。
-##########
-
+未だに…。
+==========
 
 qmailなんて使っている人が結構多いのね。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, Debian, 
+
+
+
+.. author:: default
+.. categories:: 駄文, Debian, 
 .. tags::
 .. comments::
-
-

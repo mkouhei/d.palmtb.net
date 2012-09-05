@@ -1,14 +1,14 @@
-﻿kvmをGUI無しでも使えるか？
-################################
+kvmをGUI無しでも使えるか？
+==========================
+
+というわけで、 `ディスプレイなしで稼働させる <http://www.palmtb.net/index.php?%A5%C7%A5%A3%A5%B9%A5%D7%A5%EC%A5%A4%A4%CA%A4%B7%A4%C7%B2%D4%C6%AF%A4%B5%A4%BB%A4%EB>`_ ことができるか試してみたところ、ちゃんと出来た。kvmにもXenのxm listコマンドみたいに、ゲストOSの状態を取得する方法無いかなぁ。
 
 
-というわけで、ディスプレイなしで稼働させることができるか試してみたところ、ちゃんと出来た。kvmにもXenのxm listコマンドみたいに、ゲストOSの状態を取得する方法無いかなぁ。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: computer, virt., 
 .. tags::
 .. comments::
-
-

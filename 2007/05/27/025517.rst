@@ -1,14 +1,14 @@
-﻿お掃除続き。
-############
-
+お掃除続き。
+============
 
 水回りの掃除。やっぱりちゃんと毎日やらないとすぐヌメヌメするね。特にこの時期は。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

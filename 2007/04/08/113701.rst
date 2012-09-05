@@ -1,14 +1,14 @@
-﻿変だよ、Googleさん。
-##########################
+変だよ、Googleさん。
+====================
+
+投票行ったその足で新宿行くつもりで、そばを食べたいので新宿近辺で蕎麦屋を開拓しようとGoogleマップで `「新宿 そば」 <http://www.google.com/maps?hl=ja&client=iceweasel-a&q=%E3%81%9D%E3%81%B0&near=%E6%96%B0%E5%AE%BF%E9%A7%85%EF%BC%88%E6%9D%B1%E4%BA%AC%EF%BC%89&ie=UTF8&z=16&om=1>`_ で検索してみた。いくつかタグが付いているので詳細を見ようとすると、Not Foundになる。 `こんな感じ <http://www.google.com/%81_042/maps?hl=ja&client=iceweasel-a&q=%E3%81%9D%E3%81%B0&near=%E6%96%B0%E5%AE%BF%E9%A7%85%EF%BC%88%E6%9D%B1%E4%BA%AC%EF%BC%89&ie=UTF8&om=1&sll=37.062500,-95.677068&sspn=23.875000,57.630033&latlng=35691329,139701133,16479202409301463319&ei=g1QYRv3VC5v2iwPN5Ji7Ag&sig2=g4HaRg2OlCkiffhtXaqaMw%81_042onclick=%81_042maximizeInfoWindow(null,>`_ 。My Mapとかいうサービス開始したバグか？どちらにしても、かなりいい加減だrなぁ…。
 
 
-投票行ったその足で新宿行くつもりで、そばを食べたいので新宿近辺で蕎麦屋を開拓しようとGoogleマップで「新宿 そば」で検索してみた。いくつかタグが付いているので詳細を見ようとすると、Not Foundになる。こんな感じ。My Mapとかいうサービス開始したバグか？どちらにしても、かなりいい加減だrなぁ…。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

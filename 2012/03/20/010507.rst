@@ -1,23 +1,27 @@
-﻿車載ホルダー取り付けた。
-########################
-
+車載ホルダー取り付けた。
+========================
 
 カーナビを買うのはもったいないので、iPhoneでええやろということで車載ホルダーを取り付けてみました。購入したのは↓。Amazonで買うよりヨドバシで買った方が安いですね。 [#]_ 
 
-.. image:: http://ecx.images-amazon.com/images/I/21DShDWfXDL._SL160_.jpg
-   :alt: [ELECOMエレコム] iPhone用車載ホルダー MPA-CH001DCBK
+
+
+
+
+`[ELECOMエレコム] iPhone用車載ホルダー MPA-CH001DCBK <http://www.amazon.co.jp/exec/obidos/ASIN/B006VOXVAK/palmtb-22/ref=nosim/>`_
+
+
+
+
 
 実際に取り付けてみてのヨメさんの反応。「思ったより小さい」「(Androidの経路案内みたいに)音声案内できないの？」「カーナビアプリ買ってよ」…ごもっともな反応。iPhoneのマップで経路探索で音声案内をやるHackってないんでしょうかね。
 
 
 
-.. [#] ：2,700円台でした。
+
+.. [#] 2,700円台でした。
 
 
-
-.. author:: mkouhei
-.. categories:: life, gadget, 
+.. author:: default
+.. categories:: 生活, gadget, 
 .. tags::
 .. comments::
-
-

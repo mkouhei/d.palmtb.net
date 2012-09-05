@@ -1,38 +1,28 @@
-﻿Lennyリリース。
-####################
-
+Lennyリリース。
+===============
 
 リリースされましたね。おめでとうございます。
+
 http://www.debian.or.jp/blog/debian50r0.html
+
 http://www.debian.org/News/2009/20090214
+
+
+
 ちなみにリリースパーティは昨日、henrichさん、h_yamamotoさんと新宿のIL SACCOMANNOでこじんまりと開催。美味しかった。
-大きな地図で見る
+
+
+.. raw:: html
+
+    <iframe width="300" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps/ms?hl=ja&amp;ie=UTF8&amp;s=AARTsJoKnJqiXGJOK_mTutamv3YW3JlzrQ&amp;msa=0&amp;msid=116353817628604507840.0000011240131ae54a00c&amp;ll=35.693404,139.69805&amp;spn=0.001307,0.001609&amp;z=18&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps/ms?hl=ja&amp;ie=UTF8&amp;msa=0&amp;msid=116353817628604507840.0000011240131ae54a00c&amp;ll=35.693404,139.69805&amp;spn=0.001307,0.001609&amp;z=18&amp;source=embed" style="color:#0000FF;text-align:left">大きな地図で見る</a></small>
 
 
 
-.. author:: mkouhei
+
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	美味しいですよね。雰囲気もいいですし。パスタが美味。
-
-	written by  z-ohnami
-	02/15/2009 22:26:00
-	http://d.hatena.ne.jp/z-ohnami/
-
-----
-
-Comment:
-
-	さすが。既に利用済みでしたか。
-
-	written by  mkouhei
-	02/15/2009 22:55:06
-	http://d.hatena.ne.jp/mkouhei/
-

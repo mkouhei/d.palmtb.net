@@ -1,17 +1,21 @@
-﻿原因判明。
-##########
-
+原因判明。
+==========
 
 kenrel 2.6.22でも今までと同様に、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    make-kpkg --rootcmd fakeroot clean
    make-kpkg --rootcmd fakeroot --config oldconfig --initrd --revision=$REVISION kernel-image kernel_headers modules_image
 
 
+としていたのだが、この時に作成される、kvm-modulesのdebファイルも一緒にインストールしていたのが原因らしい [#]_ 。これだと、/lib/modules/2.6.22/misc/に、kvm.ko, kvm-intel.ko, kvm-amd.koがインストールされるのだが、2.6.22からは、モジュールとしてカーネルビルドすると、/lib/modules/2.6.22/kernel/drivers/kvm/に、kvm.koとkvm-intel.koが作成される。というか、2.6.21.6までだって出来てたんだけどね。どうも2.6.22から前者があるとうまいことロード出来なくなってしまうようだ。と言う訳で、単純に、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get remove --purge kvm-modules-2.6.22
 
@@ -20,13 +24,11 @@ kenrel 2.6.22でも今までと同様に、
 
 
 
-.. [#] ：Gentooの.. [#] から気がついた。
+
+.. [#] Gentooの" `Code Listing 3.10: Unknown Symbol in moduleエラー <http://www.gentoo.org/doc/ja/alsa-guide.xml#doc_chap3>`_ "から気がついた。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Debian, computer, Unix/Linux, virt., 
 .. tags::
 .. comments::
-
-

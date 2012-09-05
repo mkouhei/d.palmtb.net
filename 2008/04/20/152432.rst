@@ -1,18 +1,21 @@
-﻿compress モジュールを有効にさせる。
-############################################
-
+compress モジュールを有効にさせる。
+===================================
 
 lighttpd.confで、下記のコメントを外せば良いだけかと思ったら、
 
-.. code-block:: none
 
-   #compress.cache-dir          = &#34;/var/tmp/lighttpd/cache/compress/&#34;
-   #compress.filetype           = (&#34;text/plain&#34;, &#34;text/html&#34;)
+.. code-block:: sh
+
+
+   #compress.cache-dir          = "/var/tmp/lighttpd/cache/compress/"
+   #compress.filetype           = ("text/plain", "text/html")
 
 
 cache-dirで指定しているディレクトリが無いので作成する必要があった。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo mkdir -p /var/tmp/lighttpd/cache/compress/
    $ sudo chown -R www-data:www-data /var/tmp/lighttpd/
@@ -21,9 +24,9 @@ cache-dirで指定しているディレクトリが無いので作成する必�
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

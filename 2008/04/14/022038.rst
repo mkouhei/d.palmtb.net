@@ -1,31 +1,38 @@
-﻿ログイン不可ユーザに、sudoでコマンド実行時に環境変数を渡す方法。
-####################################################################
-
+ログイン不可ユーザに、sudoでコマンド実行時に環境変数を渡す方法。
+================================================================
 
 通常だと、下記のように実行する。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo -u hoge cmd
 
 
 なので、普通のコマンド実行時と同じように、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo -u hoge VAR=hoge cmd
 
 
 なんてやっても、sudoに最初に渡されるVARがコマンドと見なされてしまってエラーになる。下記の様に、shを使ってもダメ。
 
-.. code-block:: none
 
-   $ sudo -u hoge sh -c &#34;VAR=hoge cmd&#34;
+.. code-block:: sh
+
+
+   $ sudo -u hoge sh -c "VAR=hoge cmd"
 
 
 exportとかすると、一見うまく行くように見える。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ export VAR=hoge
    $ sudo -u hoge cmd
@@ -33,7 +40,9 @@ exportとかすると、一見うまく行くように見える。
 
 だが、実際にはちゃんと渡されていない。じゃあ、どうすっかなぁ、と思っていたら意外な解決方法があった。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo -u hoge cmd VAR=hoge
 
@@ -42,9 +51,10 @@ exportとかすると、一見うまく行くように見える。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

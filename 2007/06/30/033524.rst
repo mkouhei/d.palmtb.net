@@ -1,14 +1,16 @@
-﻿３回目。
-########
-
+３回目。
+========
 
 今年の坊主、３回目。0.5ミリの刃を研ぎに出しているということで、1ミリにした。大して変わらんけど。w
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

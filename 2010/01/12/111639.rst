@@ -1,10 +1,13 @@
-﻿続・lxcが起動しない。
-########################
-
+続・lxcが起動しない。
+=====================
 
 Upstreamのバージョンが0.6.3から0.6.4になったということで、先ほどlxc-debianで作成したコンテナが起動しなかったが、そもそもスクリプトの内容が変わっているのではないかと思い、確認してみたらやっぱり。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    --- lxc-debian  2009-10-30 17:58:20.000000000 +0900
    +++ lxc-debian-new      2010-01-12 10:15:14.000000000 +0900
@@ -21,8 +24,8 @@ Upstreamのバージョンが0.6.3から0.6.4になったということで、�
     lxc.cgroup.devices.allow = c 254:0 rwm
     EOF
    +
-   +       if [ ! -z $TMPMNTFILE ]; then
-   +               cat $TMPMNTFILE  $CONFFILE
+   +       if [ ! -z "$TMPMNTFILE" ]; then
+   +               cat $TMPMNTFILE >> $CONFFILE
    +       fi
     }
    
@@ -30,18 +33,24 @@ Upstreamのバージョンが0.6.3から0.6.4になったということで、�
    
    -    TMPMNTFILE=$(mktemp lxc.XXXXXXXXXX)
    -
-        if [ ! -z $MNTFILE ]; then
+        if [ ! -z "$MNTFILE" ]; then
    -       cp $MNTFILE $TMPMNTFILE
    +       TMPMNTFILE=$(mktemp lxc.$NAME.XXXXXXXXXX)
-   +       sed -e &#39;s/^\(.*\)/lxc.mount.entry=/&#39; $MNTFILE $TMPMNTFILE
+   +       sed -e 's/^\(.*\)/lxc.mount.entry=&/' $MNTFILE >$TMPMNTFILE
         fi
     }
    
 
 
+
+
 新しいスクリプトでコンテナを作成しなおしてみたらあっさり起動した。旧バージョンで作成したコンテナと、新バージョンで作成したコンテナの違いは、/var/lib/lxc/ディレクトリ以下の構成が明らかに違う。新しい方は、configファイルしかない。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ ls -l /var/lib/lxc/{hoge,foo}
    /var/lib/lxc/foo:
@@ -55,7 +64,7 @@ Upstreamのバージョンが0.6.3から0.6.4になったということで、�
    -rw------- 1 root root   74 2009-12-04 18:12 fstab
    -rw------- 1 root root    5 2010-01-04 09:23 init
    drwxr-xr-x 3 root root 4096 2009-12-04 18:12 network
-   lrwxrwxrwx 1 root root   22 2010-01-04 09:23 nsgroup - /var/local/cgroup/hoge
+   lrwxrwxrwx 1 root root   22 2010-01-04 09:23 nsgroup -> /var/local/cgroup/hoge
    -rwxr-xr-x 1 root root    6 2009-12-04 18:12 pts
    drwxr-xr-x 2 root root 4096 2009-12-04 18:12 rootfs
    -rw------- 1 root root    7 2010-01-12 09:13 state
@@ -63,9 +72,15 @@ Upstreamのバージョンが0.6.3から0.6.4になったということで、�
    -rwxr-xr-x 1 root root    6 2009-12-04 18:12 utsname
 
 
+
+
 configファイルの内容の違いは以下。lxc.mountパラメータが無くなっている。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ sudo diff -u /var/lib/lxc/{hoge,foo}/config
    --- /var/lib/lxc/hoge/config    2009-12-04 18:12:13.000000000 +0900
@@ -88,13 +103,16 @@ configファイルの内容の違いは以下。lxc.mountパラメータが無�
     lxc.cgroup.devices.allow = c 1:3 rwm
 
 
+
+
 他のファイル、というか情報はどこへ行ったのか？
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, computer, virt., 
 .. tags::
 .. comments::
-
-

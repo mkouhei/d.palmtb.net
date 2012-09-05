@@ -1,14 +1,14 @@
-﻿awstatsの移行で手こずった。
-##################################
-
+awstatsの移行で手こずった。
+===========================
 
 家庭内LANのアドレスは除外するようにしていたのだが、現状の本番サーバからもってきたawstatsのデータをなぜか読み込めなかったのだが原因判明。もともとのサーバでは、設定ファイルを、awstats.confで、-config=awstats.confとしていたのだが、新しいサーバでは/etc/awstats/awstats.www.palmtb.net.confとし、-config=www.palmtb.netとしたところ、持っていったawstatsMMYYYY.txtが読み込まれなかった。試しに家庭内のIPアドレスを除外せずに生成してみたら、DataDirに指定したディレクトリには、awstatsMMYYYY.www.palmtb.net.txtに、DNSのキャッシュファイルはdnscachelastupdate.txtではなく、dnscachelastupdate.www.palmtb.net.hashとなった。そういうことか。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, Ops, 
 .. tags::
 .. comments::
-
-

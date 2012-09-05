@@ -1,38 +1,42 @@
-﻿OpenBlockS600をSqueezeにしてみた。
-######################################################
+OpenBlockS600をSqueezeにしてみた。
+==================================
+
+`ぷらっとホームの技術情報 <http://openblocks.plathome.co.jp/support/documentation/other_os.html>`_ を元に、まずlennyを8GBのCFにインストールした後、APTラインをsqueezeに変更し、apt-get update, upgrade, safe-upgrade, dist-upgradeを繰り返し、Squeezeにアップグレードしてみた。udevのアップグレードの時に、
 
 
-ぷらっとホームの技術情報を元に、まずlennyを8GBのCFにインストールした後、APTラインをsqueezeに変更し、apt-get update, upgrade, safe-upgrade, dist-upgradeを繰り返し、Squeezeにアップグレードしてみた。udevのアップグレードの時に、
+.. code-block:: sh
 
-.. code-block:: none
 
    $ sudo touch /etc/udev/kernel-upgrade
 
 
 をしないとアップグレードできない、というのもあったが、基本は問題無し。アップグレード後に、sysvinitからupstartにしたみた際。cronが起動後、rc2.d以下のスクリプトの実行時に止まってしまう、という問題があった。
 
-.. code-block:: none
+
+.. code-block:: ini
+
 
    Running scripts in rc2.d/ took 1 seconds.
 
 
 仕方ないのでupstartにはしないことにした。 [#]_ 
 
+
+
+
 追記
-********
+----
 
 
 rc2.d以下のスクリプトじゃなく、gettyの方の問題かもなぁ。
 
 
 
-.. [#] ：別に必要ないし。
+
+.. [#] 別に必要ないし。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Debian, gadget, Ops, 
 .. tags::
 .. comments::
-
-

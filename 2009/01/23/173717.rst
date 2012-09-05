@@ -1,32 +1,39 @@
-﻿単語を逆順にする。
-##################
-
+単語を逆順にする。
+==================
 
 バックアップを取るのにプロセスを一気に落とし上げしたいなぁと思い、プロセスを落とす時と上げるときを逆の順番でやるのに、そういえばそんなコマンドはないことに気がついた。文字列を逆にするコマンドはあるんだけどね。
 
-.. code-block:: none
 
-   $ echo hello world | rev
+.. code-block:: sh
+
+
+   $ echo "hello world" | rev
    dlrow olleh
 
 
 これだと役に立たないので、awkでワンライナーを書く。なんかで使いまわしが利きそうだから、別ファイル [#]_ でスクリプトにしておく。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #!/usr/bin/gawk
-   {for (i=NF; i0; i--) {printf %s , $i;} printf \n }
+   {for (i=NF; i>0; i--) {printf "%s ", $i;} printf "\n" }
+
+
 
 
 これであとは対象のプロセスを変数で列挙して終わり。変数の与え方をもっとスマートにできないもんかねぇ。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #!/bin/bash
    
-   SERVICE=apache2 usermin webmin mysql samba nfs-kernel-server nfs-common portmap postfix
+   SERVICE="apache2 usermin webmin mysql samba nfs-kernel-server nfs-common portmap postfix"
    
-   case $1 in
+   case "$1" in
      start)
      SERVICE=`echo $SERVICE | gawk -f /usr/local/bin/revword.awk`
      FLAG=start
@@ -37,7 +44,7 @@
      ;;
    
      *)
-     echo Usage: $0 {start|stop}
+     echo "Usage: $0 {start|stop}"
      exit 1
      ;;
    esac
@@ -51,13 +58,10 @@
 
 
 
-.. [#] ：/usr/local/bin/revword.awk
+.. [#] /usr/local/bin/revword.awk
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, Ops, 
 .. tags::
 .. comments::
-
-

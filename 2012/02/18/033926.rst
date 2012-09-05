@@ -1,14 +1,14 @@
-﻿最近よく考えていること。
-########################
-
+最近よく考えていること。
+========================
 
 git pullするのとrsyncでPUSHするのとどっちがええかなぁ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Ops, 
 .. tags::
 .. comments::
-
-

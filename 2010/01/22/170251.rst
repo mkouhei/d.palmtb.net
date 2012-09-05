@@ -1,63 +1,92 @@
-﻿nginxでリバースプロキシ その2。
-######################################
-
+nginxでリバースプロキシ その2。
+===============================
 
 昨日のnginxの話の続き。というか、実質的にはWSGIの設定がメイン。gitwebの動いているノードに、trac-gitを入れて動かす場合、tracdで動かしても良いかもしれないが、mod_python, FastCGI, WSGIのいずれかを使って、tracをApacheで動かしたいのが普通だろう。どれを選択すればよいのか？WSGIのDebianパッケージであるlibapache2-mod-wsgiのcontrolを見るとこんなことが書いてある。
 
- The adapter provides significantly
- better performance than using existing WSGI adapters for mod_python or CGI.
 
-意訳：mod_pythonやCGIなんて目じゃないぜ。これはWSGIを使うしかないでしょ。ということで [#]_ 、まず、libapache2-mod-wsgiをインストールする。
 
-.. code-block:: none
+    The adapter provides significantly
+
+    better performance than using existing WSGI adapters for mod_python or CGI.
+
+
+
+
+
+意訳：mod_pythonやCGIなんて目じゃないぜ。
+
+
+
+これはWSGIを使うしかないでしょ。ということで [#]_ 、まず、libapache2-mod-wsgiをインストールする。
+
+
+.. code-block:: sh
+
 
    $ sudo apt-get install libapache2-mod-wsgi
 
 
-インストールすると、便利なことに自動的にa2enmod wsgiも実行して、/etc/apache2/mod-enable/wsgi.{load,conf}を作成してくれるおまけ付き。気が利くね。wsgi.confの中身を見ると、全てコメントアウトされているが気にするな。全てデフォルト値が設定されている。とりあえず動かしてみることが重要なので、今は無視して構わん。
-/etc/apache2/site-available/defaultの方の設定に移る。とりあえず認証が必要無ければ以下で良い。そうそう、エイリアスの&#34;/trac&#34;は&#34;/trac/&#34;じゃダメなので注意しよう。Directoryディレクティブのパスも最後に&#34;/&#34;を入れちゃダメだ。入れるとちゃんとリバースプロキシされなくなる。
 
-.. code-block:: none
+
+インストールすると、便利なことに自動的にa2enmod wsgiも実行して、/etc/apache2/mod-enable/wsgi.{load,conf}を作成してくれるおまけ付き。気が利くね。wsgi.confの中身を見ると、全てコメントアウトされているが気にするな。全てデフォルト値が設定されている。とりあえず動かしてみることが重要なので、今は無視して構わん。
+
+
+
+/etc/apache2/site-available/defaultの方の設定に移る。とりあえず認証が必要無ければ以下で良い。そうそう、エイリアスの"/trac"は"/trac/"じゃダメなので注意しよう。Directoryディレクティブのパスも最後に"/"を入れちゃダメだ。入れるとちゃんとリバースプロキシされなくなる。
+
+
+.. code-block:: sh
+
 
    WSGIScriptAlias /trac /var/cache/trac/trac.wsgi 
-   Directory /var/cache/trac
+   <Directory /var/cache/trac>
            Order allow,deny
            Allow from all
-   /Directory
+   </Directory>
+
+
 
 
 /var/cache/trac/trac.wsgiには以下のコードを書いておく。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    import os
    
-   os.environ[&#39;TRAC_ENV&#39;] = &#39;/var/cache/trac&#39;
-   os.environ[&#39;PYTHON_EGG_CACHE&#39;] = &#39;/tmp&#39;
+   os.environ['TRAC_ENV'] = '/var/cache/trac'
+   os.environ['PYTHON_EGG_CACHE'] = '/tmp'
    
    import trac.web.main
    application = trac.web.main.dispatch_request
    
 
 
+
+
 認証が必要なら、ダイジェスト認証を設定しておこう。 [#]_ 
 
-.. code-block:: none
 
-   Directory /var/cache/trac
+.. code-block:: sh
+
+
+   <Directory /var/cache/trac>
            Order allow,deny
            Allow from all
            AuthType Digest
-           AuthName trac
+           AuthName "trac"
            AuthDigestDomain /var/cache/trac
            AuthUserFile /var/local/trac/.htpasswd
            Require valid-user
-   /Directory
+   </Directory>
 
 
 htdigestコマンドでユーザ、パスワードを設定しておく。Apacheはデフォルトではauth_digestモジュールは無効になっているので有効にしておく必要がある。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo a2enmod auth_digest
    $ sudo mkdir /var/local/trac
@@ -68,9 +97,14 @@ htdigestコマンドでユーザ、パスワードを設定しておく。Apache
 
 
 Apacheを再起動したら、trac-gitのノードでの作業は終わりだ。
-さて、一応本題のnginxでのリバースプロキシの設定はというと、実は非常に簡単。昨日のgitweb向けの設定を以下のように変更すればよい。ここでも注意が必要なのは、&#34;/trac&#34;や&#34;http://git/trac&#34;は、&#34;/trac/&#34;や&#34;http://git/trac/&#34;ではダメなので注意しよう。
 
-.. code-block:: none
+
+
+さて、一応本題のnginxでのリバースプロキシの設定はというと、実は非常に簡単。昨日のgitweb向けの設定を以下のように変更すればよい。ここでも注意が必要なのは、"/trac"や"http://git/trac"は、"/trac/"や"http://git/trac/"ではダメなので注意しよう。
+
+
+.. code-block:: apache
+
 
    upstream git {
            server 192.168.xxx.xxx;
@@ -91,14 +125,12 @@ nginxを再起動すれば、リバースプロキシ経由でtrac-gitにアク�
 
 
 
-.. [#] ：既にtrac-gitもtracもインストールして、tracのプロジェクトも作成済みという前提で話を進める。
-.. [#] ：Basic認証とかいう人は今更いないよね。
+
+.. [#] 既にtrac-gitもtracもインストールして、tracのプロジェクトも作成済みという前提で話を進める。
+.. [#] Basic認証とかいう人は今更いないよね。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, Debian, 
 .. tags::
 .. comments::
-
-

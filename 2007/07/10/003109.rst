@@ -1,11 +1,13 @@
-﻿set_64bitが気になったので…。
-######################################
-
+set_64bitが気になったので…。
+=============================
 
 ソースコード調べてみたら、こんなん出ました。
+
 ./arch/i386/kernel/vmi.c
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #ifdef CONFIG_X86_PAE
    
@@ -15,8 +17,8 @@
             * XXX This is called from set_pmd_pte, but at both PT
             * and PD layers so the VMI_PAGE_PT flag is wrong.  But
             * it is only called for large page mapping changes,
-            * the Xen backend, doesn&#39;t support large pages, and the
-            * ESX backend doesn&#39;t depend on the flag.
+            * the Xen backend, doesn't support large pages, and the
+            * ESX backend doesn't depend on the flag.
             */
            set_64bit((unsigned long long *)ptep,pte_val(pteval) );
            vmi_ops.update_pte(ptep, VMI_PAGE_PT);
@@ -27,13 +29,11 @@ CONFIG_X86_PAEってどこかで聞いたなぁと思って、make menuconfigで
 
 
 
-.. [#] ：って、このパターンが多いな。
+
+.. [#] って、このパターンが多いな。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

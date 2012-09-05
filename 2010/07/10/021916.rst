@@ -1,10 +1,11 @@
-﻿ckermitが使えなくなってた。
-##################################
-
+ckermitが使えなくなってた。
+===========================
 
 久々にOpenMicroServerの設定をコンソールで行う必要が出てきたので、ckermitでやろうとしてみたらつかえ無くなっていた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ kermit
    /dev/ttyUSB0 
@@ -13,14 +14,18 @@
     Copyright (C) 1985, 2004,
      Trustees of Columbia University in the City of New York.
    Type ? or HELP for help.
-   (/home/user1/) C-Kermitc
+   (/home/user1/) C-Kermit>c
    Sorry, you must SET LINE or SET HOST first
-   (/home/user1/) C-Kermit
+   (/home/user1/) C-Kermit>
+
+
 
 
 と表示されるので、なんでかなぁと思ったら、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ id
    uid=1000(user1) gid=1000(user1) 所属グループ=1000(user1),24(cdrom),25(floppy),29(audio),30(dip),44(video),46(plugdev),108(bluetooth),112(powerdev),113(netdev)
@@ -28,24 +33,28 @@
    crw-rw---- 1 root dialout 188, 0 2010-07-10 02:07 /dev/ttyUSB0
    $ adduser^C
    $ sudo adduser user1 dialout
-   Adding user `user1&#39; to group `dialout&#39; ...
+   Adding user `user1' to group `dialout' ...
    Adding user user1 to group dialout
    終了。
 
 
 グループに追加して、ログインしなおしたら使えるようになった。
 
+
+
+
 補足
-********
+----
 
 
 tmuxを使っていると、dialoutグループに追加していても、なぜかそのセッションではdialoutグループから外れてしまうようでである。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

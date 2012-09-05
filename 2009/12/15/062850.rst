@@ -1,29 +1,29 @@
-﻿遅くなった。
-############
-
+遅くなった。
+============
 
 寒くなったので起床時間の平均が1時間くらい遅くなった。これはいかんなぁ。寝る時間を早くしてみようか…。
+
 10月
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091215/20091215062741.png
-   :alt: f:id:mkouhei:20091215062741p:image
+
+.. image:: /img/20091215062741.png
 
 11月
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091215/20091215062742.png
-   :alt: f:id:mkouhei:20091215062742p:image
+
+.. image:: /img/20091215062742.png
 
 12月
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091215/20091215062743.png
-   :alt: f:id:mkouhei:20091215062743p:image
+
+.. image:: /img/20091215062743.png
 
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

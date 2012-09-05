@@ -1,31 +1,39 @@
-﻿PowerDNS GUIの困った話（その５）。
-##############################################
+PowerDNS GUIの困った話（その５）。
+==================================
+
+pdns-gui、見た目もGUIとしての登録画面もかなり使いやすいのですが、困った問題が。Toolsに、"Search and replace"というボタンがあります。これをクリックして表示されるのが下のフォーム。
 
 
-pdns-gui、見た目もGUIとしての登録画面もかなり使いやすいのですが、困った問題が。Toolsに、&#34;Search and replace&#34;というボタンがあります。これをクリックして表示されるのが下のフォーム。
+.. image:: /img/20111018022958.png
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20111018/20111018022958.png
-   :alt: f:id:mkouhei:20111018022958p:image
+このツールは"検索と置換"ができるのかと思いきや、"検索かつ置換"しかできないのです。まぁ"and"だし、意味合いは正しいですね、そうですよね。
 
-このツールは&#34;検索と置換&#34;ができるのかと思いきや、&#34;検索かつ置換&#34;しかできないのです。まぁ&#34;and&#34;だし、意味合いは正しいですね、そうですよね。
-んが！非常に使いにくい！これじゃあ困る。それで目を着けたのが、同じくToolsにある&#34;History&#34;という機能。これはレコードのCRUDを行い、その４で書いたCommit changesを行ったときに記録されるAuditの情報です。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20111018/20111018022959.png
-   :alt: f:id:mkouhei:20111018022959p:image
 
-この下にある検索フォームが結構使いやすいので、これを流用してレコード検索専用のフォームを作って、issueにパッチを投稿しておきました。
+んが！非常に使いにくい！これじゃあ困る。それで目を着けたのが、同じくToolsにある"History"という機能。これはレコードのCRUDを行い、 `その４ <http://d.hatena.ne.jp/mkouhei/20111018/1318872295>`_ で書いたCommit changesを行ったときに記録されるAuditの情報です。
+
+
+.. image:: /img/20111018022959.png
+
+
+
+この下にある検索フォームが結構使いやすいので、これを流用してレコード検索専用のフォームを作って、 `issue <http://code.google.com/p/pdns-gui/issues/detail?id=26>`_ にパッチを投稿しておきました。
+
+
+
 
 余談。
-**************
+------
 
 
 pdns-guiは、PHP + Symfony + Ext.JSを使って作られています。SymfonyもExt.JSも今回初めてだったのですが、最初のうちはSymfonyの構成がよく分からず、grepでソースコード読んで理解していましたが、パッチ書いているうちに大分SymfonyもExt.JS分かってきた感じですね。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Dev, 
 .. tags::
 .. comments::
-
-

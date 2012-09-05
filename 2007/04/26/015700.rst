@@ -1,14 +1,14 @@
-﻿久々にガッキー。
-################
-
+久々にガッキー。
+================
 
 何も変わってないのかなぁと思ったら、大阪になっとる。やっぱり可愛いなぁ…。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

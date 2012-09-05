@@ -1,14 +1,14 @@
-﻿Graffiti最高。
-######################
-
+Graffiti最高。
+==============
 
 Graffitiを再び使える日が来るとは。やっぱりGraffitiの入力方法は最高。試してみたがPalmハンドヘルドの時よりも精度良くなってる気がするなぁ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: gadget, 
 .. tags::
 .. comments::
-
-

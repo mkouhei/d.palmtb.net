@@ -1,9 +1,10 @@
-﻿こまめの写真と動画
-##################
-
+こまめの写真と動画
+==================
 
 今月の勉強会（まぁ、今日だ）は、ねこCafeということなので、今まで撮り貯めた、こまめの写真と動画のリンクをメモしておく。
+
 http://f.hatena.ne.jp/mkouhei/%E3%81%93%E3%81%BE%E3%82%81/
+
 http://f.hatena.ne.jp/emkouhei/komame/
 
 
@@ -11,9 +12,23 @@ http://f.hatena.ne.jp/emkouhei/komame/
 
 
 
-.. author:: mkouhei
-.. categories:: cat, 
+.. raw:: html
+
+   <object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/beGYxigQhjI"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/beGYxigQhjI" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>
+
+
+
+
+.. raw:: html
+
+   <object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/XHwlWFC-6Qo"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/XHwlWFC-6Qo" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>
+
+
+
+
+
+
+.. author:: default
+.. categories:: ねこ, 
 .. tags::
 .. comments::
-
-

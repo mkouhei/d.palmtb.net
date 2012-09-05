@@ -1,10 +1,11 @@
-﻿USB ZIPドライブ
-######################
-
+USB ZIPドライブ
+===============
 
 250MBのZIPメディアからデータを移したいという方がいるそうでお貸しすることになったのだが、Linuxで認識されるのかなぁと思い、貸す前に挿してみたら普通にSCSIディスクとして認識され、オートマウントされた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    [16828.061397] usb 3-1: new full speed USB device using ohci_hcd and address 4
    [16828.324876] usb 3-1: New USB device found, idVendor=059b, idProduct=0030
@@ -60,13 +61,18 @@
 
 まぁでもディスクの中のデータは使うことないだろう。まだWindowsユーザだった頃の遺産。アプリのインストーラをバックアップで取っていたメディアだったが、もはやディスクの肥やし、もとい肥やしにもならないな。
 
+
+
+
+
 もし、他にもZIPメディアからデータを救出したいんだがドライブがねぇ、という方がいるなら連絡をくださいな。お貸しますぜ。ただし、対応メディアは250MBまでだけどね。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

@@ -1,15 +1,18 @@
-﻿お、安い。
-##########
+お、安い。
+==========
+
+`HHKB Pro2 <http://online.plathome.co.jp/detail.html?scd=11650760>`_ が安い。３台目購入しようかなぁ。やっぱこれに勝るキーボードは無いよなぁ…。
 
 
-HHKB Pro2が安い。３台目購入しようかなぁ。やっぱこれに勝るキーボードは無いよなぁ…。
+
 寝るか、と書いてからもう３０分近くになるな。今度こそ寝よ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

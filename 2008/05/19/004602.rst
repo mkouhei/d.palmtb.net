@@ -1,25 +1,29 @@
-﻿sshfs試してみた。
-######################
+sshfs試してみた。
+=================
 
 
+.. code-block:: sh
 
-.. code-block:: none
 
    $ sudo apt-get install sshfs
 
 
 マウントしてみようとしたら、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sshfs hoge: ~/tmp/
-   Enter passphrase for key &#39;/home/user/.ssh/id_rsa&#39;: 
+   Enter passphrase for key '/home/user/.ssh/id_rsa': 
    fuse: failed to open /dev/fuse: Permission denied
 
 
 なぬ？パーミッションを確認してみると、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ ls -l /dev/fuse 
    crw-rw---- 1 root root 10, 229 2008-05-20 00:22 /dev/fuse
@@ -27,7 +31,9 @@
 
 ふーん。groupを変更してみる。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo adduser user fuse
    $ sudo chgrp fuse /dev/fuse
@@ -35,19 +41,23 @@
 
 再マウント。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sshfs hoge: ~/tmp/
-   Enter passphrase for key &#39;/home/user/.ssh/id_rsa&#39;: 
+   Enter passphrase for key '/home/user/.ssh/id_rsa': 
    fuse: failed to open /dev/fuse: Permission denied
 
 
 またしても失敗。ログインしなおしてみる。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sshfs hoge: ~tmp/
-   Enter passphrase for key &#39;/home/user/.ssh/id_rsa&#39;: 
+   Enter passphrase for key '/home/user/.ssh/id_rsa': 
    $ df -h
    Filesystem          サイズ  使用  残り 使用% マウント位置
    /dev/sda4              12G  4.2G  6.3G  41% /
@@ -60,9 +70,14 @@
 
 
 マウントできたのだが、サイズがおかしい。何だ、1000GBって？
+
+
+
 アンマウントはfusermountで実行。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ fusermount -u ~/tmp
    $ df -h
@@ -79,9 +94,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

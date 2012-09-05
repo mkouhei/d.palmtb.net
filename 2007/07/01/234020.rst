@@ -1,14 +1,14 @@
-﻿Sun Fire 12Kのメンテナンス。
-########################################
-
+Sun Fire 12Kのメンテナンス。
+============================
 
 DomainやSystem Controllerの停止・起動なんぞやってみる機会に恵まれた。なかなかそんな機会は無いのでラッキー。手順自体は簡単だったけど、まぁ何が正常なのかを知らんから、怪しいメッセージでやたら手間取った。メモリがすんげぇ挿さってた。昔見た、RS/6000のSIMMモジュールも毎数だけならあれくらい挿してあったな。
 
 
 
-.. author:: mkouhei
-.. categories:: work, Unix/Linux, 
+
+
+
+.. author:: default
+.. categories:: 仕事, Unix/Linux, 
 .. tags::
 .. comments::
-
-

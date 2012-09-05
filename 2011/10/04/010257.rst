@@ -1,20 +1,27 @@
-﻿WellnessLinkがまた便利に。
-######################################
-
+WellnessLinkがまた便利に。
+==========================
 
 昨日、待望のNFC経由でデータをアップロードできるAndroid用公式アプリが公開されていました。
-https://market.android.com/details?id=jp.co.omron.healthcare.wl.android.basic今までは、WindowsでUSBで接続して、Windows専用アプリでアップロードするしか無かったのですが、これでWindows無しでもNFC搭載のAndroid端末だけ [#]_ で計測データ＆朝晩ダイエット開始のデータ同期ができるようになりました。2月のダイエット開始直前くらいから歩数計と体組成計を使っていますが、ようやく本領発揮し始めた、というところですね。残念ながら、現時点では歩数計は未対応で、WellnessLinkの体組成計と血圧計限定ですが、歩数計も早く使えるようになるといいなぁ。
-結局、予想通り自分で何とか対応させよう、というのはやるやる詐欺になってましたね…。
 
 
 
-.. [#] ：ちなみに上記リンク先の推奨機器にはもちろん記載されていませんが、NSでも問題なくアップロードできます。
+https://market.android.com/details?id=jp.co.omron.healthcare.wl.android.basic
 
 
 
-.. author:: mkouhei
-.. categories:: life, gadget, 
+今までは、WindowsでUSBで接続して、Windows専用アプリでアップロードするしか無かったのですが、これでWindows無しでもNFC搭載のAndroid端末だけ [#]_ で計測データ＆朝晩ダイエット開始のデータ同期ができるようになりました。 `2月のダイエット開始直前くらい <http://d.hatena.ne.jp/mkouhei/20110503/1304400824>`_ から `歩数計 <http://www.wellnesslink.jp/p/product/hj205it.html>`_ と `体組成計 <http://www.wellnesslink.jp/p/product/hbf208it.html>`_ を使っていますが、ようやく本領発揮し始めた、というところですね。残念ながら、現時点では歩数計は未対応で、WellnessLinkの体組成計と血圧計限定ですが、歩数計も早く使えるようになるといいなぁ。
+
+
+
+結局、 `予想通り自分で何とか対応させよう、というのはやるやる詐欺になってました <http://d.hatena.ne.jp/mkouhei/20110503#20110503f5>`_ ね…。
+
+
+
+
+.. [#] ちなみに上記リンク先の推奨機器にはもちろん記載されていませんが、NSでも問題なくアップロードできます。
+
+
+.. author:: default
+.. categories:: 生活, gadget, 
 .. tags::
 .. comments::
-
-

@@ -1,21 +1,26 @@
-﻿リモコン使えるようにしたけど。
-##############################
-
+リモコン使えるようにしたけど。
+==============================
 
 上川さんが公開されているソースコードでMacBookのリモコンを使えるようにした。が、warningが気持ち悪い。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ gcc -Wall -lusb -L /usr/X11R6/lib -lXt -lXtst -o usb-mackbook-ir 20060712-usb-macbook-ir.c
    20060712-usb-macbook-ir.c: In function ‘process_device’:
    20060712-usb-macbook-ir.c:87: warning: implicit declaration of function ‘sched_yield’
 
 
+
+
 実行すると下記のメッセージが出る。
 
-.. code-block:: none
 
-   $ sudo /usr/local/sbin/usb-macbook-ir &amp;
+.. code-block:: sh
+
+
+   $ sudo /usr/local/sbin/usb-macbook-ir &
    [1] 5408
    bus 003, dev 2
    claim: 0x804a228, 0
@@ -25,9 +30,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, MacBook, 
 .. tags::
 .. comments::
-
-

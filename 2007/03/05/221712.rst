@@ -1,25 +1,31 @@
-﻿xpの時だけとは限らないみたい。
-################################
-
+xpの時だけとは限らないみたい。
+==============================
 
 kvmのMLに投稿された情報より。register dumpを吐いて死ぬ現象、Windows xpがゲストの時だけではないらしい。
 
-* amd64のGentooでUbuntuのインストールCDをブートさせると死ぬ。
+*  `amd64のGentooでUbuntuのインストールCDをブートさせると死ぬ。 <http://sourceforge.net/tracker/index.php?func=detail&aid=1673740&group_id=180599&atid=893831>`_ 
+
 * Xeon 5130 Kernel 2.6.20.1でkvm-15, 14, 12のいずれかでNetBSDのインストールCDをブートさせると死ぬ。
-* Windows 2kのインストールもダメとか。
+
+*  `Windows 2kのインストールもダメとか。 <http://sourceforge.net/tracker/index.php?func=detail&aid=1650987&group_id=180599&atid=893831>`_ 
+
+
 
 なんか、結構ダメなのあるのね。
-http://sourceforge.net/tracker/?atid=893831group_id=180599func=browse二つめのNetBSDの件では、Avi Kivityさんが”-no-kvmつけて起動させてみたらどうだ？”と、言っているのだけど、Windowsではもうそれ試したんだよね [#]_ 。続けて、&#34;rip = 0xfff0&#34;のところでゲストがリブートしているようだと言っている。これはWindowsの場合も同じみたい。
+
+http://sourceforge.net/tracker/?atid=893831&group_id=180599&func=browse
 
 
 
-.. [#] ：延々ループする
+二つめのNetBSDの件では、Avi Kivityさんが”-no-kvmつけて起動させてみたらどうだ？”と、言っているのだけど、Windowsではもうそれ試したんだよね [#]_ 。続けて、"rip = 0xfff0"のところでゲストがリブートしているようだと言っている。これはWindowsの場合も同じみたい。
 
 
 
-.. author:: mkouhei
+
+.. [#] 延々ループする
+
+
+.. author:: default
 .. categories:: Unix/Linux, computer, virt., 
 .. tags::
 .. comments::
-
-

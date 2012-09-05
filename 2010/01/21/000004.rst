@@ -1,23 +1,29 @@
-﻿nginxでリバースプロキシ。
-##############################
-
+nginxでリバースプロキシ。
+=========================
 
 gitwebとCouchDBをバックエンドにしたリバースプロキシをnginxで設定したのでメモ。構成的には下図。各ノードはlxcのコンテナとして立てている。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100121/20100121233402.png
-   :alt: f:id:mkouhei:20100121233402p:image
+
+.. image:: /img/20100121233402.png
+
+
 
 nginx自体は、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get install nginx
 
 
 のみでインストールできる。設定ファイルは、/etc/nginx/以下。Apacheのディレクトリ構成に似ている。Debianパッケージだからか。
+
 リバースプロキシの設定は/etc/nginx/conf.d/ディレクトリ以下に、proxy.confとして設定。proxy_set_headerを指定して、バックエンドサーバに対してクライアントのIPアドレスを教える。
 
-.. code-block:: none
+
+.. code-block:: apache
+
 
    proxy_redirect                          off;
    proxy_set_header Host                   $host;
@@ -29,7 +35,9 @@ nginx自体は、
 
 プロキシさせるのは、ApacheとCouchDBとでそれぞれ別のサブドメインを割り当ててネームベースのバーチャルホストを/etc/nginx/sites-available/defaultに設定。
 
-.. code-block:: none
+
+.. code-block:: apache
+
 
    server {
            listen   80;
@@ -76,40 +84,46 @@ nginx自体は、
    }
 
 
+
+
 Apacheにはgitwebの設定。
 
-.. code-block:: none
 
-   VirtualHost *:80
+.. code-block:: sh
+
+
+   <VirtualHost *:80>
            ServerAdmin webmaster@git.hoge.org
            ServerName  git.hoge.org
            DocumentRoot /usr/share/gitweb
-           Directory /
+           <Directory />
                    Options None
                    AllowOverride None
                    Order Deny,Allow
                    Deny from All
-           /Directory
-           Directory /usr/share/gitweb
+           </Directory>
+           <Directory /usr/share/gitweb>
                    Options None
                    AllowOverride None
                    Order allow,deny
                    allow from all
-           /Directory        
+           </Directory>        
            ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
-           Directory /usr/lib/cgi-bin
+           <Directory "/usr/lib/cgi-bin">
                    AllowOverride None
                    Options ExecCGI +FollowSymLinks +SymLinksIfOwnerMatch 
                    Order allow,deny
                    Allow from all
-           /Directory
+           </Directory>
    (snip)
-   /VirtualHost
+   </VirtualHost>
 
 
 これだけだとApacheのログにはnginxのノードのIPアドレスが記録されるので、リモートクライアントのIPアドレスが記録されるようにするため、mod-rpafを使う。インストールは以下。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get install libapache2-mod-rpaf
    $ sudo a2enmod rpaf
@@ -118,22 +132,27 @@ Apacheにはgitwebの設定。
 
 /etc/apache2/mods-available/rpaf.confの設定で、RPAFproxy_ipsの値を127.0.0.1からnginxのIPアドレスに変更する。
 
-.. code-block:: none
 
-   IfModule mod_rpaf.c
+.. code-block:: sh
+
+
+   <IfModule mod_rpaf.c>
    RPAFenable On
    RPAFsethostname On
    RPAFproxy_ips 192.168.xxx.zzz
-   /IfModule
+   </IfModule>
+
+
 
 
 trac-gitはまだ設定してないが、リバースプロキシに関してはあまり変わらないだろう。CouchDB側の設定は特に無し。というか、CouchDBのログはどこを設定すればよいのだろうか。気が向いたら調べてみる。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, Debian, CouchDB, Ops, 
 .. tags::
 .. comments::
-
-

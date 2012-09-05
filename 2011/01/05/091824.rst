@@ -1,28 +1,35 @@
-﻿LaTeXでソースコードを掲載するためのlistingsパッケージ。
-####################################################################
+LaTeXでソースコードを掲載するためのlistingsパッケージ。
+=======================================================
+
+allttだと整形はされてもエスケープしないといけないし、verbatimだとタブが表示されないので無いかなぁと思ったら、listingsというパッケージがあることが `分かった <http://blog.santalinux.net/?p=135>`_ 。参照元だと、日本語表示にはjlistingパッケージを使う必要があるとあったが、Debian GNU/Linux Sid/Squeezeの環境では特にそれは必要無かったので、\usepackageの記述は変える必要があり。 [#]_ 
 
 
-allttだと整形はされてもエスケープしないといけないし、verbatimだとタブが表示されないので無いかなぁと思ったら、listingsというパッケージがあることが分かった。参照元だと、日本語表示にはjlistingパッケージを使う必要があるとあったが、Debian GNU/Linux Sid/Squeezeの環境では特にそれは必要無かったので、\usepackageの記述は変える必要があり。 [#]_ 
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    \usepackage{listings}
    (snip)
    \begin{lstlisting}[label=src:json, caption=.couchapprcの設定]
    {
-       title: タイトル,
-       date: 2011-01-05
+       "title": "タイトル",
+       "date": "2011-01-05"
    }
    \end{lstlisting}
 
 
-といった感じで、ブレースや日本語も記述しても問題無し。ただし、このままだとフォントがserifになるので、あんまし見た目が良くないので、参照元で更に参照している先を参考に、\begin{document}の前に次のを挿入したら、見た目もカスタマイズできてうれしい。
+といった感じで、ブレースや日本語も記述しても問題無し。ただし、このままだとフォントがserifになるので、あんまし見た目が良くないので、参照元で更に `参照している先 <http://mytexpert.sourceforge.jp/index.php?Listings>`_ を参考に、\begin{document}の前に次のを挿入したら、見た目もカスタマイズできてうれしい。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    \lstset{%
     language={Java},
-    backgroundcolor={\color[gray]{.85\}\},%
+    backgroundcolor={\color[gray]{.85}},%
     basicstyle={\footnotesize},%
     identifierstyle={\footnotesize},%
     commentstyle={\footnotesize\itshape},%
@@ -42,17 +49,26 @@ allttだと整形はされてもエスケープしないといけないし、ver
    }
 
 
+
+
 JavaScriptは対応してないようなのだが、CかJavaにしておけばまぁいいかなぁと。
+
 あと、一行が長すぎて、breakline=trueで2行に巻き返しされると、2行目の背景色は指定した色にならなかったので、これはどうすれば良いか分からなかったので、とりあえずフォントサイズをfootnotesizeにして逃げた。w
 
 
+
+
+
+
 部分的に変更したい場合。
-********************************************************************
+------------------------
 
 
 LaTeXのソース全体ではlanguage={C}にしていて、一部をHTMLのコードにしたい場合は次のようにすればOK.
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    \begin{lstlisting}[language={HTML}]
 
@@ -60,13 +76,10 @@ LaTeXのソース全体ではlanguage={C}にしていて、一部をHTMLのコ�
 
 
 
-.. [#] ：jlistingを指定してもファイルがないというwarningが出る。
+.. [#] jlistingを指定してもファイルがないというwarningが出る。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: TeX, Debian, 
 .. tags::
 .. comments::
-
-

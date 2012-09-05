@@ -1,111 +1,136 @@
-﻿既存のKVMゲストイメージをlibvirtで簡単に管理する方法。
-################################################################
-
+既存のKVMゲストイメージをlibvirtで簡単に管理する方法。
+======================================================
 
 
 前提
-********
+----
 
-確認したのはDebian GNU/Linux Squeeze/Sidのvirt-managerのみ。バージョンは0.8.4。例えば、たまたま確認したFedora 12だとVMの新規作成画面のステップ1/5で、&#34;import existing disk image&#34;の項目自体が無いのでできない [#]_ 。
+
+確認したのはDebian GNU/Linux Squeeze/Sidのvirt-managerのみ。バージョンは0.8.4。例えば、たまたま確認したFedora 12だとVMの新規作成画面のステップ1/5で、"import existing disk image"の項目自体が無いのでできない [#]_ 。
+
+
+
 
 対象読者
-********************
+--------
+
 
 qemu-imgコマンドで作成し、kvmコマンド [#]_ で使用していたKVMのゲストイメージをlibvirtで管理したいけど、/etc/libvirt/qemu/vmname.xmlを自分で作成するのは大変だよ、ママン、という向きにはうってつけの方法かと。シェルスクリプトで直接kvmコマンドで直接管理するから関係ないぜ、という人はスルーで。
 
+
+
+
 事前準備
-********************
+--------
+
 
 kvmコマンドしか使っていないとlibvirt関連のパッケージをインストールしていない可能性もあると思われるので、次のパッケージを導入しておくこと。 [#]_ 
 
 * libvirt0
+
 * libvirt-bin
+
 * virt-manager
+
 * virt-viewer
+
 * virtinst
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ sudo apt-get install libvirt0 libvirt-bin virt-manager virt-viewr virtinst
 
 
+
+
 libvirt関連のツール(virt-install, virt-manager, virsh)を実行するユーザは、libvirtグループに突っ込んでおくべし。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo adduser user libvirt
 
 
 
+
+
 インポート手順
-**************************************
+--------------
 
 
 まず、管理させたいゲストイメージを、/var/lib/libvirt/imagesディレクトリに移動させる。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo mv ~/vmimg/guest1.img /var/lib/libvirt/images/
 
 
+
+
 kvmコマンドを実行する場合は、kvmグループに所属していれば一般ユーザでも実行できる [#]_ ので、ゲストイメージのオーナー、グループ、パーミッションも実行するユーザのものにしている人もいるかと思うが、virt-managerでボリュームイメージを作成すると、root:root, 600で作成されるので合わせておいたが変更しなくても、インポート時にオーナー、グループは自動的にroot:rootに変更される。パーミッションは変更されないので、600に変更しておくとよい。
+
+
+
 次に、virt-managerを起動する。もし、イメージファイルを移動させたときに既にvirt-managerが起動中なら再起動させる必要がある。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ virt-manager
 
 
-起動したら、&#34;New&#34;から新しいVMの作成を始める。VMのドメイン名にはイメージファイル名とは別にしておく。上記の用にguest1.imgというファイル名なら、ドメイン名にはguest1としないで、vm-guest1などのように別名にしておくのが良いだろう。
+
+
+起動したら、"New"から新しいVMの作成を始める。VMのドメイン名にはイメージファイル名とは別にしておく。上記の用にguest1.imgというファイル名なら、ドメイン名にはguest1としないで、vm-guest1などのように別名にしておくのが良いだろう。
+
 で、ステップ通りに設定すれば、無事起動できますよ、と。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100605/20100605140557.png
-   :alt: f:id:mkouhei:20100605140557p:image
+
+.. image:: /img/20100605140557.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100605/20100605140559.png
-   :alt: f:id:mkouhei:20100605140559p:image
+.. image:: /img/20100605140559.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100605/20100605140556.png
-   :alt: f:id:mkouhei:20100605140556p:image
+.. image:: /img/20100605140556.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100605/20100605140555.png
-   :alt: f:id:mkouhei:20100605140555p:image
+.. image:: /img/20100605140555.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100605/20100605140554.png
-   :alt: f:id:mkouhei:20100605140554p:image
+.. image:: /img/20100605140554.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100605/20100605140553.png
-   :alt: f:id:mkouhei:20100605140553p:image
+.. image:: /img/20100605140553.png
+
+
 
 
 さっきのは別に大した話では無いんだが。
-==============================================================================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-先ほどの、ファイル名とは別のドメイン名にしておいた方が無難、と書いたが、単にインポートするファイル名と同じだけど、未定義の名前だからこれ使うか？というだけなので、パスの指定の後に次のダイアログが出たら&#34;Yes&#34;としておけば良いだけの話。
-
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100605/20100605140558.png
-   :alt: f:id:mkouhei:20100605140558p:image
+先ほどの、ファイル名とは別のドメイン名にしておいた方が無難、と書いたが、単にインポートするファイル名と同じだけど、未定義の名前だからこれ使うか？というだけなので、パスの指定の後に次のダイアログが出たら"Yes"としておけば良いだけの話。
 
 
-
-
-.. [#] ：Fedora 13がどうかは知らない。普段使わないので。
-.. [#] ：ほかのディストロだとqemu-kvmコマンドだろう。
-.. [#] ：今回関係ないパッケージもあるが、きっと使うでしょ、という意味で。
-.. [#] ：というか、2010年6月5日現在、kvmグループに所属していないユーザでも普通にkvmコマンド実行できてしまうみたいなんだが。
+.. image:: /img/20100605140558.png
 
 
 
-.. author:: mkouhei
+
+.. [#] Fedora 13がどうかは知らない。普段使わないので。
+.. [#] ほかのディストロだとqemu-kvmコマンドだろう。
+.. [#] 今回関係ないパッケージもあるが、きっと使うでしょ、という意味で。
+.. [#] というか、2010年6月5日現在、kvmグループに所属していないユーザでも普通にkvmコマンド実行できてしまうみたいなんだが。
+
+
+.. author:: default
 .. categories:: Debian, virt., Ops, 
 .. tags::
 .. comments::
-
-

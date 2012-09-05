@@ -1,10 +1,11 @@
-﻿ちゃんと終了させるための修正。
-##############################
-
+ちゃんと終了させるための修正。
+==============================
 
 suExecさせるためにさっき作ったラッパーだと、ruby index.fcgiをexecさせているため、lighttpdを終了させてもプロセスが残ってしまうことに気づいた。んで、lighttpd終了時にちゃんとプロセスを落とすスクリプト追加した。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    (/usr/local/sbin/fcgidstop.sh)
    =======
@@ -12,13 +13,15 @@ suExecさせるためにさっき作ったラッパーだと、ruby index.fcgi�
    
    USER=hoge
    if ps -ef | grep ^$USER -q; then
-   	ps -ef | grep ^$USER| awk &#39;{print $2}&#39; | xargs kill 
+   	ps -ef | grep ^$USER| awk '{print $2}' | xargs kill 
    fi
 
 
 んで、これを/etc/init.d/lighttpdに読み込ませるようにする。
 
-.. code-block:: none
+
+.. code-block:: diff
+
 
    $ rcsdiff -r1.1 -r1.2 -u ./lighttpd
    ===================================================================
@@ -36,7 +39,7 @@ suExecさせるためにさっき作ったラッパーだと、ruby index.fcgi�
     +	/usr/local/sbin/fcgidstop.sh
      	;;
        reload)
-     	log_daemon_msg Reloading $DESC configuration $NAME
+     	log_daemon_msg "Reloading $DESC configuration" $NAME
      	if start-stop-daemon --stop --signal 2 --oknodo --retry 30\
      	--quiet --pidfile $PIDFILE --exec $DAEMON; then
     +	# stop fcgid
@@ -49,9 +52,9 @@ suExecさせるためにさっき作ったラッパーだと、ruby index.fcgi�
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

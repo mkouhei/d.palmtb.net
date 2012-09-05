@@ -1,18 +1,16 @@
-﻿起きたら雪国だった。
-####################
-
+起きたら雪国だった。
+====================
 
 凄い雪ですな。明日は仕事行けるんだろうか。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20080203/20080203090530.jpg
-   :alt: f:id:mkouhei:20080203090530j:image
+f:id:mkouhei:20080203090530j:image
 
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

@@ -1,10 +1,11 @@
-﻿optionキーを押したら選択できた。
-######################################
+optionキーを押したら選択できた。
+================================
+
+rEFItからのブートはうまく行かなかったのだが、MacBook Air起動時に起動ディスクを選択させようと思い、optionキーを押してブートさせたら、"rEFIt"のラベルのディスクと、"Windows"とラベルのついたディスクが表示された。Windowsを選択してみたら、ちゃんとLILOからLinuxが途中までは起動した。途中までは…。下記のところで止まっちまったよ。
 
 
-rEFItからのブートはうまく行かなかったのだが、MacBook Air起動時に起動ディスクを選択させようと思い、optionキーを押してブートさせたら、&#34;rEFIt&#34;のラベルのディスクと、&#34;Windows&#34;とラベルのついたディスクが表示された。Windowsを選択してみたら、ちゃんとLILOからLinuxが途中までは起動した。途中までは…。下記のところで止まっちまったよ。
+.. code-block:: sh
 
-.. code-block:: none
 
    Setting up ALSA...CPU1: Temperature/speed normal
 
@@ -13,9 +14,10 @@ rEFItからのブートはうまく行かなかったのだが、MacBook Air起�
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

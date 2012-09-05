@@ -1,14 +1,14 @@
-﻿ニコニコ。
-##########
-
+ニコニコ。
+==========
 
 今頃ニコニコ動画に新規ID登録した。ねこ鍋とか３０分ねこ動画とか、ねこが可愛すぎ。ねこといえば、たま駅長を思い出した。たま駅長見にいきたいなぁ。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

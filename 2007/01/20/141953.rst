@@ -1,18 +1,22 @@
-﻿また無線LANが当たった。
-##########################
+また無線LANが当たった。
+=======================
 
-
-Software Designの12月号の懸賞で、また無線LANルータと無線LANカードの セット、 WNB511TAの英語版が当たった。以前当たったNECの無線LANセットはLinuxではうまく動かなかったので実家にあげたのだが、今度のは使えるようにするか。引越しして無線LANがほしいなぁと思っていたし。
-
-.. image:: http://images-jp.amazon.com/images/P/B000GCFYEO.09.THUMBZZZ.jpg
-   :alt: WNB511TA RangeMax NEXT(日本語版)
+Software Designの12月号の懸賞で、また無線LANルータと無線LANカードの セット、  `WNB511TA <http://www.netgearinc.co.jp/products/WNB511TA.asp>`_ の英語版が当たった。以前当たったNECの無線LANセットはLinuxではうまく動かなかったので `実家にあげた <http://www.palmtb.net/index.php?Let%27s%20note%20R3%A4%CE%C6%E2%C2%A2%CC%B5%C0%FELAN%C7%A7%BC%B1%CA%B3%C0%EF%B5%AD#r2e31d09>`_ のだが、今度のは使えるようにするか。引越しして無線LANがほしいなぁと思っていたし。
 
 
 
 
-.. author:: mkouhei
+
+`WNB511TA RangeMax NEXT(日本語版) <http://www.amazon.co.jp/o/ASIN/B000GCFYEO/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+.. author:: default
 .. categories:: network, 
 .. tags::
 .. comments::
-
-

@@ -1,21 +1,23 @@
-﻿continuos=trueが便利ですな。
-##########################################
-
+continuos=trueが便利ですな。
+============================
 
 レプリケーションでcontinuos=trueを初めて試してみたのだが、
 
-.. code-block:: none
 
-   {source:http://source:5984/db,target:http://username:password@target:5984/db,countinuos:true}
+.. code-block:: sh
+
+
+   {"source":"http://source:5984/db","target":"http://username:password@target:5984/db","countinuos":true}
 
 
 とすればsourceでドキュメントやデザインドキュメントを追加、変更、削除すると、sourceからtargetに自動的にレプリケーションされるのか。これは便利。AからB、BからAといった双方向のレプリケーションもできるので、閲覧も入力も分散できますなぁ。まぁむしろCDNのような使い方とかに便利かな。Androidでやると、それこそすれ違い通信ができるねぇ。と言っても相手をどう認識するか、という問題もあるんだけど、まぁ面白いことが出来そうな予感。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: CouchDB, 
 .. tags::
 .. comments::
-
-

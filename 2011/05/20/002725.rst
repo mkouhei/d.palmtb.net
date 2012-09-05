@@ -1,78 +1,82 @@
-﻿Genius Bar初体験。
-############################
-
+Genius Bar初体験。
+==================
 
 MacBook 5,2のタッチパッドのボタンの戻りが悪いので、なんだろうなぁと思ったら、
- 
-.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
 
 
-.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
 
 
-.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+https://twitter.com/#!/hasegaw/status/69775757341241346::
+
+   @mkouhei バッテリ膨張ですか？ ﾟ+.(つд⊂)ﾟ+.ﾟless than a minute ago
 
 
-.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
-
-と@hasegawさんに教えて頂き、
- 
-.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
 
 
-.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+
+と `@hasegaw <https://twitter.com/hasegaw>`_ さんに教えて頂き、
 
 
-.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
 
 
-.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+https://twitter.com/#!/hasegaw/status/69778360452124672::
 
- 
-.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
-
-
-.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+   @mkouhei ぐぐると、食い下がれば無償交換に応じられたりするみたいですね。 ﾟ+.(つд⊂)ﾟ+.ﾟless than a minute ago
 
 
-.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
 
 
-.. image:: http://a0.twimg.com/profile_images/1237490752/hasegaw2_normal.jpg
+https://twitter.com/#!/hasegaw/status/69788968161513472::
+
+   @mkouhei togetter 見る限り初回は今回だけといって交換してもらえる可能性がありそうですね http://bit.ly/9bG8aN
+
+
+
+
 
 と、交渉次第で無償で交換できるかもしれないという情報も教えていただいたので、AppleStore銀座店で昨日の19時で予約して行ってきました。3階までしか行ったことが無かったので4階があるとは思いませんでした。19時に予約したのですが、実際に担当の人が応対してくれたのは15分くらいかかりました。かなり混んでましたね。
+
+
+
 さて結果としては、バッテリー交換でかかった費用は9,030円で、さすがに無償ではありませんでした。
-が、普通に買うと15,800円で、togetterで見た交換費用は10,920円。
- 
-.. image:: http://a3.twimg.com/profile_images/1244339922/lovery_normal.jpg
 
 
-.. image:: http://a3.twimg.com/profile_images/1244339922/lovery_normal.jpg
+
+が、 `普通に買うと15,800円 <http://store.apple.com/jp/product/MA561J/A?fnode=MTY1NDEwMQ&mco=MTEzMzY4OTU>`_ で、togetterで見た交換費用は10,920円。
 
 
-.. image:: http://a3.twimg.com/profile_images/1244339922/lovery_normal.jpg
+https://twitter.com/#!/Guttyo/status/20139066973::
+
+   そういや、MacBook(Late2006)の膨らんだバッテリーを交換してきた。修理と称したバッテリー交換で税込10920円なり。バッテリーを単品で買うと1万5千円位する不思議。less than a minute ago via YoruFukurou
 
 
-.. image:: http://a3.twimg.com/profile_images/1244339922/lovery_normal.jpg
 
 それを考えると予想外に安かったのでお徳でした。
-一応、ダメ元で「ネットでは無償で交換してもらえる事もあるようですが」と聞いてみたところ、初期保証期間中か、保証期間が切れた直後くらいの場合は無償で交換するが、基本的にバッテリーの膨張はリチウムイオンバッテリー自体の特性なので有償だそうです。しかし、バッテリーの膨張によって他のパーツが壊れてしまった場合には、そのパーツの修理は無償で行う、とのことでした。なお、今回はバッテリーを交換したら、タッチパッドのボタンの戻りが悪くなる現象は直りました [#]_ 。
+
+
+
+一応、ダメ元で「ネットでは無償で交換してもらえる事もあるようですが」と聞いてみたところ、初期保証期間中か、保証期間が切れた直後くらいの場合は無償で交換するが、基本的にバッテリーの膨張はリチウムイオンバッテリー自体の特性なので有償だそうです。しかし、バッテリーの膨張によって他のパーツが壊れてしまった場合には、そのパーツの修理は無償で行う、とのことでした。
+
+
+
+なお、今回はバッテリーを交換したら、タッチパッドのボタンの戻りが悪くなる現象は直りました [#]_ 。
+
+
+
 
 余談。
-**************
+------
 
 
-MacBookのバッテリーに充電回数が記録されているなんてのや、「このMacについて」のウィンドウでバージョンテキストをクリックするとシリアル番号を確認できるなんてのは今日の対応をしてくれる人が操作しているのを見て初めて知りましたよ。
-
-
-
-.. [#] ：正確にはバッテリーを外した段階で直りました。
+MacBookのバッテリーに充電回数が記録されているなんてのや、 `「このMacについて」のウィンドウでバージョンテキストをクリックするとシリアル番号を確認できる <http://support.apple.com/kb/HT1529?viewlocale=ja_JP>`_ なんてのは今日の対応をしてくれる人が操作しているのを見て初めて知りましたよ。
 
 
 
-.. author:: mkouhei
-.. categories:: life, MacBook, 
+
+.. [#] 正確にはバッテリーを外した段階で直りました。
+
+
+.. author:: default
+.. categories:: 生活, MacBook, 
 .. tags::
 .. comments::
-
-

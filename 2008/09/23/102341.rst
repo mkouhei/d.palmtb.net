@@ -1,14 +1,14 @@
-﻿初めて焼いてみた。
-##################
-
+初めて焼いてみた。
+==================
 
 MacBook AirのSuperDriveで初めてDVDを焼き焼きしてみた。問題無し。Dimension 8100に増設したDVD-RWドライブよりも２倍くらい早いな。これなら10枚なんて今日中にも終わりますぜ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, 
 .. tags::
 .. comments::
-
-

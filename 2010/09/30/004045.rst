@@ -1,23 +1,28 @@
-﻿Oracle用にビルドしたSysbenchがsegmentation faultでコケる。
-##########################################################################################
+Oracle用にビルドしたSysbenchがsegmentation faultでコケる。
+==========================================================
+
+`先日ビルドしたsysbench <http://d.hatena.ne.jp/mkouhei/20100916/1284630305>`_ を使って、oltpでベンチマークテストしようとしたところ、prepareサブコマンドでのテーブルの作成はできたのに、runサブコマンドを実行するとsegmentation faultで落ちてしまう。
 
 
-先日ビルドしたsysbenchを使って、oltpでベンチマークテストしようとしたところ、prepareサブコマンドでのテーブルの作成はできたのに、runサブコマンドを実行するとsegmentation faultで落ちてしまう。
+
 coreを吐かせてバックトレースを表示させてみると、sysbench/driver/oracle/drv_oracle.cの
 
-.. code-block:: none
 
-   rc = OCIStmtExecute(ora_con-svchp, ora_stmt-ptr, ora_con-errhp, iters, 0,
+.. code-block:: sh
+
+
+   rc = OCIStmtExecute(ora_con->svchp, ora_stmt->ptr, ora_con->errhp, iters, 0,
                            NULL, NULL, OCI_DEFAULT);
 
 
-のOCIStmtExecute()が実行される。サーバに対して文を実行するので、この次にlibclntsh.soが呼ばれ、ここから数ステップ後にttcdrv()が実行されるところでSignal 11でコケてしまう。うーむ。
+のOCIStmtExecute()が実行される。 `サーバに対して文を実行する <http://otndnld.oracle.co.jp/document/products/oracle11g/111/doc_dvd/appdev.111/E05677-02/oci17msc001.htm#i574897>`_ ので、この次にlibclntsh.soが呼ばれ、ここから数ステップ後にttcdrv()が実行されるところでSignal 11でコケてしまう。うーむ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

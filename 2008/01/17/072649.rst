@@ -1,14 +1,14 @@
-﻿注文しちゃったよ。
-##################
-
+注文しちゃったよ。
+==================
 
 来たらさっそく、Debian化だな。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, MacBook, 
 .. tags::
 .. comments::
-
-

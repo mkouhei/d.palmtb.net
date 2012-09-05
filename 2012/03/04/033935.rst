@@ -1,10 +1,13 @@
-﻿mercurial-importorig実行時の”E
-####################################################
-
+mercurial-importorig実行時の"E: std@sys_remove_dir"のエラー。
+=============================================================
 
 Mercurialで管理されているソースコードを、mercuriarl-buildpackageパッケージを使ってビルドする際に出たエラー。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ mercurial-importorig -v ../../funcparserlib_0.3.5+hg~100.orig.tar.gz 
    I: Unpacking ../../funcparserlib_0.3.5+hg~100.orig.tar.gz
@@ -12,17 +15,25 @@ Mercurialで管理されているソースコードを、mercuriarl-buildpackage
    I: Reverting branch funcparserlib to state before import.
 
 
-2行目に&#34;E: std@sys_remove_dir&#34;というエラーが出ていますが、mercurial-importorigコマンド自体をverboseモードで実行して上記のメッセージしか表示されず、debugモードなどもありません。なんだろうと思ってディレクトリの中を見てみると、明らかにおかしなディレクトリ&#34;,,importorig-1330795335&#34;がありました。これを削除できないエラーなのでしょう。
+2行目に"E: std@sys_remove_dir"というエラーが出ていますが、mercurial-importorigコマンド自体をverboseモードで実行して上記のメッセージしか表示されず、debugモードなどもありません。なんだろうと思ってディレクトリの中を見てみると、明らかにおかしなディレクトリ",,importorig-1330795335"がありました。これを削除できないエラーなのでしょう。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ ls
     ,,importorig-1330795335  CHANGES  LICENSE  MANIFEST.in  Makefile  README  doc  examples  requires.txt  setup.py  src  tests
 
 
-しかし、これは根本原因ではありません。とりあえず、ここは一旦&#34;,,importorig-1330795335&#34;ディレクトリを削除して、debuildを実行してみました。するとsymlinkが残っていてエラーになりました。
 
-.. code-block:: none
+
+しかし、これは根本原因ではありません。とりあえず、ここは一旦",,importorig-1330795335"ディレクトリを削除して、debuildを実行してみました。するとsymlinkが残っていてエラーになりました。
+
+
+.. code-block:: sh
+
 
    $ debuild -us -uc
    (snip)
@@ -41,16 +52,25 @@ Mercurialで管理されているソースコードを、mercuriarl-buildpackage
 
 
 Mercurialのリポジトリからアーカイブを生成する際に、symlinkが含まれないようにすることで、このdebuildのエラーは解消できます。もしかして、mercurial-importorigコマンド実行時のエラーもこれが原因ではと思い、アーカイブの生成から再実行してみました。ビンゴ。
+
+
+
 hg archiveを実行する時に、-Xオプションでsymlinkを除外するのようにして、mercurial-importorigを実行します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ hg archive --prefix funcparserlib/ -r 100 -t tgz -X doc/Changes.md -X doc/index.md ../funcparserlib_0.3.5+hg~100.orig.tar.gz
 
 
+
+
 その後、インポートを実行したら正常に完了しました。-vオプションなしだと正常にインポートできたら何も表示されないのでオプションをつけた時の結果は下記です。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ mercurial-importorig -v ../../funcparserlib_0.3.5+hg~100.orig.tar.gz
    I: Unpacking ../../funcparserlib_0.3.5+hg~100.orig.tar.gz
@@ -139,21 +159,28 @@ hg archiveを実行する時に、-Xオプションでsymlinkを除外するの�
    I: (マージ結果の commit を忘れずに)
 
 
+
+
 先ほどの変なディレクトリも残らず、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ ls
    CHANGES  LICENSE  MANIFEST.in  Makefile  README  doc  examples  requires.txt  setup.py  src
+
+
 
 
 debuild時のエラーももちろん解消されました。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

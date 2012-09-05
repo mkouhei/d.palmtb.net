@@ -1,14 +1,14 @@
-﻿定時で帰れず。
-##############
-
+定時で帰れず。
+==============
 
 定時前に捕まって、何やかんやで22時に退社。久しぶりにこんな時間まで残業したなあ。
 
 
 
-.. author:: mkouhei
-.. categories:: work, 
+
+
+
+.. author:: default
+.. categories:: 仕事, 
 .. tags::
 .. comments::
-
-

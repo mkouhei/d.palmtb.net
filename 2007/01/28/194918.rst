@@ -1,15 +1,18 @@
-﻿KVM
-######
-
+KVM
+===
 
 KVMのページがWikiになった。
+
+
+
 http://kvm.qumranet.com/kvmwiki
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: virt., computer, 
 .. tags::
 .. comments::
-
-

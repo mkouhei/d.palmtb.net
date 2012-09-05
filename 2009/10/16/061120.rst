@@ -1,25 +1,18 @@
-﻿某MLを眺めていて。
-####################
-
+某MLを眺めていて。
+==================
 
 ウザかったら「迷惑メールを報告」をポチッとしちゃえ。
+
+
+
 以上。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	あ、そうか、それが正解ｗ
-
-	written by  akuwano
-	10/16/2009 10:20:05
-	http://d.hatena.ne.jp/akuwano/
-

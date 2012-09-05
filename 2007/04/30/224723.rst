@@ -1,14 +1,16 @@
-﻿暦通りです。
-############
-
+暦通りです。
+============
 
 明日、明後日は休みを取らなかったので、普通に仕事。風呂入って寝よ。
 
 
 
-.. author:: mkouhei
-.. categories:: work, 
+
+
+
+
+
+.. author:: default
+.. categories:: 仕事, 
 .. tags::
 .. comments::
-
-

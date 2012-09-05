@@ -1,14 +1,14 @@
-﻿結局５日連続か。
-################
-
+結局５日連続か。
+================
 
 もうダメ。
 
 
 
-.. author:: mkouhei
-.. categories:: work, 
+
+
+
+.. author:: default
+.. categories:: 仕事, 
 .. tags::
 .. comments::
-
-

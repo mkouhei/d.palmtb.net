@@ -1,14 +1,14 @@
-﻿acpid戻したおかげで…。
-############################
-
+acpid戻したおかげで…。
+=======================
 
 MacBookのファンがちゃんと回った。故障した訳じゃなくて良かった。ほんと、良かった。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, Unix/Linux, 
 .. tags::
 .. comments::
-
-

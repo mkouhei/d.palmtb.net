@@ -1,27 +1,31 @@
-﻿armadillo-JにDHCPサーバを移行。
-##############################################
-
+armadillo-JにDHCPサーバを移行。
+===============================
 
 やる暇無くて、ずっとPendingしていた、玄箱で稼働させていたISC DHCPサーバからArmadillo-JにDHCPサーバを移行する計画を昨日今日で重い腰上げてやっとこさ完了。Debian Sidのudhcpのソースパッケージを持ってきて、ソースツリーをArmadillo-J用のツリーに突っ込んでクロスコンパイルしてarmadillo-Jに突っ込んだ。
 
+
 環境構築
-********************
+--------
 
 
-アットマークテクノのサイトにある通り。Armadillo-Jのダウンロードサイトから下記を取得。
+アットマークテクノのサイトにある通り。 `Armadillo-Jのダウンロードサイト <http://armadillo.atmark-techno.com/armadillo-j/downloads>`_ から下記を取得。
 
-* Atmark-dist
-* Linuxカーネル
-* クロスツールチェーン
+*  `Atmark-dist <http://armadillo.atmark-techno.com/files/downloads/armadillo-j/dist/atmark-dist-20060801.tar.gz>`_ 
+
+*  `Linuxカーネル <http://armadillo.atmark-techno.com/files/downloads/armadillo-j/source/linux-2.4.22-uc0-aj5.tar.gz>`_ 
+
+*  `クロスツールチェーン <http://armadillo.atmark-techno.com/files/downloads/armadillo-j/cross-dev/arm-elf-tools-20030314-fix20060808.sh>`_ 
 
 
 ソースコード展開
-********************************************
+----------------
 
 
-Kernelソースのリンクのやり方を間違えていたので最初、ちゃんとビルドできずにハマった。シンボリックリンクの名前が、&#34;linux-2.4.22.x&#34;という形式でないとちゃんとビルドできなかったので、そのまんま、その形でリンクを張った。
+Kernelソースのリンクのやり方を間違えていたので最初、ちゃんとビルドできずにハマった。シンボリックリンクの名前が、"linux-2.4.22.x"という形式でないとちゃんとビルドできなかったので、そのまんま、その形でリンクを張った。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ tar zxf atmark-dist-20060801.tar.gz
    $ tar zxf linux-2.4.22-uc0-aj5.tar.gz
@@ -31,11 +35,12 @@ Kernelソースのリンクのやり方を間違えていたので最初、ち�
 
 
 クロスツールチェーンの導入
-**************************************************************************
+--------------------------
 
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ cd ../
    $ sudo sh ./arm-elf-tools-20030314-fix20060808.sh
@@ -43,12 +48,16 @@ Kernelソースのリンクのやり方を間違えていたので最初、ち�
 
 
 ビルド
-**************
+------
 
-現在、Armadillo-Jは、ブート後も簡単に変更分を反映できるように普通のBaseイメージにせずに、JFFS2ファイルシステムにしているのだが、プロダクトの選択時 [#]_ に、Armadillo-J.JFFS2を選択すると、ビルドに失敗する。なので、プロダクト選択時には&#34;Armadillo-J.Base&#34;を選択した。Baseで作成されたイメージを固める前のファイルをJFFS2を使っているArmadillo-Jに持っていってもちゃんと動く。make configの選択肢はユーザマニュアルに沿ってやれば良し。
+
+現在、Armadillo-Jは、ブート後も簡単に変更分を反映できるように普通のBaseイメージにせずに、JFFS2ファイルシステムにしているのだが、プロダクトの選択時 [#]_ に、Armadillo-J.JFFS2を選択すると、ビルドに失敗する。なので、プロダクト選択時には"Armadillo-J.Base"を選択した。Baseで作成されたイメージを固める前のファイルをJFFS2を使っているArmadillo-Jに持っていってもちゃんと動く。make configの選択肢は `ユーザマニュアル <http://armadillo.atmark-techno.com/files/downloads/armadillo-j/manual/ArmadilloJUsersGuide208.pdf>`_ に沿ってやれば良し。
+
 取り合えず、ちゃんとビルド出きることを確認する。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd atmark-dist-20060801
    $ make config
@@ -57,7 +66,7 @@ Kernelソースのリンクのやり方を間違えていたので最初、ち�
 
 
 udhcpのソースパッケージ取得
-************************************************************************
+---------------------------
 
 
 確認を取れたら、Sidのudhcpのソースパッケージを取得する。今回、udhcpdを選択したのは下記理由。
@@ -66,7 +75,9 @@ udhcpのソースパッケージ取得
 
 後者はソースツリーに含まれてはいるもののデフォルトではビルドができない。そもそもデカすぎる。ということで、Debianから組込システム向けのDHCPサーバであるudhcpを取得してビルドしたわけである。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd ..
    $ apt-get source udhcp
@@ -75,7 +86,7 @@ udhcpのソースパッケージ取得
 
 
 ビルド用設定ファイルの修正
-**************************************************************************
+--------------------------
 
 
 atmark-dist-yyyymmdd/user/ディレクトリ以下に、ソースコードを突っ込んだだけではビルドできない。なので、以下のファイルを修正する。ncursesのメニュー形式でコンパイルするので、選択出きるようにするわけである。
@@ -83,26 +94,27 @@ atmark-dist-yyyymmdd/user/ディレクトリ以下に、ソースコードを突
 * atmark-dist-20060801/config/config.in
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
     $ diff -u config.in.org config.in
     --- config.in.org	2006-08-16 19:11:04.000000000 +0900
     +++ config.in	2008-06-01 19:29:43.000000000 +0900
     @@ -291,6 +291,7 @@
-     bool &#39;brcfg&#39;			CONFIG_USER_BRCFG_BRCFG
-     bool &#39;bridge utils&#39;		CONFIG_USER_BRCTL_BRCTL
-     bool &#39;dhcpcd&#39;			CONFIG_USER_DHCPCD_DHCPCD
-    +bool &#39;udhcp&#39;			CONFIG_USER_DHCPD_UDHCP
-     if [ &#34;$CONFIG_USER_DHCPCD_DHCPCD&#34; = &#34;y&#34; ]; then
-     	bool &#39;  dhcpcd link-local support&#39;	CONFIG_USER_DHCPCD_LLIP
+     bool 'brcfg'			CONFIG_USER_BRCFG_BRCFG
+     bool 'bridge utils'		CONFIG_USER_BRCTL_BRCTL
+     bool 'dhcpcd'			CONFIG_USER_DHCPCD_DHCPCD
+    +bool 'udhcp'			CONFIG_USER_DHCPD_UDHCP
+     if [ "$CONFIG_USER_DHCPCD_DHCPCD" = "y" ]; then
+     	bool '  dhcpcd link-local support'	CONFIG_USER_DHCPCD_LLIP
      fi
-
 
 
 * atmark-dist-20060801/user/Makefile
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
     $ diff -u Makefile.org Makefile
     --- Makefile.org	2006-06-10 19:52:27.000000000 +0900
@@ -117,28 +129,36 @@ atmark-dist-yyyymmdd/user/ディレクトリ以下に、ソースコードを突
      dir_$(CONFIG_USER_DISCARD_ECHO)             += discard
 
 
+これで後はビルド時 [#]_ に上記を選択するようにする。その辺はユーザガイドを参照のこと。
+
 
 実行ファイルをアップロード
-**************************************************************************
+--------------------------
 
 
 udhcpは実はちゃんと最後までビルドできないのだが、実行ファイル自体はatmark-dist-20060801/user/udhcp/以下にちゃんとできる。なので、ファイルをArmadillo-JへFTPでアップロードする。
 
+
 udhcpdの設定
-**************************
+------------
 
 
 udhcpdは/binディレクトリ以下に配置し、アクセス権を変更する。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # mv -i /home/guest/pub/udhcpd /bin/
    # chown root:root /bin/udhcpd
    # chmod 755 /bin/udhcpd
 
 
+udhcpdの設定ファイルを作成する。udhcp/sample/udhcpd.confを使うのが楽。以下のように設定する [#]_ 。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    start 		192.168.0.20	#default: 192.168.0.20
    end		192.168.0.254	#default: 192.168.0.254
@@ -167,12 +187,14 @@ udhcpdは/binディレクトリ以下に配置し、アクセス権を変更す�
 
 
 起動してみる
-********************************
+------------
 
 
 今回、ライブラリはuClibsを指定してコンパイルしていたのだが、バックグラウンドジョブは対応していないらしく、フォアグラウンドで実行させねばならん。なので、一番最後に実行される起動スクリプトとして下記を用意した。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # cd /etc/rc.d/rc.start/
    # ls
@@ -183,29 +205,28 @@ udhcpdは/binディレクトリ以下に配置し、アクセス権を変更す�
    
    PATH=/bin:/sbin:/usr/bin:/usr/sbin
    
-   echo -n &#34;Starting udhcpd: &#34;
+   echo -n "Starting udhcpd: "
    mkdir -p /var/lib/misc/
    exec udhcpd  /etc/udhcpd.conf 
-   if [ $? = 0 ]; then echo &#34;done&#34;; else echo &#34;failed&#34;; fi
+   if [ $? = 0 ]; then echo "done"; else echo "failed"; fi
    
    # mv -i rc.99.ledctrl rc.98.ledctrl
 
 
-これでhalt後に起動かければDHCPサーバとして動く。停止させる時は、&#34;kill -9&#34;で無理やり停止させないといけないのがイケてなくてアカンなぁ。この辺は改善余地アリだなぁ。
+これでhalt後に起動かければDHCPサーバとして動く。停止させる時は、"kill -9"で無理やり停止させないといけないのがイケてなくてアカンなぁ。この辺は改善余地アリだなぁ。
 
 
 
-.. [#] ：AtmarkTechno-Productsの選択時
-.. [#] ：atmark-dist-20060801/user/dhcpd/
-.. [#] ：atmark-dist-20060801/user/dhcp-isc/
-.. [#] ：make menuconfig, make dep allを実行する
-.. [#] ：コメントは省略
+
+.. [#] AtmarkTechno-Productsの選択時
+
+.. [#] atmark-dist-20060801/user/dhcpd/
+.. [#] atmark-dist-20060801/user/dhcp-isc/
+.. [#] make menuconfig, make dep allを実行する
+.. [#] コメントは省略
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, Ops, gadget, 
 .. tags::
 .. comments::
-
-

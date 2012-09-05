@@ -1,10 +1,11 @@
-﻿tarのWオプション。
-######################
+tarのWオプション。
+==================
+
+お客様先での打ち合わせで出てきた話題。知らんかった。今までtオプションでリスト表示してたからなぁ。日々是勉強也。ポイントは、元のファイルとの突合せでの整合性をとるので、"tar オプション アーカイブ 元ファイル群"としてやること。
 
 
-お客様先での打ち合わせで出てきた話題。知らんかった。今までtオプションでリスト表示してたからなぁ。日々是勉強也。ポイントは、元のファイルとの突合せでの整合性をとるので、&#34;tar オプション アーカイブ 元ファイル群&#34;としてやること。
+.. code-block:: sh
 
-.. code-block:: none
 
    $ ls
    awstats-log.tar.gz  awstats052005.txt  awstats092006.txt
@@ -30,18 +31,26 @@
    awstats052004.txt   awstats092005.txt
 
 
+
+
 アーカイブへの追記と同じでgzipやbzip2で圧縮していると使えないので面倒だ。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ tar zcvpWlf awstats-log.tar.gz ./*.txt
    tar: Cannot verify compressed archives
-   Try `tar --help&#39; or `tar --usage&#39; for more information.
+   Try `tar --help' or `tar --usage' for more information.
+
+
 
 
 gzipやbzip2のcオプションで標準出力に書き出して、実行してやれば良い。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ gzip -cd awstats-log.tar.gz | tar cvpWlf  ./*.txt;echo $?
    ./awstats012006.txt
@@ -168,9 +177,9 @@ gzipやbzip2のcオプションで標準出力に書き出して、実行して�
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

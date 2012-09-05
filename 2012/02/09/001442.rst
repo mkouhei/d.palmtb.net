@@ -1,27 +1,36 @@
-﻿”Changed but not updated”ではなくなっていた件。
-########################################################################
+"Changed but not updated"ではなくなっていた件。
+===============================================
+
+Debian勉強会にも参加している `@taitioooo <https://twitter.com/#!/taitioooo>`_ から
 
 
-Debian勉強会にも参加している@taitiooooから
 
-Git本で質問なんですが、53ページの「次回コミット時の状態」でChanges not staged for commit:と出た場合って、Changed but not updatedとなにが違いますか？？
+   Git本で質問なんですが、53ページの「次回コミット時の状態」でChanges not staged for commit:と出た場合って、Changed but not updatedとなにが違いますか？？
+
+
+
+
 
 という質問をもらったので、調べてみました。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    commit 8009d83c7e7af0a298ef858609a8201d01086396
-   Author: Matthieu Moy Matthieu.Moy@imag.fr
+   Author: Matthieu Moy <Matthieu.Moy@imag.fr>
    Date:   Tue Nov 2 16:31:19 2010 +0100
    
-       Better Changed but not updated message in git-status
+       Better "Changed but not updated" message in git-status
        
-       Older Gits talked about updating a file to add its content to the
-       index, but this terminology is confusing for new users. to stage is far
-       more intuitive and already used in e.g. the git stage command name.
+       Older Gits talked about "updating" a file to add its content to the
+       index, but this terminology is confusing for new users. "to stage" is far
+       more intuitive and already used in e.g. the "git stage" command name.
        
-       Signed-off-by: Matthieu Moy Matthieu.Moy@imag.fr
-       Signed-off-by: Junio C Hamano gitster@pobox.com
+       Signed-off-by: Matthieu Moy <Matthieu.Moy@imag.fr>
+       Signed-off-by: Junio C Hamano <gitster@pobox.com>
    
    diff --git a/wt-status.c b/wt-status.c
    index fc2438f..d9f3d9f 100644
@@ -31,87 +40,113 @@ Git本で質問なんですが、53ページの「次回コミット時の状態
     {
            const char *c = color(WT_STATUS_HEADER, s);
     
-   -       color_fprintf_ln(s-fp, c, # Changed but not updated:);
-   +       color_fprintf_ln(s-fp, c, # Changes not staged for commit:);
+   -       color_fprintf_ln(s->fp, c, "# Changed but not updated:");
+   +       color_fprintf_ln(s->fp, c, "# Changes not staged for commit:");
            if (!advice_status_hints)
                    return;
            if (!has_deleted)
 
 
-ということで、リビジョン8009d83cで変更されたのですね。「Gitによるバージョン管理」はバージョン1.7をベースにしているので、SidのGitのバージョンは1.7.9なのでメッセージが変わっていたのですね。気づきませんでした。
+ということで、リビジョン8009d83cで変更されたのですね。「 `Gitによるバージョン管理 <http://www.amazon.co.jp/exec/obidos/ASIN/4274068641/palmtb-22/ref=nosim/>`_ 」はバージョン1.7をベースにしているので、SidのGitのバージョンは1.7.9なのでメッセージが変わっていたのですね。気づきませんでした。
+
+
+
 
 変更の調べ方。
-**************************************
+--------------
 
 
-git grep &#34;Changed but not updated&#34;では見つからず、git grep -n &#34;Changes not staged for commit&#34;で下記が見つかります。
+git grep "Changed but not updated"では見つからず、git grep -n "Changes not staged for commit"で下記が見つかります。
 
-.. code-block:: none
 
-   wt-status.c:169:        status_printf_ln(s, c, _(Changes not staged for commit:));
+.. code-block:: sh
+
+
+   wt-status.c:169:        status_printf_ln(s, c, _("Changes not staged for commit:"));
+
+
 
 
 git blameでいつ変更されたのかを確認します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ git blame -L169,169 wt-status.c
-   355ec7a1 (#198;var Arnfj#246;r#240; Bjarmason 2011-02-22 23:42:13 +0000 169)        status_printf_ln(s, c, _(Changes not staged for commit:));
+   355ec7a1 (&#198;var Arnfj&#246;r&#240; Bjarmason 2011-02-22 23:42:13 +0000 169)        status_printf_ln(s, c, _("Changes not staged for commit:"));
+
+
 
 
 これの一つ前のリビジョン(b32227e)で再度git blameを実行します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ git blame -L169,169 wt-status.c b32227e7
-   098d0e0e (Jonathan Nieder 2011-02-25 23:11:37 -0600 169)        status_printf_ln(s, c, Changes not staged for commit:);
+   098d0e0e (Jonathan Nieder 2011-02-25 23:11:37 -0600 169)        status_printf_ln(s, c, "Changes not staged for commit:");
 
 
 再度git blame。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    git blame -L169,169 wt-status.c 3c624a3
-   8009d83c (Matthieu Moy 2010-11-02 16:31:19 +0100 169)   color_fprintf_ln(s-fp, c, # Changes not staged for commit:);
+   8009d83c (Matthieu Moy 2010-11-02 16:31:19 +0100 169)   color_fprintf_ln(s->fp, c, "# Changes not staged for commit:");
 
 
 再度git blame。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ git blame -L169,169 wt-status.c 7ebee44
-   9297f77e (Jens Lehmann 2010-03-08 13:53:19 +0100 169)                   if (d-new_submodule_commits)
+   9297f77e (Jens Lehmann 2010-03-08 13:53:19 +0100 169)                   if (d->new_submodule_commits)
 
 
 と、ここで途切れたので、範囲を広げてみます。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ git blame wt-status.c 7ebee44
    (snip)
-   8009d83c (Matthieu Moy         2010-11-02 16:31:19 +0100  91)   color_fprintf_ln(s-fp, c, # Changes not staged for commit:);
+   8009d83c (Matthieu Moy         2010-11-02 16:31:19 +0100  91)   color_fprintf_ln(s->fp, c, "# Changes not staged for commit:");
    (snip)
 
 
 以前は91行目だったようです。もう一回git blame。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ git blame -L91,91 wt-status.c 7ebee4416
-   bb914b14 (Anders Melchiorsen 2008-09-08 00:05:02 +0200 91)      color_fprintf_ln(s-fp, c, # Changed but not updated:);
+   bb914b14 (Anders Melchiorsen 2008-09-08 00:05:02 +0200 91)      color_fprintf_ln(s->fp, c, "# Changed but not updated:");
 
 
 ここでメッセージが変わっています。なので、この後の変更をgit show 8009d83c wt-status.cで見ると、冒頭の変更だと分かります。もっと楽に調べる方法ないでしょうかね。git bisectと組み合わせれば良いのかなぁ…？
 
-.. image:: http://ecx.images-amazon.com/images/I/51WQ7GsnOZL._SL160_.jpg
-   :alt: Gitによるバージョン管理
 
 
 
 
-.. author:: mkouhei
+`Gitによるバージョン管理 <http://www.amazon.co.jp/exec/obidos/ASIN/4274068641/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+.. author:: default
 .. categories:: Git, 
 .. tags::
 .. comments::
-
-

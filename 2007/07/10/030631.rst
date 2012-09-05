@@ -1,10 +1,11 @@
-﻿kernel2.6.22にしたら…。
-####################################
-
+kernel2.6.22にしたら…。
+========================
 
 kvmがロードされん…。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    kvm: Unknown symbol set_64bit
    kvm: Unknown symbol set_64bit
@@ -36,27 +37,31 @@ kvmがロードされん…。
    kvm_intel: Unknown symbol kvm_resched
 
 
-なんだ、この&#34;set_64bit&#34;って？64bitモードじゃないと動かないとかそういう落ちじゃ…なさそうだ。 ついでに、madwifiのモジュールも作成されん。それはDebian勉強会で聞いた気もする。
+なんだ、この"set_64bit"って？64bitモードじゃないと動かないとかそういう落ちじゃ… `なさそう <http://hira.main.jp/wiki/pukiwiki.php?set_64bit%28%29%2Flinux2.6>`_ だ。 ついでに、madwifiのモジュールも作成されん。それはDebian勉強会で聞いた気もする。
+
 make menuconfigで、64bitで検索したら、こんなん出た。ちょー臭い。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
       Symbol: RESOURCES_64BIT [=n]                                               
       Prompt: 64 bit Memory and IO resources (EXPERIMENTAL)                      
         Defined at mm/Kconfig:155                                                
-        Depends on: !64BIT &amp;&amp; EXPERIMENTAL                                       
+        Depends on: !64BIT && EXPERIMENTAL                                       
         Location:                                                                
-          - Processor type and features                                         
-        Selected by: X86_PAE &amp;&amp; HIGHMEM64G
+          -> Processor type and features                                         
+        Selected by: X86_PAE && HIGHMEM64G
 
 
 とりあえず、Yesにして再ビルド。どうなることやら。………………ダメだった。orz　うーん、なんだろうなぁ。今日仕事から帰ってきたら調べてみるか…。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, computer, virt., 
 .. tags::
 .. comments::
-
-

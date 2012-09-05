@@ -1,21 +1,23 @@
-﻿気持ち悪い構文
-##############
-
+気持ち悪い構文
+==============
 
 昨日、職場で見た、ある商用パッケージの起動スクリプトにあった一行。
 
-.. code-block:: none
 
-   ksh -c ksh -c &#39;ls /hoge&#39;～
+.. code-block:: sh
+
+
+   ksh -c "ksh -c 'ls /hoge'～"
 
 
 みたいな入れ子にしたもの。キモい。別の書き方もあるだろうに。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

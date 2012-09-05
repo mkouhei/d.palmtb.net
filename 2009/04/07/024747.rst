@@ -1,20 +1,23 @@
-﻿MacBook Airのキーボードバックライトを点灯させる。
-############################################################
+MacBook Airのキーボードバックライトを点灯させる。
+=================================================
 
 
+.. code-block:: sh
 
-.. code-block:: none
 
-   sudo bash -c echo 255  /sys/class/leds/smc\:\:kbd_backlight/brightness
+   sudo bash -c "echo 255 > /sys/class/leds/smc\:\:kbd_backlight/brightness"
 
 
 消すときは、0をセットしてやれば良い。すばらしい。
 
 
 
-.. author:: mkouhei
+
+
+
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

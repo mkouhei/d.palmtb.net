@@ -1,10 +1,13 @@
-﻿姉さん事件です！
-################
+姉さん事件です！
+================
+
 
 
 Sidでアップデートしたら大変な事に…。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get upgrade  -s
    パッケージリストを読み込んでいます... 完了
@@ -69,8 +72,8 @@ Sidでアップデートしたら大変な事に…。
    クリーンアップ中にエラーが発生しました:
     サブプロセス rm cleanup はエラー終了ステータス 2 を返しました
    Could not exec dpkg!
-   E: Problem executing scripts DPkg::Post-Invoke &#39;if [ -x
-   /usr/bin/etckeeper ]; then etckeeper post-install; fi&#39;
+   E: Problem executing scripts DPkg::Post-Invoke 'if [ -x
+   /usr/bin/etckeeper ]; then etckeeper post-install; fi'
    E: Sub-process returned an error code
    E: Sub-process /usr/bin/dpkg returned an error code (100)
    $
@@ -78,18 +81,23 @@ Sidでアップデートしたら大変な事に…。
    -bash: /usr/bin/sudo: そのようなファイルやディレクトリはありません
 
 
+
+
 子プロセスがexecしようとするとコケていますが、既に起動しているプロセスは大丈夫だったり。これも起動中のchromiumでGmailで投稿しているし。でも新しくタブを開くのはダメ [#]_ 。さて、どうやって戻そう。とりあえずインストールCDをなんとか入手して、CDROMブートしたら/var/cache/apt/archivesから上記の6つのパッケージを2.13-2に戻してみようかな…。
+
+
+
 ちなみにワシには姉はいません、念のため。
 
 
 
-.. [#] ：子プロセスを作るからか
 
 
 
-.. author:: mkouhei
+.. [#] 子プロセスを作るからか
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿日陰だと涼しい。
-################
-
+日陰だと涼しい。
+================
 
 今日は日陰を歩くと涼しい。日向は暑い…。でも湿気が少ないのは良いですな。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

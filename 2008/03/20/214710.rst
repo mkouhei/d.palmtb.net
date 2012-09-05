@@ -1,10 +1,11 @@
-﻿WMVを再生させる。
-####################
-
+WMVを再生させる。
+=================
 
 vlcをインストールすれば、良し。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get install vlc 
    パッケージリストを読み込んでいます... 完了
@@ -16,7 +17,7 @@ vlcをインストールすれば、良し。
      refblas3 libcurl3-gnutls lapack3 gcc-3.4-base m17n-docs m17n-db netpbm
      openoffice.org-officebean libm17n-0 libnetpbm10 libg2c0 libetpan11
      openoffice.org-l10n-ja libungif4g
-   これらを削除するには &#39;apt-get autoremove&#39; を利用してください。
+   これらを削除するには 'apt-get autoremove' を利用してください。
    以下の特別パッケージがインストールされます:
      libavformat1d libdc1394-13 libdvbpsi4 libdvdnav4 libdvdread3 libebml0
      libfaad0 libid3tag0 libiso9660-5 libmatroska0 libmodplug0c2 libmpcdec3
@@ -137,9 +138,9 @@ vlcをインストールすれば、良し。
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

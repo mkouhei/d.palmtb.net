@@ -1,30 +1,44 @@
-﻿palm preアクティベーション。
-####################################
+palm preアクティベーション。
+============================
+
+水曜に注文したpalm pre EURO versionが届いた。裏蓋を開けてみると、チャイナモバイルのSIMが挿してあった。Docomoでローミングが出来そうなのだがAPNを設定しないとどうやらダメらしい。通信費を取られたりしたらめんどいので、素直に `meta-doctorを使った通常の3G/GSMを用いたアクティベーションを回避する方法 <http://www.webos-internals.org/wiki/Application:MetaDoctor>`_ を取ってみた。事前にPalm webOS SDKをちゃんと使えるようにしておけば、Debianでも問題なく出来る。
 
 
-水曜に注文したpalm pre EURO versionが届いた。裏蓋を開けてみると、チャイナモバイルのSIMが挿してあった。Docomoでローミングが出来そうなのだがAPNを設定しないとどうやらダメらしい。通信費を取られたりしたらめんどいので、素直にmeta-doctorを使った通常の3G/GSMを用いたアクティベーションを回避する方法を取ってみた。事前にPalm webOS SDKをちゃんと使えるようにしておけば、Debianでも問題なく出来る。
+
 
 meta-doctorとROMの入手
-************************************************
+----------------------
 
 
-リンク先の方法にそって行うだけなのだが、自分でやったことをちょいちょいメモ。
-ROMのバージョンを特定する必要があるのだが、1shopmobileで購入した場合は、EURO Versionとしか表示されていない。ヨーロッパでもいくつかキャリアによって異なるようなので、EURO versionとはどこのかなぁと思ったら、バッテリーの裏側のスペースに型番P100EUEが書いてあった。O2 Germany, UK and Ireland / Movistar Spain向けのモデルと分かったので、webOS 1.4.5のROMをゲト。サーバ側の回線が貧弱なのか、207MBダウンロードするのにほぼ丸々1時間掛かった。
+`リンク先 <http://www.webos-internals.org/wiki/Application:MetaDoctor>`_ の方法にそって行うだけなのだが、自分でやったことをちょいちょいメモ。
+
+
+
+ROMのバージョンを特定する必要があるのだが、1shopmobileで購入した場合は、EURO Versionとしか表示されていない。ヨーロッパでもいくつかキャリアによって異なるようなので、EURO versionとはどこのかなぁと思ったら、バッテリーの裏側のスペースに型番P100EUEが書いてあった。 `O2 Germany, UK and Ireland / Movistar Spain <http://www.webos-internals.org/wiki/Webos_Doctor_Versions#O2_Germany.2C_UK_and_Ireland_.2F_Movistar_Spain>`_ 向けのモデルと分かったので、 `webOS 1.4.5のROM <http://palm.cdnetworks.net/rom/pre/p145r0d06302010/eudep145rod/webosdoctorp100ueu-wr.jar>`_ をゲト。サーバ側の回線が貧弱なのか、207MBダウンロードするのにほぼ丸々1時間掛かった。
+
+
+
 ダウンロードしたら、MD5ハッシュ値チェック後、リネーム。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ mv webosdoctorp100ueu-wr.jar webosdoctorp100ueu-wr-1.4.5.jar 
 
 
 
+
+
 meta-doctorのMakefileを変更。
-****************************************************************
+-----------------------------
 
 
 各パラメータはMakefile中にちゃんと説明あり。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    diff --git a/Makefile b/Makefile
    index 56d4e1e..3ab05e6 100644
@@ -55,39 +69,48 @@ meta-doctorのMakefileを変更。
     # CHANGE_KEYBOARD_TYPE  = z
     # ADD_EXT3FS_PARTITION  = 2GB
     
-    # Select pre, preplus, pixi or pixiplus.
+    # Select "pre", "preplus", "pixi" or "pixiplus".
    -DEVICE = undefined
-   +DEVICE = pre
+   +DEVICE = "pre"
     
-    # Select wr, sprint, verizonwireless, bellmo, telcel or att.
+    # Select "wr", "sprint", "verizonwireless", "bellmo", "telcel" or "att".
    -CARRIER = undefined
-   +CARRIER = wr
+   +CARRIER = "wr"
     
     ######################################
     ## END OF AREA FOR END USER CHANGES ##
 
 
 
+
+
 ROMのビルド
-**************************
+-----------
 
 
 zipコマンドが途中で必要になるので、予めインストールしておく。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get install zip
 
 
 make途中失敗した場合に、きれいな状態でビルドしなおしたければ、make clobberを実行する。
+
 ビルドは、make DEVICE=pre all-wrを実行。
 
+
+
+
 ROMの焼き込み
-********************************
+-------------
 
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ cd build/pre-p100ueu-wr-1.4.5/
    $ java -jar webosdoctorp100ueu-wr-1.4.5.jar
@@ -95,40 +118,51 @@ ROMの焼き込み
 
 こんな画面が起動する。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100904/20100904133652.png
-   :alt: f:id:mkouhei:20100904133652p:image
 
-United Kingdom &amp; Irelandになっているのでそのまま選択し、Confirm EnglishもOK、Palm License Agreementを読んだらAcceptする。
+.. image:: /img/20100904133652.png
+
+United Kingdom & Irelandになっているのでそのまま選択し、Confirm EnglishもOK、Palm License Agreementを読んだらAcceptする。
+
 次にこの画面が出るので、左側の音量を上げるボタンを押しながらUSBを接続する。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100904/20100904133653.png
-   :alt: f:id:mkouhei:20100904133653p:image
+
+.. image:: /img/20100904133653.png
 
 palm preの画面にUSBのマークが表示されたらNextを押し、次の画面でNextを押すとROMの書き込みが始まる。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100904/20100904133654.png
-   :alt: f:id:mkouhei:20100904133654p:image
+
+.. image:: /img/20100904133654.png
+
+
 
 書き込みはじまると、palm preにはROMに書き込む画面が、meta-doctorはこんな画面になる。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20100904/20100904140015.png
-   :alt: f:id:mkouhei:20100904140015p:image
+
+.. image:: /img/20100904140015.png
 
 15分くらいかかるのであとは待つのみ。
+
 正常に完了するとmeta-doctorはReset Completeの画面になると同時に、palm preの方も自動的に再起動する。
+
+
+
 以上、Debianでの作業は終わり。
 
+
+
+
 palm preでのアクティベーション
-******************************************************************************
+------------------------------
 
 
 起動すると、自動的にTurn on WiFiが出てくるのであとは設定して、First Useからアクティベーションするのみ。WPA2 CCMPでも問題無くできる。アクティベーション後は、チュートリアルが始まるので、後はご自由に、という感じ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: gadget, Debian, 
 .. tags::
 .. comments::
-
-

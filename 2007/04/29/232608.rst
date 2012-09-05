@@ -1,26 +1,26 @@
-﻿半月ML見てなかったら…。
-##########################
-
+半月ML見てなかったら…。
+========================
 
 最近余裕がなかったので、KVMの開発MLを半月ほど見てなかったら、KVMがrelease18だったのが、release21まで上がってた。ちょっと気になったのが、Carsten Otteさんが投げたs390関連のスレッド。
 
-* PATCH/PFC 0/2  s390 host support
-* PATCH/RFC 1/2  s390 host memory management changes.
-* PATCH/RFC 1/2  s390 virtualization interface.
+#.  `PATCH/PFC 0/2  s390 host support <http://sourceforge.net/mailarchive/forum.php?thread_name=1177681224.5770.20.camel%40cotte.boeblingen.de.ibm.com&forum_name=kvm-devel>`_ 
+
+#.  `PATCH/RFC 1/2  s390 host memory management changes. <http://sourceforge.net/mailarchive/forum.php?thread_name=1177681231.5770.21.camel%40cotte.boeblingen.de.ibm.com&forum_name=kvm-devel>`_ 
+
+#.  `PATCH/RFC 1/2  s390 virtualization interface. <http://sourceforge.net/mailarchive/forum.php?thread_name=1177681235.5770.22.camel%40cotte.boeblingen.de.ibm.com&forum_name=kvm-devel>`_ 
 
 x86のCPUの仮想化支援機能と同様、s390でのメモリ管理を、必要に応じてs390の仮想化支援機能を利用するようにするパッチと、プロセスからVMを起動するのを許可するインタフェースを追加するパッチ [#]_ らしい。あー、英語の細かいニュアンスがよう分からん [#]_ 。System zでもkvmが使えるようになるのかなぁ？　使えなくても将来的に使えるようにしたいと言っているように取れたけど。System zのハードウェア仮想化機能、ということはLPAR上で、Linuxを動かしてKVMを使えるのか、あるいは、z/VM上でLPARを介さずにLinuxを稼働させ [#]_ 、そこでKVMが使える、ということかねぇ。あー、でもz/VMはソフトウェアだから、Xenの上のHVM DomainのLinuxでKVMを動かすようなモンだよなぁ。System zの場合、z/VM上でLPARを動かしてその上で複数のLinux、ということも出来るから、まぁ、Linux側でハードウェアの仮想化機能を使えるなら出来なくはなさそうだけど。
 
 
 
-.. [#] ：何のこっちゃ？
-.. [#] ：いや、細かくなくても分かってないよな…。
-.. [#] ：z/VMの場合は、完全仮想化。
 
 
+.. [#] 何のこっちゃ？
+.. [#] いや、細かくなくても分かってないよな…。
+.. [#] z/VMの場合は、完全仮想化。
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Unix/Linux, virt., computer, 
 .. tags::
 .. comments::
-
-

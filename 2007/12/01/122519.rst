@@ -1,14 +1,14 @@
-﻿Secuirty Configuration Guides読んでみた。
-######################################################################
+Secuirty Configuration Guides読んでみた。
+=========================================
+
+カッとなってNSAの出しとる `RHEL5のGuide <http://www.nsa.gov/snac/downloads_redhat.cfm?MenuID=scg10.3.1.1>`_ を一気に読んでみた。至極当たり前のことが書かれているが、デスクトップ用途についてや、もはや危険なサービスを単に禁止するのではなく、制限付きである程度セキュアにして使う方法が記載されているのが良いなと思った。
 
 
-カッとなってNSAの出しとるRHEL5のGuideを一気に読んでみた。至極当たり前のことが書かれているが、デスクトップ用途についてや、もはや危険なサービスを単に禁止するのではなく、制限付きである程度セキュアにして使う方法が記載されているのが良いなと思った。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: security, Unix/Linux, 
 .. tags::
 .. comments::
-
-

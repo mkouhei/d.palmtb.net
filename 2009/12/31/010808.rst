@@ -1,14 +1,14 @@
-﻿クソ寒い。
-##########
-
+クソ寒い。
+==========
 
 めっちゃ凍えた一日だった。六甲おろしもキツかったけど、大阪湾からの海風もキツかったな。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

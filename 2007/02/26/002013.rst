@@ -1,17 +1,24 @@
-﻿kvm-15リリース＆FCのツールが使えるようになるとか。
-##########################################################
-
+kvm-15リリース＆FCのツールが使えるようになるとか。
+==================================================
 
 kvm-15がリリースされた。どうやら先日気になったlive migrationはこのリリースから使えるようになったそうな。試してみたいなぁ…。もう一台確保できないと無理か…。kvm-14までは、-no-kvm、つまりQEMUの機能としては出来ていたようだ。昨日作った資料を早速修正しなくちゃ…。
-あともう一つ。libvirt 0.2.0とvirt-manager 0.3.1がkvmをサポートしたとか。Debianでも使えるようになれば良いけど、とりあえずまだみたい。
+
+
+
+あともう一つ。 `libvirt 0.2.0 <http://libvirt.org/>`_ と `virt-manager 0.3.1 <http://virt-manager.org/>`_ がkvmをサポートしたとか。Debianでも使えるようになれば良いけど、とりあえずまだみたい。
+
+
+
 http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=384300
+
 http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=384443
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, computer, virt., 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿肥えたな。
-##########
-
+肥えたな。
+==========
 
 ホームレス中学生の番宣で、池脇千鶴を見て思った。ええ感じですな。
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

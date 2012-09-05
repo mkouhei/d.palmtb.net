@@ -1,14 +1,14 @@
-﻿やばいなぁ。
-############
-
+やばいなぁ。
+============
 
 8/4のゼミで発表するHIPAAの資料、全くできてねぇ。7/25の勉強会の資料は何とか作るか。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: security, 
 .. tags::
 .. comments::
-
-

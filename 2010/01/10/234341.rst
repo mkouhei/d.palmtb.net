@@ -1,15 +1,18 @@
-﻿RelaxCafe@CouchDB break.5 参加。
-##########################################################
+RelaxCafe@CouchDB break.5 参加。
+================================
+
+`昨年末のRelaxon <http://d.hatena.ne.jp/mkouhei/20091226/1261839508>`_ の `続き <http://atnd.org/events/2659>`_ 。年末にやった、sedとawkで日本語情報をJSONにする、というのは実は `このAPI <http://okilab.jp/project/location/2007/11/api_4.html>`_ を使えばいいんじゃね、という話。このAPIすごいね。他にはbashの配列を使おうとしたら、うまく動かなかったり。
 
 
-昨年末のRelaxonの続き。年末にやった、sedとawkで日本語情報をJSONにする、というのは実はこのAPIを使えばいいんじゃね、という話。このAPIすごいね。他にはbashの配列を使おうとしたら、うまく動かなかったり。
+
 宴会では紹興酒飲みすぎた。翌日も酒が残って、酒が抜けても二日酔いだった。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: CouchDB, meeting, 
 .. tags::
 .. comments::
-
-

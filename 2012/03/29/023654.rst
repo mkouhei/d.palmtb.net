@@ -1,14 +1,14 @@
-﻿一回お休み。
-############
-
+一回お休み。
+============
 
 ちょっと今日は余裕が無いのでネタなしです。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

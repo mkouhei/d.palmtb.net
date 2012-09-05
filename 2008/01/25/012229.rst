@@ -1,15 +1,18 @@
-﻿O’Reillyネタ。
-######################
+O'Reillyネタ。
+==============
+
+/.Jで知った `O'Reilly Maker <http://www.oreillymaker.com/>`_ 。さっそく `作ってみた <http://www.oreillymaker.com/link/2016/openblocks/>`_ 。画像だけを取ることもできるようなのだが、何か条件があるのかまだ取得できないのは非常に残念。後日、フォトライフにアップしておくか。
 
 
-/.Jで知ったO’Reilly Maker。さっそく作ってみた。画像だけを取ることもできるようなのだが、何か条件があるのかまだ取得できないのは非常に残念。後日、フォトライフにアップしておくか。
+
 ハッ！しまった…、鯖だけに動物画像も魚にしておけば良かった…。orz
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, computer, 
+
+
+
+.. author:: default
+.. categories:: 駄文, computer, 
 .. tags::
 .. comments::
-
-

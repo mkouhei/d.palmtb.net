@@ -1,14 +1,16 @@
-﻿やっぱし無理
-############
-
+やっぱし無理
+============
 
 無理だ、休も。寝る。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

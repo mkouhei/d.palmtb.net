@@ -1,10 +1,11 @@
-﻿OpenBlockS266では厳しいな。
-########################################
+OpenBlockS266では厳しいな。
+===========================
+
+Rails&MySQLをOBS266 128MBモデルで動かして、一日放っておいたが、Swap領域の使用率が高くなっているので、こりゃあかんな。
 
 
-RailsをOBS266 128MBモデルで動かして、一日放っておいたが、Swap領域の使用率が高くなっているので、こりゃあかんな。
+.. code-block:: sh
 
-.. code-block:: none
 
     $ free
                  total       used       free     shared    buffers     cached
@@ -17,9 +18,10 @@ RailsをOBS266 128MBモデルで動かして、一日放っておいたが、Swa
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, Ops, gadget, 
 .. tags::
 .. comments::
-
-

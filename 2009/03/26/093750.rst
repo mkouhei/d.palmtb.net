@@ -1,27 +1,33 @@
-﻿Hack Cafe #8
-########################
-
+Hack Cafe #8
+============
 
 初めて四人参加。iwamatsuさんと私はいつもの通りで、やまださんとhenrichさんが初参加 [#]_ 。定着すると良いですな。
-ハードディスクお陀仏覚悟でカーネルビルドしたが特に問題なさそう。ただinitrdの作成で変な警告が出て、ブート時にinitrdがswap領域もroot fsを読めず、kernel panicとなってしまう現象が発生。ヨメのMacBook、Let&#39;s noteに続き、３回目。で、原因をほぼ特定。今回のMacBook Airは既にハードディスクは/dev/sdaとして認識させていたのに、initrdがswap on出来ないという点で気が付いた。今回ビルドした2.6.29はNdiswrapperのビルドが失敗する問題から現在メインで使用している2.6.26の.configを持ってきてビルドした。で今回、その.configのサスペンド用領域にしているのが/dev/sdaじゃなく、/dev/hdaになっていることに気付いた。だからs2ramでのサスペンドがうまくできなかったんですな。ところが新しくカーネルとinitrdを作成したら先ほどのような有り様。
+
+
+
+ハードディスクお陀仏覚悟でカーネルビルドしたが特に問題なさそう。ただinitrdの作成で変な警告が出て、ブート時にinitrdがswap領域もroot fsを読めず、kernel panicとなってしまう現象が発生。ヨメのMacBook、Let's noteに続き、３回目。で、原因をほぼ特定。今回のMacBook Airは既にハードディスクは/dev/sdaとして認識させていたのに、initrdがswap on出来ないという点で気が付いた。今回ビルドした2.6.29はNdiswrapperのビルドが失敗する問題から現在メインで使用している2.6.26の.configを持ってきてビルドした。で今回、その.configのサスペンド用領域にしているのが/dev/sdaじゃなく、/dev/hdaになっていることに気付いた。だからs2ramでのサスペンドがうまくできなかったんですな。ところが新しくカーネルとinitrdを作成したら先ほどのような有り様。
+
 で、変な警告のupdate-initramfs(8)がduplicateしているとかいうメッセージから、manで/etc/initramfs-tools/とかいうディレクトリがあるとこを知る。このしたのconf.d/resumeというファイルも/dev/sdaではなく/dev/hdaになっていた。コレだよ、きっと。ついでに直下のmodulesファイルにinitrdでロードされるカーネルモジュールが何も記載されていないので、
 
 * sd_mod
+
 * scsi_mod
+
 * libata
+
 * ata_piix
 
 を明記して、initrdを作り直してやったら再発しなくなった。でも一度に両方やったから、どちらが原因なのか、あるいは両方なのかは分からない始末。今日帰宅したら調べてみるかな。
 
 
 
-.. [#] ：henrichさんは諸事情で最後の30分ほどだったが。
 
 
 
-.. author:: mkouhei
+.. [#] henrichさんは諸事情で最後の30分ほどだったが。
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

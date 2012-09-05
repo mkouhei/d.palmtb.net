@@ -1,14 +1,17 @@
-﻿Debian on chumbyに挑戦中。その５
-################################################
-
+Debian on chumbyに挑戦中。その５
+================================
 
 Chumby起動時に、USBメモリに入れたchroot環境のLennyからsshdを起動させるようにしますた。sshでログインするとこんな感じ。興味がある方は、今週土曜のOSCの東京エリアDebian勉強会のブースへどうぞ。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ ssh -p 2222 chumby
    Debian GNU/Linux 5.0
-   Enter passphrase for key &#39;/home/hoge/.ssh/id_rsa&#39;: 
+   Enter passphrase for key '/home/hoge/.ssh/id_rsa': 
    Linux debian 2.6.18 #26 PREEMPT Mon Jul 9 15:20:07 JST 2007 armv6l
    
    The programs included with the Debian GNU/Linux system are free software;
@@ -102,9 +105,9 @@ Chumby起動時に、USBメモリに入れたchroot環境のLennyからsshdを�
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: gadget, Debian, computer, 
 .. tags::
 .. comments::
-
-

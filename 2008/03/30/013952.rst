@@ -1,9 +1,9 @@
-﻿fcgidがうまくいかん。
-##########################
+fcgidがうまくいかん。
+=====================
 
 
+.. code-block:: sh
 
-.. code-block:: none
 
    [Mon Mar 31 01:34:50 2008] [notice] mod_fcgid: server /var/www/hoge/hiki.fcgi(9769) started
    [Mon Mar 31 01:34:59 2008] [info] mod_fcgid: Read data error, fastcgi server has close connection
@@ -15,9 +15,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

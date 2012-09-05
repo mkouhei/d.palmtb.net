@@ -1,30 +1,34 @@
-﻿libvirtに破れる…。
-##########################
-
+libvirtに破れる…。
+===================
 
 libvirt 0.2.0とvirt-manager 0.3.1で、KVMを使ってみようと思い、ソースコードからコンパイルに挑戦。virt-managerは割りとすんなりビルド出来た。
+
+
+
 のだが、virt-manager自体は、libvirtが必要なので、これのビルドに苦労した。最初は、xenstoreがないということで、Debianのxen-utils-3.0.3-1を入れて、/usr/lib下に、シンボリックリンクを張って、そしたら今度はxs.hが無いという。これは、DebianのXenパッケージには無かったので、仕方ないので、Fedora Core 6のxen-develをalienでdeb化。xenstoreに関しては、FC6のxen-libsをalienでdeb化しても、認識されなかった。で、やっとこさ、configureが通って、いよいよmakeに入ったなぁと思ったら、pythonのところで躓く。
 
-.. code-block:: none
 
-   .libs/libvir.o: In function `initlibvirtmod&#39;:
-   /home/user/download/libvirt/libvirt-0.2.0/python/libvir.c:435: undefined reference to `Py_InitModule4&#39;
-   .libs/libvir.o: In function `libvirt_virRegisterErrorHandler&#39;:
-   /home/user/download/libvirt/libvirt-0.2.0/python/libvir.c:140: undefined reference to `PyArg_ParseTuple&#39;
-   /home/user/download/libvirt/libvirt-0.2.0/python/libvir.c:158: undefined reference to `_Py_NoneStruct&#39;
-   .libs/libvir.o: In function `libvirt_virErrorFuncHandler&#39;:
-   /home/user/download/libvirt/libvirt-0.2.0/python/libvir.c:103: undefined reference to `PyEval_ThreadsInitialized&#39;
+.. code-block:: sh
+
+
+   .libs/libvir.o: In function `initlibvirtmod':
+   /home/user/download/libvirt/libvirt-0.2.0/python/libvir.c:435: undefined reference to `Py_InitModule4'
+   .libs/libvir.o: In function `libvirt_virRegisterErrorHandler':
+   /home/user/download/libvirt/libvirt-0.2.0/python/libvir.c:140: undefined reference to `PyArg_ParseTuple'
+   /home/user/download/libvirt/libvirt-0.2.0/python/libvir.c:158: undefined reference to `_Py_NoneStruct'
+   .libs/libvir.o: In function `libvirt_virErrorFuncHandler':
+   /home/user/download/libvirt/libvirt-0.2.0/python/libvir.c:103: undefined reference to `PyEval_ThreadsInitialized'
    ～中略～
-   `PyEval_RestoreThread&#39;
+   `PyEval_RestoreThread'
    collect2: ld returned 1 exit status
    make[4]: *** [libvirtmod.la] エラー 1
-   make[4]: ディレクトリ `/home/user/download/libvirt/libvirt-0.2.0/python&#39; から出ます
+   make[4]: ディレクトリ `/home/user/download/libvirt/libvirt-0.2.0/python' から出ます
    make[3]: *** [all-recursive] エラー 1
-   make[3]: ディレクトリ `/home/user/download/libvirt/libvirt-0.2.0/python&#39; から出ます
+   make[3]: ディレクトリ `/home/user/download/libvirt/libvirt-0.2.0/python' から出ます
    make[2]: *** [all-recursive] エラー 1
-   make[2]: ディレクトリ `/home/user/download/libvirt/libvirt-0.2.0&#39; から出ます
+   make[2]: ディレクトリ `/home/user/download/libvirt/libvirt-0.2.0' から出ます
    make[1]: *** [all] エラー 2
-   make[1]: ディレクトリ `/home/user/download/libvirt/libvirt-0.2.0&#39; から出ます
+   make[1]: ディレクトリ `/home/user/download/libvirt/libvirt-0.2.0' から出ます
    make: *** [build-stamp] エラー 2
    debuild: fatal error at line 1228:
    debian/rules build failed
@@ -34,9 +38,10 @@ libvirt 0.2.0とvirt-manager 0.3.1で、KVMを使ってみようと思い、ソ�
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, virt., computer, 
 .. tags::
 .. comments::
-
-

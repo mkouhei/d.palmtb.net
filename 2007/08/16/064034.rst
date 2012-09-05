@@ -1,24 +1,30 @@
-﻿fullcore吐かねぇと思ったら…。
-######################################
-
+fullcore吐かねぇと思ったら…。
+==============================
 
 fullcore falseになっとった。そりゃ吐かねぇよ。smittyで変更せな。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # lsattr -El sys0 -a fullcore
    fullcore false ... True
 
 
+コマンドならこうか？なぜ、AIXってlsattr、chdevと名前が対応していないんだ？w Linuxならlsattrとchattrでちゃんと対応しているのに。 [#]_ 
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # chdev -l sys0 -a fullcore=true
 
 
 どのみち、出力先のファイルシステムが小さいので、ファイルシステム拡張するか、出力先を変更しないとダメ。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # syscorepath -g
    　←何もセットされてない。
@@ -27,7 +33,9 @@ fullcore falseになっとった。そりゃ吐かねぇよ。smittyで変更せ
 
 ついでに、ulimitで見るとサイズ制限あるから.profileでunlimitedに変更せなアカン。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    ulimit -c unlimited
 
@@ -35,13 +43,10 @@ fullcore falseになっとった。そりゃ吐かねぇよ。smittyで変更せ
 
 
 
-.. [#] ：といってもカーネルパラメータを変更するコマンドじゃないけど。
+.. [#] といってもカーネルパラメータを変更するコマンドじゃないけど。
 
 
-
-.. author:: mkouhei
-.. categories:: work, Unix/Linux, 
+.. author:: default
+.. categories:: 仕事, Unix/Linux, 
 .. tags::
 .. comments::
-
-

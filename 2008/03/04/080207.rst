@@ -1,14 +1,14 @@
-﻿口癖。
-######
-
+口癖。
+======
 
 昨日、お客様先で打ち合わせをしていて、「ちょっと」と何度も言ってる自分に気が付いた。ちょっと、ちょっとちょっと！
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

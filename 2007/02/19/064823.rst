@@ -1,18 +1,22 @@
-﻿これ欲しいなぁ。
-################
-
+これ欲しいなぁ。
+================
 
 買おうか買うまいか。いや買うことは決めているんだけど、読む暇あるか。問題はそこんとこだなぁ。
 
-.. image:: http://images-jp.amazon.com/images/P/4788510332.09.THUMBZZZ.jpg
-   :alt: 交通事故はなぜなくならないか—リスク行動の心理学
 
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, life, 
+`交通事故はなぜなくならないか&#8212;リスク行動の心理学 <http://www.amazon.co.jp/o/ASIN/4788510332/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: 駄文, 生活, 
 .. tags::
 .. comments::
-
-

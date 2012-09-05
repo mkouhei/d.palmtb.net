@@ -1,19 +1,19 @@
-﻿あるある。
-##########
-
+あるある。
+==========
 
 今の現場でも毎週月曜日の朝礼で、今週のトピックとかワンポイントアドバイスを司会は言うことになっている [#]_ が、情報サイトなどの受け売りで言ってる。いつも思わず、「おい、そんなこと普段考えてもいないだろ！？」と突っ込みたくなる。w
+
+
+
 http://www.atmarkit.co.jp/fwin2k/itpropower/admin-kun/063/adminkun063.html
 
 
 
-.. [#] ：司会は当番制
+
+.. [#] 司会は当番制
 
 
-
-.. author:: mkouhei
-.. categories:: scribbles, 
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

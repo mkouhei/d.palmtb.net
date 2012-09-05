@@ -1,10 +1,11 @@
-﻿scala入門その2。
-######################
+scala入門その2。
+================
+
+ScalaからJavaMailを使ってみようと、DebianでJavaMailを探すと、 `GNU classpathx <http://savannah.gnu.org/projects/classpathx>`_ で、libgnumail-javaパッケージを使うらしいと。Debianパッケージをインストールして、
 
 
-ScalaからJavaMailを使ってみようと、DebianでJavaMailを探すと、GNU classpathxで、libgnumail-javaパッケージを使うらしいと。Debianパッケージをインストールして、
+.. code-block:: sh
 
-.. code-block:: none
 
    import java.io._
    import java.util.Properties
@@ -14,7 +15,9 @@ ScalaからJavaMailを使ってみようと、DebianでJavaMailを探すと、GN
 
 として、scalacでコンパイルするとエラーになる。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ scalac hoge.scala
    hoge.scala:3: error: value mail is not a member of package javax
@@ -25,7 +28,9 @@ ScalaからJavaMailを使ってみようと、DebianでJavaMailを探すと、GN
 
 scalacの-claspathオプションでgnumail.jarファイルを指定してやらなアカンらしい。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ scalac -classpath /usr/share/java/gnumail.jar hoge.scala
 
@@ -33,9 +38,9 @@ scalacの-claspathオプションでgnumail.jarファイルを指定してやら
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, computer, 
 .. tags::
 .. comments::
-
-

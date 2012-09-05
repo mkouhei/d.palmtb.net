@@ -1,61 +1,110 @@
-﻿こまめを激写。
-##############
-
+こまめを激写。
+==============
 
 IXY DIGITAL 820 ISではこまめの素早い動きに追いつかず、お化けみたいになってしまうので、こまめを撮るためにデジタル一眼に入門してみた。レンズが明るいのと軽いのでLUMIX GF1を購入して、早速こまめを激写してみた。家ネコだと近距離で撮れるのでとても快適。
+
+
+
 ヨメの枕を占領。
 
-.. image:: http://farm4.static.flickr.com/3472/3932635615_f9708fdea5_o.png
-   :alt: komame_20090919_1
+
+.. image:: /img/3932635615_f9708fdea5_o.png
+   :target: http://www.flickr.com/photos/41853584@N06/3932635615/
+
+
+
+
 
 「何ジロジロ見てんのヨ！」
 
-.. image:: http://farm3.static.flickr.com/2610/3932635825_64a9f2dfae_o.png
-   :alt: komame_20090919_4
+
+.. image:: /img/3932635825_64a9f2dfae_o.png
+   :target: http://www.flickr.com/photos/41853584@N06/3932635825/
+
+
+
+
 
 お食事ちう。
 
-.. image:: http://farm3.static.flickr.com/2657/3932637129_2580b8d3eb_o.png
-   :alt: komame_20090919_23
+
+.. image:: /img/3932637129_2580b8d3eb_o.png
+   :target: http://www.flickr.com/photos/41853584@N06/3932637129/
+
+
+
+
 
 電波系猫。何かを捕らえたらしい。
 
-.. image:: http://farm4.static.flickr.com/3481/3932636581_0974049d4b_o.png
-   :alt: komame_20090919_15
+
+.. image:: /img/3932636581_0974049d4b_o.png
+   :target: http://www.flickr.com/photos/41853584@N06/3932636581/
+
+
+
+
 
 「ム、アレはワタシのおもちゃね。」
 
-.. image:: http://farm4.static.flickr.com/3184/3932636309_4d84b6d3da_o.png
-   :alt: komame_20090919_11
+
+.. image:: /img/3932636309_4d84b6d3da_o.png
+   :target: http://www.flickr.com/photos/41853584@N06/3932636309/
+
+
+
+
 
 上から吊るせば何でもこまめのおもちゃ。
 
-.. image:: http://farm4.static.flickr.com/3500/3932636047_3d0647c63b_o.png
-   :alt: komame_20090919_7
+
+.. image:: /img/3932636047_3d0647c63b_o.png
+   :target: http://www.flickr.com/photos/41853584@N06/3932636047/
+
+
+
+
 
 毛繕い中。
 
-.. image:: http://farm3.static.flickr.com/2458/3933421472_b51d084fb0_o.png
-   :alt: komame_20090919_53
+
+.. image:: /img/3933421472_b51d084fb0_o.png
+   :target: http://www.flickr.com/photos/41853584@N06/3933421472/
+
+
+
+
 
 「起き上がるのが面倒なんじゃ。」
 
-.. image:: http://farm4.static.flickr.com/3455/3933421226_c7196441bd_o.png
-   :alt: komame_20090919_49
+
+.. image:: /img/3933421226_c7196441bd_o.png
+   :target: http://www.flickr.com/photos/41853584@N06/3933421226/
+
+
+
+
 
 おねむの時間です。
 
-.. image:: http://farm3.static.flickr.com/2584/3933419888_6580dea708_o.png
-   :alt: komame_20090919_31
+
+.. image:: /img/3933419888_6580dea708_o.png
+   :target: http://www.flickr.com/photos/41853584@N06/3933419888/
+
+
+
+
 
 昨日撮ったこまめちゃん。
-http://www.flickr.com/search/?q=komame_20090919w=alls=int
+
+http://www.flickr.com/search/?q=komame_20090919&w=all&s=int
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: 
 .. tags::
 .. comments::
-
-

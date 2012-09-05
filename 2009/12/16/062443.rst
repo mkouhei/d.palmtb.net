@@ -1,13 +1,17 @@
-﻿起動が遅くなってた理由がちょっと判明。
-######################################
-
+起動が遅くなってた理由がちょっと判明。
+======================================
 
 だんだん起動が遅くなってきていたDebian on MacBookだが、14日のアップデートで突然速くなったなと思ったら、15日のアップデートでまた遅くなってしまった。共通しているのは、grub2(grub-common, grub-pc)のアップデート。grubがどうやら怪しいのだが原因特定には至らず。
+
+
+
 で、grubがどうやら怪しいのならと、視点を変えてブートオプションを変更してみた。今grubの設定は以下のようになっている。
 
-.. code-block:: none
 
-   menuentry Debian GNU/Linux, with Linux 2.6.32 {
+.. code-block:: ini
+
+
+   menuentry "Debian GNU/Linux, with Linux 2.6.32" {
            insmod ext2
            set root=(hd0,3)
            search --no-floppy --fs-uuid --set cd19d76b-a1e3-4bb5-a873-2f4317414d89
@@ -19,80 +23,94 @@
 
 オプションをそれぞれ無効にした結果、
 
-* nosmp：&#34;no responses&#34;と表示され止まり、起動せず。
+* nosmp："no responses"と表示され止まり、起動せず。
+
 * acpi=noirq：何も変わらず。遅いまま。
+
 * irqpoll：めっちゃ速くなった。
+
+
 
 原因はirqpollだった模様。14日のgrubのアップデートで速くなった時より段違いで、40秒強ほどで起動。外すと5分はかかるのに。これ外せばいいじゃん、としたいところだが、これ外すとこれが出るからやってたんだよなぁ。
 
-.. code-block:: none
 
-   [    2.204739] irq 11: nobody cared (try booting with the irqpoll option)
+.. code-block:: console
+
+
+   [    2.204739] irq 11: nobody cared (try booting with the "irqpoll" option)
    [    2.204800] Pid: 629, comm: modprobe Not tainted 2.6.32 #1
    [    2.204802] Call Trace:
-   [    2.204804]  IRQ  [ffffffff8108d522] ? handle_IRQ_event+0x21/0x126
-   [    2.204817]  [ffffffff8108e6d8] ? __report_bad_irq+0x30/0x7d
-   [    2.204822]  [ffffffff8108e82a] ? note_interrupt+0x105/0x16f
-   [    2.204827]  [ffffffff810266fa] ? default_spin_lock_flags+0x5/0xb
-   [    2.204832]  [ffffffff8108ef86] ? handle_level_irq+0xa5/0xf1
-   [    2.204837]  [ffffffff8100e763] ? handle_irq+0x17/0x1d
-   [    2.204840]  [ffffffff8100dd9d] ? do_IRQ+0x57/0xb6
-   [    2.204844]  [ffffffff8100c413] ? ret_from_intr+0x0/0x11
-   [    2.204848]  [ffffffff8100fd24] ? enable_8259A_irq+0xf/0x45
-   [    2.204853]  [ffffffff8104b18b] ? __do_softirq+0x6e/0x19f
-   [    2.204857]  [ffffffff8100cbec] ? call_softirq+0x1c/0x28
-   [    2.204861]  [ffffffff8100e70f] ? do_softirq+0x3f/0x7c
-   [    2.204864]  [ffffffff8104afe4] ? irq_exit+0x36/0x76
-   [    2.204868]  [ffffffff8100dde6] ? do_IRQ+0xa0/0xb6
-   [    2.204871]  [ffffffff8100c413] ? ret_from_intr+0x0/0x11
-   [    2.204873]  EOI  [ffffffff812fd032] ? _spin_unlock_irqrestore+0x14/0x1d
-   [    2.204884]  [ffffffff812264a4] ? devm_kzalloc+0x49/0x50
-   [    2.204892]  [ffffffffa003864c] ? ahci_port_start+0x28/0xcd [ahci]
-   [    2.204901]  [ffffffffa00de366] ? __ata_port_freeze+0x35/0x3b [libata]
-   [    2.204909]  [ffffffffa00de43f] ? ata_eh_freeze_port+0x2b/0x40 [libata]
-   [    2.204916]  [ffffffffa00d55ac] ? ata_host_start+0xca/0x15e [libata]
-   [    2.204922]  [ffffffffa0039acb] ? ahci_interrupt+0x0/0x459 [ahci]
-   [    2.204930]  [ffffffffa00d61e2] ? ata_host_activate+0x22/0xdf [libata]
-   [    2.204936]  [ffffffffa0039aab] ? ahci_init_one+0xf6a/0xf8a [ahci]
-   [    2.204943]  [ffffffff8119c9e6] ? local_pci_probe+0x12/0x16
-   [    2.204947]  [ffffffff8119d605] ? pci_device_probe+0xba/0xe3
-   [    2.204951]  [ffffffff812244be] ? driver_probe_device+0xa3/0x14b
-   [    2.204955]  [ffffffff812245b5] ? __driver_attach+0x4f/0x6f
-   [    2.204959]  [ffffffff81224566] ? __driver_attach+0x0/0x6f
-   [    2.204962]  [ffffffff81223d49] ? bus_for_each_dev+0x43/0x74
-   [    2.204966]  [ffffffff81223709] ? bus_add_driver+0xea/0x233
-   [    2.204970]  [ffffffff8122486b] ? driver_register+0xa7/0x111
-   [    2.204976]  [ffffffffa0052000] ? ahci_init+0x0/0x1a [ahci]
-   [    2.204980]  [ffffffff8119d841] ? __pci_register_driver+0x50/0xb8
-   [    2.204986]  [ffffffffa0052000] ? ahci_init+0x0/0x1a [ahci]
-   [    2.204990]  [ffffffff81009051] ? do_one_initcall+0x50/0x148
-   [    2.204995]  [ffffffff810724b5] ? sys_init_module+0xc5/0x21a
-   [    2.204998]  [ffffffff8100ba82] ? system_call_fastpath+0x16/0x1b
+   [    2.204804]  <IRQ>  [<ffffffff8108d522>] ? handle_IRQ_event+0x21/0x126
+   [    2.204817]  [<ffffffff8108e6d8>] ? __report_bad_irq+0x30/0x7d
+   [    2.204822]  [<ffffffff8108e82a>] ? note_interrupt+0x105/0x16f
+   [    2.204827]  [<ffffffff810266fa>] ? default_spin_lock_flags+0x5/0xb
+   [    2.204832]  [<ffffffff8108ef86>] ? handle_level_irq+0xa5/0xf1
+   [    2.204837]  [<ffffffff8100e763>] ? handle_irq+0x17/0x1d
+   [    2.204840]  [<ffffffff8100dd9d>] ? do_IRQ+0x57/0xb6
+   [    2.204844]  [<ffffffff8100c413>] ? ret_from_intr+0x0/0x11
+   [    2.204848]  [<ffffffff8100fd24>] ? enable_8259A_irq+0xf/0x45
+   [    2.204853]  [<ffffffff8104b18b>] ? __do_softirq+0x6e/0x19f
+   [    2.204857]  [<ffffffff8100cbec>] ? call_softirq+0x1c/0x28
+   [    2.204861]  [<ffffffff8100e70f>] ? do_softirq+0x3f/0x7c
+   [    2.204864]  [<ffffffff8104afe4>] ? irq_exit+0x36/0x76
+   [    2.204868]  [<ffffffff8100dde6>] ? do_IRQ+0xa0/0xb6
+   [    2.204871]  [<ffffffff8100c413>] ? ret_from_intr+0x0/0x11
+   [    2.204873]  <EOI>  [<ffffffff812fd032>] ? _spin_unlock_irqrestore+0x14/0x1d
+   [    2.204884]  [<ffffffff812264a4>] ? devm_kzalloc+0x49/0x50
+   [    2.204892]  [<ffffffffa003864c>] ? ahci_port_start+0x28/0xcd [ahci]
+   [    2.204901]  [<ffffffffa00de366>] ? __ata_port_freeze+0x35/0x3b [libata]
+   [    2.204909]  [<ffffffffa00de43f>] ? ata_eh_freeze_port+0x2b/0x40 [libata]
+   [    2.204916]  [<ffffffffa00d55ac>] ? ata_host_start+0xca/0x15e [libata]
+   [    2.204922]  [<ffffffffa0039acb>] ? ahci_interrupt+0x0/0x459 [ahci]
+   [    2.204930]  [<ffffffffa00d61e2>] ? ata_host_activate+0x22/0xdf [libata]
+   [    2.204936]  [<ffffffffa0039aab>] ? ahci_init_one+0xf6a/0xf8a [ahci]
+   [    2.204943]  [<ffffffff8119c9e6>] ? local_pci_probe+0x12/0x16
+   [    2.204947]  [<ffffffff8119d605>] ? pci_device_probe+0xba/0xe3
+   [    2.204951]  [<ffffffff812244be>] ? driver_probe_device+0xa3/0x14b
+   [    2.204955]  [<ffffffff812245b5>] ? __driver_attach+0x4f/0x6f
+   [    2.204959]  [<ffffffff81224566>] ? __driver_attach+0x0/0x6f
+   [    2.204962]  [<ffffffff81223d49>] ? bus_for_each_dev+0x43/0x74
+   [    2.204966]  [<ffffffff81223709>] ? bus_add_driver+0xea/0x233
+   [    2.204970]  [<ffffffff8122486b>] ? driver_register+0xa7/0x111
+   [    2.204976]  [<ffffffffa0052000>] ? ahci_init+0x0/0x1a [ahci]
+   [    2.204980]  [<ffffffff8119d841>] ? __pci_register_driver+0x50/0xb8
+   [    2.204986]  [<ffffffffa0052000>] ? ahci_init+0x0/0x1a [ahci]
+   [    2.204990]  [<ffffffff81009051>] ? do_one_initcall+0x50/0x148
+   [    2.204995]  [<ffffffff810724b5>] ? sys_init_module+0xc5/0x21a
+   [    2.204998]  [<ffffffff8100ba82>] ? system_call_fastpath+0x16/0x1b
    [    2.205001] handlers:
-   [    2.205052] [ffffffff81233a9e] (usb_hcd_irq+0x0/0x7e)
+   [    2.205052] [<ffffffff81233a9e>] (usb_hcd_irq+0x0/0x7e)
    [    2.205198] Disabling IRQ #11
 
 
 むぅ。このメッセージの前に、これも出とるのに今気づいた。
 
-.. code-block:: none
 
-   [    0.262910] pci 0000:00:15.0: cant find IRQ for PCI INT A; please try using pci=biosirq
+.. code-block:: console
+
+
+   [    0.262910] pci 0000:00:15.0: can't find IRQ for PCI INT A; please try using pci=biosirq
 
 
 こっちを試したら、irqpollは必要なくなるだろうか…？
 
+
+
+
 予想通り…。
-********************************
+------------
 
 
-ダメだった。&#34;biosirq&#34;なんてオプションねぇよと言われた。そりゃMacBookだもんなぁ。EFIなんだからダメだよなぁ…。
+ダメだった。"biosirq"なんてオプションねぇよと言われた。そりゃMacBookだもんなぁ。EFIなんだからダメだよなぁ…。
 
 
 
-.. author:: mkouhei
+
+
+
+
+
+.. author:: default
 .. categories:: MacBook, Unix/Linux, Debian, 
 .. tags::
 .. comments::
-
-

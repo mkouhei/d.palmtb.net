@@ -1,52 +1,68 @@
-﻿webOS 1.4.5日本語化(表示だけ)。
-############################################
+webOS 1.4.5日本語化(表示だけ)。
+===============================
+
+基本的には、 `こちらのサイト <http://mini.x0.com/2009/11/12/612/>`_ を参考にさせてもらったが、localeはそのままではダメだったので下記のように実施。 [#]_ 　ちなみに検証はpalm-emulatorで実施してから、実機で行った。シェルで操作しているのは、言わずもがなだと思うがnovatermを使う。
 
 
-基本的には、こちらのサイトを参考にさせてもらったが、localeはそのままではダメだったので下記のように実施。 [#]_ 　ちなみに検証はpalm-emulatorで実施してから、実機で行った。シェルで操作しているのは、言わずもがなだと思うがnovatermを使う。
+
 
 locale
-********
+------
 
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    # mount -o remount,rw /
    # vi /etc/palm/locale.txt
 
 
+
+
 /etc/palm/locale.txtに下記のように追記。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    # diff -a locale.txtbk locale.txt
    --- locale.txtbk        Tue Jun 15 03:20:56 2010
    +++ locale.txt  Mon Sep  6 00:21:17 2010
    @@ -42,6 +42,13 @@
-                                                     {countryName:France, countryCode:fr},
-                                                     {countryName:Canada, countryCode:ca}
+                                                     {"countryName":"France", "countryCode":"fr"},
+                                                     {"countryName":"Canada", "countryCode":"ca"}
                                                ]
    +                 },
    +                 {
-   +                         languageName:Japanese,
-   +                         languageCode:ja,
-   +                         countries:[
-   +                                                 {countryName:Japan, countryCode:jp}
+   +                         "languageName":"Japanese",
+   +                         "languageCode":"ja",
+   +                         "countries":[
+   +                                                 {"countryName":"Japan", "countryCode":"jp"}
    +                                           ]
                      }
                  ]
     }
 
 
+
+
 終了したら、読み込み専用でリマウントし直して再起動。
 
+
+
+
 region
-********
+------
 
 
-ここを参考に実施。P100UEU WR版のwebOS 1.4.5ではパスが少し変わる。フォーマットは、/usr/palm/frameworks/mojo/submissions/347/formats, リソースは/usr/palm/frameworks/mojo/submissions/347/resourcesになるのと、alternatechars_*_accented.jsonというファイルも他の言語ではあったので、合わせてコピーしておいた。
+`ここ <http://mini.x0.com/2009/10/25/540/>`_ を参考に実施。P100UEU WR版のwebOS 1.4.5ではパスが少し変わる。フォーマットは、/usr/palm/frameworks/mojo/submissions/347/formats, リソースは/usr/palm/frameworks/mojo/submissions/347/resourcesになるのと、alternatechars_\*_accented.jsonというファイルも他の言語ではあったので、合わせてコピーしておいた。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    # cd /tmp
    # wget http://mini.x0.com/datetime_table.zip
@@ -61,17 +77,27 @@ region
 
 で、再起動。
 
-fonts
-******
 
-これはこのまま実施。/etc/fonts/local.confの作成や、/etc/palm/{luna,browser}.confの中の設定をVL Gothicやフォントファイル名を適宜設定してみたが、いずれもダメだった。 [#]_ 作成し終えたら、リマウントし、再起動を忘れずに。後日、再度フォントファイルのリネームではなくて、設定でどうにかならんか検証してみる予定。
+
+
+fonts
+-----
+
+
+これは `この <http://mini.x0.com/2009/10/18/490/>`_ まま実施。/etc/fonts/local.confの作成や、/etc/palm/{luna,browser}.confの中の設定をVL Gothicやフォントファイル名を適宜設定してみたが、いずれもダメだった。 [#]_ 作成し終えたら、リマウントし、再起動を忘れずに。後日、再度フォントファイルのリネームではなくて、設定でどうにかならんか検証してみる予定。
+
+
+
 
 標準アプリの日本語化
-********************************************************
+--------------------
 
-Mini’s webOS Localizerを利用。 [#]_ 
 
-.. code-block:: none
+`Mini's webOS Localizer <http://usagiya.g-com.ne.jp/mini/localize140/localize140.htm>`_ を利用。 [#]_ 
+
+
+.. code-block:: sh
+
 
    # cd /tmp
    # wget http://mini.x0.com/webos/localize145.sh
@@ -81,15 +107,12 @@ Mini’s webOS Localizerを利用。 [#]_
 
 
 
-.. [#] ：/usr/lib/luna/customizationというディレクトリ自体が存在しないので。
-.. [#] ：fontconfig入っているのに実際には使ってないのだろうか？
-.. [#] ：ただし、localeの設定しておかないと、日本語化されない。
+.. [#] /usr/lib/luna/customizationというディレクトリ自体が存在しないので。
+.. [#] fontconfig入っているのに実際には使ってないのだろうか？
+.. [#] ただし、localeの設定しておかないと、日本語化されない。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: gadget, Unix/Linux, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,15 @@
-﻿Paravirtualizationは使えるのか？
-##################################################
+Paravirtualizationは使えるのか？
+================================
+
+`ここに書いている <http://virt.kernelnewbies.org/TechComparison>`_ とおり、KVMでParavirtualizationが本当にサポートされているのかが気になって [#]_ 、grepしてみた。
 
 
-ここに書いているとおり、KVMでParavirtualizationが本当にサポートされているのかが気になって [#]_ 、grepしてみた。
+.. code-block:: sh
 
-.. code-block:: none
 
-   $ grep -r -i  &#39;parav&#39;  ./*
-   ./kvm-13/kernel/kvm_main.c: printk(KERN_DEBUG &#34;kvm: guest trying to enter paravirtual mode?n&#34;);
-   ./kvm-13/kernel/.svn/text-base/kvm_main.c.svn-base: printk(KERN_DEBUG &#34;kvm: guest trying to enter paravirtual mode?n&#34;);
+   $ grep -r -i  'parav'  ./*
+   ./kvm-13/kernel/kvm_main.c: printk(KERN_DEBUG "kvm: guest trying to enter paravirtual mode?n");
+   ./kvm-13/kernel/.svn/text-base/kvm_main.c.svn-base: printk(KERN_DEBUG "kvm: guest trying to enter paravirtual mode?n");
    ./kvm-13/kernel/include/linux/kvm_para.h: * Guest OS interface for KVM paravirtualization
    ./kvm-13/kernel/include/linux/kvm_para.h: * a guest acknowledges paravirtual mode.
    ./kvm-13/kernel/include/linux/kvm_para.h:    * the host will deny entry into paravirtual mode. Any other
@@ -20,17 +21,18 @@
 
 
 どうやらkvm-13から実装されているようだ。使えるのかどうかは置いておいて。気になるのは、KVMを使うのには、CPUの仮想化機能が必要だということ。Xenの場合は、Paravirtualiztionだと、普通のx86 CPUで使え、Full virtualizationを利用するには、Intel VTやAMD SVMが必要。KVMでFull Virtualiztionの場合にそれらが必要なのは分かるのだが、Paravirtualizationで使う場合はどうなんだろう？　Paravirtualモードで使う方法を調べてみることにしよう。
+
+
+
 いい加減寝ろ、ワシ。
 
 
 
-.. [#] ：寝ようと思ったときに、ふと気になってしまった。
+
+.. [#] 寝ようと思ったときに、ふと気になってしまった。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, computer, virt., 
 .. tags::
 .. comments::
-
-

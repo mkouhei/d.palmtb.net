@@ -1,14 +1,14 @@
-﻿アートメークって
-################
-
+アートメークって
+================
 
 刺青と何が違うんだ？入れる色素の量と場所が違うだけじゃないか？
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

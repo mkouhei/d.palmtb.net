@@ -1,59 +1,69 @@
-﻿Debian on MacBook Air &amp;amp; PSPのみダメだった。
-##############################################################################
-
+Debian on MacBook Air & PSPのみダメだった。
+===========================================
 
 NEC WR8500Nを返品して、代わりに購入したBUFFALO WZR-HP-G300NHだが、WPA2-PSK AESで接続検証を行ってみた。
 
+
 使えたもの。
-********************************
+------------
 
 
-
-* Let&#39;s Note R3 + NETGEAR WN511T
-
-* Debian squeeze/sid
-
-* ndiswrapper / netmw14x 
-* Marvell Technology Group Ltd. 88W8361(11ab:2a02)として認識。
+* Let's Note R3 + NETGEAR WN511T
 
 
-* Windows xp SP3
+  * Debian squeeze/sid
+
+
+    * ndiswrapper / netmw14x 
+
+    * Marvell Technology Group Ltd. 88W8361(11ab:2a02)として認識。
+
+
+  * Windows xp SP3
 
 
 * 黒MacBook
 
-* Debian squeeze/sid
 
-* madwifi
+  * Debian squeeze/sid
 
 
-* Mac OS X
+    * madwifi
+
+
+  * Mac OS X
 
 
 * MacBook Air
 
-* Mac OS X
+
+  * Mac OS X
 
 
 * Chumby
+
 * Wii
+
 * iPod touch
 
 
-ダメだったもの。
-********************************************
 
+
+ダメだったもの。
+----------------
 
 
 * PSP
+
 * MacBook Air 
 
-* Debian squeeze/sid
 
-* ndiswrapper / bcmwl5
-* Broadcom Corporation BCM4328 802.11a/b/g/n (rev 05) (14e4:4328)として認識。
+  * Debian squeeze/sid
 
 
+    * ndiswrapper / bcmwl5
+
+    * Broadcom Corporation BCM4328 802.11a/b/g/n (rev 05) (14e4:4328)として認識。
 
 
 
@@ -61,39 +71,10 @@ PSPはWPA2自体を扱えないので仕方ない。最新のファームウェ�
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: network, MacBook, Debian, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	今の wl ドライバで、もしかしてうまくいかない？＞BCM4328http://forums.debian.net/viewtopic.php?p=213719
-
-	written by  yamamoto
-	04/12/2009 01:14:31
-	
-
-----
-
-Comment:
-
-	wlドライバは2.6.29だとコンパイルが通らないのです。というか一度もコンパイルうまく言ったことがない。
-
-	written by  mkouhei
-	04/12/2009 10:30:39
-	http://d.hatena.ne.jp/mkouhei/
-
-----
-
-Comment:
-
-	リンク先たどって、パッチ当てたらイケました。
-
-	written by  mkouhei
-	04/12/2009 14:16:47
-	http://d.hatena.ne.jp/mkouhei/
-

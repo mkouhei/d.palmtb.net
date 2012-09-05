@@ -1,14 +1,14 @@
-﻿kernel 2.6.20リリース
-##################################
+kernel 2.6.20リリース
+=====================
+
+日本時間で今日の４時くらいに `リリースされた <http://www.kernel.org/kdist/fragments/stable.html>`_ 。個人的にはやっぱり今回のリリースの目玉は、 `KVM <http://kvm.qumranet.com/kvmwiki>`_ がマージされたことですな。出社前に早速再構築。
 
 
-日本時間で今日の４時くらいにリリースされた。個人的にはやっぱり今回のリリースの目玉は、KVMがマージされたことですな。出社前に早速再構築。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Unix/Linux, computer, virt., 
 .. tags::
 .. comments::
-
-

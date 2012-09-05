@@ -1,9 +1,9 @@
-﻿grubがまた余計なメッセージを。
-##################################
+grubがまた余計なメッセージを。
+==============================
 
 
+.. code-block:: sh
 
-.. code-block:: none
 
    $ sudo grub-install --no-floppy /dev/sda3
    grub-setup: warn: Attempting to install GRUB to a partition instead of the MBR.  This is a BAD idea.
@@ -13,7 +13,9 @@
 
 ぬ、MacBookでrEFIt使っているからいいんです。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo grub-install --no-floppy /dev/sda3 --force
    grub-setup: warn: Attempting to install GRUB to a partition instead of the MBR.  This is a BAD idea.
@@ -21,7 +23,7 @@
    Installation finished. No error reported.
    This is the contents of the device map /boot/grub/device.map.
    Check if this is correct or not. If any of the lines is incorrect,
-   fix it and re-run the script `grub-install&#39;.
+   fix it and re-run the script `grub-install'.
    
    (hd0)	/dev/sda
    $ sudo update-grub2 
@@ -42,9 +44,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, Unix/Linux, Debian, 
 .. tags::
 .. comments::
-
-

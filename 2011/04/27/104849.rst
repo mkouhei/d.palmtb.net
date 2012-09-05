@@ -1,10 +1,13 @@
-﻿”通信端点が接続されていません”？
-##################################
-
+"通信端点が接続されていません"？
+================================
 
 なんぞコレ？時間ないのでとりあえずメモだけ。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ sudo update-grub2
    Generating grub.cfg ...
@@ -31,9 +34,9 @@
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

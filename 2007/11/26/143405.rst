@@ -1,18 +1,24 @@
-﻿哀れExim。
-##############
-
+哀れExim。
+==========
 
 いつの間にか発刊されていたオライリーのLinuxシステム管理の12ページに、珍しくEximの事が触れられているのに、
 
-EximをPostfixに置き換えてもシステムを何ら損なうことはありません。後で実際にDebianリポジトリからPostfixをダウンロードします。
+
+
+   EximをPostfixに置き換えてもシステムを何ら損なうことはありません。後で実際にDebianリポジトリからPostfixをダウンロードします。
+
+
+
+
 
 と。自分もPostfixを使っているがこんな書かれ方をすると何だか哀れだ。頑張れ、Eximユーザ会の人。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

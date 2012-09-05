@@ -1,15 +1,20 @@
-﻿スリランカ内戦終了。
-####################
-
+スリランカ内戦終了。
+====================
 
 やすべえで晩飯を食べた後、信号待ちをしていたらその前のスリランカ料理コートロッジ 新宿店で内戦終了感謝祭ということで、ランチもディナーもランチセットAなら100円セールをやっていた。しまったな。気づいていればやすべえじゃなくてこっちに行ってみたのに。明日の帰りによってみようかな。
-より大きな地図で メシと酒のうまい店 を表示
+
+
+.. raw:: html
+
+    <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps/ms?hl=ja&amp;ie=UTF8&amp;msa=0&amp;msid=116353817628604507840.0000011240131ae54a00c&amp;ll=35.690084,139.697835&amp;spn=0.0084,0.01442&amp;output=embed"></iframe><br /><small>より大きな地図で <a href="http://maps.google.com/maps/ms?hl=ja&amp;ie=UTF8&amp;msa=0&amp;msid=116353817628604507840.0000011240131ae54a00c&amp;ll=35.690084,139.697835&amp;spn=0.0084,0.01442&amp;source=embed" style="color:#0000FF;text-align:left">メシと酒のうまい店</a> を表示</small>
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

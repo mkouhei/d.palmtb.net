@@ -1,23 +1,29 @@
-﻿仮想ターミナルをtermitに変更。
-####################################
-
+仮想ターミナルをtermitに変更。
+==============================
 
 もともと仮想ターミナルにはmltermを使っていたのですが、職場で使っていた仮想ターミナルtermitが軽量で、タブ形式での切り替えもできて便利なので変更しました。デフォルトではalternativesには登録されなかったり、設定の変更ができなかったりというのがあったのと、何よりパッケージ名をすぐに忘れてしまうのでメモっておきます。
 
+
+
+
 パッケージのインストールとデフォルトターミナルの変更。
-**************************************************************************************************************************************************************
+------------------------------------------------------
 
 
 パッケージ名は、termitなので、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get install termit
 
 
 とすればいいのですが、alternativesには自動的には登録されません [#]_ 。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo update-alternatives --list x-terminal-emulator
    /usr/bin/mlterm
@@ -25,7 +31,9 @@
 
 なので、登録して変更しておきます。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/termit 30
    $ sudo update-alternatives --display x-terminal-emulatorx-terminal-emulator - 手動モード
@@ -33,17 +41,19 @@
    /usr/bin/mlterm - 優先度 20
      スレーブ x-terminal-emulator.1.gz: /usr/share/man/man1/mlterm.1.gz
    /usr/bin/termit - 優先度 30
-   現在の &#39;最適&#39; バージョンは &#39;/usr/bin/termit&#39; です。
+   現在の '最適' バージョンは '/usr/bin/termit' です。
 
 
 
 termitの設定変更。
-********************************************
+------------------
 
 
 x-terminal-emulatorにtermitを設定したので、awesomeではMeta + Enterで起動できます。Edit→Preferenceでフォントや背景色などを変更できます。が、termitを終了すると変更が反映されていません。理由は、設定ファイルが作成されていないためです。設定のテンプレートがtermitパッケージに含まれているので、これをコピーして使います。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ mkdir ~/.config/termit
    $ cp -i /usr/share/doc/termit/rc.lua.example .config/termit/rc.lua
@@ -51,26 +61,28 @@ x-terminal-emulatorにtermitを設定したので、awesomeではMeta + Enterで
 
 ただし、このテンプレートをそのまま使うと、フォントがプロポーショナルフォントだったり、Ctrl+rでのコマンド履歴の検索が効かなかったりするので、下記のように変更します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ diff -u /usr/share/doc/termit/rc.lua.example .config/termit/rc.lua 
    --- /usr/share/doc/termit/rc.lua.example	2010-10-15 23:59:44.000000000 +0900
    +++ .config/termit/rc.lua	2011-08-27 16:47:05.026798680 +0900
    @@ -3,7 +3,7 @@
-    defaults.tabName = &#39;Terminal&#39;
-    defaults.encoding = &#39;UTF-8&#39;
-    defaults.wordChars = &#39;+-AA-Za-z0-9,./?%#:_~&#39;
-   -defaults.font = &#39;Terminus 12&#39;
-   +defaults.font = &#39;Monospace 11&#39;
-    --defaults.foregroundColor = &#39;gray&#39;
-    --defaults.backgroundColor = &#39;black&#39;
+    defaults.tabName = 'Terminal'
+    defaults.encoding = 'UTF-8'
+    defaults.wordChars = '+-AA-Za-z0-9,./?%&#:_~'
+   -defaults.font = 'Terminus 12'
+   +defaults.font = 'Monospace 11'
+    --defaults.foregroundColor = 'gray'
+    --defaults.backgroundColor = 'black'
     defaults.showScrollbar = true
    @@ -84,7 +84,7 @@
     mi = {}
-    mi.name = &#39;Reconfigure&#39;
+    mi.name = 'Reconfigure'
     mi.action = reconfigure
-   -mi.accel = &#39;Ctrl-r&#39;
-   +--mi.accel = &#39;Ctrl-r&#39;
+   -mi.accel = 'Ctrl-r'
+   +--mi.accel = 'Ctrl-r'
     table.insert(userMenu, mi)
     
     mi = {}
@@ -78,20 +90,18 @@ x-terminal-emulatorにtermitを設定したので、awesomeではMeta + Enterで
 
 すると、こんな感じになります。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20110827/20110827170447.png
-   :alt: f:id:mkouhei:20110827170447p:image
+
+.. image:: /img/20110827170447.png
 
 仮想ターミナルだけ背景を変更できたりカッコいいですね！
 
 
 
-.. [#] ：2011年8月時点でのWheezy/Sid。
+
+.. [#] 2011年8月時点でのWheezy/Sid。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

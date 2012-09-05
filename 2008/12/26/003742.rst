@@ -1,27 +1,28 @@
-﻿2.6.28、この機能は嬉しい。
-################################
+2.6.28、この機能は嬉しい。
+==========================
 
 
+.. code-block:: sh
 
-.. code-block:: none
 
      Panasonic Laptop Extras (PANASONIC_LAPTOP) [N/m/y/?] (NEW) ?
    
    This driver adds support for access to backlight control and hotkeys
-   on Panasonic Let&#39;s Note laptops.
+   on Panasonic Let's Note laptops.
    
-   If you have a Panasonic Let&#39;s note laptop (such as the R1(N variant),
+   If you have a Panasonic Let's note laptop (such as the R1(N variant),
    R2, R3, R5, T2, W2 and Y2 series), say Y.
    
 
 
-これでLet&#39;s note R3でパッチ当てなくてもhotkeyやらが使えるようになるよ。
+これでLet's note R3でパッチ当てなくてもhotkeyやらが使えるようになるよ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

@@ -1,19 +1,23 @@
-﻿無線LANスポットの接続状況 #1
-##################################
+無線LANスポットの接続状況 #1
+============================
+
+本日は `Cafe Miyama 渋谷公園通り店 <http://www.ginza-renoir.co.jp/miyama/093.htm>`_ にて(18:40-)。昨日とは違い、快適。やはりマクドと違い、ゲームやる輩が少ないからなんだろうな。PC持ち込んでいる人も少ないが。電源も入り口近くで確保。ただし、Docomoは3Gの電波届かず。auは3本。
 
 
-本日はCafe Miyama 渋谷公園通り店にて(18:40-)。昨日とは違い、快適。やはりマクドと違い、ゲームやる輩が少ないからなんだろうな。PC持ち込んでいる人も少ないが。電源も入り口近くで確保。ただし、Docomoは3Gの電波届かず。auは3本。
+
 
 * mobilepoint ○
+
 * livedoor-web ○
+
 * FON_livedoor ○
 
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: network, 
 .. tags::
 .. comments::
-
-

@@ -1,26 +1,38 @@
-﻿ちょっと違う問題だった。
-########################
-
+ちょっと違う問題だった。
+========================
 
 CouchDB 0.10がリリースされたので一部界隈で盛り上がっているのだが、以前Debianで0.8.0をパッケージで入れただけになっているので、最新のtrunkを取得してコンパイルしてみることにした。
+
+
+
 CouchDBはSubversionで管理されているので、git-svnでローカルリポジトリを作成する。これもちろん常識だよね？
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ git svn clone https://svn.apache.org/repos/asf/couchdb/trunk couchdb
 
 
+
+
 足りないパッケージがあったらインストールしておくべし。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get install automake autoconf libtool help2man build-essential erlang \
     libicu-dev libmozjs-dev libcurl4-openssl-dev
 
 
+
+
 コンパイルする。変なところにインストールしたくないので、/opt/couchdbとか掘ってそこにインストールすることにしよう。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd couchdb
    $ sudo mkdir /opt/couchdb
@@ -29,19 +41,23 @@ CouchDBはSubversionで管理されているので、git-svnでローカルリ�
    (snip)
    /usr/bin/erlc   couch.erl;
    make[4]: *** [couch.beam] セグメンテーション違反です
-   make[4]: ディレクトリ `/home/kohei/devel/couchdb/src/couchdb&#39; から出ます
+   make[4]: ディレクトリ `/home/kohei/devel/couchdb/src/couchdb' から出ます
    make[3]: *** [all-recursive] エラー 1
-   make[3]: ディレクトリ `/home/kohei/devel/couchdb/src/couchdb&#39; から出ます
+   make[3]: ディレクトリ `/home/kohei/devel/couchdb/src/couchdb' から出ます
    make[2]: *** [all-recursive] エラー 1
-   make[2]: ディレクトリ `/home/kohei/devel/couchdb/src&#39; から出ます
+   make[2]: ディレクトリ `/home/kohei/devel/couchdb/src' から出ます
    make[1]: *** [all-recursive] エラー 1
-   make[1]: ディレクトリ `/home/kohei/devel/couchdb&#39; から出ます
+   make[1]: ディレクトリ `/home/kohei/devel/couchdb' から出ます
    make: *** [all] エラー 2
+
+
 
 
 なんと。couch.erlをコンパイルするところでこけてしまう。その後時間なくてそのままだったのだが、昨日の宴会ではErlangのバージョンが低いのでは？という話になり、確認してみた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ dpkg -l erlang
    Desired=Unknown/Install/Remove/Purge/Hold
@@ -54,53 +70,65 @@ CouchDBはSubversionで管理されているので、git-svnでローカルリ�
 
 13RB2だね。CouchDBの要件はというと、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ grep erlang README 
-    * Erlang OTP (=R12B5)    (http://erlang.org/)
+    * Erlang OTP (>=R12B5)    (http://erlang.org/)
 
 
 と、なっているので問題なさそうだ。
+
+
+
 じゃあどうすっかなぁと思っていたのだが、別の問題だったのでぶったまげた。何気なく、erlを実行してみたら、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ erl
    セグメンテーション違反です
 
 
 はい？！なんじゃこりゃ。
+
+
+
 straceをかけてみたら分かった。
 
-.. code-block:: none
+
+.. code-block:: console
+
 
    $ strace erl
    (snip)
-   lstat(/sys, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices/system, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices/system/node, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices/system/node/node0, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices/system/node/node0/cpu0, {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
-   readlink(/sys/devices/system/node/node0/cpu0, ../../cpu/cpu0, 4095) = 14
-   lstat(/sys/devices/system/cpu, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices/system/cpu/cpu0, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices/system/cpu/cpu0/topology, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices/system/cpu/cpu0/topology/core_id, {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
-   open(/sys/devices/system/cpu/cpu0/topology/core_id, O_RDONLY) = 5
-   read(5, 0\n, 50)                      = 2
-   read(5, , 48)                         = 0
+   lstat("/sys", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices/system", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices/system/node", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices/system/node/node0", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices/system/node/node0/cpu0", {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
+   readlink("/sys/devices/system/node/node0/cpu0", "../../cpu/cpu0", 4095) = 14
+   lstat("/sys/devices/system/cpu", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices/system/cpu/cpu0", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices/system/cpu/cpu0/topology", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices/system/cpu/cpu0/topology/core_id", {st_mode=S_IFREG|0444, st_size=4096, ...}) = 0
+   open("/sys/devices/system/cpu/cpu0/topology/core_id", O_RDONLY) = 5
+   read(5, "0\n", 50)                      = 2
+   read(5, "", 48)                         = 0
    close(5)                                = 0
-   lstat(/sys, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices/system, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices/system/node, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices/system/node/node0, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices/system/node/node0/cpu1, {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
-   readlink(/sys/devices/system/node/node0/cpu1, ../../cpu/cpu1, 4095) = 14
-   lstat(/sys/devices/system/cpu, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices/system/cpu/cpu1, {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
-   lstat(/sys/devices/system/cpu/cpu1/topology, 0x7fffbefe8e90) = -1 ENOENT (No such file or directory)
+   lstat("/sys", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices/system", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices/system/node", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices/system/node/node0", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices/system/node/node0/cpu1", {st_mode=S_IFLNK|0777, st_size=0, ...}) = 0
+   readlink("/sys/devices/system/node/node0/cpu1", "../../cpu/cpu1", 4095) = 14
+   lstat("/sys/devices/system/cpu", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices/system/cpu/cpu1", {st_mode=S_IFDIR|0755, st_size=0, ...}) = 0
+   lstat("/sys/devices/system/cpu/cpu1/topology", 0x7fffbefe8e90) = -1 ENOENT (No such file or directory)
    getdents(4, /* 0 entries */, 4096)      = 0
    close(4)                                = 0
    getdents(3, /* 0 entries */, 4096)      = 0
@@ -131,25 +159,33 @@ straceをかけてみたら分かった。
 
 SIGSEGVの前に、
 
-.. code-block:: none
 
-   lstat(/sys/devices/system/cpu/cpu1/topology, 0x7fffbefe8e90) = -1 ENOENT (No such file or directory)
+.. code-block:: console
+
+
+   lstat("/sys/devices/system/cpu/cpu1/topology", 0x7fffbefe8e90) = -1 ENOENT (No such file or directory)
 
 
 があるが、cpu0の場合と結果が違う。ワシのMacBookは、現在maxcpus=1をgrub2で指定して起動させている。指定しないと起動しないから問題に悩みつづけているからだが、おそらく原因はこれだなと思い、erlのsmpを無効にしてみた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ erl -smp disable
    Erlang R13B02 (erts-5.7.3) [source] [64-bit] [rq:1] [async-threads:0] [kernel-poll:false]
    
    Eshell V5.7.3  (abort with ^G)
-   1 
+   1> 
+
+
 
 
 ああ、やっぱり起動した。だからBTSでも報告されていないんだろうなぁ。でもこれは面倒なので、grubのオプションを変更してみた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    diff --git a/default/grub b/default/grub
    index ce041b5..28fe50e 100644
@@ -157,10 +193,10 @@ SIGSEGVの前に、
    +++ b/default/grub
    @@ -4,7 +4,7 @@ GRUB_DEFAULT=0
     GRUB_TIMEOUT=5
-    GRUB_DISTRIBUTOR=`lsb_release -i -s 2 /dev/null || echo Debian`
-    GRUB_CMDLINE_LINUX_DEFAULT=quiet
-   -GRUB_CMDLINE_LINUX=maxcpus=1
-   +GRUB_CMDLINE_LINUX=nosmp
+    GRUB_DISTRIBUTOR=`lsb_release -i -s 2> /dev/null || echo Debian`
+    GRUB_CMDLINE_LINUX_DEFAULT="quiet"
+   -GRUB_CMDLINE_LINUX="maxcpus=1"
+   +GRUB_CMDLINE_LINUX="nosmp"
     
     # Uncomment to disable graphical terminal (grub-pc only)
     #GRUB_TERMINAL=console
@@ -168,23 +204,29 @@ SIGSEGVの前に、
 
 これだと、
 
-.. code-block:: none
+
+.. code-block:: erlang
+
 
    $ erl
    Erlang R13B02 (erts-5.7.3) [source] [64-bit] [rq:1] [async-threads:0] [kernel-poll:false]
    
    Eshell V5.7.3  (abort with ^G)
-   1 
+   1> 
 
 
 で-smp disableオプションをつけなくても起動できる。
-一応BTSしておいたのだが、やり方がまずかったな。のだろうか。返信メールがこないなぁ。むろん登録されてない。なんでかなぁ。最初に送ったsubjectの指定を間違えたのまで登録されてる。retitleかスレッド自体を消すか何か必要？
 
 
 
-.. author:: mkouhei
+一応 `BTSしておいた <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=551342>`_ のだが、やり方がまずかったな。最初に送った `subjectの指定を間違えたのまで登録されてる <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=551343>`_ 。retitleかスレッド自体を消すか何か必要？
+
+
+
+
+
+
+.. author:: default
 .. categories:: Debian, CouchDB, MacBook, 
 .. tags::
 .. comments::
-
-

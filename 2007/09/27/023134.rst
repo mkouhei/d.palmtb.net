@@ -1,15 +1,16 @@
-﻿9月度社内勉強会。
-##################
-
+9月度社内勉強会。
+=================
 
 9月の社内勉強会を実施。先月からの3回連続でLinuxのネットワークのお話。今月は、NetfilterとTCP Wrappersでのアクセス制御。夏休みに資料作るつもりだったのに、結局直前の駆け込みの作成になってしまった。内容が内容だけに、短い時間で説明、というのは非常に難しい。
+
 id:z-ohnamiさんにMySQLの話をして頂いた。showコマンドは便利ですな～。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, meeting, 
 .. tags::
 .. comments::
-
-

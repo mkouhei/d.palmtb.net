@@ -1,10 +1,11 @@
-﻿グズグズしている間に…。
-########################
+グズグズしている間に…。
+========================
+
+`hobbitがDebianパッケージになってました <http://packages.debian.org/sid/hobbit>`_ …。orz
 
 
-hobbitがDebianパッケージになってました…。orz
+.. code-block:: sh
 
-.. code-block:: none
 
    $ apt-cache search hobbit
    hobbit - monitoring system for systems, networks and applications - server
@@ -13,13 +14,15 @@ hobbitがDebianパッケージになってました…。orz
 
 
 まあ、どのみちetchには入っていないので、自宅では自分用にパッケージしないとダメだけど。
-hobbit-pluginsのapt.cfgとlibs.cfgは気になるなぁ。自分でやるなら、hddtempと無線LANルータの監視スクリプトだけど。
+
+`hobbit-plugins <http://packages.debian.org/sid/all/hobbit-plugins/filelist>`_ のapt.cfgとlibs.cfgは気になるなぁ。自分でやるなら、hddtempと無線LANルータの監視スクリプトだけど。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

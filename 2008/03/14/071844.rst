@@ -1,14 +1,14 @@
-﻿しまった。
-##########
-
+しまった。
+==========
 
 ストライプのＹシャツにストライプのスーツにしちゃった。orz
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, work, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 仕事, 
 .. tags::
 .. comments::
-
-

@@ -1,20 +1,22 @@
-﻿仕事な人とかは
-##############
-
+仕事な人とかは
+==============
 
 こういうセミナー行くと良い。
 
-* 仮想化フォーラム2007
-* SUSE Linux導入のメリットと国内初Xen仮想化先進事例紹介セミナー
-* 「Xen」仮想マシン環境構築 ハンズオントレーニング～ 実習環境お持ち帰りOK ～
-* Transitive Technical Day 2007
+*  `仮想化フォーラム2007 <http://itpro.nikkeibp.co.jp/99/virtual07/forum/index.shtml>`_ 
+
+*  `SUSE Linux導入のメリットと国内初Xen仮想化先進事例紹介セミナー <http://www.novell.com/ja-jp/events/2007/20070228_1.html>`_ 
+
+*  `「Xen」仮想マシン環境構築 ハンズオントレーニング～ 実習環境お持ち帰りOK ～ <http://www.novell.com/ja-jp/events/2007/20070314_1.html>`_ 
+
+*  `Transitive Technical Day 2007 <http://www.networld.co.jp/seminar/2007/03transitiveday.htm>`_ 
 
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: virt., meeting, 
 .. tags::
 .. comments::
-
-

@@ -1,10 +1,11 @@
-﻿Armadillo-9自身でUSB-RS232Cを使ってみた。
-##############################################################
+Armadillo-9自身でUSB-RS232Cを使ってみた。
+=========================================
+
+ケーブル挿すと、USBデバイスとしては認識するんだけど、MacBook Airみたいに変換ケーブルというところまでは認識できない。認識できると下記のように''pl2303 converter''として認識できるんだけどな。OSCまでに使えるようにするのは…厳しいな。
 
 
-ケーブル挿すと、USBデバイスとしては認識するんだけど、MacBook Airみたいに変換ケーブルというところまでは認識できない。認識できると下記のように&#39;&#39;pl2303 converter&#39;&#39;として認識できるんだけどな。OSCまでに使えるようにするのは…厳しいな。
+.. code-block:: sh
 
-.. code-block:: none
 
    [29003.617894] usb 5-1: new full speed USB device using uhci_hcd and address 9
    [29003.764356] usb 5-1: configuration #1 chosen from 1 choice
@@ -19,9 +20,9 @@
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Unix/Linux, gadget, computer, 
 .. tags::
 .. comments::
-
-

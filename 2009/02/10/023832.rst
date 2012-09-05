@@ -1,14 +1,14 @@
-﻿Lenny化完了
-################
-
+Lenny化完了
+===========
 
 監視サーバを最後にアップグレードした。Hobbitの設定ファイルがかなり書き換わっていたので、手動で修正箇所を適用して完了。面倒だな。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, Ops, 
 .. tags::
 .. comments::
-
-

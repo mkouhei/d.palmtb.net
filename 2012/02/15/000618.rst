@@ -1,21 +1,23 @@
-﻿PowerDNSのSOAのMINIMUMを変更する。
-####################################################
-
+PowerDNSのSOAのMINIMUMを変更する。
+==================================
 
 PowerDNS 2.9.22でSOAレコードのMINIMUMのデフォルトは3600になっているので、どこで変更するのかと思ったら、pdns/common_startup.ccにハードコーディングされていました。
 
-.. code-block:: none
 
-      111    ::arg().set(soa-minimum-ttl,Default SOA mininum ttl)=3600;
+.. code-block:: c++
+
+
+      111    ::arg().set("soa-minimum-ttl","Default SOA mininum ttl")="3600";
 
 
 /etc/powerdns/pdns.confで、soa-minimum-ttl=xxxと任意の数値を設定してpdnsを再起動してやればOK。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, network, 
 .. tags::
 .. comments::
-
-

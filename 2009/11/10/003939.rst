@@ -1,27 +1,35 @@
-﻿法定点検。
-##########
-
+法定点検。
+==========
 
 そんな時しかatコマンドを使わない [#]_ ので、毎年この時期になるとmanマニュアル見ながら確認している。なので、メモ。
 
+
+
+
 物理マシン
-**************************
+----------
 
 
 停電前にshutdownすれば良いだけなので、こんな感じ。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo at 19:40 Nov 14
    warning: commands will be executed using /bin/sh
-   at shutdown -h now
-   at EOT
+   at> shutdown -h now
+   at> <EOT>
    job 2 at Sat Nov 14 19:40:00 2009
+
+
 
 
 ちなみに、atコマンドで実行されるジョブの実体はこうなってる。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo atq
    2       Sat Nov 14 19:40:00 2009 a root
@@ -44,30 +52,36 @@
    SUDO_UID=1111; export SUDO_UID
    SUDO_GID=11111; export SUDO_GID
    cd /home/hoge || {
-            echo &#39;Execution directory inaccessible&#39; 2
+            echo 'Execution directory inaccessible' >&2
             exit 1
    }
    shutdown -h now
 
 
 
+
+
 Linuxコンテナ用。
-******************************************
+-----------------
 
 
 コンテナが動いているマシンはいきなりshutdownするわけにはいかんので、lxc-stopで停止してやる必要がある。なので、次のようなスクリプトを用意した。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    (legal-inspection.sh)
    #!/bin/sh
    
    for i in `lxc-ls`
    do
-   if (lxc-info -n $i | grep -q RUNNING) then
-      echo -en $i\t:
+   if (lxc-info -n $i | grep -q "RUNNING") then
+      echo -en $i"\t:"
       lxc-stop -n $i
-      test $? -eq 0  echo stopping ok.
+      test $? -eq 0 && echo stopping ok.
       sleep 3
    fi
    done
@@ -78,28 +92,33 @@ Linuxコンテナ用。
 
 
 
+
+
+
 ジョブの登録は以下の通り。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo at -m 19:45 Dec 5
    warning: commands will be executed using /bin/sh
-   at bash ~/legal-inspection.sh
-   at EOT
+   at> bash ~/legal-inspection.sh
+   at> <EOT>
    job 3 at Sat Dec  5 19:45:00 2009
+
+
 
 
 これで来年からmanマニュアルをいちいち見ないで済むだろう。
 
 
 
-.. [#] ：cronで事足りる、という話もあるけれど、ちゃんと運用している場合はそれでもよい。でも、一人で運用している場合は、後でcronのエントリ消し忘れとかありうるので、1回きりのatが結構便利だったりする。
+
+.. [#] cronで事足りる、という話もあるけれど、ちゃんと運用している場合はそれでもよい。でも、一人で運用している場合は、後でcronのエントリ消し忘れとかありうるので、1回きりのatが結構便利だったりする。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, Ops, virt., 
 .. tags::
 .. comments::
-
-

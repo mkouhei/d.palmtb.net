@@ -1,14 +1,16 @@
-﻿HIPAAの資料が全然できん。
-##############################
-
+HIPAAの資料が全然できん。
+=========================
 
 こんなことで土曜のゼミに間に合うんだろうか…。
 
 
 
-.. author:: mkouhei
-.. categories:: life, security, 
+
+
+
+
+
+.. author:: default
+.. categories:: 生活, security, 
 .. tags::
 .. comments::
-
-

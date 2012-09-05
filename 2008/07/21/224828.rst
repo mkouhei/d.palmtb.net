@@ -1,10 +1,11 @@
-﻿Avahiって何だ？
-####################
+Avahiって何だ？
+===============
+
+ということで調べてみたら、Multicast DNSの実装がこれだったのか。MacBook Airの発熱がちときついので不要なプロセスは削除するですよ、ということでavahi-autoipdとlibavahi-\*を必要ないので削除、と思ったらekigaも削除されてしまうでないの。ekigaが依存していたのか…。仕方が無いので、ライブラリ関連は削除するのを勘弁してやった。
 
 
-ということで調べてみたら、Multicast DNSの実装がこれだったのか。MacBook Airの発熱がちときついので不要なプロセスは削除するですよ、ということでavahi-autoipdとlibavahi-*を必要ないので削除、と思ったらekigaも削除されてしまうでないの。ekigaが依存していたのか…。仕方が無いので、ライブラリ関連は削除するのを勘弁してやった。
+.. code-block:: sh
 
-.. code-block:: none
 
    $ sudo apt-get remove --purge avahi-autoipd  
    Reading package lists... Done
@@ -12,7 +13,7 @@
    Reading state information... Done
    The following packages were automatically installed and are no longer required:
      libdaemon0 libc-ares2 app-install-data libcurl3-gnutls libetpan13
-   Use &#39;apt-get autoremove&#39; to remove them.
+   Use 'apt-get autoremove' to remove them.
    The following packages will be REMOVED:
      avahi-autoipd*
    0 upgraded, 0 newly installed, 1 to remove and 1 not upgraded.
@@ -27,7 +28,9 @@
 
 これでこいつ↓が無くなったよ。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ ps -ef 
    (snip)
@@ -38,9 +41,9 @@
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, MacBook, 
 .. tags::
 .. comments::
-
-

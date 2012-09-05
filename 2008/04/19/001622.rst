@@ -1,40 +1,41 @@
-﻿xbacklight便利やな。
-##############################
+xbacklight便利やな。
+====================
 
+XOrg 7.3の `リリースノート <http://www.x.org/wiki/Releases/7.3>`_ を見て、xbacklightという、バックライトをコマンドで変更できるコマンドを知って、導入してみた。非常に便利ですな。Xfce4のデスクトップ上にアイコンとして置いておいた。
 
-XOrg 7.3のリリースノートを見て、xbacklightという、バックライトをコマンドで変更できるコマンドを知って、導入してみた。非常に便利ですな。Xfce4のデスクトップ上にアイコンとして置いておいた。
 
 * バックライトを１％にする。
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ xbacklight = 1
-
 
 
 * バックライトを１００％にする。
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ xbacklight = 100
-
 
 
 * ２０％暗くする。
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ xbacklight - 20
-
 
 
 * ２０％明るくする。
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ xbacklight + 20
 
@@ -42,9 +43,9 @@ XOrg 7.3のリリースノートを見て、xbacklightという、バックラ�
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

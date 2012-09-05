@@ -1,20 +1,21 @@
-﻿google-chrome-betaからchromium-browserに切り替えた。
-######################################################################################
+google-chrome-betaからchromium-browserに切り替えた。
+====================================================
 
 
+.. code-block:: sh
 
-.. code-block:: none
 
    $ sudo apt-get remove google-chrome
 
 
-とするだけでは、APT lineから&#34;http://dl.google.com stable/main&#34;は消えないようなので、手動で/etc/apt/sources.list.d/google-chrome.listを削除する必要があるようだ。
+とするだけでは、APT lineから"http://dl.google.com stable/main"は消えないようなので、手動で/etc/apt/sources.list.d/google-chrome.listを削除する必要があるようだ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

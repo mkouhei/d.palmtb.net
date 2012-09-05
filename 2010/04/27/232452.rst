@@ -1,10 +1,11 @@
-﻿毎日gcしてたら。
-##################
-
+毎日gcしてたら。
+================
 
 なんぞこれ？
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ git gc
    error: waitpid for pack-refs failed: No child processes
@@ -15,9 +16,10 @@ OOoのファイルを管理しているgitリポジトリでの出来事。サ�
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

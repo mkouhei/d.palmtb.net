@@ -1,14 +1,14 @@
-﻿OpenBlockS266 Debian Etch化
-####################################################
+OpenBlockS266 Debian Etch化
+===========================
+
+手順というほどで無いのだが、これ見れば出来るだろうという `メモ <http://www.palmtb.net/index.php?OBS266%20Debian%20Etch%B2%BD>`_ を残した。基本的にはSarge化と同じ。
 
 
-手順というほどで無いのだが、これ見れば出来るだろうというメモを残した。基本的にはSarge化と同じ。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Debian, Ops, gadget, 
 .. tags::
 .. comments::
-
-

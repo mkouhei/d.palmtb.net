@@ -1,19 +1,21 @@
-﻿Etchのamd64はダメだった。
-##################################
-
+Etchのamd64はダメだった。
+=========================
 
 DVDをダウンロードしてexpertモードでインストールを試みたところ、下記二点が問題で断念。
 
+
 * キー入力すると二回入力されたと判断されてしまう。
+
 * CD-ROMの検出とマウントで、MacBook Airの専用外部ドライブを認識できない。
 
 ダメだこりゃ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

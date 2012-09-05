@@ -1,14 +1,14 @@
-﻿効果有り。
-##########
+効果有り。
+==========
+
+昼間にちょっとチューニングしたら、 `かなり効果が出た <http://www.palmtb.net/index.php?Apache%A5%CF%A5%F3%A5%B0%A4%EB%A1%AA%A4%BD%A4%CE%A3%B3#z1fc5253>`_ ]。良かった良かった。
 
 
-昼間にちょっとチューニングしたら、かなり効果が出た。良かった良かった。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

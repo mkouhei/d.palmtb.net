@@ -1,14 +1,14 @@
-﻿DNSBLだろうか。
-####################
-
+DNSBLだろうか。
+===============
 
 MySQLからDBをSQLiteに換えてみたが、Instikiは相変わらず初回のロードが終わらず、DNSBLの処理中にタイムアウトしてしまう。mod_fcgidのタイムアウト時間を長くしても変わらない。もうちょっと調べてみるか。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

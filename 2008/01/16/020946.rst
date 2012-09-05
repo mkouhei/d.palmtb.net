@@ -1,14 +1,14 @@
-﻿結構キクぅ～。
-##############
-
+結構キクぅ～。
+==============
 
 Wii Fitが。予想以上にハード。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

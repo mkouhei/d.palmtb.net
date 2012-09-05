@@ -1,29 +1,36 @@
-﻿シェルスクリプトで日付を列挙する。
-##################################
-
+シェルスクリプトで日付を列挙する。
+==================================
 
 仕事で引きついた運用環境に、コピペで一日ずつ増やして対応するバッチがあったので、簡単なのを書いた。GNU dateコマンドおよびbashであることが前提。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    #!/bin/bash
    
    STARTDATE=20111226
    ENDDATE=20120105
    
-   DELTA=$((($(date -d $ENDDATE +%s)-$(date -d $STARTDATE +%s))/86400))
+   DELTA=$((($(date -d "$ENDDATE" +%s)-$(date -d "$STARTDATE" +%s))/86400))
    
    for i in $(seq 0 $DELTA)
    do
-           echo $(date -d $STARTDATE $i day +%Y%m%d)
+           echo $(date -d "$STARTDATE $i day" +%Y%m%d)
    done
    
    exit 0
 
 
+
+
 実行結果
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ ./datelist.sh 
    20111226
@@ -39,13 +46,16 @@
    20120105
 
 
+
+
 これで一歩コピペ地獄から抜けられた。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, Ops, 
 .. tags::
 .. comments::
-
-

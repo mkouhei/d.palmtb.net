@@ -1,69 +1,50 @@
-﻿あんどきゅめんてっどTonicDNS。
-######################################
-
+あんどきゅめんてっどTonicDNS。
+==============================
 
 私にもかつてPowerDNS用のAPIを、管理ツールとして以前導入したPowerDNS GUIを拡張して作ろうとしたことがありました [#]_ 。ですが、pdns guiは現状ではapplication/x-www-form-urlencoded形式でしかデータを受け付けないこと、特定のゾーンのレコードだけの登録、更新、削除などができないという仕様です [#]_ 。ですので、JSONで受け付けてやるようにして、特定のレコードだけ登録、更新、削除できるようにしようかとも考えました。が、pdns-guiはフレームワークとしてsymfony1.0を使っています。独自に拡張するとsymfony1.4もしくは2.0にバージョンアップした場合に追従するのがめんどいという問題があります [#]_ 。一方、自分でsymfony1.0から1.1→1.2→1.3→1.4、もしくはさらに2.0とアップデートするのは結構ハードルが高いので、いずれにしても微妙だなぁと思いつつも、PowerDNS GUIを拡張してAPIを作ることにしようかとtweetしたところ、TonicDNSは見てみた？
 
-.. image:: http://a2.twimg.com/profile_images/89825490/highres_slick_normal.png
+
+http://twitter.com/#!/Habbie/status/149074397200781312::
+
+   @mkouhei have you seen http://t.co/8ypJhzse ? 39 days ago
 
 
-.. image:: http://a2.twimg.com/profile_images/89825490/highres_slick_normal.png
+と教えてもらったので試してみることにしました [#]_ 。
 
 
-.. image:: http://a2.twimg.com/profile_images/89825490/highres_slick_normal.png
-
-
-.. image:: http://a2.twimg.com/profile_images/89825490/highres_slick_normal.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
- [#]_ 
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
-
-
-.. image:: http://images.ientrymail.com/socialditto/twitter-bird.png
 
 
 TonicDNSとは。
-******************************
+--------------
 
-Githubで公開されている、PowerDNS用のRESTful APIです。ロゴが結構かっこいいですね！TonicDNS自体は、tonicというRESTfulなWebアプリを書くためのPHPのライブラリ＆フレームワークを使っているようです [#]_ 。導入自体は、README.markdownのQuick Install Guideのとおりにすればできます。この導入途中で、初めてmpm-itkモジュールなんてあるのを知りました。DebianやUbuntuではapache2-mpm-itkパッケージを導入すれば使えます。
+
+`Github <https://github.com/Cysource/TonicDNS>`_ で公開されている、PowerDNS用のRESTful APIです。ロゴが結構かっこいいですね！TonicDNS自体は、 `tonic <https://github.com/peej/tonic>`_ というRESTfulなWebアプリを書くためのPHPのライブラリ＆フレームワークを使っているようです [#]_ 。導入自体は、README.markdownのQuick Install Guideのとおりにすればできます。この導入途中で、初めて `mpm-itk <http://mpm-itk.sesse.net/>`_ モジュールなんてあるのを知りました。DebianやUbuntuではapache2-mpm-itkパッケージを導入すれば使えます。
+
+
+
+
 
 
 さて使ってみよう…、アレ？
-**************************************************************************
+--------------------------
 
 
 上記のとおり、導入自体はあっさりできました。が、肝心の使い方については一切ドキュメントがありません！APIなのに使い方が分からんのでは使えんやないの…。ただし、ソースコードには結構コメントが書いてありますし、結構読みやすい＆分かりやすいコードです。ソース嫁ということなのでしょう。なので、実際にソースコードを読んで、使い方を調べてみました。
 
+
+
+
 ユーザを作成する。
-**************************************************
+------------------
 
 
 TonicDNSにはユーザ認証の仕組みがあります。しかしユーザ登録の仕組みはありません。ユーザ用のテーブルスキーマは下記のようになっていますが、
 
-.. code-block:: none
 
-   mysql desc users;
+.. code-block:: sh
+
+
+   mysql> desc users;
    +-------------+---------------+------+-----+---------+----------------+
    | Field       | Type          | Null | Key | Default | Extra          |
    +-------------+---------------+------+-----+---------+----------------+
@@ -81,23 +62,29 @@ TonicDNSにはユーザ認証の仕組みがあります。しかしユーザ登
 
 passwordのフォーマットがなんなのか分からないので困ってしまいます。lib/pdo_token_backend.phpを見ると、
 
-.. code-block:: none
 
-   lib/pdo_token_backend.php:              if (($result = $stat1-execute(array(:username = $token-username, :password = md5($token-password)))) !== false) {
+.. code-block:: sh
+
+
+   lib/pdo_token_backend.php:              if (($result = $stat1->execute(array(":username" => $token->username, ":password" => md5($token->password)))) !== false) {
 
 
 となっているので、パスワード文字列をmd5()処理してやります。なので、パスワードをdummypasswordとする場合には、
 
-.. code-block:: none
 
-   ?php
-   printf(%s\n, md5(dummypassword));
-   ?
+.. code-block:: sh
+
+
+   <?php
+   printf("%s\n", md5("dummypassword"));
+   ?>
 
 
 としてやり、phpコマンドで実行した結果である
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ php md5pw.php
    60da11eb799d6a8da47e5cd6e4aa2273
@@ -105,15 +92,21 @@ passwordのフォーマットがなんなのか分からないので困ってし
 
 をパスワード文字列としてusersテーブルにinsertしてやります。
 
-.. code-block:: none
 
-   mysql insert into users values (null,&#39;testuser&#39;,&#39;60da11eb799d6a8da47e5cd6e4aa2273&#39;,&#39;test user&#39;,&#39;testuser@example.org&#39;,&#39;test user&#39;,0,0);
+.. code-block:: sh
+
+
+   mysql> insert into users values (null,'testuser','60da11eb799d6a8da47e5cd6e4aa2273','test user','testuser@example.org','test user',0,0);
    Query OK, 1 row affected (0.00 sec)
+
+
 
 
 このあと、Tokenを作ります。Tokenの作成方法は、classes/AuthenticationResource.class.phpを見ると分かります。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
            /**
             * Corresponds to login.
@@ -121,18 +114,18 @@ passwordのフォーマットがなんなのか分からないので困ってし
             * Request:
             *
             * {
-            *      username: username,
-            *      password: password,
-            *      local_user: username
+            *      "username": <username>,
+            *      "password": <password>,
+            *      "local_user": <username>
             * }
             *
             * Response:
             *
             * {
-            *      username: string,
-            *      valid_until: int,
-            *      hash: string,
-            *      token: string
+            *      "username": <string>,
+            *      "valid_until": <int>,
+            *      "hash": <string>,
+            *      "token": <string>
             * }
             *
             * Errors:
@@ -147,20 +140,20 @@ passwordのフォーマットがなんなのか分からないので困ってし
            public function put($request) {
    (snip)
                    $token = new Token();
-                   $token-username = $data-username;
-                   $token-password = $data-password;
+                   $token->username = $data->username;
+                   $token->password = $data->password;
    
-                   $token = $this-backend-createToken($token);
+                   $token = $this->backend->createToken($token);
    
                    if ($token == null) {
-                           $response-code = Response::FORBIDDEN;
-                           $response-error = Username and/or password was invalid.;
+                           $response->code = Response::FORBIDDEN;
+                           $response->error = "Username and/or password was invalid.";
                            return $response;
                    }
    
-                   $response-code = Response::OK;
-                   $response-body = $token-toArray();
-                   $response-log_message = Token was successfully created.;
+                   $response->code = Response::OK;
+                   $response->body = $token->toArray();
+                   $response->log_message = "Token was successfully created.";
    
                    return $response;
            }
@@ -168,178 +161,216 @@ passwordのフォーマットがなんなのか分からないので困ってし
 
 まず、上記のコメントにある形式でJSONファイルを作成します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    {
-           username: testuser,
-           password: dummypassword,
-           local_user: testuser
+           "username": "testuser",
+           "password": "dummypassword",
+           "local_user": "testuser"
    }
 
 
 これを/authenticateにPUTメソッドで送信します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ curl -k -X PUT https://localhost/authenticate -d @./testuser.json
-   {username:testuser,valid_until:1327146727,hash:5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1,token:5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1}
+   {"username":"testuser","valid_until":1327146727,"hash":"5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1","token":"5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1"}
+
+
 
 
 コメントの期待値のレスポンスが返りましたね。これでTokenの登録ができました。なお、このTokenはしばらくすると無効になるので、リクエスト前に必ず実行するようにすると良いでしょう [#]_ 。
 
 
+
+
+
+
 tokenの使い方。
-************************************
+---------------
 
 
 tokenの使い方はコメントには一切書いていませんが、lib/tonic.phpの下記の部分を見ると分かります。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
            // get HTTP request type
            $raw_headers = array();
-           if (function_exists(apache_request_headers)) {
+           if (function_exists("apache_request_headers")) {
                    $raw_headers = apache_request_headers();
-           } else if (function_exists(nsapi_request_headers)) {
+           } else if (function_exists("nsapi_request_headers")) {
                    $raw_headers = nsapi_request_headers();
            }
-           foreach ($raw_headers as $k = $h) {
+           foreach ($raw_headers as $k => $h) {
                    switch (strtolower($k)) {
-                   case content-type:
-                           $this-requestType = $h;
+                   case "content-type":
+                           $this->requestType = $h;
                            break;
-                   case x-authentication-token:
-                           $this-requestToken = $h;
+                   case "x-authentication-token":
+                           $this->requestToken = $h;
                            break;
                    }
            }
 
 
-curlコマンドを使う場合は、-H &#34;x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1&#34;とすれば、Tokenを渡す事ができます。
+curlコマンドを使う場合は、-H "x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1"とすれば、Tokenを渡す事ができます。
+
+
+
 
 ゾーンの参照。
-**************************************
+--------------
 
 
 ゾーンの取得は、/zone/:identifierでGETメソッドで取得します。:itentifierにはドメインを指定します。test.localドメインが既に登録されている場合、下記のように実行します。
 
-.. code-block:: none
 
-   $ curl -s -k -H x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1 -X GET https://localhost/zone/test.local | sed &#39;
+.. code-block:: sh
+
+
+   $ curl -s -k -H "x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1" -X GET https://localhost/zone/test.local | sed '
    s/\[{/\[\n{/g
    s/},{/},\n{/g
-   &#39;
-   {name:test.local,type:MASTER,notified_serial:2012011801,records:[
-   {name:ns.test.local,type:A,content:192.168.0.10,ttl:86400,priority:null},
-   {name:ns2.test.local,type:A,content:192.168.0.11,ttl:86400,priority:null},
-   {name:test.local,type:SOA,content:ns.test.local hostmaster.test.local 2012011801,ttl:86400,priority:null},
-   {name:test.local,type:NS,content:ns.test.local,ttl:86400,priority:null},
-   {name:test.local,type:NS,content:ns2.test.local,ttl:86400,priority:null},
-   {name:test.local,type:MX,content:mx.test.local,ttl:86400,priority:0},
-   {name:test.local,type:MX,content:mx2.test.local,ttl:86400,priority:10},
-   {name:www.test.local,type:A,content:192.168.0.1,ttl:86400,priority:null}]}
+   '
+   {"name":"test.local","type":"MASTER","notified_serial":"2012011801","records":[
+   {"name":"ns.test.local","type":"A","content":"192.168.0.10","ttl":"86400","priority":null},
+   {"name":"ns2.test.local","type":"A","content":"192.168.0.11","ttl":"86400","priority":null},
+   {"name":"test.local","type":"SOA","content":"ns.test.local hostmaster.test.local 2012011801","ttl":"86400","priority":null},
+   {"name":"test.local","type":"NS","content":"ns.test.local","ttl":"86400","priority":null},
+   {"name":"test.local","type":"NS","content":"ns2.test.local","ttl":"86400","priority":null},
+   {"name":"test.local","type":"MX","content":"mx.test.local","ttl":"86400","priority":"0"},
+   {"name":"test.local","type":"MX","content":"mx2.test.local","ttl":"86400","priority":"10"},
+   {"name":"www.test.local","type":"A","content":"192.168.0.1","ttl":"86400","priority":null}]}
+
+
+
 
 
 
 
 レコードの登録。
-********************************************
+----------------
 
 
 すでに登録済みのゾーンに対しレコードを登録する場合には、下記のようなJSONファイルを用意します。
 
-.. code-block:: none
 
-   {records: [
-   { name: mx.test.local, type: A, content: 11.11.11.11 },
-   { name: mx2.test.local, type: A, content: 11.11.11.12 },
-   { name: test.local, type: MX, content: mx3.test.local, priority: 30 },
-   { name: mx3.test.local, type: A, content: 11.11.11.13 }]}
+.. code-block:: sh
+
+
+   {"records": [
+   { "name": "mx.test.local", "type": "A", "content": "11.11.11.11" },
+   { "name": "mx2.test.local", "type": "A", "content": "11.11.11.12" },
+   { "name": "test.local", "type": "MX", "content": "mx3.test.local", "priority": 30 },
+   { "name": "mx3.test.local", "type": "A", "content": "11.11.11.13" }]}
 
 
 これを/zone/:identifierに対しPUTメソッドで送信します。
 
-.. code-block:: none
 
-   $ curl -s -k -H x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1 -X PUT https://localhost/zone/test.local -d @./add_record.json
+.. code-block:: sh
+
+
+   $ curl -s -k -H "x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1" -X PUT https://localhost/zone/test.local -d @./add_record.json
    true
+
+
 
 
 レコード情報を取得すると登録されていることが分かります。
 
-.. code-block:: none
 
-   {name:test.local,type:MASTER,notified_serial:2012011801,records:[
-   {name:mx.test.local,type:A,content:11.11.11.11,ttl:86400,priority:0,change_date:1327755951},
-   {name:mx2.test.local,type:A,content:11.11.11.12,ttl:86400,priority:0,change_date:1327755951},
-   {name:mx3.test.local,type:A,content:11.11.11.13,ttl:86400,priority:0,change_date:1327755951},
-   {name:ns.test.local,type:A,content:192.168.0.10,ttl:86400,priority:null},
-   {name:ns2.test.local,type:A,content:192.168.0.11,ttl:86400,priority:null},
-   {name:test.local,type:SOA,content:ns.test.local hostmaster.test.local 2012011801,ttl:86400,priority:null},
-   {name:test.local,type:NS,content:ns.test.local,ttl:86400,priority:null},
-   {name:test.local,type:NS,content:ns2.test.local,ttl:86400,priority:null},
-   {name:test.local,type:MX,content:mx.test.local,ttl:86400,priority:0},
-   {name:test.local,type:MX,content:mx2.test.local,ttl:86400,priority:10},
-   {name:test.local,type:MX,content:mx3.test.local,ttl:86400,priority:30,change_date:1327755951},
-   {name:www.test.local,type:A,content:192.168.0.1,ttl:86400,priority:null}]}
+.. code-block:: sh
+
+
+   {"name":"test.local","type":"MASTER","notified_serial":"2012011801","records":[
+   {"name":"mx.test.local","type":"A","content":"11.11.11.11","ttl":"86400","priority":"0","change_date":"1327755951"},
+   {"name":"mx2.test.local","type":"A","content":"11.11.11.12","ttl":"86400","priority":"0","change_date":"1327755951"},
+   {"name":"mx3.test.local","type":"A","content":"11.11.11.13","ttl":"86400","priority":"0","change_date":"1327755951"},
+   {"name":"ns.test.local","type":"A","content":"192.168.0.10","ttl":"86400","priority":null},
+   {"name":"ns2.test.local","type":"A","content":"192.168.0.11","ttl":"86400","priority":null},
+   {"name":"test.local","type":"SOA","content":"ns.test.local hostmaster.test.local 2012011801","ttl":"86400","priority":null},
+   {"name":"test.local","type":"NS","content":"ns.test.local","ttl":"86400","priority":null},
+   {"name":"test.local","type":"NS","content":"ns2.test.local","ttl":"86400","priority":null},
+   {"name":"test.local","type":"MX","content":"mx.test.local","ttl":"86400","priority":"0"},
+   {"name":"test.local","type":"MX","content":"mx2.test.local","ttl":"86400","priority":"10"},
+   {"name":"test.local","type":"MX","content":"mx3.test.local","ttl":"86400","priority":"30","change_date":"1327755951"},
+   {"name":"www.test.local","type":"A","content":"192.168.0.1","ttl":"86400","priority":null}]}
 
 
 MXとSRVレコード以外はpriorityは必要ありませんが、上記のように指定しなかった場合、conf/database.conf.phpでconst DNS_DEFAULT_RECORD_PRIORITYにデフォルト値として設定されている0が登録されます。0ではなく、nullを設定しておくとprirityはnullになります。が、これはまた現時点ではこうしてしまうと次に説明するレコードの削除のときに問題になります。
 
 
+
+
+
+
 レコードの削除。
-********************************************
+----------------
 
 
 test.localゾーンのレコードの削除を行うためには、次のようなJSONを用意します。
 
-.. code-block:: none
 
-   { name: test.local, records: [
-   { name: test.local, type: MX, content: mx3.test.local, priority: 30 },
-   { name: mx.test.local, type: A, content: 11.11.11.11 },
-   { name: mx2.test.local, type: A, content: 11.11.11.12 },
-   { name: mx3.test.local, type: A, content: 11.11.11.13} ]}
+.. code-block:: sh
+
+
+   { "name": "test.local", "records": [
+   { "name": "test.local", "type": "MX", "content": "mx3.test.local", "priority": 30 },
+   { "name": "mx.test.local", "type": "A", "content": "11.11.11.11" },
+   { "name": "mx2.test.local", "type": "A", "content": "11.11.11.12" },
+   { "name": "mx3.test.local", "type": "A", "content": "11.11.11.13"} ]}
 
 
 これを/zone/に対しDELETEメソッドで送信します。
 
-.. code-block:: none
 
-   $ curl -s -k -H x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1 -X DELETE https://localhost/zone/ -d @./delete_record.json
+.. code-block:: sh
+
+
+   $ curl -s -k -H "x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1" -X DELETE https://localhost/zone/ -d @./delete_record.json
    true
 
 
 この実行結果はtrueが返ってきます。ところが、上記で削除できるのは一番最初のMXレコードだけです。他の3つは、priorityを指定していないため、レコードの削除ができないのです。
 
-.. code-block:: none
 
-           public function delete_records($response, $identifier, $data, $out = null) {
+.. code-block:: sh
+
+
+           public function delete_records($response, $identifier, $data, &$out = null) {
    (snip)
-                   $statement = $connection-prepare(sprintf(
-                           DELETE FROM `%s` WHERE name = :name AND type = :type AND prio = :priority AND content = :content;, PowerDNSConfig::DB_RECORD_TABLE
+                   $statement = $connection->prepare(sprintf(
+                           "DELETE FROM `%s` WHERE name = :name AND type = :type AND prio = :priority AND content = :content;", PowerDNSConfig::DB_RECORD_TABLE
                    ));
    
-                   $statement-bindParam(:name, $r_name);
-                   $statement-bindParam(:type, $r_type);
-                   $statement-bindParam(:content, $r_content);
-                   $statement-bindParam(:priority, $r_prio);
+                   $statement->bindParam(":name", $r_name);
+                   $statement->bindParam(":type", $r_type);
+                   $statement->bindParam(":content", $r_content);
+                   $statement->bindParam(":priority", $r_prio);
    
-                   foreach ($data-records as $record) {
-                           if (!isset($record-name) || !isset($record-type) || !isset($record-priority) || !isset($record-content)) {
+                   foreach ($data->records as $record) {
+                           if (!isset($record->name) || !isset($record->type) || !isset($record->priority) || !isset($record->content)) {
                                    continue;
                            }
    
-                           $r_name = $record-name;
-                           $r_type = $record-type;
-                           $r_content = $record-content;
-                           $r_prio = $record-priority;
+                           $r_name = $record->name;
+                           $r_type = $record->type;
+                           $r_content = $record->content;
+                           $r_prio = $record->priority;
    
-                           if ($statement-execute() === false) {
-                                   $response-code = Response::INTERNALSERVERERROR;
-                                   $response-error = sprintf(Rolling back transaction, failed to delete zone record - name: &#39;%s&#39;, type: &#39;%s&#39;, prio: &#39;%s&#39;, $r_name, $r_type, $r_prio);
+                           if ($statement->execute() === false) {
+                                   $response->code = Response::INTERNALSERVERERROR;
+                                   $response->error = sprintf("Rolling back transaction, failed to delete zone record - name: '%s', type: '%s', prio: '%s'", $r_name, $r_type, $r_prio);
    
-                                   $connection-rollback();
+                                   $connection->rollback();
                                    $out = false;
    
                                    return $response;
@@ -350,36 +381,46 @@ test.localゾーンのレコードの削除を行うためには、次のよう�
 上記のとおり、レコード単位ではpriorityが設定されていない場合には処理がスキップされるだけでエラーにはならないためです。TonicDNSだけでPowerDNSを使うのなら問題ないかもしれませんが、他の管理ツールと一緒に使う場合は、ここは不整合が生じるのでパッチを作成中です [#]_ 。
 
 
+
+
+
+
 レコードの更新。
-********************************************
+----------------
 
 
 残念ながら現時点でレコードの更新は未実装のためできません。
 
 
+
+
+
+
 テンプレートの作成。
-********************************************************
+--------------------
 
 
 ゾーンの登録と行きたいところですが、ゾーンの作成には元にするテンプレートが必要です。テンプレートの作成には、下記のようなJSONを用意します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    {
-        identifier: sample1,
-        description: sample template,
-        entries: [ {
-              name: test2.local,
-              type: NS,
-              content: ns.test2.local,
-              ttl: 86400,
-              priority: 0
+        "identifier": "sample1",
+        "description": "sample template",
+        "entries": [ {
+              "name": "test2.local",
+              "type": "NS",
+              "content": "ns.test2.local",
+              "ttl": 86400,
+              "priority": 0
         },{
-              name: ns.test2.local,
-              type: A,
-              content: 10.10.10.1,
-              ttl: 86400,
-              priority: 0
+              "name": "ns.test2.local",
+              "type": "A",
+              "content": "10.10.10.1",
+              "ttl": 86400,
+              "priority": 0
         }
    ]
    }
@@ -387,75 +428,90 @@ test.localゾーンのレコードの削除を行うためには、次のよう�
 
 これを/template/:identifierにPUTメソッドで送信します。
 
-.. code-block:: none
 
-   $ curl -s -k -H x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1 -X PUT https://localhost/template/sample1 -d @&#39;./create_template.json
+.. code-block:: sh
+
+
+   $ curl -s -k -H "x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1" -X PUT https://localhost/template/sample1 -d @'./create_template.json
    true
 
 
 
+
+
 テンプレートの参照。
-********************************************************
+--------------------
 
 
 テンプレートの参照は、/template/にGETメソッドでアクセスします。
 
-.. code-block:: none
 
-   $ curl -s -k -H x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1 -X GET https://localhost/template/ 
+.. code-block:: sh
+
+
+   $ curl -s -k -H "x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1" -X GET https://localhost/template/ 
    [
-   {identifier:sample1,entries:[
-   {name:test2.local,type:NS,content:ns.test2.local,ttl:86400,priority:0},
-   {name:ns.test2.local,type:A,content:10.10.10.1,ttl:86400,priority:0}],description:sample template}]
+   {"identifier":"sample1","entries":[
+   {"name":"test2.local","type":"NS","content":"ns.test2.local","ttl":"86400","priority":"0"},
+   {"name":"ns.test2.local","type":"A","content":"10.10.10.1","ttl":"86400","priority":"0"}],"description":"sample template"}]
 
 
 複数ある場合は列挙されます。
+
+
+
 特定のテンプレートだけを表示する場合には、/template/:identifierをGETメソッドでアクセスします。
 
-.. code-block:: none
 
-   $ curl -s -k -H x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1 -X GET https://localhost/template/sample1
-   {identifier:sample1,entries:[
-   {name:test2.local,type:NS,content:ns.test2.local,ttl:86400,priority:0},
-   {name:ns.test2.local,type:A,content:10.10.10.1,ttl:86400,priority:0}],description:sample template}
+.. code-block:: sh
+
+
+   $ curl -s -k -H "x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1" -X GET https://localhost/template/sample1
+   {"identifier":"sample1","entries":[
+   {"name":"test2.local","type":"NS","content":"ns.test2.local","ttl":"86400","priority":"0"},
+   {"name":"ns.test2.local","type":"A","content":"10.10.10.1","ttl":"86400","priority":"0"}],"description":"sample template"}
+
+
 
 
 
 テンプレートの更新。
-********************************************************
+--------------------
 
 
 先ほどの作成したテンプレートを更新してみましょう。まず、下記のような一部変更したJSONを用意します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    {
-        identifier: sample1,
-        description: sample template,
-        entries: [ {
-              name: test2.local,
-              type: NS,
-              content: ns.test2.local,
-              ttl: 86400,
-              priority: 0
+        "identifier": "sample1",
+        "description": "sample template",
+        "entries": [ {
+              "name": "test2.local",
+              "type": "NS",
+              "content": "ns.test2.local",
+              "ttl": 86400,
+              "priority": 0
         },{
-              name: ns.test2.local,
-              type: A,
-              content: 10.10.10.2,
-              ttl: 86400,
-              priority: 0
+              "name": "ns.test2.local",
+              "type": "A",
+              "content": "10.10.10.2",
+              "ttl": 86400,
+              "priority": 0
         },{
-              name: test2.local,
-              type: A,
-              content: 10.10.10.1,
-              ttl: 86400,
-              priority: 0
+              "name": "test2.local",
+              "type": "A",
+              "content": "10.10.10.1",
+              "ttl": 86400,
+              "priority": 0
         },{
-              name: test2.local,
-              type: SOA,
-              content: ns.test2.local hostmaster.test2.local 2012012901 10800 3600 604800 3600,
-              ttl: 86400,
-              priority: 0
+              "name": "test2.local",
+              "type": "SOA",
+              "content": "ns.test2.local hostmaster.test2.local 2012012901 10800 3600 604800 3600",
+              "ttl": 86400,
+              "priority": 0
         }
    ]
    }
@@ -463,148 +519,191 @@ test.localゾーンのレコードの削除を行うためには、次のよう�
 
 これを/template/:identifierにPOSTメソッドで送信します。
 
-.. code-block:: none
 
-   $ curl -s -k -H x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1 -X POST https://localhost/template/sample1 -d @./update_template.json
+.. code-block:: sh
+
+
+   $ curl -s -k -H "x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1" -X POST https://localhost/template/sample1 -d @./update_template.json
    true
+
+
 
 
 テンプレートを参照しなおしてみると、更新できていることが確認できます。
 
-.. code-block:: none
 
-   {identifier:sample1,entries:[
-   {name:test2.local,type:NS,content:ns.test2.local,ttl:86400,priority:0},
-   {name:ns.test2.local,type:A,content:10.10.10.2,ttl:86400,priority:0},
-   {name:test2.local,type:A,content:10.10.10.1,ttl:86400,priority:0},
-   {name:test2.local,type:SOA,content:ns.test2.local hostmaster.test2.local 2012012901 10800 3600 604800 3600,ttl:86400,priority:0}],description:sample template}
+.. code-block:: sh
+
+
+   {"identifier":"sample1","entries":[
+   {"name":"test2.local","type":"NS","content":"ns.test2.local","ttl":"86400","priority":"0"},
+   {"name":"ns.test2.local","type":"A","content":"10.10.10.2","ttl":"86400","priority":"0"},
+   {"name":"test2.local","type":"A","content":"10.10.10.1","ttl":"86400","priority":"0"},
+   {"name":"test2.local","type":"SOA","content":"ns.test2.local hostmaster.test2.local 2012012901 10800 3600 604800 3600","ttl":"86400","priority":"0"}],"description":"sample template"}
+
+
+
 
 
 
 
 テンプレートの削除。
-********************************************************
+--------------------
 
 
 これは/template/:identifierにDELETEメソッドを送信するだけです。
 
-.. code-block:: none
 
-   $ curl -s -k -H x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1 -X DELETE https://localhost/template/sample1
+
+
+.. code-block:: sh
+
+
+   $ curl -s -k -H "x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1" -X DELETE https://localhost/template/sample1
    true
 
 
 
 
+
+
+
 ゾーンの登録。
-**************************************
+--------------
 
 
 さて、テンプレートが用意できたので、ゾーンを登録してみます。まず、次にようなJSONを用意します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    {
-   name: test2.local,
-   type: MASTER,
-   master: null,
-   templates: [{
-           identifier: sample1
+   "name": "test2.local",
+   "type": "MASTER",
+   "master": null,
+   "templates": [{
+           "identifier": "sample1"
    }],
-   records: [{
-   name: moge.test2.local,
-   type: A,
-   content: 11.11.11.11
+   "records": [{
+   "name": "moge.test2.local",
+   "type": "A",
+   "content": "11.11.11.11"
    }]
    }
 
 
 これを/zone/にPUTメソッドで送信します。
 
-.. code-block:: none
 
-   $ curl -s -k -H x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1 -X PUT https://localhost/zone/ -d@./create_zone.json
+.. code-block:: sh
+
+
+   $ curl -s -k -H "x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1" -X PUT https://localhost/zone/ -d@./create_zone.json
    true
+
+
 
 
 ゾーンを参照してみると、登録できていることが確認できます。
 
-.. code-block:: none
 
-   $ curl -s -k -H x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1 -X GET https://localhost/zone/test2.local
-   {name:test2.local,type:MASTER,notified_serial:2012012901,records:[
-   {name:moge.test2.local,type:A,content:11.11.11.11,ttl:86400,priority:null,change_date:1327768827},
-   {name:ns.test2.local,type:A,content:10.10.10.2,ttl:86400,priority:0,change_date:1327768827},
-   {name:test2.local,type:SOA,content:ns.test2.local hostmaster.test2.local 2012012901 10800 3600 604800 3600,ttl:86400,priority:0,change_date:1327768827},
-   {name:test2.local,type:NS,content:ns.test2.local,ttl:86400,priority:0,change_date:1327768827},
-   {name:test2.local,type:A,content:10.10.10.1,ttl:86400,priority:0,change_date:1327768827}]}
+.. code-block:: sh
+
+
+   $ curl -s -k -H "x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1" -X GET https://localhost/zone/test2.local
+   {"name":"test2.local","type":"MASTER","notified_serial":"2012012901","records":[
+   {"name":"moge.test2.local","type":"A","content":"11.11.11.11","ttl":"86400","priority":null,"change_date":"1327768827"},
+   {"name":"ns.test2.local","type":"A","content":"10.10.10.2","ttl":"86400","priority":"0","change_date":"1327768827"},
+   {"name":"test2.local","type":"SOA","content":"ns.test2.local hostmaster.test2.local 2012012901 10800 3600 604800 3600","ttl":"86400","priority":"0","change_date":"1327768827"},
+   {"name":"test2.local","type":"NS","content":"ns.test2.local","ttl":"86400","priority":"0","change_date":"1327768827"},
+   {"name":"test2.local","type":"A","content":"10.10.10.1","ttl":"86400","priority":"0","change_date":"1327768827"}]}
+
+
+
 
 
 
 
 ゾーンの更新。
-**************************************
+--------------
 
 
 ゾーンの更新は、MASTER, SLAVE, NATIVEへの変更ができます。SLAVEに変更するときは、PowerDNSの仕様として、masterにmasterサーバのIPアドレスを指定する必要があります。変更するためには、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    {
-      name: test2.local,
-      type: SLAVE,
-      master: 10.10.10.1
+      "name": "test2.local",
+      "type": "SLAVE",
+      "master": "10.10.10.1"
    }
 
 
 という感じのJSONを用意し、/zone/:identifierにPOSTメソッドで送信すれば良いはずです。ただし、PowerDNS自体の設定にも依存するので、PowerDNSの設定がmasterサーバなのにゾーンはSLAVEにする、という処理は失敗します [#]_ 。
 
 
+
+
+
+
 ゾーンの削除。
-**************************************
+--------------
 
 
 ゾーンの削除は/zone/:identifierにDELETEメソッドを送信します。
 
-.. code-block:: none
 
-   $ curl -s -k -H x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1 -X DELETE https://localhost/zone/test.local
+.. code-block:: sh
+
+
+   $ curl -s -k -H "x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1" -X DELETE https://localhost/zone/test.local
    true
 
 
 
+
+
 まとめ。
-********************
+--------
 
 
 とりあえず、現状ではレコードの登録、参照、削除ができるので、最低限やりたいことはできそうです。ですが、
 
 * 使い方のドキュメントが無い
+
 * レコードの更新ができない
+
 * MX, SRVレコード以外のレコード登録にpriorityが設定されるのはイケてない
+
 * ユーザ作成ができない
+
 * レコード更新してもSOAレコードのserialが更新されない
 
 といった問題は不便なので、パッチ書いてgit format-patchで送付しようと思います。 [#]_ 
+
+
+
 あとは独自要件として、PowerDNS GUIとの整合性を取るためにautitテーブルの更新も行う必要があるので、その辺のパッチも作らなくてはですね。
 
 
 
-.. [#] ：私にも、というかワシだけだろう…
-.. [#] ：ゾーンに登録されているレコードを全部変更する、というのは可能です
-.. [#] ：ただ、upstreamでは開発止まっているんじゃないかなぁ…。
-.. [#] ：pdns-gui自体は、APIが無いことを除けば、現状必要な管理ツールとしての要件としては満たしているので変更したくない、ということも試してみようかと思った理由の一つです。
-.. [#] ：なので、TonicDNS自体もまたPHPで書かれています…。まぁ、ええわ。
-.. [#] ：無効になるタイミングは、ユーザ作成時のパラメータに依ります。
-.. [#] ：ちなみに、以前ブログでも書いたPowerDNS GUIの場合は、MX, SRVレコード以外ではpriorityはnullになります。
-.. [#] ：それだけ確認済み
-.. [#] ：Githubだからpull requestとか使うんかな。まぁformat-patchでええやろ。
 
 
+.. [#] 私にも、というかワシだけだろう…
+.. [#] ゾーンに登録されているレコードを全部変更する、というのは可能です
+.. [#] ただ、upstreamでは開発止まっているんじゃないかなぁ…。
+.. [#] pdns-gui自体は、APIが無いことを除けば、現状必要な管理ツールとしての要件としては満たしているので変更したくない、ということも試してみようかと思った理由の一つです。
+.. [#] なので、TonicDNS自体もまたPHPで書かれています…。まぁ、ええわ。
+.. [#] 無効になるタイミングは、ユーザ作成時のパラメータに依ります。
+.. [#] ちなみに、以前ブログでも書いたPowerDNS GUIの場合は、MX, SRVレコード以外ではpriorityはnullになります。
+.. [#] それだけ確認済み
+.. [#] Githubだからpull requestとか使うんかな。まぁformat-patchでええやろ。
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Dev, 
 .. tags::
 .. comments::
-
-

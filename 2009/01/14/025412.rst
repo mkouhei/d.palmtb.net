@@ -1,87 +1,77 @@
-﻿新婚旅行６日目　帰国日
-######################
-
+新婚旅行６日目　帰国日
+======================
 
 スタバで朝食を取りながら、鳥と戯れる。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111090325.jpg
-   :alt: f:id:mkouhei:20090111090325j:image
+
+.. image:: /img/20090111090325.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111090347.jpg
-   :alt: f:id:mkouhei:20090111090347j:image
+.. image:: /img/20090111090347.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111090512.jpg
-   :alt: f:id:mkouhei:20090111090512j:image
+.. image:: /img/20090111090512.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111090613.jpg
-   :alt: f:id:mkouhei:20090111090613j:image
+.. image:: /img/20090111090613.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111090704.jpg
-   :alt: f:id:mkouhei:20090111090704j:image
+.. image:: /img/20090111090704.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111090734.jpg
-   :alt: f:id:mkouhei:20090111090734j:image
+.. image:: /img/20090111090734.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111090713.jpg
-   :alt: f:id:mkouhei:20090111090713j:image
+.. image:: /img/20090111090713.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111091852.jpg
-   :alt: f:id:mkouhei:20090111091852j:image
+.. image:: /img/20090111091852.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111091655.jpg
-   :alt: f:id:mkouhei:20090111091655j:image
+.. image:: /img/20090111091655.jpg
 
 ホノルル空港にて。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111120010.jpg
-   :alt: f:id:mkouhei:20090111120010j:image
+
+.. image:: /img/20090111120010.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111123310.jpg
-   :alt: f:id:mkouhei:20090111123310j:image
+.. image:: /img/20090111123310.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111123528.jpg
-   :alt: f:id:mkouhei:20090111123528j:image
+.. image:: /img/20090111123528.jpg
 
 飛行機から。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111151232.jpg
-   :alt: f:id:mkouhei:20090111151232j:image
+
+.. image:: /img/20090111151232.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111151245.jpg
-   :alt: f:id:mkouhei:20090111151245j:image
+.. image:: /img/20090111151245.jpg
 
 成田空港到着。日本は寒い。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111221350.jpg
-   :alt: f:id:mkouhei:20090111221350j:image
+
+.. image:: /img/20090111221350.jpg
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090111/20090111221400.jpg
-   :alt: f:id:mkouhei:20090111221400j:image
+.. image:: /img/20090111221400.jpg
 
 この荷物の量！　次回はおみやげなしの旅行にしたいですな。お疲れさまでした。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090112/20090112194356.jpg
-   :alt: f:id:mkouhei:20090112194356j:image
+
+.. image:: /img/20090112194356.jpg
+
+
 
 この旅行の間、パソコンは家計簿つけるためにしか使わなかったなぁ…。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: 
 .. tags::
 .. comments::
-
-

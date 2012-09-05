@@ -1,71 +1,60 @@
-﻿眠いので。
-##########
-
+眠いので。
+==========
 
 文章考えるのが面倒なので、取り合えず眠そうなこまめを色々と。
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090810/20090810005100.png
-   :alt: f:id:mkouhei:20090810005100p:image
+
+.. image:: /img/20090810005100.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090814/20090814005217.png
-   :alt: f:id:mkouhei:20090814005217p:image
+.. image:: /img/20090814005217.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090814/20090814005218.png
-   :alt: f:id:mkouhei:20090814005218p:image
+.. image:: /img/20090814005218.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090814/20090814005224.png
-   :alt: f:id:mkouhei:20090814005224p:image
+.. image:: /img/20090814005224.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090814/20090814005223.png
-   :alt: f:id:mkouhei:20090814005223p:image
+.. image:: /img/20090814005223.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090814/20090814005234.png
-   :alt: f:id:mkouhei:20090814005234p:image
+.. image:: /img/20090814005234.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090814/20090814005236.png
-   :alt: f:id:mkouhei:20090814005236p:image
+.. image:: /img/20090814005236.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090814/20090814005237.png
-   :alt: f:id:mkouhei:20090814005237p:image
+.. image:: /img/20090814005237.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090814/20090814005238.png
-   :alt: f:id:mkouhei:20090814005238p:image
+.. image:: /img/20090814005238.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090814/20090814005239.png
-   :alt: f:id:mkouhei:20090814005239p:image
+.. image:: /img/20090814005239.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090814/20090814005240.png
-   :alt: f:id:mkouhei:20090814005240p:image
+.. image:: /img/20090814005240.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090814/20090814005233.png
-   :alt: f:id:mkouhei:20090814005233p:image
+.. image:: /img/20090814005233.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090814/20090814005232.png
-   :alt: f:id:mkouhei:20090814005232p:image
+.. image:: /img/20090814005232.png
 
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20090814/20090814005231.png
-   :alt: f:id:mkouhei:20090814005231p:image
+.. image:: /img/20090814005231.png
+
+
 
 しあわせ。最近、噛みついて、ひっかくようになってきたけど。今日、後ろ脚の爪で踏ん張られて向こうずねが切れちゃったけど。それでもこまめがかわいい。
 
 
 
-.. author:: mkouhei
-.. categories:: cat, 
+
+
+
+.. author:: default
+.. categories:: ねこ, 
 .. tags::
 .. comments::
-
-

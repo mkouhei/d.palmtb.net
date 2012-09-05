@@ -1,15 +1,16 @@
-﻿クマムシ、相変わらず凄いな。
-############################
-
+クマムシ、相変わらず凄いな。
+============================
 
 うむ、相変わらず驚異的な生命力だ。
-http://www.jiji.com/jc/c?g=soc_30k=2008091400105
+
+http://www.jiji.com/jc/c?g=soc_30&k=2008091400105
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

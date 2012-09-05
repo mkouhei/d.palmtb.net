@@ -1,37 +1,42 @@
-﻿まぁ、やり方はいろいろ。
-########################
+まぁ、やり方はいろいろ。
+========================
 
 
+.. code-block:: sh
 
-.. code-block:: none
 
    /sbin/netstat -rn | grep eth0 | \
-    grep 255.255.255.0 | cut -f1 -d&#39; &#39;
+    grep 255.255.255.0 | cut -f1 -d' '
 
 
 となっているところ、cutコマンドが無い環境なので、awkで
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    /sbin/netstat -rn | grep eth0 | \
-    grep 255.255.255.0 | awk &#39;{print $1}&#39;
+    grep 255.255.255.0 | awk '{print $1}'
 
 
 としてみた。が、cutもねぇのに、awkもあるか、と言う話。仕方ないので、sedで書き換え。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    /sbin/netstat -rn | grep eth0 | \
-    grep 255.255.255.0 | sed &#39;s/\ .*//&#39;
+    grep 255.255.255.0 | sed 's/\ .*//'
 
 
 で同じ結果を得られた。良かった良かった。でも、cutやawkが無いのになぜsedだけあるんだ？w 　アレか、(ストリーム)エディタだからか？w
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

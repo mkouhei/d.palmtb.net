@@ -1,15 +1,16 @@
-﻿普及の上での宿命ですな。
-########################
-
+普及の上での宿命ですな。
+========================
 
 OOoを対象としたマクロウィルスが出たそうな。なもんで、Win, Mac, Linuxでも感染すると。世知辛い世の中ですな。
+
 http://opentechpress.jp/news/article.pl?sid=07/05/22/0913245
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

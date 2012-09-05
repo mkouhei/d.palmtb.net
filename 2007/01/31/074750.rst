@@ -1,20 +1,21 @@
-﻿KVMを使えるようにした。
-##########################
-
+KVMを使えるようにした。
+=======================
 
 昨晩、というか今朝４時くらいまでがんばって、KVMを使えるようにして、Windowsを [#]_ をインストールした。インストールにやたらと時間掛かった。 [#]_ 
-詳細はこちら。
 
 
 
-.. [#] ：Vistaじゃなくてxp Professional
-.. [#] ：SLES9を最初やっていたが、ファイルシステムのフォーマットで時間かかりすぎるので途中で諦めた
+詳細は `こちら <http://www.palmtb.net/index.php?KVM%20-%20Debian%20Sid%20on%20MacBook>`_ 。
 
 
 
-.. author:: mkouhei
+
+
+.. [#] Vistaじゃなくてxp Professional
+.. [#] SLES9を最初やっていたが、ファイルシステムのフォーマットで時間かかりすぎるので途中で諦めた
+
+
+.. author:: default
 .. categories:: computer, virt., 
 .. tags::
 .. comments::
-
-

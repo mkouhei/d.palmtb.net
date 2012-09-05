@@ -1,16 +1,20 @@
-﻿シムシティーの仕組み
-####################
-
+シムシティーの仕組み
+====================
 
 おもしろい。こんな仕組みだったのか。
+
 http://simlabo.main.jp/educate/material/simshikumi.htm
-どうやらSimCityを使った都市シミュレーション学なることをやっているサイトらしい。
 
 
 
-.. author:: mkouhei
+どうやらSimCityを使った `都市シミュレーション学 <http://simlabo.main.jp/educate/>`_ なることをやっているサイトらしい。
+
+
+
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

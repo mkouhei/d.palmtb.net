@@ -1,21 +1,24 @@
-﻿Xen Summit 報告会。
-##############################
-
+Xen Summit 報告会。
+===================
 
 仮想化友の会で実施したこれ↑参加してきた。かな～り濃い話でした。KGBとか恐い人とかスゴいオーラとかデカい人とか。w
+
 印象に残ったのは下記三点と、やっぱり人の話。w
 
 * Xen 3.0.4でESXサーバと互角になったこととか
+
 * XenSocketの話とか
+
 * XenAPIで設定ファイルがXMLになるとか
 
 それと、Xen Summitのネタでは無いが、SLES10のSP1からXenの管理ツールがYaST2ではなく、virt-managerになるという話を聞いた。かなりショック。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: virt., meeting, 
 .. tags::
 .. comments::
-
-

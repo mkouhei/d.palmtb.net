@@ -1,18 +1,17 @@
-﻿kvm-17リリース。
-######################
+kvm-17リリース。
+================
 
+先日のOSCでもうkvm-17リリースされてるとか言っちゃった。 `本日リリースされました <http://sourceforge.net/project/showfiles.php?group_id=180599&package_id=209008&release_id=495038>`_ 。お詫びして訂正します。
 
-先日のOSCでもうkvm-17リリースされてるとか言っちゃった。本日リリースされました。お詫びして訂正します。kvm-16からの変更点のトピックとしてはACPIがもっとちゃんと動くようになったとか [#]_ 。
-
-
-
-.. [#] ：相変わらずちょー適当な意訳。
+kvm-16からの変更点のトピックとしてはACPIがもっとちゃんと動くようになったとか [#]_ 。
 
 
 
-.. author:: mkouhei
+
+.. [#] 相変わらずちょー適当な意訳。
+
+
+.. author:: default
 .. categories:: Unix/Linux, virt., computer, 
 .. tags::
 .. comments::
-
-

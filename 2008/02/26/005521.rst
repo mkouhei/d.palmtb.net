@@ -1,42 +1,52 @@
-﻿VGA出力問題無し。
-####################
+VGA出力問題無し。
+=================
+
+明日の勉強会用にVGA出力を確認。Let's note R3の時はi810switchを使っていたが、 `xrandrというのがあるのを知った <http://kmuto.jp/d/index.cgi/debian/xrandr.htm>`_ ので、試してみた。
 
 
-明日の勉強会用にVGA出力を確認。Let&#39;s note R3の時はi810switchを使っていたが、xrandrというのがあるのを知ったので、試してみた。
+.. code-block:: sh
 
-.. code-block:: none
 
-   $ xrandr --output &#34;LVDS&#34; --mode 1280x800 --option &#34;VGA&#34; --mode 1024x768
+   $ xrandr --output "LVDS" --mode 1280x800 --option "VGA" --mode 1024x768
 
 
 とすると、XfceのサイズがVGAの1024x768に合わせられる。OOoのImpressのスライドショーでも、ピッチのすべてが表示されず、中途半端に切れてしまった。OOoでPDF化して、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ xpdf -fullscreen hoge.odp
 
 
 として実行してみたところ、ちゃんと全画面表示された。
+
+
+
 VGAを使うのを止め、Xfceの大きさをMacBook Airの液晶画面の1280x800にするには、
 
-.. code-block:: none
 
-   $ xrandr --output &#34;LVDS&#34; --mode 1280x800
+.. code-block:: sh
+
+
+   $ xrandr --output "LVDS" --mode 1280x800
 
 
 とするだけではダメで、VGA側をオフする必要があるようだ。
 
-.. code-block:: none
 
-   $ xrandr --output &#34;LVDS&#34; --mode 1280x800 --output &#34;VGA&#34; --off
-
+.. code-block:: sh
 
 
+   $ xrandr --output "LVDS" --mode 1280x800 --output "VGA" --off
 
 
-.. author:: mkouhei
+
+
+
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

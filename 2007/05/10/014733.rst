@@ -1,14 +1,14 @@
-﻿ぼやぼやしてたら…。
-####################
+ぼやぼやしてたら…。
+====================
+
+`ぷらっとホームが自身でEtch用のディスクイメージを公開していた <http://www.plathome.co.jp/support/labo/obs266/index.html#9>`_ 。まぁ、作ったイメージは公開するつもり無かったのでいいか。
 
 
-ぷらっとホームが自身でEtch用のディスクイメージを公開していた。まぁ、作ったイメージは公開するつもり無かったのでいいか。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: Debian, computer, gadget, 
 .. tags::
 .. comments::
-
-

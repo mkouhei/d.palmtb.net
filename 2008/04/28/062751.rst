@@ -1,14 +1,14 @@
-﻿喉痛い。
-########
-
+喉痛い。
+========
 
 ぶり返した後、また喉が痛む。水飲んでも痛いのは辛いなあ。
 
 
 
-.. author:: mkouhei
-.. categories:: life, work, 
+
+
+
+.. author:: default
+.. categories:: 生活, 仕事, 
 .. tags::
 .. comments::
-
-

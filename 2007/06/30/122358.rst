@@ -1,15 +1,16 @@
-﻿優秀な技術者が求められない？
-############################
-
+優秀な技術者が求められない？
+============================
 
 全くもってそのとおり。自分の勤務している会社もそうだし。
+
 http://www.atmarkit.co.jp/news/200706/28/ipa.html
 
 
 
-.. author:: mkouhei
-.. categories:: work, 
+
+
+
+.. author:: default
+.. categories:: 仕事, 
 .. tags::
 .. comments::
-
-

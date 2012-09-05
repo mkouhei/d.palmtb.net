@@ -1,22 +1,16 @@
-﻿デモ用に。
-##########
-
+デモ用に。
+==========
 
 MacBookを注文するときにつけなかった、Mini-DVI to VGAアダプタを購入。社内研究会などで、KVMやBerylのデモをやるのに、やっぱり外部ビデオ出力が無いと。黒MacBookは手の脂の汚れが目立つので、触るたびに拭かないといけない。そこで、トラックパッドフィルムも買うてきた。
 
-.. image:: http://images-jp.amazon.com/images/G/09/icons/electronics/no-image-ce.gif
-   :alt: Apple Mini DVI-VGAアダプタ
-
-
-.. image:: http://images-jp.amazon.com/images/G/09/icons/electronics/no-image-ce.gif
-   :alt: トラックパッドフィルム for Mac Book Series PTF-34
 
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, 
 .. tags::
 .. comments::
-
-

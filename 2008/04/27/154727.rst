@@ -1,11 +1,13 @@
-﻿GRUB2でブートできない。
-############################
+GRUB2でブートできない。
+=======================
 
+家でジッとしているだけなのも何なので、空き領域にSidをインストールしたのだが、ブートローダをGRUB2にしたら、Windows xpが起動できなくなった。インストール時にはWindowsを自動検出したのだが、いざブート時には"Unknown Device"となり、ブートできない。で、ちょこちょこ遊んで見たところ、デフォルトのパーティションの指定が間違っているためだった。
 
-家でジッとしているだけなのも何なので、空き領域にSidをインストールしたのだが、ブートローダをGRUB2にしたら、Windows xpが起動できなくなった。インストール時にはWindowsを自動検出したのだが、いざブート時には&#34;Unknown Device&#34;となり、ブートできない。で、ちょこちょこ遊んで見たところ、デフォルトのパーティションの指定が間違っているためだった。
 パーティションは下記のようにしているのだが、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    /dev/hda1 HPFS/NTFS
    /dev/hda2 Linux(/boot)
@@ -17,9 +19,11 @@
 
 /boot/grub/grub.cfgのWindowsの指定が、
 
-.. code-block:: none
 
-   menuentry &#34;Microsoft Windows XP Professional&#34; {
+.. code-block:: sh
+
+
+   menuentry "Microsoft Windows XP Professional" {
            set root=(hd0,0)
            chainloader +1
    }
@@ -27,22 +31,26 @@
 
 となっているのだが、これが間違いで、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    set root=(hd0,1)
 
 
 としてやらなアカン。ただ、GRUB2からは設定ファイルのgrub.cfgを直にいじるわけではなく、テンプレートを変更してやるようなので、/etc/grub.d/30_otherosを編集してやった。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    (修正前)
-   menuentry &#34;Microsoft Windows XP Professional&#34; {
+   menuentry "Microsoft Windows XP Professional" {
            set root=(hd0,0)
            chainloader +1
    }
    (修正後)
-   menuentry &#34;Microsoft Windows XP Professional&#34; {
+   menuentry "Microsoft Windows XP Professional" {
            set root=(hd0,1)
            chainloader +1
    }
@@ -50,7 +58,9 @@
 
 この後、update-grubコマンドを実行してやればOK。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo update-grub
 
@@ -58,9 +68,9 @@
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

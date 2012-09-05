@@ -1,19 +1,32 @@
-﻿phpLDAPadminでパスワード変更用U/Iを用意する。
-############################################################
+phpLDAPadminでパスワード変更用U/Iを用意する。
+=============================================
+
+LDAPの管理自体はコマンドラインで行えば良いのですが、LDAPで管理しているユーザ自身のパスワードの変更は、ブラウザで簡単にやらせたいですよね。なので、何か無いかなぁと探してみたら、同じようなことをphpLDAPadminでやったという `ブログ <http://nhh.mo-blog.jp/ttt/2007/07/freebsdldapphpl_189e.html>`_ を `見つけた <http://syo.cocolog-nifty.com/freely/2010/07/phpldapadminuid.html>`_ のですが、細かいところは載っていなかったのでメモしておきました。
 
 
-LDAPの管理自体はコマンドラインで行えば良いのですが、LDAPで管理しているユーザ自身のパスワードの変更は、ブラウザで簡単にやらせたいですよね。なので、何か無いかなぁと探してみたら、同じようなことをphpLDAPadminでやったというブログを見つけたのですが、細かいところは載っていなかったのでメモしておきました。
+
 導入はいつもの通りDebianなので至極簡単で、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get install phpldapadmin
 
 
-でOKです。しかもOSのユーザアカウントの認証の設定が済んでいるホストに導入すると、LDAPサーバへの問い合わせまわりの設定を自動的にやってくれます。なので、インストール後にhttp://localhost/phpldapadmin/にアクセスすると、phpLDAPadminの画面が表示され、adminユーザやその他のposixAccountでパスワード設定しているユーザでもすぐにログインできます。便利ですね。ところが、この状態ではadminユーザだけでなく、一般ユーザでも他のユーザのオブジェクトの情報が丸見えです。LDAPサーバ側で特にアクセス制御していないからそりゃそうなんですけどね。で、別に見えるのは別に構わないのですが、やりたいことは、単に自分のパスワードの変更だけをさせることです。ユーザには余計な情報や、余計な編集用のフォームは見せる必要は無いのです。なので、オブジェクトツリーも、変更用のフォームも見えないようにしてやりました。 [#]_ 
+でOKです。しかもOSのユーザアカウントの認証の設定が済んでいるホストに導入すると、LDAPサーバへの問い合わせまわりの設定を自動的にやってくれます。なので、インストール後にhttp://localhost/phpldapadmin/にアクセスすると、phpLDAPadminの画面が表示され、adminユーザやその他のposixAccountでパスワード設定しているユーザでもすぐにログインできます。便利ですね。
 
 
-.. code-block:: none
+
+ところが、この状態ではadminユーザだけでなく、一般ユーザでも他のユーザのオブジェクトの情報が丸見えです。LDAPサーバ側で特にアクセス制御していないからそりゃそうなんですけどね。で、別に見えるのは別に構わないのですが、やりたいことは、単に自分のパスワードの変更だけをさせることです。ユーザには余計な情報や、余計な編集用のフォームは見せる必要は無いのです。なので、オブジェクトツリーも、変更用のフォームも見えないようにしてやりました。 [#]_ 
+
+
+
+
+
+
+.. code-block:: sh
+
 
    diff --git a/phpldapadmin/config.php b/phpldapadmin/config.php
    index f89e5fa..075a7da 100644
@@ -21,98 +34,105 @@ LDAPの管理自体はコマンドラインで行えば良いのですが、LDAP
    +++ b/phpldapadmin/config.php
    @@ -79,6 +79,7 @@
        assume UTC if you have not set PHP date.timezone. */
-    // $config-custom-appearance[&#39;timezone&#39;] = null;
-    #  $config-custom-appearance[&#39;timezone&#39;] = &#39;Australia/Melbourne&#39;;
-   +$config-custom-appearance[&#39;timezone&#39;] = &#39;Asia/Tokyo&#39;;
+    // $config->custom->appearance['timezone'] = null;
+    #  $config->custom->appearance['timezone'] = 'Australia/Melbourne';
+   +$config->custom->appearance['timezone'] = 'Asia/Tokyo';
    
     /*********************************************/
     /* Commands                                  */
-   @@ -154,10 +155,11 @@ $config-custom-commands[&#39;script&#39;] = array(
-    // $config-custom-appearance[&#39;disable_default_template&#39;] = false;
+   @@ -154,10 +155,11 @@ $config->custom->commands['script'] = array(
+    // $config->custom->appearance['disable_default_template'] = false;
    
     /* Hide the warnings for invalid objectClasses/attributes in templates. */
-   -// $config-custom-appearance[&#39;hide_template_warning&#39;] = false;
-   +$config-custom-appearance[&#39;hide_template_warning&#39;] = true;
+   -// $config->custom->appearance['hide_template_warning'] = false;
+   +$config->custom->appearance['hide_template_warning'] = true;
    
     /* Configure what objects are shown in left hand tree */
-    // $config-custom-appearance[&#39;tree_filter&#39;] = &#39;(objectclass=*)&#39;;
-   +$config-custom-appearance[&#39;tree_filter&#39;] = &#39;(ou=People)&#39;;
+    // $config->custom->appearance['tree_filter'] = '(objectclass=*)';
+   +$config->custom->appearance['tree_filter'] = '(ou=People)';
    
     /* The height and width of the tree. If these values are not set, then
        no tree scroll bars are provided. */
-   @@ -192,6 +194,7 @@ $config-custom-appearance[&#39;friendly_attrs&#39;] = array(
+   @@ -192,6 +194,7 @@ $config->custom->appearance['friendly_attrs'] = array(
        excluded. */
-    // $config-custom-appearance[&#39;hide_attrs&#39;] = array();
-    #  $config-custom-appearance[&#39;hide_attrs&#39;] = array(&#39;objectClass&#39;);
-   +$config-custom-appearance[&#39;hide_attrs&#39;] = array(&#39;cn&#39;,&#39;mail&#39;,&#39;gidNumber&#39;,&#39;give
-   nName&#39;,&#39;homeDirectory&#39;,&#39;loginShell&#39;,&#39;o&#39;,&#39;objectClass&#39;,&#39;uidNumber&#39;,&#39;uid&#39;,&#39;sn&#39;,&#39;fa
-   csimileTelephoneNumber&#39;,&#39;telephoneNumber&#39;,&#39;jpegPhoto&#39;,&#39;street&#39;,&#39;postalCode&#39;,&#39;st&#39;
-   ,&#39;mobile&#39;,&#39;l&#39;,&#39;memberUid&#39;,&#39;ou&#39;,&#39;description&#39;);
+    // $config->custom->appearance['hide_attrs'] = array();
+    #  $config->custom->appearance['hide_attrs'] = array('objectClass');
+   +$config->custom->appearance['hide_attrs'] = array('cn','mail','gidNumber','give
+   nName','homeDirectory','loginShell','o','objectClass','uidNumber','uid','sn','fa
+   csimileTelephoneNumber','telephoneNumber','jpegPhoto','street','postalCode','st'
+   ,'mobile','l','memberUid','ou','description');
    
     /* Members of this list will be exempt from the hidden attributes.*/
-    // $config-custom-appearance[&#39;hide_attrs_exempt&#39;] = null;
-   @@ -208,6 +211,7 @@ $config-custom-appearance[&#39;friendly_attrs&#39;] = array(
+    // $config->custom->appearance['hide_attrs_exempt'] = null;
+   @@ -208,6 +211,7 @@ $config->custom->appearance['friendly_attrs'] = array(
        NOTE: The user must be able to read the readonly_attrs_exempt entry to be
        excluded. */
-    // $config-custom-appearance[&#39;readonly_attrs&#39;] = array();
-   +$config-custom-appearance[&#39;readonly_attrs&#39;] = array(&#39;cn&#39;,&#39;mail&#39;,&#39;gidNumber&#39;,&#39;
-   givenName&#39;,&#39;homeDirectory&#39;,&#39;loginShell&#39;,&#39;o&#39;,&#39;objectClass&#39;,&#39;uidNumber&#39;,&#39;uid&#39;,&#39;sn&#39;
-   ,&#39;facsimileTelephoneNumber&#39;,&#39;telephoneNumber&#39;,&#39;jpegPhoto&#39;,&#39;street&#39;,&#39;postalCode&#39;,
-   &#39;st&#39;,&#39;mobile&#39;,&#39;l&#39;,&#39;memberUid&#39;,&#39;ou&#39;,&#39;description&#39;);
+    // $config->custom->appearance['readonly_attrs'] = array();
+   +$config->custom->appearance['readonly_attrs'] = array('cn','mail','gidNumber','
+   givenName','homeDirectory','loginShell','o','objectClass','uidNumber','uid','sn'
+   ,'facsimileTelephoneNumber','telephoneNumber','jpegPhoto','street','postalCode',
+   'st','mobile','l','memberUid','ou','description');
    
     /* Members of this list will be exempt from the readonly attributes.*/
-    // $config-custom-appearance[&#39;readonly_attrs_exempt&#39;] = null;
-   @@ -303,7 +307,7 @@ $servers-setValue(&#39;login&#39;,&#39;auth_type&#39;,&#39;session&#39;);
+    // $config->custom->appearance['readonly_attrs_exempt'] = null;
+   @@ -303,7 +307,7 @@ $servers->setValue('login','auth_type','session');
        you specify a login_attr in conjunction with a cookie or session auth_type,
        then you can also specify the bind_id/bind_pass here for searching the
        directory for users (ie, if your LDAP server does not allow anonymous binds.
     */
-   -$servers-setValue(&#39;login&#39;,&#39;bind_id&#39;,&#39;cn=admin,dc=example,dc=org&#39;);
-   +//$servers-setValue(&#39;login&#39;,&#39;bind_id&#39;,&#39;cn=admin,dc=example,dc=org&#39;);
-    #  $servers-setValue(&#39;login&#39;,&#39;bind_id&#39;,&#39;cn=Manager,dc=example,dc=com&#39;);
+   -$servers->setValue('login','bind_id','cn=admin,dc=example,dc=org');
+   +//$servers->setValue('login','bind_id','cn=admin,dc=example,dc=org');
+    #  $servers->setValue('login','bind_id','cn=Manager,dc=example,dc=com');
    
     /* Your LDAP password. If you specified an empty bind_id above, this MUST also
-   @@ -314,6 +318,9 @@ $servers-setValue(&#39;login&#39;,&#39;bind_id&#39;,&#39;cn=admin,dc=example,dc=org&#39;);
+   @@ -314,6 +318,9 @@ $servers->setValue('login','bind_id','cn=admin,dc=example,dc=org');
     /* Use TLS (Transport Layer Security) to connect to the LDAP server. */
-    // $servers-setValue(&#39;server&#39;,&#39;tls&#39;,false);
+    // $servers->setValue('server','tls',false);
    
    +// custom
-   +$servers-setValue(&#39;login&#39;,&#39;attr&#39;,&#39;uid&#39;);
+   +$servers->setValue('login','attr','uid');
    +
     /************************************
      *      SASL Authentication         *
      ************************************/
-   @@ -421,13 +429,14 @@ $servers-setValue(&#39;login&#39;,&#39;bind_id&#39;,&#39;cn=admin,dc=example,dc=org&#39;);
+   @@ -421,13 +429,14 @@ $servers->setValue('login','bind_id','cn=admin,dc=example,dc=org');
        (readonly) access to uidnumber in your ldap directory (the logged in user
        may not), so that you can be guaranteed to get a unique uidnumber for your
        directory. */
-   -// $servers-setValue(&#39;auto_number&#39;,&#39;dn&#39;,null);
-   +//$servers-setValue(&#39;auto_number&#39;,&#39;dn&#39;,null);
+   -// $servers->setValue('auto_number','dn',null);
+   +//$servers->setValue('auto_number','dn',null);
    
     /* The password for the dn above. */
-    // $servers-setValue(&#39;auto_number&#39;,&#39;pass&#39;,null);
+    // $servers->setValue('auto_number','pass',null);
     /* Enable anonymous bind login. */
-    // $servers-setValue(&#39;login&#39;,&#39;anon_bind&#39;,true);
-   +$servers-setValue(&#39;login&#39;,&#39;anon_bind&#39;,false);
+    // $servers->setValue('login','anon_bind',true);
+   +$servers->setValue('login','anon_bind',false);
    
     /* Use customized page with prefix when available. */
-    #  $servers-setValue(&#39;custom&#39;,&#39;pages_prefix&#39;,&#39;custom_&#39;);
+    #  $servers->setValue('custom','pages_prefix','custom_');
 
 
-今回変更したところで、&#34;ユーザにパスワードの変更だけをさせる&#34;という目的に関連するところだけピックアップしておくと、
-
-* $config-* custom-* appearance[&#39;hide_template_warning&#39;] をtrueにすることで、画面上で表示されるログを抑制
-* $config-* custom-* appearance[&#39;tree_filter&#39;] = &#39;(ou=People)&#39;を追加して、左のメニューに表示されるデフォルトのオブジェクトツリーをユーザ情報(People)だけにする
-* $config-* custom-* appearance[&#39;hide_attrs&#39;]に、表示させたくない属性を列挙
-
-* 非表示にした属性は以下。まぁ要は自分のパスワード以外は全部非表示に。cn, mail, gidNumber, givenName, homeDirectory, loginShell, o, objectClass, uidNumber, uid, sn, facsimileTelephoneNumber, telephoneNumber, jpegPhoto, street, postalCode, st, mobile, l, memberUid, ou, description
 
 
-* $config-* custom-* appearance[&#39;readonly_attrs&#39;]で編集画面で、表示される属性をリードオンリーに。上と同じ属性を列挙したので、結局は表示されないのですが、念の為
-* $servers-* setValue(&#39;login&#39;,&#39;bind_id&#39;,&#39;cn=admin,dc=example,dc=org&#39;);をコメントアウトして、ログイン画面で自動補完されるadmin情報を無効に
-* $servers-* setValue(&#39;login&#39;,&#39;attr&#39;,&#39;uid&#39;);で、ログイン画面でのアカウント名の指定をuidだけでOKに
+今回変更したところで、"ユーザにパスワードの変更だけをさせる"という目的に関連するところだけピックアップしておくと、
 
-* $servers-* setValue(&#39;login&#39;,&#39;anon_bind&#39;,false);で匿名ユーザでのログインを無効に
+* $config->custom->appearance['hide_template_warning'] をtrueにすることで、画面上で表示されるログを抑制
+
+* $config->custom->appearance['tree_filter'] = '(ou=People)'を追加して、左のメニューに表示されるデフォルトのオブジェクトツリーをユーザ情報(People)だけにする
+
+* $config->custom->appearance['hide_attrs']に、表示させたくない属性を列挙
+
+
+  * 非表示にした属性は以下。まぁ要は自分のパスワード以外は全部非表示に。cn, mail, gidNumber, givenName, homeDirectory, loginShell, o, objectClass, uidNumber, uid, sn, facsimileTelephoneNumber, telephoneNumber, jpegPhoto, street, postalCode, st, mobile, l, memberUid, ou, description
+
+
+* $config->custom->appearance['readonly_attrs']で編集画面で、表示される属性をリードオンリーに。上と同じ属性を列挙したので、結局は表示されないのですが、念の為
+
+* $servers->setValue('login','bind_id','cn=admin,dc=example,dc=org');をコメントアウトして、ログイン画面で自動補完されるadmin情報を無効に
+
+* $servers->setValue('login','attr','uid');で、ログイン画面でのアカウント名の指定をuidだけでOKに
+
+* +$servers->setValue('login','anon_bind',false);で匿名ユーザでのログインを無効に
 
 
 
@@ -120,13 +140,11 @@ LDAPの管理自体はコマンドラインで行えば良いのですが、LDAP
 
 
 
-.. [#] ：このやり方では参考にしたブログにもある通り、検索したり、子ノードを走査すれば.. [#] 見える.. [#] のですが、見えたところで別に変更できるわけではないので、そこはまぁそこまでやる必要はないので妥協。
+
+.. [#] このやり方では参考にしたブログにもある通り、検索したり、子ノードを走査すれば"見える"のですが、見えたところで別に変更できるわけではないので、そこはまぁそこまでやる必要はないので妥協。
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, Debian, 
 .. tags::
 .. comments::
-
-

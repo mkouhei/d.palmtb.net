@@ -1,14 +1,14 @@
-﻿SiCKOを見たいなぁ。
-########################
-
+SiCKOを見たいなぁ。
+===================
 
 今週末のゼミでまたもHIPAAの説明を行うのだが、やはりゼミの前に、SiCKOを見ておきたいなぁ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: security, 
 .. tags::
 .. comments::
-
-

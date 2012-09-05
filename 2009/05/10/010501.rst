@@ -1,10 +1,11 @@
-﻿MacPortsを使ってみた。
-##############################
+MacPortsを使ってみた。
+======================
+
+ちょっと諸事情により、MacPortsを使ってみることにした。インストール自体は、 `MacPorts Project <http://www.macports.org/install.php>`_ のサイトから、Leopardのdmgディスクイメージをダウンロードして、インストールすれば終わりなので楽だ。面倒なのは、ports treeを更新するところ。rsyncでしかできない、というのが面倒。仕方ないので、内部／外部ファイアウォールの設定を変更し、アウトバウンドへのrsyncを許可してやった。うまくいくときは、-dオプションをつけないで更新してやった方がよいね。
 
 
-ちょっと諸事情により、MacPortsを使ってみることにした。インストール自体は、MacPorts Projectのサイトから、Leopardのdmgディスクイメージをダウンロードして、インストールすれば終わりなので楽だ。面倒なのは、ports treeを更新するところ。rsyncでしかできない、というのが面倒。仕方ないので、内部／外部ファイアウォールの設定を変更し、アウトバウンドへのrsyncを許可してやった。うまくいくときは、-dオプションをつけないで更新してやった方がよいね。
+.. code-block:: sh
 
-.. code-block:: none
 
    $ sudo port -d selfupdate
    Password:
@@ -34,9 +35,13 @@
    DEBUG: Setting MacPorts sources ownership to root
 
 
+
+
 MacPortsでerlangを検索してみた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ port search erlang
    ejabberd @2.0.2 (net)
@@ -66,23 +71,16 @@ MacPortsでerlangを検索してみた。
    Found 8 ports.
 
 
+
+
 port install hogeでパッケージをインストールしようとしたら、依存関係のあるパッケージがインストールされていなくて失敗した。APTみたいに自動的に依存関係解決してインストールしてくれないのか？
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, 
 .. tags::
 .. comments::
-
-
-----
-
-Comment:
-
-	原因はXcode Toolsを入れていないせいだった。
-
-	written by  mkouhei
-	05/11/2009 07:38:26
-	http://d.hatena.ne.jp/mkouhei/
-

@@ -1,14 +1,14 @@
-﻿結局今日も終電。
-################
-
+結局今日も終電。
+================
 
 終電生活何日目？座薬生活二日目。
 
 
 
-.. author:: mkouhei
-.. categories:: work, 
+
+
+
+.. author:: default
+.. categories:: 仕事, 
 .. tags::
 .. comments::
-
-

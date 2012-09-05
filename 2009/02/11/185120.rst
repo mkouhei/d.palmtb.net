@@ -1,14 +1,14 @@
-﻿Webサーバ移行終わり。
-########################
-
+Webサーバ移行終わり。
+=====================
 
 ながらくSargeで運用していた家サーバをLennyに移行し終わった。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, Ops, 
 .. tags::
 .. comments::
-
-

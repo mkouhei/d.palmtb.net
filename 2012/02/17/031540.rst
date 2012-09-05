@@ -1,25 +1,32 @@
-﻿processingが面白そう。
-################################
+processingが面白そう。
+======================
+
+オライリーの `ビューティフルビジュアライゼーション <http://www.amazon.co.jp/exec/obidos/ASIN/4873115043/palmtb-22/ref=nosim/>`_ を読んで、面白いなと思った記事で使われていたのが、 `processing <http://www.processing.org/>`_ というプログラミング言語。開発元からダウンロードして展開し、processingというシェルスクリプトを実行すると、専用エディタが起動します。
 
 
-オライリーのビューティフルビジュアライゼーションを読んで、面白いなと思った記事で使われていたのが、processingというプログラミング言語。開発元からダウンロードして展開し、processingというシェルスクリプトを実行すると、専用エディタが起動します。
+
 File → Sketchbook → modes → Java → examples → Books → Visualizing data → ch6-zipdecode → round_09c_focus_handlingというサンプルを開いて、実行してみたのが次の動画です。数字はキーボードで入力し、Backspaceで消しています。
 
+[http://www.youtube.com/watch?v=_K0OxAX44H0:movie]
 
-.. image:: http://d.hatena.ne.jp/images/d_entry.gif
-   :alt: D
+
 
 このサンプルではフォーカスの制御を行うコードが約400行、色の制御を行うのが約50行です。専用エディタだと、Runボタンですぐに実行できるのは良いのですけど、普通に自分の好きなエディタでコード書いて、コマンドラインで実行するとかの方がうれしいので、ちょっと調べてみようかと思います。ちなみにDebianでもlibprocessing-core-javaという名前でパッケージになっていますが、名前の通りコラライブラリだけなので、Upstreamで配布されているものと比べ、どのくらいできるのかも気になるところです。
 
-.. image:: http://ecx.images-amazon.com/images/I/51Yy4ezB85L._SL160_.jpg
-   :alt: ビューティフルビジュアライゼーション
 
 
 
 
-.. author:: mkouhei
+`ビューティフルビジュアライゼーション <http://www.amazon.co.jp/exec/obidos/ASIN/4873115043/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+.. author:: default
 .. categories:: Debian, computer, 
 .. tags::
 .. comments::
-
-

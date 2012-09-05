@@ -1,18 +1,19 @@
-﻿プレゼン用資料
-##############
-
+プレゼン用資料
+==============
 
 昨日教えていただいたのでメモ。
 
+
 * 24ポイント以上のみ
+
 * ページ３分の１以下は書かない
 
 
 
 
-.. author:: mkouhei
-.. categories:: work, 
+
+
+.. author:: default
+.. categories:: 仕事, 
 .. tags::
 .. comments::
-
-

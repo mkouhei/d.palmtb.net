@@ -1,44 +1,64 @@
-﻿anything-elとmigemoを使ってみることに。
-########################################################
-
+anything-elとmigemoを使ってみることに。
+=======================================
 
 先日、元emacs使いのVimmerな方から、「anything-el使ってる？」と聞かれて、名前くらいしか知らなかったので、とりあえず使ってみることにしてみました。
+
+
+
 とりあえず導入。Debianパッケージになっているので一発ですね。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo apt-get install anything-el
 
 
+
+
 README.Debianに書いてあるように、~/.emacsに下記を追記します。
 
-.. code-block:: none
 
-   (require &#39;anything-startup)
+.. code-block:: scheme
+
+
+   (require 'anything-startup)
+
+
 
 
 README.Debianによると、migemoというパッケージをインストールしておくと便利なようです。パッケージのDescriptionを見ると、
 
-ローマ字を使った Eamcs 環境用の日本語インクリメンタル検索
+
+
+   ローマ字を使った Eamcs 環境用の日本語インクリメンタル検索
+
+
+
+
 
 となっていて、確かに便利そうなのでこやつもインストールしておきます。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ sudo apt-get install migemo
 
 
-ググって見つけたこちらのブログを参考に使い込んでみることにします。つーか、migemo便利すぎますね！！今までこんなの使っていなかったなんて、人生半分損してる！ [#]_ 
+
+
+ググって見つけた `こちらのブログ <http://d.hatena.ne.jp/rubikitch/20100718/anything>`_ を参考に使い込んでみることにします。つーか、migemo便利すぎますね！！今までこんなの使っていなかったなんて、人生半分損してる！ [#]_ 
 
 
 
-.. [#] ：言い過ぎw
+
+.. [#] 言い過ぎw
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: Unix/Linux, Debian, 
 .. tags::
 .. comments::
-
-

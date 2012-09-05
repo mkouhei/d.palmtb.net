@@ -1,18 +1,22 @@
-﻿GAE/PythonデータストアのエンティティをQueryクラスからJSONに変換する。
-########################################################################################
+GAE/PythonデータストアのエンティティをQueryクラスからJSONに変換する。
+=====================================================================
+
+GAE/Pythonに格納したデータをJSONで取得したいなぁと思ったのだが、一から全部書くのは面倒だったので何かないかと思っていたら、 `こちらのブログ <http://ajalabox.blogspot.com/2010/04/datastore-apijson.html>`_ を見て、 `Google CodeにGQLからJSONに変換するツールがある <http://google-app-engine-samples.googlecode.com/svn/trunk/geochat/json.py>`_ のを知った。
 
 
-GAE/Pythonに格納したデータをJSONで取得したいなぁと思ったのだが、一から全部書くのは面倒だったので何かないかと思っていたら、こちらのブログを見て、Google CodeにGQLからJSONに変換するツールがあるのを知った。
+
 ただ、このコードだと、Queryクラスでは使えない。普段Queryクラスの方を使っているので下記のように変更した。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ diff -u json.py.org json.py
    --- json.py.org 2011-04-20 15:42:18.000000000 +0900
    +++ json.py     2011-04-20 16:10:33.000000000 +0900
    @@ -48,7 +48,7 @@
-        if hasattr(obj, &#39;__json__&#39;):
-          return getattr(obj, &#39;__json__&#39;)()
+        if hasattr(obj, '__json__'):
+          return getattr(obj, '__json__')()
     
    -    if isinstance(obj, db.GqlQuery):
    +    if isinstance(obj, db.GqlQuery) or isinstance(obj, db.Query):
@@ -22,9 +26,14 @@ GAE/Pythonに格納したデータをJSONで取得したいなぁと思ったの
 
 
 
+
+
+
 こんな感じでやれば、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    import json
    from models import BodyComposition
@@ -37,24 +46,28 @@ GAE/Pythonに格納したデータをJSONで取得したいなぁと思ったの
            self.response.out.write(json.encode(body_compos_query))
 
 
+
+
 JSONにできましたよと。
 
-.. code-block:: none
 
-   [{measurement_datetime: {ctime: Wed Apr 20 01:50:00 2011, hour: 1, isoweekday: 3, month: 4, second: 0, microsecond: 0,
-   &#34;isocalendar&#34;: [2011, 16, 3], &#34;timetuple&#34;: [2011, 4, 20, 1, 50, 0, 2, 110, -1], &#34;year&#34;: 2011, &#34;epoch&#34;: 1303264200.0, 
-   &#34;isoformat&#34;: &#34;2011-04-20T01:50:00&#34;, &#34;day&#34;: 20, &#34;minute&#34;: 50}, &#34;body_age&#34;: 35, &#34;weight&#34;: 66.700000000000003, 
-   &#34;basal_metabolism&#34;: 1580, &#34;bmi&#34;: 22.100000000000001, &#34;skeltal_mascle_percentage&#34;: 36.700000000000003, 
-   &#34;bodyfat_percentage&#34;: 21.300000000000001, 
-   &#34;ownerid&#34;: {&#34;nickname&#34;: &#34;test@example.com&#34;, &#34;email&#34;: &#34;test@example.com&#34;, &#34;auth_domain&#34;: &#34;gmail.com&#34;}, &#34;bodyfat_lv&#34;: 7}]
+.. code-block:: sh
 
 
+   [{"measurement_datetime": {"ctime": "Wed Apr 20 01:50:00 2011", "hour": 1, "isoweekday": 3, "month": 4, "second": 0, "microsecond": 0,
+   "isocalendar": [2011, 16, 3], "timetuple": [2011, 4, 20, 1, 50, 0, 2, 110, -1], "year": 2011, "epoch": 1303264200.0, 
+   "isoformat": "2011-04-20T01:50:00", "day": 20, "minute": 50}, "body_age": 35, "weight": 66.700000000000003, 
+   "basal_metabolism": 1580, "bmi": 22.100000000000001, "skeltal_mascle_percentage": 36.700000000000003, 
+   "bodyfat_percentage": 21.300000000000001, 
+   "ownerid": {"nickname": "test@example.com", "email": "test@example.com", "auth_domain": "gmail.com"}, "bodyfat_lv": 7}]
 
 
 
-.. author:: mkouhei
+
+
+
+
+.. author:: default
 .. categories:: python, Dev, 
 .. tags::
 .. comments::
-
-

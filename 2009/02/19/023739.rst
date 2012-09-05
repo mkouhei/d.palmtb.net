@@ -1,10 +1,11 @@
-﻿Debian on chumbyに挑戦中。その４
-################################################
+Debian on chumbyに挑戦中。その４
+================================
+
+あー、 `chrootする前に/procをバインドするの忘れてた <http://slackworld.berlios.de/2007/chroot_howto.html>`_ …。orz
 
 
-あー、chrootする前に/procをバインドするの忘れてた…。orz
+.. code-block:: sh
 
-.. code-block:: none
 
    chumby:~# mount -o bind /proc /mnt/usb2/proc
    chumby:~# chroot /mnt/usb2
@@ -22,9 +23,10 @@ mandbの更新の時に、/var/cache/man/以下にindex cacheを作るのを失�
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: 
 .. tags::
 .. comments::
-
-

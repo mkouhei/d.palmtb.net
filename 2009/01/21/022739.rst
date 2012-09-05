@@ -1,10 +1,11 @@
-﻿GRUB2のバグ？
-##################
+GRUB2のバグ？
+=============
+
+資料作成用に持っていていたLet's note R3を、e-mobile経由でapt-get {update,upgrade}後にshutdown、帰りの電車の中で起動させたら、GRUB2でおかしな状況に。
 
 
-資料作成用に持っていていたLet&#39;s note R3を、e-mobile経由でapt-get {update,upgrade}後にshutdown、帰りの電車の中で起動させたら、GRUB2でおかしな状況に。
+.. code-block:: sh
 
-.. code-block:: none
 
      Booting a command list
    
@@ -17,9 +18,10 @@ initrdどころか、linuxすらGRUBのコマンドが無い、となる。GRUB�
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, 
 .. tags::
 .. comments::
-
-

@@ -1,10 +1,13 @@
-﻿lxc-stopせずにshutdownしてしまった場合の対処方法。
-##################################################################
-
+lxc-stopせずにshutdownしてしまった場合の対処方法。
+==================================================
 
 年末年始に2, 3回、Sidでgrub-pc, grub-commonのアップデートがあったのだが、まぁ自宅鯖ではないので再起動できずに放置していた。最近のBIOSは、MBRを書き換えてしまうとブートセクタのハッシュ値がチゲぇよと、ご丁寧にハードディスクからのブートを停止してくれちゃうもんだから面倒くさい。再起動かけてPF1を押してブートセクタを書き換えたことを許可してSid自体はちゃんと立ち上がったので、lxcのコンテナを起動させるためにいつも実行しているスクリプトを実行した。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ sudo bash start-lxc.sh
    $
@@ -12,25 +15,34 @@
 
 ム？いつもと違う。おかしい。
 
-.. code-block:: none
+
+
+
+.. code-block:: sh
+
 
    $ sudo lxc-info -n hoge
-   &#39;hoge&#39; is RUNNING
+   'hoge' is RUNNING
 
 
 ム？コンテナ起動してないのに動いていることになってる？ ………あ、再起動用のスクリプトじゃなくてshutdown -r now実行してた…。
+
+
+
 start-lxc.shは
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    #!/bin/sh
    
    for i in `lxc-ls`
    do
-   if (lxc-info -n $i | grep -q STOPPED ) then
-      echo -en $i\t: 
+   if (lxc-info -n $i | grep -q "STOPPED" ) then
+      echo -en $i"\t:" 
       lxc-start -n $i -d
-      test $? -eq 0  echo starting ok. 
+      test $? -eq 0 && echo starting ok. 
       sleep 3
    fi
    done
@@ -40,7 +52,9 @@ start-lxc.shは
 
 と、ステータスがSTOPPEDになっていたら、lxc-startコマンドで起動するようにしているのだが、幸か不幸か、lxcの状態制御はファイルで行われている。Debianパッケージで導入した場合は、/var/lib/lxc/yourcontainer/stateだ。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo grep RUNNING /var/lib/lxc/*/state
    /var/lib/lxc/hoge/state:RUNNING
@@ -51,9 +65,13 @@ start-lxc.shは
    /var/lib/lxc/hoge6/state:RUNNING
 
 
+
+
 オーナーにはちゃんと書き込み権限が付いている。なので、sedで一発書き換えてしまおう。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ ls -l /var/lib/lxc/*/state
    -rw------- 1 root root 7 2010-01-04 09:23 /var/lib/lxc/hoge/state
@@ -62,12 +80,16 @@ start-lxc.shは
    -rw------- 1 root root 7 2010-01-04 09:23 /var/lib/lxc/hoge4/state
    -rw------- 1 root root 7 2010-01-04 09:23 /var/lib/lxc/hoge5/state
    -rw------- 1 root root 7 2010-01-04 09:23 /var/lib/lxc/hoge6/state
-   $ sudo sed -i &#39;s/RUNNING/STOPPED/g&#39; /var/lib/lxc/*/state
+   $ sudo sed -i 's/RUNNING/STOPPED/g' /var/lib/lxc/*/state
+
+
 
 
 これで起動できるようになった。プロセス自体も特に問題なし。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ sudo bash start-lxc.sh
    hoge    starting ok.
@@ -78,13 +100,16 @@ start-lxc.shは
    hoge6   starting ok.
 
 
+
+
 しかし、これで本当にええんか、これ(lxc)？
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, Debian, Ops, virt., 
 .. tags::
 .. comments::
-
-

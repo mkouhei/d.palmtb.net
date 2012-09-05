@@ -1,14 +1,14 @@
-﻿ニャンコ先生、豚猫と呼ばれる。
-##############################
-
+`ニャンコ先生 <http://www.tv-tokyo.co.jp/contents/natsume/chara/index.html>`_ 、豚猫と呼ばれる。
+================================================================================================
 
 確かにブタネコだな。w　しかもK.O.されていた。ww
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

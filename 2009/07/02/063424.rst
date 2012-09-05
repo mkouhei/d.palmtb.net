@@ -1,15 +1,16 @@
-﻿Let’s note R3の無線LAN復活。
-############################################
-
+Let's note R3の無線LAN復活。
+============================
 
 Sidを入れ直してから、カーネルビルドしてなかったので、ndiswrapperをビルドできず、必然的に無線LANも使えなかったのだが、さすがにそれは不便だと思ったので寝ている間に2.6.30でビルドしなおした。
+
 ついでに分かったこと。カーネルオプションのCONFIG_BLK_DEV_IDE_SATAを無効にしてやると、PATAのディスクは/dev/sdaじゃなくて/dev/hdaのままになるっぽい。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Debian, network, Unix/Linux, 
 .. tags::
 .. comments::
-
-

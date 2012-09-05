@@ -1,10 +1,13 @@
-﻿Scala入門。
-################
+Scala入門。
+===========
+
+最近、Scalaにも手をだし始めたので、 `TCP/IPソケットプログラミング Java編 <http://www.amazon.co.jp/exec/obidos/ASIN/4274065200/palmtb-22/ref=nosim/>`_ を見ながら、10年ぶりに近いJavaの勉強を兼ねてしまおうと、この本の一番最初に載っているローカルホストおよび引数で渡したFQDN、IPアドレスから結果返すコードをScalaで書いてみた。
 
 
-最近、Scalaにも手をだし始めたので、TCP/IPソケットプログラミング Java編を見ながら、10年ぶりに近いJavaの勉強を兼ねてしまおうと、この本の一番最初に載っているローカルホストおよび引数で渡したFQDN、IPアドレスから結果返すコードをScalaで書いてみた。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    import java.net._
    
@@ -17,28 +20,32 @@
          val hostaddress = address.getHostAddress()
          println(address + hostname + hostaddress)
        } catch {
-         case e: UnknownHostException =
-           println(Unable to determine this host&#39;s address)
+         case e: UnknownHostException =>
+           println("Unable to determine this host's address")
        }
    
-       for (arg - args) {
+       for (arg <- args) {
          try {
            val addressList = InetAddress.getAllByName(arg)
            println(args)
            println(addressList(0).getHostName())
            addressList.foreach(
-             i = println(i.getHostAddress()))
+             i => println(i.getHostAddress()))
          } catch {
-           case e: UnknownHostException =
-             println(Unable to find address for + arg)
+           case e: UnknownHostException =>
+             println("Unable to find address for" + arg)
        }
      }
    }
 
 
+
+
 実行するとこんな感じ。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ scala InetAddressExample www.google.com
    hoge/127.0.1.1hoge127.0.1.1
@@ -50,25 +57,15 @@
    66.249.89.104
 
 
-Scala自体の勉強は、Scalaスケーラブルプログラミングが中心なのだが、プログラミングErlangを読んでからコップ本を読むと、割とすんなり頭に入ってくる。戦闘機本を読み始めた時はなかなか理解できなくて読み終わるまでにやたら時間かかったけど。
 
 
-.. image:: http://ecx.images-amazon.com/images/I/41nFY0KbnfL._SL160_.jpg
-   :alt: Scalaスケーラブルプログラミング[コンセプト&amp;コーディング] (Programming in Scala)
-
-
-
-
-
-.. image:: http://ecx.images-amazon.com/images/I/51M0YFYYN4L._SL160_.jpg
-   :alt: TCP/IPソケットプログラミング Java編
+Scala自体の勉強は、 `Scalaスケーラブルプログラミング <http://www.amazon.co.jp/exec/obidos/ASIN/4844327453/palmtb-22/ref=nosim/>`_ が中心なのだが、 `プログラミングErlang <http://www.amazon.co.jp/exec/obidos/ASIN/4274067149/palmtb-22/ref=nosim/>`_ を読んでからコップ本を読むと、割とすんなり頭に入ってくる。戦闘機本を読み始めた時はなかなか理解できなくて読み終わるまでにやたら時間かかったけど。
 
 
 
 
 
-.. image:: http://ecx.images-amazon.com/images/I/41jkFwNcvPL._SL160_.jpg
-   :alt: プログラミングErlang
+`Scalaスケーラブルプログラミング第2版 <http://www.amazon.co.jp/exec/obidos/ASIN/4844330845/palmtb-22/ref=nosim/>`_
 
 
 
@@ -76,10 +73,26 @@ Scala自体の勉強は、Scalaスケーラブルプログラミングが中心�
 
 
 
+`TCP/IPソケットプログラミング Java編 <http://www.amazon.co.jp/exec/obidos/ASIN/4274065200/palmtb-22/ref=nosim/>`_
 
-.. author:: mkouhei
+
+
+
+
+
+
+`プログラミングErlang <http://www.amazon.co.jp/exec/obidos/ASIN/4274067149/palmtb-22/ref=nosim/>`_
+
+
+
+
+
+
+
+
+
+
+.. author:: default
 .. categories:: computer, 
 .. tags::
 .. comments::
-
-

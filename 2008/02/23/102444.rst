@@ -1,15 +1,16 @@
-﻿bcm4328はまだサポートしてないとな…。
-############################################
+bcm4328はまだサポートしてないとな…。
+=====================================
+
+b43-fwcutterパッケージのページから、 `b43 <http://linuxwireless.org/en/users/Drivers/b43>`_ のページへ行ってみたら、" `unsupported <http://linuxwireless.org/en/users/Drivers/b43#unsupported>`_ "のセクションにリストされてた…。orz
+
+bcm43xxとb43ってどうちがうのかなぁと思ったら、 `b43の方が上位バージョン <http://linuxwireless.org/en/users/Drivers/b43#bcm43xx.2Cb43legacy.2Cb43.2Csoftmac.2C...thefullstory>`_ なんですね。
 
 
-b43-fwcutterパッケージのページから、b43のページへ行ってみたら、&#34;unsupported&#34;のセクションにリストされてた…。orz
-bcm43xxとb43ってどうちがうのかなぁと思ったら、b43の方が上位バージョンなんですね。
 
 
 
-.. author:: mkouhei
+
+.. author:: default
 .. categories:: MacBook, Unix/Linux, network, 
 .. tags::
 .. comments::
-
-

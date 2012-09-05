@@ -1,14 +1,14 @@
-﻿パクリじゃねぇか。w
-####################
+パクリじゃねぇか。w
+===================
+
+AXEのWebサイトの `AXERCISE <http://www.axeeffect.jp/axercise/index.html>`_ って、ビリーズブートキャンプのパクリじゃねぇか。w
 
 
-AXEのWebサイトのAXERCISEって、ビリーズブートキャンプのパクリじゃねぇか。w
 
 
 
-.. author:: mkouhei
-.. categories:: scribbles, 
+
+.. author:: default
+.. categories:: 駄文, 
 .. tags::
 .. comments::
-
-

@@ -1,14 +1,14 @@
-﻿SuperDriveの挙動がよく分からん。
-##########################################
-
+SuperDriveの挙動がよく分からん。
+================================
 
 Linux起動済みの状態で、MacBook AirのSuperDriveをUSBで接続するとハードウェアは認識されるのに、メディアを挿入できない。一方、再起動すると、rEFItのメニュー画面が出る直前で挿入できるようになり、そのままLinuxを起動させると、CD-ROMをマウント・アンマウントでき、ejectも再挿入もできる。途中で挿す場合はUSBでの給電がうまく機能していないんだろうかね。調べてみるか…。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, Unix/Linux, 
 .. tags::
 .. comments::
-
-

@@ -1,10 +1,11 @@
-﻿うちの速度。
-############
-
+うちの速度。
+============
 
 akuwanoさんの計測結果 [#]_ を見て、自分んちもやってみた。マンションタイプの光はなかなか良し。特に上りが速いのは、サーバを公開しているうちにとっては非常に良い。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
     ------ BNRスピードテスト (ダウンロード速度) ------
    測定サイト： http://www.musen-lan.com/speed/ Ver3.5001
@@ -28,13 +29,10 @@ akuwanoさんの計測結果 [#]_ を見て、自分んちもやってみた。�
 
 
 
-.. [#] ：
+.. [#] id:akuwano:20070327#1175010427
 
 
-
-.. author:: mkouhei
+.. author:: default
 .. categories:: computer, network, 
 .. tags::
 .. comments::
-
-

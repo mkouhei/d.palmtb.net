@@ -1,14 +1,14 @@
-﻿涼しいから…。
-##############
-
+涼しいから…。
+==============
 
 ソファで寝てしまった…。orz　布団じゃねぇから首とかが痛い。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

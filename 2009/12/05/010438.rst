@@ -1,15 +1,18 @@
-﻿引っこ抜いたSIMでSMS使えた。
-##################################
-
+引っこ抜いたSIMでSMS使えた。
+============================
 
 今夏スペインに行ったときにはSMSが役立ったのだが、DocomoのSIMを引っこ抜いてGDDフォンに指しても使えなかった。というより、Docomoユーザだと思っていた相手がどうやら実はDocomoじゃなかった、というオチ。本日確実にDocomoユーザだろうと思われる友人にSMSを送ってみたらちゃんと送受信できた。
+
+
+
 これで連絡がつかないんだ、お前は。何とかしる！とか言われないで済むな。
 
 
 
-.. author:: mkouhei
-.. categories:: network, life, gadget, 
+
+
+
+.. author:: default
+.. categories:: network, 生活, gadget, 
 .. tags::
 .. comments::
-
-

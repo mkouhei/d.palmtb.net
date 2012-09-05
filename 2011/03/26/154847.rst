@@ -1,19 +1,23 @@
-﻿milestoneがようやくAndroid 2.2に。
-######################################################
-
+milestoneがようやくAndroid 2.2に。
+==================================
 
 先日、Facebookでアナウンスされた日には、Motorola Software Updateではアップデート情報がないと表示されて姉妹、結局アップデートできなかった。先ほど試してみたらアップデートできるようになっていたのでアップデートしてみた。
-感想。重い＆遅すぎて使い物にならない。そして不安定。なので、こちらを参考にUniversal Androotでroot化して、Milestone OverclockでCPUをクロックアップしてみた。クロックアップして、使っていないアプリを軒並み消して、空きメモリを確保したらなんとか使えるような感じになった。まぁ、milestoneは今は英会話のPodcastを聞くのと、CouchDBのテストにしか使っていないのだけど。そういえば、Android2.2の端末は初めてだなぁ [#]_ 。GDD PhoneがAndroid 1.5→1.6, Milestoneが2.0→2.1-update1,  んでNexus SでAndroid2.3だったので。
 
 
 
-.. [#] ：仕事ではGalaxy Tabを保有しているけど、ワシはあまり使っていないし。
+感想。重い＆遅すぎて使い物にならない。そして不安定。なので、 `こちら <http://ameblo.jp/secret-d/entry-10837110705.html>`_ を参考にUniversal Androotでroot化して、Milestone OverclockでCPUをクロックアップしてみた。クロックアップして、使っていないアプリを軒並み消して、空きメモリを確保したらなんとか使えるような感じになった。まぁ、milestoneは今は英会話のPodcastを聞くのと、CouchDBのテストにしか使っていないのだけど。
 
 
 
-.. author:: mkouhei
+そういえば、Android2.2の端末は初めてだなぁ [#]_ 。GDD PhoneがAndroid 1.5→1.6, Milestoneが2.0→2.1-update1,  んでNexus SでAndroid2.3だったので。
+
+
+
+
+.. [#] 仕事ではGalaxy Tabを保有しているけど、ワシはあまり使っていないし。
+
+
+.. author:: default
 .. categories:: gadget, 
 .. tags::
 .. comments::
-
-

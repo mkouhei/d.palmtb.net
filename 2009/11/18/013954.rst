@@ -1,32 +1,41 @@
-﻿こまめの体重。
-##############
-
+こまめの体重。
+==============
 
 2.6kgになったよ、こまめちゃん。どうりでこないだ病院連れていくときに重かったわけだ。
+
+
+
 「にゃん」
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091118/20091118013802.png
-   :alt: f:id:mkouhei:20091118013802p:image
+
+.. image:: /img/20091118013802.png
 
 「です」
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091118/20091118013803.png
-   :alt: f:id:mkouhei:20091118013803p:image
+
+.. image:: /img/20091118013803.png
 
 「と～！」
 
-.. image:: http://cdn-ak.f.st-hatena.com/images/fotolife/m/mkouhei/20091118/20091118013804.png
-   :alt: f:id:mkouhei:20091118013804p:image
+
+.. image:: /img/20091118013804.png
+
+
 
 ※虐待している訳ではないので念のため。喉を鳴らして喜ぶ顔面体操。
+
+
+
+
 
 明後日でこまめは満６月齢だね。
 
 
 
-.. author:: mkouhei
-.. categories:: cat, 
+
+
+
+.. author:: default
+.. categories:: ねこ, 
 .. tags::
 .. comments::
-
-

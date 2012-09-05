@@ -1,14 +1,14 @@
-﻿OS Xのアップデートしたら
-############################
-
+OS Xのアップデートしたら
+========================
 
 Mac OS Xしか起動できなくなった！ rEFItが消されてしまったっぽい。資料作成中なのに困るなぁ。で、再度rEFItをインストールしてやったら、ちゃんとDebianを起動できるようになった。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: MacBook, Debian, 
 .. tags::
 .. comments::
-
-

@@ -1,16 +1,18 @@
-﻿InstallShieldで作成されたEXEを展開する。
-########################################################
+InstallShieldで作成されたEXEを展開する。
+========================================
 
+NDISWrapperでWindowsの無線LANドライバを使う場合、ZIPやLHA形式だけで圧縮されているだけであれば、展開するのは非常に楽なのだが、EXEはどうやって展開すれば良いのかなぁ、と思って調べていたら `NDISwrapperの開発元にあった <http://ndiswrapper.sourceforge.net/joomla/index.php?/component/option,com_openwiki/Itemid,33/id,installation/#extracting_drivers_from_exes_or_cab_files>`_ のでメモ。
 
-NDISWrapperでWindowsの無線LANドライバを使う場合、ZIPやLHA形式だけで圧縮されているだけであれば、展開するのは非常に楽なのだが、EXEはどうやって展開すれば良いのかなぁ、と思って調べていたらNDISwrapperの開発元にあったのでメモ。
 NETGEAR WN511Tのドライバの抽出を例に。
 
+
 ZIPの展開
-********************
+---------
 
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ unzip -l WN511TV31.zip 
    Archive:  WN511TV31.zip
@@ -29,11 +31,12 @@ ZIPの展開
 
 
 EXEの展開（その１：CABの展開）
-********************************************************************************
+------------------------------
 
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ cd WN511TV31
    
@@ -73,12 +76,14 @@ EXEの展開（その１：CABの展開）
 
 
 EXEの展開（その２：InstallShield CABの展開）
-************************************************************************************************************
+--------------------------------------------
 
 
 InstallShieldで作成されたEXEの場合、data2.cabの中にロードさせるドライバがあるとのこと。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cd Disk1/
    
@@ -93,11 +98,11 @@ InstallShieldで作成されたEXEの場合、data2.cabの中にロードさせ�
        36864  RemoveInstall/dbgprint.dll
        36864  RemoveInstall/DRC.EXE
        40960  RemoveInstall/RM_DEV_CODE.dll
-      258048  SupportEnglish Files/_IsRes.dll
-       28529  EngineEngine Files/corecomp.ini
-         413  SupportJapanese String Tables/value.shl
-      331776  SupportNon-SelfRegistering/isrt.dll
-        1168  SupportNon-SelfRegistering/default.pal
+      258048  <Support>English Files/_IsRes.dll
+       28529  <Engine>Engine Files/corecomp.ini
+         413  <Support>Japanese String Tables/value.shl
+      331776  <Support>Non-SelfRegistering/isrt.dll
+        1168  <Support>Non-SelfRegistering/default.pal
        31930  APP/GTNDIS3.VXD
        15872  APP/GTNDIS5.sys
        94208  APP/GTW32N50.dll
@@ -136,17 +141,17 @@ InstallShieldで作成されたEXEの場合、data2.cabの中にロードさせ�
         2502  APP/fcctxpwr.ini
         1714  APP/jptxpwr.ini
          475  APP/Wlan.ini
-         413  SupportGerman String Tables/value.shl
-      241664  SupportJapanese Files/_IsRes.dll
-      225280  EngineScriptEngine/iscript.dll
+         413  <Support>German String Tables/value.shl
+      241664  <Support>Japanese Files/_IsRes.dll
+      225280  <Engine>ScriptEngine/iscript.dll
        31930  GTNDIS/GTNDIS3.VXD
        15872  GTNDIS/GTNDIS5.sys
        94208  GTNDIS/GTW32N50.dll
-      270336  SupportGerman Files/_IsRes.dll
+      270336  <Support>German Files/_IsRes.dll
       434944  Win2KXP Target/netmw143.sys
       435456  Win2KXP Target/netmw145.sys
        33237  Win2KXP Target/NetMW14x.inf
-      995328  SupportEnglish Intel 32 Files/_isuser.dll
+      995328  <Support>English Intel 32 Files/_isuser.dll
         8631  Help/WN511T_Networks_US.rtf
         5328  Help/WN511T_About_JP.rtf
         9084  Help/WN511T_About_US.rtf
@@ -159,15 +164,15 @@ InstallShieldで作成されたEXEの場合、data2.cabの中にロードさせ�
         4662  Help/WN511T_Statistics_GR.rtf
         3003  Help/WN511T_Statistics_JP.rtf
         8006  Help/WN511T_Statistics_US.rtf
-        2631  SupportGerman OS Independent Files/license.TXT
-      552960  SupportJapanese Intel 32 Files/_Isuser.dll
-         413  SupportEnglish String Tables/value.shl
-        1635  SupportLanguage Independent OS Independent Files/LICENSE.txt
-      581632  SupportGerman Intel 32 Files/_Isuser.dll
-       77824  EngineSelfRegistering/ctor.dll
-       32768  EngineSelfRegistering/objectps.dll
-      176128  EngineSelfRegistering/iuser.dll
-           0  EngineKernel Placeholder/iKernel.exe
+        2631  <Support>German OS Independent Files/license.TXT
+      552960  <Support>Japanese Intel 32 Files/_Isuser.dll
+         413  <Support>English String Tables/value.shl
+        1635  <Support>Language Independent OS Independent Files/LICENSE.txt
+      581632  <Support>German Intel 32 Files/_Isuser.dll
+       77824  <Engine>SelfRegistering/ctor.dll
+       32768  <Engine>SelfRegistering/objectps.dll
+      176128  <Engine>SelfRegistering/iuser.dll
+           0  <Engine>Kernel Placeholder/iKernel.exe
     --------  -------
              81 files
    
@@ -263,11 +268,12 @@ InstallShieldで作成されたEXEの場合、data2.cabの中にロードさせ�
 
 
 NDISwrapperでロードさせる。
-******************************************************************
+---------------------------
 
 
 
-.. code-block:: none
+.. code-block:: sh
+
 
    $ sudo ndiswrapper -i NetMW14x.inf 
    installing netmw14x ...
@@ -280,9 +286,9 @@ NDISwrapperでロードさせる。
 
 
 
-.. author:: mkouhei
+
+
+.. author:: default
 .. categories:: Debian, network, 
 .. tags::
 .. comments::
-
-

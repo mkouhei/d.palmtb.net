@@ -1,14 +1,14 @@
-﻿二日酔い
-########
-
+二日酔い
+========
 
 頭痛い。ビール二杯、芋焼酎をお湯割りとロックで一杯ずつしか飲んでないのになぁ。弱くなったなワシ。
 
 
 
-.. author:: mkouhei
-.. categories:: life, 
+
+
+
+.. author:: default
+.. categories:: 生活, 
 .. tags::
 .. comments::
-
-

@@ -1,10 +1,11 @@
-﻿ファイルのエンコードを調べる。
-##############################
-
+ファイルのエンコードを調べる。
+==============================
 
 今更なのだが、fileコマンドで調べても分からない場合の方法。TeXのファイルを対象にすると、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $  file moge.tex 
    moge.tex: LaTeX 2e document text
@@ -12,7 +13,9 @@
 
 と表示され、エンコードが分からない。ならばと、-iオプションをつけても、
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ file -i moge.tex 
    moge.tex: text/x-tex; charset=iso-8859-1
@@ -20,7 +23,9 @@
 
 と表示される。日本語が含まれているのに。意味ねぇと思って、nkfを調べてみたらちゃんとオプションがあった。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ nkf -g moge.tex 
    EUC-JP
@@ -30,9 +35,10 @@
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

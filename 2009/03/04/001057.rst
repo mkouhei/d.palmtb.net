@@ -1,10 +1,11 @@
-﻿JISエンコードの入力
-######################
-
+JISエンコードの入力
+===================
 
 JISエンコードの入力なんてしないもので、面倒だったのでメモ。普段はja_JP.UTF-8な環境に生活しているのです。例えば、日付をdateコマンドで実行します。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ date
    2009年  3月  3日 火曜日 23:58:52 JST
@@ -12,9 +13,11 @@ JISエンコードの入力なんてしないもので、面倒だったので�
 
 コンソールにはようされますな。これをカーソルでコピーして、viなどで貼り付けると、UTF-8になってしまいます。出力をリダイレクトしたファイルをfileコマンドで見ると分かります。
 
-.. code-block:: none
 
-   $ date  hoge
+.. code-block:: sh
+
+
+   $ date > hoge
    $ more hoge 
    2009年  3月  4日 水曜日 00:01:09 JST
    $ file hoge 
@@ -23,7 +26,9 @@ JISエンコードの入力なんてしないもので、面倒だったので�
 
 じゃあ、これをiconvで変換してみます。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ date | iconv -f utf8 -t ISO2022JP
    2009年  3月  4日 水曜日 00:03:10 JST
@@ -31,9 +36,11 @@ JISエンコードの入力なんてしないもので、面倒だったので�
 
 コンソールじゃわかりません。同様にリダイレクトしてみます。
 
-.. code-block:: none
 
-   $ date | iconv -f utf8 -t ISO2022JP  fuga
+.. code-block:: sh
+
+
+   $ date | iconv -f utf8 -t ISO2022JP > fuga
    $ more fuga 
    2009年  3月  4日 水曜日 00:03:52 JST
    $ file fuga
@@ -42,7 +49,9 @@ JISエンコードの入力なんてしないもので、面倒だったので�
 
 viで開いてみるとさらに一目瞭然です。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    2009年  3月  4日 水曜日 00:04:49 JST
    ~                                                                             
@@ -65,11 +74,14 @@ viで開いてみるとさらに一目瞭然です。
    ~                                                                             
    ~                                                                             
    ~                                                                             
-   hoge 1 line, 43 characters
+   "hoge" 1 line, 43 characters
 
 
 
-.. code-block:: none
+
+
+.. code-block:: sh
+
 
    2009^[$BG/^[(B  3^[$B7n^[(B  4^[$BF|^[(B ^[$B?eMKF|^[(B 00:03:52 JST
    ~                                                                             
@@ -92,12 +104,16 @@ viで開いてみるとさらに一目瞭然です。
    ~                                                                             
    ~                                                                             
    ~                                                                             
-   fuga 1 line, 61 characters
+   "fuga" 1 line, 61 characters
+
+
 
 
 じゃあ、このエスケープされたviの画面をコピペするとどうなるか、というと、エスケープシーケンスが効かなくなってしまいました。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    $ cat fuga 
    2009年  3月  4日 水曜日 00:03:52 JST
@@ -106,9 +122,13 @@ viで開いてみるとさらに一目瞭然です。
    fuga: ASCII text, with escape sequences
 
 
+
+
 じゃあ、他のファイルにこの文字列をコピペさせるには？ということで、リダイレクトすると出来るわけです。
 
-.. code-block:: none
+
+.. code-block:: sh
+
 
    2009年  3月  4日 水曜日 00:04:49 JST
    2009^[$BG/^[(B  3^[$B7n^[(B  4^[$BF|^[(B ^[$B?eMKF|^[(B 00:03:52 JST
@@ -131,16 +151,19 @@ viで開いてみるとさらに一目瞭然です。
    ~                                                                             
    ~                                                                             
    ~                                                                             
-   hoge 3 lines, 105 characters
+   "hoge" 3 lines, 105 characters
+
+
 
 
 面倒だなぁ。もっと楽にやる方法はないだろうかねぇ。
 
 
 
-.. author:: mkouhei
+
+
+
+.. author:: default
 .. categories:: Unix/Linux, 
 .. tags::
 .. comments::
-
-

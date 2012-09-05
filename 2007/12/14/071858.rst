@@ -1,14 +1,14 @@
-﻿眠いのです。
-############
-
+眠いのです。
+============
 
 ちゃんと睡眠できる時間が欲しい…。
 
 
 
-.. author:: mkouhei
-.. categories:: life, work, 
+
+
+
+.. author:: default
+.. categories:: 生活, 仕事, 
 .. tags::
 .. comments::
-
-
