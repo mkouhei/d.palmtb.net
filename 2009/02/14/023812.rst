@@ -1,0 +1,37 @@
+Installing Lenny armel in USB thumb drive by Qemu.
+==================================================
+
+I used netboot image.
+
+
+*  `kernel image <http://ftp.nl.debian.org/debian/dists/testing/main/installer-armel/current/images/versatile/netboot/vmlinuz-2.6.26-1-versatile>`_ 
+
+*  `initrd <http://ftp.nl.debian.org/debian/dists/testing/main/installer-armel/current/images/versatile/netboot/initrd.gz>`_ 
+
+
+.. code-block:: sh
+
+
+   $ qemu-system-arm -M versatilepb -kernel vmlinuz-2.6.26-1-versatile -initrd initrd.gz -hda /dev/sdb -append "root=/dev/ram"
+
+
+next first boot
+
+
+.. code-block:: sh
+
+
+   qemu-system-arm -M versatilepb -kernel vmlinuz-2.6.26-1-versatile -initrd initrd.img-2.6.26-1-versatile -hda /dev/sdb -append "root=/dev/sda1"
+
+
+initrd.img-2.6.26-1-versatile is extracted from /boot/ of usb thumb drive.
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, virtualization, 
+.. tags::
+.. comments::

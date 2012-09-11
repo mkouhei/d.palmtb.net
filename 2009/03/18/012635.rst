@@ -1,0 +1,21 @@
+jfbterm
+=======
+
+
+.. code-block:: sh
+
+
+   $ sudo apt-get install jfbterm
+   $ sudo modprobe vga16fb
+   $ jfbterm
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, 
+.. tags::
+.. comments::

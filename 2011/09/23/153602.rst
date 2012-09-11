@@ -1,0 +1,47 @@
+some errors when extend LV for root filesystem.
+===============================================
+
+When daily packages update, those toubles happened.  I updated latest linux-image-3.0.0 for Sid/VirtualBox, but failed that. The cause was that capasity of root file system was not enough. I added SATO virtual disk to the VM, I booted from rescue mode of netinst Debian system, did not mount any devices as root file system, executed follow procedure in rescue mode shell.
+
+
+
+
+.. code-block:: sh
+
+
+   # fdisk /dev/sdb # make a new slice(/dev/sdb1) as LVM
+   # pvcreate /dev/sdb1
+   # vgextend hogevg /dev/sdb1
+   # lvextend -l +20 /dev/hogevg/root
+   # e2fsck -f /dev/hogevg/root
+   # resize2fs /dev/hogevg/root
+   # exit
+
+
+I rebooted, then VM poweroff and dettach netinst.iso, power on VM.
+
+
+
+This boot was successful, I updated deb packes and reboot again. But next boot failed on the way. The new initramfs cannot find a device of root file system. I forgot to add the new device file to /boot/grub/device.map. Then, I fallback to a snapshot of pre-updating, executed previous procedures without reboot kernel, and executed below procedures finally.
+
+
+.. code-block:: sh
+
+
+   # grub-mdevicemap
+   # update-initramfs -u -k 3.0.0-1-amd64
+   # update-grub2
+   # shutdown -r now
+
+
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, 
+.. tags::
+.. comments::

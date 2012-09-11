@@ -1,0 +1,18 @@
+Debian on Chumby.
+=================
+
+I used  `Debian Etch for Armadillo-9 images <http://armadillo.atmark-techno.com/filebrowser/armadillo-9/debian>`_ . I divided a USB fhumb drive into two partitions. First partition as /dev/sda1 is vfat format. Second partition as /dev/sda2 is ext2 format. I mounted /dev/sda2 as /mnt, and extracted debian-etch-a9-[1-5].tgz on /mnt. 
+
+By the way, Chumby doesn't support ext2 filysystem. Then I rebuild Linux Kernel for Chumby to support ext2 filesystem. Please look at  `Chumby Wiki <http://wiki.chumby.com/mediawiki/index.php/Hacking_Linux_for_chumby#Building_and_Installing_a_new_chumby_kernel>`_  about the way. 
+
+After updating the kernel of Chumby, I mounted the Etch partition installed in USB thumb drive. I inserted USB thumb drive to USB Port of Chumby, then powered on chumby. I logged on by ssh, I had done chroot to /mnt/usb2 as Debian on Chumby.
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, embedded, gadget, 
+.. tags::
+.. comments::

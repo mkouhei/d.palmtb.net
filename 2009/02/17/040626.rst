@@ -1,0 +1,14 @@
+My Home site modified.
+======================
+
+I modified an internal firewall at home. The firewall is OpenMicroServer. When booting of this machine, there is a problem that netfilter rule is cleared. Then, I made netfilter rule, and take this rule executed automatically.
+
+
+
+
+
+
+.. author:: default
+.. categories:: life, network, linux, 
+.. tags::
+.. comments::

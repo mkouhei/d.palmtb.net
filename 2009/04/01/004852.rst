@@ -1,0 +1,14 @@
+Wireless LAN Router died suddenly .
+===================================
+
+Yesterday, NETGEAR WNR854T died suddenly. I reconnected power supply, but power LED was only lighted. 
+
+
+
+
+
+
+.. author:: default
+.. categories:: network, 
+.. tags::
+.. comments::

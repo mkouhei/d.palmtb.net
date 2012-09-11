@@ -1,0 +1,14 @@
+The article of KVM 3rd was finished writing. 
+=============================================
+
+The main material to talk concerns operation, and is oVirt. Wait that for a while. 
+
+
+
+
+
+
+.. author:: default
+.. categories:: kvm, 
+.. tags::
+.. comments::

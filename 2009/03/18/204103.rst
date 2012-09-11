@@ -1,0 +1,55 @@
+Why qemu monitor's term width = 100 ?
+=====================================
+
+Boot qemu/kvm-qemu with '-curses' option, switch qemu monitor with pressing Alt + 2. But qemu monitor's term width is 100, then qemu prompt is wrapped.
+
+
+.. code-block:: sh
+
+
+   QEMU 0.9.1 monitor - type 'help' for more information
+                       (qemu)
+                                           (qemu)
+                                                               (qemu)
+   
+   (qemu)
+                       (qemu)
+                                           (qemu)
+                                                               (qemu)
+   
+   (qemu)
+                       (qemu) info kvm
+                                           kvm support: enabled
+                                                               (qemu)
+   
+
+
+Xfce4 terminal windows width is 80 as defaults. Expand width 100. 
+
+
+.. code-block:: sh
+
+
+   QEMU 0.9.1 monitor - type 'help' for more information
+   (qemu)
+   (qemu)
+   (qemu)
+   (qemu)
+   (qemu)
+   (qemu)
+   (qemu)
+   (qemu)
+   (qemu) info kvm
+   kvm support: enabled
+   (qemu)
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: 
+.. tags::
+.. comments::

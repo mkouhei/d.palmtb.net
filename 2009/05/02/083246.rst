@@ -1,0 +1,24 @@
+not generate initramfs 2.6.29.2
+===============================
+
+Then, I did update-initramfs.
+
+
+.. code-block:: sh
+
+
+   $ sudo update-initramfs -c -k 2.6.29.2
+   update-initramfs: Generating /boot/initrd.img-2.6.29.2
+   $ cd /
+   $ sudo ln -sf boot/initrd.img-2.6.29.2 initrd.img
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, 
+.. tags::
+.. comments::

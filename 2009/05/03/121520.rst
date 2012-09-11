@@ -1,0 +1,28 @@
+Cause is "xaa".
+===============
+
+Xorg could not start, Cause is AccelMethod. Disable below 'Option "AccelMethod" "xaa"'.
+
+
+.. code-block:: apache
+
+
+   Section "Device"
+   	Identifier	"Intel Corporation Mobile GM965/GL960 Integrated Graphics Controller"
+   	Driver		"intel"
+   	BusID		"PCI:0:2:0"
+   #	Option		"UseFBDev"		"true"
+   #        Option "AccelMethod" "exa"
+           Option "AccelMethod" "xaa"
+   EndSection
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, 
+.. tags::
+.. comments::

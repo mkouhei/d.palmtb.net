@@ -1,0 +1,20 @@
+Debian install to MacBook 5,2 white
+===================================
+
+I want to replace MacBook Air to MacBook,then I bought MacBook 5,2 white. I will sell MacBook Air to a used shop. 
+
+
+
+Last night, I installed Debian GNU/Linux squeeze to MacBook. There are points to install. 1st, select "expert install", then press Tab key and add "acpi=off". 2nd, when next boot, add grub boot option "acpi=off". 3rd, when upgrade to sid, rebuild kernel. When next boot may fail, because fail loading usb devices, then we can't input with keyboard.
+
+I will rebuild kernel 2.6.29.3 this night.
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, MacBook, 
+.. tags::
+.. comments::

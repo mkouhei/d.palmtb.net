@@ -1,0 +1,39 @@
+DebConf9 1, 2 day ; Landscape near the conference venue
+=======================================================
+
+
+conference venue.
+-----------------
+
+
+
+.. image:: /img/20090724180342.jpg
+
+
+Park next to the venue
+----------------------
+
+
+
+.. image:: /img/20090724180832.jpg
+
+
+.. image:: /img/20090724181130.jpg
+
+
+There a room available?
+-----------------------
+
+
+
+.. image:: /img/20090724181325.jpg
+
+
+
+
+
+
+.. author:: default
+.. categories:: life, DebConf, 
+.. tags::
+.. comments::

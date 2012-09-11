@@ -1,0 +1,18 @@
+I bought a new wireless router, but I had mistaken.
+===================================================
+
+
+
+I bought a new wireless router that is NEC WR8500N. I had mistaken. WR8500N dose not have WPA2 instead of WPA-PSK AES.
+
+Then I did setup, but Debian on MacBook Air failed WPA-PSK authentication of 4 way handshake, then timeout and retry repeated endlessly. But chumby succeeded.
+
+
+
+
+
+
+.. author:: default
+.. categories:: network, 
+.. tags::
+.. comments::

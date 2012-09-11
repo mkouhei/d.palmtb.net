@@ -1,0 +1,14 @@
+KVM #2
+======
+
+`The article of KVM #2 <http://www.atmarkit.co.jp/flinux/rensai/kvm02/kvm02a.html>`_  was released the day before yesterday. My having wanted to write most this time is a setting of the bridging connection with the TAP device. I wrote because I had not seen comprehensible material with the illustration up to now.
+
+
+
+
+
+
+.. author:: default
+.. categories:: virtualization, qemu, kvm, 
+.. tags::
+.. comments::

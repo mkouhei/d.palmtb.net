@@ -1,0 +1,14 @@
+installed git-daemon-run.
+=========================
+
+I installed git-daemon-run to my home server. It is easy. 1st, I installed packages. 2nd, I made git repository's directory, and git init. 3rd, Making group for git. 4th, attach symlink git repository to /var/cache/git/repository.git. Then, touch empty file as git-daemon-export-ok.
+
+
+
+
+
+
+.. author:: default
+.. categories:: vcs, 
+.. tags::
+.. comments::

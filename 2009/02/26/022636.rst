@@ -1,0 +1,14 @@
+Git is not distributed version control system.
+==============================================
+
+Git is not distributed version control system but version control system of distributed repository type.
+
+
+
+
+
+
+.. author:: default
+.. categories:: vcs, 
+.. tags::
+.. comments::

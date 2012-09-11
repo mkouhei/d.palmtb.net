@@ -1,0 +1,21 @@
+WPA-PSK AES auth failed in Debian on MacBook / MacBook Air
+==========================================================
+
+when auth failed, dmesg.
+
+
+.. code-block:: sh
+
+
+   ndiswrapper (iw_set_auth:1602): invalid cmd 12
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, 
+.. tags::
+.. comments::

@@ -1,0 +1,14 @@
+Relax with CouchDB
+==================
+
+I joined a Google group as " `Relax with CouchDB <http://groups.google.co.jp/group/couchdb-relax>`_ ".
+
+
+
+
+
+
+.. author:: default
+.. categories:: couchdb, 
+.. tags::
+.. comments::

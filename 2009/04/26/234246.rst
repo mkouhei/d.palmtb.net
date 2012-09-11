@@ -1,0 +1,52 @@
+Today's Erlang #1
+=================
+
+
+.. code-block:: erlang
+
+
+   1> X = 1234.
+   1234
+   2> X.
+   1234
+   3> X+X*X/X.
+   2468.0
+
+
+
+
+Erlang's variable of first first character must be a capital letter. 
+
+
+.. code-block:: erlang
+
+
+   4> y = 2345.
+   ** exception error: no match of right hand side value 2345
+
+
+
+
+Erlang's Variable is not unbound variable but bound variable.
+
+
+.. code-block:: erlang
+
+
+   5> X = 12345.
+   ** exception error: no match of right hand side value 12345
+
+
+
+
+ 
+
+
+
+
+
+
+.. author:: default
+.. categories:: programming, 
+.. tags::
+.. comments::

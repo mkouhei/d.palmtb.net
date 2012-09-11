@@ -1,0 +1,14 @@
+finished Java Policy and prework.
+=================================
+
+I finished Java Policy and prework for the Debian meeting #51 at this weekend. 
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, 
+.. tags::
+.. comments::

@@ -1,0 +1,30 @@
+file name changed that UPPER to lower.
+======================================
+
+The file name should be a small letter of Hatena Fotolife. However, Canon Inc. IXY DIGITAL 820 IS as my digicam generates the file name of the capital letter. Then, I wrote the script that converted the file name.
+
+
+.. code-block:: sh
+
+
+   #!/bin/sh
+    
+   for i in *
+   do
+    mv $i `echo $i | tr '[:upper:]' '[:lower:]'`
+   done
+    
+   exit 0
+
+
+http://github.com/mkouhei/scripts/blob/2037b5a8da1b0b03a9adcd1a438cc4419869b384/u2l.sh
+
+
+
+
+
+
+.. author:: default
+.. categories:: programming, 
+.. tags::
+.. comments::

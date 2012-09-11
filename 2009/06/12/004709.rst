@@ -1,0 +1,78 @@
+Initial setting of CouchDB.
+===========================
+
+On Debian GNU/Linux Lenny, CouchDB is binded 127.0.0.1 to IP address, 5984 to Port. So I change IP Address to 0.0.0.0.
+
+
+
+
+.. code-block:: sh
+
+
+   diff --git a/couchdb/couch.ini b/couchdb/couch.ini
+   index 796e430..929fdb6 100644
+   --- a/couchdb/couch.ini
+   +++ b/couchdb/couch.ini
+   @@ -8,7 +8,8 @@ DbRootDir=/var/lib/couchdb
+    
+    Port=5984
+    
+   -BindAddress=127.0.0.1
+   +;BindAddress=127.0.0.1
+   +BindAddress=0.0.0.0
+    
+    DocumentRoot=/usr/share/couchdb/www
+    
+
+
+
+
+Behind ";" is  a comment. In Erlang, "%".
+
+
+
+Netfilter rule is below.
+
+
+.. code-block:: sh
+
+
+   # iptables -A INPUT -j ACCEPT -m state --state ESTABLISHED,RELATED
+   (snip)
+   # iptables -A INPUT -p tcp -j ACCEPT --dport 5984 -m state --state NEW
+
+
+
+
+
+.. code-block:: sh
+
+
+   $ curl -v hogehoge.com:5984
+   * About to connect() to hogehoge.com port 5984 (#0)
+   *   Trying xxx.xxx.xxx.xxx... connected
+   * Connected to hogehoge.com (xxx.xxx.xxx.xxx) port 5984 (#0)
+   > GET / HTTP/1.1
+   > User-Agent: curl/7.19.5 (x86_64-pc-linux-gnu) libcurl/7.19.5 OpenSSL/0.9.8k zlib/1.2.3.3 libidn/1.15 libssh2/1.1
+   > Host: hogehoge.com:5984
+   > Accept: */*
+   > 
+   < HTTP/1.1 200 OK
+   < Server: MochiWeb/1.0 (Any of you quaids got a smint?)
+   < Date: Thu, 11 Jun 2009 15:58:50 GMT
+   < Content-Type: text/plain;charset=utf-8
+   < Content-Length: 50
+   < 
+   * Connection #0 to host hogehoge.com left intact
+   * Closing connection #0
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: couchdb, Debian, 
+.. tags::
+.. comments::

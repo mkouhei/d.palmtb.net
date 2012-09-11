@@ -1,0 +1,47 @@
+Today's Erlang #2
+=================
+
+float.
+
+
+.. code-block:: erlang
+
+
+   1> 7/4.
+   1.75
+   2> 4/7.
+   0.5714285714285714
+   3> 7 div 4.
+   1
+   4> 7 rem 4.
+   3
+   5> 8 div 4.
+   2
+   6> Pi = 3.14159.
+   3.14159
+   7> R = 9.
+   9
+   8> Pi * R * R.
+   254.46879
+   
+   11> 8 div 4.0.
+   ** exception error: bad argument in an arithmetic expression
+        in operator  div/2
+           called as 8 div 4.0
+   12> 8 div 4.
+   2
+   13> 8.0 div 4.
+   ** exception error: bad argument in an arithmetic expression
+        in operator  div/2
+           called as 8.0 div 4
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: programming, 
+.. tags::
+.. comments::

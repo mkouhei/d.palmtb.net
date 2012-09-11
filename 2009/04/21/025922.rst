@@ -1,0 +1,31 @@
+Debian Sid on Let's note R3 boot error.
+=======================================
+
+rewrite /boot/grub/device.map.
+
+
+.. code-block:: sh
+
+
+   (before)
+   (hd0)   /dev/hda
+   ---
+   (after)
+   (hd0)   /dev/sda
+
+
+
+
+And another partition installed Windows xp cannot boot. then, rewrite /etc/grub.d/30_otheros.
+
+http://d.hatena.ne.jp/mkouhei/20080427/1209278847
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, 
+.. tags::
+.. comments::

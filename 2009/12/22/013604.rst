@@ -1,0 +1,18 @@
+I changed feed URI for Planet Debian JP.
+========================================
+
+New feed URI is filtering Debian related articles only.
+
+
+
+My blogs feed URI of id:mkouhei & id:emkouhei are 'http://d.hatena.ne.jp/mkouhei/rss2' and 'http://d.hatena.ne.jp/emkouhei/rss2'. My blog is also diary, articles is not only related Debian. So, I changed my entries on Planet Debian JP. My new feed URI are 'http://d.hatena.ne.jp/mkouhei/searchdiary?word=%2a%5bDebian%5d&mode=rss' and 'http://d.hatena.ne.jp/emkouhei/searchdiary?word=%2a%5bDebian%5d&mode=rss'. This filtering is Debian only.
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, 
+.. tags::
+.. comments::

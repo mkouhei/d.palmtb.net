@@ -1,0 +1,19 @@
+Access Futon.
+=============
+
+http://hogehoge.com:5984/_utils/
+
+
+
+
+.. image:: /img/20090612012328.png
+
+
+
+
+
+
+.. author:: default
+.. categories:: couchdb, 
+.. tags::
+.. comments::

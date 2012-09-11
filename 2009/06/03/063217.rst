@@ -1,0 +1,26 @@
+convert html to xhtml.
+======================
+
+Then I was twittered I tried to convert html to xhtml,  `hisashim taught me tidy <http://twitter.com/hisashim/status/2005868378>`_ . Thanks!
+
+
+.. code-block:: sh
+
+
+   $ sudo apt-get install tidy
+   $ tidy -asxhtml index.html > index.xhtml
+
+
+
+
+And so, I will translate CouchDB Web site with po4a.
+
+
+
+
+
+
+.. author:: default
+.. categories:: translation, couchdb, 
+.. tags::
+.. comments::

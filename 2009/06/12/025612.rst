@@ -1,0 +1,17 @@
+Test suite of CouchDB 8.0  on OpenBlockS.
+=========================================
+
+In CouchDB 8.0 on Debian GNU/Linux Lenny on OpenBlockS Memory 64MB model, I did test suite.
+
+
+.. image:: /img/20090612025929.png
+
+
+
+
+
+
+.. author:: default
+.. categories:: embedded, Debian, couchdb, 
+.. tags::
+.. comments::

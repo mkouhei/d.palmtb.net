@@ -1,0 +1,32 @@
+Hardware Clock is UTC when Dual boot of Debian and Windows xp
+=============================================================
+
+The system clock of Windows xp is not UTC, but Local Time Clock. I constructed the the dual boot environment in Let's note R3 as Debian GNU/Linux squeeze/sid and Windows xp. I setuped Linux's system time as UTC, then Windows time was forwarded 9 hours.
+
+
+
+But, I learned to make Windows use UTC.
+
+https://help.ubuntu.com/community/UbuntuTime#Make%20Windows%20use%20UTC
+
+   Windows Registry Editor Version 5.00
+
+   
+
+   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\TimeZoneInformation]
+
+        "RealTimeIsUniversal"=dword:00000001
+
+
+
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, Windows, 
+.. tags::
+.. comments::

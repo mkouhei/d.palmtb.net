@@ -1,0 +1,30 @@
+Replaced RCS to etckeeper.
+==========================
+
+I made my servers in my site replaced RCS to etckeeper. 
+
+
+
+
+.. code-block:: sh
+
+
+   $ sudo apt-get install etckeeper
+   $ cd /etc/
+   $ sudo etckeeper init
+   $ sudo etckeeper commit
+
+
+
+
+Commit is "etckeeper commit", Show status/log is "git status/log".
+
+
+
+
+
+
+.. author:: default
+.. categories:: vcs, sysadmin, 
+.. tags::
+.. comments::

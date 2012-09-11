@@ -1,0 +1,18 @@
+Replaced Web Server.
+====================
+
+The Web server operated with OpenBlockS266 was replaced today. OS also improved the version from Sarge to Lenny. The homepage changed from Wiki to links. Wiki arranged '/wiki/' as follows. Wiki changed from PukiWiki to Hiki. 
+
+
+
+http://www.palmtb.net/
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, embedded, 
+.. tags::
+.. comments::

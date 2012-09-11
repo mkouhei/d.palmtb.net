@@ -1,0 +1,18 @@
+Lenny Release!!
+===============
+
+Congratulations!
+
+http://www.debian.or.jp/blog/debian50r0.html
+
+http://www.debian.org/News/2009/20090214
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, 
+.. tags::
+.. comments::

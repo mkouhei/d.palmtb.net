@@ -1,0 +1,53 @@
+Today's Erlang #0
+=================
+
+I'm studying Erlang, then Title of "Today's Erlang" started.
+
+
+
+First, start Erlang Shell as Command interpreter 
+
+
+.. code-block:: erlang
+
+
+   $ erl
+   Erlang (BEAM) emulator version 5.6.5 [source] [64-bit] [smp:2] [async-threads:0] [kernel-poll:false]
+   
+   Eshell V5.6.5  (abort with ^G)
+   1> 
+
+
+
+
+calculate.
+
+
+.. code-block:: erlang
+
+
+   2> 1 + 2 * 3.
+   7
+   3> (1 + 2) * 3.
+   9
+   4> 123456789 * 987654321 * 9876543212345689 * 99999999999.
+   120427290016690591378865031507743660198494659
+   5> 16#cafe * 31#sugar.
+   1391027498946
+   6> 16#cafe * 32#sugar.
+   1577682511434
+   7> 16#cafe * 36#sugar.
+   2517755350266
+   8> 16#cafe * 37#sugar.
+   * 1: illegal base '37'
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: programming, 
+.. tags::
+.. comments::

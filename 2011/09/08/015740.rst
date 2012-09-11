@@ -1,0 +1,22 @@
+I've changed my job one week ago.
+=================================
+
+I joined on September 1st to a company that provides Web services for B2C. Gradually I was acclimatized to my new environment to work, and I see the position of team goals. Mission of the team I joined is to provide various services for private cloud. I was doing as a hobby, writing activities and activities related to Debian, I will continue to take advantage of future work. I want to make a business case is also utilized in CouchDB.
+
+
+
+I've joined the company name and why not write. Please ask when you meet it directly. ;)
+
+
+
+Also, if all goes as planned next February will be the first child is born. This year became a watershed year in many ways. Activities and the Debian JP Project, the activities of CouchDB JP, I will continue. Thank you in the future.
+
+
+
+
+
+
+.. author:: default
+.. categories:: life, 
+.. tags::
+.. comments::

@@ -1,0 +1,14 @@
+Replaced git-daemon-run & sshd to gitosis & sshd.
+=================================================
+
+I had replaced git-daemon-run & sshd to gitosis & sshd. Points are setting gitosis-admin.git, git remote add, git push, and rewriting .git/config.
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, vcs, 
+.. tags::
+.. comments::

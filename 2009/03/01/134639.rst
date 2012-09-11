@@ -1,0 +1,104 @@
+memo to prepare that "git push origin master" in git.debian.org/tokyodebian/.
+=============================================================================
+
+
+create a new account of  `alioth.debian.org <https://alioth.debian.org/>`_ 
+---------------------------------------------------------------------------
+
+
+First, create my account, then request to join " `Tokyo Area Debian Study Meeting <https://alioth.debian.org/projects/tokyodebian/>`_ " project.
+
+
+
+Second, modify shell account information. register my ssh public key in "SSH Shared Authorized Keys".
+
+
+
+
+modifiy .git/config of local master branch.
+-------------------------------------------
+
+
+I had done that "git clone git://git.debian.org/tokyodebian/monthly-report.git". But, git protocol is read only. Then I edited local repository of config file as monthly-report/.git/config.
+
+
+.. code-block:: sh
+
+
+   $ diff -u config.org config
+   --- config.org	2009-03-01 13:37:24.000000000 +0900
+   +++ config	2009-03-01 13:37:01.000000000 +0900
+   @@ -4,7 +4,7 @@
+    	bare = false
+    	logallrefupdates = true
+    [remote "origin"]
+   -	url = git://git.debian.org/git/tokyodebian/monthly-report.git
+   +	url = ssh://myaccountname@git.debian.org/git/tokyodebian/monthly-report.git
+    	fetch = +refs/heads/*:refs/remotes/origin/*
+    [branch "master"]
+    	remote = origin
+
+
+
+Do that git push
+----------------
+
+
+before above setting.
+
+
+.. code-block:: sh
+
+
+   $ git push --dry-run origin master
+   fatal: The remote end hung up unexpectedly
+
+
+
+
+after
+
+
+.. code-block:: sh
+
+
+   $ git push --dry-run
+   Enter passphrase for key '/home/myaccountname/.ssh/id_rsa': 
+   To ssh://myaccountname@git.debian.org/git/tokyodebian/monthly-report.git
+      aeb916b..56e4259  master -> master
+   $ git push
+   Enter passphrase for key '/home/myaccountname/.ssh/id_rsa': 
+   Counting objects: 5, done.
+   Compressing objects: 100% (3/3), done.
+   Writing objects: 100% (3/3), 11.79 KiB, done.
+   Total 3 (delta 1), reused 0 (delta 0)
+   To ssh://myaccountname@git.debian.org/git/tokyodebian/monthly-report.git
+      aeb916b..56e4259  master -> master
+
+
+
+
+
+reference
+---------
+
+
+*  `debianmeetingresume200712.pdf <http://www.google.com/url?sa=t&source=web&ct=res&cd=2&url=http%3A%2F%2Ftokyodebian.alioth.debian.org%2Fpdf%2Fdebianmeetingresume200712.pdf&ei=KQmqSeefJ4zXkAXlpsntDQ&usg=AFQjCNGmsRWBuoEPhXAafvfwkc2QgUVfXQ&sig2=aHftPBj-0XniT3QeUhxouA>`_ 
+
+* http://www8.atwiki.jp/git_jp/pub/Documentation.ja/tutorial.html
+
+* http://wiki.debian.org/Alioth/Git
+
+* http://d.hatena.ne.jp/zariganitosh/20080910/1221050855
+
+* http://d.hatena.ne.jp/zariganitosh/20080908/1220881938
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, vcs, 
+.. tags::
+.. comments::

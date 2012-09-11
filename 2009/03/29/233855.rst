@@ -1,0 +1,34 @@
+ndiswrapper 1.54-2
+==================
+
+In this update of ndiswrapper, Ndiswrapper can be used by kernel 2.6.29. 
+
+
+
+   ndiswrapper (1.54-2) unstable; urgency=low
+
+   
+
+     \* Fix FTBFS with kernel 2.6.29 (Closes: #521212)
+
+       - Patch by Stefan Lippers-Hollmann <s.L-H@gmx.de>
+
+     \* debian/control: Change section of ndiswrapper-source to "kernel".
+
+   
+
+    -- Julian Andres Klode <jak@debian.org>  Sat, 28 Mar 2009 17:55:43 +0100
+
+
+
+
+
+
+
+
+
+
+.. author:: default
+.. categories:: Debian, linux, 
+.. tags::
+.. comments::
