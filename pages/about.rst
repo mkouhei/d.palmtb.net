@@ -55,7 +55,6 @@ WNPP
 * pystache
 * tomahawk
 * tinkerer
-* tox
 * tonicdns
 * tonicdnscli
 
@@ -64,6 +63,7 @@ Python packages
 
 * `tonicdnscli <http://pypi.python.org/pypi/tonicdnscli>`_
 * `Iori <http://pypi.python.org/pypi/iori>`_
+* `hatena2rest <http://pypi.python.org/pypi/hatena2rest/>`_
 
 Job career
 ^^^^^^^^^^
