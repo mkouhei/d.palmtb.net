@@ -15,5 +15,4 @@ Hobbitの監視データが消えてしまった。
 
 .. author:: default
 .. categories:: error,Ops
-.. tags::
 .. comments::

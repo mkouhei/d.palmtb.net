@@ -19,5 +19,4 @@ Xfce4で壁紙が表示されないなぁ、と思ったらxfdesktop4が消え�
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

@@ -43,5 +43,4 @@ ja-transってどこかで見たなぁと思ったら、 `これ <http://lists.d
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

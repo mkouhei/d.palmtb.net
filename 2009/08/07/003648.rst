@@ -60,5 +60,4 @@ TIME TO RELAX.
 
 .. author:: default
 .. categories:: cat
-.. tags::
 .. comments::

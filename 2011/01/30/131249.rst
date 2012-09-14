@@ -27,5 +27,4 @@ Lennyまでは特定グループにsudoを許可するには、
 
 .. author:: default
 .. categories:: Debian,Unix/Linux
-.. tags::
 .. comments::

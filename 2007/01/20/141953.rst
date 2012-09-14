@@ -18,5 +18,4 @@ Software Designの12月号の懸賞で、また無線LANルータと無線LANカ
 
 .. author:: default
 .. categories:: network
-.. tags::
 .. comments::

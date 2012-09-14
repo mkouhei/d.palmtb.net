@@ -10,5 +10,4 @@ MySQLからDBをSQLiteに換えてみたが、Instikiは相変わらず初回の
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

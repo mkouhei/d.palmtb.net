@@ -17,5 +17,4 @@
 
 .. author:: default
 .. categories:: cat,computer
-.. tags::
 .. comments::

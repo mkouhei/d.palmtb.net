@@ -18,5 +18,4 @@ ITS会議室はHackCafeにも向いていると思ったなど。
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

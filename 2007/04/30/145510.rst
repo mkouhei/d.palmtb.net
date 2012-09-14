@@ -13,5 +13,4 @@ Googleマップで作りました。ハズレだったり、普通の店は載�
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

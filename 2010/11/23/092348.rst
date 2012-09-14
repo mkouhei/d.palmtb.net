@@ -22,5 +22,4 @@ cephはネットワークの帯域的に使いどころが難しそうだが、n
 
 .. author:: default
 .. categories:: Debian,meeting
-.. tags::
 .. comments::

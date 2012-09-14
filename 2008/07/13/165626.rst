@@ -25,5 +25,4 @@ DVD処理。
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

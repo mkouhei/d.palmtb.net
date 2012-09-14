@@ -10,5 +10,4 @@ CouchDB for Androidベータ版。
 
 .. author:: default
 .. categories:: CouchDB
-.. tags::
 .. comments::

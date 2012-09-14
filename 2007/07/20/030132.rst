@@ -12,5 +12,4 @@ mizoさんは明日のDebian勉強会にも参加予定なので二日連続で�
 
 .. author:: default
 .. categories:: meeting,virt.
-.. tags::
 .. comments::

@@ -49,5 +49,4 @@ the Bus
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

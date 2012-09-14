@@ -36,5 +36,4 @@ OpenSSLの脆弱性に関する報道。
 
 .. author:: default
 .. categories:: security,Debian
-.. tags::
 .. comments::

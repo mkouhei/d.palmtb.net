@@ -38,5 +38,4 @@ rc2.d以下のスクリプトじゃなく、gettyの方の問題かもなぁ。
 
 .. author:: default
 .. categories:: Debian,gadget,Ops
-.. tags::
 .. comments::

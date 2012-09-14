@@ -74,5 +74,4 @@
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

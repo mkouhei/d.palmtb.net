@@ -18,5 +18,4 @@ http://itpro.nikkeibp.co.jp/article/COLUMN/20061222/257652/
 
 .. author:: default
 .. categories:: work
-.. tags::
 .. comments::

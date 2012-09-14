@@ -12,5 +12,4 @@ Mac OS XとDebianの両方起動させるのをデモした後、営業と話を
 
 .. author:: default
 .. categories:: MacBook
-.. tags::
 .. comments::

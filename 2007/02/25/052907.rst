@@ -34,5 +34,4 @@ Paravirtualizationは使えるのか？
 
 .. author:: default
 .. categories:: Unix/Linux,computer,virt.
-.. tags::
 .. comments::

@@ -10,5 +10,4 @@ TonicDNSをスレーブで動かす場合。
 
 .. author:: default
 .. categories:: Dev
-.. tags::
 .. comments::

@@ -17,5 +17,4 @@ Alt+EscでXfceのメニューを表示させ、ターミナルを立ち上げて
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

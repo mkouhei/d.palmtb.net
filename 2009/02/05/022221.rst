@@ -149,5 +149,4 @@ virt-manager入れてみた。
 
 .. author:: default
 .. categories:: Debian,virt.,computer
-.. tags::
 .. comments::

@@ -19,5 +19,4 @@
 
 .. author:: default
 .. categories:: life,cat
-.. tags::
 .. comments::

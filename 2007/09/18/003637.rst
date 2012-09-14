@@ -10,5 +10,4 @@ Hobbit Monitor 4.3がリリースされるそうな。
 
 .. author:: default
 .. categories:: computer,Unix/Linux
-.. tags::
 .. comments::

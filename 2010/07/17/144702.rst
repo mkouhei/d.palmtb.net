@@ -106,5 +106,4 @@ Ala Moana Centerの1Fのフードコートにある店。美味かったが、�
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

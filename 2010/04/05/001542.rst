@@ -21,5 +21,4 @@ http://tinyurl.com/yf83c3t
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

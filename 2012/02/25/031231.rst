@@ -10,5 +10,4 @@ Relax重要。
 
 .. author:: default
 .. categories:: Dev
-.. tags::
 .. comments::

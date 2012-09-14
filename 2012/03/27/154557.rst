@@ -48,5 +48,4 @@ TonicDNSを使う場合、APIに投げるためのJSONの生成が面倒なの�
 
 .. author:: default
 .. categories:: Ops,Python
-.. tags::
 .. comments::

@@ -106,5 +106,4 @@ http://www.flickr.com/search/?q=komame_20090919&w=all&s=int
 
 .. author:: default
 .. categories:: cat
-.. tags::
 .. comments::

@@ -10,5 +10,4 @@ I modified an internal firewall at home. The firewall is OpenMicroServer. When b
 
 .. author:: default
 .. categories:: life,network,Unix/Linux
-.. tags::
 .. comments::

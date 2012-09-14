@@ -177,5 +177,4 @@ pickleとかいうのもあるらしいが、文字化けしたので省略。�
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

@@ -30,5 +30,4 @@
 
 .. author:: default
 .. categories:: life,gadget
-.. tags::
 .. comments::

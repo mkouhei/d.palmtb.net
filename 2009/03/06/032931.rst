@@ -31,5 +31,4 @@ http://d.hatena.ne.jp/emkouhei/
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

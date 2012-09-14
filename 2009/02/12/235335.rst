@@ -23,5 +23,4 @@ lighttpd.confは以下のように設定。
 
 .. author:: default
 .. categories:: Ops
-.. tags::
 .. comments::

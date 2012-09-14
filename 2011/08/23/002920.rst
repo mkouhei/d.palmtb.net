@@ -36,5 +36,4 @@ Pre3はwebOS 2.2.0
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

@@ -16,5 +16,4 @@ I will rebuild kernel 2.6.29.3 this night.
 
 .. author:: default
 .. categories:: Debian,MacBook
-.. tags::
 .. comments::

@@ -335,5 +335,4 @@ gistでは
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

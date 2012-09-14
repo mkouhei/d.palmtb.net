@@ -36,5 +36,4 @@ VistaとOffice2007がベースになったのだが、これはハードウェ�
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

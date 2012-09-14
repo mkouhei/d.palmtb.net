@@ -12,5 +12,4 @@ Endless...。
 
 .. author:: default
 .. categories:: work
-.. tags::
 .. comments::

@@ -16,5 +16,4 @@ ITProの記事で `SLES10でのXen体験記 <http://itpro.nikkeibp.co.jp/article
 
 .. author:: default
 .. categories:: computer,virt.
-.. tags::
 .. comments::

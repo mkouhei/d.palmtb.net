@@ -12,5 +12,4 @@ Software Designか何かの懸賞で当たった、無線LANルータとカー�
 
 .. author:: default
 .. categories:: network
-.. tags::
 .. comments::

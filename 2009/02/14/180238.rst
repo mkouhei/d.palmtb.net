@@ -19,5 +19,4 @@ rbl.rbで引っかかる。
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

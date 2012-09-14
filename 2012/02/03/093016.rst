@@ -14,5 +14,4 @@ iPhoneのパケット通信だけが出来ない問題。
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

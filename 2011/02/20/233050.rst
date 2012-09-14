@@ -26,5 +26,4 @@ Squeezeの話は、まぁ予想通り普段からSidを使っている人にと�
 
 .. author:: default
 .. categories:: Debian,meeting
-.. tags::
 .. comments::

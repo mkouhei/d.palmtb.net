@@ -10,5 +10,4 @@
 
 .. author:: default
 .. categories:: work,MacBook
-.. tags::
 .. comments::

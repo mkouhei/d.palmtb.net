@@ -19,5 +19,4 @@ HTMLのa要素と同じようなハイパーリンクを張るためにはhyperr
 
 .. author:: default
 .. categories:: TeX
-.. tags::
 .. comments::

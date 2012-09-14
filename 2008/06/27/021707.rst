@@ -10,5 +10,4 @@ DB勉強会。
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

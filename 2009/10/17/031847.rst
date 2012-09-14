@@ -33,5 +33,4 @@ http://www-06.ibm.com/systems/jp/saiteki/event/kvm/index.html
 
 .. author:: default
 .. categories:: meeting,virt.
-.. tags::
 .. comments::

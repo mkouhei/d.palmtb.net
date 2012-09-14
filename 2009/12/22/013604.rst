@@ -14,5 +14,4 @@ My blogs feed URI of id:mkouhei & id:emkouhei are 'http://d.hatena.ne.jp/mkouhei
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

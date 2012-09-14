@@ -12,5 +12,4 @@ Readが発生している。仕方ないのでとりあえず外したが、な�
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

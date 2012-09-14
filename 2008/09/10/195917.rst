@@ -49,5 +49,4 @@ clamscanの--unzipオプションが無くなった。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

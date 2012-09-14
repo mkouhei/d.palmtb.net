@@ -15,5 +15,4 @@
 
 .. author:: default
 .. categories:: Unix/Linux,error
-.. tags::
 .. comments::

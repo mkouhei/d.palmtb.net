@@ -19,5 +19,4 @@ continuos=trueが便利ですな。
 
 .. author:: default
 .. categories:: CouchDB
-.. tags::
 .. comments::

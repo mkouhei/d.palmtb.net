@@ -10,5 +10,4 @@ FONをルータ登録できた。
 
 .. author:: default
 .. categories:: network
-.. tags::
 .. comments::

@@ -72,5 +72,4 @@ GRUB2でブートできない。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

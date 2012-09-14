@@ -86,5 +86,4 @@ U300だとほぼ300kbpsに近いスピード出るらしいこと、Docomo網を
 
 .. author:: default
 .. categories:: network
-.. tags::
 .. comments::

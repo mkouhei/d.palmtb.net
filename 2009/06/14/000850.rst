@@ -79,5 +79,4 @@ GDDフォンだと、WPA2(AES)でステルスモードにしている無線LAN�
 
 .. author:: default
 .. categories:: network,gadget
-.. tags::
 .. comments::

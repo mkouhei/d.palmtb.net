@@ -10,5 +10,4 @@ Webサーバのレスポンス遅延アラート
 
 .. author:: default
 .. categories:: Unix/Linux,life
-.. tags::
 .. comments::

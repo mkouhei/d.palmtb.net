@@ -10,5 +10,4 @@ Debian勉強会でKVMの話をしたら、久しぶりに気になったのでKV
 
 .. author:: default
 .. categories:: virt.,meeting
-.. tags::
 .. comments::

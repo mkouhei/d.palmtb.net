@@ -23,5 +23,4 @@ Rails&MySQLをOBS266 128MBモデルで動かして、一日放っておいたが
 
 .. author:: default
 .. categories:: Unix/Linux,Ops,gadget
-.. tags::
 .. comments::

@@ -32,5 +32,4 @@ ApacheでIndexesで表示させているディレクトリが沢山あってで�
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

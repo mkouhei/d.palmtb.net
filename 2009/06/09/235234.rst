@@ -10,5 +10,4 @@ GDDフォン、WPA2-PSKで接続できない。
 
 .. author:: default
 .. categories:: gadget,network
-.. tags::
 .. comments::

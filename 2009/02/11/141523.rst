@@ -41,5 +41,4 @@ Etchの時は、Hiki + ruby + lighttpd + fastcgiでプロセス間のセッシ�
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

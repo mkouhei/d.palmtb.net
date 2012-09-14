@@ -24,5 +24,4 @@ Chumbyの連絡キタ。
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

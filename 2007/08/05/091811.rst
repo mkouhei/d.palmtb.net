@@ -20,5 +20,4 @@ Rubyといえば、昨年秋のOSCの時にRoRの環境作って配って、せ�
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

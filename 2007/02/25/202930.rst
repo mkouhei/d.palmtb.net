@@ -10,5 +10,4 @@ KVMのゲストOSにSLES9はインストール出来なかったが、 `SLES10�
 
 .. author:: default
 .. categories:: Unix/Linux,computer,virt.
-.. tags::
 .. comments::

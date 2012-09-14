@@ -10,5 +10,4 @@ kernel 2.6.20リリース
 
 .. author:: default
 .. categories:: Unix/Linux,computer,virt.
-.. tags::
 .. comments::

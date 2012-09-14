@@ -122,5 +122,4 @@ Debianパッケージ作成ハンズオンのアシスタント
 
 .. author:: default
 .. categories:: Debian,meeting,virt.
-.. tags::
 .. comments::

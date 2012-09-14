@@ -58,5 +58,4 @@ webOS2.0 Early Access Programに参加する。
 
 .. author:: default
 .. categories:: Debian,gadget
-.. tags::
 .. comments::

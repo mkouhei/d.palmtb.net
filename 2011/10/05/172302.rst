@@ -74,5 +74,4 @@ NSレコードも同じだった。
 
 .. author:: default
 .. categories:: Dev
-.. tags::
 .. comments::

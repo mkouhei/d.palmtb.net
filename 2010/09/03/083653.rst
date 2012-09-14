@@ -42,5 +42,4 @@ CouchDB JPの方では、definitive guideの翻訳も再開しそうな感じな
 
 .. author:: default
 .. categories:: CouchDB,gadget
-.. tags::
 .. comments::

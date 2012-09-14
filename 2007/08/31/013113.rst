@@ -10,5 +10,4 @@ SiCKOを見たいなぁ。
 
 .. author:: default
 .. categories:: security
-.. tags::
 .. comments::

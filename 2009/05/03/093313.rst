@@ -182,5 +182,4 @@ Then, keycodes was changed, too.
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

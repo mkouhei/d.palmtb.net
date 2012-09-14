@@ -114,5 +114,4 @@ fonts
 
 .. author:: default
 .. categories:: gadget,Unix/Linux
-.. tags::
 .. comments::

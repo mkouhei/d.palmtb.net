@@ -11,5 +11,4 @@ z/VMのお勉強。
 
 .. author:: default
 .. categories:: virt.,Ops
-.. tags::
 .. comments::

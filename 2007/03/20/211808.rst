@@ -10,5 +10,4 @@ awstatsでログ解析を自宅鯖ではしているのだが、今日初めて�
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

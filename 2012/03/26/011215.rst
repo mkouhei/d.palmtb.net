@@ -10,5 +10,4 @@ iCloudは非同期処理で共有するのか。
 
 .. author:: default
 .. categories:: computer,gadget
-.. tags::
 .. comments::

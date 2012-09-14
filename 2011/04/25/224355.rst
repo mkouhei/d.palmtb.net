@@ -42,5 +42,4 @@ postするときに、--tagsオプションでYYYYMMDD-HHという形式でタ�
 
 .. author:: default
 .. categories:: Debian,Dev
-.. tags::
 .. comments::

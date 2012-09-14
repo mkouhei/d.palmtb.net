@@ -10,5 +10,4 @@ Yahoo!メールからGMailへの移行。
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

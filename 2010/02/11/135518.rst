@@ -62,5 +62,4 @@ http://ryuusinndo.com/art/child_real.htm
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

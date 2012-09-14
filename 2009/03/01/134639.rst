@@ -100,5 +100,4 @@ reference
 
 .. author:: default
 .. categories:: Debian,Git
-.. tags::
 .. comments::

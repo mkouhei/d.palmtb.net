@@ -26,5 +26,4 @@ keepassのDBはファイルなのでファイル単位でバックアップ取�
 
 .. author:: default
 .. categories:: Unix/Linux,gadget
-.. tags::
 .. comments::

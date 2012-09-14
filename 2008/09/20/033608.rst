@@ -10,5 +10,4 @@ OBSファームウェアアップデート祭り。
 
 .. author:: default
 .. categories:: Ops,gadget
-.. tags::
 .. comments::

@@ -13,5 +13,4 @@ In CouchDB 8.0 on Debian GNU/Linux Lenny on OpenBlockS Memory 64MB model, I did 
 
 .. author:: default
 .. categories:: gadget,Debian,CouchDB
-.. tags::
 .. comments::

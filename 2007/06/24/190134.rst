@@ -16,5 +16,4 @@ http://maker.usoko.net/nounai/
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

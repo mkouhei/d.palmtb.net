@@ -14,5 +14,4 @@ http://hootsuite.com/
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

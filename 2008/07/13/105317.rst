@@ -53,5 +53,4 @@ MacBook Airをx86版で使っていたが、昨日ついカッとなって、 `�
 
 .. author:: default
 .. categories:: MacBook,Debian
-.. tags::
 .. comments::

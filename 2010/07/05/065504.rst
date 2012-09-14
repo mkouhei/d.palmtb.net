@@ -27,5 +27,4 @@ grub2 1.98+20100702-1でもダメだな。
 
 .. author:: default
 .. categories:: Debian,MacBook
-.. tags::
 .. comments::

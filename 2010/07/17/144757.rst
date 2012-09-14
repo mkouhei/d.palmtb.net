@@ -54,5 +54,4 @@
 
 .. author:: default
 .. categories:: life,network
-.. tags::
 .. comments::

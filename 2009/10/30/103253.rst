@@ -15,5 +15,4 @@ EPSONのEndeavorにSidを入れたのだが、RJ-45が１ポートしかない�
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

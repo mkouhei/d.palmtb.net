@@ -28,5 +28,4 @@ BSP行ってきた。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

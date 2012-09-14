@@ -49,5 +49,4 @@ futonで、
 
 .. author:: default
 .. categories:: CouchDB
-.. tags::
 .. comments::

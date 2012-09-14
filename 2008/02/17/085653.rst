@@ -14,5 +14,4 @@ f:id:mkouhei:20080217085653j:image
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

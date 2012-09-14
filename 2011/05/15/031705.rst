@@ -94,5 +94,4 @@ symlinkが確かに作られてますね。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

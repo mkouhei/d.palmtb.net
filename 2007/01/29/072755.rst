@@ -27,5 +27,4 @@ greylistで弾かれた…。
 
 .. author:: default
 .. categories:: Unix/Linux,security
-.. tags::
 .. comments::

@@ -74,5 +74,4 @@ USB ZIPドライブ
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

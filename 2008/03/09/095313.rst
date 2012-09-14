@@ -25,5 +25,4 @@ Page Down, Page Upのキーで行っていたので、MacBook Airの様にキー
 
 .. author:: default
 .. categories:: Unix/Linux,MacBook
-.. tags::
 .. comments::

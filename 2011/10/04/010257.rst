@@ -23,5 +23,4 @@ https://market.android.com/details?id=jp.co.omron.healthcare.wl.android.basic
 
 .. author:: default
 .. categories:: life,gadget
-.. tags::
 .. comments::

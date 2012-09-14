@@ -31,5 +31,4 @@ Outboundのルールが消えてた。
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

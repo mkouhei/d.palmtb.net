@@ -53,5 +53,4 @@ ITSスカイパックの問合せ。昨日忘れてたら、またヨメにど�
 
 .. author:: default
 .. categories:: life,error
-.. tags::
 .. comments::

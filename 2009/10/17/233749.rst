@@ -228,5 +228,4 @@ SIGSEGVの前に、
 
 .. author:: default
 .. categories:: Debian,CouchDB,MacBook
-.. tags::
 .. comments::

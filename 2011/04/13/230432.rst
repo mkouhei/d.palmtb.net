@@ -20,5 +20,4 @@ Webフォントを使ってみた。
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

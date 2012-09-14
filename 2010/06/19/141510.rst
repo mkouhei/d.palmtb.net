@@ -50,5 +50,4 @@ wodemコマンドの仕様は変わっていなかった件。
 
 .. author:: default
 .. categories:: Debian,Unix/Linux
-.. tags::
 .. comments::

@@ -10,5 +10,4 @@ wireless gate ログインできず。
 
 .. author:: default
 .. categories:: network,Debian
-.. tags::
 .. comments::

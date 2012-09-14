@@ -11,5 +11,4 @@
 
 .. author:: default
 .. categories:: nonsense,computer
-.. tags::
 .. comments::

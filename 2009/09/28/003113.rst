@@ -20,5 +20,4 @@
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

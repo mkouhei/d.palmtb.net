@@ -12,5 +12,4 @@ http://www.xensource.com/download/index_oss.html
 
 .. author:: default
 .. categories:: computer,virt.
-.. tags::
 .. comments::

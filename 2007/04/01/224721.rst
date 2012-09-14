@@ -19,5 +19,4 @@
 
 .. author:: default
 .. categories:: nonsense,life
-.. tags::
 .. comments::

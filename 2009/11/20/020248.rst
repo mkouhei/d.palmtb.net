@@ -32,5 +32,4 @@ Gitのオプションは連続して使える。
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

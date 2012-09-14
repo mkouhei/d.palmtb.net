@@ -18,5 +18,4 @@ gnuplotが楽しすぎる件。
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

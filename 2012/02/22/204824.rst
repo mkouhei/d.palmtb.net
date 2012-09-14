@@ -93,5 +93,4 @@ xz 圧縮後のサイズ比19.0%
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

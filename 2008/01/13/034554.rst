@@ -10,5 +10,4 @@ WiiとWii Fit。
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

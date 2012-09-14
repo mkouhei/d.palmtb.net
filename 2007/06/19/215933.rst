@@ -24,5 +24,4 @@ mountdのポートって、NFSサーバ側のINPUTチェインをACCEPTにして
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

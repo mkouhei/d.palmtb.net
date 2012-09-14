@@ -20,5 +20,4 @@ id:doryokujinさん主催でMongoDB JPを立ち上げ、id:yssk22さんがそれ
 
 .. author:: default
 .. categories:: CouchDB,meeting
-.. tags::
 .. comments::

@@ -11,5 +11,4 @@ SEの仕事では無いな。
 
 .. author:: default
 .. categories:: work
-.. tags::
 .. comments::

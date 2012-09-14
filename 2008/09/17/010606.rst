@@ -14,5 +14,4 @@ http://www.atmarkit.co.jp/news/200809/16/lpic.html
 
 .. author:: default
 .. categories:: Unix/Linux,work
-.. tags::
 .. comments::

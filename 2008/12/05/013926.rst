@@ -16,5 +16,4 @@ http://www.yodobashi.com/ec/product/100000001001052510/index.html
 
 .. author:: default
 .. categories:: network
-.. tags::
 .. comments::

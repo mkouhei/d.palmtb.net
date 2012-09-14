@@ -17,5 +17,4 @@ dyson購入。
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

@@ -11,5 +11,4 @@ QVGA & 高橋メソッド。
 
 .. author:: default
 .. categories:: work,gadget
-.. tags::
 .. comments::

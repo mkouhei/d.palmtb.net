@@ -10,5 +10,4 @@ VMwareも結構面白そうだなぁ。
 
 .. author:: default
 .. categories:: Ops,virt.
-.. tags::
 .. comments::

@@ -33,5 +33,4 @@ initrd.img-2.6.26-1-versatile is extracted from /boot/ of usb thumb drive.
 
 .. author:: default
 .. categories:: Debian,virt.
-.. tags::
 .. comments::

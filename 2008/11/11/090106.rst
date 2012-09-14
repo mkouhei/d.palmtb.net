@@ -16,5 +16,4 @@ DebianでもHobbitは正式パッケージになっているけど、Upstreamの
 
 .. author:: default
 .. categories:: Debian,computer
-.. tags::
 .. comments::

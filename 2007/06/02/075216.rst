@@ -18,5 +18,4 @@ LinuxWorldは行ってないけど。w　仮想化友の会、Debian勉強会の
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

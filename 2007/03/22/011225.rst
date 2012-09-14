@@ -66,5 +66,4 @@ fs/ext3/inode.c
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

@@ -17,5 +17,4 @@ Yoigoで3G通信が使えるようになってからAndroid Marketを見てみ�
 
 .. author:: default
 .. categories:: network
-.. tags::
 .. comments::

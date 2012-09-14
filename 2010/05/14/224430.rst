@@ -22,5 +22,4 @@ http://weekly.ascii.jp/elem/000/000/019/19469/
 
 .. author:: default
 .. categories:: network,gadget
-.. tags::
 .. comments::

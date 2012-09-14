@@ -30,5 +30,4 @@ LaTeXで気づいたこと。
 
 .. author:: default
 .. categories:: Debian,TeX
-.. tags::
 .. comments::

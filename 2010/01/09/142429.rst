@@ -42,5 +42,4 @@ scalacの-claspathオプションでgnumail.jarファイルを指定してやら
 
 .. author:: default
 .. categories:: Debian,computer
-.. tags::
 .. comments::

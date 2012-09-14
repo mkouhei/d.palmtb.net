@@ -75,5 +75,4 @@ GNU/Linux使いの人でも、awkを使えない、使ってもprint文だけと
 
 .. author:: default
 .. categories:: Unix/Linux,book
-.. tags::
 .. comments::

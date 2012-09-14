@@ -111,5 +111,4 @@ local.cfにもこれを忘れていた。
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

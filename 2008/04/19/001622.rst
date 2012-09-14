@@ -47,5 +47,4 @@ XOrg 7.3の `リリースノート <http://www.x.org/wiki/Releases/7.3>`_ を見
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

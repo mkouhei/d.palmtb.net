@@ -30,5 +30,4 @@ ddでやろうとして面倒だったから、 `ググってみたらちゃん�
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

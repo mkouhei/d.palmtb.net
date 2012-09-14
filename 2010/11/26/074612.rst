@@ -77,5 +77,4 @@ https://twitter.com/#!/najeira/status/505204424318976
 
 .. author:: default
 .. categories:: Debian,Python,Dev
-.. tags::
 .. comments::

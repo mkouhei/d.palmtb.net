@@ -30,5 +30,4 @@ kenrel 2.6.22でも今までと同様に、
 
 .. author:: default
 .. categories:: Debian,computer,Unix/Linux,virt.
-.. tags::
 .. comments::

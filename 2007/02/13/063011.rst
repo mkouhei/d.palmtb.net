@@ -18,5 +18,4 @@ TIME HACKS!からのネタ。Googleカレンダーのデフォルト表示をカ
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

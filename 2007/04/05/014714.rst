@@ -15,5 +15,4 @@
 
 .. author:: default
 .. categories:: Unix/Linux,meeting
-.. tags::
 .. comments::

@@ -49,5 +49,4 @@ calculate.
 
 .. author:: default
 .. categories:: programming
-.. tags::
 .. comments::

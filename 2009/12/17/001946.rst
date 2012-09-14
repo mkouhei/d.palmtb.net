@@ -75,5 +75,4 @@
 
 .. author:: default
 .. categories:: Unix/Linux,network
-.. tags::
 .. comments::

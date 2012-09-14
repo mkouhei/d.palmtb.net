@@ -21,5 +21,4 @@ OSCに行ってきやす。
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

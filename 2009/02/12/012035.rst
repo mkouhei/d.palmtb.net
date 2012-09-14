@@ -10,5 +10,4 @@ chumby日本語化した。
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

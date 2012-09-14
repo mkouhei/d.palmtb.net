@@ -12,5 +12,4 @@ HERO見てきた。
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

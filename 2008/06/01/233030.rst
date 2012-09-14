@@ -228,5 +228,4 @@ udhcpdの設定ファイルを作成する。udhcp/sample/udhcpd.confを使う�
 
 .. author:: default
 .. categories:: Unix/Linux,Ops,gadget
-.. tags::
 .. comments::

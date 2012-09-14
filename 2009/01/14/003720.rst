@@ -75,5 +75,4 @@ id:mkouheiは、手前にものがあっても遠くにオートフォーカス�
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

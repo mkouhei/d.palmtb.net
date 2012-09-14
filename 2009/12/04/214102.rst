@@ -14,5 +14,4 @@ mopera Uでログインしていなければ課金されない。
 
 .. author:: default
 .. categories:: network,gadget
-.. tags::
 .. comments::

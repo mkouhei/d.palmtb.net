@@ -119,5 +119,4 @@ WiMAXとなっていたのでLTEだけじゃなくてWiMAXもビジネス展開�
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

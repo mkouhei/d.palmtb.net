@@ -27,5 +27,4 @@ make-kpkgが変更されてる。
 
 .. author:: default
 .. categories:: Debian,Unix/Linux
-.. tags::
 .. comments::

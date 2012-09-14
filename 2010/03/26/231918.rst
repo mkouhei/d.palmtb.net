@@ -22,5 +22,4 @@ Xを入れていないDebianにPuTTYで接続した状態で、KVMのゲスト�
 
 .. author:: default
 .. categories:: Debian,virt.,computer
-.. tags::
 .. comments::

@@ -23,5 +23,4 @@ initrdどころか、linuxすらGRUBのコマンドが無い、となる。GRUB�
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

@@ -66,7 +66,7 @@ tinkererをGitで管理する場合、pagesディレクトリ、ブログ用のY
 
 .. author:: default
 .. categories:: computer
-.. tags:: Git, tinkerer,
+.. tags:: Git, tinkerer
 .. comments::
 
 .. [#] _staticディレクトリに何もファイルが無ければ、.gitkeepを作って管理しておくと、ビルド時に余計なエラーが発生しません。

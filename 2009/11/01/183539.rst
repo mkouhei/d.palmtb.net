@@ -91,5 +91,4 @@
 
 .. author:: default
 .. categories:: CouchDB,Debian,error
-.. tags::
 .. comments::

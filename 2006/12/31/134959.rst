@@ -46,5 +46,4 @@
 
 .. author:: default
 .. categories:: life,Debian,MacBook
-.. tags::
 .. comments::

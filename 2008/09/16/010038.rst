@@ -12,5 +12,4 @@ http://tokyodebian.alioth.debian.org/2008-09.html
 
 .. author:: default
 .. categories:: Debian,meeting
-.. tags::
 .. comments::

@@ -99,5 +99,4 @@ Sidでアップデートしたら大変な事に…。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

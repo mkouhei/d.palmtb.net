@@ -18,5 +18,4 @@ http://www.yodobashi.com/enjoy/more/newstopics/73843024.html
 
 .. author:: default
 .. categories:: error
-.. tags::
 .. comments::

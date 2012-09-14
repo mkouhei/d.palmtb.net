@@ -22,5 +22,4 @@ Linuxネットワーク管理第３版を読んでて見つけた、良い言葉
 
 .. author:: default
 .. categories:: security,network,book
-.. tags::
 .. comments::

@@ -13,5 +13,4 @@
 
 .. author:: default
 .. categories:: MacBook
-.. tags::
 .. comments::

@@ -92,5 +92,4 @@ gdmにログインしないでXを再起動かけた場合は、ちゃんとそ�
 
 .. author:: default
 .. categories:: MacBook,Debian
-.. tags::
 .. comments::

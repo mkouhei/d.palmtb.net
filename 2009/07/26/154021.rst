@@ -35,5 +35,4 @@ There a room available?
 
 .. author:: default
 .. categories:: life,Debian
-.. tags::
 .. comments::

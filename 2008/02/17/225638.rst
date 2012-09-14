@@ -20,5 +20,4 @@ kernel 2.6.24.2で起動出来なかった理由。
 
 .. author:: default
 .. categories:: MacBook,Unix/Linux
-.. tags::
 .. comments::

@@ -31,5 +31,4 @@ RelaxCafe@CouchDB break.4 参加＆今年の勉強会納め。
 
 .. author:: default
 .. categories:: CouchDB,meeting
-.. tags::
 .. comments::

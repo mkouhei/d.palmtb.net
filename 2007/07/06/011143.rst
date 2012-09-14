@@ -242,5 +242,4 @@ osdep.c
 
 .. author:: default
 .. categories:: Unix/Linux,virt.,computer
-.. tags::
 .. comments::

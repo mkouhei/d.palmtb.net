@@ -26,5 +26,4 @@ MacBookのSid化は完了。
 
 .. author:: default
 .. categories:: life,Debian,MacBook
-.. tags::
 .. comments::

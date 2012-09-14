@@ -10,5 +10,4 @@
 
 .. author:: default
 .. categories:: MacBook,Debian,network
-.. tags::
 .. comments::

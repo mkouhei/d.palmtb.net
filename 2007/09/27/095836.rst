@@ -12,5 +12,4 @@ WX321Jのメールソフトの仕様。
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

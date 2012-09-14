@@ -30,5 +30,4 @@ http://f.hatena.ne.jp/emkouhei/komame/
 
 .. author:: default
 .. categories:: cat
-.. tags::
 .. comments::

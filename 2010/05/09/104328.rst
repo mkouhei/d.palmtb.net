@@ -37,5 +37,4 @@ Gmail経由でメール送信できなくなった。
 
 .. author:: default
 .. categories:: Debian,Unix/Linux,security
-.. tags::
 .. comments::

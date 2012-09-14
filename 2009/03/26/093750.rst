@@ -29,5 +29,4 @@ Hack Cafe #8
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

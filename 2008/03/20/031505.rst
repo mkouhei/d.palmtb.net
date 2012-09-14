@@ -12,5 +12,4 @@ http://www.novell.com/news/press/novell-announces-development-plans-for-suse-lin
 
 .. author:: default
 .. categories:: work,Unix/Linux
-.. tags::
 .. comments::

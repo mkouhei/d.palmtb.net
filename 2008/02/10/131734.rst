@@ -20,5 +20,4 @@ f:id:mkouhei:20080210131713j:image
 
 .. author:: default
 .. categories:: MacBook
-.. tags::
 .. comments::

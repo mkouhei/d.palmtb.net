@@ -42,5 +42,4 @@ update-grub2は今までどおり。
 
 .. author:: default
 .. categories:: Unix/Linux,MacBook,Debian
-.. tags::
 .. comments::

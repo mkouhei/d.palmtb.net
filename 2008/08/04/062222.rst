@@ -10,5 +10,4 @@ IXY DIGITAL 820 IS購入。
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

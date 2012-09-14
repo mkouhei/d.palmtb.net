@@ -33,5 +33,4 @@
 
 .. author:: default
 .. categories:: Git,computer
-.. tags::
 .. comments::

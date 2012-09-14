@@ -10,5 +10,4 @@ OSCもうすぐ満員ですか。
 
 .. author:: default
 .. categories:: Debian,virt.,meeting
-.. tags::
 .. comments::

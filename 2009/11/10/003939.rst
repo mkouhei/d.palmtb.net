@@ -120,5 +120,4 @@ Linuxコンテナ用。
 
 .. author:: default
 .. categories:: Unix/Linux,Ops,virt.
-.. tags::
 .. comments::

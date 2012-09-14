@@ -147,5 +147,4 @@ LDFLAGSで無くても良いんだけど、-Lでライブラリのパスを指�
 
 .. author:: default
 .. categories:: Unix/Linux,Debian
-.. tags::
 .. comments::

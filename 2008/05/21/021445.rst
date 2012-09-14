@@ -11,5 +11,4 @@
 
 .. author:: default
 .. categories:: security,Debian,Unix/Linux
-.. tags::
 .. comments::

@@ -10,5 +10,4 @@ GDDJ-09をAndroid1.6にアップデート。
 
 .. author:: default
 .. categories:: Debian,gadget
-.. tags::
 .. comments::

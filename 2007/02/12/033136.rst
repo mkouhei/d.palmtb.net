@@ -10,5 +10,4 @@ vidcapプラグインは諦めて、時間もないので `Istanbulを使用す�
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

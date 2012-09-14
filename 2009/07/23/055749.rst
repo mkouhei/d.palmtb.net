@@ -46,5 +46,4 @@ Museo del Paseo.
 
 .. author:: default
 .. categories:: life,Debian
-.. tags::
 .. comments::

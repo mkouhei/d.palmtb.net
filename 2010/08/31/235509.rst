@@ -10,5 +10,4 @@ FONルータの方で使っていたので先送りにしていたのだが、�
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

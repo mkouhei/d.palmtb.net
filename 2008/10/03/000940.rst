@@ -12,5 +12,4 @@ http://erlangworld.web.fc2.com/
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

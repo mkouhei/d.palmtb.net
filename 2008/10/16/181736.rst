@@ -10,5 +10,4 @@ Chumby注文した。
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

@@ -19,5 +19,4 @@ Debug Hacks Conference 2009に行ってきた。
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

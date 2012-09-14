@@ -43,5 +43,4 @@ float.
 
 .. author:: default
 .. categories:: programming
-.. tags::
 .. comments::

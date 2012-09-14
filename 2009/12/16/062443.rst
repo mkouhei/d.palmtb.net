@@ -112,5 +112,4 @@
 
 .. author:: default
 .. categories:: MacBook,Unix/Linux,Debian
-.. tags::
 .. comments::

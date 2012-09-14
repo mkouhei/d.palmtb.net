@@ -30,5 +30,4 @@ http://tinyurl.com/6c5o8a
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

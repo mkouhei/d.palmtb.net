@@ -17,5 +17,4 @@ OpenBlockS 266でGitのリモートリポジトリを運用しているのだが
 
 .. author:: default
 .. categories:: Unix/Linux,Git,Ops
-.. tags::
 .. comments::

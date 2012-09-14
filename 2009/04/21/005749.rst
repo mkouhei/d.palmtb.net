@@ -79,5 +79,4 @@
 
 .. author:: default
 .. categories:: book
-.. tags::
 .. comments::

@@ -20,5 +20,4 @@ http://tinyurl.com/5hkhfd
 
 .. author:: default
 .. categories:: work
-.. tags::
 .. comments::

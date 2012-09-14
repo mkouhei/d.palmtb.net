@@ -15,5 +15,4 @@
 
 .. author:: default
 .. categories:: security,Debian
-.. tags::
 .. comments::

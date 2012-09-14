@@ -21,5 +21,4 @@ sshでProxyCommandを使うとlastlogは更新されない。
 
 .. author:: default
 .. categories:: Unix/Linux,security
-.. tags::
 .. comments::

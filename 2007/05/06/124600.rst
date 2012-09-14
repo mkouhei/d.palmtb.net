@@ -11,5 +11,4 @@ GWだから予想通り。
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

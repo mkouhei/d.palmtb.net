@@ -10,5 +10,4 @@ JLS基調講演行ってきた。
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

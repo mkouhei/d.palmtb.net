@@ -111,5 +111,4 @@ start-lxc.shは
 
 .. author:: default
 .. categories:: Unix/Linux,Debian,Ops,virt.
-.. tags::
 .. comments::

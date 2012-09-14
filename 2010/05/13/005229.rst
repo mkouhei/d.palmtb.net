@@ -16,5 +16,4 @@ RIDEX初日に行ってきた。
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

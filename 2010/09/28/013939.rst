@@ -38,5 +38,4 @@ unzipで伸長したのち、SDメモリをマウントしてbinファイルを�
 
 .. author:: default
 .. categories:: Unix/Linux,gadget
-.. tags::
 .. comments::

@@ -12,5 +12,4 @@ FlashでPDF。
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

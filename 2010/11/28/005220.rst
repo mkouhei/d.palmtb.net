@@ -54,5 +54,4 @@ GAE Python & JavaScriptで書いた。LTでの反応を見て、機能追加＆�
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

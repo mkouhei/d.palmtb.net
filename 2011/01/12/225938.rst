@@ -14,5 +14,4 @@ MacBook Air 11インチ欲しい！
 
 .. author:: default
 .. categories:: MacBook
-.. tags::
 .. comments::

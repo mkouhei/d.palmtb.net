@@ -12,5 +12,4 @@ f:id:z-ohnami:20090430213204j:image
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

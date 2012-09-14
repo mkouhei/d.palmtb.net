@@ -42,5 +42,4 @@ OSCにはだんだん行く意味がなくなってるなぁ…。
 
 .. author:: default
 .. categories:: Debian,meeting
-.. tags::
 .. comments::

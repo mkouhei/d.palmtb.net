@@ -35,5 +35,4 @@
 
 .. author:: default
 .. categories:: network
-.. tags::
 .. comments::

@@ -66,5 +66,4 @@
 
 .. author:: default
 .. categories:: Unix/Linux,MacBook
-.. tags::
 .. comments::

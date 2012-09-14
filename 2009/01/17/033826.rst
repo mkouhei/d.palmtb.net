@@ -10,5 +10,4 @@ liloからgrub2にしておいた。
 
 .. author:: default
 .. categories:: MacBook,Debian
-.. tags::
 .. comments::

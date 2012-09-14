@@ -53,5 +53,4 @@ USAGIプロジェクトが `2004年に開発 <http://member.wide.ad.jp/draft/wid
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

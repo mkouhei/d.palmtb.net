@@ -137,5 +137,4 @@ gthumbなどで確認するとちゃんと見られますね。
 
 .. author:: default
 .. categories:: life,Unix/Linux
-.. tags::
 .. comments::

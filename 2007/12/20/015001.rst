@@ -12,5 +12,4 @@ http://mkouhei.myminicity.com/
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

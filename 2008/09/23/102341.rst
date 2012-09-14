@@ -10,5 +10,4 @@ MacBook AirのSuperDriveで初めてDVDを焼き焼きしてみた。問題無�
 
 .. author:: default
 .. categories:: MacBook
-.. tags::
 .. comments::

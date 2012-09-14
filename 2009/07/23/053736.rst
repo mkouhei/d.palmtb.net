@@ -17,5 +17,4 @@ Suvarnabhumi International Airport in Bangkok for transit. This airport is huge!
 
 .. author:: default
 .. categories:: life,Debian
-.. tags::
 .. comments::

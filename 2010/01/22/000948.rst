@@ -36,5 +36,4 @@ PNG形式よりも、EPSでLaTeXに埋め込む方が綺麗なんだけどね。
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

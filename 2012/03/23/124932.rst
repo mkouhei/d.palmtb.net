@@ -125,5 +125,4 @@ http://twitter.com/#!/matsuu/status/182835985619501057::
 
 .. author:: default
 .. categories:: Unix/Linux,Debian
-.. tags::
 .. comments::

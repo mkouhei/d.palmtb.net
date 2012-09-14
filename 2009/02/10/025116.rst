@@ -10,5 +10,4 @@ I have finished upgrading to Lenny.
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

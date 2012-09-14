@@ -68,5 +68,4 @@ Xenに比べると全システムメモリにアクセスできてしまう点�
 
 .. author:: default
 .. categories:: Debian,virt.,meeting
-.. tags::
 .. comments::

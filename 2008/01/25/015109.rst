@@ -13,5 +13,4 @@ O'Reillyネタ2。
 
 .. author:: default
 .. categories:: nonsense,computer
-.. tags::
 .. comments::

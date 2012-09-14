@@ -18,5 +18,4 @@ JRの券売機で明日の切符を購入し帰路に着いた。なんだ、チ
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

@@ -19,5 +19,4 @@ milestoneがようやくAndroid 2.2に。
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

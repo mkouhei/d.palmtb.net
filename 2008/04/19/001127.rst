@@ -33,5 +33,4 @@ setxkbmapを実行していなかったからだった…。org
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

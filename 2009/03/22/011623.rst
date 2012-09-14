@@ -10,5 +10,4 @@ Yesterday,  `Debian meeting 50th in Tokyo university <http://tokyodebian.alioth.
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

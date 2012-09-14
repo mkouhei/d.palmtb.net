@@ -24,5 +24,4 @@ fwlogwatchの設定が抜けてた。
 
 .. author:: default
 .. categories:: Debian,security
-.. tags::
 .. comments::

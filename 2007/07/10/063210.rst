@@ -12,5 +12,4 @@ Topic 3の途中まで読んだが…。
 
 .. author:: default
 .. categories:: security
-.. tags::
 .. comments::

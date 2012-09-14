@@ -16,5 +16,4 @@ DB Magazineからのクリスマスプレゼント。
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

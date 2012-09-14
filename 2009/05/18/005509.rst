@@ -149,5 +149,4 @@ below, my xorg.conf
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

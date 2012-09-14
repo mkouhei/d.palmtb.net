@@ -12,5 +12,4 @@ HIPAA、3回目。
 
 .. author:: default
 .. categories:: security
-.. tags::
 .. comments::

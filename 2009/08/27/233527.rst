@@ -10,5 +10,4 @@
 
 .. author:: default
 .. categories:: cat,life
-.. tags::
 .. comments::

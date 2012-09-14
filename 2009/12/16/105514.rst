@@ -30,5 +30,4 @@ Bennefit Stationという福利厚生のサービスで、ヨメの乳がん検�
 
 .. author:: default
 .. categories:: error
-.. tags::
 .. comments::

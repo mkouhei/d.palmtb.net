@@ -25,5 +25,4 @@ AMDの仮想化セミナーに行ってきた。
 
 .. author:: default
 .. categories:: virt.,meeting
-.. tags::
 .. comments::

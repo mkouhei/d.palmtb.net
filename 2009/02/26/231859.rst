@@ -80,5 +80,4 @@ Debian Package
 
 .. author:: default
 .. categories:: Debian,Git,Ops
-.. tags::
 .. comments::

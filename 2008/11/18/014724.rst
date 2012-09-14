@@ -16,5 +16,4 @@ http://www.kao.co.jp/kawatsuku/desktop/index.html
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

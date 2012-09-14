@@ -757,5 +757,4 @@ filterの書き方
 
 .. author:: default
 .. categories:: Debian,network
-.. tags::
 .. comments::

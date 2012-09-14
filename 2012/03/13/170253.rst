@@ -145,5 +145,4 @@ musshでは対話形式のコマンドには対応していません。なので
 
 .. author:: default
 .. categories:: Unix/Linux,Debian
-.. tags::
 .. comments::

@@ -277,5 +277,4 @@ http://d.hatena.ne.jp/metalglue/20100409/1270798344
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

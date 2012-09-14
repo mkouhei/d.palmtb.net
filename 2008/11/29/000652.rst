@@ -23,5 +23,4 @@ Xfce4がおかしい。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

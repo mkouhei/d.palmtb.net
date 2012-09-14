@@ -72,5 +72,4 @@ Froyoをすっ飛ばしてGingerbreadに。
 
 .. author:: default
 .. categories:: gadget,CouchDB
-.. tags::
 .. comments::

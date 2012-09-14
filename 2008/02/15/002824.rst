@@ -12,5 +12,4 @@
 
 .. author:: default
 .. categories:: error,work
-.. tags::
 .. comments::

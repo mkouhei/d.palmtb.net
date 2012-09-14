@@ -10,5 +10,4 @@ I had replaced git-daemon-run & sshd to gitosis & sshd. Points are setting gitos
 
 .. author:: default
 .. categories:: Debian,Git
-.. tags::
 .. comments::

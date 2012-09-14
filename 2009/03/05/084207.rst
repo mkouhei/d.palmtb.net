@@ -26,5 +26,4 @@ Hack Meeting #4
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

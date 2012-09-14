@@ -16,5 +16,4 @@ http://simlabo.main.jp/educate/material/simshikumi.htm
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

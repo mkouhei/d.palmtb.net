@@ -16,5 +16,4 @@ http://homepage3.nifty.com/kaku-chan/graphviz/index.html
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

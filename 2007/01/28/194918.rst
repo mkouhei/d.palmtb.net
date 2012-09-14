@@ -14,5 +14,4 @@ http://kvm.qumranet.com/kvmwiki
 
 .. author:: default
 .. categories:: virt.,computer
-.. tags::
 .. comments::

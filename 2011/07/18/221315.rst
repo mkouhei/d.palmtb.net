@@ -226,5 +226,4 @@ http://redmine.lighttpd.net/issues/1817
 
 .. author:: default
 .. categories:: Unix/Linux,Debian
-.. tags::
 .. comments::

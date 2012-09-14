@@ -12,5 +12,4 @@ SCIMをUIMに変えるのは嫌だなぁ。でも入力できないのはもっ�
 
 .. author:: default
 .. categories:: Debian,MacBook
-.. tags::
 .. comments::

@@ -19,5 +19,4 @@
 
 .. author:: default
 .. categories:: computer,gadget
-.. tags::
 .. comments::

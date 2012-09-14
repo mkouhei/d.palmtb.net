@@ -100,5 +100,4 @@
 
 .. author:: default
 .. categories:: life,cat,work
-.. tags::
 .. comments::

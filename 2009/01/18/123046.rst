@@ -93,5 +93,4 @@
 
 .. author:: default
 .. categories:: Debian,meeting
-.. tags::
 .. comments::

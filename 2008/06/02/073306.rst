@@ -17,5 +17,4 @@ Armadillo-JにDHCPサーバーを移行完了したので、これで晴れて24
 
 .. author:: default
 .. categories:: computer,security
-.. tags::
 .. comments::

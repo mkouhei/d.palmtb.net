@@ -37,5 +37,4 @@ http://www.kernel.org/pub/linux/kernel/v2.6/snapshots/patch-2.6.20-git13.log
 
 .. author:: default
 .. categories:: computer,virt.
-.. tags::
 .. comments::

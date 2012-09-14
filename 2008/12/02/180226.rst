@@ -10,5 +10,4 @@ Xymonと名を変え新リリース。
 
 .. author:: default
 .. categories:: computer,Unix/Linux
-.. tags::
 .. comments::

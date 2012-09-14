@@ -10,5 +10,4 @@ OSC終わったら、もう一台 `OBS266 <http://online.plathome.co.jp/detail.h
 
 .. author:: default
 .. categories:: computer,Unix/Linux
-.. tags::
 .. comments::

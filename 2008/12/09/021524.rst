@@ -34,5 +34,4 @@ http://dictionary.goo.ne.jp/search.php?MT=%B2%F1%BC%D2%B0%F7&kind=jn&mode=0&kwas
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

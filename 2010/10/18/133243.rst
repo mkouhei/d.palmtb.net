@@ -80,5 +80,4 @@ neu.Notesでレビューコメントを記入
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

@@ -14,5 +14,4 @@ PHSで全て管理するのであれば、今使っているtreo90は不要に�
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

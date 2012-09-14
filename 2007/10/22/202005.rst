@@ -12,5 +12,4 @@
 
 .. author:: default
 .. categories:: work,Unix/Linux
-.. tags::
 .. comments::

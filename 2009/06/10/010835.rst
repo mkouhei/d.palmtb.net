@@ -18,5 +18,4 @@ I should also be ready.
 
 .. author:: default
 .. categories:: CouchDB
-.. tags::
 .. comments::

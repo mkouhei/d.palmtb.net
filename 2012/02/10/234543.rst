@@ -14,5 +14,4 @@ PHPで書かれたツールのパッチ書きとか一段落したので、今�
 
 .. author:: default
 .. categories:: Ops
-.. tags::
 .. comments::

@@ -146,5 +146,4 @@ OSC 2009 Tokyo/Fallに行ってきた。
 
 .. author:: default
 .. categories:: Debian,CouchDB,meeting,virt.
-.. tags::
 .. comments::

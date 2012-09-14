@@ -10,5 +10,4 @@ Lennyのi386は行けた。
 
 .. author:: default
 .. categories:: MacBook,Debian
-.. tags::
 .. comments::

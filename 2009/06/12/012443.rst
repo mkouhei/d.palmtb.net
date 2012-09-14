@@ -15,5 +15,4 @@ http://hogehoge.com:5984/_utils/
 
 .. author:: default
 .. categories:: CouchDB
-.. tags::
 .. comments::

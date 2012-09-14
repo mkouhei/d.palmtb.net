@@ -10,5 +10,4 @@ chumby night中。
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

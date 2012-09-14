@@ -45,5 +45,4 @@ id:akuwanoさんありがとう！
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

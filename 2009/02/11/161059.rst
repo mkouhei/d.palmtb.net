@@ -10,5 +10,4 @@ awstatsの移行で手こずった。
 
 .. author:: default
 .. categories:: Debian,Ops
-.. tags::
 .. comments::

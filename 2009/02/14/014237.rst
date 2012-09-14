@@ -19,5 +19,4 @@ Lennyにした際の忘れ物。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

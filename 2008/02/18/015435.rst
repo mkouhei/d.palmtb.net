@@ -19,5 +19,4 @@ bcm43xxではまだ無線LANが使えない様だ。
 
 .. author:: default
 .. categories:: MacBook,Debian,network
-.. tags::
 .. comments::

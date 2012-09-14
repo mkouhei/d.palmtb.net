@@ -50,5 +50,4 @@ DebConf9の報告では、宿の格差の理由とか、近くにパソコンシ
 
 .. author:: default
 .. categories:: Debian,meeting
-.. tags::
 .. comments::

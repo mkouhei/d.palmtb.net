@@ -30,5 +30,4 @@ USBの無線マウスは便利なんだか不便なんだか
 
 .. author:: default
 .. categories:: MacBook,computer
-.. tags::
 .. comments::

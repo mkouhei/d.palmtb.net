@@ -26,5 +26,4 @@ http://github.com/mkouhei/scripts/blob/2037b5a8da1b0b03a9adcd1a438cc4419869b384/
 
 .. author:: default
 .. categories:: programming
-.. tags::
 .. comments::

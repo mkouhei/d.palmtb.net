@@ -20,5 +20,4 @@
 
 .. author:: default
 .. categories:: computer,Debian
-.. tags::
 .. comments::

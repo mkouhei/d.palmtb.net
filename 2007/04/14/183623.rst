@@ -10,5 +10,4 @@ PASMOって便利だな。
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

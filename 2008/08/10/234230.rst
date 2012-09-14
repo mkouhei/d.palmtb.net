@@ -87,5 +87,4 @@ gtkamを起動し、"カメラの追加"で検出してみたところ、型式�
 
 .. author:: default
 .. categories:: Unix/Linux,gadget
-.. tags::
 .. comments::

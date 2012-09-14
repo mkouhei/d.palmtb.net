@@ -22,5 +22,4 @@ http://www.virtualization.info/jp/2008/03/ciscoioskvm-20080305-1.html
 
 .. author:: default
 .. categories:: computer,virt.,network
-.. tags::
 .. comments::

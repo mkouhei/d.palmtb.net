@@ -68,5 +68,4 @@ LXCはKVMのようにLinux Kernelを拡張するのではなく、あくまでKe
 
 .. author:: default
 .. categories:: Debian,Unix/Linux,Ops,virt.
-.. tags::
 .. comments::

@@ -14,5 +14,4 @@ daiteiさんに教えていただいたおかげで、Debian on MacBook Airで�
 
 .. author:: default
 .. categories:: MacBook,Debian
-.. tags::
 .. comments::

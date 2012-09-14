@@ -136,5 +136,4 @@ b-mobile Fair
 
 .. author:: default
 .. categories:: network
-.. tags::
 .. comments::

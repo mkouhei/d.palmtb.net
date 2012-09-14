@@ -10,5 +10,4 @@ ISP障害続き。
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

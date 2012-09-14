@@ -10,5 +10,4 @@ iPod touchのアイコン並び替え
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

@@ -48,5 +48,4 @@ VGAを使うのを止め、Xfceの大きさをMacBook Airの液晶画面の1280x
 
 .. author:: default
 .. categories:: MacBook,Debian
-.. tags::
 .. comments::

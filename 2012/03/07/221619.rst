@@ -10,5 +10,4 @@ Webサイトに出てたヤツとは微妙に違っていて、古いモデル�
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

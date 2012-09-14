@@ -27,5 +27,4 @@
 
 .. author:: default
 .. categories:: error
-.. tags::
 .. comments::

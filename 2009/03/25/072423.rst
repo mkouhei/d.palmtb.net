@@ -16,5 +16,4 @@ Iceweaselがめっちゃ重いと思ったら。
 
 .. author:: default
 .. categories:: MacBook,Debian
-.. tags::
 .. comments::

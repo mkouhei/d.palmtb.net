@@ -24,5 +24,4 @@ Debian GNU/Linux testing "Lenny" - Official Snapshot amd64 NETINST Binary-1 2009
 
 .. author:: default
 .. categories:: MacBook,Debian
-.. tags::
 .. comments::

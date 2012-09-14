@@ -12,5 +12,4 @@ http://www.focal.co.jp/product/poken/index.html
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

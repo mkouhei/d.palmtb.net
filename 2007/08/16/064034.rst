@@ -48,5 +48,4 @@ fullcore falseになっとった。そりゃ吐かねぇよ。smittyで変更せ
 
 .. author:: default
 .. categories:: work,Unix/Linux
-.. tags::
 .. comments::

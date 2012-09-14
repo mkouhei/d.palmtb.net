@@ -158,5 +158,4 @@ http://twitter.com/mkouhei/status/11075310113
 
 .. author:: default
 .. categories:: Debian,Unix/Linux,virt.,computer
-.. tags::
 .. comments::

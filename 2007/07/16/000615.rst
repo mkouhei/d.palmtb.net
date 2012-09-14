@@ -12,5 +12,4 @@ Anthyの辞書がおかしい。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

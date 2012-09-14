@@ -23,5 +23,4 @@ http://mixi.co.jp/press/press_070424.html
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

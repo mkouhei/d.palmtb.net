@@ -35,5 +35,4 @@ pommedでもいじれるらしいのだが、MacBookのファンクションキ�
 
 .. author:: default
 .. categories:: MacBook,Debian
-.. tags::
 .. comments::

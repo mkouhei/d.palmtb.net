@@ -69,5 +69,4 @@ JSONにできましたよと。
 
 .. author:: default
 .. categories:: Python,Dev
-.. tags::
 .. comments::

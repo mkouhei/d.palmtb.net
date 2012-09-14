@@ -39,5 +39,4 @@ Git本もぜひよろしくです。w
 
 .. author:: default
 .. categories:: Ops,Git
-.. tags::
 .. comments::

@@ -10,5 +10,4 @@ Sidでアップデートしたら使えなくなった。もと戻そう。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

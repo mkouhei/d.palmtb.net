@@ -10,5 +10,4 @@
 
 .. author:: default
 .. categories:: security
-.. tags::
 .. comments::

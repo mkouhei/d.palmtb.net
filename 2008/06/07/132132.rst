@@ -35,5 +35,4 @@ gooshなかなか良いですな。
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

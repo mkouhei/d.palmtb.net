@@ -25,5 +25,5 @@ vimでもemacsでも行けるようです。lvはそのうちxzも対応する�
 
 .. author:: default
 .. categories:: computer
-.. tags:: lv,vi,emacs,
+.. tags:: lv,vi,emacs
 .. comments::

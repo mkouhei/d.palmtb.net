@@ -10,5 +10,4 @@ I installed git-daemon-run to my home server. It is easy. 1st, I installed packa
 
 .. author:: default
 .. categories:: Git
-.. tags::
 .. comments::

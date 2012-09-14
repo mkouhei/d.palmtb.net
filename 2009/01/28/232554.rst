@@ -56,5 +56,4 @@ Debian Hack Meeting #0
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

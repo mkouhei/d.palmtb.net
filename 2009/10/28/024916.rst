@@ -13,5 +13,4 @@
 
 .. author:: default
 .. categories:: life,nonsense
-.. tags::
 .. comments::

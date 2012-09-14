@@ -26,5 +26,4 @@ Commit is "etckeeper commit", Show status/log is "git status/log".
 
 .. author:: default
 .. categories:: Git,Ops
-.. tags::
 .. comments::

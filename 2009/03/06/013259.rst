@@ -28,5 +28,4 @@ https://help.ubuntu.com/community/UbuntuTime#Make%20Windows%20use%20UTC
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

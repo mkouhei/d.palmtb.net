@@ -24,5 +24,4 @@ qpstudy05に参加してきた。
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

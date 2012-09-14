@@ -114,5 +114,4 @@ configファイルの内容の違いは以下。lxc.mountパラメータが無�
 
 .. author:: default
 .. categories:: Debian,computer,virt.
-.. tags::
 .. comments::

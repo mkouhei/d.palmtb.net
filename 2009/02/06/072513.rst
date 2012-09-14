@@ -12,5 +12,4 @@ WILLCOM WX321Jで気付いたこと。発信ボタンを長押ししていると
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

@@ -20,5 +20,4 @@ http://r25.jp/b/report/a/report_details/id/110000007111?vos=dr25rss000000000001
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

@@ -31,5 +31,4 @@ http://tokyodebian.alioth.debian.org/hackcafe.html
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

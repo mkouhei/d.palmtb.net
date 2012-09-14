@@ -12,5 +12,4 @@ IP電話の導入を検討しようかと。
 
 .. author:: default
 .. categories:: life,network
-.. tags::
 .. comments::

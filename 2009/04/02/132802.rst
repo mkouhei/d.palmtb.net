@@ -14,5 +14,4 @@ Then I did setup, but Debian on MacBook Air failed WPA-PSK authentication of 4 w
 
 .. author:: default
 .. categories:: network
-.. tags::
 .. comments::

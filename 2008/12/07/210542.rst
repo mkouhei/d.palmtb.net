@@ -28,5 +28,4 @@
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

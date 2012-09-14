@@ -10,5 +10,4 @@ view で絞ったデータのうち、必要箇所だけを更新できればよ
 
 .. author:: default
 .. categories:: CouchDB
-.. tags::
 .. comments::

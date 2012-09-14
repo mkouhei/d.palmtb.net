@@ -14,5 +14,4 @@ http://www.lpi.or.jp/pressrelease/20070122.shtml
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

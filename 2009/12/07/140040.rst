@@ -19,5 +19,4 @@ Windows環境だと、PuTTYで作業することが多いのだが、Windowの�
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

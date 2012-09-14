@@ -109,5 +109,4 @@ python-tomahawkのスポンサー
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

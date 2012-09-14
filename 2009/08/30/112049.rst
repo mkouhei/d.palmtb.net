@@ -28,5 +28,4 @@ http://www.warnermycal.com/cinema/tama/index.html
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

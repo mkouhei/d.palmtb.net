@@ -99,5 +99,4 @@ sshfs試してみた。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

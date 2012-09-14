@@ -47,5 +47,4 @@ Xfceの時はそんなことはできなかったので、こんなスクリプ�
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

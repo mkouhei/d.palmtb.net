@@ -10,5 +10,4 @@ ERIKAとして出しているのに、提携しているスポンサーの `サ�
 
 .. author:: default
 .. categories:: nonsense,error
-.. tags::
 .. comments::

@@ -12,5 +12,4 @@ Evidenceが…。これだからちゃんと引き継ぎができていないの
 
 .. author:: default
 .. categories:: work
-.. tags::
 .. comments::

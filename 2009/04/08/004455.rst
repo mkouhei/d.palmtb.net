@@ -10,5 +10,4 @@ Debconf9への事前準備
 
 .. author:: default
 .. categories:: work,life
-.. tags::
 .. comments::

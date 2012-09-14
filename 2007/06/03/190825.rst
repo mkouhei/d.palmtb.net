@@ -10,5 +10,4 @@ qmailなんて使っている人が結構多いのね。
 
 .. author:: default
 .. categories:: nonsense,Debian
-.. tags::
 .. comments::

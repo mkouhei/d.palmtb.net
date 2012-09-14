@@ -10,5 +10,4 @@ dist-upgradeも基本的に問題無し。
 
 .. author:: default
 .. categories:: Debian,Ops
-.. tags::
 .. comments::

@@ -132,5 +132,4 @@ nginxを再起動すれば、リバースプロキシ経由でtrac-gitにアク�
 
 .. author:: default
 .. categories:: Unix/Linux,Debian
-.. tags::
 .. comments::

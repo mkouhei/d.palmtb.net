@@ -14,5 +14,4 @@
 
 .. author:: default
 .. categories:: network,life,gadget
-.. tags::
 .. comments::

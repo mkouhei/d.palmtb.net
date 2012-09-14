@@ -10,5 +10,4 @@ Debian温泉
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

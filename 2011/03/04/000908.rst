@@ -58,5 +58,4 @@ MacBook 5,2と並べて。デカイっていいねぇ。
 
 .. author:: default
 .. categories:: MacBook,life
-.. tags::
 .. comments::

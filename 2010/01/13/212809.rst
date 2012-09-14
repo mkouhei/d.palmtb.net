@@ -15,5 +15,4 @@ PaSoRi RC-S330購入。
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

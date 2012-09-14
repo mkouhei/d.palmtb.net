@@ -181,5 +181,4 @@ Gmailにリレーするだけなのに、サーバ証明書とかクライアン
 
 .. author:: default
 .. categories:: Unix/Linux,Debian
-.. tags::
 .. comments::

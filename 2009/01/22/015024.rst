@@ -30,5 +30,4 @@ Let's noteの方に、多量のPDFを転送したら、途中まではサクサ�
 
 .. author:: default
 .. categories:: Unix/Linux,network
-.. tags::
 .. comments::

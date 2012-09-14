@@ -10,5 +10,4 @@ VPNで接続して家からでも仕事できるのは良いのですが、な�
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

@@ -13,5 +13,4 @@ OOoを仕事で使うそうな。
 
 .. author:: default
 .. categories:: nonsense,life
-.. tags::
 .. comments::

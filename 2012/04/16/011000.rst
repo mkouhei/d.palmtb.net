@@ -158,5 +158,5 @@ PYTHONPATHに$(CURDIR)/srcを指定するというのが分かるまで、_build
 
 .. author:: default
 .. categories:: Dev
-.. tags:: Debian, python, blockdiag,
+.. tags:: Debian,Python,blockdiag
 .. comments::

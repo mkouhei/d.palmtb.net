@@ -12,5 +12,4 @@ MacBookを注文するときにつけなかった、Mini-DVI to VGAアダプタ�
 
 .. author:: default
 .. categories:: MacBook
-.. tags::
 .. comments::

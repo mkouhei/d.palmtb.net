@@ -202,5 +202,4 @@ Apacheの設定
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

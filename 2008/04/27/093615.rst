@@ -12,5 +12,4 @@ Let's note R3のディスクを交換した。
 
 .. author:: default
 .. categories:: computer,network
-.. tags::
 .. comments::

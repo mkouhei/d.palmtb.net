@@ -13,5 +13,4 @@ http://www.tv-tokyo.co.jp/symbols/
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

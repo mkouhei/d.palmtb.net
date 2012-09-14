@@ -10,5 +10,4 @@ AIX、Java、DB2に続けて今度はTSM。あの高いTivoli製品。つか、�
 
 .. author:: default
 .. categories:: work
-.. tags::
 .. comments::

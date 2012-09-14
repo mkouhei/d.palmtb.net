@@ -10,5 +10,4 @@ Lenny化完了
 
 .. author:: default
 .. categories:: Debian,Ops
-.. tags::
 .. comments::

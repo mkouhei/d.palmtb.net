@@ -182,5 +182,4 @@ debuild時のエラーももちろん解消されました。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

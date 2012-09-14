@@ -10,5 +10,4 @@ mとH
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

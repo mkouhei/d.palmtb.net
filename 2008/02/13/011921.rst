@@ -69,5 +69,4 @@ rEFItが起動後、EFI Shellを実行し、gptsyncを実行させる。実行�
 
 .. author:: default
 .. categories:: Debian,MacBook
-.. tags::
 .. comments::

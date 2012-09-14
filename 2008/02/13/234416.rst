@@ -14,5 +14,4 @@ EFI ShellがrEFItのメニューに表示されていなかったのは、ちゃ
 
 .. author:: default
 .. categories:: MacBook
-.. tags::
 .. comments::

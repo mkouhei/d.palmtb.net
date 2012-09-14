@@ -27,5 +27,4 @@ toxが依存する `argparse <http://pypi.python.org/pypi/argparse>`_ はPython2
 
 .. author:: default
 .. categories:: Debian,Python,Dev
-.. tags::
 .. comments::

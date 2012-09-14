@@ -36,5 +36,4 @@ amazonの方が得
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

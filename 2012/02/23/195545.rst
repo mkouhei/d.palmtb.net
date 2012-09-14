@@ -85,5 +85,4 @@ p7zip-fullはxzと、pbzip2はbzip2と大体圧縮率が同じくらいで、処
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

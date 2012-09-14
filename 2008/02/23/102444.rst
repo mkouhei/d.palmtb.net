@@ -12,5 +12,4 @@ bcm43xxとb43ってどうちがうのかなぁと思ったら、 `b43の方が�
 
 .. author:: default
 .. categories:: MacBook,Unix/Linux,network
-.. tags::
 .. comments::

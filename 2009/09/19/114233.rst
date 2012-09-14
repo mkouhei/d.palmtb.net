@@ -36,5 +36,4 @@ http://markets.nikkei.co.jp/kokunai/hotnews.aspx?id=AS1D180BA%2018092009
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

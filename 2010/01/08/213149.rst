@@ -38,5 +38,4 @@ POP3などでメールを受信してメール本文のデータを処理させ�
 
 .. author:: default
 .. categories:: Unix/Linux,network
-.. tags::
 .. comments::

@@ -74,5 +74,4 @@ Netfilter rule is below.
 
 .. author:: default
 .. categories:: CouchDB,Debian
-.. tags::
 .. comments::

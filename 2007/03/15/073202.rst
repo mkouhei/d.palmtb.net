@@ -15,5 +15,4 @@ Nokia Secure IP Series/CheckPoint FireWall-1の方はまた別の後任者に引
 
 .. author:: default
 .. categories:: Unix/Linux,security,Ops
-.. tags::
 .. comments::

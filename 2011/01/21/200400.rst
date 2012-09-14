@@ -52,5 +52,4 @@
 
 .. author:: default
 .. categories:: TeX
-.. tags::
 .. comments::

@@ -10,5 +10,4 @@ Armadillo-9 Debian化完了。
 
 .. author:: default
 .. categories:: Debian,gadget,computer
-.. tags::
 .. comments::

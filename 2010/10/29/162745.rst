@@ -45,5 +45,4 @@ SargeからEtchにアップデート途中にトラブったのでメモ。
 
 .. author:: default
 .. categories:: Unix/Linux,Debian
-.. tags::
 .. comments::

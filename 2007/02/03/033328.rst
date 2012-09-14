@@ -11,5 +11,4 @@ Mac OS Xで電源が突然落ちないか試すため、使いにくくて仕方
 
 .. author:: default
 .. categories:: MacBook
-.. tags::
 .. comments::

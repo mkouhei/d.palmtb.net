@@ -28,5 +28,4 @@ http://d.palmtb.net/
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

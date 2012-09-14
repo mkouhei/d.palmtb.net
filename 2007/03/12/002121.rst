@@ -10,5 +10,4 @@ NokiaとLinuxの引継はほぼ完了。あとは、セキュリティアラー�
 
 .. author:: default
 .. categories:: work
-.. tags::
 .. comments::

@@ -118,5 +118,4 @@ git stash popしてconflictが発生したらstashのキューから削除され
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

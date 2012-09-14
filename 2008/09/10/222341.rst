@@ -65,5 +65,4 @@ hermitのインストール
 
 .. author:: default
 .. categories:: Debian,gadget,computer
-.. tags::
 .. comments::

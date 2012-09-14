@@ -486,5 +486,4 @@ CouchDBのReduce処理には組み込み関数が用意されているので、�
 
 .. author:: default
 .. categories:: CouchDB,cat,Dev
-.. tags::
 .. comments::

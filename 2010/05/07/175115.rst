@@ -87,5 +87,4 @@ git diffで確認。
 
 .. author:: default
 .. categories:: Debian,TeX
-.. tags::
 .. comments::

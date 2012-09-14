@@ -32,5 +32,4 @@ I got Plutoed by my boss.
 
 .. author:: default
 .. categories:: computer,nonsense
-.. tags::
 .. comments::

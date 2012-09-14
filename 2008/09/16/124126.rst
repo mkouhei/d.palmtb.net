@@ -12,5 +12,4 @@ http://www.asahi.com/national/update/0914/TKY200809140098.html
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

@@ -32,5 +32,4 @@ FedEx Kinko's 以外に中綴じ印刷が出きるところがないか調べて
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

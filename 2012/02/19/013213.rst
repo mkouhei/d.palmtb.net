@@ -127,5 +127,4 @@ treeコマンドを普通に使うと、
 
 .. author:: default
 .. categories:: TeX,Unix/Linux
-.. tags::
 .. comments::

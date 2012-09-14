@@ -14,5 +14,4 @@ http://www.enn.com/sci-tech/article/37929
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

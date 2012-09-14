@@ -12,5 +12,4 @@ We became free from "Nira".
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

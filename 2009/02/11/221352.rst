@@ -14,5 +14,4 @@ http://www.palmtb.net/
 
 .. author:: default
 .. categories:: Debian,gadget
-.. tags::
 .. comments::

@@ -16,5 +16,4 @@ http://www.atmarkit.co.jp/news/200802/26/systemz.html
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

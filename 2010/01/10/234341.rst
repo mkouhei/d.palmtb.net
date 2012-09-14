@@ -14,5 +14,4 @@ RelaxCafe@CouchDB break.5 参加。
 
 .. author:: default
 .. categories:: CouchDB,meeting
-.. tags::
 .. comments::

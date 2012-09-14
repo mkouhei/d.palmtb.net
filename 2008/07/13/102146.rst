@@ -13,5 +13,4 @@ ClubDB2終了後、ohnamiさんとその弟子さんと歌舞伎町の中華料�
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

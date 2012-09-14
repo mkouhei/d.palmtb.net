@@ -16,5 +16,4 @@ http://www.lebihan.jp/lebihan_lebihan/item/item_7.html
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

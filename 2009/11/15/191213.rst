@@ -58,5 +58,4 @@ Kinko'sでの印刷を初経験してみて。
 
 .. author:: default
 .. categories:: Debian,meeting
-.. tags::
 .. comments::

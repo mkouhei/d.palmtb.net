@@ -48,5 +48,4 @@ Couchappのdebパッケージ化。
 
 .. author:: default
 .. categories:: Debian,CouchDB
-.. tags::
 .. comments::

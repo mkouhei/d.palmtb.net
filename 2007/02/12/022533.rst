@@ -22,5 +22,4 @@ debuildでやると、作成したパッケージには何故か/usr/binの下�
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

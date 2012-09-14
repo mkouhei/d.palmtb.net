@@ -10,5 +10,4 @@ Git is not distributed version control system but version control system of dist
 
 .. author:: default
 .. categories:: Git
-.. tags::
 .. comments::

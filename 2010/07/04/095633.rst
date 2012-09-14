@@ -10,5 +10,4 @@ OD3。
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

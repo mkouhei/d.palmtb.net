@@ -73,5 +73,4 @@ Arrival DebConf9.
 
 .. author:: default
 .. categories:: life,Debian
-.. tags::
 .. comments::

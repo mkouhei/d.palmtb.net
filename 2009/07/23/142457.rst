@@ -193,5 +193,4 @@ Panoramic view of Toledo
 
 .. author:: default
 .. categories:: life,Debian
-.. tags::
 .. comments::

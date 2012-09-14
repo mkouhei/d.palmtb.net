@@ -12,5 +12,4 @@ http://www.atmarkit.co.jp/news/200706/28/ipa.html
 
 .. author:: default
 .. categories:: work
-.. tags::
 .. comments::

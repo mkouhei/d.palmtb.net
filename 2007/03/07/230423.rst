@@ -14,5 +14,4 @@ kernel 2.6.21-rc1では普通に使えていたのに、今日起動してみた
 
 .. author:: default
 .. categories:: Unix/Linux,MacBook
-.. tags::
 .. comments::

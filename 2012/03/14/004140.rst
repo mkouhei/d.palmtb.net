@@ -39,5 +39,4 @@ Redmineのチケットを一括してプロジェクト移動させる。
 
 .. author:: default
 .. categories:: Ops
-.. tags::
 .. comments::

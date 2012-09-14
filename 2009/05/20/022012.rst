@@ -10,5 +10,4 @@ The main material to talk concerns operation, and is oVirt. Wait that for a whil
 
 .. author:: default
 .. categories:: virt.
-.. tags::
 .. comments::

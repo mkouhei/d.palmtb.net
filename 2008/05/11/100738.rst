@@ -51,5 +51,4 @@ WN511TをNDISwrapperでロード結果
 
 .. author:: default
 .. categories:: Debian,network
-.. tags::
 .. comments::

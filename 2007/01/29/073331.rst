@@ -73,5 +73,4 @@ http://lwn.net/Articles/144507/
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

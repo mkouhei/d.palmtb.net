@@ -218,5 +218,4 @@ http://www.flickr.com/search/?q=zootama&w=41853584%40N06
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

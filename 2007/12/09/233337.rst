@@ -20,5 +20,4 @@ OP25B対策。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

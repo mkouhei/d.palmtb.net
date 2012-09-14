@@ -10,5 +10,4 @@ KVM #2
 
 .. author:: default
 .. categories:: virt.
-.. tags::
 .. comments::

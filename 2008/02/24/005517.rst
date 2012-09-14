@@ -10,5 +10,4 @@ MacBook Airに対応した。
 
 .. author:: default
 .. categories:: MacBook,Unix/Linux
-.. tags::
 .. comments::

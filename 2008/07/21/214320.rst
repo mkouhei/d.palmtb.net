@@ -57,5 +57,4 @@ sylpheedが使えない。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

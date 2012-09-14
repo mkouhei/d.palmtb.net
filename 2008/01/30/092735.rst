@@ -14,5 +14,4 @@ Let's note R3のディスクが壊れ始めた。
 
 .. author:: default
 .. categories:: computer,Debian
-.. tags::
 .. comments::

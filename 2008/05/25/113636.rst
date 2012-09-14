@@ -13,5 +13,4 @@ etch化及び、kernelの書き換えに当たっては、 `Genbako kernel colle
 
 .. author:: default
 .. categories:: Debian,gadget,Ops
-.. tags::
 .. comments::

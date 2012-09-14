@@ -17,5 +17,4 @@ google-chrome-betaからchromium-browserに切り替えた。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

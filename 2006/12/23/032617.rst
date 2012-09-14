@@ -23,5 +23,4 @@ Blogなんぞ使うつもりは今までまったく無かったのだが、以�
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

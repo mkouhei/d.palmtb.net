@@ -20,5 +20,4 @@ Macではてなダイアリーを更新していたら、
 
 .. author:: default
 .. categories:: error,MacBook
-.. tags::
 .. comments::

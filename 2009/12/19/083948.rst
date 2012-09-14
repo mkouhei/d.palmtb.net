@@ -89,5 +89,4 @@ lxcのホストOSでルーティングさせる。
 
 .. author:: default
 .. categories:: Unix/Linux,network,Ops,virt.
-.. tags::
 .. comments::

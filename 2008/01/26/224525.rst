@@ -39,5 +39,4 @@ hibernateはLEDの明滅は無いが、同じようにディスプレイを開�
 
 .. author:: default
 .. categories:: Unix/Linux,Debian
-.. tags::
 .. comments::

@@ -30,5 +30,4 @@ Windowsな人たちと一緒に作業している環境だと、scpだと日本�
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

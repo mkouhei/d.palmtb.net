@@ -38,5 +38,4 @@
 
 .. author:: default
 .. categories:: cat
-.. tags::
 .. comments::

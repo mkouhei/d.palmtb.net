@@ -20,5 +20,4 @@ check*padから送られてきた今日の言葉。
 
 .. author:: default
 .. categories:: work
-.. tags::
 .. comments::

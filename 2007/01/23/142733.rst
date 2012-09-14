@@ -14,5 +14,4 @@ Wikiで書いているネタが、最近デスクトップ関連が多い。ま�
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

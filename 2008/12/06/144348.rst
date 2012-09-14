@@ -10,5 +10,4 @@ MacBook Airをメインにしてから外でもこれを使っていたのだが
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

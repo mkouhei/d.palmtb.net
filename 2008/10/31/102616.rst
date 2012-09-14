@@ -26,5 +26,4 @@ Twitterのパスワードリセットのメールの冒頭の文句は素敵で�
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

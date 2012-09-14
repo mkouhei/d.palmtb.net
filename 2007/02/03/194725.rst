@@ -10,5 +10,4 @@ KVMで使用しているWindows xpのディスクサイズがSP2とIE7を入れ�
 
 .. author:: default
 .. categories:: computer,virt.
-.. tags::
 .. comments::

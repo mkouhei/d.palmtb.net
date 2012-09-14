@@ -60,5 +60,4 @@ Chris氏！
 
 .. author:: default
 .. categories:: CouchDB
-.. tags::
 .. comments::

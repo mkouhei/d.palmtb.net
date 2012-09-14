@@ -18,5 +18,4 @@ Nexus SをAndroid 2.3.3に手動でアップデートした。
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

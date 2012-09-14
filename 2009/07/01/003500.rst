@@ -34,5 +34,4 @@ I saw ft server for the first time.
 
 .. author:: default
 .. categories:: virt.
-.. tags::
 .. comments::

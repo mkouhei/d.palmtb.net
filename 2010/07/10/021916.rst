@@ -56,5 +56,4 @@ tmuxを使っていると、dialoutグループに追加していても、なぜ
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

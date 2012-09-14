@@ -14,5 +14,4 @@ CouchDB on Androidのアップデートは差分更新。
 
 .. author:: default
 .. categories:: CouchDB,gadget
-.. tags::
 .. comments::

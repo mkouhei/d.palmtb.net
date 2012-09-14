@@ -24,5 +24,4 @@ mixiのコミュニティより。Ramdom Write/Readだけでなく、Sequential 
 
 .. author:: default
 .. categories:: MacBook
-.. tags::
 .. comments::

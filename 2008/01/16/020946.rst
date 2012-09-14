@@ -10,5 +10,4 @@ Wii Fitが。予想以上にハード。
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

@@ -16,5 +16,4 @@ Sid on MacBookでバッテリー残量が突然無くなる [#]_ のは無くな
 
 .. author:: default
 .. categories:: MacBook,Unix/Linux
-.. tags::
 .. comments::

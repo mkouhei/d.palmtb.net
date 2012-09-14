@@ -30,5 +30,4 @@ f:id:mkouhei:20081021201202j:image
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

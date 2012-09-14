@@ -27,5 +27,4 @@ http://sourceforge.net/tracker/?atid=893831&group_id=180599&func=browse
 
 .. author:: default
 .. categories:: Unix/Linux,computer,virt.
-.. tags::
 .. comments::

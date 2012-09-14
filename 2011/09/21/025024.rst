@@ -36,5 +36,4 @@ Debian温泉2011参加。
 
 .. author:: default
 .. categories:: Debian,meeting
-.. tags::
 .. comments::

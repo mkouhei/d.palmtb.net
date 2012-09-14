@@ -56,5 +56,4 @@ suExecさせるためにさっき作ったラッパーだと、ruby index.fcgi�
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

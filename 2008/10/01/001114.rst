@@ -41,5 +41,4 @@ MacBook Airでフルスキャンしてみたのだが、うーむ、単純な比
 
 .. author:: default
 .. categories:: Unix/Linux,security
-.. tags::
 .. comments::

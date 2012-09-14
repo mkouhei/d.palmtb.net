@@ -396,5 +396,4 @@ getRow()でviewで返される"rows"を取得できるので、これをwhileで
 
 .. author:: default
 .. categories:: CouchDB,Debian,Dev
-.. tags::
 .. comments::

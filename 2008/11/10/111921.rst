@@ -14,5 +14,4 @@ PSPで寝ながらネット。
 
 .. author:: default
 .. categories:: life,network
-.. tags::
 .. comments::

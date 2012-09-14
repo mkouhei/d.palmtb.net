@@ -161,5 +161,4 @@ acpidは1.0.4-5で、各kernelを切り替えてみた。
 
 .. author:: default
 .. categories:: MacBook,Unix/Linux
-.. tags::
 .. comments::

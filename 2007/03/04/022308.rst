@@ -11,5 +11,4 @@ OOo用のテンプレ作ってみた。
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

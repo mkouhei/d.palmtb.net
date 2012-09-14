@@ -12,5 +12,4 @@ Bookでバッテリーとかファンとかの故障多いみたいだしなぁ�
 
 .. author:: default
 .. categories:: Unix/Linux,MacBook
-.. tags::
 .. comments::

@@ -15,5 +15,4 @@ AWstatsな日。
 
 .. author:: default
 .. categories:: Unix/Linux,work
-.. tags::
 .. comments::

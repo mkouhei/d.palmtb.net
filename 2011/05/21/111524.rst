@@ -79,5 +79,4 @@ update-grub2で/boot/grub/grub.cfgを更新 [#]_ 、
 
 .. author:: default
 .. categories:: Debian,MacBook
-.. tags::
 .. comments::

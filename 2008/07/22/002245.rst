@@ -17,5 +17,4 @@
 
 .. author:: default
 .. categories:: Unix/Linux,Debian,MacBook
-.. tags::
 .. comments::

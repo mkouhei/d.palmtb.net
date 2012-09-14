@@ -10,5 +10,4 @@ teeの代わりに使えるとは知らんかった。
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

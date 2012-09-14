@@ -15,5 +15,4 @@ MacBookはKVMがあるから、もう今更環境壊す覚悟でXenを入れる�
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

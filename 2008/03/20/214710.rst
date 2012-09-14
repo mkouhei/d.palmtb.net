@@ -142,5 +142,4 @@ vlcをインストールすれば、良し。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

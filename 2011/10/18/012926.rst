@@ -10,5 +10,4 @@ PowerDNS GUIの困った話（その３）。
 
 .. author:: default
 .. categories:: Dev
-.. tags::
 .. comments::

@@ -26,5 +26,4 @@ linux, initrdに渡す最初の引数のパスに/bootがついているため�
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

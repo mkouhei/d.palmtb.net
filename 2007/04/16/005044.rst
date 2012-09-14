@@ -10,5 +10,4 @@ IBMのAPARの変更点を調べる必要があって、IBMのサイトで検索�
 
 .. author:: default
 .. categories:: work
-.. tags::
 .. comments::

@@ -85,5 +85,4 @@ Makefile
 
 .. author:: default
 .. categories:: Debian,computer
-.. tags::
 .. comments::

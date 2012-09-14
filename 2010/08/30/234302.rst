@@ -41,5 +41,4 @@ palm-novacomdを止める [#]_ とこのエラーも止まる。
 
 .. author:: default
 .. categories:: Unix/Linux,Debian,gadget
-.. tags::
 .. comments::

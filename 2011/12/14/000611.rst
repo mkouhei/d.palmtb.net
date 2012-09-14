@@ -834,5 +834,4 @@ masterブランチは古いので要注意。
 
 .. author:: default
 .. categories:: network,Debian
-.. tags::
 .. comments::

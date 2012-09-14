@@ -11,5 +11,4 @@ Debian on MacBook環境でMac OS Xをバージョンアップする。
 
 .. author:: default
 .. categories:: MacBook,Debian
-.. tags::
 .. comments::

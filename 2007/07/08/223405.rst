@@ -12,5 +12,4 @@ WX321Jに付いているICレコーダで風鈴の音を録音してみた。が
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

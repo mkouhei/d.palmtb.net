@@ -12,5 +12,4 @@ http://tinyurl.com/cl52d9
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

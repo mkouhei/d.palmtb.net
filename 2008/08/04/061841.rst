@@ -12,5 +12,4 @@ http://www.sanspo.com/geino/news/080804/gnj0808040433016-n1.htm
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

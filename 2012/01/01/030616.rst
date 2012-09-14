@@ -206,5 +206,4 @@ https://github.com/mkouhei/GenNenga
 
 .. author:: default
 .. categories:: TeX,Python,Debian,computer
-.. tags::
 .. comments::

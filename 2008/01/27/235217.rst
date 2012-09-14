@@ -10,5 +10,4 @@ Let's note R3で無線LANがipw2200を使って、どう頑張っても電源が
 
 .. author:: default
 .. categories:: Unix/Linux,network
-.. tags::
 .. comments::

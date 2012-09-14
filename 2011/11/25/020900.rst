@@ -111,5 +111,4 @@ blockdiagが1.1になって、OrderedDictが使われるようになったよう
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

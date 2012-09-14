@@ -74,5 +74,4 @@ SlideShareにもアップしたので。
 
 .. author:: default
 .. categories:: meeting
-.. tags::
 .. comments::

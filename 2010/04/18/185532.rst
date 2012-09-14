@@ -21,5 +21,4 @@
 
 .. author:: default
 .. categories:: meeting,Debian
-.. tags::
 .. comments::

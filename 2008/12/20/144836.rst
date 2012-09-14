@@ -19,5 +19,4 @@ OpenLDAP勉強会
 
 .. author:: default
 .. categories:: meeting,Unix/Linux
-.. tags::
 .. comments::

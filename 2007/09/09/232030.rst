@@ -10,5 +10,4 @@ SiCKO見てきた。
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

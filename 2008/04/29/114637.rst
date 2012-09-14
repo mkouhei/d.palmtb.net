@@ -20,5 +20,4 @@
 
 .. author:: default
 .. categories:: nonsense,error
-.. tags::
 .. comments::

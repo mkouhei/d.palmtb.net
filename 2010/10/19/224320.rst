@@ -68,5 +68,4 @@ Squeeze/SidでGAE SDK for Pythonがエラーになる。
 
 .. author:: default
 .. categories:: Debian,Python,Dev
-.. tags::
 .. comments::

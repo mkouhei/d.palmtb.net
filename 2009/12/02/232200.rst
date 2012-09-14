@@ -14,5 +14,4 @@ wireless gateのサポートに昨夜問い合わせたのに対し、今朝8:02
 
 .. author:: default
 .. categories:: network,gadget
-.. tags::
 .. comments::

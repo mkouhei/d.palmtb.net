@@ -10,5 +10,4 @@ XSSを実際に試してみる、ということで実習でやってみた。�
 
 .. author:: default
 .. categories:: security,work
-.. tags::
 .. comments::

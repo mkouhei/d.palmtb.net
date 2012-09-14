@@ -12,5 +12,4 @@
 
 .. author:: default
 .. categories:: computer,gadget,Unix/Linux
-.. tags::
 .. comments::

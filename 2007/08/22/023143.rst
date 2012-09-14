@@ -13,5 +13,4 @@
 
 .. author:: default
 .. categories:: work,life
-.. tags::
 .. comments::

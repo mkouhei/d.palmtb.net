@@ -19,5 +19,4 @@ R3のHDDはまだ交換していないので、/homeファイルシステム以�
 
 .. author:: default
 .. categories:: Debian,life
-.. tags::
 .. comments::

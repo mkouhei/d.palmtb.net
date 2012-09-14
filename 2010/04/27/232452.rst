@@ -21,5 +21,4 @@ OOoのファイルを管理しているgitリポジトリでの出来事。サ�
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

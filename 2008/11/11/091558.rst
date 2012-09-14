@@ -12,5 +12,4 @@ http://slashdot.jp/slash/08/11/10/1337230.shtml
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

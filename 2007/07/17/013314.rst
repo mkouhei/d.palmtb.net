@@ -10,5 +10,4 @@ AXEのWebサイトの `AXERCISE <http://www.axeeffect.jp/axercise/index.html>`_ 
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

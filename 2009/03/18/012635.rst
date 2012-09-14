@@ -17,5 +17,4 @@ jfbterm
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

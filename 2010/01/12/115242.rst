@@ -10,5 +10,4 @@ lxc-infoを実行するのに、root権限が必要無くなった！今まで�
 
 .. author:: default
 .. categories:: Debian,virt.,computer
-.. tags::
 .. comments::

@@ -30,5 +30,4 @@ How should I do?
 
 .. author:: default
 .. categories:: Git
-.. tags::
 .. comments::

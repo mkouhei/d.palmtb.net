@@ -141,5 +141,4 @@ jQuery Mobileでデータ入力画面を作り、データストアのデータ�
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

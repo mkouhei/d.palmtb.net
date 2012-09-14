@@ -11,5 +11,4 @@ Lennyにアップグレードしてみた。#1
 
 .. author:: default
 .. categories:: Debian,gadget,Ops
-.. tags::
 .. comments::

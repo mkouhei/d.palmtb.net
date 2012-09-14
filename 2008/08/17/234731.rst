@@ -53,5 +53,4 @@ Debian温泉写真集。
 
 .. author:: default
 .. categories:: Debian,meeting
-.. tags::
 .. comments::

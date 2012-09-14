@@ -25,5 +25,4 @@ Bloggerから移行完了
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

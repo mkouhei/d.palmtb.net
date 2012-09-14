@@ -51,5 +51,4 @@
 
 .. author:: default
 .. categories:: MacBook,Debian
-.. tags::
 .. comments::

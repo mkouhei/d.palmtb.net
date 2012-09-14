@@ -10,5 +10,4 @@ viで改行を消して、2つの行を1つにする方法を知らなかった�
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

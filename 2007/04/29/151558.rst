@@ -10,5 +10,4 @@ Kernel 2.6.21
 
 .. author:: default
 .. categories:: Unix/Linux,MacBook
-.. tags::
 .. comments::

@@ -14,5 +14,4 @@ VMwareのゲストOSのWindowsで、USBプリンタにアクセスさせるの�
 
 .. author:: default
 .. categories:: virt.,computer
-.. tags::
 .. comments::

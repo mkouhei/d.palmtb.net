@@ -68,5 +68,4 @@ Kernel イメージを指定する。tab補完が効くので楽。
 
 .. author:: default
 .. categories:: Debian,Unix/Linux
-.. tags::
 .. comments::

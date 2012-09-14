@@ -10,5 +10,4 @@
 
 .. author:: default
 .. categories:: error,Unix/Linux,meeting
-.. tags::
 .. comments::

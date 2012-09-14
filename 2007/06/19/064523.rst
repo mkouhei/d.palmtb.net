@@ -20,5 +20,4 @@ Sidのkvmがrelease 18から一気に28に。この２ヶ月半、メール見�
 
 .. author:: default
 .. categories:: Debian,computer,virt.
-.. tags::
 .. comments::

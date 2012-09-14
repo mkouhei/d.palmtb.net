@@ -10,5 +10,4 @@ EMのSIMでGDDフォン通話できるか？
 
 .. author:: default
 .. categories:: gadget,network
-.. tags::
 .. comments::

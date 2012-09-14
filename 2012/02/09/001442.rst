@@ -148,5 +148,4 @@ git blameでいつ変更されたのかを確認します。
 
 .. author:: default
 .. categories:: Git
-.. tags::
 .. comments::

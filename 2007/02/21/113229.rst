@@ -15,5 +15,4 @@ http://www.atmarkit.co.jp/fwin2k/itpropower/admin-kun/063/adminkun063.html
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

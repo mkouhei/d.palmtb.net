@@ -20,5 +20,4 @@ DMCに行ってきた。
 
 .. author:: default
 .. categories:: Debian,meeting
-.. tags::
 .. comments::

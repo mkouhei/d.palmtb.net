@@ -10,5 +10,4 @@
 
 .. author:: default
 .. categories:: nonsense,work
-.. tags::
 .. comments::

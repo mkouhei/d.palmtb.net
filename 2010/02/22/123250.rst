@@ -14,5 +14,4 @@ Try WiMAXを借りてみて。
 
 .. author:: default
 .. categories:: network
-.. tags::
 .. comments::

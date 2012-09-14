@@ -10,5 +10,4 @@ IDとパスワードを統一したい。
 
 .. author:: default
 .. categories:: security,Ops
-.. tags::
 .. comments::

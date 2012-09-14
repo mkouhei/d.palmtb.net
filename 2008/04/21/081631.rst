@@ -12,5 +12,4 @@
 
 .. author:: default
 .. categories:: work,life,error
-.. tags::
 .. comments::

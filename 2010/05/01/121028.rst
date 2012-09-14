@@ -18,5 +18,4 @@ perlが原因？
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

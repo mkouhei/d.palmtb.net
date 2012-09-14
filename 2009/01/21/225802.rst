@@ -10,5 +10,4 @@ rescueモードで更新して復旧。
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

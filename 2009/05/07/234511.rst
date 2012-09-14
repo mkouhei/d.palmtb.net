@@ -10,5 +10,4 @@ USBee
 
 .. author:: default
 .. categories:: computer
-.. tags::
 .. comments::

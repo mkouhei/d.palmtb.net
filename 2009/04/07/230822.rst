@@ -17,5 +17,4 @@ when auth failed, dmesg.
 
 .. author:: default
 .. categories:: Debian
-.. tags::
 .. comments::

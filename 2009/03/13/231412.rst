@@ -10,5 +10,4 @@ id:z-ohnamiさんに以前教えてもらった、 `Wittamer <http://www.wittame
 
 .. author:: default
 .. categories:: life
-.. tags::
 .. comments::

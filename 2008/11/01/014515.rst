@@ -20,5 +20,4 @@ http://forum.chumby.com/viewtopic.php?pid=11745
 
 .. author:: default
 .. categories:: gadget
-.. tags::
 .. comments::

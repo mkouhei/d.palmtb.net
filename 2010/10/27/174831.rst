@@ -43,5 +43,4 @@ Githubにあるmaster [#]_ から持ってきているcouchappが、Sidだと動
 
 .. author:: default
 .. categories:: Debian,CouchDB
-.. tags::
 .. comments::

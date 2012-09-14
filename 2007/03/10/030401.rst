@@ -10,5 +10,4 @@ MacBookのファンがちゃんと回った。故障した訳じゃなくて良�
 
 .. author:: default
 .. categories:: MacBook,Unix/Linux
-.. tags::
 .. comments::

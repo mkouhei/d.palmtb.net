@@ -77,5 +77,4 @@ MapReduceおもしろそうだなぁと今更思ったので、 `Hadoop Conferen
 
 .. author:: default
 .. categories:: CouchDB,cat
-.. tags::
 .. comments::

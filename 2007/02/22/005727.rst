@@ -10,5 +10,4 @@ kvmをGUI無しでも使えるか？
 
 .. author:: default
 .. categories:: computer,virt.
-.. tags::
 .. comments::

@@ -12,5 +12,4 @@ z/Linuxの販促として、自社のWebサイトのサービス紹介ページ�
 
 .. author:: default
 .. categories:: work
-.. tags::
 .. comments::

@@ -19,5 +19,4 @@ O'REILLYのeBookを購入すると、4つのフォーマットをダウンロー
 
 .. author:: default
 .. categories:: CouchDB,gadget,computer
-.. tags::
 .. comments::

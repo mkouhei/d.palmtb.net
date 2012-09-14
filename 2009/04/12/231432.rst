@@ -10,5 +10,4 @@ http://jsmario.com.ar/
 
 .. author:: default
 .. categories:: nonsense
-.. tags::
 .. comments::

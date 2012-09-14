@@ -22,5 +22,4 @@
 
 .. author:: default
 .. categories:: Ops
-.. tags::
 .. comments::

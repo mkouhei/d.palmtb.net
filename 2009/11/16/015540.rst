@@ -21,5 +21,4 @@ git pushされてなかったのか。
 
 .. author:: default
 .. categories:: error,life
-.. tags::
 .. comments::

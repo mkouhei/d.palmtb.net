@@ -14,5 +14,4 @@ JLAの総会参加してきた。
 
 .. author:: default
 .. categories:: Unix/Linux
-.. tags::
 .. comments::

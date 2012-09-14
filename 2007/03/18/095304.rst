@@ -55,5 +55,4 @@ OSC 2007 Tokyo/Spring
 
 .. author:: default
 .. categories:: Debian,meeting,virt.
-.. tags::
 .. comments::
