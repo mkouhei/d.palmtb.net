@@ -50,6 +50,6 @@ Xfce4 terminal windows width is 80 as defaults. Expand width 100.
 
 
 .. author:: default
-.. categories:: 
+.. categories:: Linux,virt.
 .. tags::
 .. comments::

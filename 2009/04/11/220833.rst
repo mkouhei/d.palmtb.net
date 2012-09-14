@@ -49,6 +49,6 @@
 
 
 .. author:: default
-.. categories:: 
+.. categories:: Debian
 .. tags::
 .. comments::

@@ -72,6 +72,6 @@
 
 
 .. author:: default
-.. categories:: 
+.. categories:: life
 .. tags::
 .. comments::

@@ -9,6 +9,6 @@ By the time I took care of the students had been retired in April of this year, 
 
 
 .. author:: default
-.. categories:: 
+.. categories:: work
 .. tags::
 .. comments::

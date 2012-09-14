@@ -70,6 +70,6 @@ Hardrock Cafeにて昼食。
 
 
 .. author:: default
-.. categories:: 
+.. categories:: life
 .. tags::
 .. comments::

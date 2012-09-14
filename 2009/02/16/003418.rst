@@ -28,6 +28,6 @@ kernelの違いよりも、"(SYSV)"の方が関係ありそうな気がするけ
 
 
 .. author:: default
-.. categories:: 
+.. categories:: gadget,Linux
 .. tags::
 .. comments::

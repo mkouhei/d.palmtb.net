@@ -15,6 +15,6 @@ BRAUNにはガッカリだ。
 
 
 .. author:: default
-.. categories:: 
+.. categories:: nonsense
 .. tags::
 .. comments::
