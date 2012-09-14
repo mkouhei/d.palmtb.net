@@ -13,6 +13,6 @@ OpenBlockSも2台まるまる遊休資産になるので、台数足りなくて
 
 
 .. author:: default
-.. categories:: network, 
+.. categories:: network
 .. tags::
 .. comments::

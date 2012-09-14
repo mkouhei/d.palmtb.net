@@ -9,6 +9,6 @@ I joined a Google group as " `Relax with CouchDB <http://groups.google.co.jp/gro
 
 
 .. author:: default
-.. categories:: couchdb, 
+.. categories:: CouchDB
 .. tags::
 .. comments::

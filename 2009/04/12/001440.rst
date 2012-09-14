@@ -75,6 +75,6 @@ PSPはWPA2自体を扱えないので仕方ない。最新のファームウェ�
 
 
 .. author:: default
-.. categories:: network, MacBook, Debian, 
+.. categories:: network,MacBook,Debian
 .. tags::
 .. comments::

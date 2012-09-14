@@ -31,6 +31,6 @@ I got Plutoed by my boss.
 
 
 .. author:: default
-.. categories:: computer, 駄文, 
+.. categories:: computer,nonsense
 .. tags::
 .. comments::

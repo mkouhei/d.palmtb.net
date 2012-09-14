@@ -27,6 +27,6 @@ cache-dirで指定しているディレクトリが無いので作成する必�
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

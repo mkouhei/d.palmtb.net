@@ -80,6 +80,6 @@ git stash便利ですな。
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

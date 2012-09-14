@@ -10,6 +10,6 @@ Impressに挿入している画像 [#]_ を右クリックで画像として保�
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

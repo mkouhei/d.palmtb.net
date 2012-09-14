@@ -9,6 +9,6 @@ git pullするのとrsyncでPUSHするのとどっちがええかなぁ。
 
 
 .. author:: default
-.. categories:: Ops, 
+.. categories:: Ops
 .. tags::
 .. comments::

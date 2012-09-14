@@ -29,6 +29,6 @@ In this update of ndiswrapper, Ndiswrapper can be used by kernel 2.6.29.
 
 
 .. author:: default
-.. categories:: Debian, linux, 
+.. categories:: Debian,Unix/Linux
 .. tags::
 .. comments::

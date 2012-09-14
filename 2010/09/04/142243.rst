@@ -163,6 +163,6 @@ palm preでのアクティベーション
 
 
 .. author:: default
-.. categories:: gadget, Debian, 
+.. categories:: gadget,Debian
 .. tags::
 .. comments::

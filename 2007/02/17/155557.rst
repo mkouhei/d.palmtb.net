@@ -68,6 +68,6 @@ USB接続している、HHKBと内蔵のIrDAは問題なし。iSight用のデバ
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

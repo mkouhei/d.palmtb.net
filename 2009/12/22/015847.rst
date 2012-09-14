@@ -17,6 +17,6 @@ Planet Debian JPに登録しているRSS FeedのURIを変更した。
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

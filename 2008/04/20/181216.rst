@@ -9,6 +9,6 @@
 
 
 .. author:: default
-.. categories:: computer, エラー, 
+.. categories:: computer,error
 .. tags::
 .. comments::

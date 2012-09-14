@@ -23,6 +23,6 @@ MacBookからMac OS Xは削除しない方が良いかな…。
 
 
 .. author:: default
-.. categories:: Debian, MacBook, virt., computer, 
+.. categories:: Debian,MacBook,virt.,computer
 .. tags::
 .. comments::

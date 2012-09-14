@@ -33,6 +33,6 @@
 
 
 .. author:: default
-.. categories:: book, 
+.. categories:: book
 .. tags::
 .. comments::

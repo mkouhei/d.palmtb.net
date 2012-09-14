@@ -61,6 +61,6 @@
 
 
 .. author:: default
-.. categories:: Debian, Dev, 
+.. categories:: Debian,Dev
 .. tags::
 .. comments::

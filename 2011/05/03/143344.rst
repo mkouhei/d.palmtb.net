@@ -140,6 +140,6 @@ jQuery Mobileでデータ入力画面を作り、データストアのデータ�
 
 
 .. author:: default
-.. categories:: 生活, 
+.. categories:: life
 .. tags::
 .. comments::

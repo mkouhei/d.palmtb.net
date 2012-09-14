@@ -98,6 +98,6 @@ Sidでアップデートしたら大変な事に…。
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

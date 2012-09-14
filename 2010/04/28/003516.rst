@@ -68,6 +68,6 @@ debtagsは前回のDebian勉強会で初めてインストールしてみたの�
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

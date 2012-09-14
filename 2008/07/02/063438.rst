@@ -69,6 +69,6 @@ e2fsckが終わるまでOBS266だとめっちゃ時間がかかった。少な�
 
 
 .. author:: default
-.. categories:: Unix/Linux, Ops, gadget, 
+.. categories:: Unix/Linux,Ops,gadget
 .. tags::
 .. comments::

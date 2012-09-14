@@ -13,6 +13,6 @@ http://kvm.qumranet.com/kvmwiki
 
 
 .. author:: default
-.. categories:: virt., computer, 
+.. categories:: virt.,computer
 .. tags::
 .. comments::

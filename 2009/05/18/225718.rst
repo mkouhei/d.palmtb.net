@@ -9,6 +9,6 @@ MacBookを持って通勤。
 
 
 .. author:: default
-.. categories:: MacBook, 
+.. categories:: MacBook
 .. tags::
 .. comments::

@@ -33,6 +33,6 @@ mm1パッチの問題が解決したので、昨日リリースされていたmm
 
 
 .. author:: default
-.. categories:: Unix/Linux, virt., computer, 
+.. categories:: Unix/Linux,virt.,computer
 .. tags::
 .. comments::

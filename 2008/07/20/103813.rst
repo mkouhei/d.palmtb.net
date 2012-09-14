@@ -42,6 +42,6 @@ TO: ohnamiさん
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

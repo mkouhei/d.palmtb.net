@@ -21,6 +21,6 @@ blkidコマンドなんてあるのか。知らなかった。
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

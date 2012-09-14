@@ -13,6 +13,6 @@ wireless gateの会員ページに久々にログインしてみたら、新し�
 
 
 .. author:: default
-.. categories:: network, 
+.. categories:: network
 .. tags::
 .. comments::

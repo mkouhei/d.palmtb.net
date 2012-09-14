@@ -62,10 +62,10 @@
 
 
 
-.. [#]  `8月はNYのDebconf10じゃね、というツッコミをもらった <https://twitter.com/#!/dancerj/status/27892310511>`_ ので訂正
+.. [#] `8月はNYのDebconf10じゃね、というツッコミをもらった <https://twitter.com/#!/dancerj/status/27892310511>`_ ので訂正
 
 
 .. author:: default
-.. categories:: Debian, meeting, 
+.. categories:: Debian,meeting
 .. tags::
 .. comments::

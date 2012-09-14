@@ -20,6 +20,6 @@ OSC 2008 Tokyo/Fall行ってきた。
 
 
 .. author:: default
-.. categories:: Debian, meeting, 
+.. categories:: Debian,meeting
 .. tags::
 .. comments::

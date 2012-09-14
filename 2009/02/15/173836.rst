@@ -23,6 +23,6 @@ http://www.debian.org/News/2009/20090214
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

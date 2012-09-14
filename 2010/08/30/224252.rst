@@ -209,6 +209,6 @@ RAMディスクへの書き込み
 
 
 .. author:: default
-.. categories:: Unix/Linux, Debian, gadget, Ops, 
+.. categories:: Unix/Linux,Debian,gadget,Ops
 .. tags::
 .. comments::

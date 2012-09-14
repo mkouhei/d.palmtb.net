@@ -42,6 +42,6 @@
 
 
 .. author:: default
-.. categories:: 仮想化, 勉強会, 
+.. categories:: virt.,meeting
 .. tags::
 .. comments::

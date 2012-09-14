@@ -117,6 +117,6 @@ palm-sdkはアンインストールできない。
 
 
 .. author:: default
-.. categories:: Debian, Unix/Linux, gadget, virt., computer, 
+.. categories:: Debian,Unix/Linux,gadget,virt.,computer
 .. tags::
 .. comments::

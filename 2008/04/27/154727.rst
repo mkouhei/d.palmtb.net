@@ -71,6 +71,6 @@ GRUB2でブートできない。
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

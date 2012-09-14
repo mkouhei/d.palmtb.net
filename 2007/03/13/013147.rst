@@ -21,6 +21,6 @@ http://news.goo.ne.jp/article/sanspo/entertainment/120070313025.html?fr=rk
 
 
 .. author:: default
-.. categories:: 駄文, 
+.. categories:: nonsense
 .. tags::
 .. comments::

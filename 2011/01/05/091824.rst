@@ -80,6 +80,6 @@ LaTeXのソース全体ではlanguage={C}にしていて、一部をHTMLのコ�
 
 
 .. author:: default
-.. categories:: TeX, Debian, 
+.. categories:: TeX,Debian
 .. tags::
 .. comments::

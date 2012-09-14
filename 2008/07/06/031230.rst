@@ -13,6 +13,6 @@ http://gihyo.jp/lifestyle/serial/01/chumby/0003?page=1
 
 
 .. author:: default
-.. categories:: gadget, 
+.. categories:: gadget
 .. tags::
 .. comments::

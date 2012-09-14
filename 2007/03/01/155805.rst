@@ -61,6 +61,6 @@ CCSAを受ける受けないに関わらず、Check PointのINSPECT Engineの動
 
 
 .. author:: default
-.. categories:: security, book, 
+.. categories:: security,book
 .. tags::
 .. comments::

@@ -49,6 +49,6 @@ mizoさんは何故か来ず。
 
 
 .. author:: default
-.. categories:: Debian, meeting, 
+.. categories:: Debian,meeting
 .. tags::
 .. comments::

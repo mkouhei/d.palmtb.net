@@ -21,6 +21,6 @@ I will be working on a new job next month, and our relationship to those who hav
 
 
 .. author:: default
-.. categories:: life, 
+.. categories:: life
 .. tags::
 .. comments::

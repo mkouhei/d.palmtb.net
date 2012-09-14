@@ -164,6 +164,6 @@ viで開いてみるとさらに一目瞭然です。
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

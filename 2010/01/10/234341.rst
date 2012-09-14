@@ -13,6 +13,6 @@ RelaxCafe@CouchDB break.5 参加。
 
 
 .. author:: default
-.. categories:: CouchDB, meeting, 
+.. categories:: CouchDB,meeting
 .. tags::
 .. comments::

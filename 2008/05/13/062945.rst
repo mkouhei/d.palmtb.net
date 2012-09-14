@@ -12,6 +12,6 @@ OOoを仕事で使うそうな。
 
 
 .. author:: default
-.. categories:: 駄文, 生活, 
+.. categories:: nonsense,life
 .. tags::
 .. comments::

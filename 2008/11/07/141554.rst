@@ -13,6 +13,6 @@ http://slashdot.jp/askslashdot/article.pl?sid=08/11/07/0353215
 
 
 .. author:: default
-.. categories:: Unix, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

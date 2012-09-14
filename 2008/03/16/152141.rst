@@ -21,6 +21,6 @@ Google東京オフィス内の食堂の様(?)な場所での開催だったが�
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

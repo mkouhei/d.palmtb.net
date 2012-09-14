@@ -81,6 +81,6 @@ port install hogeでパッケージをインストールしようとしたら、
 
 
 .. author:: default
-.. categories:: MacBook, 
+.. categories:: MacBook
 .. tags::
 .. comments::

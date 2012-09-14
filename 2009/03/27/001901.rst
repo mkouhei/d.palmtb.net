@@ -19,6 +19,6 @@ http://blog.livedoor.jp/tyamada22/archives/783433.html
 
 
 .. author:: default
-.. categories:: virt., computer, 
+.. categories:: virt.,computer
 .. tags::
 .. comments::

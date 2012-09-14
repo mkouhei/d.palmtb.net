@@ -9,6 +9,6 @@
 
 
 .. author:: default
-.. categories:: security, computer, 
+.. categories:: security,computer
 .. tags::
 .. comments::

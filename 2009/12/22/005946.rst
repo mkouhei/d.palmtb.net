@@ -12,6 +12,6 @@
 
 
 .. author:: default
-.. categories:: meeting, virt., 
+.. categories:: meeting,virt.
 .. tags::
 .. comments::

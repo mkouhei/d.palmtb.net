@@ -15,6 +15,6 @@ http://maker.usoko.net/nounai/
 
 
 .. author:: default
-.. categories:: 駄文, 
+.. categories:: nonsense
 .. tags::
 .. comments::

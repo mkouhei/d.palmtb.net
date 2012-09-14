@@ -140,6 +140,6 @@ SourceForge.JPとか、やたら広告が多くて重いんですな。最近は
 
 
 .. author:: default
-.. categories:: Debian, MacBook, 
+.. categories:: Debian,MacBook
 .. tags::
 .. comments::

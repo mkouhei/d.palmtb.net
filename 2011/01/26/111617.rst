@@ -20,6 +20,6 @@ rpm_resumeの大量ログ。
 
 
 .. author:: default
-.. categories:: Unix/Linux, Debian, 
+.. categories:: Unix/Linux,Debian
 .. tags::
 .. comments::

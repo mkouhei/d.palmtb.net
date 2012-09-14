@@ -45,6 +45,6 @@ RESTとはなにかという章もあるにはあるが、そこだけ読んで�
 
 
 .. author:: default
-.. categories:: Book, 
+.. categories:: book
 .. tags::
 .. comments::

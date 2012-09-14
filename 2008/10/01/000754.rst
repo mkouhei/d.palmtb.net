@@ -23,6 +23,6 @@ Chumbyの連絡キタ。
 
 
 .. author:: default
-.. categories:: gadget, 
+.. categories:: gadget
 .. tags::
 .. comments::

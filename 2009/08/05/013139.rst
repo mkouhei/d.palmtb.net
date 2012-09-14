@@ -10,6 +10,6 @@ UVCであっさり動いた。
 
 
 .. author:: default
-.. categories:: Unix/Linux, gadget, 
+.. categories:: Unix/Linux,gadget
 .. tags::
 .. comments::

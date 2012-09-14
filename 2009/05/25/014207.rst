@@ -9,6 +9,6 @@ I am using Lighttpd. But I am interested in YAWS. Whether it replaces it is worr
 
 
 .. author:: default
-.. categories:: programming, 
+.. categories:: programming
 .. tags::
 .. comments::

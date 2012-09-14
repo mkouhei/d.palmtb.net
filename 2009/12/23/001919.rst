@@ -16,6 +16,6 @@ awesomeでgoogle-chromeは自由にウィンドウを動かせる謎。
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

@@ -51,6 +51,6 @@
 
 
 .. author:: default
-.. categories:: TeX, 
+.. categories:: TeX
 .. tags::
 .. comments::

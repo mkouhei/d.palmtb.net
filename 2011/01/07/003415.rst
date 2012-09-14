@@ -47,6 +47,6 @@ Nexus Sの初めてのユーザだから詳細教えてね、とJ Chris Anderson
 
 
 .. author:: default
-.. categories:: CouchDB, gadget, 
+.. categories:: CouchDB,gadget
 .. tags::
 .. comments::

@@ -11,6 +11,6 @@ liloでの起動時にroot=/dev/sda4を渡して、起動中にメンテナン�
 
 
 .. author:: default
-.. categories:: MacBook, Unix/Linux, エラー, 
+.. categories:: MacBook,Unix/Linux,error
 .. tags::
 .. comments::

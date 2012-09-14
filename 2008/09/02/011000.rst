@@ -9,6 +9,6 @@ chumbyの予約開始。
 
 
 .. author:: default
-.. categories:: gadget, 
+.. categories:: gadget
 .. tags::
 .. comments::

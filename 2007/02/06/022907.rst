@@ -10,6 +10,6 @@ x86_64 & VT命令か…。
 
 
 .. author:: default
-.. categories:: computer, virt., 
+.. categories:: computer,virt.
 .. tags::
 .. comments::

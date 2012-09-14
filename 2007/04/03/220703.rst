@@ -10,6 +10,6 @@ z/VMのお勉強。
 
 
 .. author:: default
-.. categories:: virt., Ops, 
+.. categories:: virt.,Ops
 .. tags::
 .. comments::

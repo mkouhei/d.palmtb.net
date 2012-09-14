@@ -101,6 +101,6 @@ TonicDNSの残タスク。
 
 
 .. author:: default
-.. categories:: Dev, 
+.. categories:: Dev
 .. tags::
 .. comments::

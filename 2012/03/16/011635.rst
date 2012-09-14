@@ -47,6 +47,6 @@ Debianというか、Ubuntu 10.04 LTSでの話ですが、/etc/hostnameを変更
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

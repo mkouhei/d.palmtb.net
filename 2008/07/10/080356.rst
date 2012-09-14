@@ -12,6 +12,6 @@ ISP障害。
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

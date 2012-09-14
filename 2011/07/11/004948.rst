@@ -41,6 +41,6 @@ http://twitter.com/#!/hiyuh/status/89496406418661377::
 
 
 .. author:: default
-.. categories:: ねこ, 
+.. categories:: cat
 .. tags::
 .. comments::

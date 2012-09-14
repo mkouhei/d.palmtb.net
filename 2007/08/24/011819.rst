@@ -20,6 +20,6 @@
 
 
 .. author:: default
-.. categories:: Unix/Linux, meeting, 
+.. categories:: Unix/Linux,meeting
 .. tags::
 .. comments::

@@ -14,7 +14,7 @@ hermitのインストール
 --------------------
 
 
-`リンク先 <http://download.atmark-techno.com/armadillo-9/hermit/deb/>`_ からhermitのパッケージをダウンロードして、インストール。
+`アットマークテクノ社のサイト <http://download.atmark-techno.com/armadillo-9/hermit/deb/>`_ からhermitのパッケージをダウンロードして、インストール。
 
 
 フラッシュメモリの書き換え
@@ -22,7 +22,7 @@ hermitのインストール
 
 
 
-*  `リンク先 <http://download.atmark-techno.com/armadillo-9/image/>`_ から各リージョン用のイメージをダウンロード。
+* `同じく同社のサイト <http://download.atmark-techno.com/armadillo-9/image/>`_ から各リージョン用のイメージをダウンロード。
 
 * ジャンパの設定。JP1はオープン、JP2はショートさせておく。
 
@@ -64,6 +64,6 @@ hermitのインストール
 
 
 .. author:: default
-.. categories:: Debian, gadget, computer, 
+.. categories:: Debian,gadget,computer
 .. tags::
 .. comments::

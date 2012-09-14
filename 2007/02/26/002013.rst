@@ -19,6 +19,6 @@ http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=384443
 
 
 .. author:: default
-.. categories:: Unix/Linux, computer, virt., 
+.. categories:: Unix/Linux,computer,virt.
 .. tags::
 .. comments::

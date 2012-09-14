@@ -11,6 +11,6 @@ Webアプリの脆弱性をついた攻撃よりもやっぱり、こっちの�
 
 
 .. author:: default
-.. categories:: security, computer, 
+.. categories:: security,computer
 .. tags::
 .. comments::

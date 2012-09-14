@@ -10,6 +10,6 @@ SEの仕事では無いな。
 
 
 .. author:: default
-.. categories:: 仕事, 
+.. categories:: work
 .. tags::
 .. comments::

@@ -9,6 +9,6 @@
 
 
 .. author:: default
-.. categories:: Unix/Linux, network, 
+.. categories:: Unix/Linux,network
 .. tags::
 .. comments::

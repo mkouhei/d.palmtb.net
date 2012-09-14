@@ -9,6 +9,6 @@ Webサーバ移行終わり。
 
 
 .. author:: default
-.. categories:: Debian, Ops, 
+.. categories:: Debian,Ops
 .. tags::
 .. comments::

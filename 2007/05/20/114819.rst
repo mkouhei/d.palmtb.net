@@ -9,6 +9,6 @@ check\*padのモーニングリスト設定は一つのリストしか設定で�
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

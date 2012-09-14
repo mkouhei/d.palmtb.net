@@ -13,6 +13,6 @@ eu.kernel.orgが出来たようだ。
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

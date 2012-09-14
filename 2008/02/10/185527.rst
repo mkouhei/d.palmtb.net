@@ -9,6 +9,6 @@ Airの液晶保護シート
 
 
 .. author:: default
-.. categories:: MacBook, computer, 
+.. categories:: MacBook,computer
 .. tags::
 .. comments::

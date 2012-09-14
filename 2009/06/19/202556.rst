@@ -29,6 +29,6 @@ goshって何だ？
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

@@ -53,6 +53,6 @@ bzip2はあるんだけど。
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

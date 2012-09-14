@@ -9,6 +9,6 @@ Lenny化完了
 
 
 .. author:: default
-.. categories:: Debian, Ops, 
+.. categories:: Debian,Ops
 .. tags::
 .. comments::

@@ -9,6 +9,6 @@ Yesterday, NETGEAR WNR854T died suddenly. I reconnected power supply, but power 
 
 
 .. author:: default
-.. categories:: network, 
+.. categories:: network
 .. tags::
 .. comments::

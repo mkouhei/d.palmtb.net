@@ -20,6 +20,6 @@ git pushされてなかったのか。
 
 
 .. author:: default
-.. categories:: エラー, 生活, 
+.. categories:: error,life
 .. tags::
 .. comments::

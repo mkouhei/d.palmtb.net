@@ -110,6 +110,6 @@ local.cfにもこれを忘れていた。
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

@@ -9,6 +9,6 @@ Chumby注文した。
 
 
 .. author:: default
-.. categories:: gadget, 
+.. categories:: gadget
 .. tags::
 .. comments::

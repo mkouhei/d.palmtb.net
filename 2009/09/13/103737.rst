@@ -18,6 +18,6 @@ OVTAは研修施設はまぁ良い感じ。中会議室を使ったのだが、�
 
 
 .. author:: default
-.. categories:: 仕事, 生活, 
+.. categories:: work,life
 .. tags::
 .. comments::

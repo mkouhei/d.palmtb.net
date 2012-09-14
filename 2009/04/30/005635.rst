@@ -23,6 +23,6 @@ id:shase-labさんによる\*BSDのパッケージ管理の話は、よくまと
 
 
 .. author:: default
-.. categories:: Unix/Linux, meeting, 
+.. categories:: Unix/Linux,meeting
 .. tags::
 .. comments::

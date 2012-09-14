@@ -17,6 +17,6 @@
 
 
 .. author:: default
-.. categories:: network, MacBook, Debian, 
+.. categories:: network,MacBook,Debian
 .. tags::
 .. comments::

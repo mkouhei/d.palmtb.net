@@ -45,6 +45,6 @@ http://koedo.hanno.jp/~koedoyoshida/twitterfoxerr/twitterfoxerr1.png
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

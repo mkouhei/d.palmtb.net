@@ -40,6 +40,6 @@ kvmのパッケージが12-1から14-1になった後、確か初めてWindows�
 
 
 .. author:: default
-.. categories:: Debian, computer, virt., 
+.. categories:: Debian,computer,virt.
 .. tags::
 .. comments::

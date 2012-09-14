@@ -17,6 +17,6 @@
 
 
 .. author:: default
-.. categories:: security, virt., Ops, 
+.. categories:: security,virt.,Ops
 .. tags::
 .. comments::

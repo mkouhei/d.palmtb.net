@@ -17,6 +17,6 @@ I also wanted to visit the lab and helped me in graduate studies, professor of t
 
 
 .. author:: default
-.. categories:: life, 
+.. categories:: life
 .. tags::
 .. comments::

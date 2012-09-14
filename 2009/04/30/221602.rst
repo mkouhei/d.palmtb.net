@@ -11,6 +11,6 @@ f:id:z-ohnami:20090430213204j:image
 
 
 .. author:: default
-.. categories:: 生活, 
+.. categories:: life
 .. tags::
 .. comments::

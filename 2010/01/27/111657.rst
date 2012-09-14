@@ -65,6 +65,6 @@ http://lxc.git.sourceforge.net/git/gitweb.cgi?p=lxc/lxc;a=commitdiff;h=65cb447f9
 
 
 .. author:: default
-.. categories:: Debian, Dev, 
+.. categories:: Debian,Dev
 .. tags::
 .. comments::

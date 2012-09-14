@@ -9,6 +9,6 @@ armadillo-9から火が吹いた。
 
 
 .. author:: default
-.. categories:: gadget, computer, 
+.. categories:: gadget,computer
 .. tags::
 .. comments::

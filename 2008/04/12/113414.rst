@@ -13,6 +13,6 @@ http://ww2.samhart.com/node/130
 
 
 .. author:: default
-.. categories:: Debian, MacBook, 
+.. categories:: Debian,MacBook
 .. tags::
 .. comments::

@@ -9,6 +9,6 @@ MacBook Air初期化
 
 
 .. author:: default
-.. categories:: Debian, MacBook, 
+.. categories:: Debian,MacBook
 .. tags::
 .. comments::

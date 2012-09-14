@@ -9,6 +9,6 @@ hbstudyとバッティングしていたのだが、会社の後輩が出ると�
 
 
 .. author:: default
-.. categories:: meeting, 
+.. categories:: meeting
 .. tags::
 .. comments::

@@ -9,6 +9,6 @@ BRAUN Contour 5895が突然異音を立てた！
 
 
 .. author:: default
-.. categories:: 生活, 
+.. categories:: life
 .. tags::
 .. comments::

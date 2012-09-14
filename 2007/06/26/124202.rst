@@ -9,6 +9,6 @@
 
 
 .. author:: default
-.. categories:: Ops, gadget, 
+.. categories:: Ops,gadget
 .. tags::
 .. comments::

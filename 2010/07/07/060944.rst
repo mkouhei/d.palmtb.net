@@ -38,6 +38,6 @@ grub2 1.98+20100705-1でようやく。
 
 
 .. author:: default
-.. categories:: MacBook, Debian, 
+.. categories:: MacBook,Debian
 .. tags::
 .. comments::

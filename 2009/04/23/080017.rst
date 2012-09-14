@@ -13,6 +13,6 @@ http://www.enn.com/sci-tech/article/37929
 
 
 .. author:: default
-.. categories:: 駄文, 
+.. categories:: nonsense
 .. tags::
 .. comments::

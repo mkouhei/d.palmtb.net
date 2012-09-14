@@ -35,6 +35,6 @@ http://opentechpress.jp/opensource/article.pl?sid=07/01/22/0129245
 
 
 .. author:: default
-.. categories:: Unix/Linux, virt., computer, 
+.. categories:: Unix/Linux,virt.,computer
 .. tags::
 .. comments::

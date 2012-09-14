@@ -9,6 +9,6 @@ Webサイトに出てたヤツとは微妙に違っていて、古いモデル�
 
 
 .. author:: default
-.. categories:: 生活, 
+.. categories:: life
 .. tags::
 .. comments::

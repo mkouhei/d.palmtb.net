@@ -13,6 +13,6 @@ http://www.chumby.jp/news/japanease2.html
 
 
 .. author:: default
-.. categories:: gadget, 
+.. categories:: gadget
 .. tags::
 .. comments::

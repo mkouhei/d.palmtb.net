@@ -19,6 +19,6 @@ check*padから送られてきた今日の言葉。
 
 
 .. author:: default
-.. categories:: 仕事, 
+.. categories:: work
 .. tags::
 .. comments::

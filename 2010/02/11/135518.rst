@@ -61,6 +61,6 @@ http://ryuusinndo.com/art/child_real.htm
 
 
 .. author:: default
-.. categories:: 駄文, 
+.. categories:: nonsense
 .. tags::
 .. comments::

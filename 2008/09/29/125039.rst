@@ -11,6 +11,6 @@ http://www.atmark-techno.com/news/press-releases/20080925_a500fx
 
 
 .. author:: default
-.. categories:: 組込, Linux, 
+.. categories:: gadget,Unix/Linux
 .. tags::
 .. comments::

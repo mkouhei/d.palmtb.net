@@ -19,6 +19,6 @@ Then, I did update-initramfs.
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

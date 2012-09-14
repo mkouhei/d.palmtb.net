@@ -71,6 +71,6 @@
 
 
 .. author:: default
-.. categories:: Book, 
+.. categories:: book
 .. tags::
 .. comments::

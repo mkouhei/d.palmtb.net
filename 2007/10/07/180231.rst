@@ -25,6 +25,6 @@ OSC 2007 Tokyo/Fall行ってきた。
 
 
 .. author:: default
-.. categories:: meeting, 
+.. categories:: meeting
 .. tags::
 .. comments::

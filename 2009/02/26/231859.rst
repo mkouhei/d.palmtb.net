@@ -79,6 +79,6 @@ Debian Package
 
 
 .. author:: default
-.. categories:: Debian, vcs, sysadmin, 
+.. categories:: Debian,Git,Ops
 .. tags::
 .. comments::

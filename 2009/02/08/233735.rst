@@ -9,6 +9,6 @@ The upgrade to Lenny ends with two remainder among six OBS.
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

@@ -9,6 +9,6 @@ fetchmailでISPのメールを取得しているのだけど、ときどき、MY
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

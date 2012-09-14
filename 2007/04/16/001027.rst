@@ -55,10 +55,10 @@ WX321Jが届いたので、AH-K3001Vのアドレス帳を移行させようと�
 
 
 
-.. [#]  `使い捨てディスク <http://www.netfort.gr.jp/~dancer/diary/daily/2007-Feb-3.html.ja#2007-Feb-3-13:36:50>`_ とか、 `usb <http://www.netfort.gr.jp/~dancer/diary/daily/2007-Feb-13.html.ja#2007-Feb-13-18:49:34>`_ とか。
+.. [#] `使い捨てディスク <http://www.netfort.gr.jp/~dancer/diary/daily/2007-Feb-3.html.ja#2007-Feb-3-13:36:50>`_ とか、 `usb <http://www.netfort.gr.jp/~dancer/diary/daily/2007-Feb-13.html.ja#2007-Feb-13-18:49:34>`_ とか。
 
 
 .. author:: default
-.. categories:: computer, Unix/Linux, virt., 
+.. categories:: computer,Unix/Linux,virt.
 .. tags::
 .. comments::

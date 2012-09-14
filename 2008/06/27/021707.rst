@@ -9,6 +9,6 @@ DB勉強会。
 
 
 .. author:: default
-.. categories:: meeting, 
+.. categories:: meeting
 .. tags::
 .. comments::

@@ -9,6 +9,6 @@ Yesterday, Debian JP Project held the 59th Tokyo Debian Meeting in  `the Tokyo O
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

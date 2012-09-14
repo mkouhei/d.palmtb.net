@@ -22,6 +22,6 @@ Blogなんぞ使うつもりは今までまったく無かったのだが、以�
 
 
 .. author:: default
-.. categories:: 駄文, 
+.. categories:: nonsense
 .. tags::
 .. comments::

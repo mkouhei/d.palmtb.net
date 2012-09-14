@@ -442,6 +442,6 @@ lxc-debianスクリプトはdebootstrapの--includeオプションで指定し�
 
 
 .. author:: default
-.. categories:: Debian, Unix/Linux, virt., Ops, 
+.. categories:: Debian,Unix/Linux,virt.,Ops
 .. tags::
 .. comments::

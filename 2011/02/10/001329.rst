@@ -69,6 +69,6 @@ http://qpdf.sourceforge.net/files/qpdf-manual.html#ref.encryption-options
 
 
 .. author:: default
-.. categories:: Unix/Linux, Debian, 
+.. categories:: Unix/Linux,Debian
 .. tags::
 .. comments::

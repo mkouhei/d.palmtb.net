@@ -26,6 +26,6 @@ http://d.hatena.ne.jp/mkouhei/20080427/1209278847
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

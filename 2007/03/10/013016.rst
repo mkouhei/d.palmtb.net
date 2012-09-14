@@ -42,6 +42,6 @@ libvirt 0.2.0とvirt-manager 0.3.1で、KVMを使ってみようと思い、ソ�
 
 
 .. author:: default
-.. categories:: Debian, virt., computer, 
+.. categories:: Debian,virt.,computer
 .. tags::
 .. comments::

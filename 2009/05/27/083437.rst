@@ -27,6 +27,6 @@ IT勉強会カレンダー初掲載。
 
 
 .. author:: default
-.. categories:: meeting, 
+.. categories:: meeting
 .. tags::
 .. comments::

@@ -55,6 +55,6 @@ Apacheと対して違わないので、困らなかった。10-ssl.confを設定
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

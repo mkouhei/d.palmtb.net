@@ -18,6 +18,6 @@ KVMのゲストOSとしての `SLES9インストール失敗 <http://www.palmtb.
 
 
 .. author:: default
-.. categories:: computer, virt., 
+.. categories:: computer,virt.
 .. tags::
 .. comments::

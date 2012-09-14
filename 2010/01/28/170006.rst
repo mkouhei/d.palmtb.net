@@ -23,6 +23,6 @@ LaTeXがISO-2022-JPで、graphvizがUTF-8で日本語表示させるのにPNG形
 
 
 .. author:: default
-.. categories:: Unix/Linux, TeX, 
+.. categories:: Unix/Linux,TeX
 .. tags::
 .. comments::

@@ -88,6 +88,6 @@ http://packages.debian.org/changelogs/pool/main/l/lxc/lxc_0.6.4-1/changelog
 
 
 .. author:: default
-.. categories:: Debian, virt., Ops, 
+.. categories:: Debian,virt.,Ops
 .. tags::
 .. comments::

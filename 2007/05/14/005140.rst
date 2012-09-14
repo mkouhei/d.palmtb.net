@@ -12,6 +12,6 @@ MacBookでは、OOoのImpressでスライドショーを使っても、何故か
 
 
 .. author:: default
-.. categories:: Debian, MacBook, 
+.. categories:: Debian,MacBook
 .. tags::
 .. comments::

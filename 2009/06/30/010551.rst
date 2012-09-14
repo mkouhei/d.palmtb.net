@@ -19,6 +19,6 @@ grub2のアップデートで起動しなくなる。
 
 
 .. author:: default
-.. categories:: MacBook, Debian, 
+.. categories:: MacBook,Debian
 .. tags::
 .. comments::

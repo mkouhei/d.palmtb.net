@@ -13,6 +13,6 @@ id:z-ohnamiさんたちが活動している今年度の研究会の勉強会。
 
 
 .. author:: default
-.. categories:: meeting, 
+.. categories:: meeting
 .. tags::
 .. comments::

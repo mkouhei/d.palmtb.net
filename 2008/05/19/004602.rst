@@ -98,6 +98,6 @@ sshfs試してみた。
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

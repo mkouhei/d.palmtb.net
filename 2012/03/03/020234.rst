@@ -238,6 +238,6 @@ git showに相当するのが、hg export。git format-patchに相当するの�
 
 
 .. author:: default
-.. categories:: Git, 
+.. categories:: Git
 .. tags::
 .. comments::

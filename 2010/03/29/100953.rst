@@ -62,6 +62,6 @@ Android Marketから無料アプリもダウンロードできない。
 
 
 .. author:: default
-.. categories:: gadget, 
+.. categories:: gadget
 .. tags::
 .. comments::

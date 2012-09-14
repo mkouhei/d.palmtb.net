@@ -24,6 +24,6 @@ https://github.com/Cysource/TonicDNS/pull/8#issuecomment-3825532
 
 
 .. author:: default
-.. categories:: Dev, 
+.. categories:: Dev
 .. tags::
 .. comments::

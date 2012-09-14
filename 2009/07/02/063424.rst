@@ -11,6 +11,6 @@ Sidを入れ直してから、カーネルビルドしてなかったので、nd
 
 
 .. author:: default
-.. categories:: Debian, network, Unix/Linux, 
+.. categories:: Debian,network,Unix/Linux
 .. tags::
 .. comments::

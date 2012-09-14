@@ -289,6 +289,6 @@ NDISwrapperでロードさせる。
 
 
 .. author:: default
-.. categories:: Debian, network, 
+.. categories:: Debian,network
 .. tags::
 .. comments::

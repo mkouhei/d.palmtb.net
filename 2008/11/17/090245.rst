@@ -19,6 +19,6 @@ dancersectionなどのDebian勉強会独自定義に悩み、普通にLaTeXを�
 
 
 .. author:: default
-.. categories:: Debian, meeting, 
+.. categories:: Debian,meeting
 .. tags::
 .. comments::

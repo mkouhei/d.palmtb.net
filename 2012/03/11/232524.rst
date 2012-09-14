@@ -66,6 +66,6 @@ blockdiag, actdiagは1.1.2および0.3.0をパッケージにしていますが�
 
 
 .. author:: default
-.. categories:: python, Debian, 
+.. categories:: Python,Debian
 .. tags::
 .. comments::

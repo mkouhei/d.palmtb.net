@@ -13,6 +13,6 @@ http://www.palmtb.net/
 
 
 .. author:: default
-.. categories:: Debian, embedded, 
+.. categories:: Debian,gadget
 .. tags::
 .. comments::

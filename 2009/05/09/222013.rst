@@ -29,6 +29,6 @@ How should I do?
 
 
 .. author:: default
-.. categories:: vcs, 
+.. categories:: Git
 .. tags::
 .. comments::

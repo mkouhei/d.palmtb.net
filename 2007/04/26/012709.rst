@@ -19,6 +19,6 @@ Xen Summit 報告会。
 
 
 .. author:: default
-.. categories:: virt., meeting, 
+.. categories:: virt.,meeting
 .. tags::
 .. comments::

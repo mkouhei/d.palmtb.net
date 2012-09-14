@@ -36,6 +36,6 @@ Hack Cafe #10
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

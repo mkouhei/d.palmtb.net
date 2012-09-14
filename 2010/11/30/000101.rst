@@ -65,6 +65,6 @@ http://lwn.net/Articles/281849/
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

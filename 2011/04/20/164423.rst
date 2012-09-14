@@ -68,6 +68,6 @@ JSONにできましたよと。
 
 
 .. author:: default
-.. categories:: python, Dev, 
+.. categories:: Python,Dev
 .. tags::
 .. comments::

@@ -120,10 +120,10 @@ http://twitter.com/#!/matsuu/status/182835985619501057::
 
 
 
-.. [#]  `一昨年 <http://tokyodebian.alioth.debian.org/2010-02.html>`_ に `2回も <http://tokyodebian.alioth.debian.org/2010-04.html>`_ Debian勉強会でUpstartネタやっていたのに忘れてました…。
+.. [#] `一昨年 <http://tokyodebian.alioth.debian.org/2010-02.html>`_ に `2回も <http://tokyodebian.alioth.debian.org/2010-04.html>`_ Debian勉強会でUpstartネタやっていたのに忘れてました…。
 
 
 .. author:: default
-.. categories:: Unix/Linux, Debian, 
+.. categories:: Unix/Linux,Debian
 .. tags::
 .. comments::

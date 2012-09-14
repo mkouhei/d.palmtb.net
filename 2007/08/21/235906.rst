@@ -11,6 +11,6 @@
 
 
 .. author:: default
-.. categories:: Unix/Linux, エラー, 
+.. categories:: Unix/Linux,error
 .. tags::
 .. comments::

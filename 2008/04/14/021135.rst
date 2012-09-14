@@ -43,6 +43,6 @@ DB作成はcreate database文と。上記にあわせると、こんな感じ。
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

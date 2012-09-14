@@ -11,6 +11,6 @@ S-0116FFで、既存のHUBを置換した。S-0016FFと違って、設定管理�
 
 
 .. author:: default
-.. categories:: network, security, 
+.. categories:: network,security
 .. tags::
 .. comments::

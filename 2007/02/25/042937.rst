@@ -15,6 +15,6 @@
 
 
 .. author:: default
-.. categories:: Debian, Unix/Linux, virt., meeting, 
+.. categories:: Debian,Unix/Linux,virt.,meeting
 .. tags::
 .. comments::

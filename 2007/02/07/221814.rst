@@ -31,6 +31,6 @@ kqemuがGPL2化
 
 
 .. author:: default
-.. categories:: computer, virt., 
+.. categories:: computer,virt.
 .. tags::
 .. comments::

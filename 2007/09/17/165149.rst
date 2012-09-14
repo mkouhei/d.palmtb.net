@@ -9,6 +9,6 @@ AQUOS 37インチ悩む…。
 
 
 .. author:: default
-.. categories:: 駄文, 生活, 
+.. categories:: nonsense,life
 .. tags::
 .. comments::

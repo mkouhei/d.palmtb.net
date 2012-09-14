@@ -131,6 +131,6 @@ kvmコマンドを実行する場合は、kvmグループに所属していれ�
 
 
 .. author:: default
-.. categories:: Debian, virt., Ops, 
+.. categories:: Debian,virt.,Ops
 .. tags::
 .. comments::

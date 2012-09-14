@@ -9,6 +9,6 @@ GMail、なんでデフォルトでHTTPSにしないんだ? HTTPSでしかアク
 
 
 .. author:: default
-.. categories:: security, 
+.. categories:: security
 .. tags::
 .. comments::

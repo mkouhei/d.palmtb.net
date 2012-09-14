@@ -9,6 +9,6 @@ DebianでFedoraの検証を行うのは結構面倒っぽいので、oVirt自体
 
 
 .. author:: default
-.. categories:: Ops, virt., 
+.. categories:: Ops,virt.
 .. tags::
 .. comments::

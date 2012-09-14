@@ -9,6 +9,6 @@ MacBook突然死
 
 
 .. author:: default
-.. categories:: MacBook, Debian, 
+.. categories:: MacBook,Debian
 .. tags::
 .. comments::

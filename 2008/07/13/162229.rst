@@ -30,6 +30,6 @@ isight-firmware-toolsをインストールしていたので、dpkg-reconfigure 
 
 
 .. author:: default
-.. categories:: MacBook, Debian, 
+.. categories:: MacBook,Debian
 .. tags::
 .. comments::

@@ -12,6 +12,6 @@ ProLiant ML115、確かにコンパイル速いんだけど、自宅の今まで
 
 
 .. author:: default
-.. categories:: computer, Debian, virt., 
+.. categories:: computer,Debian,virt.
 .. tags::
 .. comments::

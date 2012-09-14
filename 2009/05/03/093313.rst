@@ -181,6 +181,6 @@ Then, keycodes was changed, too.
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

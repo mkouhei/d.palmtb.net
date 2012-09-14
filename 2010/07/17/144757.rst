@@ -53,6 +53,6 @@
 
 
 .. author:: default
-.. categories:: 生活, network, 
+.. categories:: life,network
 .. tags::
 .. comments::

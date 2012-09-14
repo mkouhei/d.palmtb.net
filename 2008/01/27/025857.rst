@@ -11,6 +11,6 @@ z/VM Virtualization Performance
 
 
 .. author:: default
-.. categories:: computer, virt., 
+.. categories:: computer,virt.
 .. tags::
 .. comments::

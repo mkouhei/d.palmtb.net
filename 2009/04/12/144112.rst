@@ -59,6 +59,6 @@ yamamotoさん、情報ありがとうございました。
 
 
 .. author:: default
-.. categories:: Debian, MacBook, network, 
+.. categories:: Debian,MacBook,network
 .. tags::
 .. comments::

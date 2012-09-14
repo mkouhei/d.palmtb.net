@@ -9,6 +9,6 @@ My daughter was born yesterday, 1st March, 14:55 JST. Her tall and weight are 52
 
 
 .. author:: default
-.. categories:: life, 
+.. categories:: life
 .. tags::
 .. comments::

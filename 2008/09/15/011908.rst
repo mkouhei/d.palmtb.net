@@ -11,6 +11,6 @@ http://www.jiji.com/jc/c?g=soc_30&k=2008091400105
 
 
 .. author:: default
-.. categories:: 駄文, 
+.. categories:: nonsense
 .. tags::
 .. comments::

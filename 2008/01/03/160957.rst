@@ -11,6 +11,6 @@
 
 
 .. author:: default
-.. categories:: Debian, Ops, gadget, 
+.. categories:: Debian,Ops,gadget
 .. tags::
 .. comments::

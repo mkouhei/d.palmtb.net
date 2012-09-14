@@ -48,6 +48,6 @@ futonで、
 
 
 .. author:: default
-.. categories:: CouchDB, 
+.. categories:: CouchDB
 .. tags::
 .. comments::

@@ -29,6 +29,6 @@ MacBook 5,2でxrandrが使えるようになった。
 
 
 .. author:: default
-.. categories:: Debian, MacBook, 
+.. categories:: Debian,MacBook
 .. tags::
 .. comments::

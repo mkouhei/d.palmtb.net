@@ -9,6 +9,6 @@ SiCKOを見たいなぁ。
 
 
 .. author:: default
-.. categories:: security, 
+.. categories:: security
 .. tags::
 .. comments::

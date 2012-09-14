@@ -27,6 +27,6 @@ mandbの更新の時に、/var/cache/man/以下にindex cacheを作るのを失�
 
 
 .. author:: default
-.. categories:: gadget,Linux
+.. categories:: gadget,Unix/Linux
 .. tags::
 .. comments::

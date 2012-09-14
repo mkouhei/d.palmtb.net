@@ -9,6 +9,6 @@ The diary was started in English.
 
 
 .. author:: default
-.. categories:: life, 
+.. categories:: life
 .. tags::
 .. comments::

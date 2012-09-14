@@ -16,6 +16,6 @@ Let's noteだけではまってる。解像度が1152x768になるという怪�
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

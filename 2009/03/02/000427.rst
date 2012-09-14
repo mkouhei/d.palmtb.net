@@ -9,6 +9,6 @@ IDとパスワードを統一したい。
 
 
 .. author:: default
-.. categories:: security, Ops, 
+.. categories:: security,Ops
 .. tags::
 .. comments::

@@ -20,6 +20,6 @@ Debian Etchでやる場合の `メモ <http://www.palmtb.net/index.php?fcgid%20%
 
 
 .. author:: default
-.. categories:: Debian, security, 
+.. categories:: Debian,security
 .. tags::
 .. comments::

@@ -9,6 +9,6 @@ RSSがfetchされないのはエントリ内容が長すぎるせい？
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

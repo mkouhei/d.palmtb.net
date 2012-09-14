@@ -21,6 +21,6 @@ And so, I will translate CouchDB Web site with po4a.
 
 
 .. author:: default
-.. categories:: translation, couchdb, 
+.. categories:: CouchDB
 .. tags::
 .. comments::

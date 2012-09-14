@@ -9,6 +9,6 @@ view で絞ったデータのうち、必要箇所だけを更新できればよ
 
 
 .. author:: default
-.. categories:: CouchDB, 
+.. categories:: CouchDB
 .. tags::
 .. comments::

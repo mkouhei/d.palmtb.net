@@ -9,6 +9,6 @@ Tedious work only of developing archive with USB, doing, and turning on power su
 
 
 .. author:: default
-.. categories:: gadget, 
+.. categories:: gadget
 .. tags::
 .. comments::

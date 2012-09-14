@@ -11,6 +11,6 @@ HIPAAの資料が全然できん。
 
 
 .. author:: default
-.. categories:: 生活, security, 
+.. categories:: life,security
 .. tags::
 .. comments::

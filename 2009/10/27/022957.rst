@@ -48,6 +48,6 @@ grubがまた余計なメッセージを。
 
 
 .. author:: default
-.. categories:: MacBook, Unix/Linux, Debian, 
+.. categories:: MacBook,Unix/Linux,Debian
 .. tags::
 .. comments::

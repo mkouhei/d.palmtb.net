@@ -9,6 +9,6 @@ Windowsなんてぶっ潰せのワシにとってはどうでも良いことだ�
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

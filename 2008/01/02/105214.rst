@@ -22,6 +22,6 @@ http://mixi.co.jp/press/press_070424.html
 
 
 .. author:: default
-.. categories:: 駄文, 
+.. categories:: nonsense
 .. tags::
 .. comments::

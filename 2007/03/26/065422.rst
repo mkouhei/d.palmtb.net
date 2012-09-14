@@ -10,6 +10,6 @@ OBS266はやっぱり綺麗だなぁ。
 
 
 .. author:: default
-.. categories:: computer, gadget, 
+.. categories:: computer,gadget
 .. tags::
 .. comments::

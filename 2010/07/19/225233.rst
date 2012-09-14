@@ -17,6 +17,6 @@ milestoneで有線のイヤフォンでPodcastを聞くのが鬱陶しかった�
 
 
 .. author:: default
-.. categories:: gadget, 
+.. categories:: gadget
 .. tags::
 .. comments::

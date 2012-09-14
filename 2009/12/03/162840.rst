@@ -97,6 +97,6 @@ halに依存しているのか？ググってみたら既に `BTSに登録され
 
 
 .. author:: default
-.. categories:: Debian, virt., Ops, 
+.. categories:: Debian,virt.,Ops
 .. tags::
 .. comments::

@@ -10,6 +10,6 @@ QVGA & 高橋メソッド。
 
 
 .. author:: default
-.. categories:: 仕事, gadget, 
+.. categories:: work,gadget
 .. tags::
 .. comments::

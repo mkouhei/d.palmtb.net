@@ -17,6 +17,6 @@ Also, if all goes as planned next February will be the first child is born. This
 
 
 .. author:: default
-.. categories:: life, 
+.. categories:: life
 .. tags::
 .. comments::

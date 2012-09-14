@@ -9,6 +9,6 @@ Planexのスイッチに、MacBook AirでUSB Ethernetアダプタで接続した
 
 
 .. author:: default
-.. categories:: network, 
+.. categories:: network
 .. tags::
 .. comments::

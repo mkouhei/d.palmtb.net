@@ -16,6 +16,6 @@
 
 
 .. author:: default
-.. categories:: ねこ, computer, 
+.. categories:: cat,computer
 .. tags::
 .. comments::

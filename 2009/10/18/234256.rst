@@ -135,6 +135,6 @@ http://twitter.com/ar1/status/4939072851
 
 
 .. author:: default
-.. categories:: meeting, 
+.. categories:: meeting
 .. tags::
 .. comments::

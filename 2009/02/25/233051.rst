@@ -15,6 +15,6 @@ Hack Meeting #3
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

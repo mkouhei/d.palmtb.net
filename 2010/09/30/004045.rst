@@ -23,6 +23,6 @@ coreを吐かせてバックトレースを表示させてみると、sysbench/d
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

@@ -17,6 +17,6 @@
 
 
 .. author:: default
-.. categories:: エラー, 仕事, 
+.. categories:: error,work
 .. tags::
 .. comments::

@@ -12,6 +12,6 @@ ohnamiさんのjQueryのネタは結構おもしろかった。
 
 
 .. author:: default
-.. categories:: 仕事, Unix/Linux, 
+.. categories:: work,Unix/Linux
 .. tags::
 .. comments::

@@ -18,6 +18,6 @@ continuos=trueが便利ですな。
 
 
 .. author:: default
-.. categories:: CouchDB, 
+.. categories:: CouchDB
 .. tags::
 .. comments::

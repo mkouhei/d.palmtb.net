@@ -76,6 +76,6 @@ CouchDB for Androidというタイトルでブログを書いたけれど、 `�
 
 
 .. author:: default
-.. categories:: CouchDB, gadget, 
+.. categories:: CouchDB,gadget
 .. tags::
 .. comments::

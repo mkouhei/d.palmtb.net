@@ -9,6 +9,6 @@ I have finished upgrading to Lenny.
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

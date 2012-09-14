@@ -9,6 +9,6 @@ http://plusd.itmedia.co.jp/lifestyle/articles/0706/22/news072.html
 
 
 .. author:: default
-.. categories:: 駄文, 
+.. categories:: nonsense
 .. tags::
 .. comments::

@@ -14,6 +14,6 @@ AQUOSのリモコン除けとけば良かった。w
 
 
 .. author:: default
-.. categories:: MacBook, Debian, 
+.. categories:: MacBook,Debian
 .. tags::
 .. comments::

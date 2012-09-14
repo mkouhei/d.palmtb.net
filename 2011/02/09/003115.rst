@@ -25,6 +25,6 @@ CouchDBをDBとしてPhoneGapで作ったAndroidネイティブアプリのCouch
 
 
 .. author:: default
-.. categories:: CouchDB, gadget, 
+.. categories:: CouchDB,gadget
 .. tags::
 .. comments::

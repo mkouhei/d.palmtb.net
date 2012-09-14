@@ -30,6 +30,6 @@ http://tokyodebian.alioth.debian.org/hackcafe.html
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

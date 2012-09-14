@@ -39,6 +39,6 @@ IP aliasのアドレスを送信元アドレスとする場合、Postfixだとsm
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

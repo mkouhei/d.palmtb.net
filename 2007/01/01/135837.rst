@@ -37,6 +37,6 @@ USBハブだけ買ってかえるのは癪なので、書籍売り場へ行っ�
 
 
 .. author:: default
-.. categories:: 生活, 
+.. categories:: life
 .. tags::
 .. comments::

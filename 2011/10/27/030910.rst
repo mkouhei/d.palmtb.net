@@ -217,6 +217,6 @@ python2.7
 
 
 .. author:: default
-.. categories:: Debian, python, 
+.. categories:: Debian,Python
 .. tags::
 .. comments::

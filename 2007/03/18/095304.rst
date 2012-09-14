@@ -42,7 +42,7 @@ OSC 2007 Tokyo/Spring
 
 
 
-.. [#]  `前編 <http://www.ospn.jp/osc2007-spring/modules/eguide/event.php?eid=45>`_ 、 `後編 <http://www.ospn.jp/osc2007-spring/modules/eguide/event.php?eid=50>`_ の２部構成。
+.. [#] `前編 <http://www.ospn.jp/osc2007-spring/modules/eguide/event.php?eid=45>`_ 、 `後編 <http://www.ospn.jp/osc2007-spring/modules/eguide/event.php?eid=50>`_ の２部構成。
 .. [#] 何のネタかはここでは言えんw。
 .. [#] コントだよな、あれ。
 .. [#] 濃いバナが始まった途端に、みんな一斉にメモを取り始めたのは面白かった。皆飢えてるなぁ。w
@@ -54,6 +54,6 @@ OSC 2007 Tokyo/Spring
 
 
 .. author:: default
-.. categories:: Debian, meeting, virt., 
+.. categories:: Debian,meeting,virt.
 .. tags::
 .. comments::

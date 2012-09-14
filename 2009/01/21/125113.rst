@@ -21,6 +21,6 @@ Web 2.0 ストラテジー　ウェブがビジネスにもたらす意味
 
 
 .. author:: default
-.. categories:: Book, 
+.. categories:: book
 .. tags::
 .. comments::

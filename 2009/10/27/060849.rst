@@ -18,6 +18,6 @@ IEだったら大丈夫だった。Flashがダメだったのは、Adobe AIRだ�
 
 
 .. author:: default
-.. categories:: エラー, 
+.. categories:: error
 .. tags::
 .. comments::

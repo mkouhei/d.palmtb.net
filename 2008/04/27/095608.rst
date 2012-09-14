@@ -9,6 +9,6 @@ Windows用には、無線LANルータに付属していたPCカードタイプ�
 
 
 .. author:: default
-.. categories:: network, 
+.. categories:: network
 .. tags::
 .. comments::

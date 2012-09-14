@@ -9,6 +9,6 @@ wireless gate ログインできず。
 
 
 .. author:: default
-.. categories:: network, Debian, 
+.. categories:: network,Debian
 .. tags::
 .. comments::

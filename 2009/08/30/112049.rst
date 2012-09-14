@@ -27,6 +27,6 @@ http://www.warnermycal.com/cinema/tama/index.html
 
 
 .. author:: default
-.. categories:: 駄文, 
+.. categories:: nonsense
 .. tags::
 .. comments::

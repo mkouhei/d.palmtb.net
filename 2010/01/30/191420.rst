@@ -11,6 +11,6 @@ Oh! my God!
 
 
 .. author:: default
-.. categories:: life, 
+.. categories:: life
 .. tags::
 .. comments::

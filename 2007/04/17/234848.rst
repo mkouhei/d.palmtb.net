@@ -14,6 +14,6 @@ Linux版、ではなくて、Windows版。職場で使っている作業用PCに
 
 
 .. author:: default
-.. categories:: computer, Debian, virt., 
+.. categories:: computer,Debian,virt.
 .. tags::
 .. comments::

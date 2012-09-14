@@ -206,7 +206,7 @@
 
 
 
-コードは `こちら <https://github.com/CouchDB-JP/watchcat/blob/master/with-couchdb/uploader/upload.sh>`_ 。
+コードは `これ <https://github.com/CouchDB-JP/watchcat/blob/master/with-couchdb/uploader/upload.sh>`_ 。
 
 
 
@@ -485,6 +485,6 @@ CouchDBのReduce処理には組み込み関数が用意されているので、�
 
 
 .. author:: default
-.. categories:: CouchDB, ねこ, Dev, 
+.. categories:: CouchDB,cat,Dev
 .. tags::
 .. comments::

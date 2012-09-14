@@ -10,6 +10,6 @@ NICが認識されない問題は解決したのだが、何かLinuxの起動が
 
 
 .. author:: default
-.. categories:: Unix/Linux, MacBook, 
+.. categories:: Unix/Linux,MacBook
 .. tags::
 .. comments::

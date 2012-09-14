@@ -48,6 +48,6 @@ calculate.
 
 
 .. author:: default
-.. categories:: programming, 
+.. categories:: programming
 .. tags::
 .. comments::

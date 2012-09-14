@@ -13,6 +13,6 @@ Android Market以外からのパッケージを頻繁にインストールした
 
 
 .. author:: default
-.. categories:: gadget, 
+.. categories:: gadget
 .. tags::
 .. comments::

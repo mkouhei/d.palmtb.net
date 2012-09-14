@@ -21,6 +21,6 @@ DNS/NTPサーバは基本的に内容は変わらないので、Sargeからそ�
 
 
 .. author:: default
-.. categories:: Debian, Ops, 
+.. categories:: Debian,Ops
 .. tags::
 .. comments::

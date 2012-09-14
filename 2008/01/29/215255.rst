@@ -11,6 +11,6 @@ System zの新製品発表
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

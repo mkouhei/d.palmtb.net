@@ -11,6 +11,6 @@ Topic 3の途中まで読んだが…。
 
 
 .. author:: default
-.. categories:: security, 
+.. categories:: security
 .. tags::
 .. comments::

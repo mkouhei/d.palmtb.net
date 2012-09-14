@@ -17,6 +17,6 @@ I should also be ready.
 
 
 .. author:: default
-.. categories:: couchdb, 
+.. categories:: CouchDB
 .. tags::
 .. comments::

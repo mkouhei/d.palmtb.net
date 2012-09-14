@@ -33,6 +33,6 @@ I saw ft server for the first time.
 
 
 .. author:: default
-.. categories:: virtualization, 
+.. categories:: virt.
 .. tags::
 .. comments::

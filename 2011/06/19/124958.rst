@@ -50,6 +50,6 @@ https://twitter.com/#!/mkouhei/status/82109678955397120::
 
 
 .. author:: default
-.. categories:: Debian, meeting, 
+.. categories:: Debian,meeting
 .. tags::
 .. comments::

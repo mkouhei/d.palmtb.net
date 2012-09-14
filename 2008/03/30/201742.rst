@@ -139,6 +139,6 @@ Apacheの設定を変更する。hikiconfを読み込めないようにするの
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

@@ -11,6 +11,6 @@ Loppiって、Windowsなんだな。名前の入力で漢字変換したらWindo
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

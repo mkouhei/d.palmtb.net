@@ -9,6 +9,6 @@ PowerDNS GUIの困った話（その３）。
 
 
 .. author:: default
-.. categories:: Dev, 
+.. categories:: Dev
 .. tags::
 .. comments::

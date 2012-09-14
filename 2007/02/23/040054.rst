@@ -28,6 +28,6 @@ reniceなんて普段使わないからなぁ。
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

@@ -38,6 +38,6 @@ Git本もぜひよろしくです。w
 
 
 .. author:: default
-.. categories:: Ops, Git, 
+.. categories:: Ops,Git
 .. tags::
 .. comments::

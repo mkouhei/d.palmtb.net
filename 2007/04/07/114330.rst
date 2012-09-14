@@ -9,6 +9,6 @@ Apacheのチューニングの思わぬ副産物。
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

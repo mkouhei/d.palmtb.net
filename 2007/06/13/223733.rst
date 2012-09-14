@@ -9,6 +9,6 @@
 
 
 .. author:: default
-.. categories:: computer, gadget, エラー, 
+.. categories:: computer,gadget,error
 .. tags::
 .. comments::

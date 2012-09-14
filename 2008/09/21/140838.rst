@@ -14,10 +14,10 @@
 
 
 
-.. [#]  `一枚目の写真 <http://f.hatena.ne.jp/mkouhei/20080915163043>`_ 。
+.. [#] `一枚目の写真 <http://f.hatena.ne.jp/mkouhei/20080915163043>`_ 。
 
 
 .. author:: default
-.. categories:: computer, gadget, 
+.. categories:: computer,gadget
 .. tags::
 .. comments::

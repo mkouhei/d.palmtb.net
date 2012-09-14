@@ -23,6 +23,6 @@ mixiのコミュニティより。Ramdom Write/Readだけでなく、Sequential 
 
 
 .. author:: default
-.. categories:: MacBook, 
+.. categories:: MacBook
 .. tags::
 .. comments::

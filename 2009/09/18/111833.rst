@@ -28,6 +28,6 @@ SmartQ5実物。
 
 
 .. author:: default
-.. categories:: meeting, Debian, 
+.. categories:: meeting,Debian
 .. tags::
 .. comments::

@@ -9,6 +9,6 @@
 
 
 .. author:: default
-.. categories:: 生活, 仕事, 
+.. categories:: life,work
 .. tags::
 .. comments::

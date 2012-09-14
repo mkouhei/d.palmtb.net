@@ -18,6 +18,6 @@ MacBook Airのキーボードバックライトを点灯させる。
 
 
 .. author:: default
-.. categories:: MacBook, Debian, 
+.. categories:: MacBook,Debian
 .. tags::
 .. comments::

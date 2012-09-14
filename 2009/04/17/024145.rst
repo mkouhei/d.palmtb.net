@@ -9,6 +9,6 @@ KVM #2
 
 
 .. author:: default
-.. categories:: virtualization, qemu, kvm, 
+.. categories:: virt.
 .. tags::
 .. comments::

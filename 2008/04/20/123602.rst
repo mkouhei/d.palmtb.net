@@ -244,6 +244,6 @@ Apacheのほうは、制限かけているので、mod_securityにApacheBenchを
 
 
 .. author:: default
-.. categories:: Debian, Ops, gadget, 
+.. categories:: Debian,Ops,gadget
 .. tags::
 .. comments::

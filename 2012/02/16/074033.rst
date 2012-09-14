@@ -14,6 +14,6 @@ Sidから持ってきてビルドするのはいいけど、アップグレー�
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

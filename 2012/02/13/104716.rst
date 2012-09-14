@@ -40,6 +40,6 @@ cf. http://linuxjm.sourceforge.jp/html/GNU_bash/man1/bash.1.html
 
 
 .. author:: default
-.. categories:: Unix/Linux, エラー, 
+.. categories:: Unix/Linux,error
 .. tags::
 .. comments::

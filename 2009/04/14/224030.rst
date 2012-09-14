@@ -16,6 +16,6 @@ Bit rateを指定してみた。
 
 
 .. author:: default
-.. categories:: MacBook, network, Debian, 
+.. categories:: MacBook,network,Debian
 .. tags::
 .. comments::

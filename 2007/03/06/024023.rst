@@ -17,6 +17,6 @@ http://journal.mycom.co.jp/news/2007/03/05/365.html
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

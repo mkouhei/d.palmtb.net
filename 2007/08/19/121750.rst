@@ -35,6 +35,6 @@ kFreeBSDの話は、やっぱ変態っぽい。w この話聞いて、全然関�
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

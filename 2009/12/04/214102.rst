@@ -13,6 +13,6 @@ mopera Uでログインしていなければ課金されない。
 
 
 .. author:: default
-.. categories:: network, gadget, 
+.. categories:: network,gadget
 .. tags::
 .. comments::

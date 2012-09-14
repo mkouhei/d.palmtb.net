@@ -24,6 +24,6 @@ xevで、まずキーコードを調べる。英語キーなので、Debian Wiki
 
 
 .. author:: default
-.. categories:: Debian, MacBook, 
+.. categories:: Debian,MacBook
 .. tags::
 .. comments::

@@ -30,6 +30,6 @@ PCのハードウェアスペックがそれなりに無いと反応が若干悪
 
 
 .. author:: default
-.. categories:: 生活, Debian, 
+.. categories:: life,Debian
 .. tags::
 .. comments::

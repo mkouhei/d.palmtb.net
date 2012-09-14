@@ -20,6 +20,6 @@ http://tinyurl.com/yf83c3t
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

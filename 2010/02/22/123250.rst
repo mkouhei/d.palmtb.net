@@ -13,6 +13,6 @@ Try WiMAXを借りてみて。
 
 
 .. author:: default
-.. categories:: network, 
+.. categories:: network
 .. tags::
 .. comments::

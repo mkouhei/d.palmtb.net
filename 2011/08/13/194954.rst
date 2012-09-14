@@ -152,6 +152,6 @@ objectClassでposixAccountを使用する主目的であるadminグループの�
 
 
 .. author:: default
-.. categories:: Unix/Linux, Debian, 
+.. categories:: Unix/Linux,Debian
 .. tags::
 .. comments::

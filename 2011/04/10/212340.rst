@@ -30,6 +30,6 @@ slideshareの埋め込みがiframeになったのだが、はてダでは対応�
 
 
 .. author:: default
-.. categories:: meeting, 
+.. categories:: meeting
 .. tags::
 .. comments::

@@ -15,6 +15,6 @@ OSC2008 Tokyo/Springに行ってきた。
 
 
 .. author:: default
-.. categories:: Debian, meeting, virt., 
+.. categories:: Debian,meeting,virt.
 .. tags::
 .. comments::

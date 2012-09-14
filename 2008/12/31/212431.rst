@@ -11,6 +11,6 @@ http://radar.oreilly.com/2008/12/oreilly-media-on-twitter.html
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

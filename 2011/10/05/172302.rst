@@ -73,6 +73,6 @@ NSレコードも同じだった。
 
 
 .. author:: default
-.. categories:: Dev, 
+.. categories:: Dev
 .. tags::
 .. comments::

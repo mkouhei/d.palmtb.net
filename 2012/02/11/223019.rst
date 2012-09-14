@@ -46,6 +46,6 @@ serialの更新、レコードの更新の順かな。
 
 
 .. author:: default
-.. categories:: Dev, 
+.. categories:: Dev
 .. tags::
 .. comments::

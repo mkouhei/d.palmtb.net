@@ -9,6 +9,6 @@ MacBook Airだけでなく、Libretto L5、CLIE, Visor Platinum, Tungsten Tな�
 
 
 .. author:: default
-.. categories:: computer, gadget, 
+.. categories:: computer,gadget
 .. tags::
 .. comments::

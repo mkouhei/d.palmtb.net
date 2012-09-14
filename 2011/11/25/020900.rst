@@ -105,11 +105,11 @@ blockdiagが1.1になって、OrderedDictが使われるようになったよう
 
 
 
-.. [#]  `python2.7同梱のものは使ってないとのご指摘いただきました <https://twitter.com/#!/tk0miya/status/139886280732450816>`_ 。小宮さん、ありがとうございます。
+.. [#] `python2.7同梱のものは使ってないとのご指摘いただきました <https://twitter.com/#!/tk0miya/status/139886280732450816>`_ 。小宮さん、ありがとうございます。
 .. [#] retitleするのも宛先間違えてたし…。ダメだ、ワシ…。
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

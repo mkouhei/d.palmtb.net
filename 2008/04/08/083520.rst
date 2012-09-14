@@ -9,6 +9,6 @@
 
 
 .. author:: default
-.. categories:: 仕事, 駄文, 
+.. categories:: work,nonsense
 .. tags::
 .. comments::

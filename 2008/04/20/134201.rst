@@ -104,6 +104,6 @@ lighttpdの設定ファイルの記法にも大分なれてきた。理解して
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

@@ -115,6 +115,6 @@ id:oranieさんが主催した `Webサーバ勉強会 <http://d.hatena.ne.jp/ora
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

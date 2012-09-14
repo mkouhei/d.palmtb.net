@@ -69,6 +69,6 @@ pythonでBTSの情報をゴニョゴニョする。
 
 
 .. author:: default
-.. categories:: Debian, python, 
+.. categories:: Debian,Python
 .. tags::
 .. comments::

@@ -18,6 +18,6 @@ Sid on MacBook 5,2でミキサーの設定がリストアされない。スト�
 
 
 .. author:: default
-.. categories:: Debian, MacBook, 
+.. categories:: Debian,MacBook
 .. tags::
 .. comments::

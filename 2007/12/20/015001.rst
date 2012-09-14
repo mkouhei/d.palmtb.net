@@ -11,6 +11,6 @@ http://mkouhei.myminicity.com/
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

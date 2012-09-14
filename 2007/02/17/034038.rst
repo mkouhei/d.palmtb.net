@@ -13,6 +13,6 @@ SLES10の完全仮想化が非常に不安定なのが、64bitモードで動か
 
 
 .. author:: default
-.. categories:: Unix/Linux, エラー, 
+.. categories:: Unix/Linux,error
 .. tags::
 .. comments::

@@ -9,6 +9,6 @@ ABC 2011 winterに行ってきたのだが、何でか東大駒場キャンパ�
 
 
 .. author:: default
-.. categories:: エラー, 
+.. categories:: error
 .. tags::
 .. comments::

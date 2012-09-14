@@ -49,6 +49,6 @@ KVMの分類って
 
 
 .. author:: default
-.. categories:: book, virt., 
+.. categories:: book,virt.
 .. tags::
 .. comments::

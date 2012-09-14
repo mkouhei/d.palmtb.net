@@ -17,6 +17,6 @@ ProtecA 91L Orange. 0119308.
 
 
 .. author:: default
-.. categories:: life, 
+.. categories:: life
 .. tags::
 .. comments::

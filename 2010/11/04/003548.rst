@@ -191,6 +191,6 @@ PDF生成前の準備
 
 
 .. author:: default
-.. categories:: TeX, Debian, 
+.. categories:: TeX,Debian
 .. tags::
 .. comments::

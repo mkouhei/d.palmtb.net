@@ -10,6 +10,6 @@ kernel 2.6.30 でも解決せず…。orz
 
 
 .. author:: default
-.. categories:: MacBook, Unix/Linux, 
+.. categories:: MacBook,Unix/Linux
 .. tags::
 .. comments::

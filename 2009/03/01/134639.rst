@@ -99,6 +99,6 @@ reference
 
 
 .. author:: default
-.. categories:: Debian, vcs, 
+.. categories:: Debian,Git
 .. tags::
 .. comments::

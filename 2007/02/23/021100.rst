@@ -9,6 +9,6 @@ Webサーバのレスポンス遅延アラート
 
 
 .. author:: default
-.. categories:: Unix/Linux, 生活, 
+.. categories:: Unix/Linux,life
 .. tags::
 .. comments::

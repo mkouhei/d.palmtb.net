@@ -9,6 +9,6 @@ chumby予約した。
 
 
 .. author:: default
-.. categories:: gadget, 
+.. categories:: gadget
 .. tags::
 .. comments::

@@ -196,6 +196,6 @@ chrootを試してみるが…。
 
 
 .. author:: default
-.. categories:: gadget, Debian, virt., computer, 
+.. categories:: gadget,Debian,virt.,computer
 .. tags::
 .. comments::

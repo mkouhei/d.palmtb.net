@@ -9,6 +9,6 @@
 
 
 .. author:: default
-.. categories:: 駄文, computer, 
+.. categories:: nonsense,computer
 .. tags::
 .. comments::

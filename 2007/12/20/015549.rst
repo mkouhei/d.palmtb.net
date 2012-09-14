@@ -9,6 +9,6 @@
 
 
 .. author:: default
-.. categories:: エラー, Unix/Linux, meeting, 
+.. categories:: error,Unix/Linux,meeting
 .. tags::
 .. comments::

@@ -16,6 +16,6 @@
 
 
 .. author:: default
-.. categories:: security, 仕事, 
+.. categories:: security,work
 .. tags::
 .. comments::

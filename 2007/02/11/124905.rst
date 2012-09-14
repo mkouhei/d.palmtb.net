@@ -9,6 +9,6 @@
 
 
 .. author:: default
-.. categories:: 生活, Unix/Linux, 
+.. categories:: life,Unix/Linux
 .. tags::
 .. comments::

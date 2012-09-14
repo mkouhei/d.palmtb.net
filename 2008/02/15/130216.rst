@@ -9,6 +9,6 @@ Lennyのi386は行けた。
 
 
 .. author:: default
-.. categories:: MacBook, Debian, 
+.. categories:: MacBook,Debian
 .. tags::
 .. comments::

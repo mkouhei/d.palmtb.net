@@ -172,6 +172,6 @@ git stashと組み合わせればOK。
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

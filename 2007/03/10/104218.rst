@@ -13,6 +13,6 @@ kernelの再構築も31分で終わったし。やっぱ違うなぁ…
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

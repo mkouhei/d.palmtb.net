@@ -12,6 +12,6 @@
 
 
 .. author:: default
-.. categories:: Debian, computer, virt., 
+.. categories:: Debian,computer,virt.
 .. tags::
 .. comments::

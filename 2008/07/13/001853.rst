@@ -9,6 +9,6 @@ MacBook Airの方で、ap_scan=2を入れたらイケたので、Let's note R3�
 
 
 .. author:: default
-.. categories:: Debian, network, 
+.. categories:: Debian,network
 .. tags::
 .. comments::

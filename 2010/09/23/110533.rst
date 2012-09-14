@@ -26,6 +26,6 @@ Apple Store銀座店のエレベータは分かりにくい。
 
 
 .. author:: default
-.. categories:: エラー, 
+.. categories:: error
 .. tags::
 .. comments::

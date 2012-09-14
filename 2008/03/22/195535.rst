@@ -157,6 +157,6 @@ SSIDとPSKを設定する。
 
 
 .. author:: default
-.. categories:: MacBook, Debian, network, 
+.. categories:: MacBook,Debian,network
 .. tags::
 .. comments::

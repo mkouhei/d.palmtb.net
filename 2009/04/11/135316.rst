@@ -38,6 +38,6 @@ henrichさんとiwamatsuさんが話すというので `行ってきた <http://
 
 
 .. author:: default
-.. categories:: Debian, gadget, meeting, 
+.. categories:: Debian,gadget,meeting
 .. tags::
 .. comments::

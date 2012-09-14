@@ -14,6 +14,6 @@ Pasmo購入((いや、購入なのか？デポジットって要は保証金だ�
 
 
 .. author:: default
-.. categories:: 駄文, 生活, 
+.. categories:: nonsense,life
 .. tags::
 .. comments::

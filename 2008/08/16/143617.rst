@@ -9,6 +9,6 @@ Hack部屋、酒盛り部屋、雑魚寝部屋の三部屋。異様にMacBook率
 
 
 .. author:: default
-.. categories:: Debian, meeting, 
+.. categories:: Debian,meeting
 .. tags::
 .. comments::

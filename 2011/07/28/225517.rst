@@ -21,6 +21,6 @@ MacBookPro 8,2 15"をDebian Sid on VirtualBoxで妥協した日。
 
 
 .. author:: default
-.. categories:: Debian, virt., computer, MacBook, 
+.. categories:: Debian,virt.,computer,MacBook
 .. tags::
 .. comments::

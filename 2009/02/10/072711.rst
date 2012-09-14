@@ -11,6 +11,6 @@ We became free from "Nira".
 
 
 .. author:: default
-.. categories:: 生活, 
+.. categories:: life
 .. tags::
 .. comments::

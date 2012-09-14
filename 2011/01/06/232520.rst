@@ -18,6 +18,6 @@ HTMLのa要素と同じようなハイパーリンクを張るためにはhyperr
 
 
 .. author:: default
-.. categories:: TeX, 
+.. categories:: TeX
 .. tags::
 .. comments::

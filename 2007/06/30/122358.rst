@@ -11,6 +11,6 @@ http://www.atmarkit.co.jp/news/200706/28/ipa.html
 
 
 .. author:: default
-.. categories:: 仕事, 
+.. categories:: work
 .. tags::
 .. comments::

@@ -19,6 +19,6 @@ VCSはプログラム書くときだけでなくて、設定ファイルの管�
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

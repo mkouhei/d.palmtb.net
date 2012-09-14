@@ -18,6 +18,6 @@ Skypeにログインしようとしたら、"Another Skype instance may exist"�
 
 
 .. author:: default
-.. categories:: computer, Unix/Linux, 
+.. categories:: computer,Unix/Linux
 .. tags::
 .. comments::

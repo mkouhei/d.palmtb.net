@@ -13,10 +13,10 @@
 
 .. [#] サムネイル作っているので正確にはその2倍ですが。
 .. [#] 今まではAndroid用のCouchDBを専ら使っていたので。
-.. [#]  `Iris Couch <http://www.iriscouch.com/>`_ 
+.. [#] `Iris Couch <http://www.iriscouch.com/>`_ 
 
 
 .. author:: default
-.. categories:: CouchDB, 
+.. categories:: CouchDB
 .. tags::
 .. comments::

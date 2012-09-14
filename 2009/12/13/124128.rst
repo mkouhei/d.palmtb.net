@@ -41,6 +41,6 @@ Debianでは、scala-tool-supportのパッケージがないので、trunkから
 
 
 .. author:: default
-.. categories:: Debian, Unix/Linux, 
+.. categories:: Debian,Unix/Linux
 .. tags::
 .. comments::

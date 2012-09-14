@@ -93,6 +93,6 @@ Scala自体の勉強は、 `Scalaスケーラブルプログラミング <http:/
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

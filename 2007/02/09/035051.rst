@@ -14,6 +14,6 @@
 
 
 .. author:: default
-.. categories:: エラー, computer, 
+.. categories:: error,computer
 .. tags::
 .. comments::

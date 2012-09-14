@@ -13,6 +13,6 @@ kvm-18リリース。
 
 
 .. author:: default
-.. categories:: Unix/Linux, computer, virt., 
+.. categories:: Unix/Linux,computer,virt.
 .. tags::
 .. comments::

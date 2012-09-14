@@ -183,6 +183,6 @@ couch_uuids:random()は、src/couchdb/couch_uuids.erlの
 
 
 .. author:: default
-.. categories:: CouchDB, computer, 
+.. categories:: CouchDB,computer
 .. tags::
 .. comments::

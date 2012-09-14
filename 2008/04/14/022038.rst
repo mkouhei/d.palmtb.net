@@ -55,6 +55,6 @@ exportとかすると、一見うまく行くように見える。
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

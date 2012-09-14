@@ -32,6 +32,6 @@ ls -Zを実行すると、こんな感じ。
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

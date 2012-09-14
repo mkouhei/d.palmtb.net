@@ -27,6 +27,6 @@ Xen絡みのパラメータを全て向こうにしたらビルドできた。
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

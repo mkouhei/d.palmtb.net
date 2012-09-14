@@ -11,6 +11,6 @@ Kindle DX
 
 
 .. author:: default
-.. categories:: gadget, computer, 
+.. categories:: gadget,computer
 .. tags::
 .. comments::

@@ -9,6 +9,6 @@ b-mobile SIMがAndroid 1.6で使えない。
 
 
 .. author:: default
-.. categories:: network, gadget, 
+.. categories:: network,gadget
 .. tags::
 .. comments::

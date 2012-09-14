@@ -77,6 +77,6 @@ MacBookのバッテリーに充電回数が記録されているなんてのや�
 
 
 .. author:: default
-.. categories:: 生活, MacBook, 
+.. categories:: life,MacBook
 .. tags::
 .. comments::

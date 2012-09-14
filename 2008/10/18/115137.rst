@@ -9,6 +9,6 @@ iPod touchを無線LANを使おうと思っても、アクセスポイントは�
 
 
 .. author:: default
-.. categories:: gadget, network, 
+.. categories:: gadget,network
 .. tags::
 .. comments::

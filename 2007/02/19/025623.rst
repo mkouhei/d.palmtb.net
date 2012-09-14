@@ -9,6 +9,6 @@ mm1パッチを当てたら動かなくなった、マウスとキーボード�
 
 
 .. author:: default
-.. categories:: Unix/Linux, MacBook, 
+.. categories:: Unix/Linux,MacBook
 .. tags::
 .. comments::

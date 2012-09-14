@@ -34,6 +34,6 @@ non freeなソフトウェアは辛いすな…。（モチベーション的な
 
 
 .. author:: default
-.. categories:: エラー, 
+.. categories:: error
 .. tags::
 .. comments::

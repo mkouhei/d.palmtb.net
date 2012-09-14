@@ -164,6 +164,6 @@ Etchで最新状態にした後、apt lineをlennyに変更し、apt-get update�
 
 
 .. author:: default
-.. categories:: gadget, Debian, computer, 
+.. categories:: gadget,Debian,computer
 .. tags::
 .. comments::

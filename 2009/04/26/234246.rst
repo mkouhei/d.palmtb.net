@@ -47,6 +47,6 @@ Erlang's Variable is not unbound variable but bound variable.
 
 
 .. author:: default
-.. categories:: programming, 
+.. categories:: programming
 .. tags::
 .. comments::

@@ -32,6 +32,6 @@
 
 
 .. author:: default
-.. categories:: Git, computer, 
+.. categories:: Git,computer
 .. tags::
 .. comments::

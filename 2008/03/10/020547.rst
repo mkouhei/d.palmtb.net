@@ -9,6 +9,6 @@ twitterよりおもろいな。
 
 
 .. author:: default
-.. categories:: 駄文, 
+.. categories:: nonsense
 .. tags::
 .. comments::

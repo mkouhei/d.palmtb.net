@@ -19,6 +19,6 @@
 
 
 .. author:: default
-.. categories:: computer, Debian, 
+.. categories:: computer,Debian
 .. tags::
 .. comments::

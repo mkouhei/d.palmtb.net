@@ -23,6 +23,6 @@ Armadillo-9自身でUSB-RS232Cを使ってみた。
 
 
 .. author:: default
-.. categories:: Unix/Linux, gadget, computer, 
+.. categories:: Unix/Linux,gadget,computer
 .. tags::
 .. comments::

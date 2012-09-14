@@ -26,6 +26,6 @@ twittering-modeを使い始めたのも、twcliでというか、Notes, IEの複
 
 
 .. author:: default
-.. categories:: Debian, computer, 
+.. categories:: Debian,computer
 .. tags::
 .. comments::

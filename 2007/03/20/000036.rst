@@ -12,6 +12,6 @@ kvm-16からの変更点のトピックとしてはACPIがもっとちゃんと�
 
 
 .. author:: default
-.. categories:: Unix/Linux, virt., computer, 
+.. categories:: Unix/Linux,virt.,computer
 .. tags::
 .. comments::

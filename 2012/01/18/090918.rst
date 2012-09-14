@@ -19,6 +19,6 @@ Reneさんだけでなく、今の職場でも海外のソフトウェアエン�
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

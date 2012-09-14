@@ -11,6 +11,6 @@ f:id:mkouhei:20080203090530j:image
 
 
 .. author:: default
-.. categories:: 生活, 
+.. categories:: life
 .. tags::
 .. comments::

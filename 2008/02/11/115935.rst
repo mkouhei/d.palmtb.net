@@ -9,6 +9,6 @@
 
 
 .. author:: default
-.. categories:: security, エラー, 
+.. categories:: security,error
 .. tags::
 .. comments::

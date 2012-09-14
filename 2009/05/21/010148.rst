@@ -13,6 +13,6 @@ Debian Hack Cafe #16
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

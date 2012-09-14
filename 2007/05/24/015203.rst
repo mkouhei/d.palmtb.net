@@ -11,6 +11,6 @@ http://opentechpress.jp/news/article.pl?sid=07/05/22/0913245
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

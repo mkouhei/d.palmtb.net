@@ -1,7 +1,7 @@
 OpenSSLの脆弱性に関する報道。
 =============================
 
-`確かに <http://www.jpcert.or.jp/at/2008/at080008.txt>`_ 、Debianが前面に出すぎていますね。 `こ <http://pc.nikkeibp.co.jp/article/news/20080516/1002564/>`_  `こ <http://itpro.nikkeibp.co.jp/article/NEWS/20080516/302127/>`_ の記事では最後に一文だけ、
+`確かに <http://www.jpcert.or.jp/at/2008/at080008.txt>`_ 、Debianが前面に出すぎていますね。 `ここ <http://pc.nikkeibp.co.jp/article/news/20080516/1002564/>`_ とか `こっち <http://itpro.nikkeibp.co.jp/article/NEWS/20080516/302127/>`_ の記事では最後に一文だけ、
 
 
 
@@ -11,7 +11,7 @@ OpenSSLの脆弱性に関する報道。
 
 
 
-となっているが、これじゃDebianだけじゃなく、他のディストロだろうと、商用Unixであろうと、極端な話をすれば、Cygwinでsshdを動かしていたとしても影響を受ける、ということは、普通の人じゃ気づかないよなぁ…。とりあえず、Debianな人もそうでない人も `ここ <http://www.debian.or.jp/blog/openssl_package_and_its_vulnerability.html>`_ を読んで確認すべきですね。
+となっているが、これじゃDebianだけじゃなく、他のディストロだろうと、商用Unixであろうと、極端な話をすれば、Cygwinでsshdを動かしていたとしても影響を受ける、ということは、普通の人じゃ気づかないよなぁ…。とりあえず、Debianな人もそうでない人も `Debian JP Projectのサイト <http://www.debian.or.jp/blog/openssl_package_and_its_vulnerability.html>`_ を読んで確認すべきですね。
 
 
 
@@ -35,6 +35,6 @@ OpenSSLの脆弱性に関する報道。
 
 
 .. author:: default
-.. categories:: security, Debian, 
+.. categories:: security,Debian
 .. tags::
 .. comments::

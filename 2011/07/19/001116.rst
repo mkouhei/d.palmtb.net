@@ -196,6 +196,6 @@ SSLの鍵と証明書の指定は、/etc/apache2/sites-available/default-sslのS
 
 
 .. author:: default
-.. categories:: Unix/Linux, Debian, 
+.. categories:: Unix/Linux,Debian
 .. tags::
 .. comments::

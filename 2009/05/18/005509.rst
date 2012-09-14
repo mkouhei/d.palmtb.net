@@ -148,6 +148,6 @@ below, my xorg.conf
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

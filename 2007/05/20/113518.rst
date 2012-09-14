@@ -21,6 +21,6 @@ Etchにしてはまったのって、まだあまりないのだけど、自宅�
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

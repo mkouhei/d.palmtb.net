@@ -11,6 +11,6 @@ IP電話の導入を検討しようかと。
 
 
 .. author:: default
-.. categories:: 生活, network, 
+.. categories:: life,network
 .. tags::
 .. comments::

@@ -11,6 +11,6 @@ http://itpro.nikkeibp.co.jp/article/COLUMN/20070621/275252/
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

@@ -34,6 +34,6 @@ MacBook Airでも、 `Debian Wiki <http://wiki.debian.org/MacBook#head-d374bb9e1
 
 
 .. author:: default
-.. categories:: Debian, MacBook, 
+.. categories:: Debian,MacBook
 .. tags::
 .. comments::

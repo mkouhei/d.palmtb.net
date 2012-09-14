@@ -41,6 +41,6 @@ http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=410871
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

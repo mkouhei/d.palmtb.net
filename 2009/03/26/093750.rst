@@ -28,6 +28,6 @@ Hack Cafe #8
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

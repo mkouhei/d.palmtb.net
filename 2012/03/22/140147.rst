@@ -130,6 +130,6 @@ http://www.ietf.org/rfc/rfc3768.txt
 
 
 .. author:: default
-.. categories:: network, Ops, 
+.. categories:: network,Ops
 .. tags::
 .. comments::

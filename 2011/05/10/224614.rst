@@ -16,6 +16,6 @@ libvirtが何か吐いとる。
 
 
 .. author:: default
-.. categories:: Unix/Linux, Debian, 
+.. categories:: Unix/Linux,Debian
 .. tags::
 .. comments::

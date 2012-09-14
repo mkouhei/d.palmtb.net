@@ -11,6 +11,6 @@ SafariでもFirefoxでもなぜか、Gmailで新規メールの保存、送信�
 
 
 .. author:: default
-.. categories:: MacBook, 
+.. categories:: MacBook
 .. tags::
 .. comments::

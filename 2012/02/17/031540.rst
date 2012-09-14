@@ -27,6 +27,6 @@ File → Sketchbook → modes → Java → examples → Books → Visualizing da
 
 
 .. author:: default
-.. categories:: Debian, computer, 
+.. categories:: Debian,computer
 .. tags::
 .. comments::

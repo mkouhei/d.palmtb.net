@@ -19,6 +19,6 @@
 
 
 .. author:: default
-.. categories:: 生活, Debian, 
+.. categories:: life,Debian
 .. tags::
 .. comments::

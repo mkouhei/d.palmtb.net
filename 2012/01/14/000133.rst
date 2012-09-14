@@ -92,6 +92,6 @@ developementブランチではこの問題は修正されているようなの�
 
 
 .. author:: default
-.. categories:: python, Debian, 
+.. categories:: Python,Debian
 .. tags::
 .. comments::

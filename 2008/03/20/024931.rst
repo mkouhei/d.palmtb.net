@@ -17,6 +17,6 @@ Linux勉強会2007年度お疲れ様会。
 
 
 .. author:: default
-.. categories:: Unix/Linux, meeting, 
+.. categories:: Unix/Linux,meeting
 .. tags::
 .. comments::

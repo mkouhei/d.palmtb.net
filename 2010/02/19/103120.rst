@@ -24,6 +24,6 @@ Google Appsのカレンダーに登録するためには、"http://www.google.co
 
 
 .. author:: default
-.. categories:: computer, 
+.. categories:: computer
 .. tags::
 .. comments::

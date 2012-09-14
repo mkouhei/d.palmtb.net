@@ -73,6 +73,6 @@ Netfilter rule is below.
 
 
 .. author:: default
-.. categories:: couchdb, Debian, 
+.. categories:: CouchDB,Debian
 .. tags::
 .. comments::

@@ -31,6 +31,6 @@ ssh-copy-idコマンド便利。
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

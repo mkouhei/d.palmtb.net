@@ -24,6 +24,6 @@
 
 
 .. author:: default
-.. categories:: security, Unix/Linux, 
+.. categories:: security,Unix/Linux
 .. tags::
 .. comments::

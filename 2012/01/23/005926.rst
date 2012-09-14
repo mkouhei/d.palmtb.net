@@ -9,6 +9,6 @@ git-buildpackageを使って作成したソースパッケージを、mentors.de
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

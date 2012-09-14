@@ -11,6 +11,6 @@ Evidenceが…。これだからちゃんと引き継ぎができていないの
 
 
 .. author:: default
-.. categories:: 仕事, 
+.. categories:: work
 .. tags::
 .. comments::

@@ -23,6 +23,6 @@ Atom means invariable values other than the numerical value.
 
 
 .. author:: default
-.. categories:: programming, 
+.. categories:: programming
 .. tags::
 .. comments::

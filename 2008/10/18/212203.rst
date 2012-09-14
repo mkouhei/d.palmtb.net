@@ -9,6 +9,6 @@ kernel-package 11.0011で修正されたよ。
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

@@ -27,6 +27,6 @@ http://mixi.jp/view_community.pl?id=4311064
 
 
 .. author:: default
-.. categories:: CouchDB, 
+.. categories:: CouchDB
 .. tags::
 .. comments::

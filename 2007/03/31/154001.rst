@@ -26,6 +26,6 @@
 
 
 .. author:: default
-.. categories:: Debian, security, 
+.. categories:: Debian,security
 .. tags::
 .. comments::

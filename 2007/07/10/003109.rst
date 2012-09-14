@@ -34,6 +34,6 @@ CONFIG_X86_PAEってどこかで聞いたなぁと思って、make menuconfigで
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

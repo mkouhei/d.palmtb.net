@@ -11,6 +11,6 @@ Anthyの辞書がおかしい。
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

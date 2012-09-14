@@ -21,6 +21,6 @@ x86のCPUの仮想化支援機能と同様、s390でのメモリ管理を、必�
 
 
 .. author:: default
-.. categories:: Unix/Linux, virt., computer, 
+.. categories:: Unix/Linux,virt.,computer
 .. tags::
 .. comments::

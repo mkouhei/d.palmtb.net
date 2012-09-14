@@ -13,6 +13,6 @@ Tokyo.R#5に参加してみた。
 
 
 .. author:: default
-.. categories:: meeting, 
+.. categories:: meeting
 .. tags::
 .. comments::

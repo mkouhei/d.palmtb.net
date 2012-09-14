@@ -63,6 +63,6 @@
 
 
 .. author:: default
-.. categories:: Debian, virt., computer, 
+.. categories:: Debian,virt.,computer
 .. tags::
 .. comments::

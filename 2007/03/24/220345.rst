@@ -23,6 +23,6 @@ Webサーバのディスクイメージ解析後、Autopsyの画面で見るの�
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

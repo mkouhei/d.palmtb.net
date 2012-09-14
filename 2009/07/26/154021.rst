@@ -34,6 +34,6 @@ There a room available?
 
 
 .. author:: default
-.. categories:: life, DebConf, 
+.. categories:: life,Debian
 .. tags::
 .. comments::

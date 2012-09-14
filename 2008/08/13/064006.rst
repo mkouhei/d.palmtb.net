@@ -32,6 +32,6 @@ SLES10での状況。
 
 
 .. author:: default
-.. categories:: Unix/Linux, 仕事, 
+.. categories:: Unix/Linux,work
 .. tags::
 .. comments::

@@ -23,6 +23,6 @@ Xorg could not start, Cause is AccelMethod. Disable below 'Option "AccelMethod" 
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

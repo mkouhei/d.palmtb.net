@@ -18,6 +18,6 @@ Let's note R3の時は普通に使えたのだが、MacBook Airの場合、
 
 
 .. author:: default
-.. categories:: MacBook, Unix/Linux, Debian, 
+.. categories:: MacBook,Unix/Linux,Debian
 .. tags::
 .. comments::

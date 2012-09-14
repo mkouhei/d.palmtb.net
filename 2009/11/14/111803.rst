@@ -29,6 +29,6 @@ LaTeXで気づいたこと。
 
 
 .. author:: default
-.. categories:: Debian, TeX, 
+.. categories:: Debian,TeX
 .. tags::
 .. comments::

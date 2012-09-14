@@ -83,6 +83,6 @@ GmailではPOPで一度受信すると見えなくなる？
 
 
 .. author:: default
-.. categories:: network, 
+.. categories:: network
 .. tags::
 .. comments::

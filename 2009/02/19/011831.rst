@@ -13,6 +13,6 @@ After updating the kernel of Chumby, I mounted the Etch partition installed in U
 
 
 .. author:: default
-.. categories:: Debian, embedded, gadget, 
+.. categories:: Debian,gadget
 .. tags::
 .. comments::

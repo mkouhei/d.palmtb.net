@@ -9,6 +9,6 @@ Mac OS Xしか起動できなくなった！ rEFItが消されてしまったっ
 
 
 .. author:: default
-.. categories:: MacBook, Debian, 
+.. categories:: MacBook,Debian
 .. tags::
 .. comments::

@@ -85,6 +85,6 @@
 
 
 .. author:: default
-.. categories:: ねこ, 
+.. categories:: cat
 .. tags::
 .. comments::

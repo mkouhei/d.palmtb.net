@@ -10,6 +10,6 @@ Kernelを書き換えられては困るので。
 
 
 .. author:: default
-.. categories:: Debian, MacBook, 
+.. categories:: Debian,MacBook
 .. tags::
 .. comments::

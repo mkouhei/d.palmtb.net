@@ -9,6 +9,6 @@ Airの出荷予定日。
 
 
 .. author:: default
-.. categories:: MacBook, 
+.. categories:: MacBook
 .. tags::
 .. comments::

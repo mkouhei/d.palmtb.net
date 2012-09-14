@@ -20,6 +20,6 @@ OOoのファイルを管理しているgitリポジトリでの出来事。サ�
 
 
 .. author:: default
-.. categories:: Unix/Linux, 
+.. categories:: Unix/Linux
 .. tags::
 .. comments::

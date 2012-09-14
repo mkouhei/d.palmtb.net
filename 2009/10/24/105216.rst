@@ -73,6 +73,6 @@ td2planetがこける。
 
 
 .. author:: default
-.. categories:: Debian, CouchDB, Ops, 
+.. categories:: Debian,CouchDB,Ops
 .. tags::
 .. comments::

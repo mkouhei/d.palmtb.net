@@ -9,6 +9,6 @@ Etchリリースの反動かね。
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

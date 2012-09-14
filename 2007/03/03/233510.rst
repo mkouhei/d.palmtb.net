@@ -9,6 +9,6 @@ libvirtとvirt-managerを…
 
 
 .. author:: default
-.. categories:: computer, virt., Debian, 
+.. categories:: computer,virt.,Debian
 .. tags::
 .. comments::

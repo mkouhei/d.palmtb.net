@@ -48,6 +48,6 @@ the Bus
 
 
 .. author:: default
-.. categories:: 生活, 
+.. categories:: life
 .. tags::
 .. comments::

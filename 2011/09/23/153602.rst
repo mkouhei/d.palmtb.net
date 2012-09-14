@@ -42,6 +42,6 @@ This boot was successful, I updated deb packes and reboot again. But next boot f
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

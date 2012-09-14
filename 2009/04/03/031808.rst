@@ -13,6 +13,6 @@ ITPだけして放置していたganntprojectのパッケージングをやろ�
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::

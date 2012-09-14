@@ -233,6 +233,6 @@ FastCGIに対応させるため、下記の様なindex.fcgiを作って/var/www/
 
 
 .. author:: default
-.. categories:: Debian, Ops, gadget, 
+.. categories:: Debian,Ops,gadget
 .. tags::
 .. comments::

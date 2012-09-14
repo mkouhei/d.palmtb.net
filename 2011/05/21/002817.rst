@@ -162,6 +162,6 @@ http://twitter.com/tk0miya/status/71246908374523907::
 
 
 .. author:: default
-.. categories:: Debian, Unix/Linux, computer, 
+.. categories:: Debian,Unix/Linux,computer
 .. tags::
 .. comments::

@@ -31,6 +31,6 @@ Hack Cafeを開催した場所を、Google Mapで記録していくことにし�
 
 
 .. author:: default
-.. categories:: Debian, 
+.. categories:: Debian
 .. tags::
 .. comments::
