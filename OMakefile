@@ -16,7 +16,6 @@
 
 TINKER = tinker
 RSYNC = rsync
-ECHO = echo
 SRCS = $(glob 20*/*/*/*.rst)
 
 .DEFAULT: $(SRCS)
