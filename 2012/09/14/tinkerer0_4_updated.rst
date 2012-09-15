@@ -53,5 +53,5 @@ This work around of problem is changed disable html_use_index.
 
 .. author:: default
 .. categories:: Ops
-.. tags:: Tinkerer,Sphinx
+.. tags:: tinkerer,Sphinx
 .. comments::
