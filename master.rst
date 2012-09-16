@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2012/09/16/from_mt2rest_to_hatena2rest
    2012/09/15/disqus_cookie
    2012/09/14/tinkerer0_4_updated
    2012/08/12/poe_switch
