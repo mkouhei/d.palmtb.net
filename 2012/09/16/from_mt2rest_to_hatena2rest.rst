@@ -50,8 +50,10 @@ unicodedata module is embedded with Python. east_asian_width() has next 6 values
 * A: Ambiguous
 * N: Neutral
 
-.. image:: http://upload.wikimedia.org/wikipedia/commons/3/30/East_Asian_Width_1.svg
+.. figure:: http://upload.wikimedia.org/wikipedia/commons/3/30/East_Asian_Width_1.svg
+   :alt: Describe East_Asian_Width properties defined by Unicode Standard Annex #11 (UAX#11).
 
+   fig. `Describe East_Asian_Width properties defined by Unicode Standard Annex #11 (UAX#11). <http://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:East_Asian_Width_1.svg>`_
 
 
 According to "`WikiPedia <http://ja.wikipedia.org/wiki/%E6%9D%B1%E3%82%A2%E3%82%B8%E3%82%A2%E3%81%AE%E6%96%87%E5%AD%97%E5%B9%85#.E5.95.8F.E9.A1.8C.E7.82.B9>`_", "A" is processed as 1 or 2 characters,  but Sphinx processes as like below probably.
