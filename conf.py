@@ -70,6 +70,10 @@ html_sidebars = {
 }
 
 blockdiag_fontpath = '/usr/share/fonts/truetype/vlgothic/VL-PGothic-Regular.ttf'
+blockdiag_antialias = True
+#blockdiag_html_image_format = 'SVG'
+#seqdiag_html_image_format = 'SVG'
+#nwdiag_html_image_format = 'SVG'
 
 # **************************************************************
 # Do not modify below lines as the values are required by 
