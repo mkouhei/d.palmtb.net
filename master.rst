@@ -4,7 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
-   2012/09/24/openldap_replication_from_2_3_to_2_4
+   2012/10/01/openldap_replication_from_2_3_to_2_4
    2012/09/20/migrate_2_3_with_slapd_conf_to_2_4_with_slapd_config
    2012/09/17/failed_travis_ci_pep8
    2012/09/16/from_mt2rest_to_hatena2rest

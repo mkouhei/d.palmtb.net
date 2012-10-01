@@ -1,7 +1,7 @@
-OpenLDAP_replication_from_2.3_to_2.4
+Replication from OpenLDAP 2.3 to 2.4
 ====================================
 
-The story of this entry is previous migration first step. There are OpenLDAP 2.3 with slapd.conf on CentOS 5.4 as master and slave servers. I have prepared OpenLDAP 2.4 with slapd-config on Ubuntu 12.04.
+The story of this entry is previous migration first step (:doc:`/2012/09/20/migrate_2_3_with_slapd_conf_to_2_4_with_slapd_config`). Master and slave servers that are OpenLDAP 2.3 with slapd.conf on CentOS 5.4 are running currently. I have prepared OpenLDAP 2.4 with slapd-config on Ubuntu 12.04 as slave server.
 
 Install packages
 ----------------
@@ -18,28 +18,15 @@ slapd configuration
 * Administrator password
 * Confirm password
 
-nslcd configuration
-^^^^^^^^^^^^^^^^^^^
+Setup OpenLDAP
+--------------
 
-* LDAP server URI:
-
-  * ldap://localhost
-
-* LDAP server search base:
-
-  * dc=example,dc=org
-
-* Check server’s SSL certificate:
-
-  * never
-
-Change parameters
------------------
+I have set up with LDIF files of schemas prepared in previous story.
 
 Change schemas
 ^^^^^^^^^^^^^^
 
-Current core.schema is customized, then I have changed with ldapvi.
+I have changed "core.schema" using ldapvi because the present core.schema had been customized.
 
 .. code-block:: bash
 
@@ -48,21 +35,21 @@ Current core.schema is customized, then I have changed with ldapvi.
    olcAttributeTypes: {51}( 1.2.840.113549.1.9.1 NAME ( 'email' 'emailAddress' 'pkcs9email' ) DESC 'RFC3280: legacy attribute for email addresses in DNs' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{128} )
    (snip)
    
-I have changed schema and saved. (Changed string are not shown this time)
+Changes are omitted.
 
 Import additional schema
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-I have added schemas prepared previous entry.
+I have added prepared schemas.
 
 .. code-block:: bash
 
-   $ sudo ldapadd -Y EXTERNAL -H ldapi://  -f local.ldif
-   $ sudo ldapadd -Y EXTERNAL -H ldapi://  -f sudo.ldif
-   $ sudo ldapadd -Y EXTERNAL -H ldapi://  -f openssh-lpk.ldif
-   $ sudo ldapadd -Y EXTERNAL -H ldapi:/// -f ppolicy.ldif
+   $ sudo ldapadd -Y EXTERNAL -H ldapi://  -f ~/local.ldif
+   $ sudo ldapadd -Y EXTERNAL -H ldapi://  -f ~/sudo.ldif
+   $ sudo ldapadd -Y EXTERNAL -H ldapi://  -f ~/openssh-lpk.ldif
+   $ sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/ldap/schema/ppolicy.ldif
 
-ppolicy is not load in default.
+ppolicy is present by default, but not load.
 
 Load module
 ^^^^^^^^^^^
@@ -74,7 +61,7 @@ Load module
 
 Default is follow;
 
-.. code-block:: ini
+.. code-block:: bash
 
    0 cn=module{0},cn=config
    objectClass: olcModuleList
@@ -82,9 +69,9 @@ Default is follow;
    olcModulePath: /usr/lib/ldap
    olcModuleLoad: {0}back_hdb
 
-After is follows;
+Change is follows;
 
-.. code-block:: ini
+.. code-block:: bash
 
    0 cn=module{0},cn=config
    objectClass: olcModuleList
@@ -109,7 +96,7 @@ Use "add" command when using new dn.
 Change suffix
 ^^^^^^^^^^^^^
 
-I have replaced “admin” to “ldapadmin”, “dc=nodomain” to “dc=example,dc=org”.
+Default suffix is "cn=admin,dc=nodomain". I have replaced “admin” to “ldapadmin”, “dc=nodomain” to “dc=example,dc=org”.
 
 .. code-block:: bash
 
@@ -117,7 +104,7 @@ I have replaced “admin” to “ldapadmin”, “dc=nodomain” to “dc=examp
 
 Default is follow;
 
-.. code-block:: ini
+.. code-block:: bash
 
    0 olcDatabase={1}hdb,cn=config
    objectClass: olcDatabaseConfig
@@ -129,7 +116,7 @@ Default is follow;
    olcAccess: {1}to dn.base="" by * read
    olcAccess: {2}to * by self write by dn="cn=admin,dc=nodomain" write by * read
    olcLastMod: TRUE
-   olcRootPW: {SSHA}569KdBIAbeq3XxkXRvMuIYUfjsQh1fd2
+   olcRootPW: {SSHA}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
    olcDbCheckpoint: 512 30
    olcDbConfig: {0}set_cachesize 0 2097152 0
    olcDbConfig: {1}set_lk_max_objects 1500
@@ -138,9 +125,9 @@ Default is follow;
    olcDbIndex: objectClass eq
    olcRootDN: cn=admin,dc=nodomain
 		
-Changed is follow; 
+Change is follow; 
 
-.. code-block:: ini
+.. code-block:: bash
 
    0 olcDatabase={1}hdb,cn=config
    objectClass: olcDatabaseConfig
@@ -152,7 +139,7 @@ Changed is follow;
    olcAccess: {1}to dn.base="" by * read
    olcAccess: {2}to * by self write by dn="cn=ldapadmin,dc=example,dc=org" write by * read
    olcLastMod: TRUE
-   olcRootPW: {SSHA}569KdBIAbeq3XxkXRvMuIYUfjsQh1fd2
+   olcRootPW: {SSHA}xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
    olcDbCheckpoint: 512 30
    olcDbConfig: {0}set_cachesize 0 2097152 0
    olcDbConfig: {1}set_lk_max_objects 1500
@@ -164,28 +151,27 @@ Changed is follow;
 Index
 ^^^^^
 
+objectClass and entryCSN,entryUUID is required for replication at least.
+
 .. code-block:: bash
 
    $ sudo ldapvi -Y EXTERNAL -h ldapi:// -b cn=config olcDatabase=hdb olcDbIndex
 
 Default:
 
-.. code-block:: ini
+.. code-block:: bash
 
    olcDbIndex: objectClass eq
 
 Changed:
 
-.. code-block:: ini
+.. code-block:: bash
 
    olcDbIndex: objectClass eq,pres
-   olcDbIndex: uid eq,pres,sub
-   olcDbIndex: uniqueMember,memberUid eq
-   olcDbIndex: uidNumber,gidNumber eq
-   olcDbIndex: cn eq
-   olcDbIndex: sudoUser eq,sub
-   olcDbIndex: description eq
+   (snip)
    olcDbIndex: entryCSN,entryUUID eq
+
+Other changes are ommitted.
 
 TLS Certifiation
 ^^^^^^^^^^^^^^^^
@@ -194,39 +180,43 @@ TLS Certifiation
 
    $ sudo ldapvi -Y EXTERNAL -h ldapi:// -b cn=config cn=config
 
-Add olcTLSCertificateFile, olcTLSCertificateKeyFile.
+Add path of certification and key file to olcTLSCertificateFile, olcTLSCertificateKeyFile.
+
 
 DB Cachesize
 ^^^^^^^^^^^^
 
 .. code-block:: bash
 
-   $ sudo ldapvi -Y EXTERNAL -h ldapi:/// -b cn=config olcDatabase=hdb olcDbCacheSize
+   $ sudo ldapvi -Y EXTERNAL -h ldapi:/// -b cn=config olcDatabase=hdb olcDbCacheSize 
 
 Default:
 
-.. code-block:: ini
+.. code-block:: bash
 
    0 olcDatabase={1}hdb,cn=config
 
-Added:
+Changed:
 
-.. code-block:: ini
+.. code-block:: bash
 
    0 olcDatabase={1}hdb,cn=config
    olcDbCacheSize: 2000
 
+DB IDL Cache size
 
 .. code-block:: bash
 
    $ sudo ldapvi -Y EXTERNAL -h ldapi:/// -b cn=config olcDatabase=hdb olcDbIDLcacheSize
 
-Added:
+Changed:
 
-.. code-block:: ini
+.. code-block:: bash
 
    0 olcDatabase={1}hdb,cn=config
    olcDbIDLcacheSize: 2000
+
+
 
 Access control
 ^^^^^^^^^^^^^^
@@ -237,7 +227,7 @@ Access control
 
 Default:
 
-.. code-block:: ini
+.. code-block:: bash
 
    0 olcDatabase={1}hdb,cn=config
    olcAccess: {0}to attrs=userPassword,shadowLastChange by self write by anonymous auth by dn="cn=ldapadmin,dc=example,dc=org" write by * none
@@ -246,10 +236,10 @@ Default:
 
 Changed:
 
-.. code-block:: ini
+.. code-block:: bash
 
    0 olcDatabase={1}hdb,cn=config
-   olcAccess: {0}to * by dn="cn=admin,dc=example,dc=org" write by * none break
+   olcAccess: {0}to * by dn="cn=ldapadmin,dc=example,dc=org" write by * none break
    olcAccess: {1}to attrs=userPassword by self read by anonymous auth by * none
    olcAccess: {2}to dn.subtree="ou=ACL,dc=example,dc=org" by * compare by * none
    olcAccess: {3}to dn.subtree="ou=Password,dc=example,dc=org" by * none
@@ -267,9 +257,9 @@ auditlog
 
    $ sudo ldapvi -Y EXTERNAL -h ldapi:/// -b cn=config olcDatabase={1}hdb
 
-Added;
+Changed:
 
-.. code-block:: ini
+.. code-block:: bash
 
    0 olcDatabase={1}hdb,cn=config
    (snip)
@@ -280,6 +270,13 @@ Added;
    olcOverlay: auditlog
    olcAuditlogFile: /var/log/ldap/auditlog.log
 
+make directory.
+
+.. code-block:: bash
+
+   $ sudo mkdir /var/log/ldap
+   $ sudo chown -R openldap: /var/log/ldap
+
 ppolicy
 ^^^^^^^
 
@@ -288,9 +285,9 @@ ppolicy
    $ sudo ldapvi -Y EXTERNAL -h ldapi:/// -b cn=config olcDatabase={1}hdb
 
 
-Added;
+Changed:
 
-.. code-block:: ini
+.. code-block:: bash
 
    0 olcDatabase={1}hdb,cn=config
    (snip)
@@ -299,30 +296,6 @@ Added;
    objectClass: olcOverlayConfig
    objectClass: olcPPolicyConfig
    olcOverlay: ppolicy
-
-.. code-block:: bash
-
-   $ sudo ldapvi -Y EXTERNAL -h ldapi:/// -b cn=config
-
-Default;
-
-.. code-block:: ini
-
-   (snip)
-   18 olcOverlay={1}ppolicy,olcDatabase={1}hdb,cn=config
-   objectClass: olcOverlayConfig
-   objectClass: olcPPolicyConfig
-   olcOverlay: {1}ppolicy
-
-Added; 
-
-.. code-block:: ini
-
-   (snip)
-   18 olcOverlay={1}ppolicy,olcDatabase={1}hdb,cn=config
-   objectClass: olcOverlayConfig
-   objectClass: olcPPolicyConfig
-   olcOverlay: {1}ppolicy
    olcPPolicyDefault: cn=default,ou=Password,dc=example,dc=org
    olcPPolicyUseLockout: TRUE
 
@@ -333,21 +306,20 @@ olcDbIndex entryUUID must be “eq”. Change rid, provider, and credentials of 
 
 .. code-block:: bash
 
-$ sudo ldapvi -Y EXTERNAL -h ldapi:/// -b cn=config olcDatabase=hdb
+   $ sudo ldapvi -Y EXTERNAL -h ldapi:/// -b cn=config olcDatabase=hdb
 
+Default:
 
-Default;
-
-.. code-block:: ini
+.. code-block:: bash
 
    (snip)
    olcDbIndex: uidNumber,gidNumber eq
    olcDbIndex: uniqueMember,memberUid eq
 
 
-Added;
+Changed:
 
-.. code-block:: ini
+.. code-block:: bash
 
    olcDbIndex: uidNumber,gidNumber eq
    olcDbIndex: uniqueMember,memberUid eq
@@ -377,12 +349,28 @@ ldap client for self
 
 /etc/nsswtich.conf and /etc/pam.d/common-{account,auth,password,sesson,session-noninteractive} are changed by Debconf of postinst.
 
+nslcd configuration
+^^^^^^^^^^^^^^^^^^^
+
+* LDAP server URI:
+
+  * ldap://localhost
+
+* LDAP server search base:
+
+  * dc=example,dc=org
+
+* Check server’s SSL certificate:
+
+  * never
+
+
 nslcd
 ^^^^^
 
 /etc/nslcd.conf
 
-.. code-block:: ini
+.. code-block:: bash
 
    uid nslcd
    gid nslcd
@@ -393,7 +381,7 @@ nslcd
 
 /etc/ldap.conf
 
-.. code-block:: ini
+.. code-block:: bash
 
    base dc=example,dc=jp
    timelimit 120
@@ -413,7 +401,7 @@ nslcd
 
 /etc/ldap/ldap.conf
 
-.. code-block:: ini
+.. code-block:: bash
 
    URI ldap://localhost
    BASE dc=example,dc=org
@@ -424,5 +412,5 @@ nslcd
 
 .. author:: default
 .. categories:: Ops
-.. tags:: OpenLDAP,Ubuntu
+.. tags:: OpenLDAP,Ubuntu,nslcd
 .. comments::
