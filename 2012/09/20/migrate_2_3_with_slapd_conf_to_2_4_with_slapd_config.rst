@@ -140,6 +140,8 @@ I converted additional schema to LDIF with slaptest after I installed slapd. I m
    $ sudo mv -i cn\=\{6\}local.ldif local.ldif
    $ sudo mv -i cn\=\{7\}openssh-lpk.ldif openssh-lpk.ldif
 
+Don't forget to delete last 9 lines of each generated LDIF files.
+
 I copied certification and private key files from current slave server. For example, it is as follows.
 
 * /etc/ca-certificates/myserver.key
