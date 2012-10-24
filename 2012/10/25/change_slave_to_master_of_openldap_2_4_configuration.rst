@@ -1,12 +1,12 @@
 Change slave to master of OpenLDAP 2.4 configuration
 ====================================================
 
-The story of this entry is previous migration second step (:doc:`/2012/09/20/migrate_2_3_with_slapd_conf_to_2_4_with_slapd_config`). Master is firstly set up as slave, then change config. So firstly :doc:`/2012/10/24/openldap_replication_from_2_3_to_2_4`.
+The story of this entry is previous migration second step (:doc:`/2012/09/20/migrate_2_3_with_slapd_conf_to_2_4_with_slapd_config`). Firstly set up as slave, then change config. Namely see ":doc:`/2012/10/24/openldap_replication_from_2_3_to_2_4`".
 
 Disable replication
 ^^^^^^^^^^^^^^^^^^^
 
-Delete olcSyncrepl, olcUpdateRef lines from olcDatabase={1}hdb
+Delete "olcSyncrepl", "olcUpdateRef" lines from "olcDatabase={1}hdb".
 
 .. code-block:: bash
 
@@ -34,7 +34,7 @@ Changed
 Load module
 ^^^^^^^^^^^
 
-Load module syncprov.
+Load module syncprov for master.
 
 .. code-block:: bash
 
@@ -70,7 +70,7 @@ Changed
 Index
 ^^^^^
 
-Delete "description eq" line from olcDbIndex,olcDatabase={1}hdb
+Delete "description eq" line from "olcDbIndex,olcDatabase={1}hdb".
 
 .. code-block:: bash
 
@@ -105,7 +105,7 @@ Changed
 Access control
 ^^^^^^^^^^^^^^
 
-Add new {1} lines of after.
+Insert a new writing "sshPublicKey" lines.
 
 .. code-block:: bash
 
@@ -146,7 +146,7 @@ Changed
 sizelimit
 ^^^^^^^^^
 
-Add olcSizeLimit to cn=config.
+Add olcSizeLimit to "cn=config".
 
 .. code-block:: bash
 
@@ -182,8 +182,10 @@ Changed
    olcSizeLimit: unlimited
 
       
-Replication of master
-^^^^^^^^^^^^^^^^^^^^^
+syncprov overlay
+^^^^^^^^^^^^^^^^
+
+Add a syncprov overlay DN.
 
 .. code-block:: bash
 
@@ -214,10 +216,10 @@ Changed
    olcOverlay: syncprov
 
 
-ldap client
-^^^^^^^^^^^
+setting LDAP client of master-self
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Syncrepl needs these setting.
+Needs these setting in a master server.
 
 /etc/ldap.conf
 
@@ -252,8 +254,8 @@ Syncrepl needs these setting.
 Confirmation
 ^^^^^^^^^^^^
 
-At least, this server is LDAP master of OpenLDAP2.4 on Ubuntu 12.04 is now available.
-Confirmation is using ldapsearch command and id command. So look audit.log of the slave server.
+At least, this server as LDAP master of OpenLDAP2.4 on Ubuntu 12.04 is now available.
+Confirmation is using "ldapsearch" command and "id" command. And you also look on a audit.log of the slave server.
 
 
 .. author:: default
