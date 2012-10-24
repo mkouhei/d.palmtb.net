@@ -21,7 +21,7 @@ slapd configuration
 Setup OpenLDAP
 --------------
 
-I have set up with LDIF files of schemas prepared in previous story.
+I have set up with LDIF files of prepared schemas in previous story.
 
 .. code-block:: bash
 
@@ -40,6 +40,12 @@ Changed:
 
    SLAPD_SERVICES="ldap:/// ldaps:/// ldapi:///"
 
+Restart slapd.
+
+.. code-block:: bash
+
+   $ sudo service slapd restart
+
 
 Change schemas
 ^^^^^^^^^^^^^^
@@ -53,19 +59,19 @@ I have changed "core.schema" using ldapvi because the present core.schema had be
    olcAttributeTypes: {51}( 1.2.840.113549.1.9.1 NAME ( 'email' 'emailAddress' 'pkcs9email' ) DESC 'RFC3280: legacy attribute for email addresses in DNs' EQUALITY caseIgnoreIA5Match SUBSTR caseIgnoreIA5SubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.26{128} )
    (snip)
    
-Changes are omitted.
+The details of changes are omitted.
 
 Import additional schema
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-I have added prepared schemas.
+I have added previous prepared schemas.
 
 .. code-block:: bash
 
-   $ sudo ldapadd -Y EXTERNAL -H ldapi://  -f ~/local.ldif
-   $ sudo ldapadd -Y EXTERNAL -H ldapi://  -f ~/sudo.ldif
-   $ sudo ldapadd -Y EXTERNAL -H ldapi://  -f ~/openssh-lpk.ldif
-   $ sudo ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/ldap/schema/ppolicy.ldif
+   $ sudo ldapadd -Y EXTERNAL -H ldapi:// -f ~/local.ldif
+   $ sudo ldapadd -Y EXTERNAL -H ldapi:// -f ~/sudo.ldif
+   $ sudo ldapadd -Y EXTERNAL -H ldapi:// -f ~/openssh-lpk.ldif
+   $ sudo ldapadd -Y EXTERNAL -H ldapi:// -f /etc/ldap/schema/ppolicy.ldif
 
 ppolicy is present by default, but not load.
 
@@ -114,7 +120,11 @@ Use "add" command when using new dn.
 Change suffix
 ^^^^^^^^^^^^^
 
-Default suffix is "cn=admin,dc=nodomain". I have replaced “admin” to “ldapadmin”, “dc=nodomain” to “dc=example,dc=org”.
+Default suffix is "cn=admin,dc=nodomain". I have replaced “admin” to “ldapadmin”, “dc=nodomain” to “dc=example,dc=org”. Changes lines are follow.
+
+* olcSuffix
+* olcAccess {0}, {2}
+* olcRootDN
 
 .. code-block:: bash
 
@@ -200,6 +210,75 @@ TLS Certifiation
 
 Add path of certification and key file to olcTLSCertificateFile, olcTLSCertificateKeyFile.
 
+for example, using /etc/ssl/private/hoge.key and /etc/ssl/cert/hoge.pem,
+
+Default
+
+.. code-block:: bash
+
+   0 cn=config
+   objectClass: olcGlobal
+   cn: config
+   olcArgsFile: /var/run/slapd/slapd.args
+   olcLogLevel: none
+   olcPidFile: /var/run/slapd/slapd.pid
+   olcToolThreads: 1
+
+
+Changed
+
+.. code-block:: bash
+
+   0 cn=config
+   objectClass: olcGlobal
+   cn: config
+   olcArgsFile: /var/run/slapd/slapd.args
+   olcLogLevel: none
+   olcPidFile: /var/run/slapd/slapd.pid
+   olcToolThreads: 1
+   olcTLSCertificateFile: /etc/ssl/certs/hoge.pem
+   olcTLSCertificateKeyFile: /etc/ssl/private/hoge.key
+
+LogLevel
+^^^^^^^^
+
+.. code-block:: bash
+
+   $ sudo ldapvi -Y EXTERNAL -h ldapi:/// -b cn=config cn=config olcLogLevel
+
+Default
+
+.. code-block:: bash
+
+   0 cn=config
+   olcLogLevel: none
+
+Changed
+
+.. code-block:: bash
+
+   0 cn=config
+   olcLogLevel: 512
+
+`Change rsyslog setting when next error occurs. <https://help.ubuntu.com/12.04/serverguide/openldap-server.html>`_
+
+.. code-block:: bash
+
+   rsyslogd-2177: imuxsock lost 228 messages from pid 2547 due to rate-limitin
+
+Add follow parameter to /etc/rsyslog.conf
+
+.. code-block:: bash
+
+   # Disable rate limiting
+   # (default is 200 messages in 5 seconds; below we make the 5 become 0)
+   $SystemLogRateLimitInterval 0
+
+Restart rsyslog.
+
+.. code-block:: bash
+
+   $ sudo service rsyslog restart
 
 DB Cachesize
 ^^^^^^^^^^^^
@@ -259,13 +338,15 @@ Changed:
    0 olcDatabase={1}hdb,cn=config
    olcAccess: {0}to * by dn="cn=ldapadmin,dc=example,dc=org" write by * none break
    olcAccess: {1}to attrs=userPassword by self read by anonymous auth by * none
-   olcAccess: {2}to dn.subtree="ou=ACL,dc=example,dc=org" by * compare by * none
-   olcAccess: {3}to dn.subtree="ou=Password,dc=example,dc=org" by * none
-   olcAccess: {4}to dn.subtree="ou=SUDOers,dc=example,dc=org" by * read by * none
+   olcAccess: {2}to dn.subtree="ou=ACL,ou=policy,dc=example,dc=org" by * compare by * none
+   olcAccess: {3}to dn.subtree="ou=Password,ou=policy,dc=example,dc=org" by * none
+   olcAccess: {4}to dn.subtree="ou=SUDOers,ou=policy,dc=example,dc=org" by * read by * none
    olcAccess: {5}to dn.subtree="ou=People,dc=example,dc=org" by self read by * read
    olcAccess: {6}to dn.subtree="ou=Group,dc=example,dc=org" by * read
    olcAccess: {7}to dn.subtree="dc=example,dc=org" by * search  by * none
    olcAccess: {8}to * by * none
+
+OpenLDAP 2.4 needs the rule of ‘to dn.subtree=”dc=example,dc=org” by * search by * none’, OpenLDAP 2.3 does not needs.
 
 
 auditlog
@@ -286,7 +367,7 @@ Changed:
    objectClass: olcOverlayConfig
    objectClass: olcAuditLogConfig
    olcOverlay: auditlog
-   olcAuditlogFile: /var/log/ldap/auditlog.log
+   olcAuditlogFile: /var/log/ldap/audit.log
 
 make directory.
 
@@ -314,7 +395,7 @@ Changed:
    objectClass: olcOverlayConfig
    objectClass: olcPPolicyConfig
    olcOverlay: ppolicy
-   olcPPolicyDefault: cn=default,ou=Password,dc=example,dc=org
+   olcPPolicyDefault: cn=default,ou=Password,ou=policy,dc=example,dc=org
    olcPPolicyUseLockout: TRUE
 
 Replication
@@ -341,25 +422,27 @@ Changed:
 
    olcDbIndex: uidNumber,gidNumber eq
    olcDbIndex: uniqueMember,memberUid eq
-   olcSyncrepl:  rid=xxx provider=ldaps://xxx.xxx.xxx.xxx bindmethod=simple binddn="cn=ldapadmin,dc=example,dc=org" credentials=xxxxxxxx searchbase="dc=example,dc=org" type=refreshAndPersist retry="5 10 60 +"
+   olcSyncrepl: rid=xxx provider=ldaps://xxx.xxx.xxx.xxx bindmethod=simple binddn="cn=ldapadmin,dc=example,dc=org" credentials=xxxxxxxx searchbase="dc=example,dc=org" type=refreshAndPersist retry="5 10 60 +"
    olcUpdateRef: ldaps://xxx.xxx.xxx.xxx
 
 
 If you change master server, choise one of two method.
 
-A. Remove current syncrepl setting and restart slapd, then add new syncrepl setting. (Don’t forget restart slapd.)
-B. Stop slapd, then remove /var/lib/ldap/\*, start slapd, change syncrepl setting.
+1. Remove current syncrepl setting and restart slapd, then add new syncrepl setting. (Don’t forget restart slapd.)
+2. Stop slapd, then remove /var/lib/ldap/\*, start slapd, change syncrepl setting.
 
-Change parameters are rid, master server uri, and credential. You must execute plan b) when there is next message on Syslog.
+Change parameters are rid, master server uri, and credential. You must execute plan 2) when there is next message on Syslog. This time setting only user for replication and the access control has been omitted.
 
 .. code-block:: ini
 
-   Sep 13 19:27:08 ldaptest01 slapd[3272]: do_syncrepl: rid=703 rc -2 retrying
-   Sep 13 19:28:08 ldaptest01 slapd[3272]: do_syncrep2: rid=703 LDAP_RES_SEARCH_RESULT (53) Server is unwilling to perform
-   Sep 13 19:28:08 ldaptest01 slapd[3272]: do_syncrep2: rid=703 (53) Server is unwilling to perform
+   Sep 13 19:27:08 ldaptest01 slapd[3272]: do_syncrepl: rid=xxx rc -2 retrying
+   Sep 13 19:28:08 ldaptest01 slapd[3272]: do_syncrep2: rid=xxx LDAP_RES_SEARCH_RESULT (53) Server is unwilling to perform
+   Sep 13 19:28:08 ldaptest01 slapd[3272]: do_syncrep2: rid=xxx (53) Server is unwilling to perform
 
 ldap client for self
 ^^^^^^^^^^^^^^^^^^^^
+
+Install libnss-ldapd, libpam-ldapd but not libnss-ldap, libpam-ldap.
 
 .. code-block:: bash
 
@@ -393,7 +476,7 @@ nslcd
    uid nslcd
    gid nslcd
    uri ldap://localhost
-   base dc=example,dc=jp
+   base dc=example,dc=org
    ssl start_tls
    tls_reqcert never
 
@@ -401,7 +484,7 @@ nslcd
 
 .. code-block:: bash
 
-   base dc=example,dc=jp
+   base dc=example,dc=org
    timelimit 120
    bind_timelimit 120
    bind_policy soft
@@ -409,12 +492,12 @@ nslcd
    nss_initgroups_ignoreusers root,ldap,named,avahi,haldaemon,dbus,radvd,tomcat,radiusd,news,mailman,nslcd,gdm
    tls_checkpeer no
    tls_cacertdir /etc/ssl/certs
-   tls_cacertfile /etc/ssl/certs/mydomain.crt
+   tls_cacertfile /etc/ssl/certs/hoge.pem
    ssl start_tls
    uri ldap://localhost/
-   pam_groupdn ou=ACL,dc=example,dc=org
+   pam_groupdn ou=ACL,ou=policy,dc=example,dc=org
    pam_member_attribute member
-   sudoers_base ou=SUDOers,dc=example,dc=org
+   sudoers_base ou=SUDOers,ou=policy,dc=example,dc=org
    sudoers_debug 2
 
 /etc/ldap/ldap.conf
@@ -427,8 +510,12 @@ nslcd
    TLS_REQCERT never
    ssl start_tls
 
+Confirmation
+------------
+
+At least, replication of from the master of OpenLDAP 2.3 on CentOS5.4 to the slave OpenLDAP2.4 on Ubuntu 12.04 is now available. Replication is going to be running at the stage has been set for replication. Whether replication is done, you can be found at audit.log. Other confirmation is using ldapsearch command and id command.
 
 .. author:: default
 .. categories:: Ops
-.. tags:: OpenLDAP,Ubuntu,nslcd
+.. tags:: OpenLDAP,Ubuntu,CentOS,nslcd,rsyslog
 .. comments::
