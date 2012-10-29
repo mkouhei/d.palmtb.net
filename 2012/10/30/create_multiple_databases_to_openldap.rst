@@ -1,7 +1,7 @@
 Create multiple databases to OpenLDAP
 =====================================
 
-You can create a new other database with follow procedure when Already a database is existed.
+Perform the following action at creating a new other database if a database is already existed.
 
 Setting of OpenLDAP
 -------------------
@@ -12,7 +12,7 @@ Setting of OpenLDAP
    $ sudo chown openldap:openldap /var/lib/ldap2
    $ sudo ldapvi -Y EXTERNAL -h ldapi:/// -b cn=config
 
-Append follow to last lines with a blank line.
+Append lines as follow to last lines with a blank line.
 
 .. code-block:: bash
 
