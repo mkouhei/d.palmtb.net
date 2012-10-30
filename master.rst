@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2012/10/31/postfix_with_ldap_for_dovecot
    2012/10/30/create_multiple_databases_to_openldap
    2012/10/29/openssh_with_public_key_managed_by_openldap
    2012/10/26/change_master_specified_by_slave
