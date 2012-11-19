@@ -119,5 +119,5 @@ Please request to administrator to reset your PIN code.
 
 .. author:: default
 .. categories:: network
-.. tags:: OpenConnect,RSA SecurID,Cisco ASA
+.. tags:: OpenConnect,RSA SecurID,Cisco ASA,Debian
 .. comments::
