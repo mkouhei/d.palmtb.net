@@ -1,12 +1,14 @@
 LDAP of the python, by the python, and for the python
 =====================================================
 
-Usually, It is to control LDAP with LDIF and ldap-utils as like ldapsearch, ldapadd, ldapmodify, etc. But it is hard to control many and variety data with LDIF and these tools. I am a very tedious to generate LDIF. To work with python-ldap LDAP in the program is very easy. "`python-ldap provides an object-oriented API to access LDAP directory servers from Python programs <http://www.python-ldap.org/>`_". This time, I describe a search, add, modify, delete with a python-ldap.
+The title is a joke. :)
+
+Usually, LDAP is controlled by LDIF and ldap-utils; ldapsearch, ldapadd, ldapmodify, etc. But I dislike to control many and variety data with LDIF and these tools because it is a very bother to generate LDIF. To control LDAP will be easier by programming with python-ldap. "`python-ldap provides an object-oriented API to access LDAP directory servers from Python programs <http://www.python-ldap.org/>`_". In this article I describe basic usage of python-ldap for search, add, modify, delete.
 
 Intall python-ldap
 ------------------
 
-python-ldap is proveded as Debian package.
+python-ldap is provided as Debian package.
 
 .. code-block:: bash
 
@@ -86,12 +88,12 @@ Format of result is following.
        (snip)
    ]
 
-This format is also used by other process.
+This format is enable to use for other processing.
 
 Add
 ---
 
-Firstly, you must use ldap.modlist.addModlist(). addModlist() convert above dictionary to list of tuple.
+Firstly, you must use ldap.modlist.addModlist(). addModlist() convert dictionary into list of tuple.
 
 .. code-block:: python
 
@@ -104,7 +106,7 @@ Firstly, you must use ldap.modlist.addModlist(). addModlist() convert above dict
    [('cn', ['gonbeh']), ('objectClass', ['top', 'inetOrgPerson', 'posixAccount']), ('userPassword', ['{SSHA}M6H0rX2tGCwf6jBcgdP2hxSRisVoY55b==']), ('uidNumber', ['99999']), ('gidNumber', ['10000']), ('sn', ['nanashi']), ('homeDirectory', ['/home/nanashigonbeh']), ('mail', ['nanashigonbeh@net.example.org']), ('uid', ['nanashigonbeh'])]
 
 
-Change result[0][1] to uid as foobar
+Override values of "uid", "sn", "cn", "uidNumber", "homeDirectory", "mail" as like folloing.
 
 .. code-block:: python
 
@@ -126,7 +128,8 @@ Convert with addModlist().
    >>> user_l
    [('cn', ['bar']), ('objectClass', ['top', 'inetOrgPerson', 'posixAccount']), ('userPassword', ['{SSHA}M6H0rX2tGCwf6jBcgdP2hxSRisVoY55b==']), ('uidNumber', ['123456']), ('gidNumber', ['10000']), ('sn', ['foo']), ('homeDirectory', ['/home/foobar']), ('mail', ['foobar@example.org']), ('uid', ['foobar'])]
 
-So, add data specified dn and list of data with add_s(). Response is (105, []) when add is succeed. "105" is tag of adding.
+To add data is necessary to use add_s() with dn and list of data.
+When it is succeed to add, the response is "(105, [])". “105” is tag of adding.
 
 .. code-block:: python
 
@@ -140,7 +143,8 @@ So, add data specified dn and list of data with add_s(). Response is (105, []) w
 Compare and modify
 ------------------
 
-To detect changed data, use compare_s(). Prepare below data. First argument is dn, second argument is attribute name, third argument is value (valu is not list).
+To detect changed data, use compare_s(). 
+To need to prepare below data. First argument is dn, second argument is attribute name, third argument is value (value is not list).
 
 Compare
 ^^^^^^^
@@ -159,7 +163,7 @@ Compare
 
    0 is not changed, 1 is changed.
 
-So to modify that result of compare_s datas are "1" only.
+When result of compare_s() is "1", I'll use data for modify.
 
 Modify
 ^^^^^^
@@ -172,14 +176,16 @@ We must use ldap.modlist.modifyModlist() to modify data. First argument is curre
    >>> mod_info_l
    [(1, 'userPassword', None), (0, 'userPassword', ['{SSHA}Z7H50qdkcYdH+8ghga6MCevOSa8ax3xp'])]
 
-If multiple atrtributes are changed as below.
+If multiple attributes are changed as like following,
 
 .. code-block:: python
 
    >>> ldap.modlist.modifyModlist(current, new)
    [(1, 'cn', None), (0, 'cn', ['bar']), (1, 'uidNumber', None), (0, 'uidNumber', ['123456']), (1, 'sn', None), (0, 'sn', ['foo']), (1, 'homeDirectory', None), (0, 'homeDirectory', ['/home/foobar']), (1, 'mail', None), (0, 'mail', ['foobar@example.org']), (1, 'uid', None), (0, 'uid', ['foobar'])]
 
-So modify with modify_s() that has data specified dns and modlist data. Response is (103, []) when modify is succeed. "103" is tag of modify.
+modify with modify_s() using data that specified with dn and modlist data.
+When It is succeed to modify, the result is "(103, [])".
+“103” is tag of modify.
 
 .. code-block:: python
 
@@ -195,8 +201,9 @@ Delete is specified dn only.
 
    >>> l.delete_s(dn)
    (107, [], 12, [])
-   
-"107" is tag of delete, "12" is sequence number of registred ldap object.
+
+“107” is tag of delete.
+“12” is sequence number of registered ldap object.   
 
 See also
 --------
