@@ -161,8 +161,7 @@ Compare
    >>> l.compare_s(userdn2, 'userPassword', password)
    1
 
-   0 is not changed, 1 is changed.
-
+0 is not changed, 1 is changed.
 When result of compare_s() is "1", I'll use data for modify.
 
 Modify
