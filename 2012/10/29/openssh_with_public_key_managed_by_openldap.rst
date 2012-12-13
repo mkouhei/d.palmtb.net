@@ -90,7 +90,14 @@ Setting of OpenSSH
    LpkGroupDN ou=Group,dc=example,dc=org
    LpkForceTLS no
 
-Restart sshd.
+Restart sshd. 
+
+Postscript
+----------
+
+I use patch in this time that does not support IPv6.
+And you must use libnss-ldapd and libpam-ldapd.
+
 
 CentOS 6
 --------

@@ -221,35 +221,22 @@ setting LDAP client of master-self
 
 Needs these setting in a master server.
 
-/etc/ldap.conf
-
-.. code-block:: bash
-
-   base dc=example,dc=org
-   timelimit 120
-   bind_timelimit 120
-   bind_policy soft
-   idle_timelimit 3600
-   nss_initgroups_ignoreusers root,ldap,named,avahi,haldaemon,dbus,radvd,tomcat,radiusd,news,mailman,nscd,gdm
-   tls_checkpeer no
-   tls_cacertdir /etc/ssl/certs
-   tls_cacertfile /etc/ssl/certs/hoge.pem
-   ssl start_tls
-   uri ldap://localhost/
-   pam_groupdn cn=master,ou=ACL,ou=policy,dc=example,dc=org
-   pam_member_attribute member
-   sudoers_base ou=SUDOers,ou=policy,dc=example,dc=org
-   sudoers_debug 2
-
 /etc/ldap/ldap.conf
 
 .. code-block:: bash
 
-   URI ldap://localhost
+   URI ldap://127.0.0.1
    BASE dc=example,dc=org
    TLS_CACERTDIR /etc/ssl/certs
    TLS_REQCERT never
    ssl start_tls
+
+Postscript
+----------
+
+Iou must not set up "/etc/ldap.conf" when using libpam-ldapd, libnss-ldapd.
+Especially, you will use OpenSSH-lpk, you must use libpam-ldapd and libnss-ldapd.
+
 	
 Confirmation
 ^^^^^^^^^^^^

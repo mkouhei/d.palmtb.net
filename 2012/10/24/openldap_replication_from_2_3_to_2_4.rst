@@ -480,26 +480,6 @@ nslcd
    ssl start_tls
    tls_reqcert never
 
-/etc/ldap.conf
-
-.. code-block:: bash
-
-   base dc=example,dc=org
-   timelimit 120
-   bind_timelimit 120
-   bind_policy soft
-   idle_timelimit 3600
-   nss_initgroups_ignoreusers root,ldap,named,avahi,haldaemon,dbus,radvd,tomcat,radiusd,news,mailman,nslcd,gdm
-   tls_checkpeer no
-   tls_cacertdir /etc/ssl/certs
-   tls_cacertfile /etc/ssl/certs/hoge.pem
-   ssl start_tls
-   uri ldap://localhost/
-   pam_groupdn ou=ACL,ou=policy,dc=example,dc=org
-   pam_member_attribute member
-   sudoers_base ou=SUDOers,ou=policy,dc=example,dc=org
-   sudoers_debug 2
-
 /etc/ldap/ldap.conf
 
 .. code-block:: bash
@@ -509,6 +489,24 @@ nslcd
    TLS_CACERTDIR /etc/ssl/certs
    TLS_REQCERT never
    ssl start_tls
+
+/etc/nslcd.conf
+
+.. code-block:: bash
+
+   uid nslcd
+   gid nslcd
+   uri ldap://127.0.0.1
+   base dc=example,dc=org
+   pam_authz_search (&(objectClass=posixAccount)(uid=$username)(description=admin)
+
+
+Postscript
+----------
+
+Iou must not set up "/etc/ldap.conf" when using libpam-ldapd, libnss-ldapd.
+Especially, you will use OpenSSH-lpk, you must use libpam-ldapd and libnss-ldapd.
+
 
 Confirmation
 ------------
