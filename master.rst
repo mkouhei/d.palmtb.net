@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2012/12/14/writing_preseed_for_gpt
    2012/12/11/rename_project_on_gitlab
    2012/11/27/python_ldap
    2012/11/19/access_to_rsa_securid_token_with_cisco_asa_vpn_using_openconnect
