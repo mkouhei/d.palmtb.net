@@ -95,7 +95,8 @@ Restart sshd.
 Postscript
 ----------
 
-I use patch in this time that does not support IPv6.
+I use patch in this time that does not support URL of IPv6 format at LpkServers.
+But, name base is no problem for IPv6.
 And you must use libnss-ldapd and libpam-ldapd.
 
 
