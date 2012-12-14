@@ -118,6 +118,24 @@ CentOS 6 supports openssh-lpk in default. So you will it, you only do install "o
    AuthorizedKeysCommand /usr/libexec/openssh/ssh-ldap-wrapper
    AuthorizedKeysCommandRunAs nobody
 
+/etc/ssh/ldap.conf
+^^^^^^^^^^^^^^^^^^
+
+Copy from "/usr/share/doc/openssh-ldap-5.3p1/ldap.conf" as template to "/etc/ssh/ldap.conf".
+openssh-ldap package of CentOS6 supports IPv6.
+
+.. code-block:: bash
+
+   uri ldap://ldap.example.org
+   port 389
+   base dc=example,dc=org
+   ldap_version 3
+   scope sub
+   timelimit 30
+   bind_timelimit 30
+   bind_policy hard
+   ssl no
+
 Restart sshd.
 
 
