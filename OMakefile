@@ -24,7 +24,7 @@ SRCS = $(glob 20*/*/*/*.rst)
 .PHONY: publish staging
 
 publish:
-	$(RSYNC) -a blog/html/ blogadm@proxy:/var/www/d.palmtb.net/
+	$(RSYNC) -a --delete blog/html/ blogadm@proxy:/var/www/d.palmtb.net/
 
 staging:
-	$(RSYNC) -a blog/html/ /var/www/d.palmtb.net/
+	$(RSYNC) -a --delete blog/html/ /var/www/d.palmtb.net/
