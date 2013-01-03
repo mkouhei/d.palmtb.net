@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/01/03/tinkerer_1_0_2
    2013/01/02/a_happy_new_year_2013
    2012/12/14/writing_preseed_for_gpt
    2012/12/11/rename_project_on_gitlab
