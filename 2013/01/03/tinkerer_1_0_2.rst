@@ -6,7 +6,7 @@ Debian package of Tinkerer 1.0.2
 * http://mentors.debian.net/debian/pool/main/t/tinkerer/tinkerer_1.0.2-1.dsc
 * http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=664760
 
-It does not become the official package, why it is not yet able to resolve the issue of the license.
+**It does not become the official package, why it is not yet able to resolve the issue of the license.**
 
 
 .. author:: default
