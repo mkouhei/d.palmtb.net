@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/01/05/rewrite_history_with_git_filter_branch
    2013/01/04/open_multiple_channel_on_pidgin
    2013/01/03/tinkerer_1_0_2
    2013/01/02/a_happy_new_year_2013
