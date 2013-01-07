@@ -127,5 +127,5 @@ I think OpenBlockS A series are easier to manage than OpenBlockS 600, because st
 
 .. author:: default
 .. categories:: gadget
-.. tags:: OpenBlockS
+.. tags:: OpenBlockS,Debian
 .. comments::
