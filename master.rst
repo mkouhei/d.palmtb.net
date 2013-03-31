@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/04/01/my_father_was_passed_away
    2013/01/08/hardware_sensor_of_openblocks_a_series
    2013/01/07/uscan_for_github_as_of_january_2013
    2013/01/06/comparizon_of_openblocks_a6_and_openblocks_ax3
