@@ -15,7 +15,7 @@ I did not fulfill this promise that I have with my father.
 Dad, may you rest in peace, we shall never forget you.
 
 
-**(This is no April fools' joke.)**
+**(This is not April fools' joke.)**
 
 .. author:: default
 .. categories:: life
