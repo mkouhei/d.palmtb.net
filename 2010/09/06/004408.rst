@@ -56,7 +56,7 @@ region
 ------
 
 
-`ここ <http://mini.x0.com/2009/10/25/540/>`_ を参考に実施。P100UEU WR版のwebOS 1.4.5ではパスが少し変わる。フォーマットは、/usr/palm/frameworks/mojo/submissions/347/formats, リソースは/usr/palm/frameworks/mojo/submissions/347/resourcesになるのと、alternatechars_\*_accented.jsonというファイルも他の言語ではあったので、合わせてコピーしておいた。
+`ここ <http://mini.x0.com/2009/10/25/540/>`_ を参考に実施。P100UEU WR版のwebOS 1.4.5ではパスが少し変わる。フォーマットは、/usr/palm/frameworks/mojo/submissions/347/formats, リソースは/usr/palm/frameworks/mojo/submissions/347/resourcesになるのと、alternatechars_*_accented.json` というファイルも他の言語ではあったので、合わせてコピーしておいた。
 
 
 
