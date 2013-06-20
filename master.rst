@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/06/20/applying_openssh_lpk_to_wheezy
    2013/04/01/my_father_was_passed_away
    2013/01/08/hardware_sensor_of_openblocks_a_series
    2013/01/07/uscan_for_github_as_of_january_2013
