@@ -1,5 +1,5 @@
-OpenSSH LDAP publich key
-========================
+OpenSSH LDAP public key
+=======================
 
 Ubuntu
 ------
