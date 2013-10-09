@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/10/10/my_debian_work_in_aug_sep_oct_2013
    2013/08/22/the_parameter_of_boot_option__auto__had_been_changed_for_auto_install_of_wheezy
    2013/06/20/applying_openssh_lpk_to_wheezy
    2013/04/01/my_father_was_passed_away
