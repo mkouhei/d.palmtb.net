@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/12/04/backup2swift_and_swiftsc
    2013/12/03/how_to_change_timezone_in_debian
    2013/10/10/my_debian_work_in_aug_sep_oct_2013
    2013/08/22/the_parameter_of_boot_option__auto__had_been_changed_for_auto_install_of_wheezy
