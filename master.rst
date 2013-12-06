@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/12/05/assigned_native_ipv6_automatically_from_ra
    2013/12/04/backup2swift_and_swiftsc
    2013/12/03/how_to_change_timezone_in_debian
    2013/10/10/my_debian_work_in_aug_sep_oct_2013
