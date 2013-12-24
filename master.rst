@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2013/12/23/extend_tacacs_plus_daemon
    2013/12/12/debian_jr__project
    2013/12/05/assigned_native_ipv6_automatically_from_ra
    2013/12/04/backup2swift_and_swiftsc
