@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/01/05/upgrade_os_x_10_7_lion_to_10_9_maveicks
    2014/01/01/aspirations_of_2014_and_review_the_2013
    2013/12/23/extend_tacacs_plus_daemon
    2013/12/12/debian_jr__project
