@@ -17,7 +17,7 @@ tagline = u'I use technology to make life more convenient.'
 author = u'mkouhei'
 
 # Change this to your copyright string
-copyright = u'2006-2013, Kouhei Maeda aka ' + author
+copyright = u'2006-2014, Kouhei Maeda aka ' + author
 
 # Change this to your blog root URL (required for RSS feed)
 website = u'http://d.palmtb.net/'                              
