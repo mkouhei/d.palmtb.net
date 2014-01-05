@@ -48,15 +48,23 @@ main
 * sphinxcontrib-actdiag
 * sphinxcontrib-seqdiag
 * sphinxcontrib-nwdiag
+* backup2swift
+* swiftsc
+* tomahawk
+* pystache
+* django-guardian
+* django-oauth-plus
+* django-shortuuidfield
+* djangorestframework
+* shortuuid
 
 WNPP
 """"
 
-* pystache
-* tomahawk
 * tinkerer
-* tonicdns
-* tonicdnscli
+* django-oauth2-provider
+* flaskext.uploads
+* yrmcds
 
 Python packages
 ^^^^^^^^^^^^^^^
@@ -64,16 +72,19 @@ Python packages
 * `tonicdnscli <http://pypi.python.org/pypi/tonicdnscli>`_
 * `Iori <http://pypi.python.org/pypi/iori>`_
 * `hatena2rest <http://pypi.python.org/pypi/hatena2rest/>`_
+* `backup2swift <https://pypi.python.org/pypi/backup2swift>`_
+* `swiftsc <https://pypi.python.org/pypi/swiftsc>`_
 
 Job career
 ^^^^^^^^^^
 
 * in a systems integrator, worked as a systems engineer. (Apr 2001 - Aug 2011)
-* in a web, working as a infra engineer aka operation enginner. (Sep, 2011-)
+* in a web, working as a infra engineer aka operation enginner. (Sep, 2011-), and a software engineer for server/network. (Apr, 2012-)
 
 Contents
 --------
 
+* `Profile <http://about.me/mkouhei>`_
 * `Blog (ja) <http://d.palmtb.net/>`_
 * `Blog (en) <http://d.hatena.ne.jp/emkouhei/>`_
 * `MyMap (ja) <http://tinyurl.com/meshitosake>`_
