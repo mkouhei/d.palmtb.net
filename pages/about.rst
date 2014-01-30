@@ -57,6 +57,7 @@ main
 * django-shortuuidfield
 * djangorestframework
 * shortuuid
+* yrmcds
 
 WNPP
 """"
@@ -64,7 +65,10 @@ WNPP
 * tinkerer
 * django-oauth2-provider
 * flaskext.uploads
-* yrmcds
+
+`Maintainer dashboard <http://udd.debian.org/dmd/?email1=mkouhei%40palmtb.net>`_
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 Python packages
 ^^^^^^^^^^^^^^^
