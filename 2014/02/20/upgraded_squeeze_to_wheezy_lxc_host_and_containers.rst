@@ -110,6 +110,17 @@ Rails用のコンテナ
 
 ちなみに、このブログの冒頭の話をFaebookに書いたら、ITエンジニアではない方から「宇宙語？」と突っ込まれたのが本日のトピックです。w
 
+追記
+----
+
+アップグレード後に新たにコンテナを追加したら、
+
+.. code-block:: ini
+
+   lxc.cap.drop = sys_module mac_admin mac_override sys_time
+
+が追加されていたので、既存のコンテナにも追加しました。日本語でのCapability関連は tenforward さんの `メモ <http://guinan.ten-forward.ws/wiki/doku.php?id=lxc:%E5%AE%9F%E9%A8%93%E3%83%A1%E3%83%A2#cap%E9%96%A2%E4%BF%82>`_ が詳しいです。
+
 .. [#] ちなみに、Lennyの時は当然さくらのVPSではありませんでしたが、さくらのVPSに移行するときには、Lennyで使っていたLXC関連の設定とコンテナのrootfsはそのままそっくり移行しました。
 .. [#] というかDockerですかね。
 .. [#] まぁ、今までと挙動が変わったでハマった原因でもあります。
