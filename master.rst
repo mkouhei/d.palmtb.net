@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/02/20/upgraded_squeeze_to_wheezy_lxc_host_and_containers
    2014/02/19/replaced_wi_fi_router
    2014/01/30/how_to_create_a_debian_package_of_support_to_sysvinit__upstart__systemd
    2014/01/05/upgrade_os_x_10_7_lion_to_10_9_maveicks
