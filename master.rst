@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/03/27/issue_deploying_jenkins_to_tomcat7_debian_package_in_wheezy
    2014/03/26/how_to_encrypt_ansible_vault_in_the_tls_certificate
    2014/02/20/upgraded_squeeze_to_wheezy_lxc_host_and_containers
    2014/02/19/replaced_wi_fi_router
