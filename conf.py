@@ -47,7 +47,12 @@ rss_service = None
 # **************************************************************
 
 # Add other Sphinx extensions here
-extensions = ['tinkerer.ext.blog', 'tinkerer.ext.disqus', 'sphinxcontrib.blockdiag', 'sphinxcontrib.googleanalytics', 'sphinxcontrib.nwdiag']
+extensions = ['tinkerer.ext.blog',
+              'tinkerer.ext.disqus',
+              'sphinxcontrib.blockdiag',
+              'sphinxcontrib.googleanalytics',
+              'sphinxcontrib.nwdiag',
+              'sphinx.ext.graphviz']
 
 # Google Analytics
 googleanalytics_id = 'UA-1309764-3'
@@ -88,3 +93,8 @@ html_title = project
 html_use_index = False
 html_show_sourcelink = True
 html_add_permalinks = True
+
+'''
+def setup(app):
+    app.add_javascript('custom.js')
+'''
