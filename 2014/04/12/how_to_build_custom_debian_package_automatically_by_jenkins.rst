@@ -128,6 +128,7 @@ Wheezy, preciseとで基本同じなので、先頭の2行のみを環境に合�
    # check version
    cat << EOF > check_version.sh
    apt-cache show $bin_package | grep Version: | sort | tail -1 | grep -v +cust > /var/tmp/result/${BUILD_ID}.txt
+   exit 0
    EOF
    sudo pbuilder --update --basetgz /var/cache/pbuilder/${codename}-base.tgz
    sudo pbuilder --execute --basetgz /var/cache/pbuilder/${codename}-base.tgz --bindmounts "/var/tmp/result /tmp" -- check_version.sh
@@ -211,6 +212,12 @@ Wheezy, preciseとで基本同じなので、先頭の2行のみを環境に合�
 ただし、Precise用にはWheezyのBackportsのソースパッケージをリビルドする必要があるので、今回やった事自体は役立ちそうです。このジョブに比べたら（リビルドさえちゃんと確認できれば）なんてこと無いですね。
 
 もっと簡単にマルチディストリビューション向けに自動(カスタム)クリーンビルドする方法があれば、どなたか教えて下さい。
+
+追記
+----
+
+* check_version.shに `exit 0` を忘れていたので、ローカルアーカイブの方にパッチ適用済みのパッケージが存在すると、ジョブがコケてしまう、ので修正しました。
+* `@mizuno_as <https://twitter.com/mizuno_as/status/455510000887013376>`_ さんに複数環境向けにビルドするならpbuilder-distの方が便利ですよ、と教えてもらったので、後日検証しようと思います。
 
 
 .. rubric:: Footnotes
