@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/04/16/retrieve_and_generate_debian_package_of_oracle_jdk
    2014/04/12/how_to_build_custom_debian_package_automatically_by_jenkins
    2014/03/27/issue_deploying_jenkins_to_tomcat7_debian_package_in_wheezy
    2014/03/26/how_to_encrypt_ansible_vault_in_the_tls_certificate
