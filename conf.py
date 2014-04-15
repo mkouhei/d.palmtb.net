@@ -52,7 +52,8 @@ extensions = ['tinkerer.ext.blog',
               'sphinxcontrib.blockdiag',
               'sphinxcontrib.googleanalytics',
               'sphinxcontrib.nwdiag',
-              'sphinx.ext.graphviz']
+              'sphinx.ext.graphviz',
+              'sphinxcontrib.gist']
 
 # Google Analytics
 googleanalytics_id = 'UA-1309764-3'
