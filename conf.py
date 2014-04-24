@@ -94,8 +94,3 @@ html_title = project
 html_use_index = False
 html_show_sourcelink = True
 html_add_permalinks = True
-
-'''
-def setup(app):
-    app.add_javascript('custom.js')
-'''
