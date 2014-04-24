@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/04/25/infinite_loop_using_chord_of_celery
    2014/04/17/manage_multiple_distributions_with_reprepro
    2014/04/16/retrieve_and_generate_debian_package_of_oracle_jdk
    2014/04/12/how_to_build_custom_debian_package_automatically_by_jenkins
