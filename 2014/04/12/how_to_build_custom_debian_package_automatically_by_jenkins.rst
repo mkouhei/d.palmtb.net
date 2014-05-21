@@ -131,7 +131,7 @@ Wheezy, preciseとで基本同じなので、先頭の2行のみを環境に合�
    exit 0
    EOF
    sudo pbuilder --update --basetgz /var/cache/pbuilder/${codename}-base.tgz
-   sudo pbuilder --execute --basetgz /var/cache/pbuilder/${codename}-base.tgz --bindmounts "/var/tmp/result /tmp" -- check_version.sh
+   sudo pbuilder --execute --basetgz /var/cache/pbuilder/${codename}-base.tgz --bindmounts "/var/tmp/result" -- check_version.sh
    test -s /var/tmp/result/${BUILD_ID}.txt || exit
 
    deb_version=$(awk -F: '{print $3}' /var/tmp/result/${BUILD_ID}.txt)
@@ -175,7 +175,7 @@ Wheezy, preciseとで基本同じなので、先頭の2行のみを環境に合�
    cp -f ${src_package}_${deb_version}+cust1.debian.tar.gz ${src_package}_${orig_version}.orig.tar.gz ${src_package}_${deb_version}+cust1.dsc /var/tmp/result/
    EOF
 
-   sudo pbuilder --execute --basetgz /var/cache/pbuilder/${codename}-base.tgz --bindmounts "/var/tmp/result /tmp" -- build.sh
+   sudo pbuilder --execute --basetgz /var/cache/pbuilder/${codename}-base.tgz --bindmounts "/var/tmp/result" -- build.sh
 
    # clean build
    sudo pbuilder --build --basetgz /var/cache/pbuilder/${codename}-base.tgz /var/tmp/result/${src_package}_${deb_version}+cust1.dsc
@@ -219,6 +219,10 @@ Wheezy, preciseとで基本同じなので、先頭の2行のみを環境に合�
 * check_version.shに `exit 0` を忘れていたので、ローカルアーカイブの方にパッチ適用済みのパッケージが存在すると、ジョブがコケてしまう、ので修正しました。
 * `@mizuno_as <https://twitter.com/mizuno_as/status/455510000887013376>`_ さんに複数環境向けにビルドするならpbuilder-distの方が便利ですよ、と教えてもらったので、後日検証しようと思います。
 
+追記2
+-----
+
+* `--bindmounts` オプションを `/var/tmp/result /tmp` としていたのですが、pbuilderのbindmountsオプションの挙動を勘違いしていました。こうするとホストの/var/tmp/resultとchroot内の/var/tmp/result、そしてホストの/tmpとchroot内の/tmpがbind-mountされるので、今回であれば/var/tmp/resultだけを記述すれば良かった、ということでした。(修正済み)
 
 .. rubric:: Footnotes
 
