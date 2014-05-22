@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/05/22/difflib_ndiff___and_assertmultilineequal___are_very_useful
    2014/04/25/infinite_loop_using_chord_of_celery
    2014/04/17/manage_multiple_distributions_with_reprepro
    2014/04/16/retrieve_and_generate_debian_package_of_oracle_jdk
