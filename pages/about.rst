@@ -74,10 +74,13 @@ Python packages
 ^^^^^^^^^^^^^^^
 
 * `tonicdnscli <http://pypi.python.org/pypi/tonicdnscli>`_
+* `genenga <https://pypi.python.org/pypi/genenga>`_
 * `Iori <http://pypi.python.org/pypi/iori>`_
 * `hatena2rest <http://pypi.python.org/pypi/hatena2rest/>`_
 * `backup2swift <https://pypi.python.org/pypi/backup2swift>`_
 * `swiftsc <https://pypi.python.org/pypi/swiftsc>`_
+* `shiori <https://pypi.python.org/pypi/shiori>`_
+* `pydebsign <https://pypi.python.org/pypi/pydebsign>`_
 
 Job career
 ^^^^^^^^^^
