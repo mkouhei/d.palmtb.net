@@ -20,8 +20,8 @@ My public GnuPG key for signing is here.
    sub 4096R/35992CC1 2009-06-19
 
 
-Carrer
-------
+Activities
+----------
 
 Floss community
 ^^^^^^^^^^^^^^^
@@ -38,49 +38,14 @@ Floss community
 main
 """"
 
-* funcparserlib
-* webcolors
-* blockdiag
-* actdiag
-* seqdiag
-* nwdiag
-* sphinxcontrib-blockdiag
-* sphinxcontrib-actdiag
-* sphinxcontrib-seqdiag
-* sphinxcontrib-nwdiag
-* backup2swift
-* swiftsc
-* tomahawk
-* pystache
-* django-guardian
-* django-oauth-plus
-* django-shortuuidfield
-* djangorestframework
-* shortuuid
-* yrmcds
-
-WNPP
-""""
-
-* tinkerer
-* django-oauth2-provider
-* flaskext.uploads
-
-`Maintainer dashboard <http://udd.debian.org/dmd/?email1=mkouhei%40palmtb.net>`_
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+ToDo from `Maintainer dashboard <http://udd.debian.org/dmd/?email1=mkouhei%40palmtb.net>`_
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Python packages
 ^^^^^^^^^^^^^^^
 
-* `tonicdnscli <http://pypi.python.org/pypi/tonicdnscli>`_
-* `genenga <https://pypi.python.org/pypi/genenga>`_
-* `Iori <http://pypi.python.org/pypi/iori>`_
-* `hatena2rest <http://pypi.python.org/pypi/hatena2rest/>`_
-* `backup2swift <https://pypi.python.org/pypi/backup2swift>`_
-* `swiftsc <https://pypi.python.org/pypi/swiftsc>`_
-* `shiori <https://pypi.python.org/pypi/shiori>`_
-* `pydebsign <https://pypi.python.org/pypi/pydebsign>`_
+GitHub activity
+^^^^^^^^^^^^^^^
 
 Job career
 ^^^^^^^^^^
