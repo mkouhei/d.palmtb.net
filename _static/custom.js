@@ -105,6 +105,19 @@ $(function() {
                             val.Source + "</a></li>");
             });
         }
+
+        var getLink = function f(val) {
+            var payload = "";
+            if (val[":link"] != null) {
+                payload = "<span style=\"font-size: small;\">" +
+                    "<a href=\"" + val[":link"] + "\">" +
+                    val[":details"] + "</a></span>";
+            } else {
+                payload = "<span style=\"font-size: small;\">" +
+                    val[":details"] + "</span>";
+            }
+            return payload;
+        };
         if (data.udd !== undefined) {
             data.udd.forEach(function(val, index) {
                 $("div#todo-from-maintainer-dashboard table#udd tbody")
@@ -112,9 +125,7 @@ $(function() {
                         "<td><a href=\"" + debian_url + val[":source"] +
                             "\">" + val[":source"] + "</a></td>" +
                             "<td>" + val[":description"] + "<br/>" +
-                            "<span style=\"font-size: small;\">" +
-                            "<a href=\"" + val[":link"] + "\">" +
-                            val[":details"] + "</a></span></td></tr>");
+                            getLink(val) + "</td></tr>");
             });
         }
         if (data.pypi !== undefined) {
