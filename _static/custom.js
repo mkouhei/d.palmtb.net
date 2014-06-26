@@ -21,8 +21,43 @@ $(function() {
                 meta.payload.ref.split('/')[2] + "\">" + 
                 meta.payload.ref.split('/')[2] + "</a> at ";
             break;
+            case "DeleteEvent":
+            payload = "deleted " + meta.payload.ref_type + " ";
+            if (meta.payload.ref != null) {
+                payload += "<a href=\"" + github_url + meta.repo.name +
+                    meta.payload.ref +
+                    "\">" + meta.payload.ref + "</a> at ";
+            }
             case "WatchEvent":
             payload = meta.payload.action + " ";
+            break;
+            case "PullRequestEvent":
+            payload = meta.payload.action + " pull request " +
+                "<a href=\"" + meta.payload.pull_request.html_url + "\">" +
+                meta.repo.name + "/pull/" + meta.payload.number +
+                "</a><br/>"  + meta.payload.pull_request.title;
+            break;
+            case "PullRequestReviewCommentEvent":
+            payload = "commented on pull request " +
+                "<a href=\"" +  meta.payload.html_url + "\">" +
+                meta.repo.name + "#" +
+                meta.payload.pull_request_url.split("/")[
+                    meta.payload.pull_request_url.split("/").lenght-1] +
+                "</a><br/>" +
+                meta.payload.body;
+            break;
+            case "IssuesEvent":
+            payload = meta.payload.action + " issue " +
+                "<a href=\"" + meta.payload.issue.html_url + "\">" +
+                meta.repo.name + "/issues/" + meta.payload.issue.number +
+                "</a><br/>"  + meta.payload.issue.title;
+            break;
+            case "IssueCommentEvent":
+            payload = "commented on issue " +
+                "<a href=\"" + meta.payload.comment.html_url + "\">" +
+                meta.repo.name + "#" + meta.payload.issue.number +
+                "</a><br/>" +
+                meta.comment.body;
             break;
         }
         payload += "<a href=\"" + github_url + meta.repo.name +
