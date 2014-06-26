@@ -77,6 +77,10 @@ $(function() {
         return payload;
     }
 
+    $('div#my-public-gnupg-key-for-signing-is-here')
+    .append('<div class="highlight-none"><div class="highlight"><pre>' +
+            '</pre></div></div>');
+
     $('div#main').append('<ul id="debpkg"></ul>');
 
     $('div#todo-from-maintainer-dashboard')
@@ -105,6 +109,11 @@ $(function() {
                             val.Url + '">' +
                             val.Source + '</a></li>');
             });
+        }
+
+        if (data.pgp !== undefined) {
+            $('div#my-public-gnupg-key-for-signing-is-here pre')
+                .text(data.pgp.Payload);
         }
 
         var getLink = function f(val) {

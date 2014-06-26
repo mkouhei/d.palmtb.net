@@ -6,20 +6,6 @@ I am a salaried worker, and a homemaker. I do mainly housework, and am doing the
 My public GnuPG key for signing is here.
 ----------------------------------------
 
-.. code-block:: none
-
-   pub 4096R/7E37CE41 2009-06-19
-       Key fingerprint = B8F2 86F6 2206 360F 7D41
-		         0817 2E81 6254 7E37 CE41
-   uid  Kouhei Maeda
-		<mkouhei at palmtb dot net>
-   uid  Kouhei Maeda (Debian JP Project)
-		<mkouhei at debian dot or dot jp>
-   uid  Kouhei Maeda
-		<mkouhei at gmail dot com>
-   sub 4096R/35992CC1 2009-06-19
-
-
 Activities
 ----------
 
