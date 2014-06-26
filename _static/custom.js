@@ -6,7 +6,7 @@ $(function() {
 
     function get_action(meta) {
         var payload;
-        switch(meta.type) {
+        switch (meta.type) {
             case 'CreateEvent':
             payload = 'created ' + meta.payload.ref_type + ' ';
             if (meta.payload.ref != null) {
