@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2014/08/23/clean_build_rpm_with_mock_as_like_git_buildpackage
    2014/06/13/segfault_occurs_when_executing_celery_worker_with_librabbitmq1
    2014/05/28/i_made_debsign_of_python_libary_that_can_be_run_without_a_tty
    2014/05/22/difflib_ndiff___and_assertmultilineequal___are_very_useful
