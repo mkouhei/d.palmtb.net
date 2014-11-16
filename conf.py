@@ -95,5 +95,7 @@ html_use_index = False
 html_show_sourcelink = True
 html_add_permalinks = True
 
+rss_max_items = 10
+
 def setup(app):
     app.add_javascript('custom.js')
