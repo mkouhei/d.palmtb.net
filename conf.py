@@ -99,3 +99,4 @@ rss_max_items = 10
 
 def setup(app):
     app.add_javascript('custom.js')
+    app.add_stylesheet('custom.css')
