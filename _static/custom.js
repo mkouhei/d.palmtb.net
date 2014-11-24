@@ -104,10 +104,12 @@ $(function() {
     $.getJSON(json_path, function(data) {
         if (data.deb !== undefined) {
             data.deb.forEach(function(val, index) {
-                $('div#main ul#debpkg')
-                    .append('<li><a href="' +
-                            val.Url + '">' +
-                            val.Source + '</a></li>');
+                if (val != null) {
+                    $('div#main ul#debpkg')
+                        .append('<li><a href="' +
+                                val.Url + '">' +
+                                val.Source + '</a></li>');
+                }
             });
         }
 
@@ -130,29 +132,36 @@ $(function() {
         };
         if (data.udd !== undefined) {
             data.udd.forEach(function(val, index) {
-                $('div#todo-from-maintainer-dashboard table#udd tbody')
-                    .append('"<tr><td>' + val[':type'] + '</td>' +
-                            '<td><a href="' + debian_url + val[':source'] +
-                            '">' + val[':source'] + '</a></td>' +
-                            '<td>' + val[':description'] + '<br/>' +
-                            getLink(val) + '</td></tr>');
+                if (val != null) {
+                    $('div#todo-from-maintainer-dashboard table#udd tbody')
+                        .append('"<tr><td>' + val[':type'] + '</td>' +
+                                '<td><a href="' + debian_url + val[':source'] +
+                                '">' + val[':source'] + '</a></td>' +
+                                '<td>' + val[':description'] + '<br/>' +
+                                getLink(val) + '</td></tr>');
+                }
             });
         }
         if (data.pypi !== undefined) {
             data.pypi.forEach(function(val, index) {
-                $('div#python-packages table#pypi tbody')
-                    .append('<tr><td><a href="' + val.PackageUrl +
-                            '">' + val.Name + '</a></td>' +
-                            '<td>' + val.Downloads.LastDay + '</td>' +
-                            '<td>' + val.Downloads.LastWeek + '</td>' +
-                            '<td>' + val.Downloads.LastMonth + '</td></tr>');
+                if (val != null) {
+                    $('div#python-packages table#pypi tbody')
+                        .append('<tr><td><a href="' + val.PackageUrl +
+                                '">' + val.Name + '</a></td>' +
+                                '<td>' + val.Downloads.LastDay + '</td>' +
+                                '<td>' + val.Downloads.LastWeek + '</td>' +
+                                '<td>' + val.Downloads.LastMonth +
+                                '</td></tr>');
+                }
             });
         }
         if (data.github !== undefined) {
             data.github.forEach(function(val, index) {
-                $('div#github-activity ul#activity')
-                    .append('<li style="list-style-type: none"><p>' +
-                            get_action(val) + '</p>');
+                if (val != null) {
+                    $('div#github-activity ul#activity')
+                        .append('<li style="list-style-type: none"><p>' +
+                                get_action(val) + '</p>');
+                }
             });
         }
     });
