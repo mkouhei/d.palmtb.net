@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2015/01/02/aspiration_of_the_2015
    2014/12/31/review_the_2014
    2014/11/17/interactive_shell_for_golang
    2014/09/09/changed_to_jetdrive_420
