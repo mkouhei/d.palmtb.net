@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2015/01/09/released_gosh_0_2_0
    2015/01/02/aspiration_of_the_2015
    2014/12/31/review_the_2014
    2014/11/17/interactive_shell_for_golang
