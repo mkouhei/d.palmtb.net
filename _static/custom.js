@@ -77,6 +77,10 @@ $(function() {
         return payload;
     }
 
+    if (location.pathname != '/pages/about.html') {
+        return;
+    }
+
     $('div#my-public-gnupg-key-for-signing-is-here')
     .append('<div class="highlight-none"><div class="highlight"><pre>' +
             '</pre></div></div>');
