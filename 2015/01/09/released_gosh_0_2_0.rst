@@ -26,7 +26,6 @@ fmt.PrintlnでのHello world
    $ $GOPATH/bin/gosh
    >>> fmt.Println("Hello world")
    Hello world
-   
    >>>
 
 変数の宣言と演算
@@ -36,12 +35,9 @@ fmt.PrintlnでのHello world
 
    $ $GOPATH/bin/gosh
    >>> var i = 10
-   
    >>> i++
-   
    >>> fmt.Println(i)
    11
-   
    >>>
 
 省略形式の変数宣言でも大丈夫です。
@@ -50,12 +46,9 @@ fmt.PrintlnでのHello world
 
    $ $GOPATH/bin/gosh
    >>> i := 10
-   
    >>> i += 100
-   
    >>> fmt.Println(i)
    111
-
    >>>
 
 パッケージのインポート
@@ -69,11 +62,8 @@ Goshを作ったそもそもの動機である、パッケージのインポー�
    $ $GOPATH/bin/gosh
    >>> import "github.com/bitly/go-simplejson"
    >>> r, _ := http.Get("http://d.palmtb.net/_static/glaneuses.json")
-   
    >>> defer r.Body.Close()
-   
    >>> j, _ := simplejson.NewFromReader(r.Body)
-   
    >>> fmt.Println(j)
    (snip)
 
@@ -106,7 +96,10 @@ fmt.Print*の実行は一回のみ
 既知の問題
 ----------
 
-* main関数を省略した場合、コードを入力した後にEnterをもう一度入力しないとプロンプトが表示されない [#]_
+* main関数を入力した後、Enterをもう一度入力しないとプロンプトが表示されない [#]_
+
+  * `0.2.2 <https://github.com/mkouhei/gosh/releases/tag/v0.2.2>`_ で修正しました(2015-01-14追記)
+
 * 型の再宣言ができない
 
 余談
@@ -115,6 +108,7 @@ fmt.Print*の実行は一回のみ
 前のブログでは matsuu さんの `tweet <https://twitter.com/matsuu/status/538554866008719360>`_ やHacker Newsへの `投稿 <https://news.ycombinator.com/item?id=8673092>`_ でかなりStarsがつきました。海外の方が多いのは結構モチベーションが上がりますね。matsuuさん、ありがとうございました。
 
 あとは、実際に使ってissues登録やpull requestしてくれる方が出てくると嬉しいですね。
+
 
 .. rubric:: Footnotes
 
