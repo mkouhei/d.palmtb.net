@@ -21,6 +21,12 @@ $(function() {
                 meta.payload.ref.split('/')[2] + '">' +
                 meta.payload.ref.split('/')[2] + '</a> at ';
             break;
+            case 'ForkEvent':
+            payload = 'forked ' + '<a href="' + github_url + meta.repo.name +
+                '">' + meta.repo.name + '</a> to ' +
+                '<a href="' + meta.payload.forkee.html_url + '">' +
+                meta.payload.forkee.full_name + '</a><br/>';
+            break;
             case 'DeleteEvent':
             payload = 'deleted ' + meta.payload.ref_type + ' ';
             if (meta.payload.ref != null) {
@@ -58,11 +64,13 @@ $(function() {
                 '<a href="' + meta.payload.comment.html_url + '">' +
                 meta.repo.name + '#' + meta.payload.issue.number +
                 '</a><br/>' +
-                meta.comment.body;
+                meta.payload.comment.body;
             break;
         }
+        if (meta.type != 'ForkEvent') {
         payload += '<a href="' + github_url + meta.repo.name +
             '">' + meta.repo.name + '</a><br/>';
+        }
         if (meta.type == 'PushEvent') {
             meta.payload.commits.forEach(function(val, index) {
                 payload += '<span style="font-size: small">' +
