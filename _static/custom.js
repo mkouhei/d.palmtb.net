@@ -28,6 +28,7 @@ $(function() {
                     meta.payload.ref +
                     '">' + meta.payload.ref + '</a> at ';
             }
+            break;
             case 'WatchEvent':
             payload = meta.payload.action + ' ';
             break;
