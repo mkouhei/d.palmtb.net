@@ -143,7 +143,7 @@ $(function() {
             }
             return payload;
         };
-        if (data.udd !== undefined) {
+        if (data.udd !== undefined && data.udd !== null) {
             data.udd.forEach(function(val, index) {
                 if (val != null) {
                     $('div#todo-from-maintainer-dashboard table#udd tbody')
