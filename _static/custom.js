@@ -56,8 +56,9 @@ $(function() {
             case 'IssuesEvent':
             payload = meta.payload.action + ' issue ' +
                 '<a href="' + meta.payload.issue.html_url + '">' +
-                meta.repo.name + '/issues/' + meta.payload.issue.number +
-                '</a><br/>' + meta.payload.issue.title;
+                meta.repo.name + '#' + meta.payload.issue.number +
+                '</a><br/><span style="font-size: small">' +
+                meta.payload.issue.title + '</span><br/>';
             break;
             case 'IssueCommentEvent':
             payload = 'commented on issue ' +
@@ -67,7 +68,7 @@ $(function() {
                 meta.payload.comment.body;
             break;
         }
-        if (meta.type != 'ForkEvent') {
+        if ((meta.type != 'ForkEvent') && (meta.type != 'IssuesEvent')) {
         payload += '<a href="' + github_url + meta.repo.name +
             '">' + meta.repo.name + '</a><br/>';
         }
