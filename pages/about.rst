@@ -39,6 +39,8 @@ Job career
 * in a systems integrator, worked as a systems engineer. (Apr 2001 - Aug 2011)
 * in a web, working as a infra engineer aka operation enginner. (Sep, 2011-), and a software engineer for server/network. (Apr, 2012-)
 
+See also `LinkedIn profile <http://jp.linkedin.com/pub/kouhei-maeda/23/517/38b>`_
+
 Contents
 --------
 
