@@ -45,19 +45,16 @@ Contents
 --------
 
 * `Profile <http://about.me/mkouhei>`_
-* `Blog (ja) <http://d.palmtb.net/>`_
-* `Blog (en) <http://d.hatena.ne.jp/emkouhei/>`_
-* `MyMap (ja) <http://tinyurl.com/meshitosake>`_
+* `Blog <http://d.palmtb.net/>`_
 * `Presentation(slideshare) <http://www.slideshare.net/mkouhei>`_
 
 SNS
 ^^^
 
-* `Twitter (ja) <https://twitter.com/mkouhei>`_
-* `Twitter (en) <https://twitter.com/emkouhei>`_
+* `Twitter <https://twitter.com/mkouhei>`_
 * `Facebook <https://www.facebook.com/mkouhei>`_
 * `Tumblr <http://mkouhei.tumblr.com/>`_
-* `mixi <http://mixi.jp/show_friend.pl?id=9891736>`_
+* `Google+ <https://plus.google.com/+KouheiMaeda>`_
 
 Code
 ^^^^
@@ -73,3 +70,9 @@ Article
 * ゆったリラックス！ CouchDBがあるところ(@IT) `#5 <http://www.atmarkit.co.jp/fdb/rensai/09_couchdb/05/couchdb01.html>`_
 * `KVM徹底入門 <http://www.seshop.com/product/detail/12214/>`_ (翔泳社)
 * `Gitによるバージョン管理 <http://ssl.ohmsha.co.jp/cgi-bin/menu.cgi?ISBN=978-4-274-06864-5>`_ (オーム社)
+
+Portfolio
+^^^^^^^^^
+
+* `miuchee <http://miuchee.jp/>`_
+* `pgraph <http://pgraph.herokuapp.com/>`_
