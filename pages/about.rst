@@ -74,5 +74,5 @@ Article
 Portfolio
 ^^^^^^^^^
 
-* `miuchee <http://miuchee.jp/>`_
-* `pgraph <http://pgraph.herokuapp.com/>`_
+* `miuchee <http://miuchee.jp>`_
+* `pgraph <http://pgraph.palmtb.net>`_
