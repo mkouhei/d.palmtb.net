@@ -7,12 +7,12 @@ SRCS := $(glob 20*/*/*/*.rst)
 all: build
 
 prebuild:
-	virtualenv .venv
-	.venv/bin/pip install -r requirements.txt
+	virtualenv ../.venv
+	../.venv/bin/pip install -r requirements.txt
 
 build: prebuild $(SRCES)
 build: $(SRCES)
-	. .venv/bin/activate; \
+	. ../.venv/bin/activate; \
 	tinker -b -q;\
 	deactivate;
 
