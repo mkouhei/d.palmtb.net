@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2015/07/17/change_the_reverse_proxy_upstream_of_nginx_by_time_zone
    2015/07/04/drawing_tool_of_the_python_package_digraph
    2015/01/09/released_gosh_0_2_0
    2015/01/02/aspiration_of_the_2015
