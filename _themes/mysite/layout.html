@@ -1,0 +1,25 @@
+{%- extends "flat/layout.html" -%}
+
+{%- block navigation -%}
+<nav role="navigation">
+  <ul>
+    {% for page in pages -%}
+    <li class="main-nav">
+      <a href="{{ pathto(page[0]) }}">{{ page[1]|e }}</a>
+    </li>
+    {% endfor -%}
+  </ul>
+
+  <div class="widget" id="ad0">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- blog0 -->
+    <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:250px"
+         data-ad-client="ca-pub-1369352538425935"
+         data-ad-slot="4017429209"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+</nav>
+{%- endblock -%}

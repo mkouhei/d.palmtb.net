@@ -33,7 +33,7 @@ disqus_shortname = 'mkouhei'
 html_favicon = 'tinkerer.ico'           
 
 # Pick another Tinkerer theme or use your own
-html_theme = "flat"
+html_theme = "mysite"
 
 # Theme-specific options, see docs
 html_theme_options = { }                                  
@@ -65,14 +65,14 @@ templates_path = ['_templates']
 html_static_path = ['_static', tinkerer.paths.static]
 
 # Add other theme paths here
-html_theme_path = [tinkerer.paths.themes]                 
+html_theme_path = [tinkerer.paths.themes, '_themes']
 
 # Add file patterns to exclude from build
 exclude_patterns = ["drafts/*"]                                     
 
 # Add templates to be rendered in sidebar here
 html_sidebars = {
-    "**": ["recent.html", "searchbox.html", "ad.html", "categories.html", "tags.html"]
+    "**": ["recent.html", "ad3.html", "ad1.html", "searchbox.html", "categories.html", "ad2.html", "tags.html"]
 }
 
 blockdiag_fontpath = '/usr/share/fonts/truetype/vlgothic/VL-PGothic-Regular.ttf'
