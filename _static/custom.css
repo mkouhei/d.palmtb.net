@@ -6,3 +6,9 @@ div#ad0 {
     margin-left: auto;
     margin-right: auto;
 }
+.fb_iframe_widget > span {
+    vertical-align: baseline !important;
+}
+.pocket-btn{
+    display:inline-block;
+}
