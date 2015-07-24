@@ -10,5 +10,7 @@ div#ad0 {
     vertical-align: baseline !important;
 }
 .pocket-btn{
-    display:inline-block;
+    display: inline-block;
+    height: 20px !important;
+    vertical-align: -2px !important;
 }
