@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2015/07/28/bulk_apple_85w_magsafe_a1343_mc556j_b
    2015/07/27/third_time_lucky
    2015/07/24/change_the_reverse_proxy_upstream_of_nginx_without_lua
    2015/07/17/change_the_reverse_proxy_upstream_of_nginx_by_time_zone
