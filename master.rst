@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2015/10/17/rewrote_the_sctipt_of_openssh_authorizedkeyscommand_for_ldap_public_key
    2015/10/07/upgraded_to_os_x_el_capitan
    2015/09/01/i_have_user_registration_to_hp_helion_public_cloud_in_order_to_use_the_swift
    2015/07/28/bulk_apple_85w_magsafe_a1343_mc556j_b
