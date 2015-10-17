@@ -30,6 +30,9 @@ ToDo from `Maintainer dashboard <http://udd.debian.org/dmd/?email1=mkouhei%40pal
 Python packages
 ^^^^^^^^^^^^^^^
 
+Ruby gems
+^^^^^^^^^
+
 GitHub activity
 ^^^^^^^^^^^^^^^
 

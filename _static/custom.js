@@ -113,6 +113,11 @@ $(function() {
                                     '<td>month</td></tr>' +
                                     '</thead><tbody></tbody></table>');
 
+    $('div#ruby-gems').append('<table id="rubygems" class="docutils">' +
+                                    '<thead><tr><th>name</th>' +
+                                    '<th>downloads</th>' +
+                                    '</thead><tbody></tbody></table>');
+
     $('div#github-activity').append('<ul id="activity"></ul>');
 
     $.getJSON(json_path, function(data) {
@@ -166,6 +171,16 @@ $(function() {
                                 '<td>' + val.Downloads.LastWeek + '</td>' +
                                 '<td>' + val.Downloads.LastMonth +
                                 '</td></tr>');
+                }
+            });
+        }
+        if (data.rubygems !== undefined) {
+            data.rubygems.forEach(function(val, index) {
+                if (val != null) {
+                    $('div#ruby-gems table#rubygems tbody')
+                        .append('<tr><td><a href="' + val.project_uri +
+                                '">' + val.name + '</a></td>' +
+                                '<td>' + val.downloads + '</td></tr>');
                 }
             });
         }
