@@ -12,11 +12,14 @@ Activities
 Floss community
 ^^^^^^^^^^^^^^^
 
-* v-tomo (2006-)
-* Tokyo Debian Meeting(2006-)
-* Debian JP Project (Nov 2008-)
-* CouchDB JP (Aug 2009-)
-* Debian JP Project Leader (Apr 2011, 2012)
+* `Debian JP Project <http://www.debian.or.jp/>`_ (Nov 2008-)
+
+  * `Tokyo Debian Meeting <https://tokyodebian.alioth.debian.org/>`_ (2006-)
+  * Debian JP Project Leader (Apr 2011, 2012)
+
+* `v-tomo <https://sites.google.com/site/kasotomo/>`_ (2006-)
+* `CouchDB JP <https://groups.google.com/forum/#!forum/couchdb-jp>`_ (Aug 2009-)
+
 
 `Debian Packages <http://qa.debian.org/developer.php?login=mkouhei@palmtb.net>`_
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -39,8 +42,9 @@ GitHub activity
 Job career
 ^^^^^^^^^^
 
+* in a web, working as a software engineer. (Nov, 2015 - current)
+* in a web, working as a infra engineer aka operation enginner. (Sep, 2011 - Oct, 2015), and a software engineer for server/network. (Apr, 2012 - Oct, 2015)
 * in a systems integrator, worked as a systems engineer. (Apr 2001 - Aug 2011)
-* in a web, working as a infra engineer aka operation enginner. (Sep, 2011-), and a software engineer for server/network. (Apr, 2012-)
 
 See also `LinkedIn profile <http://jp.linkedin.com/pub/kouhei-maeda/23/517/38b>`_
 
