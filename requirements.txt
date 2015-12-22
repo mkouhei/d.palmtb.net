@@ -1,8 +1,8 @@
+# should install libxml2-dev, libxslt1-dev, libfreetype6-dev, graphviz
 MarkupSafe
 Pygments
-Sphinx==1.2.3
+docutils
 -e git://github.com/vladris/tinkerer.git#egg=Tinkerer
-Pillow
 cssselect
 lxml
 pytz
