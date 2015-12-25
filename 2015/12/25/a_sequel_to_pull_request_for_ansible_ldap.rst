@@ -15,6 +15,16 @@ A sequel to pull request for ansible-ldap
 現状、テストコードがなく、Ansible 2.0も未対応なのでその対応を行う予定です。 [#]_
 upstream側での変更が今後されるのかわかりませんが、可能であれば追従していくつもりです。
 
+インストール方法
+----------------
+
+``ansible-galaxy`` コマンドでインストールできます。
+
+.. code-block:: bash
+
+   $ ansible-galaxy install -p library mkouhei.ldap
+
+
 Mercurial から Gitへの変換
 --------------------------
 
