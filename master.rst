@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2015/12/25/a_sequel_to_pull_request_for_ansible_ldap.rst
    2015/12/24/ansible_ldap_is_very_simple_and_useful
    2015/10/18/changed_the_display_manager_to_slim_instead_of_gdm3
    2015/10/17/rewrote_the_sctipt_of_openssh_authorizedkeyscommand_for_ldap_public_key
