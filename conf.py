@@ -50,13 +50,9 @@ rss_service = None
 extensions = ['tinkerer.ext.blog',
               'tinkerer.ext.disqus',
               'sphinxcontrib.blockdiag',
-              'sphinxcontrib.googleanalytics',
               'sphinxcontrib.nwdiag',
               'sphinx.ext.graphviz',
               'sphinxcontrib.gist']
-
-# Google Analytics
-googleanalytics_id = 'UA-1309764-3'
 
 # Add other template paths here
 templates_path = ['_templates']
