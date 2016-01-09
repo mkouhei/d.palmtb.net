@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2016/01/09/activate_0_sim_by_so_net
    2016/01/03/aspiration_of_the_2016
    2015/12/31/review_the_2015
    2015/12/25/a_sequel_to_pull_request_for_ansible_ldap.rst
