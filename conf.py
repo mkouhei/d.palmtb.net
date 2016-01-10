@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
+# flake8: noqa
+
 import tinkerer
-import tinkerer.paths        
+import tinkerer.paths
 
 # **************************************************************
 # TODO: Edit the lines below
@@ -11,16 +13,19 @@ import tinkerer.paths
 project = u'ペンギンと愉快な機械の日々'
 
 # Change this to the tagline of your blog
-tagline = u'I use technology to make life more convenient.'
+tagline = 'I use technology to make life more convenient.'
+
+# Change this to the description of your blog
+#description = 'This is an awesome blog'
 
 # Change this to your name
-author = u'mkouhei'
+author = 'mkouhei'
 
 # Change this to your copyright string
-copyright = u'2006-2016, Kouhei Maeda aka ' + author
+copyright = '2006-2016, Kouhei Maeda aka {0}'.format(author)
 
 # Change this to your blog root URL (required for RSS feed)
-website = u'http://d.palmtb.net/'                              
+website = 'http://d.palmtb.net/'
 
 # **************************************************************
 # More tweaks you can do
@@ -30,17 +35,32 @@ website = u'http://d.palmtb.net/'
 disqus_shortname = 'mkouhei'
 
 # Change your favicon (new favicon goes in _static directory)
-html_favicon = 'tinkerer.ico'           
+html_favicon = '_static/tinkerer.ico'
 
 # Pick another Tinkerer theme or use your own
-html_theme = "mysite"
+html_theme = 'mysite'
 
 # Theme-specific options, see docs
-html_theme_options = { }                                  
+html_theme_options = {}
 
 # Link to RSS service like FeedBurner if any, otherwise feed is
 # linked directly
 rss_service = None
+
+# Generate full posts for RSS feed even when using "read more"
+rss_generate_full_posts = False
+
+# Number of blog posts per page
+posts_per_page = 5
+
+# Character use to replace non-alphanumeric characters in slug
+slug_word_separator = '_'
+
+# Set to page under /pages (eg. "about" for "pages/about.html")
+landing_page = None
+
+# Set to override the default name of the first page ("Home")
+first_page_title = None
 
 # **************************************************************
 # Edit lines below to further customize Sphinx build
@@ -61,24 +81,27 @@ templates_path = ['_templates']
 html_static_path = ['_static', tinkerer.paths.static]
 
 # Add other theme paths here
-html_theme_path = [tinkerer.paths.themes, '_themes']
+html_theme_path = ['_themes', tinkerer.paths.themes]
 
 # Add file patterns to exclude from build
-exclude_patterns = ["drafts/*"]                                     
+exclude_patterns = ['drafts/*', '_templates/*']
 
 # Add templates to be rendered in sidebar here
 html_sidebars = {
-    "**": ["recent.html", "ad3.html", "ad1.html", "searchbox.html", "categories.html", "ad2.html", "tags.html"]
+    '**': ['recent.html',
+           'ad3.html',
+           'ad1.html',
+           'searchbox.html',
+           'categories.html',
+           'ad2.html',
+           'tags.html']
 }
 
-blockdiag_fontpath = '/usr/share/fonts/truetype/vlgothic/VL-PGothic-Regular.ttf'
-blockdiag_antialias = True
-#blockdiag_html_image_format = 'SVG'
-#seqdiag_html_image_format = 'SVG'
-#nwdiag_html_image_format = 'SVG'
+# Add an index to the HTML documents.
+html_use_index = False
 
 # **************************************************************
-# Do not modify below lines as the values are required by 
+# Do not modify below lines as the values are required by
 # Tinkerer to play nice with Sphinx
 # **************************************************************
 
@@ -87,11 +110,11 @@ master_doc = tinkerer.master_doc
 version = tinkerer.__version__
 release = tinkerer.__version__
 html_title = project
-html_use_index = False
 html_show_sourcelink = True
 html_add_permalinks = True
 
-rss_max_items = 10
+blockdiag_fontpath = '/usr/share/fonts/truetype/vlgothic/VL-PGothic-Regular.ttf'
+blockdiag_antialias = True
 
 def setup(app):
     app.add_javascript('custom.js')
