@@ -3,6 +3,8 @@
 
 RSYNC := rsync
 SRCS := $(glob 20*/*/*/*.rst)
+POST :=
+PAGE :=
 
 all: build
 
@@ -15,6 +17,12 @@ build: $(SRCES)
 	. ../.venv/bin/activate; \
 	tinker -b -q;\
 	deactivate;
+
+post:
+	../.venv/bin/tinker -p "$(POST)"
+
+page:
+	../.venv/bin/tinker --page "$(PAGE)"
 
 publish:
 	$(RSYNC) -a --exclude 'glaneuses.json' --delete blog/html/ blogadm@proxy:/var/www/d.palmtb.net/
