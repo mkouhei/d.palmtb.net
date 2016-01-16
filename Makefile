@@ -1,8 +1,7 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
 
-RSYNC := rsync
-SRCS := $(glob 20*/*/*/*.rst)
+SRCES := $(glob 20*/*/*/*.rst)
 POST :=
 PAGE :=
 
@@ -25,7 +24,7 @@ page:
 	../.venv/bin/tinker --page "$(PAGE)"
 
 publish:
-	$(RSYNC) -a --exclude 'glaneuses.json' --delete blog/html/ blogadm@proxy:/var/www/d.palmtb.net/
+	rsync -a --exclude 'glaneuses.json' --delete blog/html/ blogadm@proxy:/var/www/d.palmtb.net/
 
 staging:
-	$(RSYNC) -a --exclude 'glaneuses.json' --delete blog/html/ /var/www/d.palmtb.net/
+	rsync -a --exclude 'glaneuses.json' --delete blog/html/ /var/www/d.palmtb.net/
