@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2016/02/22/bootstrap_python_package
    2016/01/09/activate_0_sim_by_so_net
    2016/01/03/aspiration_of_the_2016
    2015/12/31/review_the_2015
