@@ -47,9 +47,7 @@ $(function() {
             case 'PullRequestReviewCommentEvent':
             payload = 'commented on pull request ' +
                 '<a href="' + meta.payload.html_url + '">' +
-                meta.repo.name + '#' +
-                meta.payload.pull_request_url.split('/')[
-                    meta.payload.pull_request_url.split('/').lenght - 1] +
+                meta.repo.name + '#' + meta.payload.pull_request.number +
                 '</a><br/>' +
                 meta.payload.body;
             break;
