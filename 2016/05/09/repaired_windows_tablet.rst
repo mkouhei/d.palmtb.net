@@ -23,6 +23,6 @@ Repaired Windows tablet
 
 
 .. author:: default
-.. categories:: none
-.. tags:: none
+.. categories:: Windows
+.. tags:: Windows 8.1,Windows 10
 .. comments::
