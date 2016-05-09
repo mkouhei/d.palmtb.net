@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2016/05/09/repaired_windows_tablet
    2016/03/23/appends_platforms_metadata
    2016/02/29/i_cannot_use_e_tax_this_year
    2016/02/28/my_jpki_certificate_had_expired
