@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2016/12/29/review_the_2016
    2016/12/23/updates_for_tex_live_2016
    2016/12/08/openblocks_and_debian_gnu_linux
    2016/07/13/how_to_use_plantuml_mode
