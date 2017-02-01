@@ -42,9 +42,9 @@ GitHub activity
 Job career
 ^^^^^^^^^^
 
-* in a web, working as a software engineer. (Nov, 2015 - current)
-* in a web, working as a infra engineer aka operation enginner. (Sep, 2011 - Oct, 2015), and a software engineer for server/network. (Apr, 2012 - Oct, 2015)
-* in a systems integrator, worked as a systems engineer. (Apr 2001 - Aug 2011)
+* in a web, working as a software developer. (Nov, 2015 - current)
+* in a web, working as a operations developer. (Sep, 2011 - Oct, 2015), and a software developer for server/network/middlware. (Apr, 2012 - Oct, 2015)
+* in a systems integrator, worked as a systems developer. (Apr 2001 - Aug 2011)
 
 See also `LinkedIn profile <http://jp.linkedin.com/pub/kouhei-maeda/23/517/38b>`_
 
