@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2017/03/26/my_daughter_began_playing_scratch_on_debian
    2017/01/03/aspiration_of_the_2017
    2016/12/29/review_the_2016
    2016/12/23/updates_for_tex_live_2016
