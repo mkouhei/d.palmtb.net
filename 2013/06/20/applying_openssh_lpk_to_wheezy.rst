@@ -67,7 +67,7 @@ In addition to the change at the time of the precise, "confflags + = - with-libs
 
    confflags += --with-ldap
    confflags += --with-libs=-lldap
-   (snip)
+   # (snip)
    cflags += -DWITH_LDAP_PUBKEY
 
 Other procedures are the same as for the precise.

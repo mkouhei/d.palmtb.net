@@ -3,95 +3,58 @@
 
 昨年Joinした時点ではチームで運用しているシステムの依頼は以前はメーリングリストで定型文で送られていたのを、ConfluenceというWikiが使われるようになったタイミングで定型フォーマットの申請フォームを作り、申請用のメーリングリストに送信されるようにしていました。依頼作業もRedmineでチケット管理しているので、この依頼メールを受けとると、メール本文をまるごとコピーしてRedmineでチケットを登録する、というフローにしていました。
 
-
-
 量が少なければまぁ許容できるかもしれませんが、こんな刺身タンポポなコピペ作業は自動化すべきです。ということで、申請フォームメールからRedmineにチケットを自動登録するようにしました。基本的には、 `リンク先の手順の通り <http://redmine.jp/guide/RedmineReceivingEmails/>`_ なのですが、いろいろハマりポイントがあったのでまとめてみました。
-
-
-
 
 チケットの登録はIMAP経由に。
 ----------------------------
 
-
 現状、申請メールの社内メールをメーリングリストに登録して受け取っています。SMTP経由で登録するのが良いのですがConfluenceのサーバと社内のメールサーバは自分の管理外なので、メールサーバ立てても経路的にそっちに送ることが現状無理でした。なので、IMAP経由でチケットを登録するようにしました。チケット登録用に専用のメールアカウントを作るのが本当は良いのですが [#]_ 、これもまた社内の情報システム担当者にお願いする必要があります。なので、すぐにできる方法を取ることにしました。自分のメールアドレスは申請用のメーリングリストのメンバーなので、MUAで直接POP3サーバからメール受信するのを止め、IMAPサーバを構築し、そこで社内メールを受信する、という方法にしました。
-
-
 
 ただし、redmineのIMAP経由のチケット登録を行う場合、デフォルトの動きではチケット登録の成否に関わらずもとのメールは削除されてしまいます。そこで申請メールを自分でチェックするのに使うメールとは別に、redmine用のメールを用意することにしました。具体的には次の構成です。
 
-
-
 * IMAPサーバ
 
-
   * IMAPサーバ自体 dovecot-imapd
-
   * IMAPのpop3経由のメール受信 fetchmail
-
   * 受信したメールのフィルタリング procmail
-
 
 * Redmineサーバ
 
-
   * redmineのIMAP用のrakeタスク
-
-
 
 
 設定方法。
 ----------
 
-
 Ubuntu 10.04で構築しました。インストールしたDebianパッケージとその後の手順は下記の通りです。
 
-
-.. code-block:: sh
-
+.. code-block:: bash
 
    $ apt-get install dovecot-imapd procmail fetchmail courier-base maildrop
    $ maildirmake.dovecot Maildir user
    $ maildirmake -f request Maildir
    $ maildirmake -f redmine.request Maildir
 
-
 dovecot-imapdを使っているのにcourier-baseパッケージを入れているのは、maildirmakeコマンドでIMAPのフォルダを作るのに必要なためです。Maildirディレクトリを作るだけならdovecot-imapdパッケージに含まれるmaildirmake.dovecotコマンドで十分です。3行目でMUAで自分でチェックするためのrequestフォルダを作成し、4行目でredmineで使用するためのredmine.requestフォルダを作成しています。
-
-
-
 
 ~/.fetchmailrcの設定。
 ^^^^^^^^^^^^^^^^^^^^^^
 
-
 POP3サーバ(mail.example.org)で受信したメールをprocmailに渡す設定です。
 
-
-.. code-block:: apache
-
+.. code-block:: pkgconfig
 
    poll mail.example.org with protocol pop3
      user user@example.org is user password "xxxxxxxxx" 
      keep ssl mda "/usr/bin/procmail"
 
 
-
-
-
 ~/.procmailrcの設定。
 ^^^^^^^^^^^^^^^^^^^^^
 
-
-
-
 ConfluenceはLDAPと連携しているので、申請フォームでは送信元アドレス(From)には通常LDAPアカウントのメールアドレスを設定しているのですがこれが原因でRedmineにチケットが登録できないという問題がありました。この詳細については後述します。また、一部申請フォームはLDAPアカウントを持っていない部門の人も利用するのですが、Fromを設定しない場合はConfluenceの管理用のメールアドレスから送信されるため、受信後に申請メールをそのまま返信するとConfluenceの管理用のメールアドレスに送信されてしまう、という問題もあったので、Fromには申請用のメーリングリストのアドレスを設定することにしました。その設定が下記です。
 
-
-
-
-.. code-block:: apache
-
+.. code-block:: text
 
    SHELL=/bin/bash
    PATH=$HOME/bin:/usr/bin:/usr/local/bin
@@ -114,37 +77,26 @@ ConfluenceはLDAPと連携しているので、申請フォームでは送信元
    *
    $MAILDIR/
 
-
 申請用のメーリングリストのアドレス(request@example.org)からのメールのうち、ヘッダに"Auto-Submitted: auto-generated"があり、"X-Mailer: Redmine"ヘッダがない場合だけRedmineでチェックするフォルダredmine.requestに配信します。後者のヘッダはチケット登録後にRedmineから配信される通知用メールなのでこれがredmine.requestフォルダに配信されると延々とチケットが登録される無限ループになってしまいます。（わら それ以外の申請用メーリングリストのアドレスからの場合は、全てrequestフォルダに配信されるようにしています。Redmineからの通知メールもこの設定ではこのrequestフォルダに配信されます。これら以外の場合は、全てINBOXに配信される、という設定です。
-
-
 
 
 ~/.forwardの設定。
 ^^^^^^^^^^^^^^^^^^
 
-
 ローカル配信のメールもIMAPで見られるようにする場合は下記を設定します。
 
-
-.. code-block:: apache
-
+.. code-block:: bash
 
    "|IFS=' ' && exec /usr/bin/procmail -f- || exit 75 #~/Maildir/"
-
-
-
 
 
 Redmineでの設定。
 -----------------
 
-
 rootのcrontabで下記の設定を行います。ポイントは"cd /usr/local/redmine"です。rakeタスクのオプションは、前述の `リンク先 <http://redmine.jp/guide/RedmineReceivingEmails/>`_ を参照してください。
 
 
-.. code-block:: sh
-
+.. code-block:: text
 
    username=user
    password=xxxxxxxx
@@ -156,75 +108,52 @@ rootのcrontabで下記の設定を行います。ポイントは"cd /usr/local/
    ssl=SSL folder=${folder} project=${project} category=${category} move_on_failure=redmine.failed
 
 
-
-
-
-
-
 ハマりポイント。
 ----------------
 
-
 いくつかハマりポイントがあったのでこれをまとめてみました。
-
-
-
-
 
 
 シェルで手動実行する場合とcronで実行させる場合とで挙動が異なる。
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 当初、シェルスクリプトの中でサブシェルを使って、
 
-
-.. code-block:: sh
+.. code-block:: bash
 
 
    (
-   cd /usr/local/redmine
-   /usr/local/bin/ruby /usr/local/bin/rake -f /usr/local/redmine/Rakefile \
-   (snip)
+     cd /usr/local/redmine
+     /usr/local/bin/ruby /usr/local/bin/rake -f /usr/local/redmine/Rakefile \
+     # (snip)
    )
 
 
 としていたのですが実行できませんでした。手動でシェルスクリプトを実行する場合は問題なく登録できたのですが。cronで実行させる場合はcronのエントリに直接コマンドを記述すると正常に実行できました。またRedmineのインストールされているディレクトリに移動しない場合は、ライブラリなどが読み込まれないためかチケットの登録ができません [#]_ 。
 
 
-
-
 Redmineのユーザアカウントでかつ、プロジェクトのメンバーでないとメールからのチケット登録はできない。
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 
 メールからチケットを登録する方法を使う場合、申請用メールのFromのアドレスが、Redmineに登録されているユーザアカウントで、かつ、対象プロジェクトのメンバーでチケット登録権限(報告者)のユーザアカウントのメールアドレスとして登録されていないと、チケットの登録ができず失敗します。失敗した場合はrakeタスクのオプションmove_on_failuerで指定したIMAPディレクトリにメールが移動します [#]_ 。これは、プロジェクトを公開状態にしていてもダメです。公開状態だと、ブラウザからアクセスする場合はログインしなくても匿名ユーザとしてチケット登録ができますが、メールからの場合はできませんでした [#]_ 。そこで、前述の通り、申請メール用のメールアドレスにひもづけたRedmineのダミーユーザを作成し、これを報告者権限として該当プロジェクトのメンバーとしました。一方、別の申請フォームではLDAPアカウントを持っている人のみに利用制限していますが、これが原因で登録できないので、結局こちらもダミーユーザを作成しました。
 
 この場合の問題は受け取ったメールをそのまま返信してしまうと、request@example.orgにしか返信されないことです。現状では依頼メールの返信時にはメール本文にある、申請フォームで入力してもらった依頼主のメールアドレスをToにコピペする、という運用で逃げています。
 
 
-
 これの根本解決としては、
 
 
 * Confluenceを改修し、メールヘッダにReturn Pathを指定できるようにする
-
 * RedmineをLDAPに対応させる
-
 * 公開プロジェクトなら匿名ユーザとしてチケット登録できるようにRedmineの修正する、もしくは最新版でできるなら最新版にアップグレードする
 
 のいずれかです。Confluence自体はオープンソースソフトウェアらしいので、そういったプラグインなどが無いか調べるか無ければパッチを作成して管理者に適用してもらう、という方法もありますが、テスト環境がないのでこれは無いですね。2つめは設定を変更してLDAPと連携させるようにすれば良いのですが、アクセス権のコントロールとか面倒くさそうな気もします。となると、３つ目の手段が現実的なのかもしれません。が、とりあえず他にやることが多いので、一旦pendingです。
 
 
-
-
 余談。
 ------
 
-
-Sarge頃、OpenBlockS266で自宅で自分のドメイン用のメール鯖を運用していたときは、courier-imapを使っていて、Etchにアップグレードしたタイミングでdovecot-imapdを使っていましたが、2009年のDebConf9に行くタイミングで自宅からメール鯖は撤去したので久しぶりにfetchmailrcとかprocmailrcとか書きました。当時のメモは現在停止してしまった同じくOpenBlockSで動かしていたWikiに記録していたはずですが、記事自体はブログにも移行していなかったので、久々に調べ直すというハメになりました…。
-
-
+Sargeの頃、OpenBlockS266で自宅で自分のドメイン用のメール鯖を運用していたときは、courier-imapを使っていて、Etchにアップグレードしたタイミングでdovecot-imapdを使っていましたが、2009年のDebConf9に行くタイミングで自宅からメール鯖は撤去したので久しぶりにfetchmailrcとかprocmailrcとか書きました。当時のメモは現在停止してしまった同じくOpenBlockSで動かしていたWikiに記録していたはずですが、記事自体はブログにも移行していなかったので、久々に調べ直すというハメになりました…。
 
 
 .. [#] 担当が代わったらメールアカウントも変えないとあかんので…。
@@ -236,4 +165,5 @@ Sarge頃、OpenBlockS266で自宅で自分のドメイン用のメール鯖を�
 
 .. author:: default
 .. categories:: Debian,Unix/Linux
+.. tags:: Redmine,Dovecot,fetchmail,procmail
 .. comments::
