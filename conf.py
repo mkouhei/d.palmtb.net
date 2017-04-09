@@ -94,7 +94,8 @@ html_sidebars = {
            'searchbox.html',
            'categories.html',
            'ad2.html',
-           'tags.html']
+           'tags.html',
+           'ipv4_v6_meter.html']
 }
 
 # Add an index to the HTML documents.
