@@ -4,11 +4,8 @@
 はてなダイアリーから移行しようと前々から思っていた [#]_ のですが、最近の騒動もありちょうど良い機会なので、reST形式で記述できるブログに移行することにしました。 `先日tinkererをBTSした <http://d.hatena.ne.jp/mkouhei/20120321/1332262947>`_ のもこれ絡みであったりします。今回のエントリはその下調べについてお話です。
 
 
-
-
 エクスポートの方法。
 --------------------
-
 
 はてなダイアリーのユーザならもちろん知っていると思うのですがおさらいです。画面上部のメニューにある[管理]リンクから、画面遷移後の左のメニュー[データ管理]をクリックすると、[ブログのエクスポート]というセクションに、"はてなの日記データ形式"、"Movable Type形式"、"CSV形式"が選べます。はてなの日記データ形式は、はてな記法で書いたブログエントリがXMLで
 
@@ -39,8 +36,7 @@
 という形式になっています。一方、Movable Type形式では、
 
 
-.. code-block:: sh
-
+.. code-block:: text
 
     AUTHOR: mkouhei
     TITLE: せっかく天気の良い土曜なのに、起きたら１４時半。
@@ -73,34 +69,20 @@
 という感じになっています。はてなダイアリ独自のフォーマットを解析するよりも、Movable Type形式を解析する方が汎用性があるのでこちらを解析することにしました。ちなみにCSV形式の場合は、ブログエントリの本文がMovable Type形式と同じHTML形式になっています。
 
 
-
-
 Movable Type形式での1エントリあたりのフォーマット
 -------------------------------------------------
-
-
-
 
 Movable Type形式でエクスポートすると、1エントリが次のようになっています。ここでのエントリとは、はてな記法の1個のアスタリスク"\*"で始まるブログエントリです。
 
 
 * 同じ日に複数エントリがある場合は、別のエントリとして区切られます
-
 * メタ情報は1つのkeyが1行に記述されます。keyとvalueの区切りは": "になっています
-
 * BODYの中はHTMLで記述されています
-
 * エントリの終わりは、8個のハイフン"--------"になっています
-
-
 
 1エントリのフォーマットは次のようになります。
 
-
-
-
-.. code-block:: sh
-
+.. code-block:: text
 
     AUTHOR,TITLE,STATUS,ALLOW COMMENTS,CONVERT BREAKS,ALLOW PINGS,DATE,CATEGORY (←実際にはこれらが一行ずつ記載されます)
     -----
@@ -121,71 +103,46 @@ Movable Type形式でエクスポートすると、1エントリが次のよう�
     -------- (←エントリの区切り)
 
 
-
-
-
 メタ情報のkey
 -------------
 
-
 * AUTHOR: はてなID
-
 * TITLE: はてな記法で1アスタリスク(\*)で始まるタイトル
-
 * STATUS: Publish ←Publishしかないので、公開済みのエントリだけがエクスポートされる
-
 * ALLOW COMMENTS: 1
-
 * CONVERT BREAKS: 1
-
 * ALLOW PINGS: 1 ←以上3つのキーは全てのエントリで1。特に今回は使わないので無視
-
 * DATE: MM/DD/YYYY HH:dd:ss AM|PM 形式ののローカルタイム(JST)
-
 * CATEGORY: カテゴリで指定したカテゴリ。複数ある場合は複数行。
-
-
-
 
 本文(BODY)のHTMLタグのフォーマット
 ----------------------------------
 
-
 エントリの本文の単位は
 
-
-.. code-block:: sh
-
+.. code-block:: html
 
    <div class="section">
    </div>
 
-
 になっています。一行エントリを書くと
 
-
-.. code-block:: sh
-
+.. code-block:: html
 
    <div class="section">
    <p>本文ほげほげ</p>
    </div>
 
-
 となっているので、このsectionクラスのdiv要素内にエントリの本文が記述されるワケですね。
-
-
 
 
 サブセクション(\*\*)を使った場合のフォーマット
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 h4を使い、同じdiv要素の中に記述されます。
 
 
-.. code-block:: sh
-
+.. code-block:: html
 
    <div class="section">
    <p></p>
@@ -193,35 +150,23 @@ h4を使い、同じdiv要素の中に記述されます。
    <p></p>
    </div>
 
-
-
-
-
 コードブロックのフォーマット
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 pre要素を使っているだけです。
 
-
-.. code-block:: sh
-
+.. code-block:: html
 
    <pre class="syntax-highlight">
    hoge
    </pre>
 
-
-
 コードブロックの中でのsyntax highlight
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. code-block:: html
 
-
-.. code-block:: sh
-
-
-   <span class="someclass">hoge
+   <span class="someclass">hoge</span>
 
 
 という感じで、単語や記号ごとにspan要素で括られています。reSTのコードブロックに移行する上ではこのsyntax highlight用のspanは取り除く必要があります。なお、使われているclassは次の通りです。(以下はshの場合)
@@ -250,16 +195,12 @@ pre要素を使っているだけです。
   * ハイフン(-)で始まる文字列(つまり、コマンドオプション), {, }, 
 
 
-
-
 footnoteのフォーマット
 ^^^^^^^^^^^^^^^^^^^^^^
 
-
 注釈記号のフォーマットは下記のようになっています。
 
-
-.. code-block:: sh
+.. code-block:: html
 
 
    <span class="footnote"><a href="/hatenaID/#f1" name="fn1" title="footnoteの文章">*1</a>
@@ -268,7 +209,7 @@ footnoteのフォーマット
 また、footnote自体の記述位置とフォーマットは以下の通りです。
 
 
-.. code-block:: sh
+.. code-block:: html
 
 
    <div class="section">
@@ -278,13 +219,10 @@ footnoteのフォーマット
    </div>
 
 
-
 引用のフォーマット
 ^^^^^^^^^^^^^^^^^^
 
-
-
-.. code-block:: ini
+.. code-block:: html
 
 
    <blockquote>
@@ -300,11 +238,10 @@ footnoteのフォーマット
 
 
 使用しているものによってまちまちですが、基本的にそのまま出力されています。例えば、
-
 amazletでは
 
 
-.. code-block:: sh
+.. code-block:: html
 
 
    <div class="amazlet=box">hogehoge</div>
@@ -313,21 +250,16 @@ amazletでは
 gistでは
 
 
-.. code-block:: sh
+.. code-block:: html
 
 
-   <script src="https://gist.github.com/hoge.js?file=hoge.sh></script>
+   <script src="https://gist.github.com/hoge.js?file=hoge.sh"></script>
 
 
 という感じです。
 
 
-
 次回に続く！
-
-
-
-
 
 
 .. [#] 一番の理由は広告です。基本毎日更新しないと最新のエントリのすぐ下に広告が表示されるようになったこと、スマホのブラウザでアクセスすると問答無用で広告が表示されることが移行することを決心した理由です。私のブログを購読して下さっている方がいらっしゃるのはもちろん嬉しいのですが、自分のブログは備忘録であったり日記であったりと書いている一番の理由は、自分のためであるというのがあるので、意図しない広告が表示されるのはとても鬱陶しいのですよね。
@@ -335,4 +267,5 @@ gistでは
 
 .. author:: default
 .. categories:: computer
+.. tags:: ブログ移行
 .. comments::

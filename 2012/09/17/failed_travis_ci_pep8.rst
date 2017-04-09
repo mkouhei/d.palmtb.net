@@ -3,9 +3,8 @@ Fail testing pep8 with travis-ci
 
 I use travis-ci for GitHub, but test_pep8 failed.
 
-.. code-block:: bash
+.. code-block:: text
 
-   (snip)
    $ pip install -r requirements.txt --use-mirrors
    Downloading/unpacking pep8 (from -r requirements.txt (line 1))
      Downloading pep8-1.3.3.tar.gz
@@ -34,7 +33,7 @@ I use travis-ci for GitHub, but test_pep8 failed.
 
 Cause is version of pep8 module. Travis-ci's is 1.3.3, but Debian GNU/Linux Sid as my environment is 1.2. So I have appended version of pep8 to requirements.txt.
 
-.. code-block:: ini
+.. code-block:: pkgconfig
 
    pep8==1.2
    minimock
