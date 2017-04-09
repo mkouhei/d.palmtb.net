@@ -49,7 +49,7 @@ Mercurial から Gitへの変換
       
    * 変換元のMercurialのリポジトリは、却下されたPull requestを作成するためにfeature branchを作ったローカルリポジトリを使いました。
 
-.. code-block:: sh
+.. code-block:: text
 
    $ hg-fast-export -r /path/to/ansible-ldap
    master: Exporting full revision 1/6 with 4/0/0 added/changed/removed files

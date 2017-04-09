@@ -1,10 +1,8 @@
 net-toolsをアップデートしようとするとエラーになるので…。
 =========================================================
 
-
-.. code-block:: sh
-
-
+.. code-block:: text
+   
    $ LANG=C sudo apt-get upgrade
    Reading package lists... Done
    Building dependency tree
@@ -37,10 +35,7 @@ net-toolsをアップデートしようとするとエラーになるので…�
 ja-transってどこかで見たなぁと思ったら、 `これ <http://lists.debian.or.jp/debian-devel/200706/msg00086.html>`_ でした。で、ja-transを削除したら、無事アップデート完了。
 
 
-
-
-
-
 .. author:: default
 .. categories:: Debian
+.. tags:: Debian,net-tools
 .. comments::

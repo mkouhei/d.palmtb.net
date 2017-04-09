@@ -6,7 +6,7 @@ Gitでdiffを行うとデフォルトでは、GNU diffの `diff -u` と同じ挙
 
 さて本題。Pythonでテストコードを書いて、文字列の比較に `assertEqual()` を使うと、
 
-.. code-block:: python
+.. code-block:: text
 
    _____________________________________ DebbuildTests.test_generate_batch_script ______________________________________
    
@@ -25,7 +25,7 @@ Gitでdiffを行うとデフォルトでは、GNU diffの `diff -u` と同じ挙
 
 とエラーは検出できてもどこが間違っているのか解読するのは困難です。なので、 `assertMultiLineEqual() <http://docs.python.jp/2/library/unittest.html#unittest.TestCase.assertMultiLineEqual>`_ を使うとこの問題を解決できます。
 
-.. code-block:: python
+.. code-block:: text
 
    (snip)
    >                        debbuild.generate_batch_script(self.params))

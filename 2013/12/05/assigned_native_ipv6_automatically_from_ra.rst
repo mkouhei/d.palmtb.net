@@ -7,13 +7,13 @@ Assigned native IPv6 automatically from RA
 
 IPv6 onlyの場合は、
 
-.. code-block:: ini
+.. code-block:: pkgconfig
 
    iface eth0 inet6 auto
 
 を使いますが、デュアルスタックの場合は、
 
-.. code-block:: ini
+.. code-block:: pkgconfig
 
    iface eth0 inet dhcp
 
@@ -23,50 +23,44 @@ IPv6 onlyの場合は、
 presice の場合
 --------------
 
-.. code-block:: sh
+.. code-block:: bash
 
    cp -f /dev/null /etc/resolvconf/resolv.conf.d/original
-
    sed -i 's/domain-name-servers, //' /etc/dhcp/dhclient.conf
-
    cat << 'EOF' >  /etc/network/interfaces
-   
-   auto lo
-   iface lo inet loopback
-   
-   auto eth0
-   {% if host.ipv4 %}
-   iface eth0 inet dhcp{% endif %}
-   iface eth0 inet6 auto
-       dns-nameservers {{ dns_ipv6 }}
-       dns-search {{ subdomain }}.{{ dns_suffix }} {{ dns_suffix }}
-   EOF
+   > auto lo
+   > iface lo inet loopback
+   >  
+   > auto eth0
+   > {% if host.ipv4 %}
+   > iface eth0 inet dhcp{% endif %}
+   > iface eth0 inet6 auto
+   >     dns-nameservers {{ dns_ipv6 }}
+   >     dns-search {{ subdomain }}.{{ dns_suffix }} {{ dns_suffix }}
+   > EOF
 
 wheezy の場合
 -------------
 
-.. code-block:: sh
+.. code-block:: bash
 
-   apt-get install -y resolvconf
-   cp -f /dev/null /etc/resolvconf/resolv.conf.d/original
-   
-   sed -i 's/domain-name-servers, //' /etc/dhcp/dhclient.conf
-   
-   cat << 'EOF' >  /root/interfaces
-   auto lo
-   iface lo inet loopback
-   
-   auto eth0
-   {% if host.ipv4 %}
-   iface eth0 inet dhcp{% endif %}
-   iface eth0 inet6 auto
-       dns-nameservers {{ dns_ipv6 }}
-       dns-search {{ subdomain }}.{{ dns_suffix }} {{ dns_suffix }}
-   EOF
-
-   sed -i 's/{{ host }}.bad/{{ host }}.{{ subdomain }}.{{ dns_suffix }}/g' /etc/hosts
-   echo '{{ host }}.{{ subdomain }}.{{ dns_suffix }}' > /etc/mailname
-   test -x /usr/sbin/postconf && /usr/sbin/postconf -e mydomain='{{ subdomain }}.{{ dns_suffix }}'
+   $ apt-get install -y resolvconf
+   $ cp -f /dev/null /etc/resolvconf/resolv.conf.d/original
+   $ sed -i 's/domain-name-servers, //' /etc/dhcp/dhclient.conf
+   $ cat << 'EOF' >  /root/interfaces
+   > auto lo
+   > iface lo inet loopback
+   >  
+   > auto eth0
+   > {% if host.ipv4 %}
+   > iface eth0 inet dhcp{% endif %}
+   > iface eth0 inet6 auto
+   >     dns-nameservers {{ dns_ipv6 }}
+   >     dns-search {{ subdomain }}.{{ dns_suffix }} {{ dns_suffix }}
+   > EOF
+   $ sed -i 's/{{ host }}.bad/{{ host }}.{{ subdomain }}.{{ dns_suffix }}/g' /etc/hosts
+   $ echo '{{ host }}.{{ subdomain }}.{{ dns_suffix }}' > /etc/mailname
+   $ test -x /usr/sbin/postconf && /usr/sbin/postconf -e mydomain='{{ subdomain }}.{{ dns_suffix }}'
 
 preciseとの違いとして、resolvconfをインストールとPostfixの設定を行っています。これらはUbuntu, DebianとでOSインストール後の設定や挙動を同じにするためです。preciseではresolvconfがデフォルトでインストールされますが、wheezyではインストールされません。また、後者はDebianではデフォルトMTAはEximなのでこれをPostfixに変更しているのですが [#]_ 、これらの設定を行わないと、localhost.localdomainのままになっているからです。
 
@@ -74,7 +68,7 @@ preciseとの違いとして、resolvconfをインストールとPostfixの設�
 
 このoriginalファイルはインストール時の情報を元に下記のように設定されます。wheezyの場合は、resolvconfパッケージをインストールした時点で、/etc/resolv.confの情報を元に設定されます。
 
-.. code-block:: ini
+.. code-block:: pkgconfig
 
    search sub.example.org example.org
    nameserver 192.0.2.1
@@ -85,7 +79,7 @@ preciseとの違いとして、resolvconfをインストールとPostfixの設�
 
 また、デュアルスタックを使用している場合には、DHCPのリース更新時や、dhclientの手動実行、あるいはservice networking restart実行時に、/etc/resolv.confのnameserverの値がIPv4に設定されてしまいます。これは、上述のdomain-name-serversを削除することによって、IPv6アドレスのままになります。なお、domain-nameを同様に削除すると、dhclient実行時に、下記のようなエラーが発生してしまうため、これは削除しません。
 
-.. code-block:: sh
+.. code-block:: text
 
    $ sudo dhclient eth0
    RTNETLINK answers: File exists

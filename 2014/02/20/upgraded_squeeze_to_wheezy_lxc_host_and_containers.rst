@@ -44,7 +44,7 @@ Upgraded Squeeze to Wheezy LXC host and containers
 * Squeezeではカーネルオプションを変更してビルドした Linux Kernel 2.6.39.4を使っていたので、パッケージのアップデート完了後、再起動前に linux-image-3.2.0-4-amd64 をインストールし、それをGRUB_DEFAULTで指定、update-grubを実行
 * ネットワーク関連の設定は、post-upでシェルスクリプトでブリッジの設定をやっていたのですが、それをやめ、interfacesを下記のように変更。
 
-.. code-block:: ini
+.. code-block:: pkgconfig
 
    auto lo
    iface lo inet loopback

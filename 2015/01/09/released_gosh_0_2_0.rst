@@ -18,12 +18,19 @@ main関数の省略
 
 `README <https://github.com/mkouhei/gosh/blob/v0.2.0/README.rst#basic-usage>`_ にも記載していますが、簡単に紹介します。
 
+Goshの実行方法
+~~~~~~~~~~~~~~
+
+.. code-block:: bash
+
+   $ $GOPATH/bin/gosh
+
+
 fmt.PrintlnでのHello world
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: go
+.. code-block:: pycon
 
-   $ $GOPATH/bin/gosh
    >>> fmt.Println("Hello world")
    Hello world
    >>>
@@ -31,9 +38,8 @@ fmt.PrintlnでのHello world
 変数の宣言と演算
 ~~~~~~~~~~~~~~~~
 
-.. code-block:: go
+.. code-block:: pycon
 
-   $ $GOPATH/bin/gosh
    >>> var i = 10
    >>> i++
    >>> fmt.Println(i)
@@ -42,9 +48,8 @@ fmt.PrintlnでのHello world
 
 省略形式の変数宣言でも大丈夫です。
 
-.. code-block:: go
+.. code-block:: pycon
 
-   $ $GOPATH/bin/gosh
    >>> i := 10
    >>> i += 100
    >>> fmt.Println(i)
@@ -57,22 +62,20 @@ fmt.PrintlnでのHello world
 Goshを作ったそもそもの動機である、パッケージのインポートはもちろん使えます。
 次は `github.com/bitly/go-simplejson <https://github.com/bitly/go-simplejson>`_ を使った場合の例です。
 
-.. code-block:: go
+.. code-block:: pycon
 
-   $ $GOPATH/bin/gosh
    >>> import "github.com/bitly/go-simplejson"
    >>> r, _ := http.Get("http://d.palmtb.net/_static/glaneuses.json")
    >>> defer r.Body.Close()
    >>> j, _ := simplejson.NewFromReader(r.Body)
    >>> fmt.Println(j)
-   (snip)
 
 表示は省略しましたが、simplejson.Json型のデータが出力されます。
 
 main関数の宣言のリセット
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: go
+.. code-block:: pycon
 
    >>> func main(){}
 
@@ -83,7 +86,7 @@ fmt.Print*の実行は一回のみ
 
 ``fmt.Println("hello")`` などを実行後、その後に他の入力を続けても、最初に実行された ``fmt.Println("hello")`` は実行されないようにしました。つまり、次のようになります。
 
-.. code-block:: go
+.. code-block:: pycon
 
    >>> i := 1
    >>> fmt.Println(i)

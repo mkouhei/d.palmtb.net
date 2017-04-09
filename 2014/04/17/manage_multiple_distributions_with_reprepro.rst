@@ -12,7 +12,7 @@ conf/distributions
 
 preciseの部分をtrustyに変えて追記するだけ。
 
-.. code-block:: ini
+.. code-block:: pkgconfig
 
    Origin: myrepo
    Label: myrepo
@@ -23,7 +23,7 @@ preciseの部分をtrustyに変えて追記するだけ。
    UDebComponents: custom
    Description: my repository for Ubuntu precise
    SignWith: yes
-    
+   
    Origin: myrepo
    Label: myrepo
    Suite: trusty
@@ -40,7 +40,7 @@ conf/incoming
 
 distributionsと同じ。
 
-.. code-block:: ini
+.. code-block:: pkgconfig
 
    Name: precise
    IncomingDir: incoming
@@ -61,7 +61,7 @@ conf/options
 
 これは変更なし。
 
-.. code-block:: ini
+.. code-block:: text
 
    verbose
    basedir /var/lib/debpkg-custom/ubuntu
@@ -74,7 +74,7 @@ PreciseやWheezy用のローカルアーカイブには、私のメンテナン�
 社内で開発＆利用しているツールをDebianパッケージにして管理しています。
 私のメンテナンスしているパッケージはひと通りTrustyに入っているので、とりあえず必要ないので空のDBを生成します。
 
-.. code-block:: sh
+.. code-block:: bash
 
    $ pwd
    /var/lib/debpkg-custom/ubuntu

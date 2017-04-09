@@ -24,7 +24,7 @@ Advent Calendar、 今年こそは穴が出ないようにと思って、ホノ�
 
 前者の場合、ユーザ名、および平文もしくはDES暗号化したパスワードを下記のように記述したファイルを作成します。
 
-.. code-block:: ini
+.. code-block:: pkgconfig
 
    user1:password::::
    user2:password::::
@@ -33,16 +33,16 @@ Advent Calendar、 今年こそは穴が出ないようにと思って、ホノ�
 
 一方、後者の必要なユーザ数分、userディレクティブで定義する場合、基本的には次のような設定を行います。 [#]_
 
-.. code-block:: ini
+.. code-block:: lighty
 
    user = fred {
        login = des mEX027bHtzTlQ
-       (snip)
+       # (snip)
    }
 
 これではここにユーザ設定した上にDESで暗号化したパスワードも記述しないといけない分、先ほどのpasswdファイルでの管理よりも不便になってしまいます。そこで、PAMとの連携です。loginで指定している認証方法には PAM を使うこともできます。設定方法は下記の通りです。
 
-.. code-block:: ini
+.. code-block:: lighty
 
    user = fred {
        login = PAM
@@ -69,7 +69,7 @@ Advent Calendar、 今年こそは穴が出ないようにと思って、ホノ�
 TACACS+サーバにpasswd ファイルを配置し、その管理を行わなければなりません。
 そこで、このdefault authenticationでPAMをサポートするようにしたのが今回の対応です。
 
-.. code-block:: ini
+.. code-block:: lighty
 
    default authentication = PAM
 

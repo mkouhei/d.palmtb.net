@@ -4,8 +4,7 @@ sylpheedが使えない。
 うむ、困った。
 
 
-.. code-block:: sh
-
+.. code-block:: text
 
    $ sylpheed --debug
    ssl_init(): /home/hoge/.sylpheed-2.0/certs doesn't exist, or not a directory.
@@ -49,12 +48,7 @@ sylpheedが使えない。
    summary_set_column_order: pos 2 : type 2, vislble 1
    セグメンテーション違反です
 
-
-
-
-
-
-
 .. author:: default
 .. categories:: Debian
+.. tags:: Sylpheed
 .. comments::

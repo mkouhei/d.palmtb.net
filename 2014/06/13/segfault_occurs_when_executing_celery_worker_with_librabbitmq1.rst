@@ -4,7 +4,7 @@ Segfault occurs when executing celery worker with librabbitmq1
 Ubuntu Trustyのpython-celeryパッケージを使って、celery workerを実行すると、プロセスが突然死ぬ、という現象に遭遇しました。
 原因は、AMQPクライアントライブラリであるlibrabbitmq1がsegfaultを起こしていたためでした。
 
-.. code-block:: pypy
+.. code-block:: text
 
    [881933.805893] celery[12704]: segfault at 0 ip 00007f23cd79f6ab sp 00007fff5afe3f70 error 4 in librabbitmq.so.1.1.1[7f23cd797000+10000]
 
