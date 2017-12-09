@@ -3,9 +3,7 @@ clamscanの--unzipオプションが無くなった。
 
 こんなスクリプトでzipファイルを一括でスキャンして展開しているのだが、
 
-
 .. code-block:: sh
-
 
    #!/bin/bash
    
@@ -19,9 +17,7 @@ clamscanの--unzipオプションが無くなった。
 
 さっき実行してみたら、エラーになった。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ unzips.sh 
    clamscan: unrecognized option `--unzip'
@@ -32,8 +28,7 @@ clamscanの--unzipオプションが無くなった。
 `#496276 <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=%23496276>`_ で消されたのか…。
 
 
-.. code-block:: sh
-
+.. code-block:: text
 
    clamav (0.94.dfsg-1) unstable; urgency=low
    (snip)
@@ -43,10 +38,7 @@ clamscanの--unzipオプションが無くなった。
 スクリプトから--unzipオプションを外してあげましたよ。
 
 
-
-
-
-
 .. author:: default
 .. categories:: Debian
+.. tags:: ClamAV
 .. comments::

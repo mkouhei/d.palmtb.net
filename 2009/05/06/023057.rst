@@ -3,9 +3,7 @@ Today's Erlang #3
 
 Atom means invariable values other than the numerical value.
 
-
-.. code-block:: erlang
-
+.. code-block:: erl
 
    1> hello.    # atom
    hello
@@ -14,14 +12,7 @@ Atom means invariable values other than the numerical value.
    3> "hello".  # not atom
    "hello"
 
-
-
-
-
-
-
-
-
 .. author:: default
 .. categories:: programming
+.. tags:: Erlang
 .. comments::

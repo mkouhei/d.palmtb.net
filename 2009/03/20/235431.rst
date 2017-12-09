@@ -1,33 +1,23 @@
 Debian Hack Cafe #7
 ===================
 
-一昨日実施。今回は新宿のかどやホテル１階のカフェ　ラ　ヴォワ。FreeSpotと電源が使える。2時間ごとに注文しないといけないので、時間を区切るのにはちょうど良い。
+一昨日実施。今回は新宿のかどやホテル１階のカフェラヴォワ。FreeSpotと電源が使える。2時間ごとに注文しないといけないので、時間を区切るのにはちょうど良い。
 
 git svn dcommitをやろうとして、manに書いてあった文章にビビったり。
 
+.. code-block:: man
 
-.. code-block:: sh
-
-
-                      Using this option for any other purpose (don't ask)
-                      is very strongly discouraged.
+   Using this option for any other purpose (don't ask)
+   is very strongly discouraged.
 
 
-Debconf9のレジストで分からないところを教えてもらったり。先日JavaのパッケージをITPしたので、 `Java Policy <http://www.debian.org/doc/packaging-manuals/java-policy/>`_ を翻訳中だったり。
-
-
+Debconf9の登録で分からないところを教えてもらったり。先日JavaのパッケージをITPしたので、 `Java Policy <http://www.debian.org/doc/packaging-manuals/java-policy/>`_ を翻訳中だったり。
 
 Hack Cafeを開催した場所を、Google Mapで記録していくことにした。
-
 
 .. raw:: html
 
     <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.co.jp/maps/ms?ie=UTF8&amp;hl=ja&amp;msa=0&amp;msid=116353817628604507840.0004657ab879f5200ddb4&amp;ll=35.697714,139.683248&amp;spn=0.019451,0.03713&amp;output=embed&amp;s=AARTsJoVm-DguaG_DVI8sJOsX4xI1T-avA"></iframe><br /><small><a href="http://maps.google.co.jp/maps/ms?ie=UTF8&amp;hl=ja&amp;msa=0&amp;msid=116353817628604507840.0004657ab879f5200ddb4&amp;ll=35.697714,139.683248&amp;spn=0.019451,0.03713&amp;source=embed" style="color:#0000FF;text-align:left">大きな地図で見る</a></small>
-
-
-
-
-
 
 
 .. author:: default

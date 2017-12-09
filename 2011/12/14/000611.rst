@@ -3,22 +3,14 @@ Vyatta専用コマンドを深堀りしてみた。
 
 `前回のエントリ <http://d.hatena.ne.jp/mkouhei/20111212/1323620613>`_ で書いた通り、configureコマンドやsetコマンドはシェルスクリプトでは使えませんでした。単にVyattaを運用するだけなら、そのまま :command:`${vyatta_sbindir}/my_\*` コマンドを使えば良いのでしょう。でも何故使えなかったのでしょうか。なんでそのままにしておくのは気持ち悪くて、夜もぐっすり眠れません。精神衛生上よろしくありませんね。
 
-
-
 ですので、このモヤモヤを解消するため、オペレーションモード、設定モードについてそれぞれ調べてみました。
-
-
-
 
 オペレーションモードの専用コマンドを探る。
 ------------------------------------------
 
-
 まず、aliasコマンドを実行してみると分かります。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ alias
    alias add='_vyatta_op_run add'
@@ -56,12 +48,9 @@ Vyatta専用コマンドを深堀りしてみた。
    alias undebug='_vyatta_op_run undebug'
    alias update='_vyatta_op_run update'
 
-
 "_vyatta_op_run hoge"の形でaliasが設定されているのは全てVyatta専用のコマンドです。_vyatta_op_runは、/etc/bash_completion.d/vyatta-op-runで定義されている関数です。
 
-
 .. code-block:: sh
-
 
    _vyatta_op_run ()
    {
@@ -105,96 +94,59 @@ Vyatta専用コマンドを深堀りしてみた。
        return $ret
    }
 
+この中の"$run_cmd"が実際に実行するvyatta用のコマンドが設定されます。$run_cmdが、"show"だった場合、showコマンドで設定やステータスの情報を表示し、それ以外の場合は、$tpath/$arg/node.defで定義されているコマンドを実行します。このコマンドの引数などが不完全な場合は、"Incomplete command"と実行される、というわけです。$tpathは、$vyatta_op_templatesが代入されていますがこの変数は入れ子になっており、実際に実行するコマンドは/opt/vyatta/share/vyatta-op/templates/ :command:`${arg}として、実行されるコマンドの処理内容は/opt/vyatta/share/vyatta-op/templates/${arg}/node` .defに定義されています。例えば、 :code:`show interfaces` とするとインタフェースの設定状況を確認できますが、これは、templates/show/interfaces/node.defで定義されており、その内容は
 
-
-
-この中の"$run_cmd"が実際に実行するvyatta用のコマンドが設定されます。$run_cmdが、"show"だった場合、showコマンドで設定やステータスの情報を表示し、それ以外の場合は、$tpath/$arg/node.defで定義されているコマンドを実行します。このコマンドの引数などが不完全な場合は、"Incomplete command"と実行される、というわけです。$tpathは、$vyatta_op_templatesが代入されていますがこの変数は入れ子になっており、実際に実行するコマンドは/opt/vyatta/share/vyatta-op/templates/ :command:`${arg}として、実行されるコマンドの処理内容は/opt/vyatta/share/vyatta-op/templates/${arg}/node` .defに定義されています。例えば、
-
-
-.. code-block:: sh
-
-
-   $ show interfaces
-
-
-とするとインタフェースの設定状況を確認できますが、これは、templates/show/interfaces/node.defで定義されており、その内容は
-
-
-.. code-block:: apache
-
+.. code-block:: text
 
    help: Show network interface information
    run: ${vyatta_bindir}/vyatta-show-interfaces.pl --action=show-brief
 
-
 となっています。この場合は
 
 * help: show interfacesコマンドのヘルプメッセージ
-
 * run: show interfacesコマンドが実行する内容( :command:`${vyatta_bindir}/vyatta` -show-interfaces.pl --action=show-brief)
 
 というワケです。
 
-
-
 なので、オペレーションモードのコマンドをシェルスクリプトにする場合は、シェルスクリプト内でaliasを使えるように、"expand_aliases"を有効にしてやり/etc/bash_completion.d/vyatta-opを読み込みんでやると、オペレーションモードと同じコマンドが使えるようになります。
 
-
 .. code-block:: sh
-
 
    #!/bin/vbash
    shopt -s expand_aliases
    . /etc/bash_completion.d/vyatta-op
    show interfaces
 
-
-
-
 または、下記のようにalias展開前のコマンドを記述して
 
-
 .. code-block:: sh
-
 
    #!/bin/vbash
    . /etc/bash_completion.d/vyatta-op-run
    _vyatta_op_run show interfaces
 
-
 とするか、node.defのrunで設定されている実行コマンドを記述して
 
-
 .. code-block:: sh
-
 
    #!/bin/sh
    ${vyatta_bindir}/vyatta-show-interfaces.pl --action=show-brief
 
-
 とすればシェルスクリプトでもオペレーションモードのコマンドを使えるようになります。ただし、設定モードに変更するために、
-
 
 .. code-block:: sh
 
-
    _vyatta_op_run configure
 
-
 と記述してスクリプトを実行すると、対話形式で設定モードに切り替わってしまうので、その後ろに書いている設定モードのコマンドは実行されません。
-
-
 
 
 オペレーションモードのtabキーの動きを探る。
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 vbashでは、tab補完が効きますが、何も入力していない状態でtabキーを一回押すと、
 
-
-.. code-block:: sh
-
+.. code-block:: text
 
    add             debug           install-image   release         set             traceroute6            
    clear           delete          install-system  remove          show            undebug                
@@ -203,12 +155,9 @@ vbashでは、tab補完が効きますが、何も入力していない状態で
    connect         generate        ping6           reset           terminal                               
    copy            init-floppy     reboot          restart         traceroute
 
-
 のように実行可能なVyatta専用のコマンドが表示されます。これは、/opt/vyatta/share/vyatta-op/templates/以下をlsで見た場合と同じです。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ ls /opt/vyatta/share/vyatta-op/templates/                  
    add        connect  disconnect   install-image   ping6    rename   set       terminal     update       
@@ -216,12 +165,9 @@ vbashでは、tab補完が効きますが、何も入力していない状態で
    clone      debug    generate     no              release  reset    shutdown  traceroute6               
    configure  delete   init-floppy  ping            remove   restart  telnet    undebug
 
-
 再度tabキーを押すと、各コマンドの概要が表示されます。
 
-
-.. code-block:: sh
-
+.. code-block:: text
 
    Possible completions:
      add           Add an object to a service
@@ -262,18 +208,12 @@ vbashでは、tab補完が効きますが、何も入力していない状態で
 
 これは、node.defの、"help:"で設定されている内容が表示されます。
 
-
-
-
 設定モードの専用コマンドを探る。
 --------------------------------
 
-
 一方、設定モードで使用するcommitやsave, loadコマンドなどは、/etc/bash_completion.d/vyatta-cfgで定義されています。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ grep '()' /etc/bash_completion.d/vyatta-cfg | egrep -v '^\s|declare|vyatta|get|print|generate|reset|really' | more
    show ()
@@ -297,9 +237,7 @@ vbashでは、tab補完が効きますが、何も入力していない状態で
 
 オペレーションモードと同様にtabキーを押すと、コマンドが表示されます。
 
-
-.. code-block:: sh
-
+.. code-block:: text
 
    comment         commit-confirm  confirm         delete          edit            load            merge           rollback        save            show            
    commit          compare         copy            discard         exit            loadkey         rename          run             set
@@ -307,9 +245,7 @@ vbashでは、tab補完が効きますが、何も入力していない状態で
 
 tabキーもう一回押して表示されるhelpは、オペレーションモードとは異なり、/etc/bash_completion.d/vyatta-cfgの中で変数_get_help_text_helpsに設定されています。
 
-
 .. code-block:: sh
-
 
        _get_help_text_helps=( \
          "Confirm prior commit-confirm" \
@@ -336,9 +272,7 @@ tabキーもう一回押して表示されるhelpは、オペレーションモ�
 
 設定モードで使えるコマンドは、この/etc/bash_completion.d/vyatta-cfgで定義されているコマンド以外に、aliasで設定されているものもあります。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ configure 
    # alias
@@ -351,24 +285,19 @@ tabキーもう一回押して表示されるhelpは、オペレーションモ�
    alias set='/opt/vyatta/sbin/my_set'
    [edit]
 
-
 先ほどのmy_setコマンドが設定されていることが分かります。ここで、オペレーションモードの時と同じように、
 
 
 .. code-block:: sh
-
 
    #!/bin/vbash
    shopt -s expand_aliases
    . /etc/bash_completion.d/vyatta-cfg
    set interfaces ethernet eth0 description hoge
 
-
 としても、残念ながら/etc/bash_completion.d/vyatta-cfgの読み込み時に、
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    # ./test.sh
    /etc/bash_completion.d/vyatta-cfg: line 888: bind: warning: line editing not enabled
@@ -378,34 +307,23 @@ tabキーもう一回押して表示されるhelpは、オペレーションモ�
    /etc/bash_completion.d/vyatta-cfg: line 893: bind: warning: line editing not enabled
    [edit]
 
-
 のようにコケてしまいます [#]_ 。オペレーションモードでこのスクリプトを実行するとwarningは出ませんがやはり設定はできていません。 `前回のエントリ <http://d.hatena.ne.jp/mkouhei/20111212/1323620613>`_ のように素直に :command:`${vyatta_sbindir}/my_\*` コマンドを使うのがよいでしょう。
-
-
 
 
 各レベルのパラメータの定義を探る。
 ----------------------------------
 
-
 オペレーションモードのコマンドを定義していたのが/opt/vyatta/share/vyatta-op/templates/以下でしたが、設定モードで使う各レベルのパラメータは/opt/vyatta/share/vyatta-cfg/templates/の下で定義されています。
-
-
 
 VyattaはDebianベースのディストロです。Vyattaの最新版の6.3はDebian GNU/Linux Squeezeのi386, amd64がベースになっており、Vyatta独自のソフトウェアもDebianパッケージとして提供されています。前者はvyatta-opパッケージで、後者はvyatta-cfgパッケージで基本的に提供されています。vyatta-cfgパッケージで提供されているテンプレートはinterfacesだけでsystem,serviceなどのテンプレートは他のパッケージ(systemならvyatta-cfg-system, NATならvyatta-natなど)で提供されています。例えば、ホスト名の設定は、
 
-
-.. code-block:: sh
-
+.. code-block:: text
 
    # set system host-name hoge
 
-
 と設定しますが、これはvyatta-cfg-systemパッケージのtemplates/system/host-name/node.defで定義されています。これの中を見てみると、
 
-
-.. code-block:: apache
-
+.. code-block:: perl
 
    type: txt
    help: Set system host name (default: vyatta)
@@ -439,35 +357,23 @@ VyattaはDebianベースのディストロです。Vyattaの最新版の6.3はDe
        echo \"vyatta\" > /etc/mailname
      fi"
 
-
 となっています。この内容は、
 
 * type: とりうるパラメータの種類(ここではtxt)
-
 * help: コマンドのヘルプ
-
 * default: デフォルト値(デフォルトではホスト名はvyatta)
-
 * sytax:expression: 書式のパターン(ホスト名の先頭一文字目は半角英字、2文字目以降は半角英数もしくはハイフン、またはピリオド、最後の文字は半角英数を許可)
-
 * update: ホスト名更新時に実行される処理(/etc/hostname, /etc/hosts, /etc/mailnameを指定したホスト名およびドメイン名があればそれで更新)
-
 * delete: ホスト名削除時に実行される処理(update時に更新されるファイルをホスト名を"vyatta"として更新)
 
 ですので、オペレーションモードでのコマンドの定義と基本的には同じだということが分かります。
 
-
-
-
 :command:`${vyatta_sbindir}/my_\*` コマンドを探る。
 ---------------------------------------------------
 
-
 それでは、先ほどの :command:`my_\*` コマンドについてもう少し突っ込んで見てみます。これらのコマンドの実体は :command:`${vyatta_sbindir}/my_cli_bin` へのシンボリックリンクになっています。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ ls -l ${vyatta_sbindir}/my*
    -rwxr-xr-x 1 root root 19512 Jul 21 09:31 /opt/vyatta/sbin/my_cli_bin
@@ -481,81 +387,51 @@ VyattaはDebianベースのディストロです。Vyattaの最新版の6.3はDe
    lrwxrwxrwx 1 root root    10 Jul 21 16:37 /opt/vyatta/sbin/my_rename -> my_cli_bin
    lrwxrwxrwx 1 root root    10 Jul 21 16:37 /opt/vyatta/sbin/my_set -> my_cli_bin
 
-
  :command:`${vyatta_sbindir}/my_cli_bin` コマンド自体は、ELF形式の実行ファイルで、my_setコマンドやmy_commitコマンドなどのシンボリックリンクも含め、これはvyatta-cfgパッケージによって提供されています。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ dpkg -S ${vyatta_sbindir}/my_cli_bin
    vyatta-cfg: /opt/vyatta/sbin/my_cli_bin
 
-
 このバイナリパッケージに含まれているドキュメントは、/usr/share/doc/vyatta-cfg/READMEくらいですが、このファイルには
 
 
-
    This package has the Vyatta configuration system, including the configuration
-
    back-end, the base configuration templates, and the config-mode CLI completion
-
    mechanism.
 
-
-
-
-
 と書かれています。では、vyatta-cfgパッケージのソースコードを見てみます。
-
-
-
 
 apt-get source vyatta-cfg、じゃあないの？！
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 前述のとおりVyattaはDebianベースなので、
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ apt-get source vyatta-cfg
 
-
 でソースパッケージを取得しよう！と思うかもしれません。が、デフォルトではdeb-srcのAPT Lineが無いのでできません。そこで、デフォルトで設定されている
 
-
-.. code-block:: apache
-
+.. code-block:: sourceslist
 
    deb http://packages.vyatta.com/vyatta stable main # community #
 
-
 をコピーして、
 
-
-.. code-block:: apache
-
+.. code-block:: sourceslist
 
    deb-src http://packages.vyatta.com/vyatta stable main
 
-
 を設定しても、残念ながらリポジトリにはソースパッケージは置いてないのでapt-get updateがコケます。困ってしまいましたね。
-
-
-
 
 Vyattaのソースコードの入手方法。
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 これもちゃんと `ドキュメントに記述があります <http://www.vyatta.org/downloads/source-code>`_ 。ソースコードを入手するにはbuild-src.gitリポジトリをgit cloneを行います。そして、今回必要なvyatta-cfgパッケージのソースコードはsubmoduleとして入手します。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ git clone http://git.vyatta.com/build-iso.git
    $ cd build-iso
@@ -564,23 +440,17 @@ Vyattaのソースコードの入手方法。
    Submodule 'pkgs/vyatta-cfg' (http://git.vyatta.com/vyatta-cfg.git) registered for path 'pkgs/vyatta-cfg'
    (snip)
 
-
 submoduleの初期化後、submodule updateでpkg/vyatta-cfgリポジトリのコピーを行います。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ git submodule update pkgs/vyatta-cfg
    Cloning into 'pkgs/vyatta-cfg'...
    Submodule path 'pkgs/vyatta-cfg': checked out '55dc3e317c138286de6353c21ab47c91fca9a2f4'
 
-
 git submodule updateが完了すると、HEADがcheckoutされます。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ cd pkgs/vyatta-cfg
    $ git log
@@ -594,34 +464,23 @@ git submodule updateが完了すると、HEADがcheckoutされます。
    $ ls
    AUTHORS  COPYING  ChangeLog  Makefile.am  NEWS  README  configure.ac  debian  etc  scripts  src  templates
 
-
 なお、単にソースコードを見るだけなら、gitweb経由で `VyattaのGitリポジトリ <http://git.vyatta.com/git/>`_ は公開されています。 `vyatta-cfgもその中で公開 <http://git.vyatta.com/git/?p=vyatta-cfg.git;a=tree>`_ されています。
-
-
-
 
 my_cli_binのソースコードを見てみる。
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 最新のVyattaのリリースのバージョンはset versionコマンドで確認すると、VC6.3-2011.07.21だと分かります。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ show version 
    Version:      VC6.3-2011.07.21
    (snip)
 
 
-
-
 vyatta-cfgのリポジトリのtagを確認するとVC6.3-2011.07.21にはamd64とi386とがあります。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ git tag
    (snip)
@@ -630,14 +489,9 @@ vyatta-cfgのリポジトリのtagを確認するとVC6.3-2011.07.21にはamd64�
    vyatta/VC6.3-2011.10.04/amd64
    vyatta/VC6.3-2011.10.04/i386
 
-
-
-
 タグvyatta/VC6.3-2011.07.21/amd64をまずチェックアウトします。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ git checkout vyatta/VC6.3-2011.07.21/amd64
    Note: checking out 'vyatta/VC6.3-2011.07.21/amd64'.
@@ -653,14 +507,9 @@ vyatta-cfgのリポジトリのtagを確認するとVC6.3-2011.07.21にはamd64�
    
    HEAD is now at 64d54e8... 0.99.8+napa6
 
-
-
-
 my_cli_binをgrepすると、src/cli_bin.cppがソースコードだと分かります。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ git grep my_cli_bin
    Makefile.am:sbin_PROGRAMS += src/my_cli_bin
@@ -676,13 +525,9 @@ my_cli_binをgrepすると、src/cli_bin.cppがソースコードだと分かり
    debian/vyatta-cfg.postinst.in:for bin in my_cli_bin my_cli_shell_api; do
 
 
-
-
 これを見ると実行するコマンドのパスのbasenameが、\*op_bin_name配列の要素にマッチすれば、その機能が実行される、ということが分かります。
 
-
-.. code-block:: sh
-
+.. code-block:: perl
 
    static int op_idx = -1;
    static const char *op_bin_name[] = {
@@ -779,18 +624,12 @@ my_cli_binをgrepすると、src/cli_bin.cppがソースコードだと分かり
    }
 
 
-
-
-
 masterブランチは古いので要注意。
 --------------------------------
 
-
 ちなみに、vyatta-cfgのリポジトリはmasterブランチが結構古いままです。前述のとおり、2008年12月26日のものがHEADになっています。なので git submodule update直後にそのままソースコードを見ても見つかりません。git logで確認すると2010年7月28日にsrc/cli_bin.cppが初めてコミットされているのが分かりますね。気をつけましょう。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ git log --reverse src/cli_bin.cpp
    commit 639c835bc2730a4fbffd915f5b2028a68375ee7a
@@ -799,11 +638,6 @@ masterブランチは古いので要注意。
    
        add new cstore library
    
-
-
-
-
-
 まとめ
 ------
 
@@ -811,27 +645,19 @@ masterブランチは古いので要注意。
 以上をまとめると、オペレーションモードでは次の方法でシェルスクリプトにすることができます。
 
 * expand_aliasesを有効にし、/etc/bash_completion.d/vyatta-opを読み込むことで、Vyattaのコマンドをそのまま使う
-
 * もしくは/etc/bash_completion.d/vyatta-op-runを読み込み、_vyatta_op_runの引数としてVyattaのコマンドを使う
-
-
 
 設定モードでは、
 
 * /etc/bash_completion.d/vyatta-cfgを読み込むだけではダメ
-
 *  :command:`${vyatta_sbindir}/my_cli_bin` へのsymlinkになっている、 :command:`${vyatta_sbindir}/my_cli_bin` コマンドを使う
 
-
-
 ということで、これでシェルスクリプトで、快適なVyattaを自動化した生活を送れるようになれますね。
-
-
-
 
 .. [#] warningですが、実際に設定されていません。
 
 
 .. author:: default
-.. categories:: network,Debian
+.. categories:: network
+.. tags:: Vyatta,Debian
 .. comments::

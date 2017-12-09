@@ -4,15 +4,10 @@ td2planetを使ってみた。
 ごにょごにょやっている一環で、td2planetを導入してみた。当初はplanetplanetを導入しようかと思ったのだが、pythonによる実装なのですな、これ。複数の実装を導入するのがメンテナンス考えると面倒なので、rubyによる実装のtd2planetを導入してみたわけだ。td2planetのtdはtDiaryのtdなんですな。導入メモは以下。
 
 
-
-
 パッケージの導入
 ----------------
 
-
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ sudo apt-get install td2planet   
    Reading package lists... Done
@@ -41,49 +36,34 @@ td2planetを使ってみた。
    Setting up td2planet (0.1.0-2) ...
 
 
-
 td2planet用ユーザの作成
 -----------------------
 
-
 td2planet用のユーザを作成する。td2planetとする。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ sudo adduser --home /var/www/td2planet --ingroup nogroup --disabled-password \
     --no-create-home --shell /bin/false --disabled-login td2planet
 
-
-
 導入、設定
 ----------
 
-
 ホームディレクトリ/var/www/td2planet以下に公開用のディレクトリを作る。Lightyのsimple-vhostを使うので、その下にvhost1.hoge.comというディレクトリをまず掘る。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ sudo mkdir /var/www/td2planet/vhost1.hoge.com/
 
-
 ここに設定ファイルを置く。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ sudo -u td2planet cp -/usr/share/doc/td2planet/examples/config.yaml /var/www/td2planet/vhost.hoge.com/
 
-
 config.yamlを設定する。サンプルファイルを変更するとこんな感じ。
 
-
-.. code-block:: sh
-
+.. code-block:: yaml
 
    ## general config
    title: hoge planet
@@ -142,108 +122,82 @@ config.yamlを設定する。サンプルファイルを変更するとこんな
          false
        end
 
-
-
 実行してみる
 ------------
 
-
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ cd /var/www/td2planet/vhost1.hoge.com/
    $ sudo -u td2planet config.yaml
 
+問題なく表示できることを確認できたら、cronで設定する。td2planetユーザでcronを回すので、 :code:`sudo crontab -u td2planet -e` と実行して、/etc/cron.allowにtd2planetユーザを予め追記しておく。
 
-問題なく表示できることを確認できたら、cronで設定する。td2planetユーザでcronを回すので、/etc/cron.allowにtd2planetユーザを予め追記しておく。
+.. code-block:: text
 
-
-.. code-block:: sh
-
-
-   $ sudo crontab -u td2planet -e
-   
-   # m h  dom mon dow   command
    24 * * * * cd /var/www/td2planet/vhost1.hoge.com/; td2planet config.yaml
-
-
 
 Webサーバ(Lighty)で公開する。
 -----------------------------
 
-
 もともとlighttpdを使っているのだが、virual hostは使っていなかった。今回、td2planet用にホスト名ベースでvirtual hostを設定してみた。まずは、モジュールを有効にする。ホスト名ベースでのvirtual hostの設定のやり方はいくつかあるようなのだが、今回はsimple-vhostで行う。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ sudo /usr/sbin/lighttpd-enable-mod simple-vhost
    $ cd /etc/lighttpd/conf-available/
 
 
-設定ファイルを変更する。
+設定ファイルを下記のように変更する。
 
+.. code-block:: lighty
 
-.. code-block:: apache
-
-
-   ## Simple name-based virtual hosting
-   ##
-   ## Documentation: /usr/share/doc/lighttpd-doc/simple-vhost.txt
-   ##                http://www.lighttpd.net/documentation/simple-vhost.html
-   
    server.modules += ( "mod_simple_vhost" )
-   
-   ## The document root of a virtual host isdocument-root =
-   ##   simple-vhost.server-root + $HTTP["host"] + simple-vhost.document-root
-   
    $HTTP["host"] == "hoge.com" {
-   	simple-vhost.server-root         = "/var/www"
-   	simple-vhost.document-root       = "/"
-   	simple-vhost.default-host        = "hoge.com"
+     simple-vhost.server-root         = "/var/www"
+   	 simple-vhost.document-root       = "/"
+   	 simple-vhost.default-host        = "hoge.com"
    }
    
    $HTTP["host"] !~ "^(vhost1\.hoge\.com|vhost2\.hoge\.com)$" {
-   	simple-vhost.server-root         = "/var/www"
-   	simple-vhost.document-root       = "/"
-   	simple-vhost.default-host        = "www.hoge.com"
+     simple-vhost.server-root         = "/var/www"
+   	 simple-vhost.document-root       = "/"
+   	 simple-vhost.default-host        = "www.hoge.com"
    }
-   
    
    $HTTP["host"] == "vhost1.hoge.com" {
-   	url.rewrite-once = (
-   		"^/$" => "/planet.html",
-   	)
-   	alias.url       += (
-   		"/tdiary/theme/" => "/usr/share/tdiary/theme/"
-   	)
+     url.rewrite-once = (
+   	   "^/$" => "/planet.html",
+     )
+   	 alias.url       += (
+   	   "/tdiary/theme/" => "/usr/share/tdiary/theme/"
+   	 )
    
-   	server.document-root = "/var/www/td2planet/vhost1.hoge.com/output/"
-   	accesslog.filename = "/var/log/lighttpd/vhost1.access.log"
+   	 server.document-root = "/var/www/td2planet/vhost1.hoge.com/output/"
+   	 accesslog.filename = "/var/log/lighttpd/vhost1.access.log"
    }
-
 
 つぎに元の設定を変更する。10-cgi.confの中で、www.hoge.comfやhoge.comにマッチした場合の処理を設定する。そうしないと、せっかくtd2planet用にvirtual hostを設定しても、期待通りに表示されない。
 
+変更前
+~~~~~~
 
-.. code-block:: apache
+.. code-block:: lighty
 
-
-   変更前
    alias.url       += ( "/blog/" => "/var/www/blog/" )
-   
    $HTTP["url"] =~ "/blog/" {
-   	cgi.assign = ( ".cgi" => "" )
+   	 cgi.assign = ( ".cgi" => "" )
+   }
    
-   
-   変更後
+変更後
+~~~~~~
+
+.. code-block:: lighttpd
+
    $HTTP["host"]	=~ "^(www\.hoge\.com|hoge\.com)$" {
-   	alias.url       += ( "/blog/" => "/var/www/blog/" )
-   	$HTTP["url"] =~ "/blog/" {
-   		cgi.assign = ( ".cgi" => "" )
-   	}
+   	 alias.url       += ( "/blog/" => "/var/www/blog/" )
+   	 $HTTP["url"] =~ "/blog/" {
+   	   cgi.assign = ( ".cgi" => "" )
+   	 }
    }
 
 
@@ -251,23 +205,16 @@ Webサーバ(Lighty)で公開する。
 
 あとは、再起動する。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ sudo /etc/init.d/lighttpd restart
-
-
 
 任意のカテゴリのエントリだけを表示させる
 ----------------------------------------
 
-
 テーマを絞って表示したい。タイトルで判断することにする。これにはformatterを使用する。まず、config.yamlの
 
-
-.. code-block:: sh
-
+.. code-block:: yaml
 
    ## formatter
    formatter: default_formatter
@@ -277,21 +224,17 @@ Webサーバ(Lighty)で公開する。
 
 となっている箇所を、default_formatterをコメントアウトし、your_formatterを有効にする。次にsample_formatter.rbを雛形に、your_formatter.rbを作成する。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ sudo -u td2planet cp -i /usr/lib/ruby/1.8/td2planet/sample_formatter.rb /var/www/td2planet/vhost1.hoge.com/your_formatter.rb
    $ sudo -u td2planet vi your_formatter.rb
    $ cd /var/www/td2planet/vhost1.hoge.com/
    $ diff -u /usr/lib/ruby/1.8/td2planet/sample_formatter.rb your_formatter.rb 
 
-
 変更箇所は以下のとおり。
 
 
-.. code-block:: sh
-
+.. code-block:: udiff
 
    --- /usr/lib/ruby/1.8/td2planet/sample_formatter.rb	2007-07-06 12:00:16.000000000 +0900
    +++ your_formatter.rb	2009-05-25 22:27:29.000000000 +0900
@@ -319,12 +262,10 @@ Webサーバ(Lighty)で公開する。
           end
         end
 
-
 実際はこんな感じ。
 
 
-.. code-block:: sh
-
+.. code-block:: rb
 
    #--
    # -*- mode: ruby; coding: utf-8 -*-
@@ -356,32 +297,22 @@ Webサーバ(Lighty)で公開する。
      end
    end
 
-
 これで、Keyword1, Keyword2, Keyword3のカテゴリのエントリだけが表示されるようになる。
 
 これで終わり、のはずだった。
 
-
-
-
 はてダのRSSの仕様による、表示上のバグ
 -------------------------------------
 
-
 終わりだと思ったら、どうも表示がおかしい。カテゴリが重複して表示されるのだ。どうやら、はてダのRSSでのカテゴリはitem要素の子要素dc:subjectにあるのだが、同じ子要素titleにも、"[keyword1][keyword2]title"という形でタイトルの先頭に残ってしまう。まぁ、これがあるおかげで、YourFormatterのitem.titleで該当するキーワードのエントリだけを拾えるのだけど。で、仕方ないので、titleの文字列のうち、"[...]"となっている箇所を破壊的に削除することにした。やることは簡単。item.titleに対し、該当部分だけを削除するように、
 
-
-.. code-block:: sh
-
+.. code-block:: rb
 
    item.title.gsub!(/\[.*\]/, "")
 
-
 の一行を追加してやればよい。変更後は以下のようになる。
 
-
-.. code-block:: sh
-
+.. code-block:: rb
 
    #--
    # -*- mode: ruby; coding: utf-8 -*-
@@ -414,16 +345,9 @@ Webサーバ(Lighty)で公開する。
      end
    end
 
-
-
-
 これでやりたいことが全てできた。よかったよかった。
 
-
-
-
-
-
 .. author:: default
-.. categories:: Debian,Dev
+.. categories:: Debian
+.. tags:: Ruby,td2planet,lighttpd,Debian
 .. comments::

@@ -3,13 +3,9 @@ Today's Erlang #0
 
 I'm studying Erlang, then Title of "Today's Erlang" started.
 
-
-
 First, start Erlang Shell as Command interpreter 
 
-
-.. code-block:: erlang
-
+.. code-block:: shell-session
 
    $ erl
    Erlang (BEAM) emulator version 5.6.5 [source] [64-bit] [smp:2] [async-threads:0] [kernel-poll:false]
@@ -17,14 +13,9 @@ First, start Erlang Shell as Command interpreter
    Eshell V5.6.5  (abort with ^G)
    1> 
 
-
-
-
 calculate.
 
-
-.. code-block:: erlang
-
+.. code-block:: erl
 
    2> 1 + 2 * 3.
    7
@@ -41,12 +32,7 @@ calculate.
    8> 16#cafe * 37#sugar.
    * 1: illegal base '37'
 
-
-
-
-
-
-
 .. author:: default
 .. categories:: programming
+.. tags:: Erlang
 .. comments::

@@ -3,15 +3,9 @@ emacsでreportbug用の文面を生成する。
 
 blockdiagが1.1になって、OrderedDictが使われるようになったようです。この機能を使うためには、pypiに公開されている `ordereddict <http://pypi.python.org/pypi/ordereddict>`_ が必要で、実際blockdiagでもこれを使っているので、blockdiagのパッケージの前に、ordereddictをITPする必要が出てきました。 [#]_ 
 
-
-
 で、いつものようにreportbugを使ってITPしようとしたところ、
 
-
-
-
-.. code-block:: sh
-
+.. code-block:: text
 
    (snip)
    What sort of request is this? (If none of these things mean anything to you, or you are trying to report a bug in an existing package, please press Enter to exit reportbug.)
@@ -45,21 +39,11 @@ blockdiagが1.1になって、OrderedDictが使われるようになったよう
        dist = utils.SUITES2DISTS.get(l[2], '')
    IndexError: list index out of range
 
+のようにreportbugがコケてしまいます。困ったねと思って、 `ドキュメント <http://www.debian.org/Bugs/Reporting>`_ を読んでみたら、emacs用にdebian-bugコマンドがあることを知りました。インストールしていなかったので、まずは :code:`sudo apt-get install debian-el` としてインストール。
 
-のようにreportbugがコケてしまいます。困ったねと思って、 `ドキュメント <http://www.debian.org/Bugs/Reporting>`_ を読んでみたら、emacs用にdebian-bugコマンドがあることを知りました。インストールしていなかったので、まずはインストール。
-
-
-.. code-block:: sh
-
-
-   $ sudo apt-get install debian-el
-
-
-んで、emacsを起動して、M-x debian-bug-wnppを実行すると、reportbugと同じようにいくつか質問され、下記の文面をsubmit@bugs.debian.orgに送信。
-
+んで、emacsを起動して、 :code:`M-x debian-bug-wnpp` を実行すると、reportbugと同じようにいくつか質問され、下記の文面をsubmit@bugs.debian.orgに送信。
 
 .. code-block:: ini
-
 
    From: Kouhei Maeda <mkouhei@palmtb.net>
    To: Debian Bug Tracking System <submit@bugs.debian.org> 
@@ -81,34 +65,24 @@ blockdiagが1.1になって、OrderedDictが使われるようになったよう
     big-oh performance that matches regular dictionaries (amortized O(1) 
     insertion/deletion/lookup and O(n) iteration/repr/copy/equality_testing).
 
-
-
-
-
-.. code-block:: sh
-
+.. code-block:: text
 
    --text follows this line--
 
 
 を消し忘れて何度か怒られ、なんとか `受け付けられました <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=649895>`_ よ…。でも、上記だとno titleになってしまったので、
 
-
-.. code-block:: ini
-
+.. code-block:: text
 
    retitle 649895 ITP: python-ordereddict -- recipe has big-oh performance
 
 
 でretitleしました…。 [#]_ 
 
-
-
-
 .. [#] `python2.7同梱のものは使ってないとのご指摘いただきました <https://twitter.com/#!/tk0miya/status/139886280732450816>`_ 。小宮さん、ありがとうございます。
 .. [#] retitleするのも宛先間違えてたし…。ダメだ、ワシ…。
 
-
 .. author:: default
-.. categories:: Debian
+.. categories:: Packaging
+.. tags:: reportbug,blockdiag,Debian
 .. comments::

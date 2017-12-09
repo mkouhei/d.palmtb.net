@@ -2,37 +2,24 @@ Mercurialが分からない自分のためのメモ。
 =======================================
 
 メンテナンスしているパッケージがMercurialを使っているので、備忘のためのメモです。
+どのブランチにいるのかは :code:`hg branch` を実行すれば分かります。
 
-
-
-どのブランチにいるのかはhg branchを実行すれば分かります。
-
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ hg branch
    default
 
-
 すべてのブランチを表示するにはhg branches。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ hg branches 
    0.3.x                        153:28528a73b122
    default                      151:faefc873c619
 
+Gitユーザにとって分かりにくいのが :code:`hg log` 。このコマンドではすべてのブランチのログが表示されます。
 
-
-
-Gitユーザにとって分かりにくいのがhg log。hg logではすべてのブランチのログが表示されます。
-
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ hf log
    チェンジセット:   153:28528a73b122
@@ -71,33 +58,21 @@ Gitユーザにとって分かりにくいのがhg log。hg logではすべて�
    (snip)
 
 
-
-
-defaultブランチは、"ブランチ: default"とは表示されないんですね。git log --graphのような表示をするには、~/.hgrcに
+defaultブランチは、"ブランチ: default"とは表示されないんですね。 :code:`git log --graph` のような表示をするには、 :code:`~/.hgrc` に
 
 http://labs.timedia.co.jp/2011/03/mercurial-extensions-we-should-setup-for-gituser.html
-
    
-.. code-block:: apache
-
+.. code-block:: ini
 
    [extensions]
    graphlog =
 
 
-
-
-
-
 と書くそうです。
 
+すると、 :code:`hg glog` もしくは :code:`hg log -G` で下記のように表示されます。
 
-
-すると、hg glogもしくはhg log -Gで下記のように表示されます。
-
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ hg glog
    o  チェンジセット:   153:28528a73b122
@@ -124,22 +99,18 @@ http://labs.timedia.co.jp/2011/03/mercurial-extensions-we-should-setup-for-gitus
    | |
 
 
-チェックアウトしているチェンジセットが"@"になっています。git checkoutに相当するのがhg updateなので、
+チェックアウトしているチェンジセットが"@"になっています。 :code:`git checkout` に相当するのが :code:`hg update` なので、
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ hg update 0.3.x
    ファイル状態: 更新数 20、 マージ数 0、 削除数 14、 衝突未解消数 0
 
+と0.3.xブランチのheadにチェックアウトします。 :code:`hg log -G` を実行して確認してみます。
 
-と0.3.xブランチのheadにチェックアウトします。hg log -Gを実行して確認してみます。
+.. code-block:: shell-session
 
-
-.. code-block:: sh
-
-
+   $ hg log -G
    @  チェンジセット:   153:28528a73b122
    |  ブランチ:         0.3.x
    |  タグ:             tip
@@ -164,18 +135,15 @@ http://labs.timedia.co.jp/2011/03/mercurial-extensions-we-should-setup-for-gitus
    | |
 
 
-@の位置が変わりました。
+"@"の位置が変わりました。
+
+:code:`git show` に相当するのが、 :code:`hg export` 。 :code:`git format-patch` に相当するのがどんなものか分からないので、 :code:`hg export` コマンドで代用できます。
 
 
-
-git showに相当するのが、hg export。git format-patchに相当するのがどんなものか分からないので、hg exportコマンドで代用できます。
-
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ hg export faefc873c619
-   
+
    # HG changeset patch
    # User Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
    # Date 1321943974 -10800
@@ -216,27 +184,17 @@ git showに相当するのが、hg export。git format-patchに相当するの�
     (snip)
 
 
-
-
-とりあえずこれくらい分かれば、git-format-patchに相当するコマンドが分からないままですが、特定のチェンジセットからパッチを生成できますね。
-
-
+とりあえずこれくらい分かれば、 :code:`git-format-patch` に相当するコマンドが分からないままですが、特定のチェンジセットからパッチを生成できますね。
 
 
 参考
 ----
 
-
-
 *  http://misc.e-hdk.com/hg-and-git
-
 *  http://labs.timedia.co.jp/2011/03/mercurial-extensions-we-should-setup-for-gituser.html
-
-
-
-
 
 
 .. author:: default
 .. categories:: Git
+.. tags:: Git,Mercurial
 .. comments::

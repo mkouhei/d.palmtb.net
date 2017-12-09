@@ -4,8 +4,7 @@ virt-manager入れてみた。
 ２年前の春のOSCでの仮想化友の会＆東京エリアDebian勉強会 合同勉強会での発表前に、 `virt-managerを導入しようとして敗北して <http://d.hatena.ne.jp/mkouhei/20070310/1173544216>`_ 、OSCが終わった後はコマンドラインで普通に使えるから必要ねぇなぁ、とそのまま放置プレイしていたのだが、 `Debian Wikiを見たら <http://wiki.debian.org/KVM>`_ いつの間にかvirt-managerを使えるようになっていたので、インストールしてみた。
 
 
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ sudo apt-get install virt-manager
    パッケージリストを読み込んでいます... 完了
@@ -137,16 +136,9 @@ virt-manager入れてみた。
 
 
 導入されるパッケージ多すぎ。
-
-
-
 取り合えず、使い方は今度確認するか。コマンドラインだけで十分だと思うんだけどな…。
 
-
-
-
-
-
 .. author:: default
-.. categories:: Debian,virt.,computer
+.. categories:: virt.
+.. tags:: Debian,virt-manager
 .. comments::

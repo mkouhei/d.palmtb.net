@@ -1,15 +1,11 @@
 pystacheのtestがコケる件。
 ==========================
 
-mustacheのpython版であるpystacheをDebianパッケージにしようとしています。python3版のpython3-pystacheも作ってほしい、という要望ももらっているのですが、現時点ではpystacheはpython2.xのみサポートされているので、とりあえずそれは後回しにする予定です。
-
-
+mustacheのPython版であるpystacheをDebianパッケージにしようとしています。python3版のpython3-pystacheも作ってほしい、という要望ももらっているのですが、現時点ではpystacheはpython2.xのみサポートされているので、とりあえずそれは後回しにする予定です。
 
 さて、今回テストがコケる問題ですが、pystacheのmasterブランチのHEAD(2011/11/30の7ccb55fd9)をnosetestsを実行すると56件あるテストのうち1つだけコケる、状況です。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ nosetests 
    (snip)
@@ -21,17 +17,11 @@ mustacheのpython版であるpystacheをDebianパッケージにしようとし�
    AssertionError: Markup(u'(123 & [&#39;something&#39;])(chris & 0.9)') != "(123 & ['something'])(chris & 0.9)"
    (snip)
 
-
 アポストロフィ(apostrophe)"'"が"&#39;"に変換されているため、一致しないのが原因です。apostropheはHTML decimalで&#39;ですね。
-
-
 
 debugモードで実行すると、markupsafeのMarkup()で例外処理されています。
 
-
-.. code-block:: sh
-
-
+.. code-block:: shell-session
    
    $ nosetests -d
    (snip)
@@ -44,7 +34,7 @@ debugモードで実行すると、markupsafeのMarkup()で例外処理されて
        'Markup(u\'(123 & [&#39;something&#39;])(chris & 0.9)\') != "(123 & [\'something\'])(chris & 0.9)"' = '%s != %s' % (safe_repr(Markup(u'(123 & [&#39;something&#39;])(chris & 0.9)')), safe_repr("(123 & ['something'])(chris & 0.9)"))
        'Markup(u\'(123 & [&#39;something&#39;])(chris & 0.9)\') != "(123 & [\'something\'])(chris & 0.9)"' = self._formatMessage('Markup(u\'(123 & [&#39;something&#39;])(chris & 0.9)\') != "(123 & [\'something\'])(chris & 0.9)"', 'Markup(u\'(123 & [&#39;something&#39;])(chris & 0.9)\') != "(123 & [\'something\'])(chris & 0.9)"')
    >>  raise self.failureException('Markup(u\'(123 & [&#39;something&#39;])(chris & 0.9)\') != "(123 & [\'something\'])(chris & 0.9)"')
-       
+   
    
    ----------------------------------------------------------------------
    Ran 56 tests in 0.052s
@@ -52,15 +42,9 @@ debugモードで実行すると、markupsafeのMarkup()で例外処理されて
    FAILED (failures=1)
 
 
-
-
 原因は、markupsafeにありました。
 
-
-
-
-.. code-block:: sh
-
+.. code-block:: man
 
    FUNCTIONS
        escape(...)
@@ -71,26 +55,15 @@ debugモードで実行すると、markupsafeのMarkup()で例外処理されて
            such characters in HTML.  Marks return value as markup string.
 
 
-
-
 developementブランチではこの問題は修正されているようなのですが、0.3.1から大分変わってしまうので、git cherry-pickで持ってきて修正する、というのは無理っぽいので、結局v0.3.1のタグをチェックアウトして、python2.7専用のDebianパッケージを作ってmentorsにアップロードしました。
-
-
-
 
 タグを打たれていない0.4.0ではどうなん？
 ---------------------------------------
 
-
-ちなみに、pystache 0.4.0だと一見nosetestsはうまく行くのですが、テストの一部がgit submoduledeでの管理になっていて、git submodule init; git submodule update後にnosetestsを実行すると盛大にコケましたよ、と…。
-
-
-
-
-
-
+ちなみに、pystache 0.4.0だと一見nosetestsはうまく行くのですが、テストの一部が :code:`git submodulede` での管理になっていて、 :code:`git submodule init; git submodule update` 後にnosetestsを実行すると盛大にコケましたよ、と…。
 
 
 .. author:: default
-.. categories:: Python,Debian
+.. categories:: Packaging
+.. tags:: Debian,Python,pystache
 .. comments::

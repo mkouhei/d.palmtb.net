@@ -3,66 +3,43 @@ Armadillo-9のフラッシュメモリの書き換え
 
 CFの2GBを昨日買ってきたので、Debianをインストールすることにした。CFにパーティションを切って、ファイルシステムを作成しようと思ったら、デフォルトのフラッシュメモリイメージには、mke2fsコマンドがない！どうせなので最近お蔵入していたのでフラッシュメモリを根こそぎ書き換えることにした。
 
-
-
 hermit以外での書き換え方法がよく分からんので、仕方なくhermitで書き換えすることにした。が、問題はnon-freeなパッケージだということ。i386版しかないのでMacBook Airでは書き換え作業ができないのでLet's note R3で行った。
 
 きちんとした手順は `リンク先 <http://download.atmark-techno.com/armadillo-9/doc/>`_ のarmadillo-9_software_manual_ja-x.x.xx.pdfを見た方が良いよ。
 
-
 hermitのインストール
 --------------------
 
-
 `アットマークテクノ社のサイト <http://download.atmark-techno.com/armadillo-9/hermit/deb/>`_ からhermitのパッケージをダウンロードして、インストール。
-
 
 フラッシュメモリの書き換え
 --------------------------
 
-
-
 * `同じく同社のサイト <http://download.atmark-techno.com/armadillo-9/image/>`_ から各リージョン用のイメージをダウンロード。
-
 * ジャンパの設定。JP1はオープン、JP2はショートさせておく。
-
 * カーネルの書き換え
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ hermit download -i linux-2.6.xx.x-a9-xx.bin.gz -r kernel --port "/dev/ttyUSB0"
 
-
 * ユーザランドの書き換え
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ hermit download -i romfs-YYYYMMDD-2.6.xx.x-a9-xx.img.gz -r userland --port "/dev/ttyUSB0"
 
-
-
-
 上記はうまく行ったのに、ブートローダーはなぜかダメ。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ hermit download -i loader-armadillo9-eth-vx.x.xx.bin -r bootloader --port "/dev/ttyUSB0"
    hermit: panic: can't write to locked flash block without --force-locked
 
-
-よくマニュアルを読んでみたら、警告に出ているとおり、"--force-locked"オプションをつけないとダメらしい。で、オプション付けてやってみたらちゃんとうまく行きましたよと。
-
-
-
-
+よくマニュアルを読んでみたら、警告に出ているとおり、:code:`--force-locked` オプションをつけないとダメらしい。で、オプション付けてやってみたらちゃんとうまく行きましたよと。
 
 
 .. author:: default
-.. categories:: Debian,gadget,computer
+.. categories:: gadget
+.. tags:: Debian,Armadillo-9
 .. comments::

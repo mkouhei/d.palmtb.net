@@ -6,10 +6,7 @@ Etchの時は、Hiki + ruby + lighttpd + fastcgiでプロセス間のセッシ�
 良かった良かった、と思ったら、テキストファイルならうまくいくのに、PDFだとタメだ。ただ、以前とちがうのはプロセスは落ちてない。attachディレクトリに手動でコピーすると添付ファイルとして扱えるからアップロードの処理がうまく行ってないようだ…。
 
 
-
-
-.. code-block:: sh
-
+.. code-block:: irb
 
    Is a directory - /fuga/hiki/data/text/ (Errno::EISDIR)
    /hoge/hiki/hiki/db/flatfile.rb:62:in `read'
@@ -34,11 +31,7 @@ Etchの時は、Hiki + ruby + lighttpd + fastcgiでプロセス間のセッシ�
    index.fcgi:5
 
 
-
-
-
-
-
 .. author:: default
 .. categories:: Debian
+.. tags:: hiki,lighttpd,fastcgi,Lenny
 .. comments::

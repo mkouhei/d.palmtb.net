@@ -5,9 +5,7 @@ lighttpdで404 not found対応
 
 lighttpd.confは以下のように設定。
 
-
-.. code-block:: apache
-
+.. code-block:: lighttpd
 
    ## Format: <errorfile-prefix><status>.html
    ## -> ..../status-404.html for 'File not found'
@@ -16,11 +14,7 @@ lighttpd.confは以下のように設定。
 
 /hoge/ディレクトリ以下に、404.htmlというファイルを置くと、ちゃんとerrorコード404で/hoge/404.htmlが表示されると。
 
-
-
-
-
-
 .. author:: default
 .. categories:: Ops
+.. tags:: lighttpd
 .. comments::
