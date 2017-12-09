@@ -3,13 +3,9 @@ SendmailからGmail経由でメールを送信する。
 
 諸事情により久々にSendmailを触ることになり、Gmail経由でメール送信させるテストをしたのでその備忘録です。GmailまたはGoogle Apps経由で、他のドメインのメールアドレス宛にメールを送信する場合の例です。
 
-
-
 sendmail.mc [#]_ 
 
-
-.. code-block:: make
-
+.. code-block:: text
 
    divert(-1)dnl
    divert(0)dnl
@@ -57,79 +53,50 @@ sendmail.mc [#]_
    MAILER(`local')dnl
    MAILER(`smtp')dnl
 
-
 sendmail.mcを変更したら、makeを実行してsendmail.cfを更新し、sendmailを再起動します。
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ sudo make
    $ sudo /etc/init.d/sendmail restart
 
 
-
-
 authinfoで指定した、/etc/mail/authinfoは、
 
-
-.. code-block:: apache
-
+.. code-block:: text
 
    AuthInfo:smtp.gmail.com "U:smmsp" "I:user" "P:password" "M:PLAIN"
 
 
 のように作成し、
 
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ sudo bash -c "makemap -r hash /etc/mail/authinfo.db < /etc/mail/authinfo"
 
-
 と実行します [#]_ 。
-
-
 
 これが、Google Appsを使う場合はauthinfoで指定している"I:"と"P:"をGoogle Appsのアカウント、パスワードにすればOKです。
 
-
-.. code-block:: apache
-
+.. code-block:: text
 
    AuthInfo:smtp.gmail.com "U:smmsp" "I:user@example.org" "P:password" "M:PLAIN"
 
-
 てな具合です。
 
-
-
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ date | mail -s test hoge@gmail.com
 
-
 とすると、上記の例では、Gmailならuser@gmail.comから、Google Appsならuser@example.orgから、hoge@gmail.com宛にメール配送されます。
-
-
-
-
 
 
 修正版
 ------
 
-
 もちっといろいろやってみたら結構不要なのが多かったので、以下に修正版を掲載しておきます。
 
-
-
-
-.. code-block:: make
-
+.. code-block:: text
 
    divert(-1)dnl
    divert(0)dnl
@@ -168,17 +135,12 @@ authinfoで指定した、/etc/mail/authinfoは、
    MAILER(`smtp')dnl
 
 
-
-
 Gmailにリレーするだけなのに、サーバ証明書とかクライアント証明書は不要ですね、ハイ。あと、LOCAL_DOMAINで指定したドメインが、/etc/aliasesで設定するローカルアカウントのエイリアスのメールアドレスのドメインと同じだと、リレーされませんね。
-
-
-
 
 .. [#] $ egrep -v '^#|^dnl' sendmail.mcの結果です。
 .. [#] authinfoのAuthInfo:smtp.gmail.comで、STARTTLS用のポートTCP/587を指定していませんが、RELAY_MAILER_ARGSで587を指定しているので不要です。
 
-
 .. author:: default
-.. categories:: Unix/Linux,Debian
+.. categories:: Unix/Linux
+.. tags:: Debian,Sendmail,Gmail
 .. comments::

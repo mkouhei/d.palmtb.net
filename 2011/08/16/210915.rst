@@ -3,11 +3,7 @@ smbclientでファイル一括取得。
 
 滅多に使わないので忘れるので備忘として。
 
-
-
-
-.. code-block:: sh
-
+.. code-block:: shell-session
 
    $ smbclient -U user //smbserver/Resouece
    Enter user's password:
@@ -23,11 +19,7 @@ smbclientでファイル一括取得。
 
 Windowsな人たちと一緒に作業している環境だと、scpだと日本語の文字化けでアカン場合でもsmbclientでは大丈夫だったりもするので、必要悪って感じですねぇ…。
 
-
-
-
-
-
 .. author:: default
 .. categories:: Unix/Linux
+.. tags:: smbclient
 .. comments::
