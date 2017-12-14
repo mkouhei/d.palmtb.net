@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2017/12/14/python_debian
    2017/12/09/powershell
    2017/09/16/thinkpad_t470s
    2017/03/26/my_daughter_began_playing_scratch_on_debian
