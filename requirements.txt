@@ -2,7 +2,8 @@
 MarkupSafe
 Pygments
 docutils
--e git://github.com/vladris/tinkerer.git#egg=Tinkerer
+#-e git://github.com/vladris/tinkerer.git#egg=Tinkerer
+tinkerer==1.6.0
 cssselect
 lxml
 pytz
