@@ -8,20 +8,25 @@ PAGE :=
 all: build  ## all
 
 prebuild:  ## prebuild; prepare tinkerer environment on prebuild.
-	virtualenv ../.venv
-	../.venv/bin/pip install -r requirements.txt
+	pipenv shell; \
+	pipenv install; \
+	exit;
 
 build: prebuild $(SRCES)
 build: $(SRCES) ## build; blog articles.
-	. ../.venv/bin/activate; \
+	pipenv shell;\
 	tinker -b -q;\
-	deactivate;
+	exit;
 
 post: ## post POST='blog article subject'
-	../.venv/bin/tinker -p "$(POST)"
+	pipenv shell; \
+	tinker -p "$(POST)"; \
+	exit;
 
 page: ## page PAGE='page subject'
-	../.venv/bin/tinker --page "$(PAGE)"
+	pipenv shell; \
+	tinker --page "$(PAGE)"; \
+	exit;
 
 publish: ## publish; rsync to blog server.
 	rsync -a --exclude 'glaneuses.json' --delete blog/html/ blogadm@proxy:/var/www/d.palmtb.net/

@@ -3,7 +3,7 @@ MarkupSafe
 Pygments
 docutils
 #-e git://github.com/vladris/tinkerer.git#egg=Tinkerer
-tinkerer==1.6.0
+Tinkerer==1.7.1
 cssselect
 lxml
 pytz
@@ -13,4 +13,4 @@ sphinxcontrib-blockdiag
 sphinxcontrib-googleanalytics
 sphinxcontrib-nwdiag
 sphinxcontrib.gist
-wsgiref
+#wsgiref
