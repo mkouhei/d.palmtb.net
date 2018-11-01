@@ -112,7 +112,7 @@ version = tinkerer.__version__
 release = tinkerer.__version__
 html_title = project
 html_show_sourcelink = True
-html_add_permalinks = True
+html_add_permalinks = '¶'
 
 blockdiag_fontpath = '/usr/share/fonts/truetype/vlgothic/VL-PGothic-Regular.ttf'
 blockdiag_antialias = True
