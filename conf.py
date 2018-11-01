@@ -10,10 +10,10 @@ import tinkerer.paths
 # **************************************************************
 
 # Change this to the name of your blog
-project = u'ペンギンと愉快な機械の日々'
+project = 'mkouhei\'s blog'
 
 # Change this to the tagline of your blog
-tagline = 'I use technology to make life more convenient.'
+tagline = ''
 
 # Change this to the description of your blog
 #description = 'This is an awesome blog'
@@ -22,7 +22,7 @@ tagline = 'I use technology to make life more convenient.'
 author = 'mkouhei'
 
 # Change this to your copyright string
-copyright = '2006-2017, Kouhei Maeda, screen name: {0}'.format(author)
+copyright = '2006-2018, Kouhei Maeda, screen name: {0}'.format(author)
 
 # Change this to your blog root URL (required for RSS feed)
 website = 'http://d.palmtb.net/'
