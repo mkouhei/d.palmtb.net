@@ -1,7 +1,7 @@
 pipenv 環境でのコマンドを直接実行する
 =====================================
 
-これ自体は :code:`pipenv shell` の引数として実行したいコマンドを指定すれば良いだけです。本ブログでは `tinkerer <https://github.com/vladris/tinkerer>`_ を使っているので、 `tinker` コマンドを実行するには、
+これ自体は :code:`pipenv shell` の引数として実行したいコマンドを指定すれば良いだけです。本ブログでは `tinkerer <https://github.com/vladris/tinkerer>`_ を使っているので、 :code:`tinker` コマンドを実行するには、
 
 .. code-block:: shell
 
