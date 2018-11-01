@@ -149,7 +149,7 @@ Webサーバ(Lighty)で公開する。
 
 設定ファイルを下記のように変更する。
 
-.. code-block:: lighty
+.. code-block:: none
 
    server.modules += ( "mod_simple_vhost" )
    $HTTP["host"] == "hoge.com" {
@@ -264,7 +264,6 @@ Webサーバ(Lighty)で公開する。
 
 実際はこんな感じ。
 
-
 .. code-block:: rb
 
    #--
@@ -348,6 +347,6 @@ Webサーバ(Lighty)で公開する。
 これでやりたいことが全てできた。よかったよかった。
 
 .. author:: default
-.. categories:: Debian
+.. categories:: Ruby
 .. tags:: Ruby,td2planet,lighttpd,Debian
 .. comments::

@@ -6,29 +6,22 @@ aptitudeで試してみると、
 
 .. code-block:: sh
 
-
    $ sudo aptitude update
    (snip)
    W: debtags データベースの更新 (/usr/bin/debtags update --local) に失敗しました (debtags がインストールされていないのではないでしょうか?): waitpid() が失敗しました: 子プロセスがありません
 
-
 となるので、debtagsのアップデートを行ってみると、
 
-
-.. code-block:: sh
-
+.. code-block:: none
 
    $ sudo debtags update --local
    Can't ignore signal CHLD, forcing to default.
    fetcher command /usr/share/debtags/fetch --local failed. Context:
        acquiring new data
 
-
 debtagsは前回のDebian勉強会で初めてインストールしてみたので、無くても困らない。削除してみた。
 
-
-.. code-block:: sh
-
+.. code-block:: none
 
    $ sudo apt-get remove debtags 
    パッケージリストを読み込んでいます... 完了
@@ -46,9 +39,7 @@ debtagsは前回のDebian勉強会で初めてインストールしてみたの�
 
 ぬ？
 
-
 .. code-block:: sh
-
 
    $ sudo dpkg -r --dry-run debtags
    (データベースを読み込んでいます ... 現在 236935 個のファイルとディレクトリがインストールされています。)
@@ -62,11 +53,7 @@ debtagsは前回のDebian勉強会で初めてインストールしてみたの�
 
 さて、困ったね。どこが原因なんだろう。
 
-
-
-
-
-
 .. author:: default
 .. categories:: Debian
+.. tags:: apt
 .. comments::

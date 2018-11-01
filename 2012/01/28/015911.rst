@@ -173,7 +173,7 @@ curlコマンドを使う場合は、 -H "x-authentication-token: 5790245d3bcd19
 
 ゾーンの取得は、/zone/:identifierでGETメソッドで取得します。:itentifierにはドメインを指定します。test.localドメインが既に登録されている場合、下記のように実行します。
 
-.. code-block:: console
+.. code-block:: none
 
    $ curl -s -k -H 'x-authentication-token: 5790245d3bcd19c055b2c83d56f25f8a1ceeb9e1' -X GET https://localhost/zone/test.local | sed '
    s/\[{/\[\n{/g
@@ -519,5 +519,6 @@ test.localゾーンのレコードの削除を行うためには、次のよう�
 
 
 .. author:: default
-.. categories:: Dev
+.. categories:: PowerDNS
+.. tags:: TonicDNS
 .. comments::

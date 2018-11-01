@@ -3,27 +3,19 @@ nginxでリバースプロキシ。
 
 gitwebとCouchDBをバックエンドにしたリバースプロキシをnginxで設定したのでメモ。構成的には下図。各ノードはlxcのコンテナとして立てている。
 
-
 .. image:: /img/20100121233402.png
-
-
 
 nginx自体は、
 
-
 .. code-block:: sh
 
-
    $ sudo apt-get install nginx
-
 
 のみでインストールできる。設定ファイルは、/etc/nginx/以下。Apacheのディレクトリ構成に似ている。Debianパッケージだからか。
 
 リバースプロキシの設定は/etc/nginx/conf.d/ディレクトリ以下に、proxy.confとして設定。proxy_set_headerを指定して、バックエンドサーバに対してクライアントのIPアドレスを教える。
 
-
-.. code-block:: apache
-
+.. code-block:: none
 
    proxy_redirect                          off;
    proxy_set_header Host                   $host;
@@ -35,9 +27,7 @@ nginx自体は、
 
 プロキシさせるのは、ApacheとCouchDBとでそれぞれ別のサブドメインを割り当ててネームベースのバーチャルホストを/etc/nginx/sites-available/defaultに設定。
 
-
-.. code-block:: apache
-
+.. code-block:: none
 
    server {
            listen   80;
@@ -84,13 +74,9 @@ nginx自体は、
    }
 
 
-
-
 Apacheにはgitwebの設定。
 
-
 .. code-block:: sh
-
 
    <VirtualHost *:80>
            ServerAdmin webmaster@git.hoge.org
@@ -124,17 +110,13 @@ Apacheにはgitwebの設定。
 
 .. code-block:: sh
 
-
    $ sudo apt-get install libapache2-mod-rpaf
    $ sudo a2enmod rpaf
    Module rpaf already enabled
 
-
 /etc/apache2/mods-available/rpaf.confの設定で、RPAFproxy_ipsの値を127.0.0.1からnginxのIPアドレスに変更する。
 
-
 .. code-block:: sh
-
 
    <IfModule mod_rpaf.c>
    RPAFenable On
@@ -142,16 +124,9 @@ Apacheにはgitwebの設定。
    RPAFproxy_ips 192.168.xxx.zzz
    </IfModule>
 
-
-
-
 trac-gitはまだ設定してないが、リバースプロキシに関してはあまり変わらないだろう。CouchDB側の設定は特に無し。というか、CouchDBのログはどこを設定すればよいのだろうか。気が向いたら調べてみる。
 
-
-
-
-
-
 .. author:: default
-.. categories:: Unix/Linux,Debian,CouchDB,Ops
+.. categories:: Debian
+.. tags:: nginx,Debian,CouchDB
 .. comments::

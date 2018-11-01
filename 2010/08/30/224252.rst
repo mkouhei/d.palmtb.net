@@ -3,31 +3,19 @@ RAMディスクブートのOpenMicroServerでもsshdを使う。
 
 OpenMicroServerでsshdを使用するには、ファイルサイズの関係から、普通はCFなどにHDDイメージを展開し、CF/HDDブートしないと出来ない。が、ルータ兼ファイアウォールとして使う場合、それはちょっと無駄が多いので、今まではCFを/mntにマウントして、netfilterのスクリプトを/etc/rc.localから実行する形にしていた。ファームウェアのアップデートには、/etc/inetd.confでコメントアウトしているftpの行を有効にして、/mntのCF領域にアップロードする、という具合。操作はその度に、RS-232でつないで作業する、という感じ。ファームウェアのアップデート程度ならそれでも良いのだけれど、ファイアウォールのポリシーの変更となると、もうちょい頻度が高いので不便。これはやってられん。
 
-
-
 ということで、HDDイメージから、sshdのファイルを持ってきて/mntに置いておき、SSD/Linux起動時に展開してsshdを実行させるようにした。
-
-
-
 
 HDDイメージのダウンロード
 -------------------------
 
-
 ぷらっとホームのFTPサイトから、ファームウェア一緒に配布されているHDDイメージをダウンロードする。例えば、 `現在使用しているファームウェア <http://www.plathome.co.jp/support/labo/oms400/#konpayirusohutowhea_2008_01_07>`_ は2010年4月9日リリースの最新のもの [#]_ なので、それと一緒にリリースされているHDDイメージ [#]_ から、base.tgz [#]_ , etc.tgz [#]_ をダウンロードする。
-
-
-
 
 ファイルの抽出
 --------------
 
-
 次のようなスクリプトで抽出。
 
-
 .. code-block:: sh
-
 
    #!/bin/bash
    
@@ -35,25 +23,14 @@ HDDイメージのダウンロード
    tar zxvpf etc.tgz `tar ztf etc.tgz | grep ssh` 
    tar zcvpf oms-ssh.tgz ./usr ./etc
 
-
-
-
 oms-ssh.tgzを/mntの任意のディレクトリ [#]_ にFTPで転送しておく。
-
-
-
 
 OMSでのファイル展開用スクリプトの用意
 -------------------------------------
 
-
 次のようなスクリプトを/mnt/sshdに用意する。 [#]_ 
 
-
-
-
 .. code-block:: sh
-
 
    #!/bin/sh
    
@@ -61,50 +38,31 @@ OMSでのファイル展開用スクリプトの用意
    chown -R root:wheel usr etc
    tar zcvpf distro-ssh.tgz usr etc
 
-
 このスクリプトは、本来不要なのだが、Debianではwheelグループが無いので [#]_ chownがコケる。なので、OMS上で実行する必要がある。
 
 ここまでの手順で作ったスクリプトは、ファームウェアがアップデートされる度に行うためのものだ。次のホストキーの作成のため、このスクリプトを実行しておく。
 
-
-
-
 .. code-block:: sh
-
 
    # cd /
    # tar zxpf /mnt/sshd/distro-ssh.tgz
 
-
-
-
-
 ホストキーの作成
 ----------------
 
-
 先ほどの手順で、必要なライブラリとssh-keygenコマンドが展開されているので、ホストキーを作成する。
 
-
 .. code-block:: sh
-
 
    # ssh-keygen -f /etc/ssh/ssh_host_dsa_key -t dsa -N ''
    # ssh-keygen -f /etc/ssh/ssh_host_rsa_key -t rsa -N ''
 
-
-
-
-
 ユーザの公開鍵の登録
 --------------------
 
-
 OMSではデフォルトでは、/home/user1になっているので、リネームして、.sshディレクトリを作成し、FTPで転送しておいた公開鍵を登録しておく。
 
-
 .. code-block:: sh
-
 
    # mv /home/{user1,mkouhei}
    # usermod -d /home/mkouhei mkouhei
@@ -113,25 +71,15 @@ OMSではデフォルトでは、/home/user1になっているので、リネー
    (mkouhei)# cd ~/.ssh
    (mkouhei)# mv id_rsa.pub authorized_keys
 
-
-
-
 /etc/ssh/sshd_configの設定は適宜実施するべし。
-
-
 
 
 sshd起動スクリプトの作成
 ------------------------
 
-
 これで準備は整ったので、/mnt以下に、/mnt/sshd.shとして次のスクリプトを用意する。
 
-
-
-
 .. code-block:: sh
-
 
    #!/bin/sh
    
@@ -139,65 +87,37 @@ sshd起動スクリプトの作成
    tar zpxf /mnt/sshd/distro-ssh.tgz
    /usr/sbin/sshd
 
-
-
-
 このスクリプト自体の実行は、/etc/rc.localの一番下にでも追記しておく。
 
-
 .. code-block:: sh
-
 
    (snip)
    /mnt/sshd.sh
 
-
-
-
-
-
-
 RAMディスクへの書き込み
 -----------------------
 
-
 今までの作業は、/mnt下以外の変更はリブートすると全てパァである。なので、リブートしてもちゃんと反映されるように変更しておく。/etc/flashcfgに下記を追記しておく。
 
-
-.. code-block:: apache
-
+.. code-block:: none
 
    /etc/ssh
    /home/mkouhei
 
-
 追記したら、RAMディスクに書き込んでおこう。
-
 
 .. code-block:: sh
 
-
    # flashcfg -s /etc/flashcfg
 
-
-
-
 あとはリブートしてもちゃんと起動することを確認しておこう。
-
-
-
-
-
 
 /usr/sbin/sshd等をRAMディスクに書き込めばよいのでは？
 -----------------------------------------------------
 
-
 /usr/sbin/sshdだけならまぁ書き込めるのだが、sshdの起動に必要なlibpam.so, libcrypto.so, さらにsftp-serverなんかも入れると到底空き容量足りないのである。起動時に展開する方が無難。
 
-
-
-
+.. rubric:: Footnotes
 
 .. [#] ftp://ftp.plathome.co.jp/pub/OMS400/STABLE-20051208/mipsel-obs1550.IPv6/installation/zImage.initrd.treeboot-product
 .. [#] ftp://ftp.plathome.co.jp/pub/OMS400/0.4-RELEASE-20100326/mipsel-oms400.ipv6/binary/
@@ -207,7 +127,7 @@ RAMディスクへの書き込み
 .. [#] /mnt/sshd/extract.shとした。
 .. [#] 代わりにadmグループを使う。
 
-
 .. author:: default
-.. categories:: Unix/Linux,Debian,gadget,Ops
+.. categories:: Unix/Linux
+.. tags:: OpenMicroServer,sshd,SSD/Linux
 .. comments::

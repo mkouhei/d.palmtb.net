@@ -3,27 +3,21 @@ grub2で/bootがまた挿入された。
 
 10/24に行ったアップデートで、grub2がアップデートされた [#]_ のだが、カーネルが見つからんというエラーになる。直接的な原因は以下２行。
 
-
-.. code-block:: apache
-
+.. code-block:: none
 
    (snip)
            linux   /boot/vmlinuz-2.6.36 root=UUID=073dfddb-549d-451f-9d0e-dbd04f31ce9b ro nosmp acpi=noirq quiet
    (snip)
            initrd  /boot/initrd.img-2.6.36
 
-
-
-
 linux, initrdに渡す最初の引数のパスに/bootがついているため。なので、/bootを取り除いてやればブートできる。 `昨年も同じバグ <http://d.hatena.ne.jp/mkouhei/20091126/1259210843>`_ があったなぁ。今日のアップデート [#]_ で修正された。
 
-
-
+.. rubric:: Footnotes
 
 .. [#] 1.98+20100804-6
 .. [#] 1.98+20100804-7
 
-
 .. author:: default
 .. categories:: Debian
+.. tags:: grubs
 .. comments::

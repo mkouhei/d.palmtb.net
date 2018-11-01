@@ -3,9 +3,7 @@ td2planetがこける。
 
 `CouchDB JP <http://groups.google.co.jp/group/couchdb-jp>`_ の `planet <http://planet.palmtb.net/>`_ が表示されていないことに気づいて調べてみた。
 
-
-.. code-block:: sh
-
+.. code-block:: none
 
    /usr/lib/ruby/1.8/uri/common.rb:436:in `split': bad URI(is not URI?): http://satoshi.blogs.com/life/2009/10/restful-mvc〓 〓〓&#8218;￠〓&#402;&#188;〓&#8218; 〓&#402;†〓&#8218;〓〓&#402; 〓&#402;￡〓 〓〓〓±.html (URI::InvalidURIError)
           from /usr/lib/ruby/1.8/uri/common.rb:485:in `parse' from /usr/lib/ruby/1.8/td2planet/formatter.rb:123:in `relative_path_to_absolute_uri'
@@ -38,14 +36,9 @@ td2planetがこける。
 と思ったら、パス名が日本語なのにURIでエンコードされてないからか。はてダのRSSの出力もそうなんだが、そもそも `URI内で日本語名なんか使って <http://satoshi.blogs.com/life/2009/10/restful-mvc%E3%81%AA%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E3%81%AE%E8%A9%B1.html>`_ くれるなと思う。とはいえ、日本語ドメイン名とか使えるようになるとますますこういう問題は今後増えてくると思われるので、エンコードしておくことにした。
 
 
-
 といっても、/usr/lib/ruby/1.8/td2planet/formatter.rbを一行修正するだけの簡単なお仕事。
 
-
-
-
-.. code-block:: sh
-
+.. code-block:: diff
 
    diff --git a/td2planet-0.1.0/lib/td2planet/formatter.rb b/td2planet-0.1.0/lib/td
    2planet/formatter.rb
@@ -63,15 +56,10 @@ td2planetがこける。
           else
 
 
-
-
 確認してみたらSidでもそのままみたいなのでBTSしておいた。
 
 
-
-
-
-
 .. author:: default
-.. categories:: Debian,CouchDB,Ops
+.. categories:: Debian
+.. tags:: td2planet
 .. comments::

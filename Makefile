@@ -10,7 +10,7 @@ all: build  ## all
 prebuild:  ## prebuild; prepare tinkerer environment on prebuild.
 	pipenv install .
 
-build: prebuild $(SRCES)
+#build: prebuild $(SRCES)
 build: $(SRCES) ## build; blog articles.
 	pipenv shell "tinker -b -q; exit"
 

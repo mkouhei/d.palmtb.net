@@ -1,9 +1,7 @@
 grub2 1.98+20100702-1でもダメだな。
 ===================================
 
-
-.. code-block:: sh
-
+.. code-block:: none
 
    (snip)
    grub-common (1.98+20100702-1) を設定しています ...
@@ -17,14 +15,9 @@ grub2 1.98+20100702-1でもダメだな。
    ed..
    /usr/sbin/grub-setup: error: cannot read `/grub/core.img' correctly.
 
-
 というわけで、今回も1.98+20100614-2にフォールバック。
 
-
-
-
-
-
 .. author:: default
-.. categories:: Debian,MacBook
+.. categories:: Debian
+.. tags:: MacBook,grub2
 .. comments::

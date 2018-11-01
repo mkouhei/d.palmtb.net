@@ -3,34 +3,20 @@ no branchを使う。
 
 gitでno branchを使うメリットがよく分からなかったのだが、以前のコミットでのファイルの中身をgit diffではなく、実際の内容を確認したいときに使えば便利なのかと思ったのでメモ。
 
-
-
 ワーキングコピーを変更してコミット前の状態なら、git addでindexに登録していても、そうでなくてもgit stashで一時的に退避させてしまえば、最新のHEADの状態を確認できる。でも、以前のコミットの状態のファイルを確認するには、この方法が使えない。
-
 
 
 最新のHEADでのhogeファイルの内容が以下で、
 
-
-
-
 .. code-block:: sh
-
 
    $ cat hoge
    2010年  1月 19日 火曜日 02:07:44 UTC
    2010年  1月 19日 火曜日 02:08:05 UTC
 
-
-
-
 ひとつ前のコミットの状態を確認したいとする。
 
-
-
-
 .. code-block:: diff
-
 
    commit b2e3cd8f9b1555b35d96789ca21e71c176cfdbd3
    Author: Adam Smith <adam@hoge.org>
@@ -57,15 +43,10 @@ gitでno branchを使うメリットがよく分からなかったのだが、�
        Signed-off-by: Adam Smith <adam@hoge.org>
 
 
-
-
 コミットログでは、HEAD^(db168f3e25531cc25435bc0934bfda512029e41a)なので、
 
 
-
-
-.. code-block:: sh
-
+.. code-block:: none
 
    $ git checkout HEAD^
    Note: moving to 'HEAD^' which isn't a local branch
@@ -80,15 +61,9 @@ gitでno branchを使うメリットがよく分からなかったのだが、�
    2010年  1月 19日 火曜日 02:07:44 UTC
 
 
-
-
 元のmasterブランチに戻るには、git checkout masterを実行すればよし。
 
-
-
-
 .. code-block:: sh
-
 
    $ git checkout master
    Previous HEAD position was db168f3... date now.
@@ -100,13 +75,9 @@ gitでno branchを使うメリットがよく分からなかったのだが、�
    2010年  1月 19日 火曜日 02:08:05 UTC
 
 
-
-
 ワーキングコピーを変更していると、いきなりgit checkoutはできない。
 
-
 .. code-block:: sh
-
 
    $ date >> hoge
    $ git status
@@ -122,13 +93,9 @@ gitでno branchを使うメリットがよく分からなかったのだが、�
    error: You have local changes to 'hoge'; cannot switch branches.
 
 
-
-
 git stashと組み合わせればOK。
 
-
-.. code-block:: sh
-
+.. code-block:: none
 
    $ git stash
    Saved working directory and index state WIP on master: b2e3cd8 next date.
@@ -163,14 +130,7 @@ git stashと組み合わせればOK。
    $ git stash drop
    Dropped refs/stash@{0} (f840bc3523788121cf9d739b475e6c11c60cd966)
 
-
-
-
-
-
-
-
-
 .. author:: default
 .. categories:: Unix/Linux
+.. tags:: Git
 .. comments::

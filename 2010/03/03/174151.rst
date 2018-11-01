@@ -8,39 +8,24 @@ https://twitter.com/ar1/status/9912643936
    JSONのlintってないかな
 
 
-
-
-
 を見て、ちょうど自分も企画でCouchDBを使ってごにょごにょやっているので、JSONのチェックは必要だよなぁと思っていたのでDebianパッケージ(Squeeze/Sid)と、オンラインサービスで調べてみた。
-
-
 
 
 コマンドラインツール
 --------------------
 
-
-
-
-
 yajl-toolsのjson_vefifyコマンド
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 Cで書かれたツール。Debianパッケージになっている。
 
-
 .. code-block:: sh
-
 
    $ sudo apt-get install yajl-tools
 
-
 JSONを記述したファイルをリダイレクトして使う。
 
-
-.. code-block:: sh
-
+.. code-block:: none
 
    $ json_verify < sample1.json # 妥当な場合
    JSON is valid  
@@ -50,48 +35,34 @@ JSONを記述したファイルをリダイレクトして使う。
                         (right here) ------^
    JSON is invalid
 
-
 UTF-8なら日本語混じりでもおｋ。出力が必要無ければ"-q"オプションをつければ、リターンコード見てチェックできる。若干残念なのは、最初のエラーで解析のチェックを止めてしまうこと。これは後述のJSONLintも同じ。W3CのHTML Validatorみたいに一度にエラーを教えてくれると効率が良い気もするけど、JSONは順次データセットになっているから結局先頭から直していった方が早いからなのかなぁ。
-
 
 * 追記
 
-
   * エラー箇所はjsonlintよりも分かりやすいのは良いですな。
-
-
 
 
 python-demjsonのjsonlintスクリプト
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
 Pythonで書かれたツール。これもDebianパッケージにあるのでインストールはこれだけ。
 
-
 .. code-block:: sh
-
 
    $ sudo apt-get install python-demjson
 
-
 yajl-toolsのjson_verifyと違い、こちらはデフォルトでは妥当な場合もエラーがある場合も何も出力しない。エラー内容をみたい場合は、"-v"オプションを使う。
 
-
-.. code-block:: sh
-
+.. code-block:: none
 
    $ jsonlint -v sample1.json # 妥当な場合
    sample1.json: ok
    $ jsonlint -v sample2.json # 妥当じゃない場合
    sample2.json: strict JSON does not allow a final comma in an object (dictionary) literal: u' },\n      "Date":...
 
-
 デフォルト(-s)ではstrictチェックするが、"-S"オプションを付けるとチェックがゆるくなるので、sample2.jsonの場合もOKになる。どういうときに使うんだろうか。それよりも、jsonlintの方が便利なのは、-f, -F, -e, --input-encoding=encode, --output-encoding=encode オプションだろう。デフォルトではエンコードはUTF-8とみなして読み込まれるが、-eか--input-encodingオプションで、入力ファイルの文字コードを、出力を--output-encodingオプションで指定できる。-fオプションは、妥当な時にその結果を整形して出力し、-Fは余計な空白を全て削除して出力するので、こんな感じになる。
 
-
 .. code-block:: sh
-
 
    $ jsonlint -v -f sample3.json
    { "hoge" : "fuga",
@@ -110,51 +81,33 @@ yajl-toolsのjson_verifyと違い、こちらはデフォルトでは妥当な�
 なので、Pythonのある環境なら、json_verifyを使うよりも、jsonlintを使う方が便利かもしれない。このパッケージはもともとJSONのエンコード、デコードが目的なので、その用途ならdemjson.pyを使えばよい。
 
 
-
-
 オンラインサービス
 ------------------
 
-
-
 JSONLint
 ^^^^^^^^
-
 
 http://www.jsonlint.com/
 
 フォームにJSONデータを貼り付けてValidateすると、間違っている部分を先頭からひとつずつ指摘してくれる。
 
-
-
-
 JSLint
 ^^^^^^
-
 
 http://www.jslint.com/
 
 JSONLintと同じようにフォームにデータを貼り付けてJSLintボタンを押すとチェックしてくれる。オプションでチェックの指定をできるので、JSONLintより便利。
 
-
-
-
 API
 ---
-
-
 
 OCaml用
 ^^^^^^^
 
-
 libjson-static-camlp4-devパッケージが提供されている。
 
 
-
-
-
-
 .. author:: default
-.. categories:: Debian,CouchDB,Dev
+.. categories:: lint
+.. tags:: lint,JSON,Debian
 .. comments::

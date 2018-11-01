@@ -17,7 +17,7 @@ macOSでの起動とスナップショット取得
 起動用スクリプト
 ~~~~~~~~~~~~~~~~
 
-.. code-block:: sh
+.. code-block:: none
 
    #!/bin/sh -e
    vmname='vmname'
@@ -55,7 +55,7 @@ PowerShellのコマンドプロンプトからではなく、デスクトップ�
 起動用スクリプト
 ~~~~~~~~~~~~~~~~
 
-.. code-block:: powershell
+.. code-block:: none
 
    $vmname = "vmname"
    
@@ -96,7 +96,7 @@ PowerShellのコマンドプロンプトからではなく、デスクトップ�
 スナップショット取得用スクリプト
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: powershell
+.. code-block:: none
 
    $vmname = "vmname"
    

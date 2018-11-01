@@ -4,24 +4,15 @@ lighttpdでWebDAV + LDAPを利用する。
 結論を言うとユーザの権限をフラットにしておく場合には使えます。が、ユーザの権限をグループ毎に分ける場合には、LDAPのグループ、というかグループでの認証には未対応なのでApacheを使うと良いでしょう。
 
 
-
-
 lighttpdの設定。
 ----------------
 
-
 WebDAV + LDAPを使う方法だけとりあえず記録しておきました。
-
-
-
 
 /etc/lighttpd/lighttpd.conf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-
 .. code-block:: sh
-
 
    diff --git a/lighttpd/lighttpd.conf b/lighttpd/lighttpd.conf
    index 32eb9d5..d605901 100644
@@ -48,25 +39,15 @@ WebDAV + LDAPを使う方法だけとりあえず記録しておきました。
    +}
 
 
-
 * webdav.activateをenableでWebDAVを有効に
-
 * webdav.is-readonlyをdisableで書き込み可に
-
 * webdav.sqlite-db-nameにWebDAV用のロックファイルを指定
-
 * auth.requireでLDAPのBASIC認証の認証方式を指定
-
-
-
 
 /etc/lighttpd/conf-available/05-auth.conf
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-
 .. code-block:: sh
-
 
    diff --git a/lighttpd/conf-available/05-auth.conf b/lighttpd/conf-available/05-auth.conf
    index 5d896e3..4323034 100644
@@ -93,25 +74,16 @@ WebDAV + LDAPを使う方法だけとりあえず記録しておきました。
 
 
 * auth.backendで認証方法をLDAPに指定
-
 * auth.backend.ldap.hostnameにLDAPサーバのホスト名またはIPアドレスを指定
-
 * auth.backend.ldap.base-dnにLDAPのbase DNを指定
-
 * auth.backend.ldap.filterにLDAPのユーザ認証用に(uid=$)をフィルター指定
-
-
-
 
 モジュールの有効化
 ^^^^^^^^^^^^^^^^^^
 
-
 DebianのlighttpdはApacheと同様、利用できる設定(conf-available/)と有効になっている設定(conf-enable/)があるので、WebDAVとLDAPの認証を有効にするためには、/usr/sbin/lighty-enable-modコマンドを使用します。
 
-
 .. code-block:: sh
-
 
    $ sudo lighty-enable-mod auth
    Available modules: auth accesslog cgi evasive evhost expire fastcgi flv-streaming no-www \
@@ -126,77 +98,59 @@ DebianのlighttpdはApacheと同様、利用できる設定(conf-available/)と�
    Enabling webdav: ok
    Run /etc/init.d/lighttpd force-reload to enable changes
 
-
-
-
-
 lighttpdでグループでの認証が未対応な理由。
 ------------------------------------------
 
-
 lighttpd.confのauth.requireのパラメータのrequireにgroupとしても、下記のログがでます。
 
-
 .. code-block:: ini
-
 
    2011-07-14 16:11:11: (http_auth.c.402) group ... (not implemented) 
    2011-07-14 16:11:11: (http_auth.c.416) nothing matched 
    2011-07-14 16:11:11: (http_auth.c.888) rules didn't match 
 
-
 え、"note implemented"って…。
-
-
 
 Sidのlighttpd 1.4.29のソースコード(src/http_auth.c)を見ると、
 
-
 .. code-block:: sh
 
-
-                   /* the part before the = is user|group|host */
+   /* the part before the = is user|group|host */
    
-                   k = r;
-                   k_len = eq - r;
-                   v = eq + 1;
-                   v_len = r_len - k_len - 1;
+   k = r;
+   k_len = eq - r;
+   v = eq + 1;
+   v_len = r_len - k_len - 1;
    
-                   if (k_len == 4) {
-                           if (0 == strncmp(k, "user", k_len)) {
-                                   if (username &&
-                                       username_len == v_len &&
-                                       0 == strncmp(username, v, v_len)) {
-                                           return 0;
-                                   }
-                           } else if (0 == strncmp(k, "host", k_len)) {
-                                   log_error_write(srv, __FILE__, __LINE__, "s", "host ... (not implemented)");
-                           } else {
-                                   log_error_write(srv, __FILE__, __LINE__, "s", "unknown key");
-                                   return -1;
-                           }
-                   } else if (k_len == 5) {
-                           if (0 == strncmp(k, "group", k_len)) {
-                                   log_error_write(srv, __FILE__, __LINE__, "s", "group ... (not implemented)");
-                           } else {
-                                   log_error_write(srv, __FILE__, __LINE__, "ss", "unknown key", k);
-                                   return -1;
-                           }
-
+   if (k_len == 4) {
+           if (0 == strncmp(k, "user", k_len)) {
+                   if (username &&
+                       username_len == v_len &&
+                       0 == strncmp(username, v, v_len)) {
+                           return 0;
+                   }
+           } else if (0 == strncmp(k, "host", k_len)) {
+                   log_error_write(srv, __FILE__, __LINE__, "s", "host ... (not implemented)");
+           } else {
+                   log_error_write(srv, __FILE__, __LINE__, "s", "unknown key");
+                   return -1;
+           }
+   } else if (k_len == 5) {
+           if (0 == strncmp(k, "group", k_len)) {
+                   log_error_write(srv, __FILE__, __LINE__, "s", "group ... (not implemented)");
+           } else {
+                   log_error_write(srv, __FILE__, __LINE__, "ss", "unknown key", k);
+                   return -1;
+           }
 
 と、ユーザ認証しか対応していないのでした。ググってみると、過去にも同じような話がありました。
-
-
 
 http://redmine.lighttpd.net/issues/1817
 
    LDAP-Group support for HTTP-Authentication
-
    Support for using ldap DN in auth-require, example:
-
    
-.. code-block:: apache
-
+.. code-block:: none
 
    auth.require = ( 
        "/" => (
@@ -209,21 +163,11 @@ http://redmine.lighttpd.net/issues/1817
 
    Patch also available at  `http://danielbond.org/patches/lighttpd-http_auth.c-ldap_group.diff <http://redmine.lighttpd.net/attachments/download/678/lighttpd-http_auth.c-ldap_group.diff>`_ 
 
-
-
-
-
 `これに対応するパッチ <http://redmine.lighttpd.net/attachments/678/lighttpd-http_auth.c-ldap_group.diff>`_ も添付されているのですが、最初に投稿されてから2年以上も経っているのに未だマージされていません。
-
-
 
 というわけで、lightyにこだわる理由も特にないので、結局今回はApacheで行うことにしました。
 
-
-
-
-
-
 .. author:: default
 .. categories:: Unix/Linux,Debian
+.. tags:: lighttpd
 .. comments::

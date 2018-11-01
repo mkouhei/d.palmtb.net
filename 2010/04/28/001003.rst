@@ -1,9 +1,7 @@
 apt-getでも
 ===========
 
-
-.. code-block:: sh
-
+.. code-block:: none
 
    $ sudo apt-get update
    (snip)
@@ -26,13 +24,9 @@ apt-getでも
     instead.
 
 
-
-
 bzip2はあるんだけど。
 
-
-.. code-block:: sh
-
+.. code-block:: bash
 
    $ dmesg > hoge
    $ bzip2 hoge && echo $?
@@ -47,11 +41,7 @@ bzip2はあるんだけど。
    (snip)
 
 
-
-
-
-
-
 .. author:: default
 .. categories:: Debian
+.. tags:: apt
 .. comments::

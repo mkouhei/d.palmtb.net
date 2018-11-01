@@ -4,8 +4,7 @@ Planet回復。
 回復したといっても、何もしてない。今朝、自然復旧。表示されなくなったときのエラーは、
 
 
-.. code-block:: sh
-
+.. code-block:: none
 
       /usr/lib/ruby/1.8/uri/generic.rb:195:in `initialize': the scheme http does not \
       accept registry part: user:pass@host:port (or bad hostname?) (URI::InvalidURIError)
@@ -51,8 +50,7 @@ Planet回復。
 復旧したと言っても、別のエラーは出ているんだけど、まぁいいか。
 
 
-.. code-block:: sh
-
+.. code-block:: none
 
       /usr/lib/ruby/1.8/rss/maker/1.0.rb:54:in `setup_items': required variables of \
       maker are not set: items (RSS::NotSetError)
@@ -89,11 +87,7 @@ Planet回復。
    (snip)
 
 
-
-
-
-
-
 .. author:: default
-.. categories:: CouchDB
+.. categories:: Ruby
+.. tags:: td2planet
 .. comments::

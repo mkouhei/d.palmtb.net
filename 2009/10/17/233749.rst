@@ -3,36 +3,22 @@
 
 CouchDB 0.10がリリースされたので一部界隈で盛り上がっているのだが、以前Debianで0.8.0をパッケージで入れただけになっているので、最新のtrunkを取得してコンパイルしてみることにした。
 
-
-
 CouchDBはSubversionで管理されているので、git-svnでローカルリポジトリを作成する。これもちろん常識だよね？
 
-
 .. code-block:: sh
-
 
    $ git svn clone https://svn.apache.org/repos/asf/couchdb/trunk couchdb
 
-
-
-
 足りないパッケージがあったらインストールしておくべし。
 
-
 .. code-block:: sh
-
 
    $ sudo apt-get install automake autoconf libtool help2man build-essential erlang \
     libicu-dev libmozjs-dev libcurl4-openssl-dev
 
-
-
-
 コンパイルする。変なところにインストールしたくないので、/opt/couchdbとか掘ってそこにインストールすることにしよう。
 
-
 .. code-block:: sh
-
 
    $ cd couchdb
    $ sudo mkdir /opt/couchdb
@@ -50,14 +36,9 @@ CouchDBはSubversionで管理されているので、git-svnでローカルリ�
    make[1]: ディレクトリ `/home/kohei/devel/couchdb' から出ます
    make: *** [all] エラー 2
 
-
-
-
 なんと。couch.erlをコンパイルするところでこけてしまう。その後時間なくてそのままだったのだが、昨日の宴会ではErlangのバージョンが低いのでは？という話になり、確認してみた。
 
-
 .. code-block:: sh
-
 
    $ dpkg -l erlang
    Desired=Unknown/Install/Remove/Purge/Hold
@@ -70,9 +51,7 @@ CouchDBはSubversionで管理されているので、git-svnでローカルリ�
 
 13RB2だね。CouchDBの要件はというと、
 
-
 .. code-block:: sh
-
 
    $ grep erlang README 
     * Erlang OTP (>=R12B5)    (http://erlang.org/)
@@ -80,27 +59,20 @@ CouchDBはSubversionで管理されているので、git-svnでローカルリ�
 
 と、なっているので問題なさそうだ。
 
-
-
 じゃあどうすっかなぁと思っていたのだが、別の問題だったのでぶったまげた。何気なく、erlを実行してみたら、
 
 
 .. code-block:: sh
 
-
    $ erl
    セグメンテーション違反です
-
 
 はい？！なんじゃこりゃ。
 
 
-
 straceをかけてみたら分かった。
 
-
-.. code-block:: console
-
+.. code-block:: sh
 
    $ strace erl
    (snip)
@@ -159,18 +131,13 @@ straceをかけてみたら分かった。
 
 SIGSEGVの前に、
 
-
 .. code-block:: console
-
 
    lstat("/sys/devices/system/cpu/cpu1/topology", 0x7fffbefe8e90) = -1 ENOENT (No such file or directory)
 
-
 があるが、cpu0の場合と結果が違う。ワシのMacBookは、現在maxcpus=1をgrub2で指定して起動させている。指定しないと起動しないから問題に悩みつづけているからだが、おそらく原因はこれだなと思い、erlのsmpを無効にしてみた。
 
-
 .. code-block:: sh
-
 
    $ erl -smp disable
    Erlang R13B02 (erts-5.7.3) [source] [64-bit] [rq:1] [async-threads:0] [kernel-poll:false]
@@ -178,14 +145,9 @@ SIGSEGVの前に、
    Eshell V5.7.3  (abort with ^G)
    1> 
 
-
-
-
 ああ、やっぱり起動した。だからBTSでも報告されていないんだろうなぁ。でもこれは面倒なので、grubのオプションを変更してみた。
 
-
-.. code-block:: sh
-
+.. code-block:: diff
 
    diff --git a/default/grub b/default/grub
    index ce041b5..28fe50e 100644
@@ -201,12 +163,9 @@ SIGSEGVの前に、
     # Uncomment to disable graphical terminal (grub-pc only)
     #GRUB_TERMINAL=console
 
-
 これだと、
 
-
-.. code-block:: erlang
-
+.. code-block:: sh
 
    $ erl
    Erlang R13B02 (erts-5.7.3) [source] [64-bit] [rq:1] [async-threads:0] [kernel-poll:false]
@@ -214,18 +173,11 @@ SIGSEGVの前に、
    Eshell V5.7.3  (abort with ^G)
    1> 
 
-
-で-smp disableオプションをつけなくても起動できる。
-
-
+で :code:`-smp disable` オプションをつけなくても起動できる。
 
 一応 `BTSしておいた <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=551342>`_ のだが、やり方がまずかったな。最初に送った `subjectの指定を間違えたのまで登録されてる <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=551343>`_ 。retitleかスレッド自体を消すか何か必要？
 
-
-
-
-
-
 .. author:: default
-.. categories:: Debian,CouchDB,MacBook
+.. categories:: CouchDB
+.. tags:: Debian,Erlang
 .. comments::
