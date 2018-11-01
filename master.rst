@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2018/11/01/pipenv
    2018/01/07/review_and_aspiration
    2017/12/14/python_debian
    2017/12/09/powershell
