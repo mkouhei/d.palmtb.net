@@ -24,8 +24,8 @@ Floss community
 
 * `Debian JP Project <http://www.debian.or.jp/>`_ (Nov 2008-)
 
-  * `Tokyo Debian Meeting <https://tokyodebian.alioth.debian.org/>`_ (2006-)
-  * Debian JP Project Leader (Apr 2011, 2012)
+  * `Tokyo Debian Meeting <https://tokyodebian-team.pages.debian.net/>`_ (2006-)
+  * Debian JP Project Leader (Apr 2011 - Mar 2013)
 
 * `v-tomo <https://sites.google.com/site/kasotomo/>`_ (2006-)
 * `CouchDB JP <https://groups.google.com/forum/#!forum/couchdb-jp>`_ (Aug 2009-)
@@ -72,7 +72,7 @@ SNS
 * `Keybase <https://keybase.io/mkouhei>`_
 * `Twitter <https://twitter.com/mkouhei>`_
 * `Facebook <https://www.facebook.com/mkouhei>`_
-* `Tumblr <http://mkouhei.tumblr.com/>`_
+* `Tumblr <https://mkouhei.tumblr.com/>`_
 * `Google+ <https://plus.google.com/+KouheiMaeda>`_
 
 Code

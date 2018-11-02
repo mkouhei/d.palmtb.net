@@ -1,7 +1,7 @@
 $(function() {
 
     var json_path = '/_static/glaneuses.json';
-    var debian_url = 'http://packages.qa.debian.org/';
+    var debian_url = 'https://packages.qa.debian.org/';
     var github_url = 'https://github.com/';
 
     function get_action(meta) {
@@ -88,10 +88,6 @@ $(function() {
     if (location.pathname != '/pages/about.html') {
         return;
     }
-
-    $('div#my-public-gnupg-key-for-signing-is-here')
-    .append('<div class="highlight-none"><div class="highlight"><pre>' +
-            '</pre></div></div>');
 
     $('div#main').append('<ul id="debpkg"></ul>');
 
