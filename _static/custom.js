@@ -100,8 +100,8 @@ $(function() {
 
     $('div#python-packages').append('<table id="pypi" class="docutils">' +
                                     '<thead><tr><th>name</th>' +
-                                    '<td>latest release number</td>' +
-                                    '<td>latest release published at</td>' +
+                                    '<td>version</td>' +
+                                    '<td>published</td>' +
                                     '<td>source code</td></tr>' +
                                     '</thead><tbody></tbody></table>');
 
