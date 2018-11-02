@@ -99,12 +99,10 @@ $(function() {
                 '<tbody></tbody></table>');
 
     $('div#python-packages').append('<table id="pypi" class="docutils">' +
-                                    '<thead><tr><th rowspan="2">name</th>' +
-                                    '<th colspan="3">latest downloads</th>' +
-                                    '</tr>' +
-                                    '<tr><td>day</td>' +
-                                    '<td>week</td>' +
-                                    '<td>month</td></tr>' +
+                                    '<thead><tr><th>name</th>' +
+                                    '<td>latest release number</td>' +
+                                    '<td>latest release published at</td>' +
+                                    '<td>source code</td></tr>' +
                                     '</thead><tbody></tbody></table>');
 
     $('div#ruby-gems').append('<table id="rubygems" class="docutils">' +
@@ -152,14 +150,14 @@ $(function() {
         }
         if (data.pypi !== undefined) {
             data.pypi.forEach(function(val, index) {
-                if (val != null) {
+              if (val != null) {
                     $('div#python-packages table#pypi tbody')
-                        .append('<tr><td><a href="' + val.PackageUrl +
-                                '">' + val.Name + '</a></td>' +
-                                '<td>' + val.Downloads.LastDay + '</td>' +
-                                '<td>' + val.Downloads.LastWeek + '</td>' +
-                                '<td>' + val.Downloads.LastMonth +
-                                '</td></tr>');
+                        .append('<tr><td><a href="' + val.package_manager_url +
+                                '">' + val.name + '</a></td>' +
+                                '<td>' + val.latest_release_number + '</td>' +
+                                '<td>' + val.latest_release_published_at + '</td>' +
+                                '<td><a href="' + val.repository_url +
+                                '">source code</a></td></tr>');
                 }
             });
         }
