@@ -130,11 +130,6 @@ $(function() {
             });
         }
 
-        if (data.pgp !== undefined) {
-            $('div#my-public-gnupg-key-for-signing-is-here pre')
-                .text(data.pgp.Payload);
-        }
-
         var getLink = function f(val) {
             var payload = '';
             if (val[':link'] != null) {

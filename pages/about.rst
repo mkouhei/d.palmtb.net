@@ -6,6 +6,16 @@ I am a salaried worker, and a homemaker. I do mainly housework, and am doing the
 My public GnuPG key for signing is here.
 ----------------------------------------
 
+.. code-block:: none
+
+   pub   rsa4096 2009-06-19 [SC]
+         B8F2 86F6 2206 360F 7D41  0817 2E81 6254 7E37 CE41
+   uid           [  full  ] Kouhei Maeda <mkouhei at palmtb.net>
+   uid           [  full  ] Kouhei Maeda (Debian JP Project) <mkouhei at debian.or.jp>
+   uid           [  full  ] Kouhei Maeda <mkouhei at gmail.com>
+   sub   rsa4096 2009-06-19 [E]
+
+
 Activities
 ----------
 
@@ -42,6 +52,7 @@ GitHub activity
 Job career
 ^^^^^^^^^^
 
+* in a web, working as a self-employeement. (Sep, 2017 - current)
 * in a web, working as a software developer. (Nov, 2015 - current)
 * in a web, working as a operations developer. (Sep, 2011 - Oct, 2015), and a software developer for server/network/middlware. (Apr, 2012 - Oct, 2015)
 * in a systems integrator, worked as a systems developer. (Apr 2001 - Aug 2011)
@@ -58,6 +69,7 @@ Contents
 SNS
 ^^^
 
+* `Keybase <https://keybase.io/mkouhei>`_
 * `Twitter <https://twitter.com/mkouhei>`_
 * `Facebook <https://www.facebook.com/mkouhei>`_
 * `Tumblr <http://mkouhei.tumblr.com/>`_
@@ -72,14 +84,14 @@ Code
 Article
 ^^^^^^^
 
-* `東京エリアDebian勉強会 <http://tokyodebian.alioth.debian.org/>`_
+* `東京エリアDebian勉強会 <https://tokyodebian-team.pages.debian.net/>`_
 * 知って見るみるKVM(@IT) `#1 <http://www.atmarkit.co.jp/flinux/rensai/kvm01/kvm01a.html>`_  `#2 <http://www.atmarkit.co.jp/flinux/rensai/kvm02/kvm02a.html>`_  `#3 <http://www.atmarkit.co.jp/flinux/rensai/kvm03/kvm03a.html>`_
 * ゆったリラックス！ CouchDBがあるところ(@IT) `#5 <http://www.atmarkit.co.jp/fdb/rensai/09_couchdb/05/couchdb01.html>`_
 * `KVM徹底入門 <http://www.seshop.com/product/detail/12214/>`_ (翔泳社)
-* `Gitによるバージョン管理 <http://ssl.ohmsha.co.jp/cgi-bin/menu.cgi?ISBN=978-4-274-06864-5>`_ (オーム社)
+* `Gitによるバージョン管理 <https://www.ohmsha.co.jp/book/9784274068645/>`_ (オーム社)
 
 Portfolio
 ^^^^^^^^^
 
 * `miuchee <http://miuchee.jp>`_
-* `pgraph <http://pgraph.palmtb.net>`_
+* `pgraph <https://pgraph.palmtb.net>`_
