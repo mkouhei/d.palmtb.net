@@ -18,6 +18,7 @@ sphinxcontrib-nwdiag = "*"
 MarkupSafe = "*"
 Pygments = "*"
 Tinkerer = "==1.7.1"
+requests = ">=2.20.0"
 
 [dev-packages]
 
