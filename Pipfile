@@ -15,11 +15,11 @@ sphinxcontrib-blockdiag = "*"
 sphinxcontrib-googleanalytics = "*"
 sphinxcontrib-nwdiag = "*"
 "sphinxcontrib.gist" = "*"
-#wsgiref = "*"
 MarkupSafe = "*"
 Pygments = "*"
 Tinkerer = "==1.7.1"
 requests = ">=2.20.0"
+pip = "*"
 
 [dev-packages]
 
