@@ -10,18 +10,22 @@ lxml = "*"
 pytz = "*"
 six = "*"
 snowballstemmer = "*"
-Sphinx = "==1.7.9"
 sphinxcontrib-blockdiag = "*"
 sphinxcontrib-googleanalytics = "*"
 sphinxcontrib-nwdiag = "*"
 "sphinxcontrib.gist" = "*"
 MarkupSafe = "*"
 Pygments = "*"
-Tinkerer = "==1.7.1"
 requests = ">=2.20.0"
 pip = "*"
+sphinx = "*"
 
 [dev-packages]
 
 [requires]
 python_version = "3.7"
+
+[packages.Tinkerer]
+git = "https://github.com/mkouhei/tinkerer"
+editable = true
+ref = "sphinx_2.4.x"
