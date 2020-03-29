@@ -118,5 +118,5 @@ blockdiag_fontpath = '/usr/share/fonts/truetype/vlgothic/VL-PGothic-Regular.ttf'
 blockdiag_antialias = True
 
 def setup(app):
-    app.add_javascript('custom.js')
-    app.add_stylesheet('custom.css')
+    app.add_js_file('custom.js')
+    app.add_css_file('custom.css')
