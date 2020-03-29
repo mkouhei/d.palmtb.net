@@ -22,7 +22,7 @@ tagline = ''
 author = 'mkouhei'
 
 # Change this to your copyright string
-copyright = '2006-2019, Kouhei Maeda, screen name: {0}'.format(author)
+copyright = '2006-2020, Kouhei Maeda, screen name: {0}'.format(author)
 
 # Change this to your blog root URL (required for RSS feed)
 website = 'https://d.palmtb.net/'
