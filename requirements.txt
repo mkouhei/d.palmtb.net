@@ -13,7 +13,7 @@ lxml==4.6.2
 MarkupSafe==1.1.1
 nwdiag==2.0.0
 packaging==20.8
-Pillow==8.0.1
+Pillow==8.2.0
 Pygments==2.7.3
 pyparsing==2.4.7
 pyquery==1.4.3
