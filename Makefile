@@ -4,26 +4,33 @@
 SRCES := $(glob 20*/*/*/*.rst)
 POST :=
 PAGE :=
+VENV_DIR := .venv
 
-all: build  ## all
+all: build  ## execute all build tasks.
 
-prebuild:  ## prebuild; prepare tinkerer environment on prebuild.
-	poetry install
+prebuild:  ## prepare tinkerer venv.
+	test -d .venv || python -m venv $(VENV_DIR)
+	$(VENV_DIR)/bin/python -m pip install -r requirements.txt
 
-#build: prebuild $(SRCES)
-build: $(SRCES) ## build; blog articles.
-	poetry run tinker -b -q
+build: prebuild $(SRCES)  ## build blog articles.
+	. $(VENV_DIR)/bin/activate; \
+	tinker -b -q; \
+	deactivate
 
-post: ## post POST='blog article subject'
-	poetry run tinker -p \"$(POST)\"
+post: ## create a new post with the title `POST`.
+	. $(VENV_DIR)/bin/activate; \
+	tinker -p \"$(POST)\"; \
+	deactivate
 
-page: ## page PAGE='page subject'
-	poetry run tinker --page \"$(PAGE)\"
+page: ## create a new page with the title `PAGE`.
+	. $(VENV_DIR)/bin/activate; \
+	tinker --page \"$(PAGE)\"; \
+	deactivate
 
-publish: ## publish; rsync to blog server.
+publish: ## publish to blog server with rsync.
 	rsync -a --exclude 'glaneuses.json' --delete blog/html/ blogadm@proxy:/var/www/d.palmtb.net/
 
-staging: ## staging; rsync to local http document root.
+staging: ## copy to local http document root with rsync.
 	rsync -a --exclude 'glaneuses.json' --delete blog/html/ /var/www/html/
 
 help:

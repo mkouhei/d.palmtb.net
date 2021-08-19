@@ -22,7 +22,7 @@ tagline = ''
 author = 'mkouhei'
 
 # Change this to your copyright string
-copyright = '2006-2020, Kouhei Maeda, screen name: {0}'.format(author)
+copyright = '2006-2021, Kouhei Maeda, screen name: {0}'.format(author)
 
 # Change this to your blog root URL (required for RSS feed)
 website = 'https://d.palmtb.net/'
@@ -84,7 +84,7 @@ html_static_path = ['_static', tinkerer.paths.static]
 html_theme_path = ['_themes', tinkerer.paths.themes]
 
 # Add file patterns to exclude from build
-exclude_patterns = ['drafts/*', '_templates/*']
+exclude_patterns = ['drafts/*', '_templates/*', '.venv/*']
 
 # Add templates to be rendered in sidebar here
 html_sidebars = {
@@ -111,7 +111,7 @@ master_doc = tinkerer.master_doc
 version = tinkerer.__version__
 release = tinkerer.__version__
 html_title = project
-html_show_sourcelink = True
+html_show_sourcelink = False
 html_add_permalinks = '¶'
 
 blockdiag_fontpath = '/usr/share/fonts/truetype/vlgothic/VL-PGothic-Regular.ttf'
