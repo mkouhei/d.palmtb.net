@@ -28,7 +28,7 @@ page: ## create a new page with the title `PAGE`.
 	deactivate
 
 publish: ## publish to blog server with rsync.
-	rsync -a --exclude 'glaneuses.json' --delete blog/html/ blogadm@proxy:/var/www/d.palmtb.net/
+	rsync -a --exclude 'glaneuses.json' --delete blog/html/ blogadm@web:/var/www/d.palmtb.net/
 
 staging: ## copy to local http document root with rsync.
 	rsync -a --exclude 'glaneuses.json' --delete blog/html/ /var/www/html/
