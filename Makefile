@@ -19,12 +19,12 @@ build: prebuild $(SRCES)  ## build blog articles.
 
 post: ## create a new post with the title `POST`.
 	. $(VENV_DIR)/bin/activate; \
-	tinker -p \"$(POST)\"; \
+	tinker -p '$(POST)'; \
 	deactivate
 
 page: ## create a new page with the title `PAGE`.
 	. $(VENV_DIR)/bin/activate; \
-	tinker --page \"$(PAGE)\"; \
+	tinker --page '$(PAGE)'; \
 	deactivate
 
 publish: ## publish to blog server with rsync.
