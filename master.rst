@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2021/08/30/headlight_and_rear_light
    2021/08/28/i_got_one_brompton_m6l
    2018/11/01/pipenv
    2018/01/07/review_and_aspiration
