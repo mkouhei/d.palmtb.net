@@ -4,6 +4,7 @@ Sitemap
 .. toctree::
    :maxdepth: 1
 
+   2021/09/11/google_nest_hub_recovered
    2021/08/31/bordo_lite_mini_6055_60
    2021/08/30/headlight_and_rear_light
    2021/08/28/i_got_one_brompton_m6l
